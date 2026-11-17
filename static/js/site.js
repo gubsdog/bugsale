@@ -17,6 +17,54 @@ const brl = n => "R$ " + Math.round(n).toLocaleString("pt-BR");
 const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 const dataBR = iso => { const [y,m,d] = iso.split("-"); return `${+d} ${MESES[+m-1]} ${y}`; };
 
+/* ---------- ícones e "salvos" ---------- */
+const ICO = {
+  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
+  rank:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21V11M12 21V4M16 21v-7M4 21h16"/></svg>',
+  cmp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/></svg>',
+  save:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>',
+  share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>'
+};
+const SAVED_KEY = "bs-saved";
+const getSaved = () => { try{ return JSON.parse(localStorage.getItem(SAVED_KEY) || "[]"); }catch(e){ return []; } };
+const isSaved = id => getSaved().includes(id);
+function toggleSaved(id){
+  let s = getSaved();
+  s = s.includes(id) ? s.filter(x=>x!==id) : [id, ...s];
+  try{ localStorage.setItem(SAVED_KEY, JSON.stringify(s)); }catch(e){}
+  document.querySelectorAll(`[data-save="${id}"]`).forEach(b=>{ b.setAttribute("aria-pressed", s.includes(id)); b.setAttribute("aria-label", s.includes(id) ? "Remover dos salvos" : "Salvar para ler depois"); });
+  const badge = document.querySelector(".dock .count"); if(badge){ badge.textContent = s.length || ""; badge.hidden = !s.length; }
+  toast(s.includes(id) ? "Salvo para ler depois" : "Removido dos salvos");
+  return s.includes(id);
+}
+const saveBtn = id => `<button type="button" class="ibtn save" data-save="${id}" aria-pressed="${isSaved(id)}" aria-label="${isSaved(id)?"Remover dos salvos":"Salvar para ler depois"}">${ICO.save}</button>`;
+const shareBtn = (url, title) => `<button type="button" class="ibtn share" data-share="${esc(url)}" data-title="${esc(title)}" aria-label="Compartilhar">${ICO.share}</button>`;
+function toast(msg){
+  let t = document.querySelector(".toast");
+  if(!t){ t = document.createElement("div"); t.className = "toast"; t.setAttribute("role","status"); document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove("on"), 1800);
+}
+document.addEventListener("click", async e=>{
+  const sv = e.target.closest("[data-save]");
+  if(sv){ e.preventDefault(); e.stopPropagation(); toggleSaved(sv.dataset.save); return; }
+  const sh = e.target.closest("[data-share]");
+  if(sh){
+    e.preventDefault(); e.stopPropagation();
+    const url = new URL(sh.dataset.share, location.href).href;
+    if(navigator.share){ try{ await navigator.share({title: sh.dataset.title, url}); }catch(err){} }
+    else { try{ await navigator.clipboard.writeText(url); toast("Link copiado"); }catch(err){ toast("Não deu para copiar o link"); } }
+  }
+}, true);
+
+/* entrada suave dos cards quando aparecem na tela */
+function reveal(root){
+  if(!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const els = (root||document).querySelectorAll(".card, .row, .pod, .rank-row, .box, .hero, .cover");
+  const io = new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }), {rootMargin:"0px 0px -40px 0px"});
+  els.forEach(el=>{ el.classList.add("rv"); io.observe(el); });
+}
+
 /* ---------- cabeçalho ---------- */
 function header(current){
   const el = document.getElementById("site-header");
@@ -41,6 +89,14 @@ function header(current){
     sync();
   });
   sync();
+  if(!document.querySelector(".dock")){
+    const n = getSaved().length;
+    const dock = document.createElement("nav");
+    dock.className = "dock"; dock.setAttribute("aria-label","Atalhos");
+    dock.innerHTML = [["home",R+"index.html","Início"],["rank",R+"ranking.html","Ranking"],["cmp",R+"comparador.html","Comparar"],["save",R+"index.html#salvos","Salvos"]]
+      .map(([k,h,l])=>`<a href="${h}" class="${(k==="home"&&current==="home"&&location.hash!=="#salvos")||(k==="rank"&&current==="ranking")||(k==="cmp"&&current==="comparador")||(k==="save"&&location.hash==="#salvos")?"on":""}" aria-label="${l}">${ICO[k]}<span>${l}</span>${k==="save"?`<b class="count" ${n?"":"hidden"}>${n||""}</b>`:""}</a>`).join("");
+    document.body.appendChild(dock);
+  }
   let lastY = window.scrollY;
   const mq = window.matchMedia("(max-width:760px)");
   const onScroll = () => {
@@ -82,17 +138,16 @@ const kicker = a => `<span class="kicker">${esc(a.cat)} · <span class="brandtag
 
 function heroHTML(a){
   const p = P(a.phone);
-  return `<article class="hero">
-    <div class="art ${vcls(p)}">
-      ${visual(p)}
-      <span class="price-tag"><small>Preço médio hoje</small>≈ ${brl(p.atualN)} ${offBadge(p)}</span>
-    </div>
-    <div>
+  return `<article class="hero feature ${vcls(p)}">
+    <a class="feature-link" href="${artURL(a)}" aria-label="${esc(a.titulo)}"></a>
+    <div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
+    <div class="notch">${saveBtn(a.phone)}</div>
+    <span class="price-tag glass"><small>Preço médio hoje</small>≈ ${brl(p.atualN)} ${offBadge(p)}</span>
+    <div class="feature-body glass">
       ${kicker(a)}
-      <a href="${artURL(a)}"><h1>${esc(a.titulo)}</h1></a>
+      <h1><a href="${artURL(a)}">${esc(a.titulo)}</a></h1>
       <p class="dek">${esc(a.dek)}</p>
-      <div class="meta">${byline(a)}</div>
-      <div class="actions">${readLink(a)}</div>
+      <div class="actions"><a class="btn primary" href="${artURL(a)}">Ler artigo →</a><button type="button" class="btn ghost" data-compare="${a.phone}">${ICO.cmp} Comparar</button>${shareBtn(artURL(a), a.titulo)}</div>
     </div>
   </article>`;
 }
@@ -105,11 +160,13 @@ const vcls = p => p.foto ? "is-photo" : "is-studio";
 function cardHTML(a){
   const p = P(a.phone);
   return `<a class="card" href="${artURL(a)}">
-    <div class="thumb ${vcls(p)}">${visual(p, true)}<span class="chip">≈ ${brl(p.atualN)} ${offBadge(p)}</span></div>
-    ${kicker(a)}
-    <h3>${esc(a.titulo)}</h3>
-    <div class="meta">${byline(a)}</div>
-    <span class="more">Leia mais →</span>
+    <div class="thumb ${vcls(p)}">${visual(p, true)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}<span class="chip glass">≈ ${brl(p.atualN)} ${offBadge(p)}</span>${saveBtn(a.phone)}</div>
+    <div class="card-body">
+      ${kicker(a)}
+      <h3>${esc(a.titulo)}</h3>
+      <div class="meta">${byline(a)}</div>
+      <span class="go" aria-hidden="true">${ICO.arrow}</span>
+    </div>
   </a>`;
 }
 function rowHTML(a){
@@ -143,13 +200,19 @@ function renderArticles(brand){
     html += `<header class="brand-head"><div><span class="kicker">Celulares</span><h1>${label}</h1></div><p>${arts.length} textos sobre ${label}. Toque em um modelo para abrir o comparador com ele.</p></header>
       <div class="models" style="margin-top:16px">${ids.map(id=>`<button type="button" data-compare="${id}"><img src="${R}${P(id).img}" alt="">${esc(P(id).nome)}</button>`).join("")}</div>`;
   }
+  if(!brand){
+    const saved = getSaved().map(id=>MQ_DATA.articles.find(x=>x.phone===id)).filter(Boolean);
+    html += `<section id="salvos" class="saved-sec" ${location.hash==="#salvos"?"":"hidden"}><div class="section-title"><h2>Seus salvos</h2><a href="${R}index.html">Fechar</a></div>${saved.length ? `<div class="grid4 swipe">${saved.map(cardHTML).join("")}</div>` : `<p class="meta empty-saved">Toque no ${ICO.save} de qualquer artigo para guardar aqui e ler depois.</p>`}</section>`;
+  }
   if(first) html += heroHTML(first);
-  if(recent.length) html += `<div class="section-title"><h2>Mais recentes</h2><a href="${R}comparador.html">Abrir o comparador →</a></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
+  if(recent.length) html += `<div class="section-title"><h2>Mais recentes</h2><a href="${R}comparador.html">Comparar →</a></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
   const allIds = [...new Set(arts.map(a=>a.phone))];
   html += `<div class="section-title"><h2>Linha do tempo</h2></div>
     <div class="split"><div class="timeline">${older.length ? older.map(rowHTML).join("") : `<p class="meta">Mais textos em breve.</p>`}</div>
     <aside class="side">${dropsHTML(allIds)}${communityHTML}</aside></div>`;
   main.innerHTML = html;
+  reveal(main);
+  if(location.hash==="#salvos") document.getElementById("salvos")?.scrollIntoView();
 }
 
 
@@ -201,7 +264,8 @@ function renderArticle(){
       </div>
     </div>
     <figure class="cover">
-      <div class="art ${vcls(p)}">${visual(p)}</div>
+      <div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
+      <div class="notch">${saveBtn(a.phone)}</div>
       <figcaption>${p.foto ? `${esc(p.full)} no dia a dia. ${esc(p.foto.credito)}.` : `${esc(p.full)}. Imagem do aparelho: divulgação (via GSMArena).`}</figcaption>
     </figure>
     <div class="post-body">
@@ -219,6 +283,7 @@ function renderArticle(){
   </article>
   <div class="section-title"><h2>Leia também</h2><a href="${R}index.html">Ver todos →</a></div>
   <div class="grid4 swipe">${related.map(cardHTML).join("")}</div>`;
+  reveal(main);
   const cp = document.getElementById("copyLink");
   const canShare = !!navigator.share && window.matchMedia("(pointer:coarse)").matches;
   if(canShare) cp.textContent = "Compartilhar";
@@ -354,6 +419,7 @@ function renderRanking(){
     </div>`;
   main.querySelectorAll(".sort button").forEach(b=>b.addEventListener("click",()=>{ ordem = b.dataset.o; draw(); }));
   draw();
+  reveal(main);
 }
 
 /* abre o comparador já com o celular escolhido */
@@ -365,5 +431,6 @@ document.addEventListener("click", e=>{
   location.href = R+"comparador.html";
 });
 
+window.addEventListener("hashchange", ()=>{ if(document.body.dataset.page==="list" && document.getElementById("salvos")) location.reload(); });
 window.MQ = { header, footer, renderArticles, renderArticle, renderRanking };
 })();
