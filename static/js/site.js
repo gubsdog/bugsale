@@ -224,8 +224,8 @@ function renderArticles(brand){
   if(brand){
     const label = brand==="Apple" ? "iPhone" : brand;
     const ids = Object.keys(MQ_DATA.phones).filter(id=>P(id).marca===brand);
-    html += `<header class="brand-head"><div><span class="kicker">Celulares</span><h1>${label}</h1></div><p>${arts.length} textos sobre ${label}. Toque em um modelo para abrir o comparador com ele.</p></header>
-      <div class="models" style="margin-top:16px">${ids.map(id=>`<button type="button" data-compare="${id}"><img src="${R}${P(id).img}" alt="">${esc(P(id).nome)}</button>`).join("")}</div>`;
+    html += `<header class="brand-head"><div><span class="kicker">Celulares</span><h1>${label}</h1></div></header>
+      <div class="models" style="margin-top:16px">${ids.map(id=>`<button type="button" data-compare="${id}" aria-label="Comparar o ${esc(P(id).nome)}">${esc(P(id).nome)}</button>`).join("")}</div>`;
   }
   if(first) html += heroHTML(first);
   if(recent.length) html += `<div class="section-title" id="mais"><h2>Mais recentes</h2></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
@@ -240,6 +240,91 @@ function renderArticles(brand){
 
 /* ---------- página de artigo (article.html#id-do-celular) ---------- */
 function para(s){ return `<p>${s}</p>`; }
+
+/* ---------- artigo: ofertas, gráfico de preço, personas ---------- */
+const ICO_WA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.6 8.4c.3-.6 1-.7 1.3-.2l.6 1.1c.2.4.1.8-.2 1.1l-.4.4c.4.9 1.1 1.6 2 2l.4-.4c.3-.3.7-.4 1.1-.2l1.1.6c.5.3.4 1-.2 1.3-.9.5-2 .5-3.2-.2-1.4-.8-2.5-1.9-3.3-3.3-.6-1.1-.7-2.3-.2-3.2z" fill="currentColor" stroke="none"/></svg>';
+const ICO_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+
+/* versão curta das ofertas, para o fim do artigo: só os botões com o nome da loja */
+function ofertaMiniHTML(p){
+  const lista = (p.ofertas && p.ofertas.lista) || [];
+  const btns = [0,1,2].map(i=>{
+    const x = lista[i];
+    return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span>${esc(x.loja)}</span><b>${brl(x.preco)}</b><i aria-hidden="true">↗</i></a>`
+             : `<span class="om-btn vazio" aria-disabled="true"><span>Oferta ${i+1}</span><b>em breve</b></span>`;
+  }).join("");
+  return `<section class="ofertas-mini" aria-label="Onde comprar"><div class="om-head"><b>Onde comprar o ${esc(p.nome)}</b><span>${lista.length?`Pesquisa de ${p.ofertas.pesquisa?dataBR(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
+}
+
+/* histórico de preço: cada ponto é uma pesquisa datada (p.historico = [{data:"2026-04-29", preco:12999}, ...]).
+   Sem histórico, mostra só lançamento → hoje, sem inventar pontos no meio. */
+function precoChartHTML(p){
+  const s = p.specs;
+  const rotData = iso => { const [y,m] = iso.split("-"); return `${MESES[+m-1]}/${y.slice(2)}`; };
+  let pts = (p.historico||[]).slice().sort((x,y)=>x.data.localeCompare(y.data)).map(h=>({rot:rotData(h.data), v:h.preco, d:h.data}));
+  const parcial = pts.length < 3;
+  if(!pts.length){
+    if(!p.precoN) return "";
+    const lanc = (s.lancamento||"").replace(/\s*\(.*\)/,"").toLowerCase().replace("/20","/");
+    pts = [{rot:lanc || "lançamento", v:p.precoN},{rot:"hoje", v:p.atualN}];
+  }
+  const W=640,H=230,pl=16,pr=16,pt=34,pb=36, n=pts.length;
+  const vals = pts.map(x=>x.v), vmax=Math.max(...vals), vmin=Math.min(...vals);
+  const max = vmax*1.08, min = vmin - (vmax-vmin)*0.25 - vmax*0.04;
+  const X = i => pl + (n===1?0:i*(W-pl-pr)/(n-1));
+  const Y = v => pt + (max-v)/(max-min)*(H-pt-pb);
+  const line = pts.map((x,i)=>`${i?"L":"M"}${X(i).toFixed(1)} ${Y(x.v).toFixed(1)}`).join(" ");
+  const area = `${line} L${X(n-1).toFixed(1)} ${H-pb} L${X(0).toFixed(1)} ${H-pb} Z`;
+  const iMin = vals.indexOf(vmin), iMax = vals.indexOf(vmax);
+  const show = new Set([0, n-1, iMin, iMax]);
+  const step = Math.max(1, Math.ceil(n/7));            /* rótulos do eixo sem amontoar */
+  const dots = pts.map((x,i)=>{
+    const last=i===n-1, anchor = i===0?"start":last?"end":"middle";
+    const lab = show.has(i) ? `<text x="${X(i)}" y="${Y(x.v)-(i===iMin&&!last&&i!==0?-22:14)}" text-anchor="${anchor}" class="pv${i===iMin&&n>2?" low":""}${i===iMax&&n>2&&i!==0?" high":""}">${brl(x.v)}</text>` : "";
+    const ax = (i%step===0 || last) ? `<text x="${X(i)}" y="${H-12}" text-anchor="${anchor}" class="pl">${esc(last && !x.d ? "hoje" : x.rot)}</text>` : "";
+    return `<circle cx="${X(i)}" cy="${Y(x.v)}" r="${last?6:n>12?2.5:4}" class="${last?"pt-now":"pt"}"/>${lab}${ax}`;
+  }).join("");
+  const queda = p.precoN ? Math.round((1-p.atualN/p.precoN)*100) : null;
+  return `<figure class="preco-chart">
+    <figcaption><b>Do lançamento até hoje</b>${queda>0?`<span class="off">-${queda}%</span>`:""}</figcaption>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Preço do ${esc(p.full)}: ${pts.map(x=>`${x.rot} ${brl(x.v)}`).join(", ")}">
+      <defs><linearGradient id="pc-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D4AF5A" stop-opacity=".35"/><stop offset="1" stop-color="#D4AF5A" stop-opacity="0"/></linearGradient></defs>
+      <line x1="${pl}" x2="${W-pr}" y1="${H-pb}" y2="${H-pb}" class="axis"/>
+      <path d="${area}" fill="url(#pc-g)"/><path d="${line}" class="ln"/>${dots}
+    </svg>
+    <small>${parcial?"O histórico completo, com cada subida e queda desde o lançamento, ainda está sendo levantado. Por enquanto o gráfico liga o preço de lançamento ao preço médio de hoje.":"Cada ponto é o preço médio das ofertas numa pesquisa. Em destaque, o maior e o menor preço do período."}</small>
+  </figure>`;
+}
+
+/* personas: para quem cada tipo de aparelho faz sentido */
+const PERSONAS = {
+  entrada:     {nome:"O prático", ico:"M12 2v4M5 7l2.5 2.5M19 7l-2.5 2.5M4 14h3M17 14h3M8 20h8M9 16a3 3 0 0 1 6 0", txt:"Usa o celular para o essencial: WhatsApp, banco, redes e as fotos do dia a dia. Quer algo que funcione sem dar trabalho e sem pesar no bolso.", tags:["Conversas e redes","Apps de banco","Gastar pouco"], nao:"quem joga jogos pesados ou quer foto boa à noite."},
+  intermediario:{nome:"O equilibrado", ico:"M12 3v18M5 7h14M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0z", txt:"Quer um pouco de tudo sem pagar preço de topo de linha: tela boa, bateria para o dia inteiro e suporte longo. Costuma trocar de celular a cada 3 ou 4 anos.", tags:["Custo-benefício","Bateria de um dia","Suporte longo"], nao:"quem quer o processador mais rápido ou zoom de verdade."},
+  topo:        {nome:"O sem limites", ico:"M13 2 4 14h7l-1 8 9-12h-7z", txt:"Usa o celular para trabalhar e se divertir ao mesmo tempo. Quer o melhor processador, a câmera mais completa e não quer pensar em trocar tão cedo.", tags:["Desempenho máximo","Câmera completa","Produtividade"], nao:"quem usa só o básico: o preço não se paga."},
+  camera:      {nome:"O criador de conteúdo", ico:"M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z", txt:"Fotografa tudo, grava stories e vídeos e edita no próprio celular. Câmera, zoom e estabilização pesam mais do que qualquer outra coisa na hora da compra.", tags:["Fotos e vídeos","Redes sociais","Zoom e detalhes"], nao:"quem quase não usa a câmera."},
+  tela:        {nome:"O maratonista de tela", ico:"M3 5h18v12H3zM8 21h8M12 17v4", txt:"Passa horas vendo séries e vídeos ou jogando. Quer tela grande e brilhante e bateria que aguente a maratona.", tags:["Séries e vídeos","Jogos","Tela grande"], nao:"quem prefere celular pequeno e leve."},
+  bateria:     {nome:"O que vive longe da tomada", ico:"M6 7h11v10H6zM17 10h2v4h-2M9 10l-1 2h3l-1 2", txt:"Passa o dia na rua, trabalha pelo celular e não quer ficar procurando carregador. Bateria grande e carga rápida são prioridade.", tags:["Bateria de sobra","Carga rápida","Uso intenso"], nao:"quem só usa em casa, perto da tomada."},
+  dobravel:    {nome:"O explorador", ico:"M7 3h10v8H7zM7 13h10v8H7zM5 12h14", txt:"Gosta de testar o que é novo e de chamar atenção. Quer um celular que dobre e caiba em qualquer bolso, e que sempre vire assunto.", tags:["Design diferente","Cabe no bolso","Novidade"], nao:"quem é desastrado ou quer o melhor custo-benefício."},
+  ecossistema: {nome:"O fã do ecossistema Apple", ico:"M12 7c1.5-2.5 4-2.5 4-2.5s.5 2.5-2 4M8 8c2 0 3 1 4 1s2-1 4-1c1.5 0 3 1 3.5 2.5-1.5 1-2.5 2.3-2.5 4 0 2 1.2 3.4 2.5 4-1 2-2.5 3.5-4 3.5-1 0-1.8-.6-3-.6s-2 .6-3 .6C6 21.5 4 17 4 13.5 4 10.2 6 8 8 8z", txt:"Já tem Mac, iPad, AirPods ou Apple Watch e quer que tudo converse. Valoriza revenda alta e anos de atualização.", tags:["Integração Apple","Revenda alta","Suporte longo"], nao:"quem quer muito hardware pelo menor preço."},
+  gamer:       {nome:"O gamer", ico:"M6 9h12a4 4 0 0 1 3.9 4.8l-.6 3a2.5 2.5 0 0 1-4.3 1.2L15 16H9l-2 2a2.5 2.5 0 0 1-4.3-1.2l-.6-3A4 4 0 0 1 6 9zM8 12v3M6.5 13.5h3M16 12.5h.01M18 14.5h.01", txt:"Joga todo dia e não aceita travada. Quer processador forte, tela de alta taxa de atualização e bateria para longas partidas.", tags:["Jogos pesados","Tela rápida","Desempenho por real"], nao:"quem prioriza câmera ou atualizações longas."},
+  compacto:    {nome:"O minimalista exigente", ico:"M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2", txt:"Quer um topo de linha que caiba numa mão e não pese no bolso, sem abrir mão de desempenho e câmera boa.", tags:["Usa com uma mão","Desempenho alto","Câmera boa"], nao:"quem passa o dia vendo vídeo e quer tela grande."},
+  estilo:      {nome:"O estiloso", ico:"M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z", txt:"Escolhe o celular também pelo visual: quer um aparelho fino, leve e bonito na mão, com tela e câmera boas para o dia a dia.", tags:["Fino e leve","Acabamento","Boa câmera"], nao:"quem quer a maior bateria possível."}
+};
+const PERFIL = {"galaxy-a07":["entrada"],"galaxy-a17-5g":["entrada","intermediario"],"galaxy-a57":["intermediario"],"galaxy-s26":["compacto","topo"],"galaxy-s26-ultra":["topo","camera"],"iphone-15":["ecossistema"],"iphone-16":["ecossistema","intermediario"],"iphone-17":["ecossistema","camera"],"moto-g86":["intermediario","bateria"],"moto-g-max":["camera","tela"],"edge-70":["estilo"],"edge-70-pro":["bateria","camera"],"razr-70-ultra":["dobravel","topo"],"poco-x8-pro":["gamer","bateria"],"poco-x8-pro-max":["gamer","tela"]};
+function personasHTML(id){
+  const ks = PERFIL[id] || ["intermediario"];
+  return `<div class="personas">${ks.map((k,i)=>{const x=PERSONAS[k]; return `<div class="persona${i===0?" principal":""}">
+    <span class="pe-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${x.ico}"/></svg></span>
+    <span class="pe-label">${i===0?"Perfil principal":"Também combina com"}</span>
+    <b class="pe-nome">${x.nome}</b><p>${x.txt}</p>
+    <ul class="pe-tags">${x.tags.map(t=>`<li>${t}</li>`).join("")}</ul>
+    <p class="pe-nao"><span>Não é para</span> ${x.nao}</p></div>`;}).join("")}</div>`;
+}
+function galeriaHTML(p){
+  const g = (p.galeria||[])[0];
+  return g ? `<figure class="post-img"><img src="${R}${g.src}" alt="${esc(g.legenda||p.full)}" loading="lazy"><figcaption>${esc(g.legenda||"")}${g.credito?` ${esc(g.credito)}.`:""}</figcaption></figure>` : "";
+}
+
 function renderArticle(){
   const main = document.getElementById("content");
   const id = window.MQ_ARTICLE || location.hash.replace("#","");
@@ -258,8 +343,8 @@ function renderArticle(){
     const seg = s.updSegN ? `${s.updSegN} anos de atualizações de segurança` : null;
     upd += os && seg ? `A ${p.marca} promete ${os} e ${seg}.` : os ? `A ${p.marca} promete ${os} e não informa por quanto tempo envia atualizações de segurança.` : seg ? `A ${p.marca} promete ${seg}, mas não diz quantas versões do sistema ele vai receber.` : `A ${p.marca} não divulgou a política de atualizações.`;
   }
-  const ficha = [["Tela",s.tela],["Taxa de atualização",s.taxa],["Tela externa",s.telaExt],["Processador",s.chip],["Memória RAM",s.ram],["Armazenamento",s.armaz],["Câmeras traseiras",s.camTras],["Zoom óptico",s.zoom],["Câmera frontal",s.camFrontal],["Vídeo",s.video],["Bateria",s.bateria],["Carregamento",s.carga],["Resistência",s.resist],["Peso",s.peso],["Espessura",s.espessura]]
-    .filter(r=>r[1]).map(r=>`<tr><th>${r[0]}</th><td>${esc(r[1])}</td></tr>`).join("");
+  const ficha = [["Preço médio hoje",`≈ ${brl(p.atualN)}`,offBadge(p)],["Preço de lançamento",p.precoN?brl(p.precoN):null],["Lançamento",s.lancamento],["Tela",s.tela],["Taxa de atualização",s.taxa],["Tela externa",s.telaExt],["Processador",s.chip],["Memória RAM",s.ram],["Armazenamento",s.armaz],["Câmeras traseiras",s.camTras],["Zoom óptico",s.zoom],["Câmera frontal",s.camFrontal],["Vídeo",s.video],["Bateria",s.bateria],["Carregamento",s.carga],["Resistência",s.resist],["Peso",s.peso],["Espessura",s.espessura],["Sistema",s.sistema],["Atualizações",s.updResumo || "Não divulgado"]]
+    .filter(r=>r[1]).map(r=>`<tr${r[2]!==undefined?' class="destaque"':""}><th>${r[0]}</th><td>${esc(r[1])}${r[2]?" "+r[2]:""}</td></tr>`).join("");
   const related = MQ_DATA.articles.filter(x=>x.phone!==a.phone).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || y.data.localeCompare(x.data)).slice(0,4);
   const shareText = encodeURIComponent(`${a.titulo} · Bugsale`);
   main.innerHTML = `
@@ -269,20 +354,10 @@ function renderArticle(){
       <span class="kicker">${esc(a.cat)} · <span class="brandtag">${esc(p.marcaMenu)}</span></span>
       <h1>${esc(a.titulo)}</h1>
       <p class="dek">${esc(a.dek)}</p>
-      <aside class="quick">
-        <span class="q-label">Resumo rápido</span>
-        <div class="q-price"><small>Preço médio hoje</small><b>≈ ${brl(p.atualN)}</b> ${offBadge(p)}</div>
-        <dl>
-          ${p.precoN?`<div><dt>Lançamento</dt><dd>${brl(p.precoN)}</dd></div>`:""}
-          <div><dt>Processador</dt><dd>${esc(s.chip)}</dd></div>
-          <div><dt>Bateria</dt><dd>${esc(s.bateria)}${s.carga?` · ${esc(s.carga)}`:""}</dd></div>
-          <div><dt>Atualizações</dt><dd>${esc(s.updResumo || "Não divulgado")}</dd></div>
-        </dl>
-        <a class="btn q-btn" href="${R}comparador.html" data-compare="${a.phone}">Comparar com outros</a>
-      </aside>
+      <div class="head-ofertas">${ofertaHTML(p)}</div>
       <div class="author">
-        <div class="meta">${byline(a)}</div>
-        <div class="share"><a href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a><button type="button" id="copyLink">Copiar link</button></div>
+        <div class="meta"><span class="avatar">${LOGO_SQ}</span><span class="who"><b>Equipe Bugsale</b><span class="sep" aria-hidden="true">·</span><time datetime="${a.data}">${dataBR(a.data)}</time></span></div>
+        <div class="share"><a class="ico-btn wa" href="https://wa.me/?text=${shareText}%20${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">${ICO_WA}</a><button type="button" class="ico-btn" id="copyLink" aria-label="Copiar link" title="Copiar link">${ICO_LINK}</button></div>
       </div>
     </div>
     <figure class="cover">
@@ -291,13 +366,16 @@ function renderArticle(){
     </figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
-      ${ofertaHTML(p)}
       <h2>O que ele oferece</h2>${para(oferece)}
-      <div class="ficha"><h3>Ficha rápida</h3><table>${ficha}</table></div>
+      <div class="ficha"><h3>Ficha técnica</h3><table>${ficha}</table></div>
       <h2>Quanto custa hoje</h2>${para(preco)}
+      ${precoChartHTML(p)}
       <h2>Atualizações</h2>${para(upd)}
+      ${galeriaHTML(p)}
       <h2>Para quem vale</h2>${para(esc(b[1]))}
-      <div class="verdict"><span class="kicker">Veredito Bugsale</span><p>${esc(b[2])}</p></div>
+      ${personasHTML(a.phone)}
+      <blockquote class="verdict"><span class="kicker">Veredito Bugsale</span><p>${esc(b[2])}</p></blockquote>
+      ${ofertaMiniHTML(p)}
       <div class="cta-compare"><div><b>Compare com outros celulares</b><span>Coloque o ${esc(p.nome)} lado a lado com até dois modelos.</span></div><button class="btn primary" type="button" data-compare="${a.phone}">Abrir no comparador →</button></div>
       <div class="tags"><a href="${brandPage||R+"index.html"}">${esc(p.marcaMenu)}</a><span>${esc(a.cat)}</span><span>Celulares</span></div>
       <p class="note">Preços e fichas de nov/2026, a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia.</p>
@@ -308,10 +386,10 @@ function renderArticle(){
   reveal(main);
   const cp = document.getElementById("copyLink");
   const canShare = !!navigator.share && window.matchMedia("(pointer:coarse)").matches;
-  if(canShare) cp.textContent = "Compartilhar";
+  if(canShare){ cp.setAttribute("aria-label","Compartilhar"); cp.title = "Compartilhar"; }
   cp.addEventListener("click", async ()=>{
     if(canShare){ try{ await navigator.share({title:a.titulo, text:a.dek, url:location.href}); }catch(e){} return; }
-    try{ await navigator.clipboard.writeText(location.href); cp.textContent = "Link copiado"; }catch(e){ cp.textContent = "Não deu para copiar"; }
+    try{ await navigator.clipboard.writeText(location.href); toast("Link copiado"); cp.classList.add("ok"); setTimeout(()=>cp.classList.remove("ok"),1600); }catch(e){ toast("Não deu para copiar o link"); }
   });
 }
 

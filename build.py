@@ -52,6 +52,8 @@ for c in celulares:
     lista = [x for x in o.get('lista', []) if x.get('preco') and x.get('url')][:3]
     if lista:
         q['ofertas'] = dict(pesquisa=o.get('pesquisa',''), lista=sorted(lista, key=lambda x: x['preco']))
+    if c.get('historico'): q['historico'] = c['historico']   # [{"mes": "2026-03", "preco": 3299}, ...]
+    if c.get('galeria'): q['galeria'] = c['galeria']         # [{"src": "img/galeria/x.webp", "legenda": "...", "credito": "..."}]
     phones[c['id']] = q
 arts = [dict(phone=a['celular'], data=a['data'], cat=a['categoria'], titulo=a['titulo'], dek=a['resumo']) for a in artigos]
 bodies = {a['celular']: [a['chamada'], a['para_quem'], a['veredito']] for a in artigos}

@@ -967,3 +967,144 @@ a.of-slot:hover{border-color:rgba(212,175,90,.8);transform:translateY(-2px)}
   .grid4.swipe{align-items:stretch}
   .grid4.swipe > .card.blurred{height:auto;flex:0 0 80%}
 }
+
+/* ================= celular: barra inferior mais baixa, seleção em chip concêntrico ================= */
+@media (max-width:760px){
+  .dock{padding:4px !important;gap:4px;border-radius:999px !important;height:auto;min-height:0}
+  .dock > a,.dock > button{height:48px;border-radius:999px !important;gap:2px;font-size:10.5px;letter-spacing:.01em}
+  .dock > a svg,.dock > button svg{width:18px;height:18px}
+  .dock > a.on,.dock > button.on{background:var(--laranja);color:#0B0B0D;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+  .dock > button[aria-expanded="true"]{background:rgba(255,255,255,.14)}
+  .dock-sheet{border-radius:28px}
+  .dock-sheet a{border-radius:999px}
+}
+
+/* ================= artigo v2 ================= */
+/* ofertas no lugar do resumo rápido (coluna da direita no desktop) */
+.post-head .head-ofertas{grid-column:2;grid-row:1 / span 4;align-self:stretch;display:flex}
+.post-head .head-ofertas .ofertas{margin:0;width:100%;display:flex;flex-direction:column}
+.head-ofertas .ofertas .of-grid{grid-template-columns:1fr;gap:12px}
+.head-ofertas .of-slot{display:grid;grid-template-columns:1fr auto;grid-template-areas:"loja btn" "preco btn";align-items:center;gap:4px 12px;padding:12px 16px}
+.head-ofertas .of-slot .of-loja{grid-area:loja}.head-ofertas .of-slot .of-preco{grid-area:preco;font-size:22px}
+.head-ofertas .of-slot .of-btn{grid-area:btn;margin:0;min-height:36px;padding:0 14px;font-size:13px}
+.head-ofertas .of-slot .of-tag{top:-9px}
+.head-ofertas .ofertas .of-head{flex-direction:column;align-items:flex-start;gap:4px}
+.head-ofertas .ofertas .of-nota{margin-top:auto;padding-top:12px}
+/* ofertas mais evidentes */
+.ofertas{background:linear-gradient(160deg,rgba(212,175,90,.14),rgba(212,175,90,.03) 55%),rgba(255,255,255,.04) !important;border:1px solid rgba(212,175,90,.45) !important;box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.ofertas .of-label{font-size:13px}
+/* resumo rápido no corpo do texto */
+.quick.in-body{margin:32px 0;display:block}
+.quick.in-body dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px}
+.quick.in-body dl > div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.08);padding:8px 0}
+.quick.in-body .q-btn{width:auto;margin-top:16px}
+@media (max-width:760px){ .quick.in-body dl{grid-template-columns:1fr} .quick.in-body .q-btn{width:100%} }
+
+/* autor + compartilhar em ícones */
+.author .meta{display:flex;align-items:center;gap:12px}
+.author .who{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.author .who b{color:#F4F4F1;font-weight:600}
+.author .who time{color:var(--muted)}
+.share .ico-btn{width:40px;height:40px;min-height:40px;padding:0 !important;display:inline-grid;place-items:center;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#F4F4F1;cursor:pointer}
+.share .ico-btn svg{width:20px;height:20px}
+.share .ico-btn.wa:hover{color:#25D366;border-color:#25D366}
+.share .ico-btn:hover,.share .ico-btn.ok{color:var(--laranja);border-color:var(--laranja)}
+@media (max-width:760px){
+  .author{flex-wrap:nowrap !important;align-items:center}
+  .author .who{flex-direction:column;align-items:flex-start;gap:2px}
+  .author .who .sep{display:none}
+  .author .who time{font-size:12px}
+  .share{flex:none}
+  .share .ico-btn{width:44px;height:44px}
+  /* ordem: título, autor, capa, ofertas */
+  .post-head .head-ofertas{order:7;margin:24px 0 0;display:block}
+  .head-ofertas .ofertas{padding:16px}
+}
+@media (max-width:900px) and (min-width:761px){ .post-head .head-ofertas{margin:24px 0 0} }
+
+/* legenda da capa centralizada com a imagem */
+@media (min-width:761px){ .cover figcaption{text-align:center} }
+
+/* gráfico de preço */
+.preco-chart{margin:24px 0 32px;padding:20px 20px 16px;border-radius:var(--r-lg);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12)}
+.preco-chart figcaption{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:15px;color:#F4F4F1}
+.preco-chart svg{width:100%;height:auto;display:block;overflow:visible}
+.preco-chart .ln{fill:none;stroke:#D4AF5A;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.preco-chart .pt{fill:#212121;stroke:#D4AF5A;stroke-width:2.5}
+.preco-chart .pt-now{fill:#D4AF5A;stroke:#212121;stroke-width:3}
+.preco-chart .pv{fill:#F4F4F1;font:700 15px var(--display)}
+.preco-chart .pl{fill:#8E8E99;font:500 13px var(--body)}
+.preco-chart .axis{stroke:rgba(255,255,255,.14)}
+.preco-chart .min{stroke:#7C5CFF;stroke-width:1.5;stroke-dasharray:4 5}
+.preco-chart .ml{fill:#B7A6FF;font:500 12px var(--body)}
+.preco-chart small{display:block;margin-top:8px;font-size:12px;color:rgba(244,244,241,.55)}
+
+/* imagem no meio do artigo */
+.post-img{margin:32px 0}
+.post-img img{width:100%;border-radius:var(--r-lg);display:block}
+.post-img figcaption{text-align:center;font-size:13px;font-style:italic;color:var(--muted);margin-top:8px}
+
+/* personas */
+.personas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:16px 0 32px}
+.persona{position:relative;padding:24px;border-radius:var(--r-xl);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:8px}
+.persona.principal{background:radial-gradient(120% 90% at 0% 0%,rgba(124,92,255,.22),transparent 60%),rgba(255,255,255,.05);border-color:rgba(124,92,255,.45)}
+.persona .pe-ico{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:rgba(124,92,255,.18);color:#C9BCFF;margin-bottom:8px}
+.persona .pe-ico svg{width:26px;height:26px}
+.persona .pe-label{font:700 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:#B7A6FF}
+.persona .pe-nome{font:700 22px/1.15 var(--display);letter-spacing:-.02em;color:#F4F4F1}
+.persona p{margin:0;font-size:15px;line-height:1.5;color:rgba(244,244,241,.82)}
+.persona .pe-tags{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.persona .pe-tags li{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font:600 12px var(--body);color:#F4F4F1}
+.persona .pe-nao{margin-top:auto !important;padding-top:12px;font-size:13px !important;color:rgba(244,244,241,.6) !important}
+.persona .pe-nao span{font-weight:700;color:#E5383B}
+
+/* veredito como citação */
+blockquote.verdict{position:relative;margin:40px 0 24px;padding:32px 32px 24px 32px !important;border-radius:var(--r-xl) !important;border-left-width:1px !important}
+blockquote.verdict::before{content:"\201C";position:absolute;right:24px;top:-8px;font:700 120px/1 Georgia,serif;color:rgba(212,175,90,.35);pointer-events:none}
+blockquote.verdict p{font-style:italic;font-size:20px;line-height:1.5;margin:12px 0 16px}
+blockquote.verdict p::before{content:"\201C"}blockquote.verdict p::after{content:"\201D"}
+blockquote.verdict footer{display:flex;align-items:center;gap:8px;font:600 14px var(--body);color:rgba(244,244,241,.75)}
+blockquote.verdict footer::before{content:"—"}
+blockquote.verdict .avatar{order:1;width:24px;height:24px}
+@media (max-width:760px){ blockquote.verdict{padding:24px 20px 20px !important} blockquote.verdict p{font-size:18px} }
+
+/* ofertas resumidas no fim */
+.ofertas-mini{margin:0 0 32px;padding:20px;border-radius:var(--r-xl);border:1px solid rgba(212,175,90,.45);background:linear-gradient(160deg,rgba(212,175,90,.12),rgba(212,175,90,.02) 60%)}
+.om-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-bottom:16px}
+.om-head b{font:700 18px var(--display);color:#F4F4F1}
+.om-head span{font-size:13px;color:rgba(244,244,241,.6)}
+.om-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.om-btn{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:52px;padding:0 20px;border-radius:999px;text-decoration:none;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#F4F4F1;font:600 15px var(--body);transition:background .2s,color .2s}
+.om-btn b{font:700 15px var(--display);font-variant-numeric:tabular-nums}
+.om-btn i{font-style:normal;opacity:.7}
+.om-btn.melhor{background:var(--laranja);border-color:var(--laranja);color:#0B0B0D}
+a.om-btn:hover{background:#E9C978;color:#0B0B0D}
+.om-btn.vazio{border-style:dashed;color:rgba(244,244,241,.5);background:transparent}
+.om-btn.vazio b{font:500 13px var(--body)}
+@media (max-width:760px){ .om-row{grid-template-columns:1fr} .ofertas-mini{padding:16px} }
+@media (max-width:760px){ .post-head .author{align-self:stretch;width:100%;justify-content:space-between} }
+blockquote.verdict footer::before{content:none}
+blockquote.verdict .avatar{order:0}
+.ficha tr.destaque td{font:700 18px var(--display);color:#F4F4F1}
+.ficha tr.destaque td .off{vertical-align:middle;margin-left:4px}
+/* veredito: aspas gigantes atrás do texto, sangrando para fora do card */
+blockquote.verdict{overflow:visible;isolation:isolate}
+blockquote.verdict::before{content:"\201C";left:8px;right:auto;top:-56px;z-index:-1;font:700 280px/1 Georgia,serif;color:rgba(212,175,90,.16)}
+blockquote.verdict > *{position:relative;z-index:1}
+blockquote.verdict p{margin-bottom:8px}
+@media (max-width:760px){ blockquote.verdict::before{font-size:200px;top:-40px;left:4px} }
+.preco-chart .pv.low{fill:#B7A6FF}
+.preco-chart .pv.high{fill:#E5383B}
+/* páginas de marca: título limpo e modelos só com o nome */
+.brand-head{border-bottom:0 !important;padding-bottom:0}
+.models button{padding:0 16px !important;min-height:40px;border-radius:999px}
+/* celular: modelos da marca em carrossel horizontal */
+@media (max-width:760px){
+  .models{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    margin:16px -16px 0 !important;padding:0 16px 4px;scroll-padding:0 16px;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 32px),transparent)}
+  .models::-webkit-scrollbar{display:none}
+  .models button{flex:none;scroll-snap-align:start;white-space:nowrap;min-height:44px}
+  .models::after{content:"";flex:0 0 16px}
+}
