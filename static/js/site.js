@@ -1,0 +1,369 @@
+/* Bugsale · cabeçalho, menu e páginas de artigos (dados em js/data.js) */
+(function(){
+const R = window.MQ_ROOT || "";   /* prefixo até a raiz do site ("" na raiz, "../../" nos artigos) */
+const LOGO = `<svg viewBox="-0.5 -1.5 12 12" aria-hidden="true" shape-rendering="crispEdges"><g fill="#D4AF5A"><rect x="1" y="0" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="10" y="5" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="3" y="7" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="3" y="8" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="7" y="8" width="1" height="1"/></g></svg>`;
+window.MQ_LOGO = LOGO;
+
+const MENU = [
+  [R+"index.html","Início","home"],
+  [R+"samsung.html","Samsung","Samsung"],
+  [R+"iphone.html","iPhone","Apple"],
+  [R+"motorola.html","Motorola","Motorola"],
+  [R+"ranking.html","Ranking","ranking"],
+  [R+"comparador.html","Comparador de preços","comparador"]
+];
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const brl = n => "R$ " + Math.round(n).toLocaleString("pt-BR");
+const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const dataBR = iso => { const [y,m,d] = iso.split("-"); return `${+d} ${MESES[+m-1]} ${y}`; };
+
+/* ---------- cabeçalho ---------- */
+function header(current){
+  const el = document.getElementById("site-header");
+  if(!el) return;
+  el.className = "site-header";
+  el.innerHTML = `<div class="bar">
+      <a class="brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOGO}<span class="name">bugsale</span></a>
+      <div class="tools"><div class="tagline">O preço que parece bug.</div>
+        <button class="mode-toggle" type="button" id="modeToggle" aria-label="Alternar modo claro e escuro">
+          <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <span class="lbl"></span>
+        </button></div>
+      <nav class="nav" aria-label="Seções">${MENU.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}${key==="comparador"?" cta":""}">${label}</a>`).join("")}</nav>
+    </div>`;
+  const btn = el.querySelector("#modeToggle");
+  const sync = () => { const dark = document.documentElement.dataset.mode === "dark"; btn.querySelector(".lbl").textContent = dark ? "Modo claro" : "Modo escuro"; btn.setAttribute("aria-pressed", dark); };
+  btn.addEventListener("click", ()=>{
+    const next = document.documentElement.dataset.mode === "dark" ? "light" : "dark";
+    document.documentElement.dataset.mode = next;
+    try{ localStorage.setItem("bs-mode", next); }catch(e){}
+    sync();
+  });
+  sync();
+  let lastY = window.scrollY;
+  const mq = window.matchMedia("(max-width:760px)");
+  const onScroll = () => {
+    const y = window.scrollY;
+    el.classList.toggle("compact", y > 40);
+    if(current !== "comparador"){
+      if(mq.matches && y > 160 && y > lastY + 4 && !el.contains(document.activeElement)) el.classList.add("hide");
+      else if(y < lastY - 4 || y < 160 || !mq.matches) el.classList.remove("hide");
+    }
+    lastY = y;
+  };
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+}
+
+function footer(){
+  const el = document.getElementById("site-footer");
+  if(!el) return;
+  el.className = "site-footer";
+  el.innerHTML = `<div class="wrap"><div class="cols">
+      <div><a class="brand" href="${R}index.html" style="padding:0 0 8px">${LOGO}<span class="name" style="font-size:32px">bugsale</span></a>
+        <p style="max-width:40ch;margin:8px 0 0">Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
+      <div><h5>Seções</h5>${MENU.map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
+      <div><h5>Bugsale</h5><a href="${R}sobre.html">Sobre e como avaliamos</a><a href="${R}privacidade.html">Política de privacidade</a></div>
+      <div><h5>Comunidade</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Comunidade no WhatsApp</a></div>
+    </div><div class="fine">Preços médios e fichas técnicas de nov/2026, a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia. Fotos: divulgação das marcas.</div></div>`;
+}
+
+/* ---------- artigos ---------- */
+const P = id => MQ_DATA.phones[id];
+function offBadge(p){
+  if(!p.precoN) return "";
+  const pct = Math.round((1 - p.atualN/p.precoN)*100);
+  return pct > 0 ? `<span class="off${pct>=40?" hot":""}">-${pct}%</span>` : "";
+}
+const artURL = a => `${R}artigos/${a.phone}/`;
+function readLink(a){ return `<a class="btn primary" href="${artURL(a)}">Leia o artigo →</a>`; }
+const byline = a => `<span class="avatar">${LOGO}</span> Equipe Bugsale · <time datetime="${a.data}">${dataBR(a.data)}</time>`;
+const kicker = a => `<span class="kicker">${esc(a.cat)} · <span class="brandtag">${esc(P(a.phone).marcaMenu)}</span></span>`;
+
+function heroHTML(a){
+  const p = P(a.phone);
+  return `<article class="hero">
+    <div class="art ${vcls(p)}">
+      ${visual(p)}
+      <span class="price-tag"><small>Preço médio hoje</small>≈ ${brl(p.atualN)} ${offBadge(p)}</span>
+    </div>
+    <div>
+      ${kicker(a)}
+      <a href="${artURL(a)}"><h1>${esc(a.titulo)}</h1></a>
+      <p class="dek">${esc(a.dek)}</p>
+      <div class="meta">${byline(a)}</div>
+      <div class="actions">${readLink(a)}</div>
+    </div>
+  </article>`;
+}
+/* visual do artigo: foto oficial de uso quando existe; senão, o aparelho num "estúdio" com a cara da Bugsale */
+function visual(p, sm){
+  if(p.foto) return `<img class="ph" src="${R}${sm ? p.foto.sm : p.foto.src}" alt="${esc(p.full)} em uso" style="object-position:${p.foto.pos}" loading="lazy">`;
+  return `<span class="ghost">${esc(p.nome)}</span><span class="floor"></span><img class="cut" src="${R}${p.cut}" alt="${esc(p.full)}" width="160" height="212" loading="lazy">`;
+}
+const vcls = p => p.foto ? "is-photo" : "is-studio";
+function cardHTML(a){
+  const p = P(a.phone);
+  return `<a class="card" href="${artURL(a)}">
+    <div class="thumb ${vcls(p)}">${visual(p, true)}<span class="chip">≈ ${brl(p.atualN)} ${offBadge(p)}</span></div>
+    ${kicker(a)}
+    <h3>${esc(a.titulo)}</h3>
+    <div class="meta">${byline(a)}</div>
+    <span class="more">Leia mais →</span>
+  </a>`;
+}
+function rowHTML(a){
+  const p = P(a.phone);
+  return `<a class="row" href="${artURL(a)}">
+    <div class="thumb ${vcls(p)}">${visual(p, true)}</div>
+    <div>${kicker(a)}<h3>${esc(a.titulo)}</h3><div class="meta">${esc(a.dek)}</div></div>
+    <div class="when"><time datetime="${a.data}">${dataBR(a.data)}</time><br><span class="more">Leia mais →</span></div>
+  </a>`;
+}
+
+function dropsHTML(list){
+  const top = list.map(id=>P(id)).filter(p=>p.precoN)
+    .map(p=>({p, pct:Math.round((1-p.atualN/p.precoN)*100)}))
+    .sort((a,b)=>b.pct-a.pct).slice(0,5);
+  return `<div class="box"><h4>Maiores quedas de preço</h4><ol class="drops">${top.map(({p,pct})=>
+    `<li><img src="${R}${p.img}" alt=""><div><b>${esc(p.full)}</b><span>≈ ${brl(p.atualN)} · lançou a ${brl(p.precoN)}</span></div><span class="off${pct>=40?" hot":""}">-${pct}%</span></li>`).join("")}</ol></div>`;
+}
+const communityHTML = `<div class="box community"><h4>Promoções todo dia</h4><p>Entre na comunidade da Bugsale no WhatsApp e receba só as ofertas que passaram no nosso filtro de preço.</p><a class="btn" href="#">Entrar na comunidade</a></div>`;
+
+/* página: lista de artigos (home = todas as marcas; página de marca = só aquela) */
+function renderArticles(brand){
+  const main = document.getElementById("content");
+  const arts = MQ_DATA.articles.filter(a => !brand || P(a.phone).marca === brand).sort((a,b)=>b.data.localeCompare(a.data));
+  const [first, ...rest] = arts;
+  const recent = rest.slice(0,4), older = rest.slice(4);
+  let html = "";
+  if(brand){
+    const label = brand==="Apple" ? "iPhone" : brand;
+    const ids = Object.keys(MQ_DATA.phones).filter(id=>P(id).marca===brand);
+    html += `<header class="brand-head"><div><span class="kicker">Celulares</span><h1>${label}</h1></div><p>${arts.length} textos sobre ${label}. Toque em um modelo para abrir o comparador com ele.</p></header>
+      <div class="models" style="margin-top:16px">${ids.map(id=>`<button type="button" data-compare="${id}"><img src="${R}${P(id).img}" alt="">${esc(P(id).nome)}</button>`).join("")}</div>`;
+  }
+  if(first) html += heroHTML(first);
+  if(recent.length) html += `<div class="section-title"><h2>Mais recentes</h2><a href="${R}comparador.html">Abrir o comparador →</a></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
+  const allIds = [...new Set(arts.map(a=>a.phone))];
+  html += `<div class="section-title"><h2>Linha do tempo</h2></div>
+    <div class="split"><div class="timeline">${older.length ? older.map(rowHTML).join("") : `<p class="meta">Mais textos em breve.</p>`}</div>
+    <aside class="side">${dropsHTML(allIds)}${communityHTML}</aside></div>`;
+  main.innerHTML = html;
+}
+
+
+/* ---------- página de artigo (article.html#id-do-celular) ---------- */
+function para(s){ return `<p>${s}</p>`; }
+function renderArticle(){
+  const main = document.getElementById("content");
+  const id = window.MQ_ARTICLE || location.hash.replace("#","");
+  const a = MQ_DATA.articles.find(x=>x.phone===id) || MQ_DATA.articles.slice().sort((x,y)=>y.data.localeCompare(x.data))[0];
+  const p = P(a.phone), s = p.specs, b = MQ_DATA.bodies[a.phone];
+  document.title = `${a.titulo} · Bugsale`;
+  const pct = p.precoN ? Math.round((1 - p.atualN/p.precoN)*100) : null;
+  const brandPage0 = ({Samsung:"samsung.html",Apple:"iphone.html",Motorola:"motorola.html"}[p.marca]);
+  const brandPage = brandPage0 ? R+brandPage0 : null;
+  const oferece = `O ${esc(p.full)} tem tela ${esc(s.tela)} de ${esc(s.taxa)}${s.telaExt?`, além de uma tela externa ${esc(s.telaExt)}`:""}. O processador é o ${esc(s.chip)}${s.ram?`, com ${esc(s.ram)} de RAM`:""} e ${esc(s.armaz)} de armazenamento. Atrás, são ${esc(s.camTras)}${s.zoom?`, com zoom ${esc(s.zoom)}`:""}. Na frente, a câmera é de ${esc(s.camFrontal)}. A bateria tem ${esc(s.bateria)}, com carregamento de ${esc(s.carga)}, e a resistência é ${esc(s.resist)}.`;
+  const preco = `${p.precoN?`Ele chegou ao Brasil por ${brl(p.precoN)}.`:"Ele não tem preço oficial de lançamento no Brasil."} Hoje, a média das ofertas está em cerca de <b>${brl(p.atualN)}</b>${pct>0?`, ${pct}% abaixo do lançamento`:""}. O menor preço que já vimos foi ${brl(s.minimoN)}.`;
+  let upd = `Ele sai de fábrica com ${esc(s.sistema)}. `;
+  if(p.marca==="Apple") upd += "A Apple não divulga um prazo oficial, mas historicamente os iPhones recebem de 5 a 7 anos de atualizações do iOS.";
+  else {
+    const os = s.updOSN ? (p.marca==="Xiaomi" ? `${s.updOSN} anos de atualizações do sistema` : `${s.updOSN} atualizações do Android`) : null;
+    const seg = s.updSegN ? `${s.updSegN} anos de atualizações de segurança` : null;
+    upd += os && seg ? `A ${p.marca} promete ${os} e ${seg}.` : os ? `A ${p.marca} promete ${os} e não informa por quanto tempo envia atualizações de segurança.` : seg ? `A ${p.marca} promete ${seg}, mas não diz quantas versões do sistema ele vai receber.` : `A ${p.marca} não divulgou a política de atualizações.`;
+  }
+  const ficha = [["Tela",s.tela],["Taxa de atualização",s.taxa],["Tela externa",s.telaExt],["Processador",s.chip],["Memória RAM",s.ram],["Armazenamento",s.armaz],["Câmeras traseiras",s.camTras],["Zoom óptico",s.zoom],["Câmera frontal",s.camFrontal],["Vídeo",s.video],["Bateria",s.bateria],["Carregamento",s.carga],["Resistência",s.resist],["Peso",s.peso],["Espessura",s.espessura]]
+    .filter(r=>r[1]).map(r=>`<tr><th>${r[0]}</th><td>${esc(r[1])}</td></tr>`).join("");
+  const related = MQ_DATA.articles.filter(x=>x.phone!==a.phone).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || y.data.localeCompare(x.data)).slice(0,4);
+  const shareText = encodeURIComponent(`${a.titulo} · Bugsale`);
+  main.innerHTML = `
+  <article class="post">
+    <nav class="crumb" aria-label="Você está em"><a href="${R}index.html">Início</a> / ${brandPage?`<a href="${brandPage}">${esc(p.marcaMenu)}</a>`:esc(p.marcaMenu)}</nav>
+    <div class="post-head">
+      <span class="kicker">${esc(a.cat)} · <span class="brandtag">${esc(p.marcaMenu)}</span></span>
+      <h1>${esc(a.titulo)}</h1>
+      <p class="dek">${esc(a.dek)}</p>
+      <aside class="quick">
+        <span class="q-label">Resumo rápido</span>
+        <div class="q-price"><small>Preço médio hoje</small><b>≈ ${brl(p.atualN)}</b> ${offBadge(p)}</div>
+        <dl>
+          ${p.precoN?`<div><dt>Lançamento</dt><dd>${brl(p.precoN)}</dd></div>`:""}
+          <div><dt>Processador</dt><dd>${esc(s.chip)}</dd></div>
+          <div><dt>Bateria</dt><dd>${esc(s.bateria)}${s.carga?` · ${esc(s.carga)}`:""}</dd></div>
+          <div><dt>Atualizações</dt><dd>${esc(s.updResumo || "Não divulgado")}</dd></div>
+        </dl>
+        <a class="btn q-btn" href="${R}comparador.html" data-compare="${a.phone}">Comparar com outros</a>
+      </aside>
+      <div class="author">
+        <div class="meta">${byline(a)}</div>
+        <div class="share"><a href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a><button type="button" id="copyLink">Copiar link</button></div>
+      </div>
+    </div>
+    <figure class="cover">
+      <div class="art ${vcls(p)}">${visual(p)}</div>
+      <figcaption>${p.foto ? `${esc(p.full)} no dia a dia. ${esc(p.foto.credito)}.` : `${esc(p.full)}. Imagem do aparelho: divulgação (via GSMArena).`}</figcaption>
+    </figure>
+    <div class="post-body">
+      <p class="lede">${esc(b[0])}</p>
+      <h2>O que ele oferece</h2>${para(oferece)}
+      <div class="ficha"><h3>Ficha rápida</h3><table>${ficha}</table></div>
+      <h2>Quanto custa hoje</h2>${para(preco)}
+      <h2>Atualizações</h2>${para(upd)}
+      <h2>Para quem vale</h2>${para(esc(b[1]))}
+      <div class="verdict"><span class="kicker">Veredito Bugsale</span><p>${esc(b[2])}</p></div>
+      <div class="cta-compare"><div><b>Compare com outros celulares</b><span>Coloque o ${esc(p.nome)} lado a lado com até dois modelos.</span></div><button class="btn primary" type="button" data-compare="${a.phone}">Abrir no comparador →</button></div>
+      <div class="tags"><a href="${brandPage||R+"index.html"}">${esc(p.marcaMenu)}</a><span>${esc(a.cat)}</span><span>Celulares</span></div>
+      <p class="note">Preços e fichas de nov/2026, a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia.</p>
+    </div>
+  </article>
+  <div class="section-title"><h2>Leia também</h2><a href="${R}index.html">Ver todos →</a></div>
+  <div class="grid4 swipe">${related.map(cardHTML).join("")}</div>`;
+  const cp = document.getElementById("copyLink");
+  const canShare = !!navigator.share && window.matchMedia("(pointer:coarse)").matches;
+  if(canShare) cp.textContent = "Compartilhar";
+  cp.addEventListener("click", async ()=>{
+    if(canShare){ try{ await navigator.share({title:a.titulo, text:a.dek, url:location.href}); }catch(e){} return; }
+    try{ await navigator.clipboard.writeText(location.href); cp.textContent = "Link copiado"; }catch(e){ cp.textContent = "Não deu para copiar"; }
+  });
+}
+
+
+
+/* ---------- ranking de custo-benefício ---------- */
+/* Metade 1: nota da crítica = média agregada de reviews (Notebookcheck "Average Score"). */
+const NBC = "https://www.notebookcheck.net/";
+const CRITICA = {
+  "galaxy-a07":      [69.67, 3,   "Samsung-Galaxy-A07.1169741.0.html"],
+  "galaxy-a17-5g":   [73.28, 37,  "Samsung-Galaxy-A17-5G.1136906.0.html"],
+  "galaxy-a57":      [78.1,  75,  "Samsung-Galaxy-A57.1262288.0.html"],
+  "galaxy-s26":      [82.17, 68,  "Samsung-Galaxy-S26.1243976.0.html"],
+  "galaxy-s26-ultra":[88.96, 114, "Samsung-Galaxy-S26-Ultra.1244015.0.html"],
+  "iphone-15":       [83.79, 74,  "Apple-iPhone-15.755495.0.html"],
+  "iphone-16":       [86,    72,  "Apple-iPhone-16.891591.0.html"],
+  "iphone-17":       [89.88, 77,  "Apple-iPhone-17.1134180.0.html"],
+  "moto-g86":        [79.76, 25,  "Motorola-Moto-G86.1074931.0.html"],
+  "moto-g-max":      [74.6,  1,   "Motorola-Moto-G87-Reviews-and-Specs.1318625.0.html", "Nota do Moto G87, versão global do Moto G Max"],
+  "edge-70":         [81.97, 67,  "Motorola-Edge-70.1179499.0.html"],
+  "edge-70-pro":     [82.56, 20,  "Motorola-Edge-70-Pro.1307318.0.html"],
+  "razr-70-ultra":   [77.93, 37,  "Motorola-Razr-70-Ultra.1309415.0.html"],
+  "poco-x8-pro":     [85.1,  29,  "Xiaomi-Poco-X8-Pro.1256160.0.html"],
+  "poco-x8-pro-max": [85.04, 41,  "Xiaomi-Poco-X8-Pro-Max.1245768.0.html"]
+};
+/* Metade 2: laboratório + ficha. Desempenho = Geekbench 6 multi-core (resultados típicos publicados). */
+const GEEKBENCH = {
+  "galaxy-a07":1970, "galaxy-a17-5g":2090, "galaxy-a57":4500, "galaxy-s26":10700, "galaxy-s26-ultra":10900,
+  "iphone-15":6500, "iphone-16":8360, "iphone-17":9400, "moto-g86":3000, "moto-g-max":2100,
+  "edge-70":4180, "edge-70-pro":6560, "razr-70-ultra":8500, "poco-x8-pro":6480, "poco-x8-pro-max":8470
+};
+const GB_MAX = Math.max(...Object.values(GEEKBENCH));
+const PESOS = [["desempenho","Desempenho",25],["camera","Câmera",20],["tela","Tela",15],["bateria","Bateria",20],["atualizacoes","Atualizações",20]];
+const clamp = (v,a=0,b=10) => Math.max(a,Math.min(b,v));
+function notas(id, p){
+  const s = p.specs, cam = s.camTras || "", est = [];
+  const gb = GEEKBENCH[id];
+  const desempenho = gb ? clamp(gb / GB_MAX * 10) : 5;
+  if(!gb) est.push("desempenho");
+  let camera = 3;
+  if(/OIS/.test(cam)) camera += 2;
+  const uw = cam.match(/(\d+) MP ultrawide/); if(uw) camera += +uw[1] >= 48 ? 1.5 : +uw[1] >= 8 ? .75 : .25;
+  const teles = (cam.match(/tele|periscópio/g) || []).length; camera += teles >= 2 ? 3 : teles ? 2 : 0;
+  if(/^200 MP/.test(cam)) camera += .5;
+  if(/8K/.test(s.video)) camera += .5; else if(/4K a (60|120)/.test(s.video)) camera += .25;
+  const hz = {60:4,90:6,120:8,144:9,165:10}[s.taxaN] ?? 6;
+  let tela = hz + (/LTPO/.test(s.tela) ? .5 : 0) - (/LCD/.test(s.tela) ? 1.5 : 0) - (/720×/.test(s.tela) ? 1 : 0);
+  let carga = s.cargaN; if(!carga){ carga = 20; est.push("bateria"); }
+  const bateria = clamp((s.bateriaN-3000)/5500*7, 0, 7) + clamp(carga/100*3, 0, 3);
+  let os = s.updOSN, seg = s.updSegN;
+  if(p.marca === "Apple"){ os = os ?? 6; seg = seg ?? 6; est.push("atualizacoes"); }
+  else { os = os ?? 1; seg = seg ?? os; }
+  const atualizacoes = clamp(os*.9 + seg*.6);
+  const n = {desempenho, camera:clamp(camera), tela:clamp(tela), bateria:clamp(bateria), atualizacoes};
+  n.tecnica = PESOS.reduce((t,[k,,w])=>t + n[k]*w/100, 0);
+  const c = CRITICA[id];
+  n.critica = c ? c[0] / 10 : n.tecnica;
+  n.reviews = c ? c[1] : 0;
+  n.final = (n.critica + n.tecnica) / 2;
+  n.est = est;
+  return n;
+}
+function renderRanking(){
+  const main = document.getElementById("content");
+  const lista = Object.entries(MQ_DATA.phones).map(([id,p])=>({id, p, n:notas(id,p)}));
+  lista.forEach(x => x.raw = x.n.final / Math.sqrt(x.p.atualN));
+  const max = Math.max(...lista.map(x=>x.raw));
+  lista.forEach(x => x.cb = x.raw / max * 10);
+  let ordem = "cb";
+  const fmt = v => v.toFixed(1).replace(".", ",");
+  const draw = () => {
+    const ord = lista.slice().sort((a,b)=> ordem==="cb" ? b.cb-a.cb : ordem==="nota" ? b.n.final-a.n.final : ordem==="critica" ? b.n.critica-a.n.critica : a.p.atualN-b.p.atualN);
+    const top = ord.slice(0,10);
+    const revs = x => x.n.reviews < 5 ? `poucos reviews (${x.n.reviews})` : `${x.n.reviews} reviews`;
+    const bars = x => `<div class="bars"><p class="bars-title">Laboratório e ficha · ${fmt(x.n.tecnica)}</p>${PESOS.map(([k,l])=>`<div class="crit"><span>${l}</span><i style="--v:${x.n[k]*10}%"></i><em>${fmt(x.n[k])}${x.n.est.includes(k)?"*":""}</em></div>`).join("")}</div>`;
+    const scores = (x,hl) => `<div class="scores">
+        <div class="crt"><small>Crítica</small>${fmt(x.n.critica)}<span class="rv">${revs(x)}</span></div>
+        <div class="tec"><small>Nota final</small>${fmt(x.n.final)}</div>
+        <div class="cb${hl?" top":""}"><small>Custo-benefício</small>${fmt(x.cb)}</div></div>`;
+    document.getElementById("rankPodium").innerHTML = top.slice(0,3).map((x,i)=>`
+      <a class="pod pod-${i+1}" href="${R}artigos/${x.id}/">
+        <span class="medal">${i+1}º</span>
+        <div class="pod-photo"><img src="${R}${x.p.img}" alt="${esc(x.p.full)}" width="160" height="212"></div>
+        <div class="who"><span class="kicker"><span class="brandtag">${esc(x.p.marcaMenu)}</span></span><b>${esc(x.p.nome)}</b><span class="price">≈ ${brl(x.p.atualN)} ${offBadge(x.p)}</span></div>
+        ${scores(x, i===0)}
+        ${bars(x)}
+      </a>`).join("");
+    document.getElementById("rankList").innerHTML = top.slice(3).map((x,i)=>`
+      <a class="rank-row" href="${R}artigos/${x.id}/">
+        <span class="pos">${i+4}</span>
+        <img src="${R}${x.p.img}" alt="" width="160" height="212">
+        <div class="who"><span class="kicker"><span class="brandtag">${esc(x.p.marcaMenu)}</span></span><b>${esc(x.p.nome)}</b><span class="price">≈ ${brl(x.p.atualN)} ${offBadge(x.p)}</span></div>
+        ${bars(x)}
+        ${scores(x, false)}
+      </a>`).join("");
+    document.querySelectorAll(".sort button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.o===ordem));
+  };
+  const fontes = Object.entries(CRITICA).filter(([id])=>MQ_DATA.phones[id]).map(([id,[v,n,u,obs]])=>
+    `<li><a href="${NBC}${u}" target="_blank" rel="noopener">${esc(MQ_DATA.phones[id].nome)}</a> ${String(v).replace(".", ",")}% · ${n} ${n===1?"review":"reviews"}${obs?` <em>(${esc(obs)})</em>`:""}</li>`).join("");
+  main.innerHTML = `
+    <header class="brand-head rank-head"><div><span class="kicker">Ranking · Top 10</span><h1>Custo-benefício</h1></div>
+      <p>Metade da nota vem da crítica especializada, a média das avaliações publicadas por sites de tecnologia do mundo todo. A outra metade vem de testes de laboratório e da ficha técnica. Depois comparamos com o preço médio de hoje.</p></header>
+    <div class="sort" role="group" aria-label="Ordenar ranking">
+      <span>Ordenar por</span>
+      <button type="button" data-o="cb">Custo-benefício</button>
+      <button type="button" data-o="nota">Nota final</button>
+      <button type="button" data-o="critica">Crítica</button>
+      <button type="button" data-o="preco">Menor preço</button>
+    </div>
+    <details class="box method">
+      <summary><b>Como calculamos</b><span class="weights"><span>Crítica <em>50%</em></span><span>Laboratório e ficha <em>50%</em></span></span></summary>
+      <div class="method-body">
+        <p><b>Crítica (50%):</b> média das notas de reviews de sites reconhecidos, agregada pelo Notebookcheck. Quanto mais reviews, mais confiável. Abaixo de 5 avisamos "poucos reviews".</p>
+        <p><b>Laboratório e ficha (50%):</b> desempenho ${PESOS[0][2]}%, câmera ${PESOS[1][2]}%, tela ${PESOS[2][2]}%, bateria ${PESOS[3][2]}% e atualizações ${PESOS[4][2]}%.</p>
+        <p><b>Desempenho:</b> Geekbench 6 multi-core. O mais rápido da lista vale 10 e os outros são proporcionais.</p>
+        <p><b>Câmera:</b> estabilização (OIS), ultrawide, teleobjetiva e gravação em 4K ou 8K.</p>
+        <p><b>Tela:</b> taxa de atualização, com ajuste para LTPO, LCD e resolução baixa.</p>
+        <p><b>Bateria:</b> capacidade em mAh e velocidade de carga.</p>
+        <p><b>Atualizações:</b> versões do sistema e anos de segurança prometidos.</p>
+        <p><b>Custo-benefício:</b> nota final dividida pela raiz do preço médio atual. O melhor da lista fica com 10.</p>
+        <p class="fine">* Estimativa: a Apple não divulga prazo de atualizações nem a potência de carga com fio de alguns iPhones.</p>
+        <div class="fontes"><p><b>Fontes da nota da crítica</b></p><ul>${fontes}</ul></div>
+      </div>
+    </details>
+    <div id="rankPodium" class="podium"></div>
+    <div id="rankList" class="rank-list"></div>
+    </div>`;
+  main.querySelectorAll(".sort button").forEach(b=>b.addEventListener("click",()=>{ ordem = b.dataset.o; draw(); }));
+  draw();
+}
+
+/* abre o comparador já com o celular escolhido */
+document.addEventListener("click", e=>{
+  const t = e.target.closest("[data-compare]");
+  if(!t) return;
+  e.preventDefault();
+  try{ localStorage.setItem("cmp-sel2", JSON.stringify([t.dataset.compare, null, null])); }catch(err){}
+  location.href = R+"comparador.html";
+});
+
+window.MQ = { header, footer, renderArticles, renderArticle, renderRanking };
+})();

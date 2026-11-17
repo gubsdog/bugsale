@@ -1,2 +1,65 @@
-# bugsale
-Site de avaliação e busca de promoções de produtos
+# Bugsale · site
+
+Reviews, ranking de custo-benefício e comparador de celulares, com o preço justo checado contra o histórico.
+
+O site é **estático**: um script em Python lê os dados em `data/`, junta com os modelos em `src/` e os arquivos em `static/`, e gera tudo pronto em `dist/`. O GitHub Actions faz isso sozinho e publica no GitHub Pages a cada alteração na branch `main`.
+
+## Estrutura
+
+```
+data/
+  celulares.json     ficha técnica, preços e foto de cada aparelho
+  artigos.json       título, resumo, chamada, "para quem vale" e veredito de cada artigo
+src/
+  page.tpl.html      modelo de todas as páginas (cabeçalho, SEO, scripts)
+  comparador.tpl.html
+  paginas/           sobre, política de privacidade e 404
+static/
+  css/site.css       visual da Bugsale (modo escuro e claro)
+  js/site.js         cabeçalho, home, artigos, ranking
+  img/               fotos dos aparelhos, fotos de uso (img/foto) e recortes (img/cut)
+config.json          endereço do site
+build.py             gera o site em dist/
+.github/workflows/   publicação automática no GitHub Pages
+```
+
+## Ver o site no seu computador
+
+Precisa só do Python 3.9 ou mais novo.
+
+```
+python3 build.py
+python3 -m http.server -d dist 8000
+```
+
+Abra http://localhost:8000.
+
+## Publicar um artigo novo
+
+1. Se o aparelho ainda não existe, adicione-o em `data/celulares.json` (copie um parecido e troque os dados) e coloque a foto do produto em `static/img/<img>.webp`.
+2. Adicione o artigo em `data/artigos.json`:
+   - `celular`: o `id` do aparelho
+   - `data`: no formato `AAAA-MM-DD`
+   - `categoria`, `titulo`, `resumo`
+   - `chamada`, `para_quem`, `veredito`
+3. Opcional: uma foto de uso em `static/img/foto/<id>.webp` (1600 px de largura) e `static/img/foto/<id>-sm.webp` (720 px), com o crédito em `foto` no `celulares.json`.
+4. Faça o commit na branch `main`. Em cerca de 1 minuto o site está no ar.
+
+O artigo ganha endereço próprio (`/artigos/<id>/`), entra na home, na página da marca e no `sitemap.xml`.
+
+## Endereço e domínio
+
+Em `config.json`:
+
+- **GitHub Pages sem domínio:** `site_url` = `https://SEU-USUARIO.github.io/NOME-DO-REPO/` e `base_path` = `/NOME-DO-REPO/`.
+- **Com domínio próprio** (ex.: bugsale.com.br): `site_url` = `https://bugsale.com.br/`, `base_path` = `/` e `custom_domain` = `bugsale.com.br`. Depois aponte o DNS do domínio para o GitHub Pages.
+
+## Primeira publicação
+
+1. Crie o repositório no GitHub e envie estes arquivos.
+2. Em **Settings → Pages**, em "Build and deployment", escolha **GitHub Actions**.
+3. O workflow "Publicar site" roda sozinho e mostra o link do site no fim.
+
+## Ranking
+
+As notas da crítica (Notebookcheck) e os resultados do Geekbench ficam no começo da seção "ranking" de `static/js/site.js`, nas constantes `CRITICA` e `GEEKBENCH`.

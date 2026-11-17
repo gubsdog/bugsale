@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparador de Celulares · Bugsale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Silkscreen&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noite:#0B0B0D; --laranja:#D4AF5A; --eletrico:#6A4BF0; --gelo:#F4F4F1; --tinta:#0B0B0D; --vermelho:#E5383B;
+    --card:#fff; --muted:#5E5E68; --line:#DDDDD6; --dash:#A8A8B3;
+    --best:#ECE8FF; --best-ink:#5B3FD9;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--gelo);color:var(--tinta);line-height:1.4}
+  .display{font-family:"Space Grotesk",system-ui,sans-serif}
+  .topbar{background:var(--noite);color:#F4F4F1}
+  .topbar-in{max-width:1080px;margin:0 auto;padding:16px 16px;display:flex;align-items:center;gap:16px}
+  .logo{width:48px;height:48px;flex:none;border-radius:16px;display:block}
+  .wordmark{display:flex;align-items:center;gap:8px}
+  .wordmark b{font-family:"Space Grotesk",sans-serif;font-weight:800;font-size:24px;letter-spacing:.01em;line-height:1}
+  .wordmark span{font-family:"Space Grotesk",sans-serif;font-weight:800;font-size:13px;background:var(--laranja);color:var(--noite);padding:4px 8px;border-radius:8px;transform:rotate(-6deg);display:inline-block}
+  .topbar .tagline{margin-left:auto;font-size:13px;color:#A8A8B3}
+  .hero{background:var(--noite);color:#F4F4F1;padding:16px 16px 64px}
+  .hero-in{max-width:1080px;margin:0 auto}
+  .hero h1{margin:0;font-family:"Space Grotesk",sans-serif;font-weight:800;font-size:34px;letter-spacing:-.01em}
+  .hero h1 em{font-style:normal;color:var(--laranja)}
+  .hero p{margin:8px 0 0;color:#A8A8B3;font-size:15px}
+  main{max-width:1080px;margin:-44px auto 0;padding:0 16px 40px}
+
+  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .slot{background:var(--card);border:1px dashed var(--dash);border-radius:16px;padding:16px;display:flex;flex-direction:column;align-items:center;min-height:400px;position:relative;box-shadow:0 6px 24px rgba(11,11,13,.08)}
+  .slot.filled{border-style:solid;border-color:var(--line)}
+  .slot-label{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  select{width:100%;padding:8px 16px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:14px;background:var(--gelo);color:var(--tinta);cursor:pointer}
+  select:focus{outline:2px solid var(--eletrico);outline-offset:1px}
+  .pickers{width:100%;display:grid;grid-template-columns:1fr 1.4fr;gap:8px}
+  select:disabled{opacity:.55;cursor:not-allowed}
+  .brand-label{margin:0;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--eletrico)}
+  .photo{flex:1;width:100%;display:flex;align-items:center;justify-content:center;margin:16px 0 8px}
+  .photo img{width:160px;height:212px;object-fit:contain}
+  .placeholder{width:120px;height:200px;border:1px dashed var(--dash);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--dash);font-size:42px}
+  .name{font-family:"Space Grotesk",sans-serif;font-weight:800;font-size:19px;text-align:center;margin:0}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:96px;background:var(--gelo);color:var(--muted);margin-top:8px}
+  .prices{width:100%;margin-top:16px;border-top:1px solid var(--line);padding-top:16px;text-align:center}
+  .now-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+  .now{font-family:"Space Grotesk",sans-serif;font-weight:800;font-size:26px;color:var(--noite);line-height:1.15}
+  .was{font-size:13px;color:var(--muted)}
+  .was s{color:var(--muted)}
+  .off{display:inline-block;margin-left:8px;background:var(--laranja);color:var(--noite);font-weight:800;font-size:12px;padding:2px 8px;border-radius:8px}
+  .off.hot{background:var(--vermelho);color:#fff}
+  .upd{margin-top:8px;font-size:12px;color:var(--noite);background:var(--gelo);border:1px solid var(--line);border-radius:8px;padding:8px 8px;text-align:center;width:100%}
+  .empty-txt{color:var(--muted);font-size:13px;text-align:center}
+  .remove{position:absolute;top:8px;right:8px;border:0;background:transparent;color:var(--muted);font-size:20px;line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px}
+  .remove:hover{background:var(--gelo);color:var(--tinta)}
+
+  .table-wrap{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:clip}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+  th,td{padding:16px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  thead th{position:sticky;top:0;z-index:2;background:var(--noite);color:#F4F4F1;font-family:"Space Grotesk",sans-serif;font-weight:800;font-size:14px;box-shadow:0 2px 0 rgba(11,11,13,.15)}
+  thead th:first-child{border-top-left-radius:15px}
+  thead th:last-child{border-top-right-radius:15px}
+  .th-phone{display:flex;align-items:center;gap:0;transition:gap .2s}
+  .th-phone img{width:0;height:40px;opacity:0;object-fit:contain;background:#fff;border-radius:8px;padding:2px 0;flex:none;transition:width .2s,opacity .2s,padding .2s}
+  .table-wrap.stuck .th-phone{gap:8px}
+  .table-wrap.stuck .th-phone img{width:30px;opacity:1;padding:2px}
+  .th-phone small{display:block;font-family:system-ui,sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--laranja)}
+  tbody th{width:20%;color:var(--muted);font-weight:600;font-size:13px}
+  td{width:26.66%}
+  td.na{color:#A8A8B3}
+  tr.group th{background:var(--gelo);color:var(--noite);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;font-weight:800}
+  td.best{background:var(--best);color:var(--best-ink);font-weight:700}
+  td.best::after{content:" ★";font-size:11px}
+  .empty{padding:40px 16px;text-align:center;color:var(--muted)}
+  .legend{font-size:12px;color:var(--muted);margin:8px 2px 0;display:flex;gap:16px;flex-wrap:wrap}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+  footer{max-width:1080px;margin:0 auto;padding:0 16px 40px;font-size:12px;color:var(--muted)}
+  footer a{color:var(--muted)}
+
+  /* barra fixa de ponta a ponta que aparece quando o cabeçalho da tabela chega ao topo */
+  .fixbar{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--noite);color:#F4F4F1;box-shadow:0 4px 18px rgba(11,11,13,.25);transform:translateY(-110%);transition:transform .22s ease;pointer-events:none}
+  .fixbar.show{transform:none}
+  .fixbar-in{position:relative;height:64px}
+  .fixbar-cell{position:absolute;top:0;bottom:0;display:flex;align-items:center;padding:0 16px;gap:8px;font-family:"Space Grotesk",sans-serif;font-weight:800;font-size:14px;overflow:hidden}
+  .fixbar-cell img{width:30px;height:40px;object-fit:contain;background:#fff;border-radius:8px;padding:2px;flex:none}
+  .fixbar-cell small{display:block;font-family:system-ui,sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--laranja)}
+  .fixbar-brand{gap:8px}
+  .bar-logo{width:32px;height:32px;border-radius:8px;flex:none}
+  .fixbar-brand b{font-weight:800;font-size:15px;letter-spacing:.01em;white-space:nowrap}
+  @media (min-width:761px){ thead th{position:static} }
+  @media (max-width:760px){ .fixbar{display:none} }
+  @media (max-width:760px){
+    .slots{grid-template-columns:1fr}
+    .slot{min-height:0}
+    .table-wrap{overflow:auto;max-height:80vh}
+    .topbar .tagline{display:none}
+    .hero h1{font-size:26px}
+  }
+
+  /* ===== celular: comparador compacto ===== */
+  @media (max-width:760px){
+    main{padding:0 16px 32px}
+    .slots{gap:12px}
+    .slot{display:grid;grid-template-columns:88px minmax(0,1fr);column-gap:16px;row-gap:4px;align-items:start;padding:16px;border-radius:12px;box-shadow:none}
+    .slot-label,.pickers{grid-column:1 / -1}
+    .pickers{margin-bottom:8px}
+    .slot-label{margin-bottom:4px}
+    select{font-size:16px;min-height:44px;padding:8px 12px}
+    .remove{top:4px;right:4px;width:44px;height:44px;padding:0;font-size:22px}
+    .photo{grid-column:1;grid-row:3 / span 5;margin:4px 0 0;align-self:start}
+    .photo img{width:88px;height:116px}
+    .placeholder{width:72px;height:96px;font-size:28px;border-radius:12px}
+    .slot .brand-label,.slot .name,.slot .tag,.slot .prices,.slot .empty-txt{grid-column:2;text-align:left;justify-self:start}
+    .slot .brand-label{margin-top:4px}
+    .slot .name{font-size:18px;text-align:left}
+    .slot .tag{margin:2px 0 0;justify-self:start}
+    .slot .prices{border-top:0;padding-top:0;margin-top:8px;text-align:left}
+    .slot .now{font-size:22px}
+    .slot .was{font-size:12px}
+    .slot .upd{grid-column:1 / -1;margin-top:12px;text-align:left}
+    .slot .empty-txt{align-self:center;margin:0}
+    /* tabela vira lista: nome da linha em cima, valores lado a lado embaixo */
+    .table-wrap{overflow:visible !important;max-height:none !important;border-radius:12px}
+    table{display:block;min-width:0;font-size:14px}
+    thead,tbody{display:block}
+    thead tr,tbody tr{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr))}
+    thead{position:sticky;top:0;z-index:5}
+    thead th{border-radius:0 !important;padding:12px}
+    thead th:first-child{display:none}
+    .table-wrap thead tr{border-radius:12px 12px 0 0;overflow:hidden}
+    .th-phone{gap:8px}
+    .th-phone img{width:24px;opacity:1;padding:2px;height:32px}
+    .nc{display:none !important}
+    tbody th{grid-column:1 / -1;width:auto;padding:12px 12px 0;border-bottom:0;font-size:12px}
+    tbody td{width:auto;padding:4px 12px 12px;overflow-wrap:anywhere}
+    tr.group th{padding:8px 12px}
+    td.best{border-radius:0}
+  }
+  @media (prefers-reduced-motion:reduce){ *{transition:none !important} }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <svg class="logo" viewBox="0 0 1080 1080" role="img" aria-label="Logo Bugsale">
+    <rect width="1080" height="1080" rx="220" fill="#0B0B0D"/>
+    <g transform="rotate(-14 540 540)">
+      <path d="M150 540 L330 325 L890 325 Q930 325 930 365 L930 715 Q930 755 890 755 L330 755 Z" fill="#D4AF5A"/>
+      <circle cx="305" cy="540" r="44" fill="#0B0B0D"/>
+      <text x="640" y="548" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="400" fill="#0B0B0D">M</text>
+    </g>
+  </svg>
+  <div class="wordmark"><b>bugsale</b></div>
+  <div class="tagline">O preço que parece bug.</div>
+</div></div>
+<section class="hero"><div class="hero-in">
+  <h1>Compare celulares <em>lado a lado</em></h1>
+  <p>Escolha a marca e o modelo em até 3 espaços e veja ficha técnica, preço de lançamento e quanto custam hoje.</p>
+</div></section>
+
+<main>
+  <section class="slots" id="slots"></section>
+
+  <section class="table-wrap" id="tableWrap"></section>
+  <div class="fixbar" id="fixbar" aria-hidden="true"><div class="fixbar-in" id="fixbarIn"></div></div>
+  <p class="legend"><span><i style="background:#ECE8FF;border:1px solid #6A4BF0"></i>★ Melhor valor da linha</span><span><i style="background:#D4AF5A"></i>Desconto sobre o lançamento</span><span><i style="background:#E5383B"></i>Imperdível: 40% ou mais abaixo do lançamento</span></p>
+</main>
+
+<footer>
+  <p><b>Sobre os dados (nov/2026):</b> 15 modelos para o MVP, escolhidos entre os mais vendidos e mais procurados no Brasil. Ficha técnica, preço de lançamento, preço atual e menor preço histórico vêm das fichas da <a href="https://www.oficinadanet.com.br/smartphones" target="_blank" rel="noopener">Oficina da Net</a>, do <a href="https://tecnoblog.net/produtos/" target="_blank" rel="noopener">Tecnoblog</a>, do Buscapé e do <a href="https://www.gsmarena.com" target="_blank" rel="noopener">GSMArena</a>. O "preço médio atual" é a média das ofertas listadas nessas fontes, sem cupons relâmpago. Preços mudam todo dia.</p>
+  <p><b>Atualizações:</b> promessa de cada marca para o Brasil. A Apple não divulga um número oficial; historicamente os iPhones recebem de 5 a 7 anos de iOS (<a href="https://canaltech.com.br/smartphone/por-quanto-tempo-a-apple-oferece-suporte-aos-iphones-236612/" target="_blank" rel="noopener">Canaltech</a>). "Não divulgado" significa que a marca não informou esse dado. Fotos: imagens oficiais via GSMArena.</p>
+</footer>
+
+<script>
+/* ===== Banco de celulares (para adicionar um modelo, basta incluir um objeto aqui) ===== */
+const PHONES = __PHONES__;
+const BRANDS = [...new Set(PHONES.map(p=>p.marca))].sort((a,b)=>a.localeCompare(b));
+const fullName = p => p.marca==="Apple" ? p.nome : `${p.marca} ${p.nome}`;
+
+/* Linhas da tabela: [chave, rótulo, regra de destaque ("max"/"min"/null)] — uma entrada só com texto é um grupo */
+const ROWS = [
+  ["Geral"],
+  ["marca_","Marca",null],
+  ["tipo_","Formato",null],
+  ["lancamento","Lançamento",null],
+  ["atual","Preço médio atual","min"],
+  ["preco","Preço de lançamento (BR)","min"],
+  ["minimo","Menor preço já visto","min"],
+  ["Tela"],
+  ["tela","Tela principal",null],
+  ["taxa","Taxa de atualização","max"],
+  ["telaExt","Tela externa",null],
+  ["Desempenho"],
+  ["chip","Processador",null],
+  ["ram","Memória RAM","max"],
+  ["armaz","Armazenamento (máx.)","max"],
+  ["Câmeras"],
+  ["camTras","Traseiras",null],
+  ["zoom","Zoom óptico",null],
+  ["camFrontal","Frontal",null],
+  ["video","Vídeo",null],
+  ["Bateria"],
+  ["bateria","Capacidade","max"],
+  ["carga","Carregamento","max"],
+  ["Corpo"],
+  ["resist","Resistência",null],
+  ["peso","Peso","min"],
+  ["espessura","Espessura",null],
+  ["cores","Cores",null],
+  ["Software e atualizações"],
+  ["sistema","Sai de fábrica com",null],
+  ["updOS","Atualizações grandes do sistema","max"],
+  ["updSeg","Atualizações de segurança","max"]
+];
+const NUM = {updOS:"updOSN",updSeg:"updSegN",atual:"atualN",minimo:"minimoN",preco:"precoN",taxa:"taxaN",ram:"ramN",armaz:"armazN",bateria:"bateriaN",carga:"cargaN",peso:"pesoN"};
+/* itens que são "recurso" (se faltar, o celular não tem); nos demais, falta = informação não divulgada */
+const FEATURE = new Set(["telaExt","zoom"]);
+const NA_TEXT = {preco:"Sem preço oficial no Brasil", cores:"—"};
+
+const MAX = 3;
+let selected = [null,null,null];
+try{ const s = JSON.parse(localStorage.getItem("cmp-sel2")); if(Array.isArray(s)&&s.length===3) selected = s.map(id=>PHONES.some(p=>p.id===id)?id:null); }catch(e){}
+if(!selected.some(Boolean)) selected = ["razr-70-ultra","edge-70-pro",null];   /* começa com os dois modelos de teste */
+const byId = id => PHONES.find(p=>p.id===id);
+let brandOf = selected.map(id => id ? byId(id).marca : "");
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+
+function offBadge(p){
+  if(!p.specs.precoN) return "";
+  const pct = Math.round((1 - p.specs.atualN / p.specs.precoN) * 100);
+  if(pct <= 0) return "";
+  return `<span class="off${pct>=40?" hot":""}">-${pct}%</span>`;
+}
+function save(){ try{ localStorage.setItem("cmp-sel2", JSON.stringify(selected)); }catch(e){} }
+
+function renderSlots(){
+  const wrap = $("#slots"); wrap.innerHTML = "";
+  for(let i=0;i<MAX;i++){
+    const ph = byId(selected[i]);
+    const brand = brandOf[i];
+    const el = document.createElement("div");
+    el.className = "slot" + (ph ? " filled" : "");
+    const brandOpts = ['<option value="">Marca…</option>'].concat(
+      BRANDS.map(b=>`<option value="${esc(b)}" ${b===brand?"selected":""}>${esc(b)}</option>`)).join("");
+    const models = PHONES.filter(p=>p.marca===brand).sort((a,b)=>a.specs.atualN-b.specs.atualN);
+    const modelOpts = [`<option value="">${brand?"Modelo…":"Escolha a marca primeiro"}</option>`].concat(
+      models.map(p=>{
+        const used = selected.some((s,j)=>s===p.id && j!==i);
+        return `<option value="${p.id}" ${p.id===selected[i]?"selected":""} ${used?"disabled":""}>${esc(p.nome)}${used?" (já escolhido)":""}</option>`;
+      })).join("");
+    el.innerHTML = `
+      <div class="slot-label">Celular ${i+1}</div>
+      ${ph ? `<button class="remove" title="Remover" aria-label="Remover ${esc(fullName(ph))}">×</button>` : ""}
+      <div class="pickers">
+        <select class="sel-brand" aria-label="Marca do celular ${i+1}">${brandOpts}</select>
+        <select class="sel-model" aria-label="Modelo do celular ${i+1}" ${brand?"":"disabled"}>${modelOpts}</select>
+      </div>
+      <div class="photo">${ph ? `<img src="${ph.img}" alt="${esc(fullName(ph))}">` : `<div class="placeholder">+</div>`}</div>
+      ${ph ? `<p class="brand-label">${esc(ph.marca)}</p><p class="name">${esc(ph.nome)}</p><span class="tag">${esc(ph.tipo)}</span>
+             <div class="prices">
+               <div class="now-label">Preço médio hoje</div>
+               <div class="now">≈ ${esc(ph.specs.atual)}</div>
+               <div class="was">${ph.specs.preco ? `Lançamento <s>${esc(ph.specs.preco)}</s>${offBadge(ph)}` : "Sem preço oficial de lançamento no Brasil"}</div>
+             </div>
+             <div class="upd" title="Promessa da marca para o Brasil">🛡️ ${esc(ph.specs.updResumo)}</div>`
+           : `<p class="empty-txt">${brand ? "Agora escolha o modelo" : "Nenhum celular selecionado"}</p>`}
+    `;
+    el.querySelector(".sel-brand").addEventListener("change", e=>{ brandOf[i] = e.target.value; selected[i] = null; save(); render(); });
+    el.querySelector(".sel-model").addEventListener("change", e=>{ selected[i] = e.target.value || null; save(); render(); });
+    const rm = el.querySelector(".remove");
+    if(rm) rm.addEventListener("click", ()=>{ selected[i] = null; brandOf[i] = ""; save(); render(); });
+    wrap.appendChild(el);
+  }
+}
+
+function renderTable(){
+  const chosen = selected.map(byId);
+  const wrap = $("#tableWrap");
+  if(!chosen.some(Boolean)){
+    wrap.innerHTML = `<div class="empty">Escolha pelo menos um celular acima para ver a ficha técnica.</div>`;
+    return;
+  }
+  const head = `<thead><tr><th></th>${chosen.map(p=>`<th${p?"":' class="nc"'}>${p?`<div class="th-phone"><img src="${p.img}" alt=""><span><small>${esc(p.marca)}</small>${esc(p.nome)}</span></div>`:"—"}</th>`).join("")}</tr></thead>`;
+  const val = (p,key) => key==="tipo_" ? p.tipo : key==="marca_" ? p.marca : p.specs[key];
+  const has = (p,key) => p && val(p,key)!=null && val(p,key)!=="";
+  const out = []; let pendingGroup = null;
+  for(const r of ROWS){
+    if(r.length===1){ pendingGroup = r[0]; continue; }
+    const [key,label,rule] = r;
+    if(!chosen.some(p=>has(p,key))) continue;            /* nenhum selecionado tem esse item: a linha some */
+    if(pendingGroup){ out.push(`<tr class="group"><th colspan="${MAX+1}">${pendingGroup}</th></tr>`); pendingGroup = null; }
+    let best = null;
+    const nums = chosen.filter(Boolean).map(p=>p.specs[NUM[key]]).filter(v=>v!=null);
+    if(rule && nums.length>1){
+      const target = rule==="max"?Math.max(...nums):Math.min(...nums);
+      if(!nums.every(v=>v===target)) best = target;
+    }
+    const cells = chosen.map(p=>{
+      if(!p) return `<td class="nc"></td>`;
+      if(!has(p,key)) return `<td class="na">${FEATURE.has(key) ? "Não tem" : (NA_TEXT[key] || "Não divulgado")}</td>`;
+      const isBest = best!=null && p.specs[NUM[key]]===best;
+      return `<td class="${isBest?"best":""}">${esc(val(p,key))}</td>`;
+    }).join("");
+    out.push(`<tr><th>${label}</th>${cells}</tr>`);
+  }
+  wrap.innerHTML = `<table style="--n:${Math.max(1,chosen.filter(Boolean).length)}">${head}<tbody>${out.join("")}</tbody></table>`;
+}
+
+function render(){ renderSlots(); renderTable(); updateStuck(); }
+
+/* A fotinha ao lado do nome só aparece quando o cabeçalho da tabela encosta no topo da tela */
+const BAR_LOGO = `<svg class="bar-logo" viewBox="-0.5 -1.5 12 12" aria-hidden="true" shape-rendering="crispEdges"><g fill="#D4AF5A"><rect x="1" y="0" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="10" y="5" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="3" y="7" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="3" y="8" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="7" y="8" width="1" height="1"/></g></svg>`;
+function buildFixbar(){
+  const wrap = $("#tableWrap"), inner = $("#fixbarIn");
+  const ths = wrap.querySelectorAll("thead th");
+  if(!ths.length){ inner.innerHTML = ""; return; }
+  const chosen = selected.map(byId);
+  let html = "";
+  ths.forEach((th,i)=>{
+    const r = th.getBoundingClientRect();
+    const style = `left:${r.left}px;width:${r.width}px`;
+    if(i===0){ html += `<div class="fixbar-cell fixbar-brand" style="${style}">${BAR_LOGO}<b>bugsale</b></div>`; return; }
+    const p = chosen[i-1];
+    html += `<div class="fixbar-cell" style="${style}">${p ? `<img src="${p.img}" alt=""><span><small>${esc(p.marca)}</small>${esc(p.nome)}</span>` : "—"}</div>`;
+  });
+  inner.innerHTML = html;
+}
+function updateStuck(){
+  const wrap = $("#tableWrap"), th = wrap.querySelector("thead"), bar = $("#fixbar");
+  if(!th){ wrap.classList.remove("stuck"); bar.classList.remove("show"); return; }
+  const innerScroll = wrap.scrollHeight > wrap.clientHeight + 1 && getComputedStyle(wrap).overflowY === "auto";
+  if(innerScroll){            /* celular: a tabela rola dentro do quadro e o cabeçalho fica preso nele */
+    wrap.classList.toggle("stuck", wrap.scrollTop > 0); bar.classList.remove("show"); return;
+  }
+  const r = wrap.getBoundingClientRect();
+  const show = r.top < 0 && r.bottom > 64 + th.offsetHeight;
+  if(show) buildFixbar();
+  bar.classList.toggle("show", show);
+}
+window.addEventListener("scroll", updateStuck, {passive:true});
+window.addEventListener("resize", updateStuck);
+document.getElementById("tableWrap").addEventListener("scroll", updateStuck, {passive:true});
+render();
+</script>
+</body>
+</html>
