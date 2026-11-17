@@ -135,7 +135,7 @@ function offBadge(p){
   const pct = Math.round((1 - p.atualN/p.precoN)*100);
   return pct > 0 ? `<span class="off${pct>=40?" hot":""}">-${pct}%</span>` : "";
 }
-const artURL = a => `${R}artigos/${a.phone}/${window.MQ_DIRINDEX || ""}`;
+const artURL = a => `${R}artigos/${a.id || a.phone}/${window.MQ_DIRINDEX || ""}`;
 function readLink(a){ return `<a class="btn primary" href="${artURL(a)}">Leia o artigo →</a>`; }
 const byline = a => `<span class="avatar">${LOGO_SQ}</span> Equipe Bugsale · <time datetime="${a.data}">${dataBR(a.data)}</time>`;
 const kicker = a => `<span class="kicker">${esc(a.cat)} · <span class="brandtag">${esc(P(a.phone).marcaMenu)}</span></span>`;
@@ -262,11 +262,13 @@ function precoChartHTML(p){
   const s = p.specs;
   const rotData = iso => { const [y,m] = iso.split("-"); return `${MESES[+m-1]}/${y.slice(2)}`; };
   let pts = (p.historico||[]).slice().sort((x,y)=>x.data.localeCompare(y.data)).map(h=>({rot:rotData(h.data), v:h.preco, d:h.data}));
-  const parcial = pts.length < 3;
+  const lanc = (s.lancamento||"").replace(/\s*\(.*\)/,"").toLowerCase().replace("/20","/");
+  const parcial = pts.length < 2;
   if(!pts.length){
     if(!p.precoN) return "";
-    const lanc = (s.lancamento||"").replace(/\s*\(.*\)/,"").toLowerCase().replace("/20","/");
     pts = [{rot:lanc || "lançamento", v:p.precoN},{rot:"hoje", v:p.atualN}];
+  } else if(p.precoN){
+    pts.unshift({rot:lanc || "lançamento", v:p.precoN});   /* o lançamento abre a linha; as pesquisas semanais completam */
   }
   const W=640,H=230,pl=16,pr=16,pt=34,pb=36, n=pts.length;
   const vals = pts.map(x=>x.v), vmax=Math.max(...vals), vmin=Math.min(...vals);
@@ -296,6 +298,22 @@ function precoChartHTML(p){
   </figure>`;
 }
 
+/* régua de preço (artigos com campo "alvo"): ótimo / bom / caro */
+function alvoHTML(a, p){
+  const t = a.alvo; if(!t) return "";
+  const hoje = p.atualN;
+  const faixa = hoje <= t.otimo ? "otimo" : hoje <= t.bom ? "bom" : hoje >= t.caro ? "caro" : "ok";
+  const nomeFaixa = {otimo:"oferta de verdade", bom:"bom preço", ok:"preço normal", caro:"caro"}[faixa];
+  return `<div class="alvo">
+    <div class="al-head"><b>Quanto vale pagar${a.cat==="Black Friday"?" na Black Friday":""}</b><span>Versão de ${esc(t.versao)}, no Pix</span></div>
+    <div class="al-faixas">
+      <div class="al otimo"><span>Oferta de verdade</span><b>até ${brl(t.otimo)}</b></div>
+      <div class="al bom"><span>Bom preço</span><b>até ${brl(t.bom)}</b></div>
+      <div class="al caro"><span>Espere</span><b>acima de ${brl(t.caro)}</b></div>
+    </div>
+    <p class="al-hoje">Preço médio hoje: <b>≈ ${brl(hoje)}</b> · <span class="al-tag ${faixa}">${nomeFaixa}</span></p>
+  </div>`;
+}
 /* personas: para quem cada tipo de aparelho faz sentido */
 const PERSONAS = {
   entrada:     {nome:"O prático", ico:"M12 2v4M5 7l2.5 2.5M19 7l-2.5 2.5M4 14h3M17 14h3M8 20h8M9 16a3 3 0 0 1 6 0", txt:"Usa o celular para o essencial: WhatsApp, banco, redes e as fotos do dia a dia. Quer algo que funcione sem dar trabalho e sem pesar no bolso.", tags:["Conversas e redes","Apps de banco","Gastar pouco"], nao:"quem joga jogos pesados ou quer foto boa à noite."},
@@ -328,8 +346,8 @@ function galeriaHTML(p){
 function renderArticle(){
   const main = document.getElementById("content");
   const id = window.MQ_ARTICLE || location.hash.replace("#","");
-  const a = MQ_DATA.articles.find(x=>x.phone===id) || MQ_DATA.articles.slice().sort((x,y)=>y.data.localeCompare(x.data))[0];
-  const p = P(a.phone), s = p.specs, b = MQ_DATA.bodies[a.phone];
+  const a = MQ_DATA.articles.find(x=>x.id===id) || MQ_DATA.articles.find(x=>x.phone===id) || MQ_DATA.articles.slice().sort((x,y)=>y.data.localeCompare(x.data))[0];
+  const p = P(a.phone), s = p.specs, b = MQ_DATA.bodies[a.id];
   document.title = `${a.titulo} · Bugsale`;
   const pct = p.precoN ? Math.round((1 - p.atualN/p.precoN)*100) : null;
   const brandPage0 = ({Samsung:"samsung.html",Apple:"iphone.html",Motorola:"motorola.html"}[p.marca]);
@@ -345,7 +363,7 @@ function renderArticle(){
   }
   const ficha = [["Preço médio hoje",`≈ ${brl(p.atualN)}`,offBadge(p)],["Preço de lançamento",p.precoN?brl(p.precoN):null],["Lançamento",s.lancamento],["Tela",s.tela],["Taxa de atualização",s.taxa],["Tela externa",s.telaExt],["Processador",s.chip],["Memória RAM",s.ram],["Armazenamento",s.armaz],["Câmeras traseiras",s.camTras],["Zoom óptico",s.zoom],["Câmera frontal",s.camFrontal],["Vídeo",s.video],["Bateria",s.bateria],["Carregamento",s.carga],["Resistência",s.resist],["Peso",s.peso],["Espessura",s.espessura],["Sistema",s.sistema],["Atualizações",s.updResumo || "Não divulgado"]]
     .filter(r=>r[1]).map(r=>`<tr${r[2]!==undefined?' class="destaque"':""}><th>${r[0]}</th><td>${esc(r[1])}${r[2]?" "+r[2]:""}</td></tr>`).join("");
-  const related = MQ_DATA.articles.filter(x=>x.phone!==a.phone).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || y.data.localeCompare(x.data)).slice(0,4);
+  const related = MQ_DATA.articles.filter(x=>x.id!==a.id).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || y.data.localeCompare(x.data)).slice(0,4);
   const shareText = encodeURIComponent(`${a.titulo} · Bugsale`);
   main.innerHTML = `
   <article class="post">
@@ -370,6 +388,7 @@ function renderArticle(){
       <div class="ficha"><h3>Ficha técnica</h3><table>${ficha}</table></div>
       <h2>Quanto custa hoje</h2>${para(preco)}
       ${precoChartHTML(p)}
+      ${alvoHTML(a, p)}
       <h2>Atualizações</h2>${para(upd)}
       ${galeriaHTML(p)}
       <h2>Para quem vale</h2>${para(esc(b[1]))}

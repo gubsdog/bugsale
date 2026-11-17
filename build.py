@@ -55,8 +55,11 @@ for c in celulares:
     if c.get('historico'): q['historico'] = c['historico']   # [{"mes": "2026-03", "preco": 3299}, ...]
     if c.get('galeria'): q['galeria'] = c['galeria']         # [{"src": "img/galeria/x.webp", "legenda": "...", "credito": "..."}]
     phones[c['id']] = q
-arts = [dict(phone=a['celular'], data=a['data'], cat=a['categoria'], titulo=a['titulo'], dek=a['resumo']) for a in artigos]
-bodies = {a['celular']: [a['chamada'], a['para_quem'], a['veredito']] for a in artigos}
+for a in artigos: a.setdefault('slug', a['celular'])
+slugs = [a['slug'] for a in artigos]
+assert len(slugs) == len(set(slugs)), 'dois artigos com o mesmo slug'
+arts = [dict(id=a['slug'], phone=a['celular'], data=a['data'], cat=a['categoria'], titulo=a['titulo'], dek=a['resumo'], **({'alvo': a['alvo']} if a.get('alvo') else {})) for a in artigos]
+bodies = {a['slug']: [a['chamada'], a['para_quem'], a['veredito']] for a in artigos}
 w('js/data.js', 'window.MQ_DATA = ' + json.dumps(dict(phones=phones, articles=arts, bodies=bodies), ensure_ascii=False) + ';\n')
 
 # ---------- páginas ----------
@@ -100,14 +103,14 @@ for a in artigos:
     c = next(x for x in celulares if x['id'] == a['celular'])
     p = phones[c['id']]
     img = SITE + (p['foto']['src'] if 'foto' in p else p['img'])
-    path = f"artigos/{c['id']}/index.html"
+    path = f"artigos/{a['slug']}/index.html"
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": a['titulo'], "description": a['resumo'],
           "image": [img], "datePublished": a['data'], "dateModified": a['data'], "inLanguage": "pt-BR",
           "author": {"@type": "Organization", "name": "Equipe Bugsale"},
           "publisher": {"@type": "Organization", "name": "Bugsale", "logo": {"@type": "ImageObject", "url": SITE + "img/favicon.svg"}},
-          "mainEntityOfPage": SITE + f"artigos/{c['id']}/"}
+          "mainEntityOfPage": SITE + f"artigos/{a['slug']}/"}
     page(path, f"{a['titulo']} · Bugsale", a['resumo'], 'artigo', 'MQ.renderArticle();', root='../../',
-         article=json.dumps(c['id']), ogimg=img, ogtype='article', pagetype='article',
+         article=json.dumps(a['slug']), ogimg=img, ogtype='article', pagetype='article',
          jsonld='<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>')
 
 # ---------- comparador (página própria, integrada ao cabeçalho do site) ----------

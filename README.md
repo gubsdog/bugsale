@@ -63,3 +63,18 @@ Em `config.json`:
 ## Ranking
 
 As notas da crítica (Notebookcheck) e os resultados do Geekbench ficam no começo da seção "ranking" de `static/js/site.js`, nas constantes `CRITICA` e `GEEKBENCH`.
+
+## Campos extras (artigos e preços)
+
+Em `data/artigos.json`:
+- `slug` (opcional): endereço do artigo (`artigos/<slug>/`). Sem ele, usa o id do celular. Use quando houver mais de um artigo sobre o mesmo modelo, por exemplo `galaxy-a57-black-friday`.
+- `alvo` (opcional): régua "quanto vale pagar". Exemplo: `{"versao": "128 GB", "otimo": 1500, "bom": 1650, "caro": 1800}`.
+
+Em `data/celulares.json`, para cada celular:
+- `historico`: pesquisas de preço com data, que viram os pontos do gráfico. Exemplo: `[{"data": "2026-11-23", "preco": 1629}]`. O preço de lançamento entra sozinho como primeiro ponto.
+- `ofertas`: as 3 melhores ofertas com link de afiliado. Formato: `{"pesquisa": "2026-11-23", "lista": [{"loja": "Amazon", "preco": 1629, "url": "https://..."}]}`. Só aparece no site quando tem preço e link.
+- `galeria` (opcional): imagens extras no meio do artigo. Exemplo: `[{"src": "img/galeria/x.webp", "legenda": "...", "credito": "Foto: divulgação"}]`.
+
+## Pesquisa semanal de preços
+
+Toda segunda uma tarefa agendada pesquisa o menor preço de cada modelo e acrescenta um ponto em `historico`. Ela atualiza `atualN` (preço médio de hoje) e, se for o caso, `minimoN` (menor preço já visto). Tudo vai numa branch `pesquisa-AAAA-MM-DD` com um pull request. Nada entra na `main` sem aprovação.
