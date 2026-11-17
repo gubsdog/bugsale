@@ -112,7 +112,7 @@ head_extra = ('<link href="https://fonts.googleapis.com/css2?family=Space+Grotes
               '<link rel="icon" href="img/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="css/site.css">\n'
               f'<link rel="canonical" href="{SITE}comparador.html">\n'
               '<meta name="description" content="Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço médio de hoje e promessa de atualizações.">\n'
-              '<script>(function(){var m;try{m=localStorage.getItem("bs-mode")}catch(e){}document.documentElement.dataset.mode=m==="light"?"light":"dark"})();</script>')
+              '<script>document.documentElement.dataset.mode="dark";try{localStorage.removeItem("bs-mode")}catch(e){}</script>')
 t = re.sub(r'<link href="https://fonts.googleapis.com/css2\?[^"]*" rel="stylesheet">', lambda m: head_extra, t, count=1)
 t = t.replace('  bar.classList.toggle("show", show);',
               '  bar.classList.toggle("show", show);\n  const sh = document.getElementById("site-header"); if(sh) sh.classList.toggle("hide", show);')
