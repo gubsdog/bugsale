@@ -22,6 +22,7 @@ const dataBR = iso => { const [y,m,d] = iso.split("-"); return `${+d} ${MESES[+m
 
 /* ---------- ícones e "salvos" ---------- */
 const ICO = {
+  brands:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg>',
   home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
   rank:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21V11M12 21V4M16 21v-7M4 21h16"/></svg>',
   cmp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/></svg>',
@@ -73,23 +74,37 @@ function header(current){
   const el = document.getElementById("site-header");
   if(!el) return;
   el.className = "site-header";
+  document.documentElement.classList.toggle("home", current === "home");
   el.innerHTML = `<div class="bar">
       <a class="brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
       <div class="tools"><div class="tagline">O preço que parece bug.</div></div>
-      <nav class="nav" aria-label="Seções">${MENU.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}${key==="comparador"?" cta":""}">${label}</a>`).join("")}</nav>
+      <nav class="nav" id="site-nav" aria-label="Seções">${MENU.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}${key==="comparador"?" cta":""}">${label}</a>`).join("")}</nav>
     </div>`;
+  /* barra inferior do celular: no máximo 5 itens; as marcas ficam juntas em "Marcas" */
   if(!document.querySelector(".dock")){
+    const isBrand = ["Samsung","Apple","Motorola"].includes(current);
+    const brands = MENU.filter(([,,k])=>["Samsung","Apple","Motorola"].includes(k));
     const dock = document.createElement("nav");
-    dock.className = "dock"; dock.setAttribute("aria-label","Atalhos");
-    dock.innerHTML = [["home",R+"index.html","Início"],["rank",R+"ranking.html","Ranking"],["cmp",R+"comparador.html","Comparar"]]
-      .map(([k,h,l])=>`<a href="${h}" class="${(k==="home"&&current==="home")||(k==="rank"&&current==="ranking")||(k==="cmp"&&current==="comparador")?"on":""}" aria-label="${l}">${ICO[k]}<span>${l}</span></a>`).join("");
+    dock.className = "dock"; dock.setAttribute("aria-label","Menu");
+    dock.innerHTML = `
+      <a href="${R}index.html" class="${current==="home"?"on":""}">${ICO.home}<span>Início</span></a>
+      <button type="button" class="dock-brands${isBrand?" on":""}" aria-expanded="false" aria-controls="dock-sheet">${ICO.brands}<span>Marcas</span></button>
+      <a href="${R}ranking.html" class="${current==="ranking"?"on":""}">${ICO.rank}<span>Ranking</span></a>
+      <a href="${R}comparador.html" class="${current==="comparador"?"on":""}">${ICO.cmp}<span>Comparar</span></a>
+      <div class="dock-sheet" id="dock-sheet" hidden>${brands.map(([h,l,k])=>`<a href="${h}" class="${k===current?"on":""}">${l}<span aria-hidden="true">→</span></a>`).join("")}</div>`;
     document.body.appendChild(dock);
+    const bb = dock.querySelector(".dock-brands"), sheet = dock.querySelector(".dock-sheet");
+    const setSheet = open => { sheet.hidden = !open; bb.setAttribute("aria-expanded", open); dock.classList.toggle("sheet-open", open); };
+    bb.addEventListener("click", e=>{ e.stopPropagation(); setSheet(sheet.hidden); });
+    document.addEventListener("click", e=>{ if(!sheet.hidden && !dock.contains(e.target)) setSheet(false); });
+    document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !sheet.hidden){ setSheet(false); bb.focus(); } });
   }
   let lastY = window.scrollY;
   const mq = window.matchMedia("(max-width:760px)");
   const onScroll = () => {
     const y = window.scrollY;
     el.classList.toggle("compact", y > 40);
+    document.documentElement.classList.toggle("scrolled", y > 24);
     if(current !== "comparador"){
       if(mq.matches && y > 160 && y > lastY + 4 && !el.contains(document.activeElement)) el.classList.add("hide");
       else if(y < lastY - 4 || y < 160 || !mq.matches) el.classList.remove("hide");
@@ -107,7 +122,7 @@ function footer(){
       <div><a class="brand foot-brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
         <p class="slogan">o preço que parece bug</p>
         <p style="max-width:40ch;margin:16px 0 0">Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
-      <div><h5>Seções</h5>${MENU.map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
+      <div class="ft-secoes"><h5>Seções</h5>${MENU.map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
       <div><h5>Bugsale</h5><a href="${R}sobre.html">Sobre e como avaliamos</a><a href="${R}privacidade.html">Política de privacidade</a></div>
       <div><h5>Comunidade</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Comunidade no WhatsApp</a></div>
     </div><div class="fine">Preços médios e fichas técnicas de nov/2026, a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia. Fotos: divulgação das marcas.</div></div>`;
@@ -133,15 +148,33 @@ function heroHTML(a){
     <a class="feature-link" href="${artURL(a)}" aria-label="${esc(a.titulo)}"></a>
     <div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
     <div class="hero-blur" aria-hidden="true"></div>
-    <span class="price-tag glass"><small>Preço médio hoje</small>≈ ${brl(p.atualN)} ${offBadge(p)}</span>
+    <div class="hero-top" aria-hidden="true"></div>
     <div class="feature-body">
       ${kicker(a)}
       <h1><a href="${artURL(a)}">${esc(a.titulo)}</a></h1>
       <p class="dek">${esc(a.dek)}</p>
-      <div class="actions"><a class="btn primary" href="${artURL(a)}">Ler artigo →</a><button type="button" class="btn ghost glass" data-compare="${a.phone}">${ICO.cmp} Comparar</button></div>
+      <div class="actions"><a class="btn primary" href="${artURL(a)}">Ler artigo →</a><a class="btn scroll-btn" href="#mais">Role para ver mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a></div>
     </div>
-    <a class="scroll-hint" href="#mais" aria-label="Role para ver mais artigos"><span>Role para ver mais</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
   </article>`;
+}
+/* 3 melhores ofertas da última pesquisa, cada uma com seu link de afiliado (dados em data/celulares.json > ofertas) */
+function ofertaHTML(p){
+  const o = p.ofertas || {lista:[]};
+  const lista = o.lista || [];
+  const slots = [0,1,2].map(i=>{
+    const x = lista[i];
+    if(!x) return `<div class="of-slot vazio"><span class="of-loja">Oferta ${i+1}</span><b class="of-preco">—</b><span class="btn of-btn" aria-disabled="true">Em breve</span></div>`;
+    return `<a class="of-slot${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener">
+      ${i===0?`<span class="of-tag">Menor preço</span>`:""}
+      <span class="of-loja">${esc(x.loja)}</span><b class="of-preco">${brl(x.preco)}</b>
+      <span class="btn of-btn${i===0?" primary":""}">Ver oferta ↗</span></a>`;
+  }).join("");
+  const meta = lista.length ? `Última pesquisa em ${o.pesquisa ? dataBR(o.pesquisa) : "—"}` : `Preço médio de referência ≈ ${brl(p.atualN)} · a pesquisa de ofertas sai em breve`;
+  return `<section class="ofertas" aria-label="Melhores ofertas">
+    <div class="of-head"><span class="of-label">Melhores ofertas encontradas</span><span class="of-meta">${meta}</span></div>
+    <div class="of-grid">${slots}</div>
+    <small class="of-nota">${lista.length ? "Links de afiliado: a Bugsale pode ganhar uma comissão, sem custo extra para você. Preços sujeitos a mudança nas lojas." : "Quando a pesquisa sair, você escolhe entre as 3 lojas com o melhor preço."}</small>
+  </section>`;
 }
 /* visual do artigo: foto oficial de uso quando existe; senão, o aparelho num "estúdio" com a cara da Bugsale */
 function visual(p, sm){
@@ -165,10 +198,10 @@ function cardHTML(a){
 }
 function rowHTML(a){
   const p = P(a.phone);
-  return `<a class="row blurred ${vcls(p)}" href="${artURL(a)}">${blurBG(p)}
+  return `<a class="row blurred tl ${vcls(p)}" href="${artURL(a)}">${blurBG(p)}
     <div class="thumb ${vcls(p)}">${visual(p, true)}</div>
-    <div>${kicker(a)}<h3>${esc(a.titulo)}</h3><div class="meta">${esc(a.dek)}</div></div>
-    <div class="when"><time datetime="${a.data}">${dataBR(a.data)}</time><br><span class="more">Leia mais →</span></div>
+    <div class="row-txt"><h3>${esc(a.titulo)}</h3><p class="meta">${esc(a.dek)}</p></div>
+    <span class="more">Leia mais →</span>
   </a>`;
 }
 
@@ -177,7 +210,7 @@ function dropsHTML(list){
     .map(p=>({p, pct:Math.round((1-p.atualN/p.precoN)*100)}))
     .sort((a,b)=>b.pct-a.pct).slice(0,5);
   return `<div class="box"><h4>Maiores quedas de preço</h4><ol class="drops">${top.map(({p,pct})=>
-    `<li><img src="${R}${p.img}" alt=""><div><b>${esc(p.full)}</b><span>≈ ${brl(p.atualN)} · lançou a ${brl(p.precoN)}</span></div><span class="off${pct>=40?" hot":""}">-${pct}%</span></li>`).join("")}</ol></div>`;
+    `<li><span class="dr-img"><img src="${R}${p.cut}" alt="" loading="lazy"></span><div><b>${esc(p.full)}</b><span>≈ ${brl(p.atualN)} · lançou a ${brl(p.precoN)}</span></div><span class="off${pct>=40?" hot":""}">-${pct}%</span></li>`).join("")}</ol></div>`;
 }
 const communityHTML = `<div class="box community"><h4>Promoções todo dia</h4><p>Entre na comunidade da Bugsale no WhatsApp e receba só as ofertas que passaram no nosso filtro de preço.</p><a class="btn" href="#">Entrar na comunidade</a></div>`;
 
@@ -186,7 +219,7 @@ function renderArticles(brand){
   const main = document.getElementById("content");
   const arts = MQ_DATA.articles.filter(a => !brand || P(a.phone).marca === brand).sort((a,b)=>b.data.localeCompare(a.data));
   const [first, ...rest] = arts;
-  const recent = rest.slice(0,4), older = rest.slice(4);
+  const recent = rest.slice(0,4), older = rest.slice(4, 9); /* linha do tempo: no máximo os 5 últimos */
   let html = "";
   if(brand){
     const label = brand==="Apple" ? "iPhone" : brand;
@@ -195,7 +228,7 @@ function renderArticles(brand){
       <div class="models" style="margin-top:16px">${ids.map(id=>`<button type="button" data-compare="${id}"><img src="${R}${P(id).img}" alt="">${esc(P(id).nome)}</button>`).join("")}</div>`;
   }
   if(first) html += heroHTML(first);
-  if(recent.length) html += `<div class="section-title" id="mais"><h2>Mais recentes</h2><a href="${R}comparador.html">Comparar →</a></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
+  if(recent.length) html += `<div class="section-title" id="mais"><h2>Mais recentes</h2></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
   const allIds = [...new Set(arts.map(a=>a.phone))];
   html += `<div class="section-title"><h2>Linha do tempo</h2></div>
     <div class="split"><div class="timeline">${older.length ? older.map(rowHTML).join("") : `<p class="meta">Mais textos em breve.</p>`}</div>
@@ -258,6 +291,7 @@ function renderArticle(){
     </figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
+      ${ofertaHTML(p)}
       <h2>O que ele oferece</h2>${para(oferece)}
       <div class="ficha"><h3>Ficha rápida</h3><table>${ficha}</table></div>
       <h2>Quanto custa hoje</h2>${para(preco)}

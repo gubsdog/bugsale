@@ -844,3 +844,126 @@ html[data-mode="light"] .card.blurred .read-chip{background:rgba(11,11,13,.08);b
 .card.blurred > .card-body{flex:1 1 auto}
 .card.blurred .read-chip{margin-top:auto}
 .card.blurred .card-body h3{margin-bottom:8px}
+.hero.v3 .feature-body .actions .btn.primary{flex:none;padding:0 24px}
+
+/* ================= 3 melhores ofertas (links de afiliado) ================= */
+.ofertas{margin:32px 0;padding:24px;border-radius:var(--r-xl);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.ofertas .of-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px;margin-bottom:16px}
+.ofertas .of-label{font:700 12px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--laranja)}
+.ofertas .of-meta{font-size:13px;color:rgba(244,244,241,.65)}
+.ofertas .of-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.of-slot{position:relative;display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:var(--r-lg);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#F4F4F1;text-decoration:none;transition:border-color .2s,transform .2s var(--ease)}
+.of-slot.melhor{background:linear-gradient(135deg,rgba(212,175,90,.18),rgba(212,175,90,.04) 70%);border-color:rgba(212,175,90,.55)}
+a.of-slot:hover{border-color:rgba(212,175,90,.8);transform:translateY(-2px)}
+.of-slot .of-tag{position:absolute;top:-10px;left:16px;padding:2px 8px;border-radius:999px;background:var(--laranja);color:#0B0B0D;font:700 11px var(--body)}
+.of-slot .of-loja{font:600 14px var(--body);color:rgba(244,244,241,.8)}
+.of-slot .of-preco{font:700 28px/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.of-slot .of-btn{margin-top:auto;min-height:40px;border-radius:999px;justify-content:center;display:inline-flex;align-items:center;padding:0 16px}
+.of-slot.vazio{border-style:dashed;color:rgba(244,244,241,.5)}
+.of-slot.vazio .of-btn{background:transparent;border:1px dashed rgba(255,255,255,.2);color:rgba(244,244,241,.45);cursor:default}
+.ofertas .of-nota{display:block;margin-top:16px;font-size:12px;color:rgba(244,244,241,.55)}
+@media (max-width:760px){
+  .ofertas{padding:16px}
+  .ofertas .of-grid{grid-template-columns:1fr;gap:16px}
+  .of-slot{display:grid;grid-template-columns:1fr auto;grid-template-areas:"loja btn" "preco btn";align-items:center;gap:4px 16px}
+  .of-slot .of-loja{grid-area:loja}.of-slot .of-preco{grid-area:preco;font-size:24px}.of-slot .of-btn{grid-area:btn;margin:0}
+}
+
+/* ================= celular: tudo na barra inferior (máx. 5 itens) ================= */
+@media (max-width:760px){
+  :root{--hdr-big:64px}
+  .site-header .bar{grid-template-columns:1fr auto;grid-template-rows:auto}
+  .site-header .brand,.site-header.compact .brand{padding:16px 0}
+  .site-header .nav,.site-header.compact .nav{display:none}
+  .dock{gap:4px;padding:6px}
+  .dock > a,.dock > button{flex-direction:column;gap:2px;height:56px;min-width:68px;padding:0 8px;border-radius:24px;font:600 11px var(--body);color:#C4C4CC;background:none;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .dock > a span,.dock > button span{display:inline !important}
+  .dock > a svg,.dock > button svg{width:22px;height:22px}
+  .dock > a.on,.dock > button.on{background:var(--laranja);color:#0B0B0D}
+  .dock > button[aria-expanded="true"]{background:rgba(255,255,255,.14);color:#F4F4F1}
+  .dock-sheet{position:absolute;left:0;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:24px;
+    background:rgba(20,20,22,.94);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,.12);box-shadow:0 16px 40px rgba(0,0,0,.5);animation:bs-sheet .2s var(--ease)}
+  .dock-sheet[hidden]{display:none}
+  .dock-sheet a{display:flex;justify-content:space-between;align-items:center;height:48px;padding:0 16px;border-radius:16px;font:600 16px var(--body);color:#F4F4F1;background:rgba(255,255,255,.06)}
+  .dock-sheet a span{opacity:.5}
+  .dock-sheet a.on{background:#F4F4F1;color:#0B0B0D}
+}
+@keyframes bs-sheet{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ================= linha do tempo v2: só imagem, título, resumo e "Leia mais" ================= */
+@media (min-width:981px){ .split{grid-template-columns:minmax(0,1fr) 400px;gap:32px} }
+.timeline{gap:16px}
+.row.tl{display:grid !important;grid-template-columns:128px minmax(0,1fr) auto;gap:16px 24px;align-items:center;padding:16px !important;border-radius:var(--r-xl) !important}
+.row.tl .thumb{width:128px;aspect-ratio:1 !important;border-radius:var(--r-lg) !important;
+  -webkit-mask-image:linear-gradient(90deg,#000 70%,transparent 100%);mask-image:linear-gradient(90deg,#000 70%,transparent 100%)}
+.row.tl .thumb img.ph{width:100%;height:100%;object-fit:cover}
+.row.tl .row-txt{display:flex;flex-direction:column;gap:8px;min-width:0}
+.row.tl h3{margin:0;font-size:19px;line-height:1.2}
+.row.tl .meta{margin:0;font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.row.tl .more{display:inline-flex !important;align-items:center;height:36px;padding:0 16px;border-radius:999px;white-space:nowrap;font:600 13px var(--body);
+  color:#F4F4F1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);transition:background .2s,color .2s}
+@media (hover:hover){ .row.tl:hover .more{background:var(--laranja);border-color:var(--laranja);color:#0B0B0D} }
+@media (max-width:760px){
+  .row.tl{grid-template-columns:1fr;gap:16px;padding:16px !important}
+  .row.tl .thumb{width:100%;aspect-ratio:16/9 !important;border-radius:var(--r-lg) !important;
+    -webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 100%);mask-image:linear-gradient(to bottom,#000 72%,transparent 100%)}
+  .row.tl .thumb.is-studio img.cut{height:84%;margin:0}
+  .row.tl .row-txt{margin-top:-8px}
+  .row.tl h3{font-size:18px}
+  .row.tl .more{justify-self:end}
+}
+
+/* maiores quedas de preço: coluna mais larga e aparelho em destaque */
+.drops{gap:16px}
+.drops li{grid-template-columns:24px 72px minmax(0,1fr) auto !important;gap:16px !important;align-items:center;padding:8px;border-radius:var(--r-lg);background:rgba(255,255,255,.03)}
+.drops li::before{text-align:center}
+.drops .dr-img{width:72px;height:88px;border-radius:16px;display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(80% 70% at 50% 35%,rgba(212,175,90,.22),transparent 70%),rgba(255,255,255,.06)}
+.drops .dr-img img{width:auto !important;height:80px !important;max-width:64px;object-fit:contain;background:none !important;padding:0 !important;border-radius:0 !important}
+.drops b{font-size:15px;line-height:1.25}
+.drops span{display:block;margin-top:4px}
+.drops li > .off{margin-top:0}
+
+/* ================= celular: banner de tela cheia na home ================= */
+.hero.v3 .hero-top,.hero.v3 .scroll-btn{display:none}
+@media (max-width:760px){
+  /* rodapé enxuto: a navegação já está na barra inferior */
+  .site-footer .ft-secoes{display:none}
+
+  html.home body{padding-top:0}
+  html.home .site-header{transition:background .3s,border-color .3s,transform .25s ease}
+  html.home:not(.scrolled) .site-header{background:transparent !important;border-bottom-color:transparent !important;-webkit-backdrop-filter:none;backdrop-filter:none}
+
+  html.home .hero.feature.v3{margin:0 calc(-1 * max(16px, env(safe-area-inset-left)));border-radius:0;border:0;
+    height:100svh;min-height:560px;max-height:none}
+  html.home .hero.v3.is-photo .art{bottom:0;-webkit-mask-image:none;mask-image:none}
+  html.home .hero.v3.is-photo .art img.ph{object-position:50% 50% !important}
+  html.home .hero.v3 .art.is-studio{padding-top:28%}
+  /* desfoque no topo: destaca o logo */
+  html.home .hero.v3 .hero-top{display:block;position:absolute;left:0;right:0;top:0;height:calc(136px + env(safe-area-inset-top));z-index:3;pointer-events:none;
+    -webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);
+    -webkit-mask-image:linear-gradient(to bottom,#000 40%,transparent);mask-image:linear-gradient(to bottom,#000 40%,transparent);
+    background:linear-gradient(to bottom,rgba(10,10,12,.45),transparent)}
+  html.home .hero.v3 .price-tag{top:calc(80px + env(safe-area-inset-top));left:24px}
+  /* desfoque embaixo: contraste para texto e botões */
+  html.home .hero.v3 .hero-blur{-webkit-mask-image:linear-gradient(to top,#000 36%,rgba(0,0,0,.6) 50%,transparent 66%);mask-image:linear-gradient(to top,#000 36%,rgba(0,0,0,.6) 50%,transparent 66%)}
+  html.home .hero.v3 .feature-body{padding:0 24px calc(32px + env(safe-area-inset-bottom))}
+  html.home .hero.v3 .feature-body .actions{display:flex;gap:8px}
+  html.home .hero.v3 .feature-body .actions .btn{flex:1 1 0;min-height:48px;padding:0 12px;justify-content:center;font-size:14px;white-space:nowrap}
+  html.home .hero.v3 .scroll-btn{display:inline-flex;align-items:center;gap:6px;background:transparent !important;border:1.5px solid rgba(244,244,241,.9) !important;color:#F4F4F1 !important;border-radius:999px}
+  html.home .hero.v3 .scroll-btn svg{width:16px;height:16px;animation:bs-nudge 1.6s ease-in-out infinite}
+
+  /* barra inferior: some no topo da home, aparece ao rolar */
+  html.home .dock{transition:transform .35s var(--ease),opacity .25s}
+  html.home:not(.scrolled) .dock{transform:translate(-50%,calc(100% + 32px));opacity:0;pointer-events:none}
+}
+@media (prefers-reduced-motion:reduce){ html.home .hero.v3 .scroll-btn svg{animation:none} }
+
+/* ================= celular: barra inferior larga, cards iguais ================= */
+@media (max-width:760px){
+  .dock{left:16px !important;right:16px;transform:none !important;justify-content:space-between;gap:4px}
+  .dock > a,.dock > button{flex:1 1 0;min-width:0}
+  html.home:not(.scrolled) .dock{transform:translateY(calc(100% + 32px)) !important}
+  .grid4.swipe{align-items:stretch}
+  .grid4.swipe > .card.blurred{height:auto;flex:0 0 80%}
+}
