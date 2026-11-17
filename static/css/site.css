@@ -541,7 +541,7 @@ body::before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none
 /* ---------- destaque da home: card grande com foto e painel de vidro ---------- */
 .hero.feature{display:block;position:relative;margin-top:24px;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;isolation:isolate}
 .hero.feature .art{position:absolute;inset:0;aspect-ratio:auto !important;border-radius:var(--r-xl);
-  -webkit-mask:radial-gradient(circle 33px at calc(100% - 30px) 30px, #0000 32px, #000 33px);mask:radial-gradient(circle 33px at calc(100% - 30px) 30px, #0000 32px, #000 33px)}
+  }
 .hero.feature .art::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.25) 48%, rgba(0,0,0,0) 72%);z-index:2;pointer-events:none}
 .hero.feature .art.is-studio{place-items:start center;padding-top:14%}
 .hero.feature .art.is-studio img.cut{height:46%;margin:0}
@@ -599,7 +599,7 @@ body::before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none
 /* ---------- artigo ---------- */
 .cover{position:relative}
 .cover .art{border-radius:var(--r-xl) !important;
-  -webkit-mask:radial-gradient(circle 33px at calc(100% - 30px) 30px, #0000 32px, #000 33px);mask:radial-gradient(circle 33px at calc(100% - 30px) 30px, #0000 32px, #000 33px)}
+  }
 .cover .notch{position:absolute;top:0;right:0;width:60px;height:60px;display:grid;place-items:center;z-index:5}
 .cover .art.is-studio .ghost{display:none}
 .cover .art .watermark{top:10%}
@@ -685,3 +685,162 @@ html[data-mode="light"] .card-body h3,html[data-mode="light"] .row h3{color:#0B0
 .table-wrap{border-radius:var(--r-xl) !important;background:var(--glass) !important;border-color:var(--glass-b) !important}
 select{border-radius:999px !important}
 .upd{border-radius:999px !important}
+
+/* ================= cabeçalho: grade de 8 e menu em chips ================= */
+.site-header .bar{column-gap:24px;row-gap:8px;padding-left:24px;padding-right:24px}
+.site-header .brand,.site-header.compact .brand{gap:8px;padding:16px 0 8px}
+.site-header .tools{gap:8px}
+.site-header .mode-toggle{height:40px;padding:0 16px 0 8px;gap:8px}
+.site-header .nav,.site-header.compact .nav{gap:8px;padding:0 0 16px;align-items:center}
+.site-header.compact .nav{padding:0}
+.site-header .nav a,.site-header.compact .nav a{height:32px;min-height:32px;padding:0 16px;border-radius:999px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);font-size:14px;line-height:1;display:inline-flex;align-items:center}
+.site-header .nav a:hover{background:rgba(255,255,255,.12)}
+.site-header .nav a.on{background:#F4F4F1;border-color:#F4F4F1;color:#0B0B0D}
+.site-header .nav a.cta{background:rgba(212,175,90,.12);border-color:rgba(212,175,90,.5);color:var(--laranja)}
+.site-header .nav a.cta.on{background:var(--laranja);color:#0B0B0D}
+@media (max-width:760px){
+  :root{--hdr-big:120px}
+  .site-header .bar{column-gap:16px;row-gap:0;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  .site-header .brand,.site-header.compact .brand{padding:16px 0 8px}
+  .site-header .mode-toggle{width:40px;height:40px;padding:0;justify-content:center}
+  .site-header .nav,.site-header.compact .nav{padding:0 32px 16px 0}
+  .site-header .nav a,.site-header.compact .nav a{height:40px;min-height:40px;padding:0 16px}
+}
+
+/* ================= logo Bugsale: bug de pixel + "bugsale" (proporções do sistema de marca) ================= */
+/* ícone ≈ 1,07× a altura da fonte, respiro ≈ 0,22×, Space Grotesk 700, -0,04em */
+.brand,.site-header .brand,.site-header.compact .brand,.site-footer .brand{font-size:36px;gap:.22em;align-items:center}
+.brand svg.bug,.site-header .brand svg.bug,.site-header.compact .brand svg.bug,.site-footer .brand svg.bug{height:1.07em;width:1.31em;flex:none}
+.brand .name,.site-header .brand .name,.site-header.compact .brand .name,.site-footer .brand .name{font-family:var(--display);font-weight:700;font-size:1em;line-height:1;letter-spacing:-.04em;color:#F4F4F1}
+.site-header.compact .brand{font-size:24px}
+.site-footer .brand.foot-brand{font-size:40px;padding:0}
+.site-footer .slogan{margin:8px 0 0;font:500 14px var(--body);letter-spacing:.04em;color:#8E8E99}
+:root{--hdr-big:120px}
+@media (max-width:760px){
+  :root{--hdr-big:112px}
+  .brand,.site-header .brand,.site-header.compact .brand{font-size:28px}
+  .site-footer .brand.foot-brand{font-size:32px}
+}
+
+/* ================= destaque v3: imagem com desfoque que vira fundo do texto ================= */
+.hero.feature.v3{position:relative;display:block;overflow:hidden;isolation:isolate;border-radius:var(--r-xl);background:#0E0E10;
+  margin-top:16px;aspect-ratio:auto;height:calc(100svh - var(--hdr-big) - 112px - env(safe-area-inset-bottom));min-height:520px;max-height:860px}
+.hero.v3 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero.v3 .hero-bg img{width:100%;height:100%;object-fit:cover;filter:blur(48px) saturate(140%) brightness(.7);transform:scale(1.3)}
+.hero.v3.is-studio .hero-bg{background:radial-gradient(80% 60% at 50% 30%, rgba(212,175,90,.22), transparent 70%), #141416}
+.hero.v3 .art{position:absolute;inset:0;z-index:1;border-radius:0;aspect-ratio:auto !important}
+.hero.v3 .art::after{display:none}
+.hero.v3 .art.is-studio{place-items:start center;padding-top:12%;background:transparent}
+@media (max-width:760px){
+  .hero.v3.is-photo .art{bottom:40%;-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent);mask-image:linear-gradient(to bottom,#000 70%,transparent)}
+  .hero.v3.is-photo .art img.ph{object-position:50% 88% !important}
+  .hero.v3 .feature-body h1{font-size:clamp(28px,7.4vw,36px) !important}
+  .hero.v3 .feature-body .dek{-webkit-line-clamp:2}
+}
+.hero.v3 .art.is-studio img.cut{height:42%;margin:0}
+/* desfoque progressivo: nítido em cima, desfocado embaixo, onde fica o texto */
+.hero.v3 .hero-blur{position:absolute;inset:0;z-index:2;pointer-events:none;
+  -webkit-backdrop-filter:blur(28px) saturate(150%);backdrop-filter:blur(28px) saturate(150%);
+  -webkit-mask-image:linear-gradient(to top,#000 34%,rgba(0,0,0,.6) 50%,transparent 68%);mask-image:linear-gradient(to top,#000 34%,rgba(0,0,0,.6) 50%,transparent 68%)}
+.hero.v3 .hero-blur::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,12,.62) 0%,rgba(10,10,12,.32) 40%,transparent 70%)}
+.hero.v3 .price-tag{left:16px;top:16px}
+.hero.v3 .feature-body{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:0 24px 64px;background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0}
+.hero.v3 .feature-body h1{font-size:clamp(30px,8.4vw,40px) !important;line-height:1.02;letter-spacing:-.03em;margin:8px 0 8px;color:#F4F4F1}
+.hero.v3 .feature-body h1 a{color:inherit}
+.hero.v3 .feature-body .dek{color:rgba(244,244,241,.78);font-size:15px;-webkit-line-clamp:3;margin:0 0 16px}
+.hero.v3 .feature-body .actions .btn{min-height:48px;border-radius:999px}
+.hero.v3 .feature-body .actions .btn.ghost{background:rgba(255,255,255,.12) !important;border:1px solid rgba(255,255,255,.22) !important;color:#F4F4F1}
+.hero.v3 .scroll-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:5;display:flex;align-items:center;gap:8px;
+  font:600 12px var(--body);letter-spacing:.04em;color:rgba(244,244,241,.72);text-decoration:none;padding:8px 16px}
+.hero.v3 .scroll-hint svg{width:16px;height:16px;animation:bs-nudge 1.6s ease-in-out infinite}
+@keyframes bs-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+#mais{scroll-margin-top:calc(var(--hdr-small) + 16px)}
+
+/* desktop: imagem à esquerda, texto à direita, o desfoque emenda os dois */
+@media (min-width:761px){
+  .hero.feature.v3{height:min(600px,70vh);min-height:480px;margin-top:32px}
+  .hero.v3 .art{right:auto;width:62%;
+    -webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%)}
+  .hero.v3 .art.is-studio{place-items:center;padding:0}
+  .hero.v3 .art.is-studio img.cut{height:66%}
+  .hero.v3 .art.is-studio .watermark{left:50%;top:10%}
+  .hero.v3 .hero-blur{-webkit-mask-image:linear-gradient(90deg,transparent 36%,rgba(0,0,0,.7) 50%,#000 62%);mask-image:linear-gradient(90deg,transparent 36%,rgba(0,0,0,.7) 50%,#000 62%)}
+  .hero.v3 .hero-blur::after{background:linear-gradient(90deg,transparent 40%,rgba(10,10,12,.35) 62%,rgba(10,10,12,.5) 100%)}
+  .hero.v3 .feature-body{left:auto;right:0;top:0;bottom:0;width:46%;padding:48px 48px 48px 24px;display:flex;flex-direction:column;justify-content:center}
+  .hero.v3 .feature-body h1{font-size:clamp(32px,3.4vw,48px) !important}
+  .hero.v3 .feature-body .dek{font-size:17px;max-width:44ch}
+  .hero.v3 .feature-body .actions .btn{flex:none;padding:0 24px}
+  .hero.v3 .price-tag{left:24px;top:24px}
+  .hero.v3 .scroll-hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){ .hero.v3 .scroll-hint svg{animation:none} }
+
+/* ================= cards e linha do tempo: desfoque que emenda imagem e texto ================= */
+.card.blurred,.row.blurred{position:relative;overflow:hidden;isolation:isolate;background:#151517 !important}
+.blurred > *:not(.bs-bg){position:relative;z-index:1}
+.bs-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bs-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(36px) saturate(150%) brightness(.75);transform:scale(1.35)}
+.bs-bg img.c{object-fit:contain;filter:blur(40px) saturate(180%) brightness(.9);transform:scale(1.6)}
+.bs-bg::after{content:"";position:absolute;inset:0;background:rgba(14,14,16,.38)}
+.is-studio .bs-bg{background:radial-gradient(70% 60% at 50% 20%, rgba(212,175,90,.16), transparent 70%)}
+/* card: a imagem se dissolve para baixo no desfoque */
+.card.blurred .thumb{-webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);
+  border-bottom-left-radius:0 !important;border-bottom-right-radius:0 !important}
+.card.blurred .thumb .chip{bottom:auto;top:8px}
+.card.blurred .card-body{margin-top:-24px;padding-top:0}
+.card.blurred h3{color:#F4F4F1}
+.card.blurred .meta{color:rgba(244,244,241,.7)}
+/* linha do tempo: a imagem se dissolve para a direita */
+.row.blurred .thumb{-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%);mask-image:linear-gradient(90deg,#000 55%,transparent 100%);
+  border-top-right-radius:0 !important;border-bottom-right-radius:0 !important}
+.row.blurred h3{color:#F4F4F1}
+.row.blurred .meta,.row.blurred .when{color:rgba(244,244,241,.7)}
+/* modo claro: véu claro sobre o desfoque para o texto escuro continuar legível */
+html[data-mode="light"] .card.blurred,html[data-mode="light"] .row.blurred{background:#F4F4F1 !important}
+html[data-mode="light"] .bs-bg img{filter:blur(36px) saturate(150%)}
+html[data-mode="light"] .bs-bg::after{background:rgba(244,244,241,.62)}
+html[data-mode="light"] .card.blurred h3,html[data-mode="light"] .row.blurred h3{color:#0B0B0D}
+html[data-mode="light"] .card.blurred .meta,html[data-mode="light"] .row.blurred .meta,html[data-mode="light"] .row.blurred .when{color:#4A4A55}
+/* cards sem autor e data: título dá espaço para a seta */
+.card.blurred .card-body{padding-bottom:8px;min-height:96px}
+.card.blurred .card-body h3{padding-right:48px}
+
+/* ================= cards v2: mais altos, desfoque sobe na imagem, chip "Ler artigo" ================= */
+.card.blurred .thumb{aspect-ratio:1/1 !important;-webkit-mask-image:none;mask-image:none;border-radius:var(--r-lg) !important}
+.card.blurred > .card-blur{position:absolute;left:0;right:0;top:0;bottom:0;z-index:1;pointer-events:none;
+  -webkit-backdrop-filter:blur(26px) saturate(150%);backdrop-filter:blur(26px) saturate(150%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 28%,rgba(0,0,0,.75) 42%,#000 54%);mask-image:linear-gradient(to bottom,transparent 28%,rgba(0,0,0,.75) 42%,#000 54%)}
+.card.blurred > .card-blur::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(10,10,12,.35) 48%,rgba(10,10,12,.55) 100%)}
+.card.blurred > .card-body{z-index:2;margin-top:-96px;padding:0 12px 12px;min-height:0;gap:8px}
+.card.blurred .card-body h3{padding-right:0;font-size:20px;line-height:1.15;color:#F4F4F1;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.card.blurred .kicker{color:#F0D58C;text-shadow:0 1px 8px rgba(0,0,0,.6);font-size:12px}
+.card.blurred .kicker .brandtag{color:#D9CFFF}
+.card.blurred .read-chip{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;margin-top:8px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  color:#F4F4F1;font:600 13px var(--body);transition:background .2s,color .2s}
+.card.blurred .read-chip svg{width:14px;height:14px;transition:transform .25s var(--ease)}
+@media (hover:hover){
+  .card.blurred:hover .read-chip{background:var(--laranja);border-color:var(--laranja);color:#0B0B0D}
+  .card.blurred:hover .read-chip svg{transform:rotate(45deg)}
+}
+html[data-mode="light"] .card.blurred > .card-blur::after{background:linear-gradient(to bottom,transparent 30%,rgba(244,244,241,.45) 48%,rgba(244,244,241,.7) 100%)}
+html[data-mode="light"] .card.blurred .card-body h3{color:#0B0B0D;text-shadow:none}
+html[data-mode="light"] .card.blurred .kicker{color:#8A6A1C;text-shadow:none}
+html[data-mode="light"] .card.blurred .kicker .brandtag{color:#5B3FE0}
+html[data-mode="light"] .card.blurred .read-chip{background:rgba(11,11,13,.08);border-color:rgba(11,11,13,.16);color:#0B0B0D}
+@media (max-width:760px){ .card.blurred .thumb{aspect-ratio:4/5 !important} .card.blurred .card-body h3{font-size:19px} }
+
+/* ================= logo final (lockup em SVG) ================= */
+.brand svg.lockup,.site-header .brand svg.lockup,.site-header.compact .brand svg.lockup,.site-footer .brand svg.lockup{height:40px;width:auto;flex:none;display:block}
+.site-header.compact .brand svg.lockup{height:32px}
+.site-footer .brand.foot-brand svg.lockup{height:48px}
+@media (max-width:760px){
+  .brand svg.lockup,.site-header .brand svg.lockup,.site-header.compact .brand svg.lockup{height:32px}
+  .site-footer .brand.foot-brand svg.lockup{height:40px}
+}
+/* "Ler artigo" sempre no pé do card, alinhado entre os cards */
+.grid4 > .card.blurred{display:flex;flex-direction:column;height:100%;align-self:stretch}
+.card.blurred > .card-body{flex:1 1 auto}
+.card.blurred .read-chip{margin-top:auto}
+.card.blurred .card-body h3{margin-bottom:8px}

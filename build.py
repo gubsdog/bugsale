@@ -6,11 +6,13 @@ Uso:  python3 build.py            (gera dist/)
 
 Só usa a biblioteca padrão do Python 3.9+.
 """
-import json, os, re, shutil, datetime
+import json, os, re, shutil, datetime, sys
 from html import escape
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-DIST = os.path.join(ROOT, 'dist')
+# --preview: gera dist-preview/ para a pré-visualização no Claude (links de pasta apontam para index.html)
+PREVIEW = '--preview' in sys.argv
+DIST = os.path.join(ROOT, 'dist-preview' if PREVIEW else 'dist')
 cfg = json.load(open(os.path.join(ROOT, 'config.json'), encoding='utf-8'))
 SITE = cfg['site_url'].rstrip('/') + '/'
 BASE = cfg.get('base_path', '/')
@@ -64,6 +66,7 @@ def page(path, title, desc, key, render='', content='', root='', article='null',
                .replace('__JSONLD__', jsonld).replace('__PAGE__', pagetype).replace('__KEY__', key)
                .replace('__RENDER__', render).replace('__ARTICLE__', article)
                .replace('__CONTENT__', content).replace('__ROOT__', root))
+    if PREVIEW: html = html.replace('<script>window.MQ_ROOT', '<script>window.MQ_DIRINDEX = "index.html"; window.MQ_ROOT', 1)
     w(path, html)
     if index: sitemap.append(url)
 

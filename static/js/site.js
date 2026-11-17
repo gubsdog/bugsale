@@ -1,8 +1,11 @@
 /* Bugsale · cabeçalho, menu e páginas de artigos (dados em js/data.js) */
 (function(){
 const R = window.MQ_ROOT || "";   /* prefixo até a raiz do site ("" na raiz, "../../" nos artigos) */
-const LOGO = `<svg viewBox="-0.5 -1.5 12 12" aria-hidden="true" shape-rendering="crispEdges"><g fill="#D4AF5A"><rect x="1" y="0" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="10" y="5" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="3" y="7" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="3" y="8" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="7" y="8" width="1" height="1"/></g></svg>`;
+const LOGO = `<svg class="bug" viewBox="0 0 10.889 8.889" aria-hidden="true"><g fill="#D4AF5A"><rect x="1" y="0" width="0.889" height="0.889"/><rect x="9" y="0" width="0.889" height="0.889"/><rect x="2" y="1" width="0.889" height="0.889"/><rect x="4" y="1" width="0.889" height="0.889"/><rect x="5" y="1" width="0.889" height="0.889"/><rect x="6" y="1" width="0.889" height="0.889"/><rect x="8" y="1" width="0.889" height="0.889"/><rect x="4" y="2" width="0.889" height="0.889"/><rect x="5" y="2" width="0.889" height="0.889"/><rect x="6" y="2" width="0.889" height="0.889"/><rect x="0" y="3" width="0.889" height="0.889"/><rect x="2" y="3" width="0.889" height="0.889"/><rect x="3" y="3" width="0.889" height="0.889"/><rect x="4" y="3" width="0.889" height="0.889"/><rect x="5" y="3" width="0.889" height="0.889"/><rect x="6" y="3" width="0.889" height="0.889"/><rect x="7" y="3" width="0.889" height="0.889"/><rect x="8" y="3" width="0.889" height="0.889"/><rect x="10" y="3" width="0.889" height="0.889"/><rect x="1" y="4" width="0.889" height="0.889"/><rect x="2" y="4" width="0.889" height="0.889"/><rect x="3" y="4" width="0.889" height="0.889"/><rect x="4" y="4" width="0.889" height="0.889"/><rect x="6" y="4" width="0.889" height="0.889"/><rect x="7" y="4" width="0.889" height="0.889"/><rect x="8" y="4" width="0.889" height="0.889"/><rect x="9" y="4" width="0.889" height="0.889"/><rect x="0" y="5" width="0.889" height="0.889"/><rect x="2" y="5" width="0.889" height="0.889"/><rect x="3" y="5" width="0.889" height="0.889"/><rect x="4" y="5" width="0.889" height="0.889"/><rect x="6" y="5" width="0.889" height="0.889"/><rect x="7" y="5" width="0.889" height="0.889"/><rect x="8" y="5" width="0.889" height="0.889"/><rect x="10" y="5" width="0.889" height="0.889"/><rect x="1" y="6" width="0.889" height="0.889"/><rect x="2" y="6" width="0.889" height="0.889"/><rect x="3" y="6" width="0.889" height="0.889"/><rect x="4" y="6" width="0.889" height="0.889"/><rect x="6" y="6" width="0.889" height="0.889"/><rect x="7" y="6" width="0.889" height="0.889"/><rect x="8" y="6" width="0.889" height="0.889"/><rect x="9" y="6" width="0.889" height="0.889"/><rect x="0" y="7" width="0.889" height="0.889"/><rect x="2" y="7" width="0.889" height="0.889"/><rect x="3" y="7" width="0.889" height="0.889"/><rect x="4" y="7" width="0.889" height="0.889"/><rect x="6" y="7" width="0.889" height="0.889"/><rect x="7" y="7" width="0.889" height="0.889"/><rect x="8" y="7" width="0.889" height="0.889"/><rect x="10" y="7" width="0.889" height="0.889"/><rect x="3" y="8" width="0.889" height="0.889"/><rect x="4" y="8" width="0.889" height="0.889"/><rect x="6" y="8" width="0.889" height="0.889"/><rect x="7" y="8" width="0.889" height="0.889"/></g></svg>`;
+const LOGO_SQ = `<svg viewBox="-0.5 -1.5 12 12" aria-hidden="true" shape-rendering="crispEdges"><g fill="#D4AF5A"><rect x="1" y="0" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="10" y="5" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="3" y="7" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="3" y="8" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="7" y="8" width="1" height="1"/></g></svg>`;
 window.MQ_LOGO = LOGO;
+/* logo final: bug de pixel + "bugsale" em Space Grotesk 700 convertido em desenho (não depende da fonte carregar) */
+const LOCKUP = `<svg class="lockup" viewBox="0 0 768 160" role="img" aria-label="Bugsale"><g class="bs-bug" fill="#D4AF5A"><rect x="18" y="0" width="16" height="16"/><rect x="162" y="0" width="16" height="16"/><rect x="36" y="18" width="16" height="16"/><rect x="72" y="18" width="16" height="16"/><rect x="90" y="18" width="16" height="16"/><rect x="108" y="18" width="16" height="16"/><rect x="144" y="18" width="16" height="16"/><rect x="72" y="36" width="16" height="16"/><rect x="90" y="36" width="16" height="16"/><rect x="108" y="36" width="16" height="16"/><rect x="0" y="54" width="16" height="16"/><rect x="36" y="54" width="16" height="16"/><rect x="54" y="54" width="16" height="16"/><rect x="72" y="54" width="16" height="16"/><rect x="90" y="54" width="16" height="16"/><rect x="108" y="54" width="16" height="16"/><rect x="126" y="54" width="16" height="16"/><rect x="144" y="54" width="16" height="16"/><rect x="180" y="54" width="16" height="16"/><rect x="18" y="72" width="16" height="16"/><rect x="36" y="72" width="16" height="16"/><rect x="54" y="72" width="16" height="16"/><rect x="72" y="72" width="16" height="16"/><rect x="108" y="72" width="16" height="16"/><rect x="126" y="72" width="16" height="16"/><rect x="144" y="72" width="16" height="16"/><rect x="162" y="72" width="16" height="16"/><rect x="0" y="90" width="16" height="16"/><rect x="36" y="90" width="16" height="16"/><rect x="54" y="90" width="16" height="16"/><rect x="72" y="90" width="16" height="16"/><rect x="108" y="90" width="16" height="16"/><rect x="126" y="90" width="16" height="16"/><rect x="144" y="90" width="16" height="16"/><rect x="180" y="90" width="16" height="16"/><rect x="18" y="108" width="16" height="16"/><rect x="36" y="108" width="16" height="16"/><rect x="54" y="108" width="16" height="16"/><rect x="72" y="108" width="16" height="16"/><rect x="108" y="108" width="16" height="16"/><rect x="126" y="108" width="16" height="16"/><rect x="144" y="108" width="16" height="16"/><rect x="162" y="108" width="16" height="16"/><rect x="0" y="126" width="16" height="16"/><rect x="36" y="126" width="16" height="16"/><rect x="54" y="126" width="16" height="16"/><rect x="72" y="126" width="16" height="16"/><rect x="108" y="126" width="16" height="16"/><rect x="126" y="126" width="16" height="16"/><rect x="144" y="126" width="16" height="16"/><rect x="180" y="126" width="16" height="16"/><rect x="54" y="144" width="16" height="16"/><rect x="72" y="144" width="16" height="16"/><rect x="108" y="144" width="16" height="16"/><rect x="126" y="144" width="16" height="16"/></g><g class="bs-word" fill="#F4F4F1" transform="translate(228 0)"><path d="M55.199999999999996 129.0Q45.15 129.0 39.75 125.55Q34.35 122.1 31.799999999999997 117.89999999999999H29.099999999999998V126.89999999999999H10.5V21.89999999999999H29.4V61.05H32.1Q33.75 58.349999999999994 36.525 55.949999999999996Q39.3 53.55 43.875 51.974999999999994Q48.449999999999996 50.39999999999999 55.199999999999996 50.39999999999999Q64.2 50.39999999999999 71.85 54.824999999999996Q79.5 59.25 84.15 67.8Q88.8 76.35 88.8 88.5V90.89999999999999Q88.8 103.05 84.15 111.6Q79.5 120.14999999999999 71.85 124.57499999999999Q64.2 129.0 55.199999999999996 129.0ZM49.5 112.5Q58.199999999999996 112.5 64.05 106.875Q69.89999999999999 101.25 69.89999999999999 90.44999999999999V88.94999999999999Q69.89999999999999 78.14999999999999 64.125 72.52499999999999Q58.349999999999994 66.89999999999999 49.5 66.89999999999999Q40.8 66.89999999999999 34.949999999999996 72.52499999999999Q29.099999999999998 78.14999999999999 29.099999999999998 88.94999999999999V90.44999999999999Q29.099999999999998 101.25 34.949999999999996 106.875Q40.8 112.5 49.5 112.5Z M128.55 128.1Q119.85 128.1 113.32499999999999 124.125Q106.8 120.14999999999999 103.2 113.1Q99.60000000000001 106.05 99.60000000000001 96.89999999999999V52.5H118.5V95.39999999999999Q118.5 103.8 122.625 108.0Q126.75 112.19999999999999 134.4 112.19999999999999Q143.1 112.19999999999999 147.89999999999998 106.42499999999998Q152.7 100.64999999999999 152.7 90.29999999999998V52.5H171.6V126.89999999999999H153.0V117.14999999999999H150.3Q148.5 120.89999999999999 143.55 124.5Q138.6 128.1 128.55 128.1Z M183.0 90.0V87.6Q183.0 75.89999999999999 187.64999999999998 67.57499999999999Q192.29999999999998 59.25 200.02499999999998 54.824999999999996Q207.75 50.39999999999999 216.89999999999998 50.39999999999999Q227.1 50.39999999999999 232.35 53.99999999999999Q237.6 57.599999999999994 240.0 61.5H242.7V52.5H261.3V140.1Q261.3 147.75 256.8 152.325Q252.3 156.89999999999998 244.8 156.89999999999998H195.0V140.39999999999998H238.2Q242.39999999999998 140.39999999999998 242.39999999999998 135.89999999999998V116.55H239.7Q238.2 118.94999999999999 235.5 121.42499999999998Q232.79999999999998 123.89999999999999 228.29999999999998 125.54999999999998Q223.79999999999998 127.19999999999999 216.89999999999998 127.19999999999999Q207.75 127.19999999999999 200.02499999999998 122.77499999999999Q192.29999999999998 118.35 187.64999999999998 110.02499999999999Q183.0 101.69999999999999 183.0 90.0ZM222.29999999999998 110.69999999999999Q231.0 110.69999999999999 236.85 105.14999999999999Q242.7 99.6 242.7 89.54999999999998V88.04999999999998Q242.7 77.85 236.92499999999998 72.375Q231.14999999999998 66.89999999999999 222.29999999999998 66.89999999999999Q213.6 66.89999999999999 207.75 72.375Q201.9 77.85 201.9 88.04999999999998V89.54999999999998Q201.9 99.6 207.75 105.14999999999999Q213.6 110.69999999999999 222.29999999999998 110.69999999999999Z M307.2 129.0Q292.65000000000003 129.0 283.35 122.69999999999999Q274.05 116.39999999999999 272.1 104.69999999999999L289.5 100.19999999999999Q290.55 105.44999999999999 293.025 108.44999999999999Q295.5 111.44999999999999 299.175 112.725Q302.85 113.99999999999999 307.2 113.99999999999999Q313.8 113.99999999999999 316.95000000000005 111.67499999999998Q320.1 109.35 320.1 105.89999999999999Q320.1 102.44999999999999 317.1 100.57499999999999Q314.1 98.69999999999999 307.5 97.5L303.3 96.75Q295.5 95.25 289.05 92.625Q282.6 90.0 278.70000000000005 85.35Q274.8 80.69999999999999 274.8 73.35Q274.8 62.25 282.9 56.324999999999996Q291.0 50.39999999999999 304.2 50.39999999999999Q316.65000000000003 50.39999999999999 324.9 55.949999999999996Q333.15 61.5 335.7 70.5L318.15000000000003 75.89999999999999Q316.95 70.19999999999999 313.275 67.79999999999998Q309.6 65.39999999999999 304.2 65.39999999999999Q298.8 65.39999999999999 295.95000000000005 67.27499999999999Q293.1 69.14999999999999 293.1 72.44999999999999Q293.1 76.04999999999998 296.1 77.77499999999999Q299.1 79.5 304.2 80.39999999999999L308.40000000000003 81.14999999999999Q316.8 82.64999999999999 323.625 85.125Q330.45 87.6 334.42499999999995 92.175Q338.4 96.75 338.4 104.55Q338.4 116.24999999999999 329.92499999999995 122.625Q321.45 129.0 307.2 129.0Z M372.0 129.0Q364.04999999999995 129.0 357.75 126.225Q351.45 123.44999999999999 347.775 118.125Q344.09999999999997 112.8 344.09999999999997 105.14999999999999Q344.09999999999997 97.5 347.775 92.32499999999999Q351.45 87.14999999999999 357.975 84.52499999999999Q364.5 81.89999999999999 372.9 81.89999999999999H393.29999999999995V77.69999999999999Q393.29999999999995 72.44999999999999 390.0 69.07499999999999Q386.7 65.69999999999999 379.5 65.69999999999999Q372.45 65.69999999999999 369.0 68.92499999999998Q365.54999999999995 72.14999999999999 364.5 77.25L347.09999999999997 71.39999999999999Q348.9 65.69999999999999 352.875 60.974999999999994Q356.84999999999997 56.25 363.525 53.324999999999996Q370.2 50.39999999999999 379.79999999999995 50.39999999999999Q394.5 50.39999999999999 403.04999999999995 57.74999999999999Q411.59999999999997 65.1 411.59999999999997 79.04999999999998V106.8Q411.59999999999997 111.3 415.79999999999995 111.3H421.79999999999995V126.89999999999999H409.2Q403.65 126.89999999999999 400.04999999999995 124.19999999999999Q396.45 121.49999999999999 396.45 116.99999999999999V116.85H393.59999999999997Q393.0 118.64999999999999 390.9 121.57499999999999Q388.79999999999995 124.49999999999999 384.29999999999995 126.75Q379.79999999999995 129.0 372.0 129.0ZM375.29999999999995 113.69999999999999Q383.25 113.69999999999999 388.275 109.27499999999999Q393.29999999999995 104.85 393.29999999999995 97.5V96.0H374.25Q369.0 96.0 366.0 98.25Q363.0 100.5 363.0 104.55Q363.0 108.6 366.15 111.14999999999999Q369.29999999999995 113.69999999999999 375.29999999999995 113.69999999999999Z M429.59999999999997 126.89999999999999V21.89999999999999H448.49999999999994V126.89999999999999Z M497.3999999999999 129.0Q486.29999999999995 129.0 477.82499999999993 124.275Q469.34999999999997 119.55 464.62499999999994 110.925Q459.8999999999999 102.3 459.8999999999999 90.6V88.79999999999998Q459.8999999999999 77.1 464.54999999999995 68.475Q469.19999999999993 59.849999999999994 477.5999999999999 55.12499999999999Q485.99999999999994 50.39999999999999 497.09999999999997 50.39999999999999Q508.04999999999995 50.39999999999999 516.15 55.27499999999999Q524.25 60.14999999999999 528.75 68.77499999999999Q533.25 77.39999999999999 533.25 88.79999999999998V95.25H479.09999999999997Q479.3999999999999 102.89999999999999 484.79999999999995 107.69999999999999Q490.19999999999993 112.5 497.99999999999994 112.5Q505.94999999999993 112.5 509.69999999999993 109.05Q513.4499999999999 105.6 515.4 101.39999999999999L530.8499999999999 109.5Q528.75 113.39999999999999 524.775 117.975Q520.8 122.55 514.1999999999999 125.775Q507.59999999999997 129.0 497.3999999999999 129.0ZM479.24999999999994 81.14999999999999H514.05Q513.4499999999999 74.69999999999999 508.87499999999994 70.79999999999998Q504.29999999999995 66.89999999999999 496.94999999999993 66.89999999999999Q489.29999999999995 66.89999999999999 484.79999999999995 70.79999999999998Q480.29999999999995 74.69999999999999 479.24999999999994 81.14999999999999Z"/></g></svg>`;
 
 const MENU = [
   [R+"index.html","Início","home"],
@@ -71,7 +74,7 @@ function header(current){
   if(!el) return;
   el.className = "site-header";
   el.innerHTML = `<div class="bar">
-      <a class="brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOGO}<span class="name">bugsale</span></a>
+      <a class="brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
       <div class="tools"><div class="tagline">O preço que parece bug.</div>
         <button class="mode-toggle" type="button" id="modeToggle" aria-label="Alternar modo claro e escuro">
           <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -90,11 +93,10 @@ function header(current){
   });
   sync();
   if(!document.querySelector(".dock")){
-    const n = getSaved().length;
     const dock = document.createElement("nav");
     dock.className = "dock"; dock.setAttribute("aria-label","Atalhos");
-    dock.innerHTML = [["home",R+"index.html","Início"],["rank",R+"ranking.html","Ranking"],["cmp",R+"comparador.html","Comparar"],["save",R+"index.html#salvos","Salvos"]]
-      .map(([k,h,l])=>`<a href="${h}" class="${(k==="home"&&current==="home"&&location.hash!=="#salvos")||(k==="rank"&&current==="ranking")||(k==="cmp"&&current==="comparador")||(k==="save"&&location.hash==="#salvos")?"on":""}" aria-label="${l}">${ICO[k]}<span>${l}</span>${k==="save"?`<b class="count" ${n?"":"hidden"}>${n||""}</b>`:""}</a>`).join("");
+    dock.innerHTML = [["home",R+"index.html","Início"],["rank",R+"ranking.html","Ranking"],["cmp",R+"comparador.html","Comparar"]]
+      .map(([k,h,l])=>`<a href="${h}" class="${(k==="home"&&current==="home")||(k==="rank"&&current==="ranking")||(k==="cmp"&&current==="comparador")?"on":""}" aria-label="${l}">${ICO[k]}<span>${l}</span></a>`).join("");
     document.body.appendChild(dock);
   }
   let lastY = window.scrollY;
@@ -116,8 +118,9 @@ function footer(){
   if(!el) return;
   el.className = "site-footer";
   el.innerHTML = `<div class="wrap"><div class="cols">
-      <div><a class="brand" href="${R}index.html" style="padding:0 0 8px">${LOGO}<span class="name" style="font-size:32px">bugsale</span></a>
-        <p style="max-width:40ch;margin:8px 0 0">Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
+      <div><a class="brand foot-brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
+        <p class="slogan">o preço que parece bug</p>
+        <p style="max-width:40ch;margin:16px 0 0">Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
       <div><h5>Seções</h5>${MENU.map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
       <div><h5>Bugsale</h5><a href="${R}sobre.html">Sobre e como avaliamos</a><a href="${R}privacidade.html">Política de privacidade</a></div>
       <div><h5>Comunidade</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Comunidade no WhatsApp</a></div>
@@ -131,24 +134,27 @@ function offBadge(p){
   const pct = Math.round((1 - p.atualN/p.precoN)*100);
   return pct > 0 ? `<span class="off${pct>=40?" hot":""}">-${pct}%</span>` : "";
 }
-const artURL = a => `${R}artigos/${a.phone}/`;
+const artURL = a => `${R}artigos/${a.phone}/${window.MQ_DIRINDEX || ""}`;
 function readLink(a){ return `<a class="btn primary" href="${artURL(a)}">Leia o artigo →</a>`; }
-const byline = a => `<span class="avatar">${LOGO}</span> Equipe Bugsale · <time datetime="${a.data}">${dataBR(a.data)}</time>`;
+const byline = a => `<span class="avatar">${LOGO_SQ}</span> Equipe Bugsale · <time datetime="${a.data}">${dataBR(a.data)}</time>`;
 const kicker = a => `<span class="kicker">${esc(a.cat)} · <span class="brandtag">${esc(P(a.phone).marcaMenu)}</span></span>`;
 
 function heroHTML(a){
   const p = P(a.phone);
-  return `<article class="hero feature ${vcls(p)}">
+  const bg = p.foto ? `<img src="${R}${p.foto.sm}" alt="" aria-hidden="true" style="object-position:${p.foto.pos}">` : "";
+  return `<article class="hero feature v3 ${vcls(p)}">
+    <div class="hero-bg" aria-hidden="true">${bg}</div>
     <a class="feature-link" href="${artURL(a)}" aria-label="${esc(a.titulo)}"></a>
     <div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
-    <div class="notch">${saveBtn(a.phone)}</div>
+    <div class="hero-blur" aria-hidden="true"></div>
     <span class="price-tag glass"><small>Preço médio hoje</small>≈ ${brl(p.atualN)} ${offBadge(p)}</span>
-    <div class="feature-body glass">
+    <div class="feature-body">
       ${kicker(a)}
       <h1><a href="${artURL(a)}">${esc(a.titulo)}</a></h1>
       <p class="dek">${esc(a.dek)}</p>
-      <div class="actions"><a class="btn primary" href="${artURL(a)}">Ler artigo →</a><button type="button" class="btn ghost" data-compare="${a.phone}">${ICO.cmp} Comparar</button>${shareBtn(artURL(a), a.titulo)}</div>
+      <div class="actions"><a class="btn primary" href="${artURL(a)}">Ler artigo →</a><button type="button" class="btn ghost glass" data-compare="${a.phone}">${ICO.cmp} Comparar</button></div>
     </div>
+    <a class="scroll-hint" href="#mais" aria-label="Role para ver mais artigos"><span>Role para ver mais</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
   </article>`;
 }
 /* visual do artigo: foto oficial de uso quando existe; senão, o aparelho num "estúdio" com a cara da Bugsale */
@@ -157,21 +163,23 @@ function visual(p, sm){
   return `<span class="ghost">${esc(p.nome)}</span><span class="floor"></span><img class="cut" src="${R}${p.cut}" alt="${esc(p.full)}" width="160" height="212" loading="lazy">`;
 }
 const vcls = p => p.foto ? "is-photo" : "is-studio";
+/* camada de fundo desfocada: a própria imagem do artigo, que emenda a imagem com o texto */
+const blurBG = p => `<span class="bs-bg" aria-hidden="true">${p.foto ? `<img src="${R}${p.foto.sm}" alt="" loading="lazy" style="object-position:${p.foto.pos}">` : `<img class="c" src="${R}${p.cut}" alt="" loading="lazy">`}</span>`;
 function cardHTML(a){
   const p = P(a.phone);
-  return `<a class="card" href="${artURL(a)}">
-    <div class="thumb ${vcls(p)}">${visual(p, true)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}<span class="chip glass">≈ ${brl(p.atualN)} ${offBadge(p)}</span>${saveBtn(a.phone)}</div>
+  return `<a class="card blurred ${vcls(p)}" href="${artURL(a)}">${blurBG(p)}
+    <div class="thumb ${vcls(p)}">${visual(p, true)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}<span class="chip glass">≈ ${brl(p.atualN)} ${offBadge(p)}</span></div>
+    <span class="card-blur" aria-hidden="true"></span>
     <div class="card-body">
       ${kicker(a)}
       <h3>${esc(a.titulo)}</h3>
-      <div class="meta">${byline(a)}</div>
-      <span class="go" aria-hidden="true">${ICO.arrow}</span>
+      <span class="read-chip">Ler artigo ${ICO.arrow}</span>
     </div>
   </a>`;
 }
 function rowHTML(a){
   const p = P(a.phone);
-  return `<a class="row" href="${artURL(a)}">
+  return `<a class="row blurred ${vcls(p)}" href="${artURL(a)}">${blurBG(p)}
     <div class="thumb ${vcls(p)}">${visual(p, true)}</div>
     <div>${kicker(a)}<h3>${esc(a.titulo)}</h3><div class="meta">${esc(a.dek)}</div></div>
     <div class="when"><time datetime="${a.data}">${dataBR(a.data)}</time><br><span class="more">Leia mais →</span></div>
@@ -200,19 +208,14 @@ function renderArticles(brand){
     html += `<header class="brand-head"><div><span class="kicker">Celulares</span><h1>${label}</h1></div><p>${arts.length} textos sobre ${label}. Toque em um modelo para abrir o comparador com ele.</p></header>
       <div class="models" style="margin-top:16px">${ids.map(id=>`<button type="button" data-compare="${id}"><img src="${R}${P(id).img}" alt="">${esc(P(id).nome)}</button>`).join("")}</div>`;
   }
-  if(!brand){
-    const saved = getSaved().map(id=>MQ_DATA.articles.find(x=>x.phone===id)).filter(Boolean);
-    html += `<section id="salvos" class="saved-sec" ${location.hash==="#salvos"?"":"hidden"}><div class="section-title"><h2>Seus salvos</h2><a href="${R}index.html">Fechar</a></div>${saved.length ? `<div class="grid4 swipe">${saved.map(cardHTML).join("")}</div>` : `<p class="meta empty-saved">Toque no ${ICO.save} de qualquer artigo para guardar aqui e ler depois.</p>`}</section>`;
-  }
   if(first) html += heroHTML(first);
-  if(recent.length) html += `<div class="section-title"><h2>Mais recentes</h2><a href="${R}comparador.html">Comparar →</a></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
+  if(recent.length) html += `<div class="section-title" id="mais"><h2>Mais recentes</h2><a href="${R}comparador.html">Comparar →</a></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
   const allIds = [...new Set(arts.map(a=>a.phone))];
   html += `<div class="section-title"><h2>Linha do tempo</h2></div>
     <div class="split"><div class="timeline">${older.length ? older.map(rowHTML).join("") : `<p class="meta">Mais textos em breve.</p>`}</div>
     <aside class="side">${dropsHTML(allIds)}${communityHTML}</aside></div>`;
   main.innerHTML = html;
   reveal(main);
-  if(location.hash==="#salvos") document.getElementById("salvos")?.scrollIntoView();
 }
 
 
@@ -265,8 +268,7 @@ function renderArticle(){
     </div>
     <figure class="cover">
       <div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
-      <div class="notch">${saveBtn(a.phone)}</div>
-      <figcaption>${p.foto ? `${esc(p.full)} no dia a dia. ${esc(p.foto.credito)}.` : `${esc(p.full)}. Imagem do aparelho: divulgação (via GSMArena).`}</figcaption>
+        <figcaption>${p.foto ? `${esc(p.full)} no dia a dia. ${esc(p.foto.credito)}.` : `${esc(p.full)}. Imagem do aparelho: divulgação (via GSMArena).`}</figcaption>
     </figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
@@ -370,7 +372,7 @@ function renderRanking(){
         <div class="tec"><small>Nota final</small>${fmt(x.n.final)}</div>
         <div class="cb${hl?" top":""}"><small>Custo-benefício</small>${fmt(x.cb)}</div></div>`;
     document.getElementById("rankPodium").innerHTML = top.slice(0,3).map((x,i)=>`
-      <a class="pod pod-${i+1}" href="${R}artigos/${x.id}/">
+      <a class="pod pod-${i+1}" href="${R}artigos/${x.id}/${window.MQ_DIRINDEX || ""}">
         <span class="medal">${i+1}º</span>
         <div class="pod-photo"><img src="${R}${x.p.img}" alt="${esc(x.p.full)}" width="160" height="212"></div>
         <div class="who"><span class="kicker"><span class="brandtag">${esc(x.p.marcaMenu)}</span></span><b>${esc(x.p.nome)}</b><span class="price">≈ ${brl(x.p.atualN)} ${offBadge(x.p)}</span></div>
@@ -378,7 +380,7 @@ function renderRanking(){
         ${bars(x)}
       </a>`).join("");
     document.getElementById("rankList").innerHTML = top.slice(3).map((x,i)=>`
-      <a class="rank-row" href="${R}artigos/${x.id}/">
+      <a class="rank-row" href="${R}artigos/${x.id}/${window.MQ_DIRINDEX || ""}">
         <span class="pos">${i+4}</span>
         <img src="${R}${x.p.img}" alt="" width="160" height="212">
         <div class="who"><span class="kicker"><span class="brandtag">${esc(x.p.marcaMenu)}</span></span><b>${esc(x.p.nome)}</b><span class="price">≈ ${brl(x.p.atualN)} ${offBadge(x.p)}</span></div>
@@ -431,6 +433,5 @@ document.addEventListener("click", e=>{
   location.href = R+"comparador.html";
 });
 
-window.addEventListener("hashchange", ()=>{ if(document.body.dataset.page==="list" && document.getElementById("salvos")) location.reload(); });
 window.MQ = { header, footer, renderArticles, renderArticle, renderRanking };
 })();
