@@ -200,10 +200,26 @@
   },
   "historico": [
    {
+    "data": "2026-10-10",
+    "preco": 1899,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-10-24",
+    "preco": 1857,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-11-14",
+    "preco": 1843,
+    "fonte": "zoom"
+   },
+   {
     "data": "2026-11-17",
     "preco": 1891
    }
-  ]
+  ],
+  "historicoFonte": "Zoom"
  },
  {
   "id": "galaxy-s26",
@@ -342,10 +358,31 @@
   },
   "historico": [
    {
+    "data": "2026-10-10",
+    "preco": 8442,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-10-17",
+    "preco": 6999,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-10-31",
+    "preco": 7731,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-11-07",
+    "preco": 6569,
+    "fonte": "zoom"
+   },
+   {
     "data": "2026-11-17",
     "preco": 7332
    }
-  ]
+  ],
+  "historicoFonte": "Zoom"
  },
  {
   "id": "iphone-15",
@@ -476,10 +513,26 @@
   },
   "historico": [
    {
+    "data": "2026-10-10",
+    "preco": 4363,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-10-17",
+    "preco": 4959,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-11-07",
+    "preco": 4549,
+    "fonte": "zoom"
+   },
+   {
     "data": "2026-11-17",
     "preco": 4763
    }
-  ]
+  ],
+  "historicoFonte": "Zoom"
  },
  {
   "id": "iphone-17",
@@ -543,7 +596,30 @@
      "url": ""
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-10-10",
+    "preco": 5311,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-10-17",
+    "preco": 4492,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-10-31",
+    "preco": 5699,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-11-14",
+    "preco": 5699,
+    "fonte": "zoom"
+   }
+  ],
+  "historicoFonte": "Zoom"
  },
  {
   "id": "moto-g86",

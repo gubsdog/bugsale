@@ -307,11 +307,11 @@ function ofertaMiniHTML(p, titulo, cls){
   const lista = (p.ofertas && p.ofertas.lista) || [];
   const btns = [0,1,2].map(i=>{
     const x = lista[i];
-    const comPreco = !!titulo;   /* no topo: loja | preço + seta. No fim do artigo: só a loja | seta */
+    const comPreco = cls==="om-topo";   /* no topo: loja | preço + seta. No fim do artigo: só a loja | seta */
     return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(x.loja)}</span><span class="om-dir">${comPreco?`<b>${brl(x.preco)}</b>`:""}<i aria-hidden="true">↗</i></span></a>`
              : `<span class="om-btn vazio" aria-disabled="true"><span class="om-loja">Oferta ${i+1}</span><span class="om-dir"><b>em breve</b></span></span>`;
   }).join("");
-  return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div>${titulo && lista.length ? `<small class="om-nota">Links de afiliado: a Bugsale pode ganhar uma comissão, sem custo extra para você. Preços sujeitos a mudança nas lojas.</small>` : ""}</section>`;
+  return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div>${lista.length ? `<small class="om-nota">Links de afiliado: a Bugsale pode ganhar uma comissão, sem custo extra para você. Preços sujeitos a mudança nas lojas.</small>` : ""}</section>`;
 }
 
 /* histórico de preço: cada ponto é uma pesquisa datada (p.historico = [{data:"2026-04-29", preco:12999}, ...]).
@@ -489,6 +489,46 @@ function notaFontes(p){
   return [h ? `Preço médio de ${dataHora(h.data)}.` : "", of ? `Ofertas pesquisadas em ${dataHora(of)}.` : "",
     "Fichas e preços a partir de Oficina da Net, Tecnoblog, Buscapé, Zoom e GSMArena. Preços mudam todo dia."].filter(Boolean).join(" ");
 }
+
+/* ---------- comparativo: dois aparelhos lado a lado ---------- */
+const MES_IDX = {jan:0,fev:1,mar:2,abr:3,mai:4,jun:5,jul:6,ago:7,set:8,out:9,nov:10,dez:11};
+function lancISO(s){ const m = String(s.lancamento||"").toLowerCase().match(/([a-zç]{3})\w*\/(\d{4})/); return m && MES_IDX[m[1]]!=null ? `${m[2]}-${String(MES_IDX[m[1]]+1).padStart(2,"0")}-15` : null; }
+function seriePreco(p){
+  const pts = (p.historico||[]).map(h=>({d:h.data, v:h.preco}));
+  const l = lancISO(p.specs); if(l && p.precoN) pts.push({d:l, v:p.precoN});
+  if(!pts.length || pts.every(x=>x.d < new Date().toISOString().slice(0,10).slice(0,8))) pts.push({d:new Date().toISOString().slice(0,10), v:p.atualN});
+  return pts.sort((x,y)=>x.d.localeCompare(y.d));
+}
+function fichaCmpHTML(p, q){
+  const L = [["Preço médio hoje",x=>`≈ ${brl(x.atualN)}`],["Preço de lançamento",x=>x.precoN?brl(x.precoN):"—"],["Lançamento",x=>x.specs.lancamento],["Tela",x=>x.specs.tela],["Taxa de atualização",x=>x.specs.taxa],["Processador",x=>x.specs.chip],["Memória RAM",x=>x.specs.ram],["Armazenamento",x=>x.specs.armaz],["Câmeras traseiras",x=>x.specs.camTras],["Câmera frontal",x=>x.specs.camFrontal],["Vídeo",x=>x.specs.video],["Bateria",x=>x.specs.bateria],["Carregamento",x=>x.specs.carga],["Resistência",x=>x.specs.resist],["Peso",x=>x.specs.peso],["Sistema",x=>x.specs.sistema],["Atualizações",x=>x.specs.updResumo]];
+  const rows = L.map(([k,fn])=>{ const a=fn(p)||"—", b=fn(q)||"—"; return `<tr><th>${k}</th><td>${esc(a)}</td><td>${esc(b)}</td></tr>`; }).join("");
+  return `<div class="ficha ficha-cmp"><h3>Ficha técnica lado a lado</h3><div class="fc-wrap"><table><thead><tr><th></th><th>${esc(p.nome)}</th><th>${esc(q.nome)}</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+}
+function precoChart2HTML(p, q){
+  const A = seriePreco(p), Bq = seriePreco(q);
+  const all = A.concat(Bq), t = d => new Date(d+"T12:00:00").getTime();
+  const t0 = Math.min(...all.map(x=>t(x.d))), t1 = Math.max(...all.map(x=>t(x.d)));
+  const vmax = Math.max(...all.map(x=>x.v)), vmin = Math.min(...all.map(x=>x.v));
+  const W=640,H=240,pl=16,pr=16,pt=24,pb=40, max=vmax*1.06, min=vmin-(vmax-vmin)*.2;
+  const X = d => pl + (t1===t0?0:(t(d)-t0)/(t1-t0)*(W-pl-pr)), Y = v => pt + (max-v)/(max-min)*(H-pt-pb);
+  const line = S => S.map((x,i)=>`${i?"L":"M"}${X(x.d).toFixed(1)} ${Y(x.v).toFixed(1)}`).join(" ");
+  const dots = (S,c) => S.map((x,i)=>`<circle cx="${X(x.d)}" cy="${Y(x.v)}" r="${i===S.length-1?5:3.5}" class="${c}"/>`).join("") +
+    `<text x="${X(S[S.length-1].d)-10}" y="${Y(S[S.length-1].v)+(c==="c1"?22:-12)}" text-anchor="end" class="pv ${c}">${brl(S[S.length-1].v)}</text>`;
+  const ano = y => `<text x="${X(y+"-01-01")}" y="${H-14}" text-anchor="middle" class="pl">${y}</text>`;
+  const anos = []; for(let y=new Date(t0).getFullYear()+1; y<=new Date(t1).getFullYear(); y++) anos.push(ano(String(y)));
+  return `<figure class="preco-chart cmp2">
+    <figcaption><b>Preço desde o lançamento</b><span class="lg"><i class="l1"></i>${esc(p.nome)}<i class="l2"></i>${esc(q.nome)}</span></figcaption>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Preço do ${esc(p.nome)} e do ${esc(q.nome)} desde o lançamento">
+      <line x1="${pl}" x2="${W-pr}" y1="${H-pb}" y2="${H-pb}" class="axis"/>${anos.join("")}
+      <path d="${line(A)}" class="ln l1"/><path d="${line(Bq)}" class="ln l2"/>${dots(A,"c1")}${dots(Bq,"c2")}
+    </svg>
+    <small>Valores aproximados: preço de lançamento e preços médios das nossas pesquisas. O histórico completo de cada aparelho entra a cada pesquisa semanal.</small>
+  </figure>`;
+}
+function personasCmpHTML(p, q){
+  return `<div class="pe-cmp">${[p,q].map(x=>`<div><h3 class="pe-h">${esc(x.nome)}</h3>${personasHTML(x.id)}</div>`).join("")}</div>`;
+}
+
 function renderArticle(){
   const main = document.getElementById("content");
   const id = window.MQ_ARTICLE || location.hash.replace("#","");
@@ -511,6 +551,9 @@ function renderArticle(){
   }
   const ficha = [["Preço médio hoje",`≈ ${brl(p.atualN)}`,offBadge(p)],["Preço de lançamento",p.precoN?brl(p.precoN):null],["Lançamento",s.lancamento],["Tela",s.tela],["Taxa de atualização",s.taxa],["Tela externa",s.telaExt],["Processador",s.chip],["Memória RAM",s.ram],["Armazenamento",s.armaz],["Câmeras traseiras",s.camTras],["Zoom óptico",s.zoom],["Câmera frontal",s.camFrontal],["Vídeo",s.video],["Bateria",s.bateria],["Carregamento",s.carga],["Resistência",s.resist],["Peso",s.peso],["Espessura",s.espessura],["Sistema",s.sistema],["Atualizações",s.updResumo || "Não divulgado"]]
     .filter(r=>r[1]).map(r=>`<tr${r[2]!==undefined?' class="destaque"':""}><th>${r[0]}</th><td>${esc(r[1])}${r[2]?" "+r[2]:""}</td></tr>`).join("");
+  const cmp = (a.tipo==="comparativo" && a.vs && P(a.vs)) ? P(a.vs) : null;
+  const ind = cmp ? P(a.indicado || a.phone) : p, outro = cmp ? (ind===p ? cmp : p) : null;
+  const ondeComprar = cmp ? `${ofertaMiniHTML(ind, `Onde comprar o ${esc(ind.nome)}, nossa indicação`)}${outro.ofertas && outro.ofertas.lista && outro.ofertas.lista.length ? `<details class="om-outro"><summary>Ver as ofertas do ${esc(outro.nome)}</summary>${ofertaMiniHTML(outro)}</details>` : ""}` : ofertaMiniHTML(p);
   const related = publicados().filter(x=>x.id!==a.id).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || porData(x,y)).slice(0,4);
   const shareText = encodeURIComponent(`${a.titulo} · Bugsale`);
   main.innerHTML = `
@@ -527,7 +570,7 @@ function renderArticle(){
       </div>
       <figure class="cover cover-side" aria-hidden="true"><div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div></figure>
     </div>
-    ${ofertaMiniHTML(p, "Melhores ofertas encontradas", "om-topo")}
+    ${ofertaMiniHTML(ind, cmp ? `Melhores ofertas do ${esc(ind.nome)}` : "Melhores ofertas encontradas", "om-topo")}
     <figure class="cover">
       <div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
         <figcaption>${p.foto ? `${esc(p.full)} no dia a dia. ${esc(p.foto.credito)}.` : `${esc(p.full)}. Imagem do aparelho: divulgação (via GSMArena).`}</figcaption>
@@ -536,16 +579,16 @@ function renderArticle(){
       <p class="lede">${esc(b[0])}</p>
       ${a.tipo==="ocasiao" ? alvoHTML(a, p) : ""}
       <h2>O que ele oferece</h2>${S.oferece ? S.oferece.map(([k,v])=>`<p><b>${esc(k)}.</b> ${esc(v)}</p>`).join("") : textoOferece(a.phone, p)}
-      <div class="ficha"><h3>Ficha técnica</h3><table>${ficha}</table></div>
+      ${cmp ? fichaCmpHTML(p, cmp) : `<div class="ficha"><h3>Ficha técnica</h3><table>${ficha}</table></div>`}
       <h2>Quanto custa hoje</h2>${para(S.preco ? esc(S.preco) : preco)}
-      ${precoChartHTML(p)}
-      ${a.tipo==="ocasiao" ? "" : alvoHTML(a, p)}
+      ${cmp ? precoChart2HTML(p, cmp) : precoChartHTML(p)}
+      ${cmp ? `<div class="alvo-cmp">${alvoHTML(a, p).replace("<b>", `<b>${esc(p.nome)} · `)}${alvoHTML({alvo:a.alvoVs}, cmp).replace("<b>", `<b>${esc(cmp.nome)} · `)}</div>` : a.tipo==="ocasiao" ? "" : alvoHTML(a, p)}
       <h2>Atualizações</h2>${para(S.atualizacoes ? esc(S.atualizacoes) : upd + textoUpd(p))}
       ${galeriaHTML(p)}
       <h2>Para quem vale</h2>${para(esc(b[1]))}
-      ${personasHTML(a.phone)}
+      ${cmp ? personasCmpHTML(p, cmp) : personasHTML(a.phone)}
       <blockquote class="verdict"><span class="kicker">Veredito Bugsale</span><p>${esc(b[2])}</p></blockquote>
-      ${ofertaMiniHTML(p)}
+      ${ondeComprar}
       <div class="cta-compare"><div><b>Compare com outros celulares</b><span>Coloque o ${esc(p.nome)} lado a lado com outro modelo.</span></div><button class="btn primary" type="button" data-compare="${a.phone}">Abrir no comparador →</button></div>
       <div class="tags"><a href="${brandPage||R+"index.html"}">${esc(p.marcaMenu)}</a><span>${esc(a.cat)}</span><span>Celulares</span></div>
       <p class="note">${notaFontes(p)}</p>

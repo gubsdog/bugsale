@@ -40,7 +40,7 @@ def w(path, text):
 phones = {}
 for c in celulares:
     s = c['specs']
-    q = dict(nome=c['nome'], marca=c['marca'], marcaMenu=('iPhone' if c['marca'] == 'Apple' else c['marca']),
+    q = dict(id=c['id'], nome=c['nome'], marca=c['marca'], marcaMenu=('iPhone' if c['marca'] == 'Apple' else c['marca']),
              full=(c['nome'] if c['marca'] == 'Apple' else f"{c['marca']} {c['nome']}"),
              img=f"img/{c['img']}.webp", atualN=s['atualN'], precoN=s['precoN'], specs=s)
     if c.get('foto'):
@@ -79,7 +79,7 @@ paginas = publicados + agendados_preview
 def art_json(a, locked=False):
     d = dict(id=a['slug'], phone=a['celular'], data=a['data'], pub=a['publicar'], cat=a['categoria'], tipo=a.get('tipo', 'review'),
              titulo=a['titulo'], dek=a['resumo'])
-    for k in ('alvo', 'vs', 'indicado'):
+    for k in ('alvo', 'alvoVs', 'vs', 'indicado'):
         if a.get(k): d[k] = a[k]
     if locked: d['locked'] = True
     if a.get('teaser'): d['teaser'] = True

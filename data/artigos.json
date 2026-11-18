@@ -216,10 +216,10 @@
   "data": "2026-11-17",
   "categoria": "Black Friday",
   "titulo": "Galaxy A57 na Black Friday: quanto vale pagar?",
-  "resumo": "Lançado a R$ 3.599, o intermediário da Samsung já chegou perto de R$ 1.600 no Pix em novembro. Mostramos o que é bom preço e o que é oferta de verdade.",
-  "chamada": "O Galaxy A57 é o celular que mais caiu de preço no nosso comparador: mais da metade do valor de lançamento. Como as melhores ofertas apareceram agora em novembro, a Black Friday precisa bater esses números para valer a pena. Aqui está a régua para não cair em desconto de fachada.",
-  "para_quem": "É para quem quer um Samsung bonito, resistente à água e com suporte longo de atualizações, sem pagar preço de topo de linha. Também é uma ótima troca para quem ainda usa um Galaxy A de 2021 ou 2022.",
-  "veredito": "Na versão de 128 GB, até R$ 1.650 no Pix já é boa compra, e abaixo de R$ 1.500 é oferta de verdade. Acima de R$ 1.800, espere: ele já apareceu bem abaixo disso em novembro.",
+  "resumo": "Lançado a R$ 3.599, o intermediário da Samsung já custa quase metade disso. Mostramos o que é bom preço e o que é oferta de verdade na Black Friday.",
+  "chamada": "O Galaxy A57 é um dos celulares que mais caíram de preço no nosso comparador: quase metade do valor de lançamento. Para a Black Friday valer a pena, as ofertas precisam bater esses números. Aqui está a régua para não cair em desconto de fachada.",
+  "para_quem": "Ele combina com quem quer um Samsung bonito, resistente à água e com suporte longo de atualizações, sem pagar preço de topo de linha. Também é uma ótima troca para quem ainda usa um Galaxy A de 2021 ou 2022. Não combina com quem joga jogos pesados com os gráficos no máximo.",
+  "veredito": "O Galaxy A57 é o intermediário mais equilibrado da Samsung: tela de celular caro, bateria que carrega rápido, proteção contra água e, principalmente, atualização garantida até perto de 2032. Para quem fica muitos anos com o mesmo celular, ele entrega mais do que o preço sugere. Nossa indicação: na versão de 128 GB, até R$ 1.650 é boa compra, e abaixo de R$ 1.500 é oferta de verdade. Acima de R$ 1.800, como estava em 17/11, vale esperar.",
   "alvo": {
    "versao": "128 GB",
    "bom": 1650,
@@ -228,7 +228,36 @@
   },
   "publicar": "2026-11-21T07:00",
   "tipo": "ocasiao",
-  "teaser": true
+  "teaser": true,
+  "secoes": {
+   "abertura": "Se você quer um Samsung bonito, resistente à água e que vai receber atualização por muitos anos, sem pagar preço de topo de linha, o Galaxy A57 é o candidato natural. Ele foi lançado em março por R$ 3.599 e, na nossa pesquisa de 17/11, já estava entre R$ 1.812 e R$ 1.962 nas grandes lojas. O menor preço que já registramos foi R$ 1.457. Abaixo, explicamos o que ele entrega no dia a dia e quanto vale pagar na Black Friday.",
+   "oferece": [
+    [
+     "Tela",
+     "A tela Super AMOLED de 6,7 polegadas com 120 Hz é a mesma tecnologia dos Galaxy mais caros: preto de verdade, cores vivas e rolagem lisinha no Instagram e no TikTok. É grande o bastante para ver série deitado no sofá e continua boa de ler no sol."
+    ],
+    [
+     "Desempenho",
+     "O Exynos 1680 dá conta do dia a dia com folga: WhatsApp, banco, redes sociais, Waze e streaming ao mesmo tempo. Free Fire e jogos leves rodam bem. Jogos pesados abrem, mas pedem os gráficos no médio. Com 8 GB de RAM, ele não fica recarregando os apps toda hora."
+    ],
+    [
+     "Câmeras",
+     "A câmera principal de 50 MP tem estabilização, então a foto não sai tremida quando a mão balança. De dia, ela faz fotos bonitas da família, do pet e da comida. À noite, se vira bem para a categoria. A ultrawide de 12 MP ajuda a caber todo mundo na foto do grupo. A macro de 5 MP é mais um enfeite: dá para usar, mas não faz falta."
+    ],
+    [
+     "Bateria",
+     "São 5.000 mAh, que seguram um dia inteiro de redes, câmera e GPS. A carga de 45 W é das mais rápidas da faixa: uns minutos na tomada enquanto você toma café já salvam o resto do dia."
+    ],
+    [
+     "Acabamento e resistência",
+     "Com 6,9 mm e 179 gramas, ele é fino e leve, com cara de celular caro. Tem proteção IP68: aguenta chuva, cair na piscina e o copo derramado. Para quem leva o celular para a praia ou trabalha na rua, é tranquilidade."
+    ]
+   ],
+   "preco": "Ele chegou ao Brasil por R$ 3.599. Na nossa pesquisa de 17/11, o menor preço da versão de 128 GB estava no Mercado Livre (R$ 1.812), seguido da Amazon (R$ 1.899) e da Magalu (R$ 1.962). O menor preço que já registramos foi R$ 1.457. Por isso, para a gente, acima de R$ 1.800 ele ainda está caro.",
+   "atualizacoes": "Esse é o grande trunfo dele. O A57 sai de fábrica com Android 16, e a Samsung promete 6 atualizações do sistema, até o Android 22, o que deve levar até por volta de 2032. Na prática, é um intermediário que você pode usar por cinco ou seis anos sem ficar sem as novidades do Android nem sem as correções de segurança, que protegem o app do banco e as suas senhas. Poucos celulares nessa faixa de preço prometem tanto.",
+   "para_quem": "Ele combina com quem quer um Samsung bonito, resistente à água e com suporte longo de atualizações, sem pagar preço de topo de linha. Também é uma ótima troca para quem ainda usa um Galaxy A de 2021 ou 2022. Não combina com quem joga jogos pesados com os gráficos no máximo.",
+   "veredito": "O Galaxy A57 é o intermediário mais equilibrado da Samsung: tela de celular caro, bateria que carrega rápido, proteção contra água e, principalmente, atualização garantida até perto de 2032. Para quem fica muitos anos com o mesmo celular, ele entrega mais do que o preço sugere. Nossa indicação: na versão de 128 GB, até R$ 1.650 é boa compra, e abaixo de R$ 1.500 é oferta de verdade. Acima de R$ 1.800, como estava em 17/11, vale esperar."
+  }
  },
  {
   "slug": "iphone-16-black-friday",
@@ -236,10 +265,10 @@
   "data": "2026-11-17",
   "categoria": "Black Friday",
   "titulo": "iPhone 16 na Black Friday 2026: vale mais que o 17?",
-  "resumo": "Lançado a R$ 7.799, ele já caiu para a casa dos R$ 4.700 em novembro. Dizemos quanto pagar e quando faz mais sentido ir de iPhone 17.",
+  "resumo": "Lançado a R$ 7.799, o iPhone 16 já custa perto de R$ 4.600. Comparamos com o iPhone 17 e dizemos quanto pagar em cada um e qual vale mais o seu dinheiro.",
   "chamada": "Dois anos depois do lançamento, o iPhone 16 chega à Black Friday com o mesmo chip que roda o Apple Intelligence e por perto de 40% menos. A pergunta é se a diferença para o iPhone 17 ainda compensa ou se o 16 virou a compra inteligente da Apple.",
-  "para_quem": "Faz sentido para quem vem de um iPhone 11, 12 ou 13 e quer anos de atualização pela frente, ou para quem está migrando do Android e não quer pagar preço de lançamento.",
-  "veredito": "Na versão de 128 GB, até R$ 4.300 no Pix é bom preço, e abaixo de R$ 3.900 vale correr. Se a diferença para o iPhone 17 ficar em menos de R$ 600, prefira o 17: ele tem tela de 120 Hz e um ano a mais de suporte.",
+  "para_quem": "O iPhone 16 combina com quem vem de um iPhone 11, 12 ou 13, usa o celular para WhatsApp, redes, banco e fotos da família, e quer um iPhone atual gastando menos. O iPhone 17 combina com quem grava muito vídeo, quer a tela de 120 Hz, precisa de mais espaço e pretende ficar seis anos ou mais com o aparelho.",
+  "veredito": "Os dois são ótimos iPhones e vão durar muitos anos. O 17 é melhor em quase tudo: tela de 120 Hz, o dobro de armazenamento, ultrawide e câmera frontal melhores, carga mais rápida e cerca de um ano a mais de suporte. Mas, hoje, ele custa uns R$ 1.000 a mais. Nossa indicação para a maioria das pessoas é o iPhone 16: até R$ 4.300 é bom preço na versão de 128 GB, e abaixo de R$ 3.900 vale correr. Se a diferença para o iPhone 17 de 256 GB cair para R$ 900 ou menos, ou se você precisa de espaço e quer ficar seis anos com o celular, vá de 17: até R$ 5.300 é bom preço por ele.",
   "alvo": {
    "versao": "128 GB",
    "bom": 4300,
@@ -249,7 +278,43 @@
   "publicar": "2026-11-20T07:00",
   "tipo": "comparativo",
   "vs": "iphone-17",
-  "teaser": true
+  "teaser": true,
+  "indicado": "iphone-16",
+  "alvoVs": {
+   "versao": "256 GB",
+   "otimo": 4900,
+   "bom": 5300,
+   "caro": 5800
+  },
+  "secoes": {
+   "abertura": "Quem quer um iPhone novo nesta Black Friday quase sempre fica entre esses dois: o iPhone 16, de 2024, que já caiu bastante de preço, e o iPhone 17, de 2025, que é mais novo e mais caro. Na nossa pesquisa de 17/11, o iPhone 16 de 128 GB estava entre R$ 4.654 e R$ 4.844, e o iPhone 17, que já começa com 256 GB, aparecia na casa dos R$ 5.700 no Zoom. A diferença, hoje, gira em torno de R$ 1.000. Abaixo, mostramos o que muda no dia a dia e qual compensa.",
+   "oferece": [
+    [
+     "Tela",
+     "Aqui está a diferença que mais se sente. O iPhone 16 tem tela de 6,1 polegadas com 60 Hz; o iPhone 17 tem 6,3 polegadas com 120 Hz. Na prática, a rolagem do Instagram e do TikTok no 17 é bem mais lisinha, e quem testa os dois lado a lado percebe na hora. Quem vem de um iPhone 11, 12 ou 13 não vai estranhar a tela do 16, porque é a mesma sensação de sempre."
+    ],
+    [
+     "Desempenho",
+     "O A18 do iPhone 16 e o A19 do iPhone 17 são processadores de sobra para qualquer coisa: jogos pesados, edição de vídeo, dezenas de apps abertos. Os dois rodam o Apple Intelligence. A diferença de velocidade existe, mas você não vai sentir no WhatsApp, no banco ou no Instagram."
+    ],
+    [
+     "Câmeras",
+     "A câmera principal de 48 MP é parecida nos dois e faz fotos ótimas da família, do pet e da viagem, de dia e de noite. A mudança está na ultrawide: 12 MP no 16 e 48 MP no 17, o que deixa a foto do grupo e da paisagem mais detalhada no modelo novo. A câmera da frente também melhorou: 18 MP no 17, contra 12 MP no 16, e ela enquadra melhor selfies em grupo e chamadas de vídeo."
+    ],
+    [
+     "Bateria e carga",
+     "A bateria é parecida e os dois aguentam um dia de uso normal. A diferença está na tomada: o iPhone 17 aceita carga de 40 W com fio, então recupera a bateria bem mais rápido enquanto você se arruma. Os dois carregam sem fio no MagSafe."
+    ],
+    [
+     "Armazenamento",
+     "Esse ponto muda a conta. O iPhone 16 mais barato tem 128 GB; o iPhone 17 já começa com 256 GB. Se você grava muito vídeo, guarda anos de fotos no celular ou não quer pagar o iCloud, os 128 GB do 16 enchem rápido. Se você vive com o celular quase vazio, 128 GB bastam."
+    ]
+   ],
+   "preco": "O iPhone 16 foi lançado por R$ 7.799 e o iPhone 17 por R$ 7.999. Na nossa pesquisa de 17/11, o iPhone 16 de 128 GB estava a R$ 4.654 na Amazon, R$ 4.790 no Mercado Livre e R$ 4.844 na Magalu. O iPhone 17 de 256 GB aparecia a partir de R$ 5.744 no Zoom, que não inclui as ofertas da Amazon. Os menores preços que já registramos foram R$ 3.597 para o 16 e R$ 4.669 para o 17.",
+   "atualizacoes": "A Apple não divulga um prazo oficial, mas os iPhones costumam receber de 5 a 7 anos de atualizações do iOS. Pela data de lançamento, o iPhone 16 deve ser atualizado até por volta de 2029 a 2031, e o iPhone 17, até 2030 a 2032. Ou seja: o 17 tende a ganhar cerca de um ano a mais de suporte. Para quem troca de celular a cada 3 ou 4 anos, essa diferença não pesa. Para quem fica 6 anos com o mesmo iPhone, pesa.",
+   "para_quem": "O iPhone 16 combina com quem vem de um iPhone 11, 12 ou 13, usa o celular para WhatsApp, redes, banco e fotos da família, e quer um iPhone atual gastando menos. O iPhone 17 combina com quem grava muito vídeo, quer a tela de 120 Hz, precisa de mais espaço e pretende ficar seis anos ou mais com o aparelho.",
+   "veredito": "Os dois são ótimos iPhones e vão durar muitos anos. O 17 é melhor em quase tudo: tela de 120 Hz, o dobro de armazenamento, ultrawide e câmera frontal melhores, carga mais rápida e cerca de um ano a mais de suporte. Mas, hoje, ele custa uns R$ 1.000 a mais. Nossa indicação para a maioria das pessoas é o iPhone 16: até R$ 4.300 é bom preço na versão de 128 GB, e abaixo de R$ 3.900 vale correr. Se a diferença para o iPhone 17 de 256 GB cair para R$ 900 ou menos, ou se você precisa de espaço e quer ficar seis anos com o celular, vá de 17: até R$ 5.300 é bom preço por ele."
+  }
  },
  {
   "slug": "galaxy-s26-ultra-black-friday",
@@ -257,10 +322,10 @@
   "data": "2026-11-17",
   "categoria": "Black Friday",
   "titulo": "Galaxy S26 Ultra na Black Friday: o topo de linha já está barato?",
-  "resumo": "Lançado a R$ 11.499, ele já apareceu entre R$ 6.100 e R$ 6.400 com cupom em novembro. Veja o preço que transforma o Ultra em boa compra.",
+  "resumo": "Lançado a R$ 11.499, o Samsung mais completo do ano já custa bem menos. Mostramos o preço que transforma o Ultra em boa compra e quando é melhor esperar.",
   "chamada": "O Galaxy S26 Ultra é o Samsung mais completo do ano, com câmera de 200 MP, S Pen e a tela que esconde o conteúdo de quem está ao lado. Em novembro, ele já custa quase metade do preço de lançamento com cupom. Separamos o que é desconto normal do que é a chance de comprar o melhor Android do ano mais barato.",
-  "para_quem": "É para quem usa o celular como ferramenta de trabalho, fotografa muito ou quer o melhor zoom do mercado e pretende ficar com o aparelho por muitos anos.",
-  "veredito": "Na versão de 256 GB, até R$ 6.200 no Pix é bom preço, e abaixo de R$ 5.800 é a melhor oferta que já vimos. Acima de R$ 7.000, não vale: o Galaxy S26 comum entrega muito do mesmo por bem menos.",
+  "para_quem": "Ele combina com quem usa o celular para trabalhar, fotografa muito (show, viagem, filhos, eventos), quer o melhor zoom do mercado e pretende ficar muitos anos com o mesmo aparelho. Não combina com quem só usa WhatsApp, redes e banco: nesse caso, um Galaxy S26 ou um A57 entregam o que você precisa por muito menos.",
+  "veredito": "O Galaxy S26 Ultra é o celular mais completo da Samsung: tela que protege sua privacidade, câmeras com zoom de verdade, caneta, desempenho de sobra e atualização garantida até perto de 2033. Por R$ 11 mil ele não fazia sentido para a maioria das pessoas. Agora, com o preço caindo, ele vira um investimento para quem fica muitos anos com o celular. Nossa indicação: na versão de 256 GB, até R$ 6.200 é bom preço, e abaixo de R$ 5.800 é a melhor oferta que já vimos. Acima de R$ 7.000, espere: se você não precisa do zoom e da caneta, o Galaxy S26 comum entrega quase tudo por bem menos.",
   "alvo": {
    "versao": "256 GB",
    "bom": 6200,
@@ -269,7 +334,40 @@
   },
   "publicar": "2026-11-19T07:00",
   "tipo": "ocasiao",
-  "teaser": true
+  "teaser": true,
+  "secoes": {
+   "abertura": "O Galaxy S26 Ultra é aquele celular que faz tudo: tira foto de show lá do fundo da plateia, vem com caneta para anotar e assinar documento, e tem uma tela que esconde o que você está vendo de quem está do lado no ônibus. O problema sempre foi o preço: ele chegou ao Brasil em fevereiro por R$ 11.499. Na nossa pesquisa de 17/11, já estava entre R$ 6.878 e R$ 7.919 nas grandes lojas. Ainda não é o melhor preço que vimos, mas está perto. Abaixo, explicamos o que ele entrega no dia a dia e quanto vale pagar na Black Friday.",
+   "oferece": [
+    [
+     "Tela",
+     "São 6,9 polegadas com resolução alta e 120 Hz, então tudo fica nítido e a rolagem é lisinha. A novidade é a Tela de Privacidade: com um toque, quem olha de lado vê a tela escura, e só você enxerga o conteúdo. Dá para deixar ligada só no app do banco e no WhatsApp, por exemplo. É útil no metrô, no ônibus lotado e na fila do caixa, sem precisar de película."
+    ],
+    [
+     "Desempenho",
+     "O Snapdragon 8 Elite Gen 5 é um dos processadores mais fortes do ano. Na prática, nada trava: jogos pesados rodam com os gráficos no máximo, edição de vídeo no celular é rápida e dá para trocar de app o dia inteiro sem ele recarregar nada. É o tipo de desempenho que continua sobrando daqui a cinco anos."
+    ],
+    [
+     "Câmeras",
+     "São quatro câmeras atrás. A principal, de 200 MP, faz fotos com muito detalhe, inclusive à noite. As duas teleobjetivas, com zoom óptico de 3x e 5x, são o grande diferencial: dá para fotografar o filho na apresentação da escola lá da arquibancada ou o palco do show sem a foto virar um borrão. A ultrawide de 50 MP pega a família toda na foto do almoço. Ele ainda grava em 8K, mais do que qualquer rede social pede."
+    ],
+    [
+     "Caneta S Pen",
+     "A caneta fica guardada dentro do celular. Serve para anotar um telefone rápido com a tela apagada, assinar um contrato em PDF, marcar um print ou desenhar. Para quem trabalha pelo celular, faz diferença; para quem nunca usou, é um extra que pode virar hábito."
+    ],
+    [
+     "Bateria e carga",
+     "A bateria de 5.000 mAh segura um dia inteiro de uso pesado, com câmera, GPS e redes sociais. A carga de 60 W enche boa parte da bateria enquanto você toma banho e se arruma, e ele também carrega sem fio. Com 214 gramas, é mais pesado que a maioria, algo que se sente no bolso da calça."
+    ],
+    [
+     "Resistência",
+     "Tem proteção IP68, então aguenta chuva, cair na piscina e o copo de refrigerante derramado na mesa. Depois de um mergulho no mar, só vale passar uma água doce."
+    ]
+   ],
+   "preco": "Ele foi lançado por R$ 11.499 na versão de 256 GB. Na nossa pesquisa de 17/11, o menor preço estava na Amazon (R$ 6.878), seguido do Mercado Livre (R$ 7.199) e da Magalu (R$ 7.919). O menor preço que já registramos foi R$ 5.999. Ou seja: hoje ele está num preço normal, mas ainda não no preço de Black Friday.",
+   "atualizacoes": "Ele sai de fábrica com Android 16, e a Samsung promete 7 atualizações do sistema. Isso quer dizer que ele deve receber versões novas do Android até por volta de 2033. Na prática, é um celular que você pode comprar hoje e usar por seis ou sete anos sem ficar sem atualização, inclusive as de segurança, que protegem o aplicativo do banco e as suas senhas.",
+   "para_quem": "Ele combina com quem usa o celular para trabalhar, fotografa muito (show, viagem, filhos, eventos), quer o melhor zoom do mercado e pretende ficar muitos anos com o mesmo aparelho. Não combina com quem só usa WhatsApp, redes e banco: nesse caso, um Galaxy S26 ou um A57 entregam o que você precisa por muito menos.",
+   "veredito": "O Galaxy S26 Ultra é o celular mais completo da Samsung: tela que protege sua privacidade, câmeras com zoom de verdade, caneta, desempenho de sobra e atualização garantida até perto de 2033. Por R$ 11 mil ele não fazia sentido para a maioria das pessoas. Agora, com o preço caindo, ele vira um investimento para quem fica muitos anos com o celular. Nossa indicação: na versão de 256 GB, até R$ 6.200 é bom preço, e abaixo de R$ 5.800 é a melhor oferta que já vimos. Acima de R$ 7.000, espere: se você não precisa do zoom e da caneta, o Galaxy S26 comum entrega quase tudo por bem menos."
+  }
  },
  {
   "slug": "moto-g86-black-friday",

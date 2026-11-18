@@ -1257,3 +1257,27 @@ blockquote.verdict p{margin-bottom:8px}
   .ofertas-mini.om-topo{display:block;margin:24px 0 8px;order:7}
 }
 .om-nota{display:block;margin-top:16px;font-size:12px;color:rgba(244,244,241,.55)}
+
+/* ================= comparativo ================= */
+.ficha-cmp .fc-wrap{overflow-x:auto}
+.ficha-cmp table{width:100%}
+.ficha-cmp thead th{font:700 15px var(--display);color:#F4F4F1;text-align:left;padding:8px 16px 16px 0}
+.ficha-cmp tbody th{width:28%}
+.ficha-cmp td{width:36%;vertical-align:top}
+.preco-chart.cmp2 figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px}
+.preco-chart.cmp2 .lg{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:rgba(244,244,241,.75)}
+.preco-chart.cmp2 .lg i{display:inline-block;width:16px;height:4px;border-radius:2px;margin-left:8px}
+.preco-chart.cmp2 .lg i.l1{background:#D4AF5A}.preco-chart.cmp2 .lg i.l2{background:#7C5CFF}
+.preco-chart.cmp2 .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.preco-chart.cmp2 .ln.l1{stroke:#D4AF5A}.preco-chart.cmp2 .ln.l2{stroke:#7C5CFF}
+.preco-chart.cmp2 circle.c1{fill:#D4AF5A}.preco-chart.cmp2 circle.c2{fill:#7C5CFF}
+.preco-chart.cmp2 text.c1{fill:#D4AF5A}.preco-chart.cmp2 text.c2{fill:#B9A6FF}
+.alvo-cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.alvo-cmp .alvo{margin:0}
+.pe-cmp{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pe-cmp .personas{grid-template-columns:1fr}
+.pe-h{font:700 18px var(--display);margin:0 0 8px}
+.om-outro{margin:-16px 0 32px;font-size:14px}
+.om-outro summary{cursor:pointer;color:rgba(244,244,241,.7);text-decoration:underline;text-underline-offset:3px;padding:8px 0}
+.om-outro .ofertas-mini{margin-top:8px}
+@media (max-width:760px){ .alvo-cmp,.pe-cmp{grid-template-columns:1fr} }
