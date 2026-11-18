@@ -1281,3 +1281,19 @@ blockquote.verdict p{margin-bottom:8px}
 .om-outro summary{cursor:pointer;color:rgba(244,244,241,.7);text-decoration:underline;text-underline-offset:3px;padding:8px 0}
 .om-outro .ofertas-mini{margin-top:8px}
 @media (max-width:760px){ .alvo-cmp,.pe-cmp{grid-template-columns:1fr} }
+/* cards ao lado do destaque: título maior e tag, título e chip agrupados no centro do card, com a mesma distância entre eles */
+@media (min-width:761px){
+  .mosaic-side .card .card-body{justify-content:center;gap:16px !important}
+  .mosaic-side .card .card-body > *{margin:0 !important}
+  .mosaic-side .card h3{font-size:clamp(18px,1.6vw,22px) !important;line-height:1.2}
+  .mosaic-side .card .lock-chip{align-self:flex-start}
+}
+@media (min-width:761px){
+  .mosaic-side .card{grid-template-columns:36% 1fr}
+  .mosaic-side .card .card-body{gap:8px !important;padding:8px 24px 8px 16px !important}
+  .mosaic-side .card .card-body > *{flex-shrink:0}
+  .mosaic-side .card h3{font-size:clamp(18px,1.45vw,21px) !important;line-height:1.18}
+  .mosaic-side .card .lock-chip{height:32px !important;margin-top:8px !important}
+}
+@media (min-width:761px){ .mosaic-side .card h3{padding:0 !important;max-width:none !important;width:100%} .mosaic-side .card .card-body{min-width:0;width:100%} }
+@media (min-width:761px){ .mosaic-side .card .card-body{padding:0 24px 0 16px !important} .mosaic-side .card .lock-chip{margin-top:0 !important} .mosaic-side .card h3{font-size:clamp(18px,1.4vw,20px) !important} }

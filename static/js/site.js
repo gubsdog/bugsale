@@ -578,7 +578,7 @@ function renderArticle(){
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
       ${a.tipo==="ocasiao" ? alvoHTML(a, p) : ""}
-      <h2>O que ele oferece</h2>${S.oferece ? S.oferece.map(([k,v])=>`<p><b>${esc(k)}.</b> ${esc(v)}</p>`).join("") : textoOferece(a.phone, p)}
+      <h2>O que ele oferece</h2>${S.oferece ? S.oferece.map(x=>Array.isArray(x) ? `<p><b>${esc(x[0])}.</b> ${esc(x[1])}</p>` : `<p>${esc(x)}</p>`).join("") : textoOferece(a.phone, p)}
       ${cmp ? fichaCmpHTML(p, cmp) : `<div class="ficha"><h3>Ficha técnica</h3><table>${ficha}</table></div>`}
       <h2>Quanto custa hoje</h2>${para(S.preco ? esc(S.preco) : preco)}
       ${cmp ? precoChart2HTML(p, cmp) : precoChartHTML(p)}
@@ -760,5 +760,8 @@ document.addEventListener("click", e=>{
   location.href = R+"comparador.html";
 });
 
+try{ if("scrollRestoration" in history) history.scrollRestoration = "manual"; }catch(e){}
+window.addEventListener("pageshow", e=>{ if(!e.persisted && !location.hash) window.scrollTo(0,0); });
+document.addEventListener("DOMContentLoaded", ()=>{ if(!location.hash) window.scrollTo(0,0); });
 window.MQ = { header, footer, renderArticles, renderArticle, renderRanking };
 })();
