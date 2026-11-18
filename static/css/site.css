@@ -1126,3 +1126,4 @@ blockquote.verdict p{margin-bottom:8px}
 .al-tag.otimo{background:#D4AF5A;color:#0B0B0D}.al-tag.bom{background:#7C5CFF;color:#fff}.al-tag.caro{background:#E5383B;color:#fff}
 @media (max-width:760px){ .al-faixas{grid-template-columns:1fr} .al{flex-direction:row;justify-content:space-between;align-items:center} }
 .al b{font-size:18px}
+.al-nota{display:block;margin-top:8px;font-size:12px;color:rgba(244,244,241,.5)}

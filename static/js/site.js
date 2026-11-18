@@ -299,20 +299,32 @@ function precoChartHTML(p){
 }
 
 /* régua de preço (artigos com campo "alvo"): ótimo / bom / caro */
+/* régua automática quando o artigo não define uma: parte do menor preço já visto */
+const r50 = v => Math.round(v/50)*50;
+function alvoAuto(p){
+  const m = p.specs.minimoN || p.atualN;
+  const ar = String(p.specs.armaz||""), n = (ar.match(/\d+/)||[""])[0], un = (ar.match(/GB|TB/i)||["GB"])[0].toUpperCase();
+  const v = n ? `${n} ${un}` : "";
+  return {versao: v || "de entrada", otimo: r50(m*1.05), bom: r50(m*1.15), caro: r50(m*1.30), auto:true};
+}
+/* título: "na Black Friday" até 27/11/2026 (horário de Brasília); depois, "hoje" */
+const FIM_BF = new Date("2026-11-28T00:00:00-03:00");
 function alvoHTML(a, p){
-  const t = a.alvo; if(!t) return "";
+  const t = a.alvo || alvoAuto(p);
   const menor = p.ofertas && p.ofertas.lista && p.ofertas.lista[0];
   const hoje = menor ? menor.preco : p.atualN;
   const faixa = hoje <= t.otimo ? "otimo" : hoje <= t.bom ? "bom" : hoje >= t.caro ? "caro" : "ok";
   const nomeFaixa = {otimo:"oferta de verdade", bom:"bom preço", ok:"preço normal", caro:"caro"}[faixa];
+  const titulo = new Date() < FIM_BF ? "Quanto vale pagar na Black Friday" : "Quanto vale pagar hoje";
   return `<div class="alvo">
-    <div class="al-head"><b>Quanto vale pagar${a.cat==="Black Friday"?" na Black Friday":""}</b><span>Versão de ${esc(t.versao)}, no Pix</span></div>
+    <div class="al-head"><b>${titulo}</b><span>Versão de ${esc(t.versao)}, à vista</span></div>
     <div class="al-faixas">
       <div class="al otimo"><span>Oferta de verdade</span><b>até ${brl(t.otimo)}</b></div>
       <div class="al bom"><span>Bom preço</span><b>até ${brl(t.bom)}</b></div>
       <div class="al caro"><span>Espere</span><b>acima de ${brl(t.caro)}</b></div>
     </div>
     <p class="al-hoje">${menor?`Menor preço hoje: <b>${brl(hoje)}</b> (${esc(menor.loja)})`:`Preço médio hoje: <b>≈ ${brl(hoje)}</b>`} · <span class="al-tag ${faixa}">${nomeFaixa}</span></p>
+    ${t.auto?`<small class="al-nota">Faixas calculadas a partir do menor preço já registrado (${brl(p.specs.minimoN||p.atualN)}).</small>`:""}
   </div>`;
 }
 /* personas: para quem cada tipo de aparelho faz sentido */
