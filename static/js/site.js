@@ -265,7 +265,7 @@ function renderArticles(brand){
     html += `<header class="brand-head"><div><span class="kicker">Celulares</span><h1>${label}</h1></div></header>
       <div class="models" style="margin-top:16px"><a href="${pg}" class="${modelo?"":"on"}">Todos</a>${ids.map(id=>`<a href="${pg}?modelo=${id}" class="${id===modelo?"on":""}">${esc(P(id).nome)}</a>`).join("")}</div>`;
     if(modelo && P(modelo)){
-      if(!arts.length) html += `<div class="model-bar"><span>Ainda não temos artigo sobre o ${esc(P(modelo).nome)}. Veja a ficha e o preço no comparador.</span><button class="btn" type="button" data-compare="${modelo}">${ICO.cmp} Comparar o ${esc(P(modelo).nome)}</button></div>`;
+      if(!arts.length) html += `<div class="model-bar"><span>Ainda não temos conteúdo sobre o ${esc(P(modelo).nome)}. Veja a ficha e o preço no comparador.</span><button class="btn" type="button" data-compare="${modelo}">${ICO.cmp} Comparar o ${esc(P(modelo).nome)}</button></div>`;
     }
   }
   const cardArts = recent.concat(teasers);
