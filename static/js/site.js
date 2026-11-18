@@ -135,7 +135,7 @@ function footer(){
         <p style="max-width:40ch;margin:16px 0 0">Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
       <div class="ft-secoes"><h5>Seções</h5>${MENU.map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
       <div><h5>Bugsale</h5><a href="${R}sobre.html">Sobre e como avaliamos</a><a href="${R}privacidade.html">Política de privacidade</a></div>
-      <div><h5>Comunidade</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Comunidade no WhatsApp</a></div>
+      <div><h5>Comunidade</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="https://chat.whatsapp.com/Bvj5qZL97Ui5iRBZTvxvzY" target="_blank" rel="noopener">Comunidade no WhatsApp</a></div>
     </div><div class="fine">Preços médios e fichas técnicas de nov/2026, a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia. Fotos: divulgação das marcas.</div></div>`;
 }
 
@@ -242,7 +242,7 @@ function dropsHTML(list, n=5){
   };
   return `<div class="box drops-box"><h4>Maiores quedas de preço</h4><ol class="drops${n>5?" two":""}">${top.map(item).join("")}</ol></div>`;
 }
-const communityHTML = `<div class="box community"><h4>Promoções todo dia</h4><p>Entre na comunidade da Bugsale no WhatsApp e receba só as ofertas que passaram no nosso filtro de preço.</p><a class="btn" href="#">Entrar na comunidade</a></div>`;
+const communityHTML = `<div class="box community"><h4>Promoções todo dia</h4><p>Entre na comunidade da Bugsale no WhatsApp e receba só as ofertas que passaram no nosso filtro de preço.</p><a class="btn" href="https://chat.whatsapp.com/Bvj5qZL97Ui5iRBZTvxvzY" target="_blank" rel="noopener">Entre no grupo de ofertas de celulares</a></div>`;
 
 /* página: lista de artigos (home = todas as marcas; página de marca = só aquela) */
 const porData = (a,b) => (b.pub||b.data).localeCompare(a.pub||a.data);
