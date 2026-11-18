@@ -58,9 +58,35 @@ for c in celulares:
 for a in artigos: a.setdefault('slug', a['celular'])
 slugs = [a['slug'] for a in artigos]
 assert len(slugs) == len(set(slugs)), 'dois artigos com o mesmo slug'
-arts = [dict(id=a['slug'], phone=a['celular'], data=a['data'], cat=a['categoria'], titulo=a['titulo'], dek=a['resumo'], **({'alvo': a['alvo']} if a.get('alvo') else {})) for a in artigos]
-bodies = {a['slug']: [a['chamada'], a['para_quem'], a['veredito']] for a in artigos}
-w('js/data.js', 'window.MQ_DATA = ' + json.dumps(dict(phones=phones, articles=arts, bodies=bodies), ensure_ascii=False) + ';\n')
+
+# ---------- agendamento ----------
+# "publicar": "AAAA-MM-DDTHH:MM" no horário de Brasília. O robô diário do GitHub refaz o site às 7h e às 12h,
+# e só publica o que já chegou na hora. "status": "rascunho" nunca vai ao ar.
+# "teaser": true mostra o card bloqueado ("Será lançado em...") antes da data (usado só no lançamento).
+BRT = datetime.timezone(datetime.timedelta(hours=-3))
+AGORA = datetime.datetime.now(BRT).strftime('%Y-%m-%dT%H:%M')
+for a in artigos:
+    a.setdefault('publicar', a['data'] + 'T07:00')
+    a['data'] = a['publicar'][:10]
+publicados = [a for a in artigos if a.get('status') != 'rascunho' and a['publicar'] <= AGORA]
+bloqueados = [a for a in artigos if a.get('status') != 'rascunho' and a['publicar'] > AGORA and a.get('teaser')]
+# na pré-visualização do Claude, os agendados aparecem bloqueados mas com a página pronta para revisão
+agendados_preview = [a for a in artigos if a.get('status') != 'rascunho' and a['publicar'] > AGORA] if PREVIEW else []
+paginas = publicados + agendados_preview
+
+def art_json(a, locked=False):
+    d = dict(id=a['slug'], phone=a['celular'], data=a['data'], pub=a['publicar'], cat=a['categoria'], tipo=a.get('tipo', 'review'),
+             titulo=a['titulo'], dek=a['resumo'])
+    for k in ('alvo', 'vs', 'indicado'):
+        if a.get(k): d[k] = a[k]
+    if locked: d['locked'] = True
+    if a.get('teaser'): d['teaser'] = True
+    return d
+arts = [art_json(a) for a in publicados] + [art_json(a, True) for a in bloqueados]
+arts += [art_json(a, True) | {'previewOnly': True} for a in agendados_preview if a not in bloqueados]
+bodies = {a['slug']: dict(abertura=a.get('chamada', ''), para_quem=a.get('para_quem', ''), veredito=a.get('veredito', ''), secoes=a.get('secoes'))
+          for a in paginas}
+w('js/data.js', 'window.MQ_DATA = ' + json.dumps(dict(phones=phones, articles=arts, bodies=bodies, geradoEm=AGORA, preview=PREVIEW), ensure_ascii=False) + ';\n')
 
 # ---------- páginas ----------
 TPL = open(os.path.join(ROOT, 'src/page.tpl.html'), encoding='utf-8').read()
@@ -99,19 +125,20 @@ page('privacidade.html', 'Política de privacidade · Bugsale', 'Quais dados a B
 page('404.html', 'Página não encontrada · Bugsale', 'Essa página não existe.', '404', content=frag('404.html', BASE),
      root=BASE, pagetype='doc', index=False)
 
-for a in artigos:
+for a in paginas:
     c = next(x for x in celulares if x['id'] == a['celular'])
     p = phones[c['id']]
     img = SITE + (p['foto']['src'] if 'foto' in p else p['img'])
     path = f"artigos/{a['slug']}/index.html"
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": a['titulo'], "description": a['resumo'],
-          "image": [img], "datePublished": a['data'], "dateModified": a['data'], "inLanguage": "pt-BR",
+          "image": [img], "datePublished": a['publicar'] + ":00-03:00", "dateModified": a['publicar'] + ":00-03:00", "inLanguage": "pt-BR",
           "author": {"@type": "Organization", "name": "Equipe Bugsale"},
           "publisher": {"@type": "Organization", "name": "Bugsale", "logo": {"@type": "ImageObject", "url": SITE + "img/favicon.svg"}},
           "mainEntityOfPage": SITE + f"artigos/{a['slug']}/"}
     page(path, f"{a['titulo']} · Bugsale", a['resumo'], 'artigo', 'MQ.renderArticle();', root='../../',
          article=json.dumps(a['slug']), ogimg=img, ogtype='article', pagetype='article',
-         jsonld='<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>')
+         jsonld='<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>',
+         index=(a in publicados))
 
 # ---------- comparador (página própria, integrada ao cabeçalho do site) ----------
 t = open(os.path.join(ROOT, 'src/comparador.tpl.html'), encoding='utf-8').read()

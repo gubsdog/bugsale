@@ -18,7 +18,18 @@ const MENU = [
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const brl = n => "R$ " + Math.round(n).toLocaleString("pt-BR");
 const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-const dataBR = iso => { const [y,m,d] = iso.split("-"); return `${+d} ${MESES[+m-1]} ${y}`; };
+const dataBR = iso => { const [y,m,d] = iso.slice(0,10).split("-"); return `${+d} ${MESES[+m-1]} ${y}`; };
+/* "2026-11-17T21:05" -> "17/11 às 21h05"; só a data -> "17/11" */
+const dataHora = iso => { if(!iso) return ""; const [d,t] = iso.split("T"); const [y,m,dd] = d.split("-"); const dm = `${dd}/${m}`;
+  if(!t) return dm; const [h,mi] = t.split(":"); return `${dm} às ${+h}h${mi!=="00"?mi:""}`; };
+/* quando um artigo bloqueado será lançado: "amanhã", "hoje" ou "em 20/11" */
+function quandoLanca(pub){
+  const agora = new Date(), alvo = new Date(pub + ":00-03:00");
+  const dia = x => x.toLocaleDateString("pt-BR",{timeZone:"America/Sao_Paulo"});
+  if(dia(alvo)===dia(agora)) return "hoje";
+  if(dia(alvo)===dia(new Date(agora.getTime()+864e5))) return "amanhã";
+  const [y,m,d] = pub.slice(0,10).split("-"); return `em ${d}/${m}`;
+}
 
 /* ---------- ícones e "salvos" ---------- */
 const ICO = {
@@ -169,7 +180,7 @@ function ofertaHTML(p){
       <span class="of-loja">${esc(x.loja)}</span><b class="of-preco">${brl(x.preco)}</b>
       <span class="btn of-btn${i===0?" primary":""}">Ver oferta ↗</span></a>`;
   }).join("");
-  const meta = lista.length ? `Última pesquisa em ${o.pesquisa ? dataBR(o.pesquisa) : "—"}` : `Preço médio de referência ≈ ${brl(p.atualN)} · a pesquisa de ofertas sai em breve`;
+  const meta = lista.length ? `Pesquisa em ${o.pesquisa ? dataHora(o.pesquisa) : "—"}` : `Preço médio de referência ≈ ${brl(p.atualN)} · a pesquisa de ofertas sai em breve`;
   return `<section class="ofertas" aria-label="Melhores ofertas">
     <div class="of-head"><span class="of-label">Melhores ofertas encontradas</span><span class="of-meta">${meta}</span></div>
     <div class="of-grid">${slots}</div>
@@ -196,6 +207,20 @@ function cardHTML(a){
     </div>
   </a>`;
 }
+/* card de artigo agendado (lançamento): preto e branco, sem link; o toque faz o chip da data brilhar */
+function lockedCardHTML(a){
+  const p = P(a.phone), q = quandoLanca(a.pub);
+  const prev = MQ_DATA.preview ? `<a class="prev-link" href="${artURL(a)}">Abrir prévia (só no preview)</a>` : "";
+  return `<div class="card blurred locked ${vcls(p)}" role="group" aria-label="${esc(a.titulo)}: será lançado ${q}" tabindex="0">${blurBG(p)}
+    <div class="thumb ${vcls(p)}">${visual(p, true)}</div>
+    <span class="card-blur" aria-hidden="true"></span>
+    <div class="card-body">
+      ${kicker(a)}
+      <h3>${esc(a.titulo)}</h3>
+      <span class="read-chip lock-chip">Será lançado ${q}</span>${prev}
+    </div>
+  </div>`;
+}
 function rowHTML(a){
   const p = P(a.phone);
   return `<a class="row blurred tl ${vcls(p)}" href="${artURL(a)}">${blurBG(p)}
@@ -205,36 +230,64 @@ function rowHTML(a){
   </a>`;
 }
 
-function dropsHTML(list){
-  const top = list.map(id=>P(id)).filter(p=>p.precoN)
-    .map(p=>({p, pct:Math.round((1-p.atualN/p.precoN)*100)}))
-    .sort((a,b)=>b.pct-a.pct).slice(0,5);
-  return `<div class="box"><h4>Maiores quedas de preço</h4><ol class="drops">${top.map(({p,pct})=>
-    `<li><span class="dr-img"><img src="${R}${p.cut}" alt="" loading="lazy"></span><div><b>${esc(p.full)}</b><span>≈ ${brl(p.atualN)} · lançou a ${brl(p.precoN)}</span></div><span class="off${pct>=40?" hot":""}">-${pct}%</span></li>`).join("")}</ol></div>`;
+const BRAND_PAGE = {Samsung:"samsung.html", Apple:"iphone.html", Motorola:"motorola.html"};
+function dropsHTML(list, n=5){
+  const top = list.map(id=>[id,P(id)]).filter(([,p])=>p.precoN)
+    .map(([id,p])=>({id, p, pct:Math.round((1-p.atualN/p.precoN)*100)}))
+    .sort((a,b)=>b.pct-a.pct).slice(0,n);
+  const item = ({id,p,pct}) => {
+    const pg = BRAND_PAGE[p.marca];
+    const inner = `<span class="dr-img"><img src="${R}${p.cut}" alt="" loading="lazy"></span><div><b>${esc(p.full)}</b><span>≈ ${brl(p.atualN)} · lançou a ${brl(p.precoN)}</span></div><span class="off${pct>=40?" hot":""}">-${pct}%</span>`;
+    return `<li>${pg ? `<a href="${R}${pg}${window.MQ_DIRINDEX?"":""}?modelo=${id}">${inner}</a>` : `<div class="dr-nolink">${inner}</div>`}</li>`;
+  };
+  return `<div class="box drops-box"><h4>Maiores quedas de preço</h4><ol class="drops${n>5?" two":""}">${top.map(item).join("")}</ol></div>`;
 }
 const communityHTML = `<div class="box community"><h4>Promoções todo dia</h4><p>Entre na comunidade da Bugsale no WhatsApp e receba só as ofertas que passaram no nosso filtro de preço.</p><a class="btn" href="#">Entrar na comunidade</a></div>`;
 
 /* página: lista de artigos (home = todas as marcas; página de marca = só aquela) */
+const porData = (a,b) => (b.pub||b.data).localeCompare(a.pub||a.data);
+const publicados = () => MQ_DATA.articles.filter(a=>!a.locked);
 function renderArticles(brand){
   const main = document.getElementById("content");
-  const arts = MQ_DATA.articles.filter(a => !brand || P(a.phone).marca === brand).sort((a,b)=>b.data.localeCompare(a.data));
+  const modelo = new URLSearchParams(location.search).get("modelo");
+  let arts = publicados().filter(a => !brand || P(a.phone).marca === brand || (a.vs && P(a.vs).marca === brand)).sort(porData);
+  if(brand && modelo) arts = arts.filter(a => a.phone===modelo || a.vs===modelo);
+  const teasers = brand ? [] : MQ_DATA.articles.filter(a=>a.locked && a.teaser).sort((a,b)=>a.pub.localeCompare(b.pub));
+  const fila = (!brand && MQ_DATA.preview) ? MQ_DATA.articles.filter(a=>a.locked && !a.teaser).sort((a,b)=>a.pub.localeCompare(b.pub)) : [];
   const [first, ...rest] = arts;
   const recent = rest.slice(0,4), older = rest.slice(4, 9); /* linha do tempo: no máximo os 5 últimos */
   let html = "";
   if(brand){
     const label = brand==="Apple" ? "iPhone" : brand;
     const ids = Object.keys(MQ_DATA.phones).filter(id=>P(id).marca===brand);
+    const pg = R + BRAND_PAGE[brand] + (window.MQ_DIRINDEX ? "" : "");
     html += `<header class="brand-head"><div><span class="kicker">Celulares</span><h1>${label}</h1></div></header>
-      <div class="models" style="margin-top:16px">${ids.map(id=>`<button type="button" data-compare="${id}" aria-label="Comparar o ${esc(P(id).nome)}">${esc(P(id).nome)}</button>`).join("")}</div>`;
+      <div class="models" style="margin-top:16px"><a href="${pg}" class="${modelo?"":"on"}">Todos</a>${ids.map(id=>`<a href="${pg}?modelo=${id}" class="${id===modelo?"on":""}">${esc(P(id).nome)}</a>`).join("")}</div>`;
+    if(modelo && P(modelo)){
+      html += `<div class="model-bar"><span>${arts.length ? `${arts.length} ${arts.length>1?"artigos":"artigo"} sobre o ${esc(P(modelo).nome)}` : `Ainda não temos artigo sobre o ${esc(P(modelo).nome)}. Veja a ficha e o preço no comparador.`}</span><button class="btn" type="button" data-compare="${modelo}">${ICO.cmp} Comparar o ${esc(P(modelo).nome)}</button></div>`;
+    }
   }
   if(first) html += heroHTML(first);
-  if(recent.length) html += `<div class="section-title" id="mais"><h2>Mais recentes</h2></div><div class="grid4 swipe">${recent.map(cardHTML).join("")}</div>`;
-  const allIds = [...new Set(arts.map(a=>a.phone))];
-  html += `<div class="section-title"><h2>Linha do tempo</h2></div>
-    <div class="split"><div class="timeline">${older.length ? older.map(rowHTML).join("") : `<p class="meta">Mais textos em breve.</p>`}</div>
-    <aside class="side">${dropsHTML(allIds)}${communityHTML}</aside></div>`;
+  const cards = recent.map(cardHTML).concat(teasers.map(lockedCardHTML));
+  if(cards.length) html += `<div class="section-title" id="mais"><h2>Mais recentes</h2></div><div class="grid4 swipe">${cards.join("")}</div>`;
+  const allIds = Object.keys(MQ_DATA.phones);
+  if(older.length){
+    html += `<div class="section-title"><h2>Linha do tempo</h2></div>
+      <div class="split"><div class="timeline">${older.map(rowHTML).join("")}</div>
+      <aside class="side">${dropsHTML(allIds)}</aside></div>`;
+  } else if(!brand || !modelo){
+    html += dropsHTML(allIds, 10);
+  }
+  if(!brand) html += communityHTML.replace('class="box community"','class="box community wide"');
+  if(fila.length) html += `<div class="section-title"><h2>Fila agendada <small>(só aparece no preview)</small></h2></div><div class="fila-prev">${fila.map(a=>`<a href="${artURL(a)}"><b>${dataHora(a.pub)}</b> ${esc(a.titulo)}</a>`).join("")}</div>`;
   main.innerHTML = html;
   reveal(main);
+  /* toque no card bloqueado: o chip da data brilha */
+  main.querySelectorAll(".card.locked").forEach(c=>{
+    const fire = e => { if(e.target.closest(".prev-link")) return; const ch = c.querySelector(".lock-chip"); ch.classList.remove("shine"); void ch.offsetWidth; ch.classList.add("shine"); };
+    c.addEventListener("click", fire);
+    c.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); fire(e); } });
+  });
 }
 
 
@@ -253,7 +306,7 @@ function ofertaMiniHTML(p){
     return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span>${esc(x.loja)}</span><b>${brl(x.preco)}</b><i aria-hidden="true">↗</i></a>`
              : `<span class="om-btn vazio" aria-disabled="true"><span>Oferta ${i+1}</span><b>em breve</b></span>`;
   }).join("");
-  return `<section class="ofertas-mini" aria-label="Onde comprar"><div class="om-head"><b>Onde comprar o ${esc(p.nome)}</b><span>${lista.length?`Pesquisa de ${p.ofertas.pesquisa?dataBR(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
+  return `<section class="ofertas-mini" aria-label="Onde comprar"><div class="om-head"><b>Onde comprar o ${esc(p.nome)}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
 }
 
 /* histórico de preço: cada ponto é uma pesquisa datada (p.historico = [{data:"2026-04-29", preco:12999}, ...]).
@@ -425,11 +478,19 @@ function textoUpd(p){
     : ` Na prática, é um celular para usar 2 ou 3 anos: depois disso, ele fica sem os recursos e as proteções mais recentes.`;
 }
 
+function notaFontes(p){
+  const h = (p.historico||[]).slice().sort((x,y)=>y.data.localeCompare(x.data))[0];
+  const of = p.ofertas && p.ofertas.pesquisa;
+  return [h ? `Preço médio de ${dataHora(h.data)}.` : "", of ? `Ofertas pesquisadas em ${dataHora(of)}.` : "",
+    "Fichas e preços a partir de Oficina da Net, Tecnoblog, Buscapé, Zoom e GSMArena. Preços mudam todo dia."].filter(Boolean).join(" ");
+}
 function renderArticle(){
   const main = document.getElementById("content");
   const id = window.MQ_ARTICLE || location.hash.replace("#","");
-  const a = MQ_DATA.articles.find(x=>x.id===id) || MQ_DATA.articles.find(x=>x.phone===id) || MQ_DATA.articles.slice().sort((x,y)=>y.data.localeCompare(x.data))[0];
-  const p = P(a.phone), s = p.specs, b = MQ_DATA.bodies[a.id];
+  const a = MQ_DATA.articles.find(x=>x.id===id) || publicados().find(x=>x.phone===id) || publicados().sort(porData)[0];
+  const p = P(a.phone), s = p.specs, B = MQ_DATA.bodies[a.id] || {}, S = B.secoes || {};
+  const b = [S.abertura || B.abertura, S.para_quem || B.para_quem, S.veredito || B.veredito];
+  const TIPO = {review:"Review", comparativo:"Comparativo", vale:"Vale a pena?", ocasiao:a.cat};
   document.title = `${a.titulo} · Bugsale`;
   const pct = p.precoN ? Math.round((1 - p.atualN/p.precoN)*100) : null;
   const brandPage0 = ({Samsung:"samsung.html",Apple:"iphone.html",Motorola:"motorola.html"}[p.marca]);
@@ -445,13 +506,13 @@ function renderArticle(){
   }
   const ficha = [["Preço médio hoje",`≈ ${brl(p.atualN)}`,offBadge(p)],["Preço de lançamento",p.precoN?brl(p.precoN):null],["Lançamento",s.lancamento],["Tela",s.tela],["Taxa de atualização",s.taxa],["Tela externa",s.telaExt],["Processador",s.chip],["Memória RAM",s.ram],["Armazenamento",s.armaz],["Câmeras traseiras",s.camTras],["Zoom óptico",s.zoom],["Câmera frontal",s.camFrontal],["Vídeo",s.video],["Bateria",s.bateria],["Carregamento",s.carga],["Resistência",s.resist],["Peso",s.peso],["Espessura",s.espessura],["Sistema",s.sistema],["Atualizações",s.updResumo || "Não divulgado"]]
     .filter(r=>r[1]).map(r=>`<tr${r[2]!==undefined?' class="destaque"':""}><th>${r[0]}</th><td>${esc(r[1])}${r[2]?" "+r[2]:""}</td></tr>`).join("");
-  const related = MQ_DATA.articles.filter(x=>x.id!==a.id).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || y.data.localeCompare(x.data)).slice(0,4);
+  const related = publicados().filter(x=>x.id!==a.id).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || porData(x,y)).slice(0,4);
   const shareText = encodeURIComponent(`${a.titulo} · Bugsale`);
   main.innerHTML = `
   <article class="post">
     <nav class="crumb" aria-label="Você está em"><a href="${R}index.html">Início</a> / ${brandPage?`<a href="${brandPage}">${esc(p.marcaMenu)}</a>`:esc(p.marcaMenu)}</nav>
     <div class="post-head">
-      <span class="kicker">${esc(a.cat)} · <span class="brandtag">${esc(p.marcaMenu)}</span></span>
+      <span class="kicker">${esc(TIPO[a.tipo]||a.cat)} · <span class="brandtag">${esc(p.marcaMenu)}</span></span>
       <h1>${esc(a.titulo)}</h1>
       <p class="dek">${esc(a.dek)}</p>
       <div class="head-ofertas">${ofertaHTML(p)}</div>
@@ -466,12 +527,13 @@ function renderArticle(){
     </figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
-      <h2>O que ele oferece</h2>${textoOferece(a.phone, p)}
+      ${a.tipo==="ocasiao" ? alvoHTML(a, p) : ""}
+      <h2>O que ele oferece</h2>${S.oferece ? S.oferece.map(([k,v])=>`<p><b>${esc(k)}.</b> ${esc(v)}</p>`).join("") : textoOferece(a.phone, p)}
       <div class="ficha"><h3>Ficha técnica</h3><table>${ficha}</table></div>
-      <h2>Quanto custa hoje</h2>${para(preco)}
+      <h2>Quanto custa hoje</h2>${para(S.preco ? esc(S.preco) : preco)}
       ${precoChartHTML(p)}
-      ${alvoHTML(a, p)}
-      <h2>Atualizações</h2>${para(upd + textoUpd(p))}
+      ${a.tipo==="ocasiao" ? "" : alvoHTML(a, p)}
+      <h2>Atualizações</h2>${para(S.atualizacoes ? esc(S.atualizacoes) : upd + textoUpd(p))}
       ${galeriaHTML(p)}
       <h2>Para quem vale</h2>${para(esc(b[1]))}
       ${personasHTML(a.phone)}
@@ -479,7 +541,7 @@ function renderArticle(){
       ${ofertaMiniHTML(p)}
       <div class="cta-compare"><div><b>Compare com outros celulares</b><span>Coloque o ${esc(p.nome)} lado a lado com até dois modelos.</span></div><button class="btn primary" type="button" data-compare="${a.phone}">Abrir no comparador →</button></div>
       <div class="tags"><a href="${brandPage||R+"index.html"}">${esc(p.marcaMenu)}</a><span>${esc(a.cat)}</span><span>Celulares</span></div>
-      <p class="note">Preços e fichas de nov/2026, a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia.</p>
+      <p class="note">${notaFontes(p)}</p>
     </div>
   </article>
   <div class="section-title"><h2>Leia também</h2><a href="${R}index.html">Ver todos →</a></div>

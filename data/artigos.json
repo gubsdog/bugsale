@@ -7,7 +7,42 @@
   "resumo": "Lançado a R$ 12.999, ele já aparece por cerca de R$ 11.279. Tem tela de 165 Hz e Snapdragon 8 Elite, mas a promessa é de só 3 atualizações do Android.",
   "chamada": "O Razr 70 Ultra é o celular mais caro do nosso comparador. Ele dobra ao meio, tem duas telas e o chip mais rápido da Motorola. A pergunta que importa para quem quer economizar é outra: o que você leva por quase R$ 11 mil?",
   "para_quem": "Faz sentido para quem quer um dobrável flip completo, com tela externa grande de verdade, e não liga de pagar caro pelo formato.",
-  "veredito": "É o flip mais bem equipado da Motorola, mas o preço ainda está alto para o que entrega em atualizações. Se o formato não é prioridade, o Edge 70 Pro faz quase tudo por um terço do preço. Vale esperar quedas maiores, porque ele já chegou a R$ 7.199 no Pix."
+  "veredito": "É o flip mais bem equipado da Motorola, mas o preço ainda está alto para o que entrega em atualizações. Se o formato não é prioridade, o Edge 70 Pro faz quase tudo por um terço do preço. Vale esperar quedas maiores, porque ele já chegou a R$ 7.199 no Pix.",
+  "publicar": "2026-11-18T09:00",
+  "tipo": "review",
+  "secoes": {
+   "abertura": "O Razr 70 Ultra é o celular para quem quer chamar atenção ao tirar o aparelho do bolso. Ele dobra ao meio, vira um quadradinho que cabe em qualquer bolso e, aberto, tem uma tela de 7 polegadas. Lançado em abril por R$ 12.999, é o Motorola mais caro do Brasil. A pergunta é: o que você leva por esse preço e para quem ele faz sentido?",
+   "oferece": [
+    [
+     "Tela externa",
+     "Fechado, a tela de 4 polegadas não é só um relógio. Dá para responder WhatsApp, olhar o mapa, trocar a música e até tirar selfie com a câmera principal. Muita gente passa boa parte do dia sem abrir o celular, o que também ajuda a mexer menos nele."
+    ],
+    [
+     "Tela interna",
+     "Aberto, a tela de 7 polegadas com 165 Hz está entre as mais fluidas do mercado: rolar o feed e jogar é uma delícia. Como todo dobrável, ela tem um vinco no meio que aparece contra a luz e que dá para sentir ao passar o dedo. Com o uso, a maioria das pessoas deixa de reparar."
+    ],
+    [
+     "Cuidados",
+     "É um celular para tratar com mais carinho. A proteção IP48 aguenta chuva e um mergulho rápido em água doce, mas não protege contra areia e poeira. Para quem vive na praia ou trabalha em obra, não é a melhor escolha. Fechado, ele fica com 15,7 mm de espessura: cabe em bolso pequeno, mas é gordinho."
+    ],
+    [
+     "Desempenho",
+     "O Snapdragon 8 Elite está entre os processadores mais rápidos do ano. Jogos pesados, edição de vídeo e vários apps abertos rodam sem esforço. Só vale saber que, em sessões longas de jogo, aparelhos dobráveis tendem a esquentar mais, porque têm menos espaço por dentro para dissipar o calor."
+    ],
+    [
+     "Câmeras",
+     "São duas câmeras de 50 MP: a principal, com estabilização, e uma ultrawide que também faz macro. As fotos ficam muito boas de dia e à noite, mas não há teleobjetiva. Para aproximar o palco do show, um Galaxy S26 Ultra faz melhor. O truque do dobrável é usar a câmera principal para selfie, com a tela externa como espelho: as selfies saem muito melhores que as de uma câmera frontal comum. E dá para deixar o celular meio dobrado em cima da mesa, como um tripé, para gravar vídeo ou fazer chamada sem segurar."
+    ],
+    [
+     "Bateria",
+     "Os 5.000 mAh são bastante para um dobrável: em uso normal, ele chega ao fim do dia. Com fio, carrega a 68 W, o que é rápido, e também aceita carregador sem fio de 30 W."
+    ]
+   ],
+   "preco": "Ele foi lançado por R$ 12.999. Hoje, a média das ofertas está em torno de R$ 11.279, mas é um aparelho que oscila muito: o menor preço que já registramos foi R$ 7.199. Em promoção, ele cai bastante.",
+   "atualizacoes": "Ele saiu com Android 16, e a Motorola promete 3 atualizações do sistema (até o Android 19) e 5 anos de atualizações de segurança, até 2031. É menos do que os topos de linha da Samsung, como o Galaxy S26 Ultra, que promete 7 atualizações do Android. Para quem troca de celular a cada 3 ou 4 anos, é suficiente.",
+   "para_quem": "É para quem gosta de novidade, quer um celular que caiba em qualquer bolso e que vire assunto na mesa do bar, tira muita selfie e não se importa em pagar pelo design. Não é para quem é desastrado, para quem vive na praia nem para quem quer o melhor custo-benefício.",
+   "veredito": "O Razr 70 Ultra é o dobrável mais completo da Motorola: processador de topo, uma tela externa que resolve o dia sem abrir o celular, boas câmeras e bateria que aguenta o dia. Se você valoriza design, tamanho de bolso e selfies caprichadas, e cuida bem das suas coisas, ele oferece uma experiência diferente de tudo. Se você quer o máximo de câmera e zoom, ou pretende usar o celular por muitos anos, um topo de linha tradicional entrega mais pelo mesmo dinheiro. Nossa indicação: não pague o preço cheio. Ele já foi vendido abaixo de R$ 7.200, e em promoção vale muito mais a pena."
+  }
  },
  {
   "celular": "edge-70-pro",
@@ -17,7 +52,8 @@
   "resumo": "Caiu 27% desde o lançamento. Mostramos para quem ele serve e se vale esperar a Black Friday.",
   "chamada": "Bateria que passa de um dia, três câmeras de 50 MP e tela de 144 Hz. O Edge 70 Pro chegou a R$ 4.499 e hoje sai por bem menos. Vimos se ele é a escolha certa abaixo de R$ 3.300.",
   "para_quem": "É para quem quer bateria grande, zoom óptico e resistência a água e quedas sem pagar preço de topo de linha.",
-  "veredito": "Hoje é um dos melhores negócios da Motorola. O ponto fraco é a promessa de só 3 atualizações do Android. Abaixo de R$ 3.000, vira compra fácil."
+  "veredito": "Hoje é um dos melhores negócios da Motorola. O ponto fraco é a promessa de só 3 atualizações do Android. Abaixo de R$ 3.000, vira compra fácil.",
+  "status": "rascunho"
  },
  {
   "celular": "galaxy-s26-ultra",
@@ -27,7 +63,8 @@
   "resumo": "Câmera de 200 MP e 7 atualizações do Android. Por cerca de R$ 7 mil, a conta muda.",
   "chamada": "O topo de linha da Samsung custava R$ 11.499 no lançamento e hoje aparece na casa dos R$ 7 mil. Com câmera de 200 MP e 7 anos de atualização, a conta ficou bem diferente.",
   "para_quem": "Serve para quem fotografa muito, quer zoom de verdade (3x e 5x) e pretende ficar com o celular por muitos anos.",
-  "veredito": "Com a queda de preço, ele passou a competir com aparelhos bem mais simples. As 7 atualizações do Android ajudam a diluir o custo ao longo dos anos. O menor preço já visto foi de R$ 5.999."
+  "veredito": "Com a queda de preço, ele passou a competir com aparelhos bem mais simples. As 7 atualizações do Android ajudam a diluir o custo ao longo dos anos. O menor preço já visto foi de R$ 5.999.",
+  "status": "rascunho"
  },
  {
   "celular": "iphone-17",
@@ -37,7 +74,8 @@
   "resumo": "O 17 ganhou tela de 120 Hz e ultrawide de 48 MP. O 16 continua em 60 Hz e custa bem menos.",
   "chamada": "O iPhone 17 trouxe a tela de 120 Hz que antes era só dos modelos Pro. O iPhone 16 segue em 60 Hz e custa cerca de R$ 900 a menos. Comparamos os dois para ver se a diferença paga a troca.",
   "para_quem": "É para quem quer entrar no iPhone com tela fluida e boa câmera ultrawide, sem pagar por um Pro.",
-  "veredito": "Se a diferença ficar perto de R$ 900, o iPhone 17 vale mais: a tela de 120 Hz e a ultrawide de 48 MP fazem diferença no uso. Se o 16 aparecer bem abaixo de R$ 4.000, aí ele vira a escolha esperta."
+  "veredito": "Se a diferença ficar perto de R$ 900, o iPhone 17 vale mais: a tela de 120 Hz e a ultrawide de 48 MP fazem diferença no uso. Se o 16 aparecer bem abaixo de R$ 4.000, aí ele vira a escolha esperta.",
+  "status": "rascunho"
  },
  {
   "celular": "poco-x8-pro-max",
@@ -47,7 +85,8 @@
   "resumo": "São 8.500 mAh com carga de 100 W, por cerca de R$ 3.383. O ponto fraco é a câmera ultrawide de 8 MP.",
   "chamada": "São 8.500 mAh de bateria, a maior do nosso comparador, com carga de 100 W. O POCO X8 Pro Max quer ser o celular que você esquece de carregar.",
   "para_quem": "É para quem joga, usa o celular o dia todo longe da tomada e não faz questão de câmera secundária boa.",
-  "veredito": "Pelo preço, é difícil achar bateria e desempenho melhores. A câmera ultrawide de 8 MP é fraca, e ele não tem preço oficial no Brasil, então compre de loja com boa reputação."
+  "veredito": "Pelo preço, é difícil achar bateria e desempenho melhores. A câmera ultrawide de 8 MP é fraca, e ele não tem preço oficial no Brasil, então compre de loja com boa reputação.",
+  "status": "rascunho"
  },
  {
   "celular": "galaxy-a57",
@@ -57,7 +96,8 @@
   "resumo": "IP68, tela de 120 Hz e carga de 45 W. Confira a oferta antes de comprar: o preço oscila muito.",
   "chamada": "O Galaxy A57 tem tela de 120 Hz, IP68 e 6 atualizações do Android. Ele já chegou a aparecer abaixo de R$ 1.700, menos da metade do preço de lançamento.",
   "para_quem": "Serve para quem quer um intermediário confiável, com suporte longo, e vai ficar com o aparelho por muitos anos.",
-  "veredito": "A esse preço, é um dos melhores custo-benefício da Samsung. Confira a oferta antes de comprar: o preço dele oscila muito entre as lojas."
+  "veredito": "A esse preço, é um dos melhores custo-benefício da Samsung. Confira a oferta antes de comprar: o preço dele oscila muito entre as lojas.",
+  "status": "rascunho"
  },
  {
   "celular": "moto-g-max",
@@ -67,7 +107,8 @@
   "resumo": "A ficha impressiona, mas a Motorola só promete 3 anos de segurança e não diz quantas versões do Android ele recebe.",
   "chamada": "Câmera de 200 MP, tela pOLED de 6,8 polegadas e resistência IP69. No papel, o Moto G Max parece um topo de linha. O preço diz outra coisa: menos de R$ 2 mil.",
   "para_quem": "É para quem quer tela grande e câmera com muitos detalhes gastando pouco, e troca de celular a cada dois ou três anos.",
-  "veredito": "A ficha é ótima pelo preço, mas o processador é de entrada e a Motorola só garante 3 anos de segurança. É um bom aparelho para pouco tempo de uso."
+  "veredito": "A ficha é ótima pelo preço, mas o processador é de entrada e a Motorola só garante 3 anos de segurança. É um bom aparelho para pouco tempo de uso.",
+  "status": "rascunho"
  },
  {
   "celular": "galaxy-s26",
@@ -77,7 +118,8 @@
   "resumo": "O compacto da Samsung tem zoom óptico de 3x e 7 atualizações do Android. A bateria de 4.300 mAh é o ponto de atenção.",
   "chamada": "O compacto da Samsung saiu a R$ 7.499 e hoje custa 44% menos. Tem zoom óptico de 3x e 7 atualizações do Android num corpo de 6,3 polegadas.",
   "para_quem": "É para quem quer um topo de linha que cabe no bolso e vai usar o celular por muito tempo.",
-  "veredito": "Pelo preço atual, é um dos topos de linha mais baratos do mercado. A bateria de 4.300 mAh é a parte mais fraca: quem usa muito vai precisar carregar no fim do dia."
+  "veredito": "Pelo preço atual, é um dos topos de linha mais baratos do mercado. A bateria de 4.300 mAh é a parte mais fraca: quem usa muito vai precisar carregar no fim do dia.",
+  "status": "rascunho"
  },
  {
   "celular": "edge-70",
@@ -87,7 +129,8 @@
   "resumo": "O Edge mais fino promete mais atualizações que o Edge 70 Pro. Por cerca de R$ 2.845, ele vale a troca?",
   "chamada": "Com 6,3 mm de espessura, o Edge 70 é um dos celulares mais finos do mercado. E promete mais atualizações do Android que o irmão maior, o Edge 70 Pro.",
   "para_quem": "Serve para quem quer um celular leve e elegante, com tela boa e suporte de software mais longo.",
-  "veredito": "Por cerca de R$ 2.845, é uma alternativa interessante ao Edge 70 Pro para quem prefere leveza a bateria grande. Já saiu por R$ 1.703, então vale ficar de olho nas promoções."
+  "veredito": "Por cerca de R$ 2.845, é uma alternativa interessante ao Edge 70 Pro para quem prefere leveza a bateria grande. Já saiu por R$ 1.703, então vale ficar de olho nas promoções.",
+  "status": "rascunho"
  },
  {
   "celular": "iphone-15",
@@ -97,7 +140,8 @@
   "resumo": "Por cerca de R$ 3.844, é o iPhone mais barato da nossa lista. A tela continua em 60 Hz.",
   "chamada": "Lançado em 2023, o iPhone 15 é hoje o iPhone mais barato da nossa lista. Ele ainda dá conta? E por quanto tempo vai receber atualizações?",
   "para_quem": "É para quem quer o sistema da Apple pagando o mínimo possível e não liga para tela de 60 Hz.",
-  "veredito": "Ainda é um bom iPhone, mas a tela de 60 Hz pesa contra. Se o iPhone 16 aparecer por pouco mais, ele compensa mais. Abaixo de R$ 3.500, o 15 vira uma boa compra."
+  "veredito": "Ainda é um bom iPhone, mas a tela de 60 Hz pesa contra. Se o iPhone 16 aparecer por pouco mais, ele compensa mais. Abaixo de R$ 3.500, o 15 vira uma boa compra.",
+  "status": "rascunho"
  },
  {
   "celular": "moto-g86",
@@ -107,7 +151,8 @@
   "resumo": "Resiste a jatos de água quente e tem bateria de 5.200 mAh. Recebe só 2 atualizações do Android.",
   "chamada": "O Moto G86 tem resistência IP69, tela pOLED de 120 Hz e bateria de 5.200 mAh. Tudo isso por menos de R$ 1.900.",
   "para_quem": "É para quem precisa de um celular resistente para o dia a dia e quer uma tela boa sem gastar muito.",
-  "veredito": "É um intermediário honesto, mas recebe só 2 atualizações do Android. Para usar por mais de três anos, o Galaxy A57 é uma opção mais segura."
+  "veredito": "É um intermediário honesto, mas recebe só 2 atualizações do Android. Para usar por mais de três anos, o Galaxy A57 é uma opção mais segura.",
+  "status": "rascunho"
  },
  {
   "celular": "galaxy-a17-5g",
@@ -117,7 +162,8 @@
   "resumo": "Tela Super AMOLED de 90 Hz e 5G no aparelho básico da Samsung.",
   "chamada": "Menos de R$ 1.000 por um Galaxy com 5G, tela Super AMOLED e 6 anos de atualização. O A17 5G é o básico da Samsung que mais entrega pelo preço.",
   "para_quem": "Serve para quem quer um celular simples, para mensagens, redes sociais e vídeos, que dure muitos anos.",
-  "veredito": "A tela de 90 Hz e a carga de 25 W são modestas, mas 6 atualizações do Android num celular desse preço é raro. É uma ótima compra para quem gasta pouco."
+  "veredito": "A tela de 90 Hz e a carga de 25 W são modestas, mas 6 atualizações do Android num celular desse preço é raro. É uma ótima compra para quem gasta pouco.",
+  "status": "rascunho"
  },
  {
   "celular": "iphone-16",
@@ -127,7 +173,8 @@
   "resumo": "Mesmo chip de geração anterior, câmera de 48 MP e preço a partir de cerca de R$ 4.650.",
   "chamada": "O iPhone 16 caiu cerca de 40% desde o lançamento. Com o iPhone 17 no mercado, ele virou a porta de entrada mais equilibrada para o mundo Apple.",
   "para_quem": "É para quem quer um iPhone recente, com câmera de 48 MP, e não precisa da tela de 120 Hz do modelo novo.",
-  "veredito": "Por cerca de R$ 4.650, a diferença para o iPhone 17 é pequena. Só compensa se aparecer bem abaixo disso. O menor preço já visto foi de R$ 3.597."
+  "veredito": "Por cerca de R$ 4.650, a diferença para o iPhone 17 é pequena. Só compensa se aparecer bem abaixo disso. O menor preço já visto foi de R$ 3.597.",
+  "status": "rascunho"
  },
  {
   "celular": "poco-x8-pro",
@@ -137,7 +184,8 @@
   "resumo": "Sem preço oficial no Brasil, ele chega pelas lojas online. Bom para quem joga e quer bateria.",
   "chamada": "Bateria de 6.500 mAh, carga de 100 W e chip Dimensity 8500 Ultra. O POCO X8 Pro chega pelas lojas online sem preço oficial no Brasil.",
   "para_quem": "É para quem joga e quer muito desempenho e bateria gastando pouco.",
-  "veredito": "É muito celular pelo preço. Como não tem venda oficial no Brasil, verifique a garantia e a reputação do vendedor antes de comprar."
+  "veredito": "É muito celular pelo preço. Como não tem venda oficial no Brasil, verifique a garantia e a reputação do vendedor antes de comprar.",
+  "status": "rascunho"
  },
  {
   "celular": "galaxy-a07",
@@ -147,7 +195,8 @@
   "resumo": "Custa cerca de R$ 753, tem 6 anos de atualização e tela LCD de 90 Hz.",
   "chamada": "O Galaxy A07 4G foi o celular mais vendido do Brasil no primeiro semestre de 2026. Custa cerca de R$ 753. Vimos se ele vale o que custa.",
   "para_quem": "É para quem quer um celular barato para o básico, como WhatsApp, redes sociais e ligações.",
-  "veredito": "A tela LCD de 720p e o vídeo só em Full HD mostram que é um aparelho de entrada. O ponto forte é o suporte de 6 anos, raro nessa faixa. Abaixo de R$ 600, vira uma compra muito boa."
+  "veredito": "A tela LCD de 720p e o vídeo só em Full HD mostram que é um aparelho de entrada. O ponto forte é o suporte de 6 anos, raro nessa faixa. Abaixo de R$ 600, vira uma compra muito boa.",
+  "status": "rascunho"
  },
  {
   "slug": "galaxy-a57-black-friday",
@@ -164,7 +213,10 @@
    "bom": 1650,
    "otimo": 1500,
    "caro": 1800
-  }
+  },
+  "publicar": "2026-11-21T07:00",
+  "tipo": "ocasiao",
+  "teaser": true
  },
  {
   "slug": "iphone-16-black-friday",
@@ -181,7 +233,11 @@
    "bom": 4300,
    "otimo": 3900,
    "caro": 4700
-  }
+  },
+  "publicar": "2026-11-20T07:00",
+  "tipo": "comparativo",
+  "vs": "iphone-17",
+  "teaser": true
  },
  {
   "slug": "galaxy-s26-ultra-black-friday",
@@ -198,7 +254,10 @@
    "bom": 6200,
    "otimo": 5800,
    "caro": 7000
-  }
+  },
+  "publicar": "2026-11-19T07:00",
+  "tipo": "ocasiao",
+  "teaser": true
  },
  {
   "slug": "moto-g86-black-friday",
@@ -215,6 +274,37 @@
    "bom": 1500,
    "otimo": 1400,
    "caro": 1700
+  },
+  "publicar": "2026-11-18T09:30",
+  "tipo": "ocasiao",
+  "secoes": {
+   "abertura": "Se você está procurando um celular bom de verdade sem passar de R$ 2 mil, o Moto G86 provavelmente já apareceu na sua busca. Ele foi lançado em maio de 2025 por R$ 2.499 e já chegou a ser vendido por cerca de R$ 1.330. Na nossa pesquisa de 17/11, estava entre R$ 1.891 e R$ 1.999 nas grandes lojas, ou seja, longe do melhor preço. A Black Friday é a chance de ele voltar para perto disso. Abaixo, explicamos para quem ele faz sentido e quanto vale pagar.",
+   "oferece": [
+    [
+     "Tela",
+     "A tela pOLED de 6,67 polegadas com 120 Hz é um dos pontos altos. A rolagem do Instagram e do TikTok fica lisinha, as cores são vivas e o tamanho é ótimo para ver série no ônibus ou deitado no sofá. Para quem passa o dia no celular, é uma tela que não deixa nada a desejar para aparelhos bem mais caros."
+    ],
+    [
+     "Desempenho",
+     "O MediaTek Dimensity 7300 dá conta do dia a dia sem engasgar: WhatsApp, banco, redes sociais, Waze e streaming ao mesmo tempo. Free Fire e jogos leves rodam bem. Jogos pesados até abrem, mas com os gráficos no mínimo. Se você é gamer, ele não é a melhor escolha nessa faixa."
+    ],
+    [
+     "Câmeras",
+     "A câmera principal de 50 MP tem estabilização, o que ajuda a foto não sair tremida quando a mão balança. De dia, ela faz fotos bonitas da família no churrasco, do pet e do prato do restaurante. À noite ou com gente se mexendo, perde detalhe. A ultrawide de 8 MP é simples: serve para caber todo mundo na foto do grupo, mas não espere a mesma qualidade. Ele grava em 4K, o que basta para stories e reels."
+    ],
+    [
+     "Bateria",
+     "São 5.200 mAh, o suficiente para um dia inteiro de redes, câmera e GPS. Quem usa o celular de forma mais leve chega à noite com folga. A carga de 30 W não está entre as mais rápidas: deixar na tomada enquanto toma banho e se arruma ajuda, mas o ideal é carregar à noite."
+    ],
+    [
+     "Resistência",
+     "Esse é o grande diferencial dele na faixa de preço: tem proteção IP68 e IP69, então aguenta chuva, mergulho na piscina e até jato de água. Para quem leva o celular para a beira da piscina no churrasco de família, para a praia ou trabalha na rua, como entregador ou motoboy, é muita tranquilidade. Depois do mar, só vale passar uma água doce. E com 185 gramas e 7,8 mm, ele é leve e fino para a categoria."
+    ]
+   ],
+   "preco": "Ele chegou ao Brasil por R$ 2.499. Na nossa pesquisa de 17/11, o menor preço estava no Mercado Livre (R$ 1.891), seguido da Amazon (R$ 1.919) e da Magalu (R$ 1.999). O menor preço que já registramos foi R$ 1.334. Por isso, para a gente, acima de R$ 1.700 ele ainda está caro.",
+   "atualizacoes": "Ele saiu de fábrica com Android 15, e a Motorola promete 2 atualizações do sistema (até o Android 17) e 4 anos de atualizações de segurança. Na prática, as novidades do Android param de chegar por volta de 2027, mas ele segue protegido contra golpes e vírus até 2029. Se você troca de celular a cada 2 ou 3 anos, isso não pesa. Se você é do tipo que fica 5 anos com o mesmo aparelho, o Galaxy A57 promete bem mais tempo de atualização na mesma faixa de preço.",
+   "para_quem": "Ele combina com quem quer um celular resistente e bonito para o dia a dia, usa muito a câmera e as redes sociais, passa o dia na rua e não quer gastar mais de R$ 1.500. Não combina com quem joga jogos pesados nem com quem quer ficar muitos anos com o mesmo aparelho.",
+   "veredito": "O Moto G86 é um dos intermediários mais completos para o dia a dia: tela bonita e fluida, bateria para o dia inteiro e a melhor proteção contra água da faixa. Se você usa o celular na rua, na praia ou na beira da piscina, tira foto da família e do pet e não joga pesado, ele entrega mais do que custa. Se você joga muito, vale olhar um modelo com processador mais forte. Se pretende ficar 5 anos com o aparelho, o Galaxy A57 dura mais em atualizações. Nossa indicação: na Black Friday, ele vale a compra abaixo de R$ 1.500 na versão de 256 GB. Acima de R$ 1.800, como estava em 17/11, vale esperar."
   }
  }
 ]
