@@ -347,7 +347,7 @@ function precoChartHTML(p){
       <line x1="${pl}" x2="${W-pr}" y1="${H-pb}" y2="${H-pb}" class="axis"/>
       <path d="${area}" fill="url(#pc-g)"/><path d="${line}" class="ln"/>${dots}
     </svg>
-    <small>${parcial?"O histórico completo, com cada subida e queda desde o lançamento, ainda está sendo levantado. Por enquanto o gráfico liga o preço de lançamento ao preço médio de hoje.":"Cada ponto é o preço médio das ofertas numa pesquisa. Em destaque, o maior e o menor preço do período."}</small>
+    <small>${parcial?"O histórico completo, com cada subida e queda desde o lançamento, ainda está sendo levantado. Por enquanto o gráfico liga o preço de lançamento ao preço médio de hoje.":(p.historicoFonte?`Valores aproximados: os pontos mensais são o menor preço do dia registrado no ${esc(p.historicoFonte)} (sem Amazon), e o último é a média das três ofertas que pesquisamos. Em destaque, o maior e o menor preço do período.`:"Cada ponto é o preço médio das ofertas numa pesquisa. Em destaque, o maior e o menor preço do período.")}</small>
   </figure>`;
 }
 

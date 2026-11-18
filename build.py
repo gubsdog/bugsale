@@ -53,6 +53,7 @@ for c in celulares:
     if lista:
         q['ofertas'] = dict(pesquisa=o.get('pesquisa',''), lista=sorted(lista, key=lambda x: x['preco']))
     if c.get('historico'): q['historico'] = c['historico']   # [{"mes": "2026-03", "preco": 3299}, ...]
+    if c.get('historicoFonte'): q['historicoFonte'] = c['historicoFonte']
     if c.get('galeria'): q['galeria'] = c['galeria']         # [{"src": "img/galeria/x.webp", "legenda": "...", "credito": "..."}]
     phones[c['id']] = q
 for a in artigos: a.setdefault('slug', a['celular'])
