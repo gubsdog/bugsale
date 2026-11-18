@@ -213,12 +213,12 @@ function lockedCardHTML(a){
   const p = P(a.phone), q = quandoLanca(a.pub);
   const prev = (MQ_DATA.preview && !a.chamada) ? `<a class="prev-link" href="${artURL(a)}">Abrir prévia (só no preview)</a>` : "";
   return `<div class="card blurred locked ${vcls(p)}" role="group" aria-label="${esc(a.titulo)}: será lançado ${q}" tabindex="0">${blurBG(p)}
-    <div class="thumb ${vcls(p)}">${visual(p, true)}</div>
+    <div class="thumb ${vcls(p)}">${visual(p, true)}${prev}</div>
     <span class="card-blur" aria-hidden="true"></span>
     <div class="card-body">
       ${kicker(a)}
       <h3>${esc(a.titulo)}</h3>
-      <span class="read-chip lock-chip">Será lançado ${q}</span>${prev}
+      <span class="read-chip lock-chip">Será lançado ${q}</span>
     </div>
   </div>`;
 }
