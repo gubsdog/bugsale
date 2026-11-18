@@ -26,6 +26,7 @@ const dataHora = iso => { if(!iso) return ""; const [d,t] = iso.split("T"); cons
 function quandoLanca(pub){
   const agora = new Date(), alvo = new Date(pub + ":00-03:00");
   const dia = x => x.toLocaleDateString("pt-BR",{timeZone:"America/Sao_Paulo"});
+  if(alvo < agora && dia(alvo)!==dia(agora)) return "em breve";
   if(dia(alvo)===dia(agora)) return "hoje";
   if(dia(alvo)===dia(new Date(agora.getTime()+864e5))) return "amanhã";
   const [y,m,d] = pub.slice(0,10).split("-"); return `em ${d}/${m}`;
@@ -210,7 +211,7 @@ function cardHTML(a){
 /* card de artigo agendado (lançamento): preto e branco, sem link; o toque faz o chip da data brilhar */
 function lockedCardHTML(a){
   const p = P(a.phone), q = quandoLanca(a.pub);
-  const prev = MQ_DATA.preview ? `<a class="prev-link" href="${artURL(a)}">Abrir prévia (só no preview)</a>` : "";
+  const prev = (MQ_DATA.preview && !a.chamada) ? `<a class="prev-link" href="${artURL(a)}">Abrir prévia (só no preview)</a>` : "";
   return `<div class="card blurred locked ${vcls(p)}" role="group" aria-label="${esc(a.titulo)}: será lançado ${q}" tabindex="0">${blurBG(p)}
     <div class="thumb ${vcls(p)}">${visual(p, true)}</div>
     <span class="card-blur" aria-hidden="true"></span>
@@ -264,12 +265,15 @@ function renderArticles(brand){
     html += `<header class="brand-head"><div><span class="kicker">Celulares</span><h1>${label}</h1></div></header>
       <div class="models" style="margin-top:16px"><a href="${pg}" class="${modelo?"":"on"}">Todos</a>${ids.map(id=>`<a href="${pg}?modelo=${id}" class="${id===modelo?"on":""}">${esc(P(id).nome)}</a>`).join("")}</div>`;
     if(modelo && P(modelo)){
-      html += `<div class="model-bar"><span>${arts.length ? `${arts.length} ${arts.length>1?"artigos":"artigo"} sobre o ${esc(P(modelo).nome)}` : `Ainda não temos artigo sobre o ${esc(P(modelo).nome)}. Veja a ficha e o preço no comparador.`}</span><button class="btn" type="button" data-compare="${modelo}">${ICO.cmp} Comparar o ${esc(P(modelo).nome)}</button></div>`;
+      if(!arts.length) html += `<div class="model-bar"><span>Ainda não temos artigo sobre o ${esc(P(modelo).nome)}. Veja a ficha e o preço no comparador.</span><button class="btn" type="button" data-compare="${modelo}">${ICO.cmp} Comparar o ${esc(P(modelo).nome)}</button></div>`;
     }
   }
-  if(first) html += heroHTML(first);
-  const cards = recent.map(cardHTML).concat(teasers.map(lockedCardHTML));
-  if(cards.length) html += `<div class="section-title" id="mais"><h2>Mais recentes</h2></div><div class="grid4 swipe">${cards.join("")}</div>`;
+  const cardArts = recent.concat(teasers);
+  const cards = cardArts.map(a => a.locked ? lockedCardHTML(a) : cardHTML(a));
+  /* computador: destaque + os 3 próximos em mosaico; no celular o mosaico some e tudo vai para "Mais recentes" */
+  const lateral = !brand ? cards.slice(0,3) : [];
+  if(first) html += lateral.length ? `<section class="mosaic">${heroHTML(first)}<div class="mosaic-side">${lateral.join("")}</div></section>` : heroHTML(first);
+  if(cards.length) html += `<div class="section-title" id="mais"><h2>Mais recentes</h2></div><div class="grid4 swipe${lateral.length?" has-side":""}">${cards.map((c,i)=> i<lateral.length ? c.replace('class="card ','class="card in-side ') : c).join("")}</div>`;
   const allIds = Object.keys(MQ_DATA.phones);
   if(older.length){
     html += `<div class="section-title"><h2>Linha do tempo</h2></div>
@@ -299,14 +303,14 @@ const ICO_WA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 const ICO_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
 
 /* versão curta das ofertas, para o fim do artigo: só os botões com o nome da loja */
-function ofertaMiniHTML(p){
+function ofertaMiniHTML(p, titulo, cls){
   const lista = (p.ofertas && p.ofertas.lista) || [];
   const btns = [0,1,2].map(i=>{
     const x = lista[i];
     return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span>${esc(x.loja)}</span><b>${brl(x.preco)}</b><i aria-hidden="true">↗</i></a>`
              : `<span class="om-btn vazio" aria-disabled="true"><span>Oferta ${i+1}</span><b>em breve</b></span>`;
   }).join("");
-  return `<section class="ofertas-mini" aria-label="Onde comprar"><div class="om-head"><b>Onde comprar o ${esc(p.nome)}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
+  return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
 }
 
 /* histórico de preço: cada ponto é uma pesquisa datada (p.historico = [{data:"2026-04-29", preco:12999}, ...]).
@@ -520,7 +524,9 @@ function renderArticle(){
         <div class="meta"><span class="avatar">${LOGO_SQ}</span><span class="who"><b>Equipe Bugsale</b><span class="sep" aria-hidden="true">·</span><time datetime="${a.data}">${dataBR(a.data)}</time></span></div>
         <div class="share"><a class="ico-btn wa" href="https://wa.me/?text=${shareText}%20${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">${ICO_WA}</a><button type="button" class="ico-btn" id="copyLink" aria-label="Copiar link" title="Copiar link">${ICO_LINK}</button></div>
       </div>
+      <figure class="cover cover-side" aria-hidden="true"><div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div></figure>
     </div>
+    ${ofertaMiniHTML(p, "Melhores ofertas encontradas", "om-topo")}
     <figure class="cover">
       <div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
         <figcaption>${p.foto ? `${esc(p.full)} no dia a dia. ${esc(p.foto.credito)}.` : `${esc(p.full)}. Imagem do aparelho: divulgação (via GSMArena).`}</figcaption>
@@ -539,7 +545,7 @@ function renderArticle(){
       ${personasHTML(a.phone)}
       <blockquote class="verdict"><span class="kicker">Veredito Bugsale</span><p>${esc(b[2])}</p></blockquote>
       ${ofertaMiniHTML(p)}
-      <div class="cta-compare"><div><b>Compare com outros celulares</b><span>Coloque o ${esc(p.nome)} lado a lado com até dois modelos.</span></div><button class="btn primary" type="button" data-compare="${a.phone}">Abrir no comparador →</button></div>
+      <div class="cta-compare"><div><b>Compare com outros celulares</b><span>Coloque o ${esc(p.nome)} lado a lado com outro modelo.</span></div><button class="btn primary" type="button" data-compare="${a.phone}">Abrir no comparador →</button></div>
       <div class="tags"><a href="${brandPage||R+"index.html"}">${esc(p.marcaMenu)}</a><span>${esc(a.cat)}</span><span>Celulares</span></div>
       <p class="note">${notaFontes(p)}</p>
     </div>
@@ -685,12 +691,28 @@ function renderRanking(){
   reveal(main);
 }
 
+/* "Role para ver mais": rolagem suave até "Mais recentes" */
+document.addEventListener("click", e=>{
+  const b = e.target.closest(".scroll-btn");
+  if(!b) return;
+  const alvo = document.getElementById("mais");
+  if(!alvo) return;
+  e.preventDefault();
+  const off = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+  const ini = window.scrollY, fim = alvo.getBoundingClientRect().top + ini - off - 8;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){ window.scrollTo(0, fim); return; }
+  const dur = Math.min(1200, Math.max(700, Math.abs(fim-ini)*0.9)), t0 = performance.now();
+  const ease = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;   /* acelera e desacelera devagar */
+  const passo = now => { const t = Math.min(1,(now-t0)/dur); window.scrollTo(0, ini+(fim-ini)*ease(t)); if(t<1) requestAnimationFrame(passo); };
+  requestAnimationFrame(passo);
+});
+
 /* abre o comparador já com o celular escolhido */
 document.addEventListener("click", e=>{
   const t = e.target.closest("[data-compare]");
   if(!t) return;
   e.preventDefault();
-  try{ localStorage.setItem("cmp-sel2", JSON.stringify([t.dataset.compare, null, null])); }catch(err){}
+  try{ localStorage.setItem("cmp-sel2", JSON.stringify([t.dataset.compare, null])); }catch(err){}
   location.href = R+"comparador.html";
 });
 

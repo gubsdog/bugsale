@@ -1179,3 +1179,54 @@ blockquote.verdict p{margin-bottom:8px}
 .fila-prev b{color:#E9C978;margin-right:8px}
 .section-title small{font-size:13px;font-weight:500;color:rgba(244,244,241,.5)}
 @media (max-width:760px){ .drops li > a,.drops li > .dr-nolink{grid-template-columns:56px minmax(0,1fr) auto;gap:12px} .drops .dr-img{width:56px;height:72px} .drops .dr-img img{height:64px !important;max-width:52px} }
+
+/* ================= tela inicial no computador: mosaico (destaque + 3 artigos ao lado) ================= */
+.mosaic-side{display:none}
+@media (min-width:761px){
+  .mosaic{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.03fr);gap:24px;margin-top:32px;align-items:start}
+  .mosaic .hero.feature.v3{height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:1.17/1;width:100%;align-self:start;margin:0 !important}
+  .mosaic .hero.v3 .art{width:100% !important;-webkit-mask-image:none !important;mask-image:none !important}
+  .mosaic .hero.v3 .art.is-studio{place-items:start center !important;padding-top:5% !important}
+  .mosaic .hero.v3 .art.is-studio img.cut{height:56% !important}
+  .mosaic .hero.v3 .watermark{display:none !important}
+  .mosaic .hero.v3 .hero-blur{-webkit-mask-image:linear-gradient(to top,#000 30%,rgba(0,0,0,.6) 44%,transparent 60%) !important;mask-image:linear-gradient(to top,#000 30%,rgba(0,0,0,.6) 44%,transparent 60%) !important}
+  .mosaic .hero.v3 .hero-blur::after{background:linear-gradient(to top,rgba(10,10,12,.72) 0%,rgba(10,10,12,.3) 40%,transparent 65%) !important}
+  .mosaic .hero.v3 .feature-body{left:0 !important;right:0 !important;top:auto !important;bottom:0;width:100% !important;padding:0 28px 28px !important;display:block !important}
+  .mosaic .hero.v3 .feature-body h1{font-size:clamp(26px,2.5vw,34px) !important;margin:6px 0 8px}
+  .mosaic .hero.v3 .feature-body .dek{font-size:15px !important;margin:0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;max-width:60ch}
+  .mosaic .hero.v3 .actions{display:none}
+  .mosaic-side{display:grid;grid-template-rows:repeat(3,1fr);gap:16px;min-height:0;align-self:stretch;contain:size}
+  .mosaic-side .card{display:grid !important;grid-template-columns:38% 1fr;align-items:center;min-height:0;margin:0;padding:0 !important;overflow:hidden;opacity:1 !important;transform:none !important}
+  .mosaic-side .card .thumb{align-self:stretch;height:auto !important;min-height:0;aspect-ratio:auto !important;margin:0 !important;border-radius:var(--r-lg) 0 0 var(--r-lg) !important;
+    -webkit-mask-image:linear-gradient(90deg,#000 62%,transparent) !important;mask-image:linear-gradient(90deg,#000 62%,transparent) !important}
+  .mosaic-side .card .thumb img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .mosaic-side .card .thumb img.cut{height:80% !important;margin:0 !important}
+  .mosaic-side .card .thumb .chip{top:8px;bottom:auto}
+  .mosaic-side .card .thumb .watermark,.mosaic-side .card .card-blur{display:none}
+  .mosaic-side .card .card-body{margin:0 !important;padding:12px 20px 12px 8px !important}
+  .mosaic-side .card h3{font-size:17px !important;line-height:1.22;margin:6px 0 0}
+  .mosaic-side .card .lock-chip{margin-top:10px}
+  .mosaic-side .prev-link{display:none}
+  /* os 3 do mosaico não se repetem em "Mais recentes" */
+  .grid4.has-side .card.in-side{display:none !important}
+  /* sem botão "Ler artigo": o card inteiro é o link; ao passar o mouse, escurece e a borda fica dourada */
+  .mosaic .hero.v3, .card.blurred{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);transition:box-shadow .25s ease, filter .25s ease}
+  .card:not(.locked) .read-chip{display:none}
+  .mosaic .hero.v3:hover, .card.blurred:not(.locked):hover{box-shadow:inset 0 0 0 2px #D4AF5A;filter:brightness(.82)}
+  .mosaic .hero.v3:hover h1, .card.blurred:not(.locked):hover h3{color:#F4F4F1 !important}
+}
+
+/* ================= artigo no computador: texto à esquerda, capa à direita na mesma altura, ofertas na horizontal ================= */
+.post-head .cover-side, .ofertas-mini.om-topo{display:none}
+@media (min-width:901px){
+  .post-head{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);column-gap:40px;grid-template-rows:auto auto auto auto}
+  .post-head .head-ofertas{display:none !important}
+  .post > .cover:not(.cover-side){display:none}
+  .post-head .cover-side{display:block;grid-column:2;grid-row:1 / span 4;align-self:stretch;margin:0;position:relative;min-height:300px}
+  .post-head .cover-side .art{position:absolute;inset:0;aspect-ratio:auto !important;height:100%;border-radius:var(--r-xl) !important}
+  .post-head .cover-side .art.is-studio img.cut{height:78% !important;margin:0 !important}
+  .post-head .cover-side .art.is-studio{place-items:center !important}
+  .post-head .cover-side .watermark{display:none}
+  .post-head>.kicker{align-self:start}
+  .ofertas-mini.om-topo{display:block;margin:32px 0 8px}
+}

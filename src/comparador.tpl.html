@@ -29,7 +29,7 @@
   .hero p{margin:8px 0 0;color:#A8A8B3;font-size:15px}
   main{max-width:1080px;margin:-44px auto 0;padding:0 16px 40px}
 
-  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .slots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .slot{background:var(--card);border:1px dashed var(--dash);border-radius:16px;padding:16px;display:flex;flex-direction:column;align-items:center;min-height:400px;position:relative;box-shadow:0 6px 24px rgba(11,11,13,.08)}
   .slot.filled{border-style:solid;border-color:var(--line)}
   .slot-label{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
@@ -155,7 +155,7 @@
 </div></div>
 <section class="hero"><div class="hero-in">
   <h1>Compare celulares <em>lado a lado</em></h1>
-  <p>Escolha a marca e o modelo em até 3 espaços e veja ficha técnica, preço de lançamento e quanto custam hoje.</p>
+  <p>Escolha a marca e o modelo de 2 celulares e veja ficha técnica, preço de lançamento e quanto custam hoje.</p>
 </div></section>
 
 <main>
@@ -217,10 +217,10 @@ const NUM = {updOS:"updOSN",updSeg:"updSegN",atual:"atualN",minimo:"minimoN",pre
 const FEATURE = new Set(["telaExt","zoom"]);
 const NA_TEXT = {preco:"Sem preço oficial no Brasil", cores:"—"};
 
-const MAX = 3;
-let selected = [null,null,null];
-try{ const s = JSON.parse(localStorage.getItem("cmp-sel2")); if(Array.isArray(s)&&s.length===3) selected = s.map(id=>PHONES.some(p=>p.id===id)?id:null); }catch(e){}
-if(!selected.some(Boolean)) selected = ["razr-70-ultra","edge-70-pro",null];   /* começa com os dois modelos de teste */
+const MAX = 2;   /* dois aparelhos por vez, no computador e no celular */
+let selected = [null,null];
+try{ const s = JSON.parse(localStorage.getItem("cmp-sel2")); if(Array.isArray(s)&&s.length>=2) selected = s.slice(0,MAX).map(id=>PHONES.some(p=>p.id===id)?id:null); }catch(e){}
+if(!selected.some(Boolean)) selected = ["razr-70-ultra","edge-70-pro"];   /* começa com os dois modelos de teste */
 const byId = id => PHONES.find(p=>p.id===id);
 let brandOf = selected.map(id => id ? byId(id).marca : "");
 

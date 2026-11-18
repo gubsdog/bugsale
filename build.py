@@ -69,10 +69,11 @@ AGORA = datetime.datetime.now(BRT).strftime('%Y-%m-%dT%H:%M')
 for a in artigos:
     a.setdefault('publicar', a['data'] + 'T07:00')
     a['data'] = a['publicar'][:10]
-publicados = [a for a in artigos if a.get('status') != 'rascunho' and a['publicar'] <= AGORA]
-bloqueados = [a for a in artigos if a.get('status') != 'rascunho' and a['publicar'] > AGORA and a.get('teaser')]
+pronto = lambda a: a.get('pronto', True)   # "pronto": false = só o card de chamada; nunca publica sozinho
+publicados = [a for a in artigos if a.get('status') != 'rascunho' and a['publicar'] <= AGORA and pronto(a)]
+bloqueados = [a for a in artigos if a.get('status') != 'rascunho' and (a['publicar'] > AGORA or not pronto(a)) and a.get('teaser')]
 # na pré-visualização do Claude, os agendados aparecem bloqueados mas com a página pronta para revisão
-agendados_preview = [a for a in artigos if a.get('status') != 'rascunho' and a['publicar'] > AGORA] if PREVIEW else []
+agendados_preview = [a for a in artigos if a.get('status') != 'rascunho' and a['publicar'] > AGORA and pronto(a)] if PREVIEW else []
 paginas = publicados + agendados_preview
 
 def art_json(a, locked=False):
@@ -82,6 +83,7 @@ def art_json(a, locked=False):
         if a.get(k): d[k] = a[k]
     if locked: d['locked'] = True
     if a.get('teaser'): d['teaser'] = True
+    if not pronto(a): d['chamada'] = True   # card de chamada: ainda sem texto
     return d
 arts = [art_json(a) for a in publicados] + [art_json(a, True) for a in bloqueados]
 arts += [art_json(a, True) | {'previewOnly': True} for a in agendados_preview if a not in bloqueados]

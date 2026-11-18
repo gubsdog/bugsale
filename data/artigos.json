@@ -101,14 +101,18 @@
  },
  {
   "celular": "moto-g-max",
-  "data": "2026-11-10",
-  "categoria": "Vale a pena?",
+  "data": "2026-11-23",
+  "categoria": "Review",
   "titulo": "Moto G Max: câmera de 200 MP por menos de R$ 2 mil",
   "resumo": "A ficha impressiona, mas a Motorola só promete 3 anos de segurança e não diz quantas versões do Android ele recebe.",
   "chamada": "Câmera de 200 MP, tela pOLED de 6,8 polegadas e resistência IP69. No papel, o Moto G Max parece um topo de linha. O preço diz outra coisa: menos de R$ 2 mil.",
   "para_quem": "É para quem quer tela grande e câmera com muitos detalhes gastando pouco, e troca de celular a cada dois ou três anos.",
   "veredito": "A ficha é ótima pelo preço, mas o processador é de entrada e a Motorola só garante 3 anos de segurança. É um bom aparelho para pouco tempo de uso.",
-  "status": "rascunho"
+  "slug": "moto-g-max-review",
+  "publicar": "2026-11-23T07:00",
+  "tipo": "review",
+  "teaser": true,
+  "pronto": false
  },
  {
   "celular": "galaxy-s26",
@@ -134,14 +138,18 @@
  },
  {
   "celular": "iphone-15",
-  "data": "2026-11-07",
+  "data": "2026-11-25",
   "categoria": "Vale a pena?",
   "titulo": "iPhone 15 ainda vale a pena no fim de 2026?",
   "resumo": "Por cerca de R$ 3.844, é o iPhone mais barato da nossa lista. A tela continua em 60 Hz.",
   "chamada": "Lançado em 2023, o iPhone 15 é hoje o iPhone mais barato da nossa lista. Ele ainda dá conta? E por quanto tempo vai receber atualizações?",
   "para_quem": "É para quem quer o sistema da Apple pagando o mínimo possível e não liga para tela de 60 Hz.",
   "veredito": "Ainda é um bom iPhone, mas a tela de 60 Hz pesa contra. Se o iPhone 16 aparecer por pouco mais, ele compensa mais. Abaixo de R$ 3.500, o 15 vira uma boa compra.",
-  "status": "rascunho"
+  "slug": "iphone-15-vale-a-pena-2026",
+  "publicar": "2026-11-25T07:00",
+  "tipo": "vale",
+  "teaser": true,
+  "pronto": false
  },
  {
   "celular": "moto-g86",
@@ -189,14 +197,18 @@
  },
  {
   "celular": "galaxy-a07",
-  "data": "2026-11-02",
+  "data": "2026-11-26",
   "categoria": "Vale a pena?",
   "titulo": "Galaxy A07 4G: o celular mais vendido do Brasil vale o preço?",
   "resumo": "Custa cerca de R$ 753, tem 6 anos de atualização e tela LCD de 90 Hz.",
   "chamada": "O Galaxy A07 4G foi o celular mais vendido do Brasil no primeiro semestre de 2026. Custa cerca de R$ 753. Vimos se ele vale o que custa.",
   "para_quem": "É para quem quer um celular barato para o básico, como WhatsApp, redes sociais e ligações.",
   "veredito": "A tela LCD de 720p e o vídeo só em Full HD mostram que é um aparelho de entrada. O ponto forte é o suporte de 6 anos, raro nessa faixa. Abaixo de R$ 600, vira uma compra muito boa.",
-  "status": "rascunho"
+  "slug": "galaxy-a07-vale-a-pena",
+  "publicar": "2026-11-26T12:00",
+  "tipo": "vale",
+  "teaser": true,
+  "pronto": false
  },
  {
   "slug": "galaxy-a57-black-friday",
@@ -306,5 +318,67 @@
    "para_quem": "Ele combina com quem quer um celular resistente e bonito para o dia a dia, usa muito a câmera e as redes sociais, passa o dia na rua e não quer gastar mais de R$ 1.500. Não combina com quem joga jogos pesados nem com quem quer ficar muitos anos com o mesmo aparelho.",
    "veredito": "O Moto G86 é um dos intermediários mais completos para o dia a dia: tela bonita e fluida, bateria para o dia inteiro e a melhor proteção contra água da faixa. Se você usa o celular na rua, na praia ou na beira da piscina, tira foto da família e do pet e não joga pesado, ele entrega mais do que custa. Se você joga muito, vale olhar um modelo com processador mais forte. Se pretende ficar 5 anos com o aparelho, o Galaxy A57 dura mais em atualizações. Nossa indicação: na Black Friday, ele vale a compra abaixo de R$ 1.500 na versão de 256 GB. Acima de R$ 1.800, como estava em 17/11, vale esperar."
   }
+ },
+ {
+  "slug": "galaxy-s26-vs-iphone-17",
+  "celular": "galaxy-s26",
+  "vs": "iphone-17",
+  "publicar": "2026-11-24T07:00",
+  "tipo": "comparativo",
+  "categoria": "Comparativo",
+  "titulo": "Galaxy S26 ou iPhone 17: qual vale mais o seu dinheiro?",
+  "resumo": "Dois topos de linha de tamanho parecido, com preços cada vez mais próximos. Comparamos tela, câmera, bateria e tempo de atualização para dizer qual compensa.",
+  "data": "2026-11-24",
+  "teaser": true,
+  "pronto": false,
+  "chamada": "Dois topos de linha de tamanho parecido, com preços cada vez mais próximos. Comparamos tela, câmera, bateria e tempo de atualização para dizer qual compensa.",
+  "para_quem": "",
+  "veredito": ""
+ },
+ {
+  "slug": "poco-x8-pro-vs-moto-g86",
+  "celular": "poco-x8-pro",
+  "vs": "moto-g86",
+  "publicar": "2026-11-24T12:00",
+  "tipo": "comparativo",
+  "categoria": "Comparativo",
+  "titulo": "POCO X8 Pro ou Moto G86: bateria gigante ou resistência total?",
+  "resumo": "Um aposta em bateria e carregamento rápido, o outro em resistência à água e poeira. Mostramos qual combina com o seu dia a dia.",
+  "data": "2026-11-24",
+  "teaser": true,
+  "pronto": false,
+  "chamada": "Um aposta em bateria e carregamento rápido, o outro em resistência à água e poeira. Mostramos qual combina com o seu dia a dia.",
+  "para_quem": "",
+  "veredito": ""
+ },
+ {
+  "slug": "melhores-celulares-ate-1500",
+  "celular": "galaxy-a17-5g",
+  "publicar": "2026-11-26T07:00",
+  "tipo": "ocasiao",
+  "categoria": "Black Friday",
+  "titulo": "Os melhores celulares até R$ 1.500 na Black Friday",
+  "resumo": "Separamos os aparelhos que mais entregam por até R$ 1.500, com o preço que vale a pena pagar em cada um.",
+  "data": "2026-11-26",
+  "teaser": true,
+  "pronto": false,
+  "chamada": "Separamos os aparelhos que mais entregam por até R$ 1.500, com o preço que vale a pena pagar em cada um.",
+  "para_quem": "",
+  "veredito": ""
+ },
+ {
+  "slug": "melhores-negocios-black-friday",
+  "celular": "razr-70-ultra",
+  "publicar": "2026-11-27T07:00",
+  "tipo": "ocasiao",
+  "categoria": "Black Friday",
+  "titulo": "Os 5 melhores negócios de celular da Black Friday",
+  "resumo": "No dia da Black Friday, reunimos as cinco maiores quedas de preço que encontramos, conferidas com o histórico de cada aparelho.",
+  "data": "2026-11-27",
+  "teaser": true,
+  "pronto": false,
+  "chamada": "No dia da Black Friday, reunimos as cinco maiores quedas de preço que encontramos, conferidas com o histórico de cada aparelho.",
+  "para_quem": "",
+  "veredito": ""
  }
 ]
