@@ -78,3 +78,12 @@ Em `data/celulares.json`, para cada celular:
 ## Pesquisa semanal de preços
 
 Toda segunda uma tarefa agendada pesquisa o menor preço de cada modelo e acrescenta um ponto em `historico`. Ela atualiza `atualN` (preço médio de hoje) e, se for o caso, `minimoN` (menor preço já visto). Tudo vai numa branch `pesquisa-AAAA-MM-DD` com um pull request. Nada entra na `main` sem aprovação.
+
+## Tom dos textos
+
+Misture o técnico com o dia a dia. Todo número da ficha vem acompanhado do que ele significa na vida de quem compra. Exemplos:
+- "Para fotografar a família e o pet, a câmera de 50 MP dá conta do recado; para fotos mais profissionais, à noite ou com movimento, não é a melhor escolha."
+- "Com IP68, dá para usar na beira da piscina sem medo."
+- "Para quem joga jogos pesados, o processador segura os gráficos no máximo."
+
+As seções "O que ele oferece" e "Atualizações" são geradas a partir da ficha, em `textoOferece()` e `textoUpd()` no `static/js/site.js`. As notas de câmera (`CAM`) e de desempenho (`PERF`) de cada modelo ficam no mesmo arquivo. Ao cadastrar um celular novo, inclua ele nas duas tabelas.

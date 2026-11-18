@@ -356,6 +356,75 @@ function galeriaHTML(p){
   return g ? `<figure class="post-img"><img src="${R}${g.src}" alt="${esc(g.legenda||p.full)}" loading="lazy"><figcaption>${esc(g.legenda||"")}${g.credito?` ${esc(g.credito)}.`:""}</figcaption></figure>` : "";
 }
 
+
+/* ---------- texto do artigo: técnico + dia a dia ---------- */
+const PERF = {"galaxy-s26":"top","galaxy-s26-ultra":"top","iphone-16":"top","iphone-17":"top","razr-70-ultra":"top","poco-x8-pro-max":"top",
+  "iphone-15":"alto","edge-70-pro":"alto","poco-x8-pro":"alto","edge-70":"alto","galaxy-a57":"alto",
+  "moto-g86":"medio","galaxy-a17-5g":"medio","galaxy-a07":"entrada","moto-g-max":"entrada"};
+const CAM = {"galaxy-s26-ultra":"top","galaxy-s26":"top","iphone-17":"top","iphone-16":"top",
+  "edge-70-pro":"boa","galaxy-a57":"boa","iphone-15":"boa","edge-70":"boa","razr-70-ultra":"boa","moto-g-max":"200mp",
+  "galaxy-a07":"basica","galaxy-a17-5g":"basica","moto-g86":"basica","poco-x8-pro":"basica","poco-x8-pro-max":"basica"};
+function textoOferece(id, p){
+  const s = p.specs, apple = p.marca==="Apple";
+  const pol = parseFloat(String(s.tela).replace(",", ".")) || 0;
+  const mp = (String(s.camTras).match(/\d+\s*MP/)||[""])[0];
+  const out = [];
+  /* tela */
+  let t = /LCD/i.test(s.tela) && /720/.test(s.tela)
+    ? `A tela é LCD com resolução HD. Para WhatsApp, banco e vídeos no YouTube ela funciona bem, mas o texto fica menos nítido e as cores, menos vivas que numa tela AMOLED.`
+    : s.taxaN >= 120 ? `A tela de ${esc(s.taxa)} deixa a rolagem do Instagram e do TikTok bem lisinha, e as cores saltam aos olhos.`
+    : s.taxaN >= 90 ? `A tela de 90 Hz já é mais fluida que a de celulares antigos, mas não tão lisinha quanto as de 120 Hz.`
+    : `As cores e o brilho da tela são ótimos, mas ela é de 60 Hz: quem vem de um Android com 120 Hz vai notar a rolagem menos suave.`;
+  t += pol >= 6.7 ? ` Com ${String(pol).replace(".", ",")} polegadas, é ótima para ver série no ônibus ou deitado no sofá.` : pol && pol <= 6.3 ? ` Com ${String(pol).replace(".", ",")} polegadas, cabe em qualquer bolso e dá para usar com uma mão só.` : "";
+  if(s.telaExt) t += ` Fechado, a tela externa de ${esc(s.telaExt)} já resolve responder mensagem, olhar o mapa ou trocar a música sem abrir o celular.`;
+  if(s.pesoN >= 200) t += ` É pesadinho (${esc(s.peso)}): no bolso da calça, dá para sentir.`; else if(s.pesoN && s.pesoN <= 172) t += ` E é leve (${esc(s.peso)}): quase não se sente no bolso.`;
+  out.push(["Tela", t]);
+  /* desempenho */
+  const chip = esc(s.chip.replace(/\s*\(.*\)/,""));
+  out.push(["Desempenho", {
+    top: `O ${chip} está entre os processadores mais rápidos do ano. Jogos pesados rodam com os gráficos no máximo, editar vídeo no celular é tranquilo e ele deve continuar rápido por muitos anos.`,
+    alto: `O ${chip} dá conta de tudo do dia a dia sem engasgar: redes sociais, banco, vários apps abertos ao mesmo tempo. Jogos pesados também rodam, só que com os gráficos em qualidade média.`,
+    medio: `O ${chip} segura bem redes sociais, banco, vídeos e jogos leves, como Free Fire. Jogos mais pesados até abrem, mas com a qualidade gráfica reduzida.`,
+    entrada: `O ${chip} é um processador de entrada. WhatsApp, banco, YouTube e redes sociais rodam bem, mas ter muitos apps abertos ou jogar títulos pesados deixa tudo mais lento.`
+  }[PERF[id]||"medio"]]);
+  /* câmeras */
+  const zoom = s.zoom ? ` O zoom óptico de ${esc(s.zoom.replace(/\s*ópticos?/,""))} aproxima o palco do show ou o filho jogando bola do outro lado da quadra sem perder nitidez.` : "";
+  out.push(["Câmeras", {
+    top: `As câmeras estão entre as melhores do ano: fotos bonitas à noite, com gente se mexendo e com cara de profissional.${zoom} Para quem cria conteúdo, ${esc(s.video ? "ele filma " + s.video.replace(/^Até /, "em até ") : "os vídeos saem ótimos")}.`,
+    boa: `Para fotografar a família, o pet e o prato do restaurante, a câmera principal${mp?` de ${mp}`:""} dá conta do recado com sobra.${/ultrawide/i.test(s.camTras)?" A ultrawide ajuda a caber todo mundo na foto do grupo.":""}${zoom} Em lugares escuros ou com movimento rápido, ela perde para os topos de linha.`,
+    "200mp": `Os ${mp} da câmera principal rendem fotos cheias de detalhe durante o dia, boas para cortar e postar. À noite, o processador mais simples pesa e as fotos perdem qualidade.`,
+    basica: `A câmera principal${mp?` de ${mp}`:""} faz boas fotos com luz boa: família, pet, paisagem e selfie no passeio. À noite ou com gente se mexendo, as fotos perdem detalhe, então não é o celular para quem quer fotografia mais profissional.`
+  }[CAM[id]||"basica"]]);
+  /* bateria */
+  let b = apple ? `Em números, a bateria parece pequena (${esc(s.bateria)}), mas o iPhone gasta pouca energia: em uso normal, ele chega ao fim do dia.`
+    : s.bateriaN >= 6000 ? `Com ${esc(s.bateria)}, dá para passar o dia todo na rua com GPS e música ligados, e quem usa pouco consegue chegar ao segundo dia sem carregar.`
+    : s.bateriaN >= 4800 ? `A bateria de ${esc(s.bateria)} aguenta um dia inteiro de uso normal: WhatsApp, redes, fotos e um pouco de vídeo.`
+    : `A bateria de ${esc(s.bateria)} é menor que a média. Em uso leve ela dura o dia, mas quem passa horas no TikTok ou no GPS pode precisar de uma recarga no fim da tarde.`;
+  if(s.cargaN >= 65) b += ` E a carga de ${s.cargaN} W é das rápidas: o tempo de um banho na tomada já devolve boa parte da bateria.`;
+  else if(s.cargaN >= 30) b += ` A carga de ${s.cargaN} W é razoável: dá para deixar carregando enquanto se arruma para sair.`;
+  else if(s.cargaN) b += ` A carga de ${s.cargaN} W é lenta, então o melhor é carregar durante a noite.`;
+  out.push(["Bateria", b]);
+  /* resistência */
+  const r = String(s.resist);
+  let re = /IP69/.test(r) ? `Tem proteção ${esc(r.replace(/\s*\+\s*MIL.*/,""))}: aguenta chuva, mergulho na piscina e até jato de água quente. É ideal para quem usa o celular na beira da piscina, na praia ou trabalhando na rua (depois do mar, vale passar uma água doce).`
+    : /IP68/.test(r) ? `Com proteção IP68, aguenta chuva forte e um mergulho na piscina sem drama.`
+    : /IP48/.test(r) ? `A proteção IP48 aguenta chuva e até um mergulho rápido em água doce, mas não protege contra areia e poeira: cuidado na praia.`
+    : /IP5/.test(r) ? `A proteção ${esc(r)} segura respingos e uma chuva leve, mas ele não é à prova d'água: nada de levar para a piscina.` : "";
+  if(/MIL-STD/.test(r)) re += ` Ele também passou pelos testes do padrão militar MIL-STD-810H, que simulam quedas e tombos do dia a dia.`;
+  if(re) out.push(["Resistência", re]);
+  return out.map(([k,v])=>`<p><b>${k}.</b> ${v}</p>`).join("");
+}
+function textoUpd(p){
+  const s = p.specs;
+  if(p.marca==="Apple") return " Na prática, quem gosta de ficar muitos anos com o mesmo celular costuma ser bem atendido pelo iPhone.";
+  const anos = s.updOSN || s.updSegN || 0, seg = s.updSegN || 0;
+  if(!anos) return "";
+  return anos >= 6 ? ` Na prática, se você é do tipo que fica 5 ou 6 anos com o mesmo celular, ele acompanha o tempo todo.`
+    : anos >= 4 ? ` Na prática, dá para usar com tranquilidade por uns 4 anos.`
+    : seg >= 4 ? ` Na prática, as novidades do Android param de chegar em ${anos} ou ${anos+1} anos, mas ele segue protegido contra golpes e vírus por ${seg} anos.`
+    : ` Na prática, é um celular para usar 2 ou 3 anos: depois disso, ele fica sem os recursos e as proteções mais recentes.`;
+}
+
 function renderArticle(){
   const main = document.getElementById("content");
   const id = window.MQ_ARTICLE || location.hash.replace("#","");
@@ -397,12 +466,12 @@ function renderArticle(){
     </figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
-      <h2>O que ele oferece</h2>${para(oferece)}
+      <h2>O que ele oferece</h2>${textoOferece(a.phone, p)}
       <div class="ficha"><h3>Ficha técnica</h3><table>${ficha}</table></div>
       <h2>Quanto custa hoje</h2>${para(preco)}
       ${precoChartHTML(p)}
       ${alvoHTML(a, p)}
-      <h2>Atualizações</h2>${para(upd)}
+      <h2>Atualizações</h2>${para(upd + textoUpd(p))}
       ${galeriaHTML(p)}
       <h2>Para quem vale</h2>${para(esc(b[1]))}
       ${personasHTML(a.phone)}
