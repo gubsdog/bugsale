@@ -301,7 +301,8 @@ function precoChartHTML(p){
 /* régua de preço (artigos com campo "alvo"): ótimo / bom / caro */
 function alvoHTML(a, p){
   const t = a.alvo; if(!t) return "";
-  const hoje = p.atualN;
+  const menor = p.ofertas && p.ofertas.lista && p.ofertas.lista[0];
+  const hoje = menor ? menor.preco : p.atualN;
   const faixa = hoje <= t.otimo ? "otimo" : hoje <= t.bom ? "bom" : hoje >= t.caro ? "caro" : "ok";
   const nomeFaixa = {otimo:"oferta de verdade", bom:"bom preço", ok:"preço normal", caro:"caro"}[faixa];
   return `<div class="alvo">
@@ -311,7 +312,7 @@ function alvoHTML(a, p){
       <div class="al bom"><span>Bom preço</span><b>até ${brl(t.bom)}</b></div>
       <div class="al caro"><span>Espere</span><b>acima de ${brl(t.caro)}</b></div>
     </div>
-    <p class="al-hoje">Preço médio hoje: <b>≈ ${brl(hoje)}</b> · <span class="al-tag ${faixa}">${nomeFaixa}</span></p>
+    <p class="al-hoje">${menor?`Menor preço hoje: <b>${brl(hoje)}</b> (${esc(menor.loja)})`:`Preço médio hoje: <b>≈ ${brl(hoje)}</b>`} · <span class="al-tag ${faixa}">${nomeFaixa}</span></p>
   </div>`;
 }
 /* personas: para quem cada tipo de aparelho faz sentido */

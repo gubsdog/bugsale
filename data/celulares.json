@@ -140,7 +140,7 @@
     "specs": {
       "lancamento": "Mar/2026",
       "precoN": 3599,
-      "atualN": 1685,
+      "atualN": 1891,
       "minimoN": 1457,
       "tela": "6,7\" Super AMOLED Plus · 1080×2340",
       "taxaN": 120,
@@ -166,7 +166,7 @@
       "updSeg": null,
       "updSegN": null,
       "preco": "R$ 3.599",
-      "atual": "R$ 1.685",
+      "atual": "R$ 1.891",
       "minimo": "R$ 1.457",
       "taxa": "120 Hz",
       "bateria": "5.000 mAh",
@@ -179,25 +179,31 @@
       "posicao": "55% 50%"
     },
     "ofertas": {
-      "pesquisa": "",
+      "pesquisa": "2026-11-17",
       "lista": [
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Mercado Livre",
+          "preco": 1812,
+          "url": "https://meli.la/1msuZgL"
         },
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Amazon",
+          "preco": 1899,
+          "url": "https://link.amazon/B006lqJ1X"
         },
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Magalu",
+          "preco": 1962,
+          "url": "https://magazineluiza.onelink.me/589508454/0n9pppjw"
         }
       ]
-    }
+    },
+    "historico": [
+      {
+        "data": "2026-11-17",
+        "preco": 1891
+      }
+    ]
   },
   {
     "id": "galaxy-s26",
@@ -276,7 +282,7 @@
     "specs": {
       "lancamento": "Fev/2026",
       "precoN": 11499,
-      "atualN": 7016,
+      "atualN": 7332,
       "minimoN": 5999,
       "tela": "6,9\" Dynamic LTPO AMOLED 2X · 1440×3120",
       "taxaN": 120,
@@ -302,7 +308,7 @@
       "updSeg": null,
       "updSegN": null,
       "preco": "R$ 11.499",
-      "atual": "R$ 7.016",
+      "atual": "R$ 7.332",
       "minimo": "R$ 5.999",
       "taxa": "120 Hz",
       "bateria": "5.000 mAh",
@@ -315,25 +321,31 @@
       "posicao": "62% 30%"
     },
     "ofertas": {
-      "pesquisa": "",
+      "pesquisa": "2026-11-17",
       "lista": [
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Amazon",
+          "preco": 6878,
+          "url": "https://link.amazon/B0cjKUf7f"
         },
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Mercado Livre",
+          "preco": 7199,
+          "url": "https://meli.la/2hkpoJA"
         },
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Magalu",
+          "preco": 7919,
+          "url": "https://magazineluiza.onelink.me/589508454/8fxtrgnv"
         }
       ]
-    }
+    },
+    "historico": [
+      {
+        "data": "2026-11-17",
+        "preco": 7332
+      }
+    ]
   },
   {
     "id": "iphone-15",
@@ -408,7 +420,7 @@
     "specs": {
       "lancamento": "Set/2024",
       "precoN": 7799,
-      "atualN": 4684,
+      "atualN": 4763,
       "minimoN": 3597,
       "tela": "6,1\" Super Retina XDR OLED · 1179×2556",
       "taxaN": 60,
@@ -434,7 +446,7 @@
       "updSeg": "Sem número oficial",
       "updSegN": null,
       "preco": "R$ 7.799",
-      "atual": "R$ 4.684",
+      "atual": "R$ 4.763",
       "minimo": "R$ 3.597",
       "taxa": "60 Hz",
       "bateria": "3.561 mAh",
@@ -443,25 +455,31 @@
       "updResumo": "Atualizações sem número oficial"
     },
     "ofertas": {
-      "pesquisa": "",
+      "pesquisa": "2026-11-17",
       "lista": [
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Amazon",
+          "preco": 4654,
+          "url": "https://link.amazon/B06v8AA72"
         },
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Mercado Livre",
+          "preco": 4790,
+          "url": "https://meli.la/19mrBLD"
         },
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Magalu",
+          "preco": 4844,
+          "url": "https://magazineluiza.onelink.me/589508454/4uss9avf"
         }
       ]
-    }
+    },
+    "historico": [
+      {
+        "data": "2026-11-17",
+        "preco": 4763
+      }
+    ]
   },
   {
     "id": "iphone-17",
@@ -536,7 +554,7 @@
     "specs": {
       "lancamento": "Mai/2025",
       "precoN": 2499,
-      "atualN": 1700,
+      "atualN": 1936,
       "minimoN": 1334,
       "tela": "6,67\" pOLED · 1220×2712",
       "taxaN": 120,
@@ -562,7 +580,7 @@
       "updSeg": "4 anos",
       "updSegN": 4,
       "preco": "R$ 2.499",
-      "atual": "R$ 1.700",
+      "atual": "R$ 1.936",
       "minimo": "R$ 1.334",
       "taxa": "120 Hz",
       "bateria": "5.200 mAh",
@@ -571,25 +589,31 @@
       "updResumo": "2 atualizações do sistema · 4 anos de segurança"
     },
     "ofertas": {
-      "pesquisa": "",
+      "pesquisa": "2026-11-17",
       "lista": [
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Mercado Livre",
+          "preco": 1891,
+          "url": "https://meli.la/1oGw4Dn"
         },
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Amazon",
+          "preco": 1919,
+          "url": "https://link.amazon/B0aZ6NVG5"
         },
         {
-          "loja": "",
-          "preco": null,
-          "url": ""
+          "loja": "Magalu",
+          "preco": 1999,
+          "url": "https://magazineluiza.onelink.me/589508454/0tuo286b"
         }
       ]
-    }
+    },
+    "historico": [
+      {
+        "data": "2026-11-17",
+        "preco": 1936
+      }
+    ]
   },
   {
     "id": "moto-g-max",
