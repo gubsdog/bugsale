@@ -307,10 +307,11 @@ function ofertaMiniHTML(p, titulo, cls){
   const lista = (p.ofertas && p.ofertas.lista) || [];
   const btns = [0,1,2].map(i=>{
     const x = lista[i];
-    return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span>${esc(x.loja)}</span><b>${brl(x.preco)}</b><i aria-hidden="true">↗</i></a>`
-             : `<span class="om-btn vazio" aria-disabled="true"><span>Oferta ${i+1}</span><b>em breve</b></span>`;
+    const comPreco = !!titulo;   /* no topo: loja | preço + seta. No fim do artigo: só a loja | seta */
+    return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(x.loja)}</span><span class="om-dir">${comPreco?`<b>${brl(x.preco)}</b>`:""}<i aria-hidden="true">↗</i></span></a>`
+             : `<span class="om-btn vazio" aria-disabled="true"><span class="om-loja">Oferta ${i+1}</span><span class="om-dir"><b>em breve</b></span></span>`;
   }).join("");
-  return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
+  return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div>${titulo && lista.length ? `<small class="om-nota">Links de afiliado: a Bugsale pode ganhar uma comissão, sem custo extra para você. Preços sujeitos a mudança nas lojas.</small>` : ""}</section>`;
 }
 
 /* histórico de preço: cada ponto é uma pesquisa datada (p.historico = [{data:"2026-04-29", preco:12999}, ...]).

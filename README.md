@@ -87,3 +87,9 @@ Misture o técnico com o dia a dia. Todo número da ficha vem acompanhado do que
 - "Para quem joga jogos pesados, o processador segura os gráficos no máximo."
 
 As seções "O que ele oferece" e "Atualizações" são geradas a partir da ficha, em `textoOferece()` e `textoUpd()` no `static/js/site.js`. As notas de câmera (`CAM`) e de desempenho (`PERF`) de cada modelo ficam no mesmo arquivo. Ao cadastrar um celular novo, inclua ele nas duas tabelas.
+
+## Regras de publicação
+
+- **O artigo do dia vira o destaque.** O destaque da tela inicial é sempre o artigo publicado mais recente: quando um artigo agendado chega na data e hora de `publicar`, ele assume o destaque sozinho e o anterior desce para a lateral ou para "Mais recentes".
+- **Cards de chamada (`teaser: true`) são só do lançamento do site.** Com `"pronto": false`, o artigo ainda não tem texto: aparece só o card "Será lançado em dd/mm" (ou "em breve", se a data passar) e **nunca é publicado sozinho**. Quando o texto estiver escrito e aprovado, troque para `"pronto": true` (ou apague o campo).
+- O site é gerado de novo às 7h02 e 12h02 (Brasília) pelo GitHub Actions, para liberar os agendados.

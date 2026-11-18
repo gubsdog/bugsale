@@ -1230,3 +1230,30 @@ blockquote.verdict p{margin-bottom:8px}
   .post-head>.kicker{align-self:start}
   .ofertas-mini.om-topo{display:block;margin:32px 0 8px}
 }
+
+/* ================= grade de 8: raios, cards e botões de oferta ================= */
+:root{--r-xl:24px; --r-lg:16px; --r-md:8px}
+/* cards de artigo: conteúdo afastado das bordas, espaçamentos de 8 em 8 */
+.card{padding:8px !important}
+.card.blurred > .card-body{padding:0 16px 16px !important;gap:8px !important}
+.card.blurred .card-body h3{margin:0 0 8px !important;font-size:18px}
+.card .kicker{font-size:11px;letter-spacing:.04em}
+.card.blurred .read-chip,.card.blurred .lock-chip{height:32px !important;padding:0 16px !important;font-size:12px !important;margin-top:8px}
+.card .prev-link{font-size:11px;margin-top:8px}
+@media (min-width:761px){
+  .mosaic-side .card{grid-template-columns:40% 1fr}
+  .mosaic-side .card .card-body{align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:8px !important;padding:16px 24px 16px 16px !important;margin:0 !important}
+  .mosaic-side .card h3{font-size:16px !important;line-height:1.25;margin:0 !important}
+  .mosaic-side .card .lock-chip{margin-top:8px !important;align-self:flex-start}
+  .mosaic-side .card .thumb{border-radius:var(--r-lg) !important}
+}
+/* botões de oferta: loja à esquerda; preço e seta juntos à direita */
+.om-btn{padding:0 24px;gap:16px}
+.om-btn .om-loja{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.om-btn .om-dir{display:inline-flex;align-items:center;gap:8px;flex:none}
+/* celular: a barra do topo com preço substitui a lista de ofertas antiga */
+@media (max-width:900px){
+  .post-head .head-ofertas{display:none !important}
+  .ofertas-mini.om-topo{display:block;margin:24px 0 8px;order:7}
+}
+.om-nota{display:block;margin-top:16px;font-size:12px;color:rgba(244,244,241,.55)}
