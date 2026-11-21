@@ -1605,3 +1605,4 @@ html.v2[data-theme="light"]{--v-hdr:#EBEBEB}
   .h-ofertas > .grupo2 .grupo2-img{aspect-ratio:auto;flex:1 1 auto;min-height:96px}
   .h-ofertas > .grupo2 .grupo2-txt{flex:none;justify-content:flex-start;padding-bottom:32px}
 }
+.h2 > .o2-nota{display:block;margin-top:16px}

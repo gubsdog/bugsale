@@ -344,10 +344,11 @@ function renderHome(){
     <section class="h-top" aria-label="Destaques">${first ? heroHTML2(first) : ""}<div class="h-lados">${lado.map(ladoHTML2).join("")}</div></section>
     ${recentes.length ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${recentes.map(recenteHTML2).join("")}</div>` : ""}
     <h2 class="h-sec">Melhores ofertas</h2>
-    <section class="h-ofertas"><div class="o2-lista">${ofs.map(ofertaLinha2).join("")}<small class="o2-nota">Preços pesquisados${ofs[0] && ofs[0].p.ofertas.pesquisa ? ` em ${dataHora(ofs[0].p.ofertas.pesquisa)}` : ""}.</small></div>
+    <section class="h-ofertas"><div class="o2-lista">${ofs.map(ofertaLinha2).join("")}</div>
       <a class="grupo2" href="${GRUPO}" target="_blank" rel="noopener"><span class="grupo2-img"><img src="${R}img/grupo-ofertas.webp" alt="Celulares de várias marcas lado a lado" loading="lazy"></span>
         <span class="grupo2-txt"><span class="grupo2-logo">${LOCKUP}</span><b>Entre no nosso grupo de ofertas de celulares</b><span>Ofertas diárias, conferidas com o histórico de preço. Só promoção que vale o seu Pix.</span><span class="grupo2-btn">Entrar no grupo</span></span></a>
-    </section>`;
+    </section>
+    <small class="o2-nota">Preços pesquisados${ofs[0] && ofs[0].p.ofertas.pesquisa ? ` em ${dataHora(ofs[0].p.ofertas.pesquisa)}` : ""}.</small>`;
   main.querySelectorAll(".locked").forEach(c=>{
     const go = ()=>{ const ch = c.querySelector(".chip2"); if(!ch) return; ch.classList.remove("shine"); void ch.offsetWidth; ch.classList.add("shine"); };
     c.addEventListener("click", e=>{ if(!e.target.closest(".prev2")) go(); });
