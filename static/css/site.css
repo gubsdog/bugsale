@@ -1572,3 +1572,27 @@ html.v2 .post-head .author{align-self:flex-start}
 .grupo2.largo .grupo2-img::after{inset:0 0 0 auto;width:40%;height:auto;background:linear-gradient(to left,#0B0B0D,rgba(11,11,13,0))}
 .grupo2.largo .grupo2-txt{margin:0;padding:32px 40px;align-items:flex-start;text-align:left}
 @media (max-width:760px){ .grupo2.largo{grid-template-columns:1fr} .grupo2.largo .grupo2-img{aspect-ratio:720/400;height:auto} .grupo2.largo .grupo2-img::after{inset:auto 0 0 0;width:auto;height:48%;background:linear-gradient(to top,#0B0B0D,rgba(11,11,13,0))} .grupo2.largo .grupo2-txt{align-items:center;text-align:center;padding:0 24px 32px} }
+/* menu: um tom um pouco mais escuro que o fundo, sem linha separando */
+:root{--v-hdr:#1A1A1A}
+html.v2[data-theme="light"]{--v-hdr:#EBEBEB}
+.hdr{border-bottom:0 !important}
+.busca{border-bottom:0}
+/* banner do comparador, com cara de anúncio */
+.h-cmp{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 320px;align-items:center;padding:0 0 0 40px;min-height:176px;background:linear-gradient(110deg,#D4AF5A 0%,#E4C77E 55%,#C9A24B 100%)}
+.h-cmp-txt{display:flex;flex-direction:column;gap:8px;padding:32px 0;align-items:flex-start}
+.h-cmp-k{font:400 12px var(--pixel);letter-spacing:.04em;text-transform:lowercase;color:#5A4413}
+.h-cmp-txt b{font:700 26px/1.15 var(--body);color:#141414}
+.h-cmp-txt > span:not(.h-cmp-k):not(.h-cmp-btn){font-size:14px;line-height:1.45;color:#3A2E12;max-width:46ch}
+.h-cmp-btn{margin-top:8px;background:#141414;color:#F2F2F2}
+.h-cmp:hover .h-cmp-btn{background:var(--v-purple);color:#fff}
+.h-cmp-art{position:relative;height:176px;align-self:stretch}
+.h-cmp-art img{position:absolute;bottom:-16px;height:180px;width:auto;filter:drop-shadow(0 16px 24px rgba(0,0,0,.28));transition:transform .4s ease}
+.h-cmp-art .c1{left:48px;transform:rotate(-10deg)}
+.h-cmp-art .c2{right:48px;transform:rotate(10deg)}
+.h-cmp:hover .h-cmp-art .c1{transform:rotate(-14deg) translateX(-8px)}
+.h-cmp:hover .h-cmp-art .c2{transform:rotate(14deg) translateX(8px)}
+.h-cmp-art .vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#141414;color:#D4AF5A;font:400 14px var(--pixel)}
+@media (max-width:760px){ .h-cmp{grid-template-columns:1fr;padding:0 24px} .h-cmp-art{display:none} }
+.h-cmp-art img{mix-blend-mode:multiply;filter:none;height:172px}
+.h-cmp-art .c1{left:8px}
+.h-cmp-art .c2{right:8px}

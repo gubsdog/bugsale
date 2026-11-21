@@ -168,7 +168,7 @@ function footer(){
           <p>Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
         <div><h5>Seções</h5>${MENU.filter(([,,k])=>k!=="home").map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
         <div><h5>Bugsale</h5><a href="${R}sobre.html">Sobre e como avaliamos</a><a href="${R}privacidade.html">Política de privacidade</a></div>
-        <div><h5>Comunidade</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="${GRUPO}" target="_blank" rel="noopener">Grupo de ofertas no WhatsApp</a></div>
+        <div><h5>Comunidade</h5><a href="https://www.instagram.com/bugsale.br/" target="_blank" rel="noopener">Instagram</a><a href="${GRUPO}" target="_blank" rel="noopener">Grupo de ofertas</a></div>
       </div>
     </div>
     <div class="ftr-fine">Preços médios e fichas técnicas atualizados semanalmente a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia. Fotos: divulgação das marcas.</div>`;
@@ -338,7 +338,9 @@ function renderHome(){
   const ofs = melhoresOfertas(3);
   main.classList.add("h2");
   main.innerHTML = `
-    <a class="h-cmp" href="${R}comparador.html"><span><b>Em dúvida entre dois celulares?</b> Compare ficha, preço e atualizações lado a lado.</span><span class="h-cmp-btn">Abrir o comparador →</span></a>
+    <a class="h-cmp" href="${R}comparador.html" aria-label="Abrir o comparador de celulares">
+      <span class="h-cmp-txt"><span class="h-cmp-k">Comparador Bugsale</span><b>Em dúvida entre dois celulares?</b><span>Coloque lado a lado ficha, preço de hoje e quanto tempo cada um recebe atualização.</span><span class="h-cmp-btn">Comparar agora →</span></span>
+      <span class="h-cmp-art" aria-hidden="true">${(()=>{ const a=P("galaxy-s26-ultra"), b=P("iphone-17"); return `<img class="c1" src="${R}${a.cut}" alt=""><span class="vs">VS</span><img class="c2" src="${R}${b.cut}" alt="">`; })()}</span></a>
     <section class="h-top" aria-label="Destaques">${first ? heroHTML2(first) : ""}<div class="h-lados">${lado.map(ladoHTML2).join("")}</div></section>
     ${recentes.length ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${recentes.map(recenteHTML2).join("")}</div>` : ""}
     <h2 class="h-sec">Melhores ofertas</h2>
