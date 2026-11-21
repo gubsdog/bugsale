@@ -36,6 +36,29 @@ def w(path, text):
     os.makedirs(os.path.dirname(full) or DIST, exist_ok=True)
     open(full, 'w', encoding='utf-8').write(text)
 
+
+# ---------- catálogo (68 modelos: ranking e comparador) ----------
+CAT = json.load(open(os.path.join(ROOT, 'data/catalogo.json'), encoding='utf-8'))
+ANTIGO = {"samsung-galaxy-a07-4g":"galaxy-a07","samsung-galaxy-a17-5g":"galaxy-a17-5g","samsung-galaxy-a57-5g":"galaxy-a57",
+  "samsung-galaxy-s26":"galaxy-s26","samsung-galaxy-s26-ultra":"galaxy-s26-ultra","apple-iphone-15":"iphone-15","apple-iphone-16":"iphone-16",
+  "apple-iphone-17":"iphone-17","motorola-moto-g86":"moto-g86","motorola-edge-70":"edge-70","motorola-edge-70-pro":"edge-70-pro",
+  "motorola-razr-70-ultra":"razr-70-ultra","xiaomi-poco-x8-pro":"poco-x8-pro","xiaomi-poco-x8-pro-max":"poco-x8-pro-max"}
+SEG = {"entrada":"entrada","intermediario_entrada":"intermediario","intermediario":"intermediario","intermediario_premium":"intermediario","topo_de_linha":"topo"}
+cat = []
+for m in CAT['modelos']:
+    e = m['especificacoes']; t = e.get('tela') or {}; cams = e.get('cameras') or {}
+    vs = m.get('variantes_por_capacidade') or []
+    br = not (any(v.get('regiao') == 'global' for v in vs) and not any(v.get('regiao') == 'BR' for v in vs))   # aviso só quando a ficha é global sem versão BR confirmada
+    dem = [d['posicao'] for d in (m.get('sinais_demanda') or []) if d.get('posicao')]
+    cat.append(dict(id=m['id'], nome=m['modelo'], marca=m['marca'], fab=m['fabricante'], seg=SEG.get(m['segmento'],'intermediario'),
+        segOrig=m['segmento'], formato=m['formato'], br=br, sistema=e.get('sistema'), upd=e.get('atualizacoes_informadas'),
+        chip=e.get('processador'), tela=dict(tec=t.get('tecnologia'), pol=t.get('diagonal_pol'), hz=t.get('frequencia_hz'), res=t.get('resolucao_px'), det=t.get('detalhes')),
+        cams=cams.get('traseiras') or [], frontal=cams.get('frontal'), video=cams.get('video_traseiro'),
+        bat=e.get('bateria_mah'), carga=e.get('recarga_com_fio_w'), semfio=e.get('recarga_sem_fio'), peso=e.get('peso_g'),
+        dim=e.get('dimensoes'), prot=e.get('protecao'), g5=e.get('rede_5g'), nfc=e.get('nfc'),
+        ram=m.get('ram_gb_opcoes') or [], armaz=sorted({v['armazenamento_gb'] for v in vs}),
+        fonte=(m.get('fontes') or {}).get('ficha_tecnica'), demanda=min(dem) if dem else None, antigo=ANTIGO.get(m['id'])))
+
 # ---------- js/data.js (usado pelas páginas) ----------
 phones = {}
 for c in celulares:
@@ -89,7 +112,7 @@ arts = [art_json(a) for a in publicados] + [art_json(a, True) for a in bloqueado
 arts += [art_json(a, True) | {'previewOnly': True} for a in agendados_preview if a not in bloqueados]
 bodies = {a['slug']: dict(abertura=a.get('chamada', ''), para_quem=a.get('para_quem', ''), veredito=a.get('veredito', ''), secoes=a.get('secoes'))
           for a in paginas}
-w('js/data.js', 'window.MQ_DATA = ' + json.dumps(dict(phones=phones, articles=arts, bodies=bodies, geradoEm=AGORA, preview=PREVIEW), ensure_ascii=False) + ';\n')
+w('js/data.js', 'window.MQ_DATA = ' + json.dumps(dict(phones=phones, articles=arts, bodies=bodies, cat=cat, geradoEm=AGORA, preview=PREVIEW), ensure_ascii=False) + ';\n')
 
 # ---------- páginas ----------
 TPL = open(os.path.join(ROOT, 'src/page.tpl.html'), encoding='utf-8').read()
@@ -143,29 +166,8 @@ for a in paginas:
          jsonld='<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>',
          index=(a in publicados))
 
-# ---------- comparador (página própria, integrada ao cabeçalho do site) ----------
-t = open(os.path.join(ROOT, 'src/comparador.tpl.html'), encoding='utf-8').read()
-a0 = t.index('<div class="topbar">'); b0 = t.index('</div></div>', a0) + len('</div></div>')
-t = t[:a0] + '<header id="site-header"></header>' + t[b0:]
-head_extra = ('<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Silkscreen&display=swap" rel="stylesheet">\n'
-              '<link rel="icon" href="img/favicon.svg" type="image/svg+xml">\n<link rel="stylesheet" href="css/site.css">\n'
-              f'<link rel="canonical" href="{SITE}comparador.html">\n'
-              '<meta name="description" content="Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço médio de hoje e promessa de atualizações.">\n'
-              '<script>document.documentElement.dataset.mode="dark";try{localStorage.removeItem("bs-mode")}catch(e){}</script>')
-t = re.sub(r'<link href="https://fonts.googleapis.com/css2\?[^"]*" rel="stylesheet">', lambda m: head_extra, t, count=1)
-t = t.replace('  bar.classList.toggle("show", show);',
-              '  bar.classList.toggle("show", show);\n  const sh = document.getElementById("site-header"); if(sh) sh.classList.toggle("hide", show);')
-t = re.sub(r'<title>.*?</title>', '<title>Comparador de celulares · Bugsale</title>', t, count=1)
-t = t.replace('<meta name="viewport" content="width=device-width, initial-scale=1">',
-              '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<meta name="theme-color" content="#0B0B0D">')
-t = t.replace('</body>', '<script>window.MQ_ROOT = "";</script>\n<script src="js/site.js"></script>\n<script>MQ.header("comparador");</script>\n</body>')
-t = (t.replace('.hero{', '.cmp-hero{').replace('.hero-in{', '.cmp-hero-in{').replace('.hero h1', '.cmp-hero h1').replace('.hero p', '.cmp-hero p')
-      .replace('<section class="hero"><div class="hero-in">', '<section class="cmp-hero"><div class="cmp-hero-in">'))
-data = [dict(c, img=f"img/{c['img']}.webp") for c in celulares]
-for d in data: d.pop('foto', None)
-t = t.replace('__PHONES__', json.dumps(data, ensure_ascii=False))
-w('comparador.html', t)
-sitemap.append(SITE + 'comparador.html')
+# ---------- comparador (visual novo, até 3 aparelhos do catálogo) ----------
+page('comparador.html', 'Comparador de celulares · Bugsale', 'Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço de hoje e promessa de atualizações.', 'comparador', 'MQ.renderComparador();')
 
 # ---------- sitemap e robots ----------
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

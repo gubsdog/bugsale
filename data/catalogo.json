@@ -1,0 +1,5158 @@
+{
+  "versao": "1.0.0-beta",
+  "data_consulta": "2026-11-21",
+  "mercado_alvo": "BR",
+  "total_modelos": 68,
+  "convencoes": {
+    "null": "Dado indisponível ou não confirmado.",
+    "regiao": "BR ou global quando confirmada para o conjunto de dados indicado. Região nula indica que a ficha pode incluir especificações internacionais.",
+    "variantes": "Capacidades documentadas, sem garantia de estoque local. Cada registro agrupa opções de RAM conhecidas para uma capacidade. Lista vazia indica combinação não confirmada. TB convertido em 1000 GB comerciais.",
+    "fontes": "Ficha técnica é a fonte padrão. Fabricante indica documentação complementar. Bateria e variantes têm fonte própria. Datas de consulta se aplicam a todos os registros.",
+    "segmento": "Classificação editorial do catálogo beta.",
+    "sinais_demanda": "A posição pertence à fonte e ao período indicados. Lista vazia significa ausência de evidência nos recortes selecionados."
+  },
+  "modelos": [
+    {
+      "id": "samsung-galaxy-a07-4g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A07 4G",
+      "segmento": "entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e One UI 7",
+        "atualizacoes_informadas": "6 anos (segurança) e 6 anos (sistema)",
+        "processador": "MediaTek Helio G99 (6nm)",
+        "gpu": "Mali-G52 MC2",
+        "tela": {
+          "tecnologia": "PLS LCD",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 90.0,
+          "resolucao_px": "1600 x 720",
+          "detalhes": null
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide) e PDAF",
+            "2 MP, f/2.4, (profundidade)"
+          ],
+          "frontal": "8 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": null
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "Não",
+        "peso_g": 184.0,
+        "peso_descricao": "184g",
+        "dimensoes": "164.4 x 77.4 x 7.6 mm",
+        "protecao": "IP54",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Não",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a07-4g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a07-4g"
+        },
+        {
+          "id": "samsung-galaxy-a07-4g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a07-4g"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a07-4g",
+        "fabricante": "https://www.samsung.com/br/smartphones/galaxy-a/galaxy-a07-black-128gb-sm-a075mzkgzto/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a07-4g"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "envios_ao_varejo",
+          "periodo": "2026-S1",
+          "fonte": "https://www.mobiletime.com.br/noticias/18/09/2026/smartphones-brasil-1s26/",
+          "posicao": 1
+        },
+        {
+          "tipo": "presenca_em_ranking_varejo",
+          "periodo": "2026-11",
+          "fonte": "https://conferidos.com/celulares-mais-vendidos/",
+          "posicao": null
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-a16-4g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A16 4G",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "One UI 6.1 e Android 14",
+        "atualizacoes_informadas": "6 anos (sistema)",
+        "processador": "MediaTek Helio G99 (6nm)",
+        "gpu": "Mali-G57 MC2",
+        "tela": {
+          "tecnologia": "Super AMOLED",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 90.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": null
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide)",
+            "5 MP, f/2.2, (ultrawide), 1/5",
+            "2 MP, f/2.4, (macro)"
+          ],
+          "frontal": "13 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "FULLHD - 30fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": null,
+        "peso_g": 200.0,
+        "peso_descricao": "200 g",
+        "dimensoes": "164.4 x 77.9 x 7.9 mm",
+        "protecao": "IP54",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac , Wi-Fi Direct e Dual Band",
+        "bluetooth": "LE, A2DP e 5.3",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a16-4g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a16-4g"
+        },
+        {
+          "id": "samsung-galaxy-a16-4g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a16-4g"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a16-4g",
+        "fabricante": "https://shop.samsung.com/br/galaxy-a16-256gb/p",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a16-4g"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "envios_ao_varejo",
+          "periodo": "2026-S1",
+          "fonte": "https://www.mobiletime.com.br/noticias/18/09/2026/smartphones-brasil-1s26/",
+          "posicao": 5
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-a17-4g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A17 4G",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e One UI 7",
+        "atualizacoes_informadas": "6 anos (segurança) e 6 anos (sistema)",
+        "processador": "MediaTek Helio G99 (6nm)",
+        "gpu": "Mali-G57 MC2",
+        "tela": {
+          "tecnologia": "Super AMOLED",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 90.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": "800 nits"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide)",
+            "5 MP, f/2.2, (ultrawide), 1/5",
+            "2 MP, f/2.4, (macro)"
+          ],
+          "frontal": "13 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "FULLHD - 30fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 25.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 190.0,
+        "peso_descricao": "190g",
+        "dimensoes": "164.4 x 77.9 x 7.5 mm",
+        "protecao": "IP54",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac , Dual Band e Wi-Fi Direct",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a17-4g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            4
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17",
+        "fabricante": "https://www.samsung.com/br/smartphones/galaxy-a/galaxy-a17-gray-128gb-sm-a175fzafzto/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "envios_ao_varejo",
+          "periodo": "2026-S1",
+          "fonte": "https://www.mobiletime.com.br/noticias/18/09/2026/smartphones-brasil-1s26/",
+          "posicao": 2
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-a17-5g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A17 5G",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e One UI 7",
+        "atualizacoes_informadas": "6 anos (sistema)",
+        "processador": "Samsung Exynos 1330 (5 nm)",
+        "gpu": "Mali-G68 MP2",
+        "tela": {
+          "tecnologia": "Super AMOLED",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 90.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": "800 nits"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide) e OIS",
+            "5 MP, f/2.2, (ultrawide), 1/5",
+            "2 MP, f/2.4, (macro)"
+          ],
+          "frontal": "13 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "FULLHD - 30fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 25.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 192.0,
+        "peso_descricao": "192 g",
+        "dimensoes": "164.4 x 77.9 x 7.5 mm",
+        "protecao": "IP54",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac , Wi-Fi Direct e Dual Band",
+        "bluetooth": "LE, A2DP e 5.3",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a17-5g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            4
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17-5g"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17-5g",
+        "fabricante": null,
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17-5g"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "presenca_em_ranking_varejo",
+          "periodo": "2026-11",
+          "fonte": "https://conferidos.com/celulares-mais-vendidos/",
+          "posicao": null
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-a25-5g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A25 5G",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 14 e One UI 6",
+        "atualizacoes_informadas": null,
+        "processador": "Samsung Exynos 1280 (5nm)",
+        "gpu": "Mali-G68",
+        "tela": {
+          "tecnologia": "Super AMOLED",
+          "diagonal_pol": 6.5,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": "1000 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), OIS e PDAF",
+            "8 MP, f/2.2, 120˚ (ultrawide)",
+            "2 MP, f/2.4, (macro)"
+          ],
+          "frontal": "13 MP, f/2.2, (wide)",
+          "video_traseiro": "gyro-EIS, Full HD - 30 fps e 4K - 30 fps",
+          "video_frontal": "FULLHD - 30fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 25.0,
+        "recarga_sem_fio": null,
+        "peso_g": 197.0,
+        "peso_descricao": "197 g",
+        "dimensoes": "161 x 76.5 x 8.3 mm",
+        "protecao": "Não",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "LE, A2DP e 5.3",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        6,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a25-5g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a25"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a25",
+        "fabricante": "https://news.samsung.com/br/poderosos-nas-maos-e-economicos-no-bolso-samsung-apresenta-novos-integrantes-da-familia-galaxy-a-no-brasil",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a25"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "samsung-galaxy-a37-5g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A37 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "6 anos (sistema)",
+        "processador": "Samsung Exynos 1480",
+        "gpu": "Xclipse 530",
+        "tela": {
+          "tecnologia": "Super AMOLED",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340 pixels",
+          "detalhes": "Always-on display, 1900 nits (pico) e 1200 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), OIS e PDAF",
+            "8 MP, f/2.2, 123˚, (ultrawide)",
+            "5 MP, f/2.4, (macro)"
+          ],
+          "frontal": "12 MP, f/2.2, (wide)",
+          "video_traseiro": "gyro-EIS, Full HD - 60 fps e 4K - 30 fps",
+          "video_frontal": "4K - 30 FPS e FULLHD - 60fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 196.0,
+        "peso_descricao": "196 g",
+        "dimensoes": "162.9 x 78.2 x 7.4 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6, Dual Band e Wi-Fi Direct",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        6
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a37-5g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            6
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a37"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a37",
+        "fabricante": "https://www.samsung.com/br/smartphones/galaxy-a/galaxy-a37-5g-awesome-graygreen-256gb-sm-a376bdgkzto/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a37"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "samsung-galaxy-a55-5g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A55 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "One UI 6.1 e Android 14",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Samsung Exynos 1480",
+        "gpu": null,
+        "tela": {
+          "tecnologia": "Super AMOLED",
+          "diagonal_pol": 6.6,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340 pixels",
+          "detalhes": null
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), PDAF e OIS",
+            "12 MP, f/2.2, (ultrawide)",
+            "5 MP, f/2.4, (macro)"
+          ],
+          "frontal": "32 MP, f/2.2, 26mm (wide), 1/2.8",
+          "video_traseiro": "4K - 30 fps",
+          "video_frontal": "4K - 30 FPS"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 25.0,
+        "recarga_sem_fio": null,
+        "peso_g": 213.0,
+        "peso_descricao": "213 g",
+        "dimensoes": "161.1 x 77.4 x 8.2 mm",
+        "protecao": "IP67",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8,
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a55-5g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a55"
+        },
+        {
+          "id": "samsung-galaxy-a55-5g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a55"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a55",
+        "fabricante": "https://shop.samsung.com/br/galaxy-a55-256gb/p",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a55"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 22
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-a56-5g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A56 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e One UI 7",
+        "atualizacoes_informadas": "6 anos (sistema)",
+        "processador": "Samsung Exynos 1580 (4nm)",
+        "gpu": "Xclipse 540",
+        "tela": {
+          "tecnologia": "Super AMOLED",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340 pixels",
+          "detalhes": "Always-on display, 1900 nits (pico), 1200 nits (HBM) e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), OIS e PDAF",
+            "12 MP, f/2.2, (ultrawide)",
+            "5 MP, f/2.4, (macro)"
+          ],
+          "frontal": "12 MP, f/2.2, (wide)",
+          "video_traseiro": "gyro-EIS, Full HD - 60 fps e 4K - 30 fps",
+          "video_frontal": "4K - 30 FPS, 10-bit HDR e FULLHD - 60fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 198.0,
+        "peso_descricao": "198 g",
+        "dimensoes": "162.2 x 77.5 x 7.4 mm",
+        "protecao": "IP67",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6",
+        "bluetooth": "LE, A2DP e 5.3",
+        "nfc": "Sim",
+        "usb": "OTG, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a56-5g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a56"
+        },
+        {
+          "id": "samsung-galaxy-a56-5g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a56"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a56",
+        "fabricante": "https://news.samsung.com/br/o-seu-primeiro-smartphone-galaxy-com-ai-samsung-apresenta-galaxy-a56-a36-e-a26-com-evolucao-da-inteligencia-artificial",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a56"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 25
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-a57-5g",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy A57 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e One UI 8.5",
+        "atualizacoes_informadas": "6 anos (sistema)",
+        "processador": "Exynos 1680 (4 nm)",
+        "gpu": "Xclipse 550",
+        "tela": {
+          "tecnologia": "Super AMOLED Plus",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340 pixels",
+          "detalhes": "Always-on display, 1900 nits (pico), HDR10 Plus e 1200 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), PDAF e OIS",
+            "12 MP, f/2.2, (ultrawide)",
+            "5 MP, f/2.4, (macro)"
+          ],
+          "frontal": "12 MP, f/2.2, (wide)",
+          "video_traseiro": "gyro-EIS, Full HD - 60 fps e 4K - 30 fps",
+          "video_frontal": "10-bit HDR, 4K - 30 FPS e FULLHD - 60fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 179.0,
+        "peso_descricao": "179 g",
+        "dimensoes": "161.5 x 76.8 x 6.9 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e",
+        "bluetooth": "LE, 6.0 e A2DP",
+        "nfc": "Sim",
+        "usb": "OTG, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-a57-5g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a57"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a57",
+        "fabricante": "https://news.samsung.com/br/guia-do-usuario-galaxy-a57-5g-e-a37-5g-levando-as-mais-recentes-inovacoes-galaxy-para-mais-pessoas",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a57"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 9
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-s25-fe",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy S25 FE",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e One UI 8",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Exynos 2400 (4 nm)",
+        "gpu": "Xclipse 940",
+        "tela": {
+          "tecnologia": "Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": "1900 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), PDAF e OIS",
+            "8 MP, f/2.4, (telephoto) 3x zoom ótico e PDAF",
+            "12 MP, f/2.2 (ultrawide)"
+          ],
+          "frontal": "12 MP, f/2.2, (wide)",
+          "video_traseiro": "8K - 30fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 4900,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "25W",
+        "peso_g": 190.0,
+        "peso_descricao": "190g",
+        "dimensoes": "161.3 x 76.6 x 7.4 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e e Wi-Fi Direct",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "OTG e Tipo-C"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-s25-fe-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://news.samsung.com/br/samsung-apresenta-galaxy-s25-fe-no-brasil-a-porta-de-entrada-para-o-galaxy-ai-e-recursos-dos-modelos-premium"
+        },
+        {
+          "id": "samsung-galaxy-s25-fe-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://news.samsung.com/br/samsung-apresenta-galaxy-s25-fe-no-brasil-a-porta-de-entrada-para-o-galaxy-ai-e-recursos-dos-modelos-premium"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-fe",
+        "fabricante": "https://news.samsung.com/br/samsung-apresenta-galaxy-s25-fe-no-brasil-a-porta-de-entrada-para-o-galaxy-ai-e-recursos-dos-modelos-premium",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-fe"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 24
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-s26-fe",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy S26 FE",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 17 e One UI 9",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Exynos 2500 (3 nm)",
+        "gpu": "Xclipse 950",
+        "tela": {
+          "tecnologia": "Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": "1900 nits (normal)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, 24mm (wide), PDAF e OIS",
+            "8 MP, f/2.4, 75mm (telephoto) 3x zoom optico e PDAF",
+            "12 MP, f/2.2, 123˚ (ultrawide)"
+          ],
+          "frontal": "12 MP, f/2.2, 26mm (wide)",
+          "video_traseiro": "4K 120fps, Full HD 240 fps, gyro-EIS, 8K - 30fps e HDR10 Plus",
+          "video_frontal": "4K - 60fps, gyro-EIS, HDR10 Plus e FULLHD - 60fps"
+        },
+        "bateria_mah": 4900,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "15W",
+        "peso_g": 193.0,
+        "peso_descricao": "193 g",
+        "dimensoes": "161,6 x 76,9 x 7,4 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e e Wi-Fi Direct",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "OTG e Tipo-C"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-s26-fe-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://news.samsung.com/br/samsung-galaxy-s26-fe-chega-ao-brasil-com-one-ui-9-sete-atualizacoes-de-sistema-operacional-e-de-seguranca-camera-avancada-processador-de-alta-performance-e-galaxy-ai"
+        },
+        {
+          "id": "samsung-galaxy-s26-fe-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://news.samsung.com/br/samsung-galaxy-s26-fe-chega-ao-brasil-com-one-ui-9-sete-atualizacoes-de-sistema-operacional-e-de-seguranca-camera-avancada-processador-de-alta-performance-e-galaxy-ai"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-fe",
+        "fabricante": "https://news.samsung.com/br/samsung-galaxy-s26-fe-chega-ao-brasil-com-one-ui-9-sete-atualizacoes-de-sistema-operacional-e-de-seguranca-camera-avancada-processador-de-alta-performance-e-galaxy-ai",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-fe"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "samsung-galaxy-s25",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy S25",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e One UI 7",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Elite (3 nm)",
+        "gpu": "Adreno 830",
+        "tela": {
+          "tecnologia": "Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.2,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": "Always-on display, 2600 nits (pico) e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, 24mm (wide), 1/1.56, Dual Pixel PDAF e OIS",
+            "10 MP, f/2.4, 67mm (telephoto), 1/3.94, 3x zoom optico, OIS e PDAF",
+            "12 MP, f/2.2, 13mm, 120˚ (ultrawide), 1/2.55 e Super Steady video"
+          ],
+          "frontal": "12 MP, f/2.2, 26mm (wide) e Dual Pixel PDAF",
+          "video_traseiro": "HDR 10 PLUS, gyro-EIS, stereo sound rec., 8K - 30fps, 4K - 60fps e Full HD - 960fps",
+          "video_frontal": "4K - 60fps e Full HD - 30 fps"
+        },
+        "bateria_mah": 4000,
+        "recarga_com_fio_w": 25.0,
+        "recarga_sem_fio": "15W",
+        "peso_g": null,
+        "peso_descricao": null,
+        "dimensoes": "146.9 x 70.4 x 7.2 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e, Wi-Fi Direct e Tri-Band",
+        "bluetooth": "5.4, LE e A2DP",
+        "nfc": "Sim",
+        "usb": "Displayport 1.2, On-The-Go, USB Tipo-C e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-s25-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25"
+        },
+        {
+          "id": "samsung-galaxy-s25-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25"
+        },
+        {
+          "id": "samsung-galaxy-s25-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25",
+        "fabricante": "https://www.samsung.com/br/smartphones/galaxy-s/galaxy-s25-blueblack-128gb-sm-s931bzkjzto/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 10
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-s25-ultra",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy S25 Ultra",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e One UI 7",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Elite (3 nm)",
+        "gpu": "Adreno 830",
+        "tela": {
+          "tecnologia": "Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1440 x 3120",
+          "detalhes": "Always-on display, 2600 nits (pico) e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "200 MP, f/1.7, 24mm (wide), 1/1.3, multi-directional PDAF, Laser AF e OIS",
+            "50 MP, f/3.4, 111mm (periscope telephoto), 5x zoom ótico , OIS e PDAF",
+            "10 MP, f/2.4, 67mm (telephoto), 1/3.52, Dual Pixel PDAF, OIS e 3x zoom ótico",
+            "50 MP, f/2.0 (ultrawide), Super Estabilidade e Dual Pixel PDAF"
+          ],
+          "frontal": "12 MP, f/2.2, 26mm (wide), PDAF e Dual Pixel PDAF",
+          "video_traseiro": "HDR 10 PLUS, gyro-EIS, 4K 120fps, stereo sound rec., 8K - 30fps e Full HD - 960fps",
+          "video_frontal": "4K - 60fps e Full HD - 30 fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": null,
+        "peso_g": 219.0,
+        "peso_descricao": "219 g",
+        "dimensoes": "162.8 x 77.6 x 8.2 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7, Wi-Fi Direct e Tri-Band",
+        "bluetooth": "LE, A2DP e 5.3",
+        "nfc": "Sim",
+        "usb": "On-The-Go, Displayport 1.2, USB Tipo-C e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-s25-ultra-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-ultra"
+        },
+        {
+          "id": "samsung-galaxy-s25-ultra-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-ultra"
+        },
+        {
+          "id": "samsung-galaxy-s25-ultra-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-ultra"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-ultra",
+        "fabricante": "https://www.samsung.com/br/smartphones/galaxy-s25-ultra/specs/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-ultra"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 8
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-s26",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy S26",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e One UI 8.5",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Samsung Exynos 2600",
+        "gpu": "Adreno 840",
+        "tela": {
+          "tecnologia": "Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.3,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": "Always-on display, 2600 nits (pico) e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, 24mm (wide), 1/1.56, OIS e Dual Pixel PDAF",
+            "10 MP, f/2.4, 67mm (telephoto), 1/3.94, 3x zoom optico, PDAF e OIS",
+            "12 MP, f/2.2, 13mm, 120˚ (ultrawide), 1/2.55 e Super Steady video"
+          ],
+          "frontal": "12 MP, f/2.2, 26mm (wide) e Dual Pixel PDAF",
+          "video_traseiro": "gyro-EIS, HDR 10 PLUS, stereo sound rec., 4K - 60fps e 8K - 30fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 4300,
+        "recarga_com_fio_w": 25.0,
+        "recarga_sem_fio": "15W",
+        "peso_g": null,
+        "peso_descricao": null,
+        "dimensoes": "146.9 x 70.4 x 7.2 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7, Tri-Band e Wi-Fi Direct",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "Displayport 1.2, On-The-Go, USB Tipo-C e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-s26-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26"
+        },
+        {
+          "id": "samsung-galaxy-s26-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26",
+        "fabricante": "https://news.samsung.com/br/samsung-inicia-entregas-do-galaxy-s26-series-no-brasil",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26",
+        "processador": "https://www.samsung.com/br/campaign/galaxy-s26-battery-performance-security/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "samsung-galaxy-s26-plus",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy S26+",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e One UI 8.5",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Samsung Exynos 2600",
+        "gpu": "Xclipse 960",
+        "tela": {
+          "tecnologia": "Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1440 x 3120",
+          "detalhes": "Always-on display, 2600 nits (pico) e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, 24mm (wide), 1/1.56, OIS e Dual Pixel PDAF",
+            "10 MP, f/2.4, 67mm (telephoto), 1/3.94, 3x zoom optico, PDAF e OIS",
+            "12 MP, f/2.2, 13mm, 120˚ (ultrawide), 1/2.55 e Super Steady video"
+          ],
+          "frontal": "12 MP, f/2.2, 26mm (wide) e Dual Pixel PDAF",
+          "video_traseiro": "HDR 10 PLUS, gyro-EIS, 4K 120fps, stereo sound rec. e 8K - 30fps",
+          "video_frontal": "4K - 60fps e Full HD - 30 fps"
+        },
+        "bateria_mah": 4900,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "20W",
+        "peso_g": 190.0,
+        "peso_descricao": "190g",
+        "dimensoes": "158.4 x 75.8 x 7.3 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Tri-Band, Wi-Fi Direct e Wi-Fi 802.11 а/b/g/n/ac/6e/7",
+        "bluetooth": "5.4, LE e A2DP",
+        "nfc": "Sim",
+        "usb": "Displayport 1.2, On-The-Go, USB Tipo-C e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-s26-plus-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-plus"
+        },
+        {
+          "id": "samsung-galaxy-s26-plus-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-plus"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-plus",
+        "fabricante": "https://news.samsung.com/br/samsung-inicia-entregas-do-galaxy-s26-series-no-brasil",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-plus",
+        "processador": "https://www.samsung.com/br/campaign/galaxy-s26-battery-performance-security/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "samsung-galaxy-s26-ultra",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy S26 Ultra",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e One UI 8.5",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Elite Gen 5 (3 nm)",
+        "gpu": "Adreno 840",
+        "tela": {
+          "tecnologia": "Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1440 x 3120",
+          "detalhes": "Always-on display, 2600 nits (pico), HDR10 Plus e DX Camada anti-reflexo"
+        },
+        "cameras": {
+          "traseiras": [
+            "200 mp, f/1.4, multi-directional PDAF e OIS",
+            "50 MP, f/2.8 (telephoto), 5x zoom ótico , OIS e PDAF",
+            "10 MP, f/2.4, 67mm (telephoto), 1/3.52, OIS, Dual Pixel PDAF e 3x zoom ótico",
+            "50 MP, f/1.9 (ultrawide), Super Estabilidade e Dual Pixel PDAF"
+          ],
+          "frontal": "12 MP, f/2.2, 26mm (wide), PDAF e Dual Pixel PDAF",
+          "video_traseiro": "gyro-EIS, HDR 10 PLUS, 4K 120fps, stereo sound rec., 8K - 30fps e Full HD - 960fps",
+          "video_frontal": "4K - 60fps e Full HD - 30 fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 60.0,
+        "recarga_sem_fio": "25W",
+        "peso_g": 214.0,
+        "peso_descricao": "214 g",
+        "dimensoes": "163,6 x 78,1 x 7,9 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7, Wi-Fi Direct e Tri-Band",
+        "bluetooth": "LE, A2DP e 6.0",
+        "nfc": "Sim",
+        "usb": "Displayport 1.2, On-The-Go, USB Tipo-C e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12,
+        16
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-s26-ultra-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-ultra"
+        },
+        {
+          "id": "samsung-galaxy-s26-ultra-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-ultra"
+        },
+        {
+          "id": "samsung-galaxy-s26-ultra-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-ultra"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-ultra",
+        "fabricante": "https://www.samsung.com/br/business/smartphones/galaxy-s/galaxy-s26-ultra-sm-s948bzkkzto/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-ultra"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "samsung-galaxy-z-flip7",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy Z Flip7",
+      "segmento": "topo_de_linha",
+      "formato": "dobravel",
+      "especificacoes": {
+        "sistema": "Android 16 e One UI 8",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Exynos 2500 (3nm)",
+        "gpu": "Xclipse 950",
+        "tela": {
+          "tecnologia": "Foldable Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2520",
+          "detalhes": "2600 nits (pico), HDR 10 Plus e Tela externa: Super AMOLED, 120Hz, 2600 nits (peak), 4.1 Pol, 948 x 1048 px (Gorilla Glass Victus 2)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), Dual Pixel PDAF e OIS",
+            "12 MP, f/2.2, 123˚ (ultrawide)"
+          ],
+          "frontal": "10 MP, f/2.2, 23mm (wide)",
+          "video_traseiro": "HDR 10 PLUS e 4K - 60fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 4300,
+        "recarga_com_fio_w": 25.0,
+        "recarga_sem_fio": "15W",
+        "peso_g": 188.0,
+        "peso_descricao": "188g",
+        "dimensoes": "Fechado: 85.5 x 75.2 x 13.7 mm e Aberto: 166.7 x 75.2 x 6.5 mm",
+        "protecao": "IP48",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7, Tri-Band e Wi-Fi Direct",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "On-The-Go, Tipo-C e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-z-flip7-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip7"
+        },
+        {
+          "id": "samsung-galaxy-z-flip7-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip7"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip7",
+        "fabricante": "https://news.samsung.com/br/samsung-galaxy-z-flip7-recursos-poderosos-de-ai-em-forma-compacta-e-uma-ampla-tela-externa",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip7"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "samsung-galaxy-z-flip8",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy Z Flip8",
+      "segmento": "topo_de_linha",
+      "formato": "dobravel",
+      "especificacoes": {
+        "sistema": "Android 17 e One UI 9",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Exynos 2600",
+        "gpu": "Xclipse 960",
+        "tela": {
+          "tecnologia": "Foldable Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2520",
+          "detalhes": "2600 nits (pico), HDR 10 Plus e Tela externa: Super AMOLED, 120Hz, 2600 nits (peak), 4.1 Pol, 948 x 1048 px (Gorilla Glass Victus 2)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), OIS e Dual Pixel PDAF",
+            "12 MP, f/2.2, 123˚ (ultrawide)"
+          ],
+          "frontal": "10 MP, f/2.2, 23mm (wide)",
+          "video_traseiro": "HDR 10 PLUS e 4K - 60fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 4300,
+        "recarga_com_fio_w": 25.0,
+        "recarga_sem_fio": "15W",
+        "peso_g": 180.0,
+        "peso_descricao": "180g",
+        "dimensoes": "Aberto: 166.9 x 75.4 x 6.1 mm e Fechado: 85.7 x 75.4 x 13.1 mm",
+        "protecao": "IP48",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7, Tri-Band e Wi-Fi Direct",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "On-The-Go, Tipo-C e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-z-flip8-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip8"
+        },
+        {
+          "id": "samsung-galaxy-z-flip8-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip8"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip8",
+        "fabricante": "https://www.samsung.com/br/smartphones/galaxy-z-flip8/specs/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip8"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "samsung-galaxy-z-fold8-ultra",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy Z Fold8 Ultra",
+      "segmento": "topo_de_linha",
+      "formato": "dobravel",
+      "especificacoes": {
+        "sistema": "Android 17 e One UI 9",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Elite Gen 5 (3 nm)",
+        "gpu": "Adreno 840",
+        "tela": {
+          "tecnologia": "Foldable Dynamic LTPO AMOLED 2X",
+          "diagonal_pol": 8.0,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "2256 x 2504 px",
+          "detalhes": "2600 nits (pico), HDR 10 Plus e Tela externa: Dynamic LTPO AMOLED 2X, 120Hz, Corning Gorilla Glass Ceramic 2 6.5 Pol, 1080 x 2520 pixels, 422 ppi"
+        },
+        "cameras": {
+          "traseiras": [
+            "200 MP, f/1.7, (wide), multi-directional PDAF e OIS",
+            "10 MP, f/2.4, (telefoto), 3x zoom ótico, PDAF e OIS",
+            "50 MP, f/1.9 (ultrawide)"
+          ],
+          "frontal": "10 MP, f/2.2, 24mm (wide) e Câmera Cover: 10 MP, f/2.2",
+          "video_traseiro": "HDR 10 PLUS, 8K - 30fps e FullHD - 240fps",
+          "video_frontal": "4K - 60fps, gyro-EIS e FULLHD - 60fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "20W e Qi2.2",
+        "peso_g": 215.0,
+        "peso_descricao": "215 g",
+        "dimensoes": "Aberto: 158.4 x 143.2 x 4.1 mm e Fechado: 158.4 x 72.8 x 8.9 mm",
+        "protecao": "IP48",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7",
+        "bluetooth": "5.4, A2DP, LE e aptX HD",
+        "nfc": "Sim",
+        "usb": "Tipo-C, On-The-Go e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12,
+        16
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-z-fold8-ultra-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8-ultra"
+        },
+        {
+          "id": "samsung-galaxy-z-fold8-ultra-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8-ultra"
+        },
+        {
+          "id": "samsung-galaxy-z-fold8-ultra-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8-ultra"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8-ultra",
+        "fabricante": "https://news.samsung.com/br/samsung-apresenta-os-novos-galaxy-z-fold8-galaxy-z-fold8-ultra-e-galaxy-z-flip8-no-brasil",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8-ultra"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-moto-g06-4g",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Moto G06 4G",
+      "segmento": "entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15",
+        "atualizacoes_informadas": null,
+        "processador": "Mediatek Helio G81 Extreme (12 nm)",
+        "gpu": "Mali-G52 MC2",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "720 x 1640",
+          "detalhes": null
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide) e PDAF"
+          ],
+          "frontal": "8 MP, f/2.1, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 10.0,
+        "recarga_sem_fio": null,
+        "peso_g": 194.0,
+        "peso_descricao": "194 g",
+        "dimensoes": "171,4 x 77,5 x 8,3 mm",
+        "protecao": "IP64",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e Dual Band",
+        "bluetooth": "LE, A2DP e 5.0",
+        "nfc": "Sim",
+        "usb": "USB Type-C 2.0"
+      },
+      "ram_gb_opcoes": [
+        4
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-moto-g06-4g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            4
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g06"
+        },
+        {
+          "id": "motorola-moto-g06-4g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            4
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g06"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g06",
+        "fabricante": "https://empresas.motorola.com.br/smartphone-motorola-moto-g06-128gb/p",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g06"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "envios_ao_varejo",
+          "periodo": "2026-S1",
+          "fonte": "https://www.mobiletime.com.br/noticias/18/09/2026/smartphones-brasil-1s26/",
+          "posicao": 3
+        },
+        {
+          "tipo": "presenca_em_ranking_varejo",
+          "periodo": "2026-11",
+          "fonte": "https://conferidos.com/celulares-mais-vendidos/",
+          "posicao": null
+        }
+      ]
+    },
+    {
+      "id": "motorola-moto-g15-4g",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Moto G15 4G",
+      "segmento": "entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15",
+        "atualizacoes_informadas": null,
+        "processador": "Helio G81 Extreme",
+        "gpu": "Mali-G52 MC2",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.72,
+          "frequencia_hz": 60.0,
+          "resolucao_px": "1080 x 2400",
+          "detalhes": "1000 nits"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide)",
+            "5 MP, f/2.2 (ultrawide)"
+          ],
+          "frontal": "8 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 20.0,
+        "recarga_sem_fio": null,
+        "peso_g": 190.0,
+        "peso_descricao": "190g",
+        "dimensoes": "165.6 x 75.9 x 8.1 mm",
+        "protecao": "Design repelente a àgua",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e Dual Band",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        6
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-moto-g15-4g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            6
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g15"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g15",
+        "fabricante": "https://www.motorola.com.br/smartphones/familia-moto-g/moto-g15-256gb",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g15"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "envios_ao_varejo",
+          "periodo": "2026-S1",
+          "fonte": "https://www.mobiletime.com.br/noticias/18/09/2026/smartphones-brasil-1s26/",
+          "posicao": 4
+        }
+      ]
+    },
+    {
+      "id": "motorola-moto-g17-4g",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Moto G17 4G",
+      "segmento": "entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15",
+        "atualizacoes_informadas": null,
+        "processador": "Mediatek Helio G81 Extreme (12 nm)",
+        "gpu": "Mali-G52 MC2",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.72,
+          "frequencia_hz": 60.0,
+          "resolucao_px": "1080 x 2400",
+          "detalhes": null
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.9, (wide) e PDAF",
+            "5 MP, f/2.2 (ultrawide)"
+          ],
+          "frontal": "32 MP, f/2.2",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 18.0,
+        "recarga_sem_fio": null,
+        "peso_g": 189.0,
+        "peso_descricao": "189g",
+        "dimensoes": "165.7 x 76 x 8.2 mm",
+        "protecao": "IP64",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "5.4",
+        "nfc": "Sim",
+        "usb": "Tipo-C"
+      },
+      "ram_gb_opcoes": [
+        4
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-moto-g17-4g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            4
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g17"
+        },
+        {
+          "id": "motorola-moto-g17-4g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            4
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g17"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g17",
+        "fabricante": "https://www.motorola.com.br/smartphones/familia-moto-g/moto-g17-256gb",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g17"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "presenca_em_ranking_varejo",
+          "periodo": "2026-11",
+          "fonte": "https://conferidos.com/celulares-mais-vendidos/",
+          "posicao": null
+        }
+      ]
+    },
+    {
+      "id": "motorola-moto-g35-5g",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Moto G35 5G",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 14",
+        "atualizacoes_informadas": null,
+        "processador": "Unisoc T760 (6 nm)",
+        "gpu": "Mali-G57",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.72,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "720 x 1600 pixels",
+          "detalhes": "HDR10"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), OIS e PDAF",
+            "8 MP, f/2.2, 118˚ (ultrawide) e AF"
+          ],
+          "frontal": "16 MP, f/2.4, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 18.0,
+        "recarga_sem_fio": null,
+        "peso_g": 192.0,
+        "peso_descricao": "192 g",
+        "dimensoes": "166.1 x 76 x 7.8 mm",
+        "protecao": "Design repelente a àgua",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e Dual Band",
+        "bluetooth": "A2DP, LE e 5.0",
+        "nfc": "Sim (dependendo da região)",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-moto-g35-5g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g35"
+        },
+        {
+          "id": "motorola-moto-g35-5g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g35"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g35",
+        "fabricante": "https://www.motorola.com.br/smartphone-moto-g35-5g-256gb/p/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g35"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 9
+        }
+      ]
+    },
+    {
+      "id": "motorola-moto-g37",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Moto G37",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": null,
+        "processador": "Mediatek Dimensity 6300 (6 nm)",
+        "gpu": "Mali-G57 MC2",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.67,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "720 x 1604 pixels",
+          "detalhes": "1050 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide) e PDAF"
+          ],
+          "frontal": "8 MP, f/2.0, (wide)",
+          "video_traseiro": "1440p@30fps",
+          "video_frontal": "1440p@30fps"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 20.0,
+        "recarga_sem_fio": null,
+        "peso_g": 191.0,
+        "peso_descricao": "191 g",
+        "dimensoes": "166.2 x 76.5 x 7.8 mm",
+        "protecao": "IP64",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "5.4",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-moto-g37-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            4
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g37"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g37",
+        "fabricante": "https://www.motorola.com.br/smartphone-motorola-moto-g37-5g-64gb/p?idsku=1970",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g37"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-moto-g67-5g",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Moto G67 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": null,
+        "processador": "Mediatek Dimensity 6300 (6 nm)",
+        "gpu": "Mali-G57 MC2",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.78,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1272 x 2772 px",
+          "detalhes": "5000 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, PDAF e OIS",
+            "8 MP, f/2.2, 119˚ (ultrawide), 1/4.0, 1.12µm"
+          ],
+          "frontal": "32 MP, f/2.2",
+          "video_traseiro": "1440p@30fps",
+          "video_frontal": "1440p@30fps"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 30.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 182.0,
+        "peso_descricao": "182g",
+        "dimensoes": "164.2 x 77.4 x 7.3 mm",
+        "protecao": "MIL-STD-810H compliant e IP64",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e Tri-Band",
+        "bluetooth": "5.4, A2DP, LE e aptX HD",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-moto-g67-5g-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g67"
+        },
+        {
+          "id": "motorola-moto-g67-5g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g67"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g67",
+        "fabricante": "https://www.motorola.com.br/kit-smartphone-motorola-moto-g67-5g-256gb-moto-buds-2/p?workspace=master",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g67"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-moto-g77",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Moto G77",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "3 anos (sistema)",
+        "processador": "Mediatek Dimensity 6400 (6 nm)",
+        "gpu": "Mali-G57 MC2",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.78,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1272 x 2772 px",
+          "detalhes": "5000 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "108 MP, f/1.7, OIS e PDAF",
+            "8 MP, f/2.2, 119˚ (ultrawide), 1/4.0, 1.12µm"
+          ],
+          "frontal": "32 MP, f/2.2",
+          "video_traseiro": "1440p@30fps",
+          "video_frontal": "1440p@30fps"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 30.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 182.0,
+        "peso_descricao": "182g",
+        "dimensoes": "164.2 x 77.4 x 7.3 mm",
+        "protecao": "MIL-STD-810H compliant e IP64",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e Tri-Band",
+        "bluetooth": "5.4, LE, aptX HD e A2DP",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-moto-g77-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g77"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g77",
+        "fabricante": "https://www.motorola.com.br/smartphones/familia-moto-g/moto-g77",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g77"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-moto-g86",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Moto G86",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15",
+        "atualizacoes_informadas": "2 anos (sistema) e 4 anos (segurança)",
+        "processador": "Mediatek Dimensity 7300 (4 nm)",
+        "gpu": "Mali-G615 MC2",
+        "tela": {
+          "tecnologia": "P-OLED",
+          "diagonal_pol": 6.67,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1220 x 2712 pixels",
+          "detalhes": "1B Colors e 4500 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8 (wide), 1/2.76, PDAF e OIS",
+            "8 MP, f/2.2, 118˚ (ultrawide)"
+          ],
+          "frontal": "32 MP, f/2.4, (wide)",
+          "video_traseiro": "4K - 30 fps",
+          "video_frontal": "4K - 30 FPS"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 30.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 185.0,
+        "peso_descricao": "185g",
+        "dimensoes": "161.2 x 74.7 x 7.8 mm",
+        "protecao": "IP68 e IP69",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Sim (dependendo da região)",
+        "usb": "USB Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-moto-g86-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g86"
+        },
+        {
+          "id": "motorola-moto-g86-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g86"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g86",
+        "fabricante": "https://www.motorola.com.br/smartphone-motorola-moto-g86-5g-512gb-24-gb-ram/p",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g86"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 8
+        }
+      ]
+    },
+    {
+      "id": "motorola-edge-70-fusion",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Edge 70 Fusion",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "3 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 7s Gen 3 (4 nm)",
+        "gpu": "Adreno 810",
+        "tela": {
+          "tecnologia": "P-OLED",
+          "diagonal_pol": 6.78,
+          "frequencia_hz": 144.0,
+          "resolucao_px": "1272 x 2772 px",
+          "detalhes": "5200 nits (pico) e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, OIS e PDAF",
+            "13 MP, f/2.2, (ultrawide)"
+          ],
+          "frontal": "32 MP, f/2.2",
+          "video_traseiro": "4K - 30 fps",
+          "video_frontal": "4K - 30 FPS"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 68.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 177.0,
+        "peso_descricao": "177 g",
+        "dimensoes": "162.8 x 75.6 x 7.2 mm",
+        "protecao": "IP68 e IP69",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/mc/6e, Tri-Band e Wi-Fi Direct",
+        "bluetooth": "LE, A2DP e 6.0",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-edge-70-fusion-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion",
+        "fabricante": "https://www.motorola.com.br/smartphone-motorola-edge-70-fusion-5g-256gb-24-gb-ram/p?idsku=1928",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-edge-70",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Edge 70",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 7 Gen 4 (4 nm)",
+        "gpu": "Adreno 722",
+        "tela": {
+          "tecnologia": "pOLED",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1220 x 2712 pixels",
+          "detalhes": "1B Colors, 4500 nits (pico), HDR10 Plus e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), PDAF e OIS",
+            "50 MP, f/2.0, 120˚, (ultrawide)"
+          ],
+          "frontal": "50 MP, f/2.0, 22mm (wide)",
+          "video_traseiro": "gyro-EIS e 4K - 60fps",
+          "video_frontal": "gyro-EIS, 4K - 30 FPS e Full HD - 30 fps"
+        },
+        "bateria_mah": 4800,
+        "recarga_com_fio_w": 68.0,
+        "recarga_sem_fio": "15W",
+        "peso_g": 163.0,
+        "peso_descricao": "163 g",
+        "dimensoes": "159 x 74 x 6.33 mm",
+        "protecao": "IP68, IP69 e MIL-STD 810H",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/mc/6e, Tri-Band e Wi-Fi Direct",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "OTG, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-edge-70-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70"
+        },
+        {
+          "id": "motorola-edge-70-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70",
+        "fabricante": "https://www.motorola.com.br/smartphone-motorola-edge-70-5g-512gb/p",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 3
+        }
+      ]
+    },
+    {
+      "id": "motorola-edge-70-fusion-plus",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Edge 70 Fusion+",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "3 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 7s Gen 4 (4 nm)",
+        "gpu": "Adreno 810",
+        "tela": {
+          "tecnologia": "P-OLED",
+          "diagonal_pol": 6.78,
+          "frequencia_hz": 144.0,
+          "resolucao_px": "1272 x 2772 px",
+          "detalhes": "5200 nits (pico) e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, PDAF e OIS",
+            "13 MP, f/2.2, (ultrawide)"
+          ],
+          "frontal": "50 MP, f/2.0 (wide)",
+          "video_traseiro": "4K - 30 fps",
+          "video_frontal": "4K - 30 FPS"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 68.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 177.0,
+        "peso_descricao": "177 g",
+        "dimensoes": "162.8 x 75.6 x 7.2 mm",
+        "protecao": "IP68 e IP69",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/mc/6e, Tri-Band e Wi-Fi Direct",
+        "bluetooth": "LE, A2DP e 6.0",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-edge-70-fusion-plus-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion-plus"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion-plus",
+        "fabricante": "https://empresas.motorola.com.br/smartphone-corporativo-edge-70-fusion-plus-256gb/p",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion-plus"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-edge-70-pro",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Edge 70 Pro",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "3 anos (sistema)",
+        "processador": "Mediatek Dimensity 8500 Extreme (4 nm)",
+        "gpu": "Mali-G720 MC8",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.78,
+          "frequencia_hz": 144.0,
+          "resolucao_px": "1272 x 2772 px",
+          "detalhes": "5200 nits (pico), 1B Colors, 1800 nits e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide), OIS e PDAF",
+            "50 MP, f/2.0, 120˚, (ultrawide)",
+            "50 MP, (Telephoto), 3.5x Zoom ótico e OIS"
+          ],
+          "frontal": "50 MP, f/1.9",
+          "video_traseiro": "4K - 60fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 6500,
+        "recarga_com_fio_w": 90.0,
+        "recarga_sem_fio": "15W",
+        "peso_g": 190.0,
+        "peso_descricao": "190g",
+        "dimensoes": "162.7 x 75.6 x 7.0 mm",
+        "protecao": "IP68, IP69 e MIL-STD 810H",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6, Wi-Fi Direct e Tri-Band",
+        "bluetooth": "5.4, LE e A2DP",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-edge-70-pro-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.motorola.com.br/kit-smartphone-motorola-edge-70-pro-5g-256gb-moto-buds-2-plus/p?idsku=1991&workspace=master"
+        },
+        {
+          "id": "motorola-edge-70-pro-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.motorola.com.br/kit-smartphone-motorola-edge-70-pro-5g-256gb-moto-buds-2-plus/p?idsku=1991&workspace=master"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-pro",
+        "fabricante": "https://www.motorola.com.br/kit-smartphone-motorola-edge-70-pro-5g-256gb-moto-buds-2-plus/p?idsku=1991&workspace=master",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-pro"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-signature",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Signature",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Gen 5 (3 nm)",
+        "gpu": "Adreno 840",
+        "tela": {
+          "tecnologia": "LTPO AMOLED",
+          "diagonal_pol": 6.8,
+          "frequencia_hz": 165.0,
+          "resolucao_px": "1264 x 2780 pixels",
+          "detalhes": "Dolby Vision, 1B Colors, HDR10 Plus e 6200 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.6, (wide), OIS e PDAF",
+            "50 MP, (telephoto), 3x zoom optico, PDAF e OIS",
+            "50 MP, f/2.0 (ultrawide) e PDAF"
+          ],
+          "frontal": "50 MP, f/2.0, 22mm (wide)",
+          "video_traseiro": "4K - 60fps e 8K - 30fps",
+          "video_frontal": "4K - 60fps, gyro-EIS e Full HD - 30 fps"
+        },
+        "bateria_mah": 5200,
+        "recarga_com_fio_w": 90.0,
+        "recarga_sem_fio": "50W",
+        "peso_g": 186.0,
+        "peso_descricao": "186g",
+        "dimensoes": "162.1 x 76.4 x 7 mm",
+        "protecao": "IP68, IP69 e MIL-STD 810H",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 7 e Wi-Fi Direct",
+        "bluetooth": "A2DP, 6.0 e LE",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 3.1"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-signature-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-signature"
+        },
+        {
+          "id": "motorola-signature-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-signature"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-signature",
+        "fabricante": "https://www.motorola.com.br/smartphones/motorola-signature",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-signature"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-signature-27",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Signature 27",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 17",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Snapdragon 8 Elite Extreme Gen 6",
+        "gpu": "Adreno 850",
+        "tela": {
+          "tecnologia": "LTPO AMOLED",
+          "diagonal_pol": 6.8,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1264 x 2780 pixels",
+          "detalhes": null
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.6, (wide), PDAF e OIS",
+            "200 MP, f/1.6, 3x zoom optico, OIS e PDAF",
+            "50 MP, f/2.0 (ultrawide) e PDAF"
+          ],
+          "frontal": "50 MP, f/2.0, 22mm (wide)",
+          "video_traseiro": "4K - 60fps e 8K - 30fps",
+          "video_frontal": "4K - 60fps, gyro-EIS e Full HD - 30 fps"
+        },
+        "bateria_mah": 7000,
+        "recarga_com_fio_w": 90.0,
+        "recarga_sem_fio": "50W",
+        "peso_g": 227.0,
+        "peso_descricao": "227g",
+        "dimensoes": "162 x 77 x 7.99mm",
+        "protecao": "IP69 e MIL-STD 810H",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 7 e Wi-Fi Direct",
+        "bluetooth": "6.0, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 3.1"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-signature-27-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-signature-27"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-signature-27",
+        "fabricante": "https://colaborador.motorola.com.br/smartphone-motorola-signature-27-256gb/p?idsku=2030",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-signature-27"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 1
+        }
+      ]
+    },
+    {
+      "id": "motorola-razr-70",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Razr 70",
+      "segmento": "topo_de_linha",
+      "formato": "dobravel",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "5 anos (segurança) e 3 anos (sistema)",
+        "processador": "Mediatek Dimensity 7450X",
+        "gpu": null,
+        "tela": {
+          "tecnologia": "Foldable LTPO AMOLED",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2640 pixels",
+          "detalhes": "1B Colors, Tela externa: 3,6 pol, pOLED, Ultra-HDR, 120 Hz 413 ppi e pico de brilho 1700 nits, 3000 nits (pico) e HDR10 Plus"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.7, (wide), OIS e PDAF",
+            "50 MP, f/2.0 (ultrawide)"
+          ],
+          "frontal": "32 MP, f/2.4, (wide)",
+          "video_traseiro": "4K - 30 fps",
+          "video_frontal": "4K - 30 FPS, FULLHD - 30fps e FULLHD - 60fps"
+        },
+        "bateria_mah": 4500,
+        "recarga_com_fio_w": 30.0,
+        "recarga_sem_fio": "15W",
+        "peso_g": 188.0,
+        "peso_descricao": "188g",
+        "dimensoes": "171 x 73.9 x 7.25 mm (aberto) e 88 x 73.9 x 15.85 mm (fechado)",
+        "protecao": "IP48",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e",
+        "bluetooth": "5.4, LE e A2DP",
+        "nfc": "Sim",
+        "usb": "OTG, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-razr-70-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://empresas.motorola.com.br/smartphone-motorola-razr-70-5g/p"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-razr-70",
+        "fabricante": "https://empresas.motorola.com.br/smartphone-motorola-razr-70-5g/p",
+        "bateria": "https://canaltech.com.br/smartphone/dobravel-da-samsung-despenca-para-r-2699-em-oferta-do-magalu/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-razr-70-ultra",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Razr 70 Ultra",
+      "segmento": "topo_de_linha",
+      "formato": "dobravel",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "5 anos (segurança) e 3 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Elite (3 nm)",
+        "gpu": "Adreno 830",
+        "tela": {
+          "tecnologia": "Foldable LTPO AMOLED",
+          "diagonal_pol": 7.0,
+          "frequencia_hz": 165.0,
+          "resolucao_px": "1224 x 2992 px",
+          "detalhes": "DCI-P3, Dolby Vision, 10-bit, Tela exerna: 4 pol, pOLED, HDR10 Plus 120 Hz/165 Hz (game mode), 3000 nits (pico) e 5000 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, OIS e PDAF",
+            "50 MP, f/2.0 (ultrawide), PDAF e OIS"
+          ],
+          "frontal": "50 MP, f/2.0 (wide)",
+          "video_traseiro": "gyro-EIS, HDR 10 PLUS e 4K - 30 fps",
+          "video_frontal": "8K - 30 fps, 4K UHD (60 fps), FULLHD - 30fps e FULLHD - 60fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 68.0,
+        "recarga_sem_fio": "30W",
+        "peso_g": 199.0,
+        "peso_descricao": "199 g",
+        "dimensoes": "171 x 73.9 x 7.19 mm (aberto) e 88.1 x 74 x 15.6 mm (fechado)",
+        "protecao": "IP48",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "Tipo-C, OTG e 2.0"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-razr-70-ultra-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.motorola.com.br/smartphone-motorola-razr-70-ultra-5g/p?awc=24534_1794290125_6ee632d5d904a849b351f330d8d9323d&idsku=1902"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-razr-70-ultra",
+        "fabricante": "https://www.motorola.com.br/smartphone-motorola-razr-70-ultra-5g/p?awc=24534_1794290125_6ee632d5d904a849b351f330d8d9323d&idsku=1902",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-razr-70-ultra"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "motorola-razr-fold",
+      "fabricante": "Motorola",
+      "marca": "Motorola",
+      "modelo": "Razr Fold",
+      "segmento": "topo_de_linha",
+      "formato": "dobravel",
+      "especificacoes": {
+        "sistema": "Android 16",
+        "atualizacoes_informadas": "7 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Gen 5 (3 nm)",
+        "gpu": "Adreno 840",
+        "tela": {
+          "tecnologia": "Foldable LTPO OLED",
+          "diagonal_pol": 8.09,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "2200 x 2480 pixels",
+          "detalhes": "Dolby Vision, 1B Colors, 10-bit e Tela externa: OLED 6.56 pol, 120Hz"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.6, (wide), PDAF e OIS",
+            "50 MP, (telephoto), 3x zoom optico, OIS e PDAF",
+            "50 MP, f/2.0 (ultrawide) e PDAF"
+          ],
+          "frontal": "20 MP e Câmera Cover: 32 MP",
+          "video_traseiro": "8K30, 4K60",
+          "video_frontal": null
+        },
+        "bateria_mah": 6000,
+        "recarga_com_fio_w": 90.0,
+        "recarga_sem_fio": "50W",
+        "peso_g": null,
+        "peso_descricao": null,
+        "dimensoes": null,
+        "protecao": "IP49",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 7",
+        "bluetooth": "A2DP, LE e 6.0",
+        "nfc": "Sim",
+        "usb": "OTG, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        16
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "motorola-razr-fold-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            16
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.motorola.com.br/smartphone-motorola-razr-fold-5g/p?awc=24534_1793985011_cd870ecee55c15acbef89dd9840a754a&idsku=1897"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/motorola-razr-fold",
+        "fabricante": "https://www.motorola.com.br/smartphone-motorola-razr-fold-5g/p?awc=24534_1793985011_cd870ecee55c15acbef89dd9840a754a&idsku=1897",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-razr-fold"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "apple-iphone-16e",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 16e",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 18.4",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A18 (3nm)",
+        "gpu": "Apple GPU",
+        "tela": {
+          "tecnologia": "Super Retina XDR OLED",
+          "diagonal_pol": 6.1,
+          "frequencia_hz": null,
+          "resolucao_px": "1170 x 2532",
+          "detalhes": "1200 nits (pico), Wide color gamut, HDR10 e 800 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, OIS e Dual Pixel PDAF"
+          ],
+          "frontal": "12 MP, f/2.2, 23mm (wide)",
+          "video_traseiro": "4K - 60fps",
+          "video_frontal": null
+        },
+        "bateria_mah": 4005,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "7.5W",
+        "peso_g": 167.0,
+        "peso_descricao": "167 g",
+        "dimensoes": "146.7 x 71.5 x 7.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Sim",
+        "usb": "USB Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-16e-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/122208"
+        },
+        {
+          "id": "apple-iphone-16e-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/122208"
+        },
+        {
+          "id": "apple-iphone-16e-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/122208"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16e",
+        "fabricante": "https://support.apple.com/pt-br/122208",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16e"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "presenca_em_ranking_varejo",
+          "periodo": "2026-11",
+          "fonte": "https://conferidos.com/celulares-mais-vendidos/",
+          "posicao": null
+        }
+      ]
+    },
+    {
+      "id": "apple-iphone-17e",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 17e",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 26",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A19 (3 nm)",
+        "gpu": "Apple GPU",
+        "tela": {
+          "tecnologia": "Super Retina XDR OLED",
+          "diagonal_pol": 6.1,
+          "frequencia_hz": null,
+          "resolucao_px": "1170 x 2532",
+          "detalhes": "1200 nits (pico), Wide color gamut, 800 nits (HBM) e HDR10"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, OIS e Dual Pixel PDAF"
+          ],
+          "frontal": "12 MP, f/2.2, 23mm (wide)",
+          "video_traseiro": "4K - 60fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 4005,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "15W e MagSafe",
+        "peso_g": 170.0,
+        "peso_descricao": "170 g",
+        "dimensoes": "146.7 x 71.5 x 7.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Sim",
+        "usb": "USB Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-17e-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/126470"
+        },
+        {
+          "id": "apple-iphone-17e-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/126470"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17e",
+        "fabricante": "https://support.apple.com/pt-br/126470",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17e"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "apple-iphone-15",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 15",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 17",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A16 Bionic (4 nm)",
+        "gpu": "Apple GPU (5-core graphics)",
+        "tela": {
+          "tecnologia": "Super Retina XDR OLED",
+          "diagonal_pol": 6.1,
+          "frequencia_hz": null,
+          "resolucao_px": "1179 x 2556 pixels",
+          "detalhes": "Dolby Vision, 2000 nits (pico), HDR10 e 1000 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, f/1.6, 26mm (wide), Sensor-shift OIS e Dual Pixel PDAF",
+            "12 MP, f/1.8, 13mm, 120˚ (ultrawide)"
+          ],
+          "frontal": "SL 3D (profundidade) e 12 MP, f/1.9, 23mm (wide)",
+          "video_traseiro": "Full HD 240 fps, HDR , Modo Cinema, Dolby Vision HDR, stereo sound rec. e 4K - 60fps",
+          "video_frontal": "4K - 60fps, Full HD - 120fps e gyro-EIS"
+        },
+        "bateria_mah": 3349,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "15W",
+        "peso_g": 171.0,
+        "peso_descricao": "171 g",
+        "dimensoes": "147.6 x 71.6 x 7.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-15-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://support.apple.com/pt-pt/111831"
+        },
+        {
+          "id": "apple-iphone-15-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://support.apple.com/pt-pt/111831"
+        },
+        {
+          "id": "apple-iphone-15-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://support.apple.com/pt-pt/111831"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-15",
+        "fabricante": "https://support.apple.com/pt-pt/111831",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-15"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 7
+        },
+        {
+          "tipo": "presenca_em_ranking_varejo",
+          "periodo": "2026-11",
+          "fonte": "https://conferidos.com/celulares-mais-vendidos/",
+          "posicao": null
+        }
+      ]
+    },
+    {
+      "id": "apple-iphone-15-pro-max",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 15 Pro Max",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 17",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A17 Pro (3 nm)",
+        "gpu": "Apple GPU (6-core graphics)",
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 6.7,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1290 x 2796 pixels",
+          "detalhes": "Dolby Vision, 2000 nits (pico), 1000 nits (HBM) e HDR10"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, f/1.6, 26mm (wide), Sensor-shift OIS e Dual Pixel PDAF",
+            "12 MP, f/1.8, 13mm, 120˚ (ultrawide)",
+            "12 MP, f/2.2, 13mm, 120˚ (ultrawide), 1/2.55",
+            "TOF 3D LiDAR scanner (depth)"
+          ],
+          "frontal": "SL 3D (profundidade) e 12 MP, f/1.9, 23mm (wide)",
+          "video_traseiro": "HDR , Full HD 240 fps, Modo Cinema, Dolby Vision HDR, 3D (Spatial), stereo sound rec. e 4K - 60fps",
+          "video_frontal": "4K - 60fps, Full HD - 120fps e gyro-EIS"
+        },
+        "bateria_mah": 4441,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "15W",
+        "peso_g": 221.0,
+        "peso_descricao": "221 g",
+        "dimensoes": "159.9 x 76.7 x 8.3 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 3.0"
+      },
+      "ram_gb_opcoes": [],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-15-pro-max-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/111828"
+        },
+        {
+          "id": "apple-iphone-15-pro-max-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/111828"
+        },
+        {
+          "id": "apple-iphone-15-pro-max-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/111828"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-15-pro-max",
+        "fabricante": "https://support.apple.com/pt-br/111828",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-15-pro-max"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 6
+        }
+      ]
+    },
+    {
+      "id": "apple-iphone-16",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 16",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 18",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A18 (3nm)",
+        "gpu": "Apple GPU (5-core graphics)",
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 6.1,
+          "frequencia_hz": null,
+          "resolucao_px": "1179 x 2556 pixels",
+          "detalhes": "Dolby Vision, HDR10, 1000 nits (typ) e 2000 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, f/1.6, 26mm (wide), 1/1.56",
+            "12 MP, f/2.2, 13mm, 120˚ (ultrawide)"
+          ],
+          "frontal": "12 MP, f/1.9, 23mm (wide), 1/3.6",
+          "video_traseiro": "Full HD 240 fps, HDR , Dolby Vision HDR e 4K - 60fps",
+          "video_frontal": "4K - 60fps, Full HD - 120fps e gyro-EIS"
+        },
+        "bateria_mah": 3561,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "25W (MagSafe) e 15W",
+        "peso_g": 170.0,
+        "peso_descricao": "170 g",
+        "dimensoes": "147.6 x 71.6 x 7.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-fi 802.11 a/b/g/n/ac/ax/6E/7, Dual Band e Hotspot",
+        "bluetooth": "LE, A2DP e 5.3",
+        "nfc": "Sim",
+        "usb": "USB Type-C 2.0"
+      },
+      "ram_gb_opcoes": [],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-16-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/121029"
+        },
+        {
+          "id": "apple-iphone-16-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/121029"
+        },
+        {
+          "id": "apple-iphone-16-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/121029"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16",
+        "fabricante": "https://support.apple.com/pt-br/121029",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "apple-iphone-17",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 17",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 26",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A19 (3 nm)",
+        "gpu": "Apple GPU (5-core graphics)",
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 6.3,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1206 x 2622 pixels",
+          "detalhes": "Dolby Vision, HDR10 e 3000 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, f/1.6, 26mm (wide), 1/1.56, Dual Pixel PDAF e Sensor-shift OIS",
+            "48 MP, f/2.2 (ultrawide) e PDAF"
+          ],
+          "frontal": "18 MP f/1.9 e PDAF",
+          "video_traseiro": "Dolby Vision HDR e 4K - 60fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 3962,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "25W e Sim",
+        "peso_g": 177.0,
+        "peso_descricao": "177 g",
+        "dimensoes": "149.6 x 71.5 x 8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-fi 802.11 a/b/g/n/ac/ax/6E/7, Dual Band e Hotspot",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Sim",
+        "usb": "USB Type-C 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-17-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125089"
+        },
+        {
+          "id": "apple-iphone-17-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125089"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17",
+        "fabricante": "https://support.apple.com/pt-br/125089",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "presenca_em_ranking_varejo",
+          "periodo": "2026-11",
+          "fonte": "https://conferidos.com/celulares-mais-vendidos/",
+          "posicao": null
+        }
+      ]
+    },
+    {
+      "id": "apple-iphone-17-pro",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 17 Pro",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 26",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A19 Pro (3 nm)",
+        "gpu": "Apple GPU (6-cores graficos)",
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 6.3,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1206 x 2622 pixels",
+          "detalhes": "Dolby Vision e HDR10"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, f/1.8, (wide), Dual Pixel PDAF e Sensor-shift OIS",
+            "48 MP, f/2.8, (periscope telephoto), 1/2.55, 4x Zoom ótico e PDAF",
+            "48 MP, f/2.2, 13mm (ultrawide), 1/2.55 e PDAF"
+          ],
+          "frontal": "18 MP f/1.9 e PDAF",
+          "video_traseiro": "4K 120fps, 3D (espacial) video/audio, Full HD 240 fps, ProRes, Dolby Vision HDR e 10-bit HDR",
+          "video_frontal": "4K - 60fps, Full HD - 120fps e gyro-EIS"
+        },
+        "bateria_mah": 4252,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "25W",
+        "peso_g": 206.0,
+        "peso_descricao": "206 g",
+        "dimensoes": "150 x 71.9 x 8.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-fi 802.11 a/b/g/n/ac/ax/6E/7, Dual Band e Hotspot",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "USB Tipo-C 3.2 Gen2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-17-pro-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125090"
+        },
+        {
+          "id": "apple-iphone-17-pro-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125090"
+        },
+        {
+          "id": "apple-iphone-17-pro-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125090"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17-pro",
+        "fabricante": "https://support.apple.com/pt-br/125090",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17-pro"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "apple-iphone-17-pro-max",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 17 Pro Max",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 26",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A19 Pro (3 nm)",
+        "gpu": "Apple GPU (6-cores graficos)",
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1320 x 2868",
+          "detalhes": "Dolby Vision e HDR10"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, f/1.8, (wide), Sensor-shift OIS e Dual Pixel PDAF",
+            "48 MP, f/2.8, (periscope telephoto), 1/2.55, 4x Zoom ótico, 3D sensor-shift e PDAF",
+            "48 MP, f/2.2, 13mm (ultrawide), 1/2.55 e PDAF"
+          ],
+          "frontal": "18 MP f/1.9, PDAF e OIS",
+          "video_traseiro": "3D (espacial) video/audio, 4K 120fps, Full HD 240 fps, ProRes, Dolby Vision HDR e 10-bit HDR",
+          "video_frontal": "4K - 60fps, Full HD - 120fps e gyro-EIS"
+        },
+        "bateria_mah": 5088,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "25W",
+        "peso_g": 233.0,
+        "peso_descricao": "233 g",
+        "dimensoes": "163.4 x 78 x 8.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-fi 802.11 a/b/g/n/ac/ax/6E/7, Dual Band e Hotspot",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "USB Tipo-C 3.2 Gen2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-17-pro-max-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125091"
+        },
+        {
+          "id": "apple-iphone-17-pro-max-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125091"
+        },
+        {
+          "id": "apple-iphone-17-pro-max-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125091"
+        },
+        {
+          "id": "apple-iphone-17-pro-max-2000gb",
+          "armazenamento_gb": 2000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125091"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17-pro-max",
+        "fabricante": "https://support.apple.com/pt-br/125091",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17-pro-max"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 5
+        }
+      ]
+    },
+    {
+      "id": "apple-iphone-air",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone Air",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 26",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A19 Pro (3 nm)",
+        "gpu": "Apple GPU (5-core graphics)",
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 6.5,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1260 x 2736px",
+          "detalhes": "Dolby Vision, 1000 nits (digitando), 3000 nits (pico) e HDR10"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, f/1.6, 26mm (wide), 1/1.56, Dual Pixel PDAF e Sensor-shift OIS"
+          ],
+          "frontal": "18 MP f/1.9, PDAF e OIS",
+          "video_traseiro": "3D (espacial) video/audio, ProRes, Dolby Vision HDR, 10-bit HDR e 4K - 60fps",
+          "video_frontal": "4K - 60fps, Full HD - 120fps e gyro-EIS"
+        },
+        "bateria_mah": 3149,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "20W",
+        "peso_g": 146.0,
+        "peso_descricao": "146 g",
+        "dimensoes": "163 x 77.6 x 5.6 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-fi 802.11 a/b/g/n/ac/ax/6E/7, Tri-Band e Hotspot",
+        "bluetooth": "6.0, A2DP e LE",
+        "nfc": "Sim",
+        "usb": "USB Type-C 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-air-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125092"
+        },
+        {
+          "id": "apple-iphone-air-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125092"
+        },
+        {
+          "id": "apple-iphone-air-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/125092"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-air",
+        "fabricante": "https://support.apple.com/pt-br/125092",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-air"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "apple-iphone-18-pro",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 18 Pro",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 27",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A20 Pro (2nm)",
+        "gpu": "Apple GPU (6-cores graficos)",
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 6.3,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1206 x 2622 pixels",
+          "detalhes": "Dolby Vision e HDR10"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP (abertura variável), Sensor-shift OIS e Dual Pixel PDAF",
+            "48 MP, f/2.8, (periscope telephoto), 1/2.55, 4x Zoom ótico, PDAF e OIS",
+            "48 MP, f/2.2, 13mm (ultrawide), 1/2.55 e PDAF"
+          ],
+          "frontal": "18 MP f/1.9 e PDAF",
+          "video_traseiro": "4K 120fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 4288,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "25W",
+        "peso_g": 211.0,
+        "peso_descricao": "211 g",
+        "dimensoes": "150 x 71.9 x 8.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-fi 802.11 a/b/g/n/ac/ax/6E/7, Hotspot e Dual Band",
+        "bluetooth": "6.0, LE e A2DP",
+        "nfc": "Sim",
+        "usb": "USB Tipo-C 3.2 Gen2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-18-pro-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://support.apple.com/en-la/148590"
+        },
+        {
+          "id": "apple-iphone-18-pro-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://support.apple.com/en-la/148590"
+        },
+        {
+          "id": "apple-iphone-18-pro-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://support.apple.com/en-la/148590"
+        },
+        {
+          "id": "apple-iphone-18-pro-2000gb",
+          "armazenamento_gb": 2000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://support.apple.com/en-la/148590"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro",
+        "fabricante": "https://support.apple.com/en-la/148590",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "apple-iphone-18-pro-max",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone 18 Pro Max",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "iOS 27",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A20 Pro (2nm)",
+        "gpu": "Apple GPU (6-cores graficos)",
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1320 x 2868 pixels",
+          "detalhes": "Dolby Vision e HDR10"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP (abertura variável), Dual Pixel PDAF e Sensor-shift OIS",
+            "48 MP, f/2.8, (periscope telephoto), 1/2.55, 4x Zoom ótico, PDAF e OIS",
+            "48 MP, f/2.2, 13mm (ultrawide), 1/2.55 e PDAF"
+          ],
+          "frontal": "18 MP f/1.9 e PDAF",
+          "video_traseiro": "4K 120fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 5567,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "25W",
+        "peso_g": 249.0,
+        "peso_descricao": "249g",
+        "dimensoes": "163.4 x 78 x 8.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-fi 802.11 a/b/g/n/ac/ax/6E/7, Hotspot e Dual Band",
+        "bluetooth": "A2DP, 6.0 e LE",
+        "nfc": "Sim",
+        "usb": "USB Tipo-C 3.2 Gen2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-18-pro-max-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://support.apple.com/es-la/148591"
+        },
+        {
+          "id": "apple-iphone-18-pro-max-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://support.apple.com/es-la/148591"
+        },
+        {
+          "id": "apple-iphone-18-pro-max-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://support.apple.com/es-la/148591"
+        },
+        {
+          "id": "apple-iphone-18-pro-max-2000gb",
+          "armazenamento_gb": 2000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://support.apple.com/es-la/148591"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro-max",
+        "fabricante": "https://support.apple.com/es-la/148591",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro-max"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "apple-iphone-duo",
+      "fabricante": "Apple",
+      "marca": "Apple",
+      "modelo": "iPhone Duo",
+      "segmento": "topo_de_linha",
+      "formato": "dobravel",
+      "especificacoes": {
+        "sistema": "iOS 27",
+        "atualizacoes_informadas": null,
+        "processador": "Apple A20 Pro (2nm)",
+        "gpu": null,
+        "tela": {
+          "tecnologia": "LTPO Super Retina XDR OLED",
+          "diagonal_pol": 7.6,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1878 x 2670 px",
+          "detalhes": "Tela Externa 5.4 pol 1398 x 2034 px (460ppi) 120Hz"
+        },
+        "cameras": {
+          "traseiras": [
+            "48 MP, f/1.6, 24mm (wide), 1/1.28",
+            "48 MP, f/2.2 (ultrawide)"
+          ],
+          "frontal": "12 MP, f/2.2, (wide)",
+          "video_traseiro": "4K 120fps",
+          "video_frontal": "4K - 60fps"
+        },
+        "bateria_mah": 4883,
+        "recarga_com_fio_w": null,
+        "recarga_sem_fio": "25W",
+        "peso_g": 254.0,
+        "peso_descricao": "254g",
+        "dimensoes": "117.8 x 164.6 x 5.2 mm (aberto) e 117.8 x 84.1 x 11.3 mm (fechado)",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-fi 802.11 a/b/g/n/ac/ax/6E/7",
+        "bluetooth": "6.0",
+        "nfc": "Sim",
+        "usb": "3.2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "apple-iphone-duo-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/148588"
+        },
+        {
+          "id": "apple-iphone-duo-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/148588"
+        },
+        {
+          "id": "apple-iphone-duo-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/148588"
+        },
+        {
+          "id": "apple-iphone-duo-2000gb",
+          "armazenamento_gb": 2000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://support.apple.com/pt-br/148588"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/apple-iphone-duo",
+        "fabricante": "https://support.apple.com/pt-br/148588",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-duo"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-redmi-13c",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi 13C",
+      "segmento": "entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "MIUI 14",
+        "atualizacoes_informadas": null,
+        "processador": "MediaTek Helio G85 (12nm)",
+        "gpu": "Mali-G52 MC2",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.74,
+          "frequencia_hz": 90.0,
+          "resolucao_px": "720 x 1600 pixels",
+          "detalhes": "600 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, (wide) e PDAF",
+            "2 MP, f/2.4, (macro)",
+            "0.08 MP (lente auxiliar)"
+          ],
+          "frontal": "8 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "FULLHD - 30fps"
+        },
+        "bateria_mah": 5000,
+        "recarga_com_fio_w": 18.0,
+        "recarga_sem_fio": null,
+        "peso_g": 192.0,
+        "peso_descricao": "192 g",
+        "dimensoes": "168 x 78 x 8.1 mm",
+        "protecao": null,
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "LE, A2DP e 5.3",
+        "nfc": "Não",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-13c-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            4
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-13c/specs/"
+        },
+        {
+          "id": "xiaomi-redmi-13c-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-13c/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-13c",
+        "fabricante": "https://www.mi.com/br/product/redmi-13c/specs/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-13c"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 21
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-redmi-14c",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi 14C",
+      "segmento": "entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 14 e HyperOS",
+        "atualizacoes_informadas": null,
+        "processador": "Mediatek Helio G81 Ultra",
+        "gpu": "Mali-G52 MC2",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.88,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "720 x 1640",
+          "detalhes": "600 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide) e PDAF"
+          ],
+          "frontal": "13 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "FULLHD - 30fps"
+        },
+        "bateria_mah": 5160,
+        "recarga_com_fio_w": 18.0,
+        "recarga_sem_fio": null,
+        "peso_g": 204.0,
+        "peso_descricao": "204 g",
+        "dimensoes": "171.9 x 77.8 x 8.2 mm",
+        "protecao": "Proteção a respingos",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "5.4, LE e A2DP",
+        "nfc": "Não",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        4,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-14c-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-14c"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-14c",
+        "fabricante": null,
+        "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-14c"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-poco-c75",
+      "fabricante": "Xiaomi",
+      "marca": "POCO",
+      "modelo": "POCO C75",
+      "segmento": "entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 14 e HyperOS",
+        "atualizacoes_informadas": null,
+        "processador": "Mediatek Helio G81 Ultra",
+        "gpu": "Mali-G52 MC2",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.88,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "720 x 1640",
+          "detalhes": "600 nits (HBM) e 450 nits (digitando)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, (wide)"
+          ],
+          "frontal": "13 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "HDR e FULLHD - 30fps"
+        },
+        "bateria_mah": 5160,
+        "recarga_com_fio_w": 18.0,
+        "recarga_sem_fio": null,
+        "peso_g": 204.0,
+        "peso_descricao": "204 g",
+        "dimensoes": "171.9 x 77.8 x 8.2 mm",
+        "protecao": "Design repelente a àgua",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "5.4, LE e A2DP",
+        "nfc": "Sim",
+        "usb": "USB Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        6,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-poco-c75-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            6
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-c75/specs/"
+        },
+        {
+          "id": "xiaomi-poco-c75-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-c75/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-c75",
+        "fabricante": "https://www.mi.com/br/product/poco-c75/specs/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-c75"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-redmi-15",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi 15",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e HyperOS 2",
+        "atualizacoes_informadas": "2 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 685",
+        "gpu": "Adreno 610",
+        "tela": {
+          "tecnologia": "IPS LCD",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 144.0,
+          "resolucao_px": "1080 x 2340",
+          "detalhes": "850 nits"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8 e PDAF"
+          ],
+          "frontal": "8 MP, f/2.0, (wide)",
+          "video_traseiro": "Full HD 30 FPS",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 7000,
+        "recarga_com_fio_w": 33.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 217.0,
+        "peso_descricao": "217g",
+        "dimensoes": "169.5 x 80.5 x 8.4 mm",
+        "protecao": "IP64",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6",
+        "bluetooth": "A2DP, LE, aptX e 5.1",
+        "nfc": "Sim",
+        "usb": "On-The-Go, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        6,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-15-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-15-4g"
+        },
+        {
+          "id": "xiaomi-redmi-15-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-15-4g"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-15-4g",
+        "fabricante": null,
+        "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-15-4g"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 7
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-redmi-note-14",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi Note 14",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 14 e HyperOS",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Mediatek Helio G99 Ultra",
+        "gpu": "Mali-G57 MC2",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.67,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2400",
+          "detalhes": "1200 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "108 MP, f/1.8, (wide) e PDAF",
+            "2 MP, f/2.4, (macro)",
+            "2 MP, f/2.4, (depth)"
+          ],
+          "frontal": "20 MP, f/2.2",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "FULLHD - 30fps"
+        },
+        "bateria_mah": 5500,
+        "recarga_com_fio_w": 33.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 190.0,
+        "peso_descricao": "190g",
+        "dimensoes": "162.4 x 75.7 x 8 mm",
+        "protecao": "IP64",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e Dual Band",
+        "bluetooth": "A2DP, LE e 5.3",
+        "nfc": "Não",
+        "usb": "Tipo-C, On-The-Go e 2.0"
+      },
+      "ram_gb_opcoes": [
+        6,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-note-14-128gb",
+          "armazenamento_gb": 128,
+          "ram_gb_documentada": [
+            6,
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-14/specs/"
+        },
+        {
+          "id": "xiaomi-redmi-note-14-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-14/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-14-4g",
+        "fabricante": "https://www.mi.com/br/product/redmi-note-14/specs/",
+        "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-14-4g"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 2
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-redmi-note-15",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi Note 15",
+      "segmento": "intermediario_entrada",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e HyperOS 2",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Mediatek Helio G100 Ultra (6 nm)",
+        "gpu": "Mali-G57 MC2",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.77,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2392 pixels",
+          "detalhes": "3200 nits (pico) e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "108 MP, f/1.7, PDAF e OIS",
+            "8 MP, f/2.2, (ultrawide)"
+          ],
+          "frontal": "20 MP, f/2.2",
+          "video_traseiro": "Full HD - 60 fps",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 6000,
+        "recarga_com_fio_w": 33.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 183.0,
+        "peso_descricao": "183g",
+        "dimensoes": "164 x 75.4 x 7.9 mm",
+        "protecao": "IP64",
+        "rede_5g": false,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac",
+        "bluetooth": "LE, A2DP, LHDC, 5.3 e LDAC",
+        "nfc": "Sim",
+        "usb": "On-The-Go, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-note-15-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-15/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-15-4g",
+        "fabricante": "https://www.mi.com/br/product/redmi-note-15/specs/",
+        "bateria": "https://www.mi.com/br/product/redmi-note-15/specs/"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 15
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-redmi-note-14-pro-5g",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi Note 14 Pro 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e HyperOS",
+        "atualizacoes_informadas": null,
+        "processador": "Mediatek Dimensity 7300 Ultra (4 nm)",
+        "gpu": "Mali-G615 MC2",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.67,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1220 x 2712 pixels",
+          "detalhes": "3000 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "200 MP, f/1.7, (wide), multi-directional PDAF e OIS",
+            "8 MP, f/2.2, (ultrawide)",
+            "2 MP, f/2.4, (depth)"
+          ],
+          "frontal": "20 MP, f/2.2",
+          "video_traseiro": "Full HD - 30 fps",
+          "video_frontal": "FULLHD - 30fps"
+        },
+        "bateria_mah": 5110,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": null,
+        "peso_g": 190.0,
+        "peso_descricao": "190g",
+        "dimensoes": "162.3 x 74.4 x 8.4 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e Dual Band",
+        "bluetooth": "5.4, A2DP e LE",
+        "nfc": "Não",
+        "usb": "Tipo-C, On-The-Go e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8,
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-note-14-pro-5g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-14-pro-5g"
+        },
+        {
+          "id": "xiaomi-redmi-note-14-pro-5g-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-14-pro-5g"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-14-pro-5g",
+        "fabricante": null,
+        "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-14-pro-5g"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 14
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-redmi-note-15-5g",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi Note 15 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e HyperOS 2",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 6 Gen 3 (4 nm)",
+        "gpu": "Adreno 710",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.77,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2392 pixels",
+          "detalhes": "3200 nits (pico) e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "108 MP, f/1.7, PDAF e OIS",
+            "8 MP, f/2.2, (ultrawide)"
+          ],
+          "frontal": "20 MP, f/2.2",
+          "video_traseiro": "4K - 30 fps",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 5520,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 178.0,
+        "peso_descricao": "178 g",
+        "dimensoes": "164 x 75.4 x 7.4 mm",
+        "protecao": "IP66",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6",
+        "bluetooth": "LE, A2DP, LHDC, 5.3 e LDAC",
+        "nfc": "Sim",
+        "usb": "On-The-Go, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-note-15-5g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-15-5g/specs/"
+        },
+        {
+          "id": "xiaomi-redmi-note-15-5g-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-15-5g/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-15-5g",
+        "fabricante": "https://www.mi.com/br/product/redmi-note-15-5g/specs/",
+        "bateria": "https://www.mi.com/br/product/redmi-note-15-5g/specs/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-redmi-note-17-5g",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi Note 17 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 4 Gen 4 (4 nm)",
+        "gpu": "Adreno 613",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.99,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1080 x 2396 pixels",
+          "detalhes": "700 nits (digitando), 1200 nits (HBM) e 1800 nits (pico)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, 26mm (wide), OIS e PDAF"
+          ],
+          "frontal": "16 MP, f/2.5, (wide)",
+          "video_traseiro": "Full HD - 60 fps",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 7700,
+        "recarga_com_fio_w": 45.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 225.0,
+        "peso_descricao": "225 g",
+        "dimensoes": "169.7 x 79.1 x 8.5 mm",
+        "protecao": "IP65",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e dual-band",
+        "bluetooth": "A2DP, LE e 5.1",
+        "nfc": "Sim (dependendo da região)",
+        "usb": "On-The-Go, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        6
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-note-17-5g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            6
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-17-5g/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-17-5g",
+        "fabricante": "https://www.mi.com/br/product/redmi-note-17-5g/specs/",
+        "bateria": "https://www.mi.com/br/product/redmi-note-17-5g/specs/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-redmi-note-17-pro-5g",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi Note 17 Pro 5G",
+      "segmento": "intermediario",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 6s Gen 4 (4 nm)",
+        "gpu": "Adreno 710",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.83,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1280 x 2772 pixels",
+          "detalhes": "3500 nits (pico), 1060 nits (digitando) e 1800 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.8, 26mm (wide), OIS e PDAF",
+            "8 MP, f/2.2, 15mm (ultrawide)"
+          ],
+          "frontal": "16 MP, f/2.4, (wide)",
+          "video_traseiro": "Full HD - 60 fps",
+          "video_frontal": "Full HD - 30 fps"
+        },
+        "bateria_mah": 8340,
+        "recarga_com_fio_w": 67.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 223.0,
+        "peso_descricao": "223 g",
+        "dimensoes": "163.5 x 78.3 x 8.6 mm",
+        "protecao": "IP68/IP69K",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac e dual-band",
+        "bluetooth": "A2DP, LE e 5.1",
+        "nfc": "Sim (dependendo da região)",
+        "usb": "On-The-Go, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        6,
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-note-17-pro-5g-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            6
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-17-pro-5g/specs/"
+        },
+        {
+          "id": "xiaomi-redmi-note-17-pro-5g-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-17-pro-5g/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-17-pro",
+        "fabricante": "https://www.mi.com/br/product/redmi-note-17-pro-5g/specs/",
+        "bateria": "https://www.mi.com/br/product/redmi-note-17-pro-5g/specs/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-poco-x7-pro",
+      "fabricante": "Xiaomi",
+      "marca": "POCO",
+      "modelo": "POCO X7 Pro",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 15 e HyperOS 2",
+        "atualizacoes_informadas": "3 anos (sistema)",
+        "processador": "Mediatek Dimensity 8400 Ultra (4 nm)",
+        "gpu": "Mali-G720 MC7",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.67,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1220 x 2712 pixels",
+          "detalhes": "Dolby Vision, 68B Colors, 3200 nits (pico), 1400 nits (HBM), HDR10 Plus e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.5, 26mm, OIS e PDAF",
+            "8 MP, f/2.2, (ultrawide)"
+          ],
+          "frontal": "20 MP, f/2.2",
+          "video_traseiro": "4K - 60fps",
+          "video_frontal": "FULLHD - 60fps"
+        },
+        "bateria_mah": 6000,
+        "recarga_com_fio_w": 90.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 195.0,
+        "peso_descricao": "195 g",
+        "dimensoes": "160.8 x 75.2 x 8.3 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6, Dual Band e Wi-Fi Direct",
+        "bluetooth": "5.4, LE e A2DP",
+        "nfc": "Sim",
+        "usb": "On-The-Go e Tipo-C"
+      },
+      "ram_gb_opcoes": [
+        8,
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-poco-x7-pro-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8,
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-x7-pro/specs/"
+        },
+        {
+          "id": "xiaomi-poco-x7-pro-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-x7-pro/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-x7-pro",
+        "fabricante": "https://www.mi.com/br/product/poco-x7-pro/specs/",
+        "bateria": "https://www.mi.com/br/product/poco-x7-pro/specs/"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 10
+        },
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 1
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-poco-x8-pro",
+      "fabricante": "Xiaomi",
+      "marca": "POCO",
+      "modelo": "POCO X8 Pro",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "6 anos (segurança) e 4 anos (sistema)",
+        "processador": "Mediatek Dimensity 8500 Ultra (4 nm)",
+        "gpu": "Mali-G720 MC8",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.59,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1268 x 2756 pixels",
+          "detalhes": "3500 nits (pico), Dolby Vision, 68B Colors, 2000 nits (HBM), HDR10 Plus e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.5, 26mm, OIS e PDAF",
+            "8 MP, f/2.2, (ultrawide)"
+          ],
+          "frontal": "20 MP, f/2.2",
+          "video_traseiro": "gyro-EIS, 4K - 60fps e HDR10 Plus",
+          "video_frontal": "FULLHD - 60fps"
+        },
+        "bateria_mah": 6500,
+        "recarga_com_fio_w": 100.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 201.5,
+        "peso_descricao": "201.5g",
+        "dimensoes": "157.5 x 75.2 x 8.4 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6, Wi-Fi Direct e Dual Band",
+        "bluetooth": "A2DP, 6.0, aptX HD, LE, LHDC 5, ASHA e Auracast",
+        "nfc": "Sim (dependendo da região)",
+        "usb": "On-The-Go e Tipo-C"
+      },
+      "ram_gb_opcoes": [
+        8,
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-poco-x8-pro-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-x8-pro/specs/"
+        },
+        {
+          "id": "xiaomi-poco-x8-pro-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8,
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-x8-pro/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-x8-pro",
+        "fabricante": "https://www.mi.com/br/product/poco-x8-pro/specs/",
+        "bateria": "https://www.mi.com/br/product/poco-x8-pro/specs/"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 5
+        },
+        {
+          "tipo": "buscas_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://comparecelular.com/mais-buscados/",
+          "posicao": 3
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-poco-x8-pro-max",
+      "fabricante": "Xiaomi",
+      "marca": "POCO",
+      "modelo": "POCO X8 Pro Max",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "6 anos (segurança) e 4 anos (sistema)",
+        "processador": "Mediatek Dimensity 9500s (3 nm)",
+        "gpu": "Immortalis-G925 MC12",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.83,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1280 x 2772 pixels",
+          "detalhes": "3500 nits (pico), Dolby Vision, 68B Colors, 2000 nits (HBM), HDR10 Plus e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.5, 26mm, PDAF e OIS",
+            "8 MP, f/2.2, (ultrawide)"
+          ],
+          "frontal": "20 MP, f/2.2",
+          "video_traseiro": "gyro-EIS, 4K - 60fps e HDR10 Plus",
+          "video_frontal": "FULLHD - 60fps"
+        },
+        "bateria_mah": 8500,
+        "recarga_com_fio_w": 100.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 218.0,
+        "peso_descricao": "218 g",
+        "dimensoes": "162.9 x 77.9 x 8.2 mm",
+        "protecao": "IP69K e IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6, Dual Band e Wi-Fi Direct",
+        "bluetooth": "6.0, A2DP, LE, aptX HD, LHDC 5, Auracast e ASHA",
+        "nfc": "Sim (dependendo da região)",
+        "usb": "Tipo-C e On-The-Go"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-poco-x8-pro-max-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "global",
+          "fonte": "https://www.mi.com/global/product/poco-x8-pro-max/specs/"
+        },
+        {
+          "id": "xiaomi-poco-x8-pro-max-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "global",
+          "fonte": "https://www.mi.com/global/product/poco-x8-pro-max/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-x8-pro-max",
+        "fabricante": "https://www.mi.com/global/product/poco-x8-pro-max/specs/",
+        "bateria": "https://www.mi.com/global/product/poco-x8-pro-max/specs/"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 2
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-redmi-note-17-pro-max-5g",
+      "fabricante": "Xiaomi",
+      "marca": "Redmi",
+      "modelo": "Redmi Note 17 Pro Max 5G",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 6 Gen 5 (4 nm)",
+        "gpu": "Adreno 812",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.83,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1280 x 2772 pixels",
+          "detalhes": "Dolby Vision, 3500 nits (pico), 1060 nits (digitando) e 1800 nits (HBM)"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.5, 26mm (wide), PDAF e OIS",
+            "8 MP, f/2.2, 15mm (ultrawide)"
+          ],
+          "frontal": "32 MP, f/2.2, (wide)",
+          "video_traseiro": "Full HD - 60 fps",
+          "video_frontal": "gyro-EIS, 4K - 30 FPS e FULLHD - 60fps"
+        },
+        "bateria_mah": 9210,
+        "recarga_com_fio_w": 100.0,
+        "recarga_sem_fio": "Não",
+        "peso_g": 229.5,
+        "peso_descricao": "229.5 g",
+        "dimensoes": "163.4 x 78.3 x 8.6 mm",
+        "protecao": "IP68/IP69K",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6 e dual-band",
+        "bluetooth": "6.0, A2DP e LE",
+        "nfc": "Sim (dependendo da região)",
+        "usb": "On-The-Go, Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        8
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-redmi-note-17-pro-max-5g-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            8
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/redmi-note-17-pro-max-5g/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-17-pro-max",
+        "fabricante": "https://www.mi.com/br/product/redmi-note-17-pro-max-5g/specs/",
+        "bateria": "https://www.mi.com/br/product/redmi-note-17-pro-max-5g/specs/"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 4
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-17t",
+      "fabricante": "Xiaomi",
+      "marca": "Xiaomi",
+      "modelo": "Xiaomi 17T",
+      "segmento": "intermediario_premium",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "5 anos (sistema)",
+        "processador": "Mediatek Dimensity 8500 Ultra (4 nm)",
+        "gpu": "Mali-G720 MC8",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.59,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1268 x 2756 pixels",
+          "detalhes": "Dolby Vision, 3500 nits (pico) e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, (wide), OIS e PDAF",
+            "50 MP, (telephoto), 5x zoom ótico , PDAF e OIS",
+            "12 MP, f/2.2, 15mm (ultrawide), 1/3.06"
+          ],
+          "frontal": "32 MP, f/2.2",
+          "video_traseiro": "4K - 60fps",
+          "video_frontal": "4K - 30 FPS"
+        },
+        "bateria_mah": 6500,
+        "recarga_com_fio_w": 67.0,
+        "recarga_sem_fio": null,
+        "peso_g": 200.0,
+        "peso_descricao": "200 g",
+        "dimensoes": "157.6 x 75.2 x 8.2 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e",
+        "bluetooth": "6.0 e A2DP",
+        "nfc": "Sim",
+        "usb": "OTG e USB Type-C 2.0"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-17t-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/xiaomi-17t/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-17t",
+        "fabricante": "https://www.mi.com/br/product/xiaomi-17t/specs/",
+        "bateria": "https://www.mi.com/br/product/xiaomi-17t/specs/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-17",
+      "fabricante": "Xiaomi",
+      "marca": "Xiaomi",
+      "modelo": "Xiaomi 17",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "4 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Elite Gen 5 (3 nm)",
+        "gpu": "Adreno 840",
+        "tela": {
+          "tecnologia": "LTPO OLED",
+          "diagonal_pol": 6.3,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1220 x 2656px",
+          "detalhes": "3500 nits (pico), Dolby Vision, HDR 10 Plus e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.7, 23mm (wide), OIS e Dual Pixel PDAF",
+            "50 MP, f/2.0, 60mm (telephoto), OIS e PDAF",
+            "50 MP, f/2.4 (ultrawide)"
+          ],
+          "frontal": "50 MP, f/2.2, (wide)",
+          "video_traseiro": "gyro-EIS, Dolby Vision HDR, 8K - 30fps e 4K - 60fps",
+          "video_frontal": "4K - 60fps e gyro-EIS"
+        },
+        "bateria_mah": 6330,
+        "recarga_com_fio_w": 100.0,
+        "recarga_sem_fio": "50W",
+        "peso_g": 191.0,
+        "peso_descricao": "191 g",
+        "dimensoes": "151.1 x 71.8 x 8.1 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7, Wi-Fi Direct e Dual Band",
+        "bluetooth": "5.4, A2DP, LE, aptX Adaptive, aptX HD e LHDC 5",
+        "nfc": "Sim",
+        "usb": "Tipo-C, On-The-Go e 3.2"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-17-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "global",
+          "fonte": "https://www.mi.com/global/product/xiaomi-17/specs/"
+        },
+        {
+          "id": "xiaomi-17-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "global",
+          "fonte": "https://www.mi.com/global/product/xiaomi-17/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-17",
+        "fabricante": "https://www.mi.com/global/product/xiaomi-17/specs/",
+        "bateria": "https://www.mi.com/global/product/xiaomi-17/specs/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-17-ultra",
+      "fabricante": "Xiaomi",
+      "marca": "Xiaomi",
+      "modelo": "Xiaomi 17 Ultra",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Xiaomi HyperOS 3",
+        "atualizacoes_informadas": null,
+        "processador": "Snapdragon 8 Elite Gen 5",
+        "gpu": null,
+        "tela": {
+          "tecnologia": "OLED",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 120.0,
+          "resolucao_px": "1200 x 2608",
+          "detalhes": null
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP OIS",
+            "200 MP teleobjetiva OIS",
+            "50 MP ultrawide"
+          ],
+          "frontal": "50 MP AF",
+          "video_traseiro": "8K30, 4K120",
+          "video_frontal": "4K60"
+        },
+        "bateria_mah": 6000,
+        "recarga_com_fio_w": 90.0,
+        "recarga_sem_fio": "50W",
+        "peso_g": 218.4,
+        "peso_descricao": "218.4–219 g",
+        "dimensoes": "162.9 x 77.6 x 8.29 mm",
+        "protecao": null,
+        "rede_5g": true,
+        "wifi": null,
+        "bluetooth": null,
+        "nfc": null,
+        "usb": null
+      },
+      "ram_gb_opcoes": [
+        16
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-17-ultra-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            16
+          ],
+          "regiao": "global",
+          "fonte": "https://www.mi.com/global/product/xiaomi-17-ultra/specs/"
+        },
+        {
+          "id": "xiaomi-17-ultra-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            16
+          ],
+          "regiao": "global",
+          "fonte": "https://www.mi.com/global/product/xiaomi-17-ultra/specs/"
+        }
+      ],
+      "regiao_ficha": "global",
+      "fontes": {
+        "ficha_tecnica": "https://www.mi.com/global/product/xiaomi-17-ultra/specs/",
+        "fabricante": "https://www.mi.com/global/product/xiaomi-17-ultra/specs/",
+        "bateria": "https://www.mi.com/global/product/xiaomi-17-ultra/specs/"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-15t-pro",
+      "fabricante": "Xiaomi",
+      "marca": "Xiaomi",
+      "modelo": "Xiaomi 15T Pro",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": null,
+        "processador": "Mediatek Dimensity 9400 Plus (3 nm)",
+        "gpu": "Immortalis-G925",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.83,
+          "frequencia_hz": 144.0,
+          "resolucao_px": "1280 x 2772 pixels",
+          "detalhes": "Dolby Vision, 3200 nits (pico), HDR10 Plus e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP, f/1.6, (wide), PDAF e OIS",
+            "50 mp, f/3.0 (telefoto), 5x zoom ótico , OIS e PDAF",
+            "12 MP, f/2.2, 15mm (ultrawide), 1/3.06"
+          ],
+          "frontal": "32 MP, (wide)",
+          "video_traseiro": "8K - 30fps e 4K - 60fps",
+          "video_frontal": "4K - 30 FPS"
+        },
+        "bateria_mah": 5500,
+        "recarga_com_fio_w": 90.0,
+        "recarga_sem_fio": "50W",
+        "peso_g": 210.0,
+        "peso_descricao": "210 g",
+        "dimensoes": "162.7 x 77.9 x 8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Dual Band, Wi-Fi Direct e Wi-Fi 802.11 a/b/g/n/ac/6/7",
+        "bluetooth": "6.0, A2DP, LE e LHDC",
+        "nfc": "Sim",
+        "usb": "OTG e USB Type-C 2.0"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-15t-pro-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-15t-pro"
+        },
+        {
+          "id": "xiaomi-15t-pro-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-15t-pro"
+        },
+        {
+          "id": "xiaomi-15t-pro-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": null,
+          "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-15t-pro"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-15t-pro",
+        "fabricante": null,
+        "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-15t-pro"
+      },
+      "sinais_demanda": []
+    },
+    {
+      "id": "xiaomi-poco-f9-pro",
+      "fabricante": "Xiaomi",
+      "marca": "POCO",
+      "modelo": "POCO F9 Pro",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "4 anos (segurança) e 4 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Elite Gen 5 V Series (3 nm)",
+        "gpu": "Adreno 840",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.59,
+          "frequencia_hz": 185.0,
+          "resolucao_px": "1156 x 2510 pixels",
+          "detalhes": "Dolby Vision, 850 nits (típico), 2200 nits (HBM), 4500 nits (pico), HDR10 Plus e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "200 MP, f/1.7, 24mm (wide) , OIS e PDAF",
+            "50 MP, f/2.0, 60mm (telephoto), PDAF e 2.5x optical zoom",
+            "8 MP, f/2.3, 112˚ (ultrawide)"
+          ],
+          "frontal": "32 MP, f/2.2, 21mm (wide)",
+          "video_traseiro": "gyro-EIS, 4K - 60fps, 8K - 30fps e HDR10 Plus",
+          "video_frontal": "4K - 30 FPS e FULLHD - 60fps"
+        },
+        "bateria_mah": 6330,
+        "recarga_com_fio_w": 100.0,
+        "recarga_sem_fio": "Sim e 50W",
+        "peso_g": 206.0,
+        "peso_descricao": "206 g",
+        "dimensoes": "157.5 x 75.3 x 8.8 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7 e Dual Band",
+        "bluetooth": "aptX Lossless, aptX Adaptive, LE, A2DP, 6.0 e Auracast",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        12
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-poco-f9-pro-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-f9-pro/specs/"
+        },
+        {
+          "id": "xiaomi-poco-f9-pro-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-f9-pro/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-f9-pro",
+        "fabricante": "https://www.mi.com/br/product/poco-f9-pro/specs/",
+        "bateria": "https://www.mi.com/br/product/poco-f9-pro/specs/"
+      },
+      "sinais_demanda": [
+        {
+          "tipo": "acessos_fichas",
+          "periodo": "2026-10",
+          "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
+          "posicao": 6
+        }
+      ]
+    },
+    {
+      "id": "xiaomi-poco-f9-ultra",
+      "fabricante": "Xiaomi",
+      "marca": "POCO",
+      "modelo": "POCO F9 Ultra",
+      "segmento": "topo_de_linha",
+      "formato": "convencional",
+      "especificacoes": {
+        "sistema": "Android 16 e HyperOS 3",
+        "atualizacoes_informadas": "4 anos (segurança) e 4 anos (sistema)",
+        "processador": "Qualcomm Snapdragon 8 Elite Gen 5 (3 nm)",
+        "gpu": "Adreno 840",
+        "tela": {
+          "tecnologia": "AMOLED",
+          "diagonal_pol": 6.9,
+          "frequencia_hz": 185.0,
+          "resolucao_px": "1200 x 2608 pixels",
+          "detalhes": "Dolby Vision, 850 nits (típico), 2200 nits (HBM), 4500 nits (pico), HDR10 Plus e PWM"
+        },
+        "cameras": {
+          "traseiras": [
+            "200 MP, f/1.7, 24mm (wide) , PDAF e OIS",
+            "50 MP, f/3.0, 120mm (periscope telephoto), 5x zoom ótico e PDAF",
+            "50 MP, f/2.4, 17mm, 102˚ (ultrawide)"
+          ],
+          "frontal": "32 MP, f/2.2, 21mm (wide)",
+          "video_traseiro": "gyro-EIS, 4K - 60fps, 8K - 30fps e HDR10 Plus",
+          "video_frontal": "4K - 30 FPS e FULLHD - 60fps"
+        },
+        "bateria_mah": 8050,
+        "recarga_com_fio_w": 100.0,
+        "recarga_sem_fio": "Sim e 50W",
+        "peso_g": 235.0,
+        "peso_descricao": "235 g",
+        "dimensoes": "163.5 x 77.9 x 8.7 mm",
+        "protecao": "IP68",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 802.11 a/b/g/n/ac/6e/7 e Dual Band",
+        "bluetooth": "6.0, A2DP, LE, aptX Lossless, aptX Adaptive e Auracast",
+        "nfc": "Sim",
+        "usb": "Tipo-C e 2.0"
+      },
+      "ram_gb_opcoes": [
+        12,
+        16
+      ],
+      "variantes_por_capacidade": [
+        {
+          "id": "xiaomi-poco-f9-ultra-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-f9-ultra/specs/"
+        },
+        {
+          "id": "xiaomi-poco-f9-ultra-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            16
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-f9-ultra/specs/"
+        },
+        {
+          "id": "xiaomi-poco-f9-ultra-1000gb",
+          "armazenamento_gb": 1000,
+          "ram_gb_documentada": [
+            16
+          ],
+          "regiao": "BR",
+          "fonte": "https://www.mi.com/br/product/poco-f9-ultra/specs/"
+        }
+      ],
+      "regiao_ficha": null,
+      "fontes": {
+        "ficha_tecnica": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-f9-ultra",
+        "fabricante": "https://www.mi.com/br/product/poco-f9-ultra/specs/",
+        "bateria": "https://www.mi.com/br/product/poco-f9-ultra/specs/"
+      },
+      "sinais_demanda": []
+    }
+  ]
+}

@@ -96,7 +96,7 @@ function header(current){
   el.className = "hdr";
   const home = current === "home";
   document.documentElement.classList.toggle("home", home);
-  const v2 = ["home","artigo","Samsung","Apple","Motorola"].includes(current) || /[?&]v2\b/.test(location.search);   /* visual novo: início, artigos e marcas; ranking e comparador ainda no visual antigo */
+  const v2 = ["home","artigo","Samsung","Apple","Motorola","ranking","comparador"].includes(current) || /[?&]v2\b/.test(location.search);   /* visual novo: início, artigos e marcas; ranking e comparador ainda no visual antigo */
   document.documentElement.classList.toggle("v2", v2);
   const links = MENU.filter(([,,k])=>k!=="home");
   el.innerHTML = `<div class="hdr-bar">
@@ -901,5 +901,147 @@ document.addEventListener("click", e=>{
 try{ if("scrollRestoration" in history) history.scrollRestoration = "manual"; }catch(e){}
 window.addEventListener("pageshow", e=>{ if(!e.persisted && !location.hash) window.scrollTo(0,0); });
 document.addEventListener("DOMContentLoaded", ()=>{ if(!location.hash) window.scrollTo(0,0); });
-window.MQ = { header, footer, renderArticles, renderArticle, renderRanking };
+
+/* ================= catálogo (68 modelos): notas, ranking e comparador ================= */
+const CHIP_GB = [  /* Geekbench 6 multi-core aproximado por processador (estimativa quando não há medição própria) */
+  [/8 Elite Extreme Gen 6/i,11500],[/A20 Pro/i,11000],[/8 Elite Gen 5|8 Gen 5|Dimensity 9500/i,10500],[/A19 Pro/i,10000],[/Exynos 2600/i,10000],
+  [/8 Elite/i,9600],[/A19/i,9400],[/Dimensity 9400/i,9300],[/A18/i,8360],[/Exynos 2500/i,8000],[/A17 Pro/i,7200],[/Exynos 2400/i,7000],
+  [/A16/i,6500],[/Dimensity 8500/i,6500],[/Dimensity 8400/i,6000],[/Exynos 1680/i,4500],[/7 Gen 4/i,4200],[/Exynos 1580/i,4000],
+  [/6 Gen 5/i,3800],[/7s Gen 4/i,3500],[/Dimensity 7450/i,3500],[/Exynos 1480/i,3400],[/7s Gen 3/i,3200],[/Dimensity 7300/i,3000],
+  [/6s Gen 4/i,3000],[/6 Gen 3/i,2900],[/T760/i,2300],[/4 Gen 4/i,2200],[/Exynos 1330/i,2090],[/Dimensity 6[34]00/i,2000],
+  [/G100|G99/i,1950],[/Exynos 1280/i,1900],[/685/i,1700],[/G8[15]/i,1350]];
+const CAT = () => MQ_DATA.cat || [];
+const catP = c => c.antigo ? P(c.antigo) : null;
+function notasCat(c){
+  const est = [];
+  let gb = c.antigo && GEEKBENCH[c.antigo];
+  if(!gb){ const m = CHIP_GB.find(([r])=>r.test(c.chip||"")); gb = m ? m[1] : 2500; est.push("desempenho"); }
+  const desempenho = clamp(gb / 11500 * 10);
+  const cams = (c.cams||[]).join(" | ");
+  let camera = 3;
+  if(/OIS/i.test(cams)) camera += 2;
+  const uw = (c.cams||[]).find(x=>/ultrawide/i.test(x)); if(uw){ const mp = +(uw.match(/(\d+)\s*MP/i)||[0,0])[1]; camera += mp>=48 ? 1.5 : mp>=8 ? .75 : .25; }
+  const teles = (c.cams||[]).filter(x=>/tele|periscope/i.test(x)).length; camera += teles>=2 ? 3 : teles ? 2 : 0;
+  if(/^200\s*MP/i.test((c.cams||[])[0]||"")) camera += .5;
+  if(/8K/i.test(c.video||"")) camera += .5; else if(/4K/i.test(c.video||"")) camera += .25;
+  const hz = c.tela.hz || (c.marca==="Apple" ? 60 : 90);
+  let tela = ({60:4,90:6,120:8,144:9,165:10,185:10}[hz] ?? 7) + (/LTPO/i.test(c.tela.tec||"") ? .5 : 0) - (/LCD/i.test(c.tela.tec||"") ? 1.5 : 0) - (/^720|x 720|720 x/.test(c.tela.res||"") ? 1 : 0);
+  let carga = c.carga; if(!carga){ carga = c.marca==="Apple" ? 25 : 18; est.push("bateria"); }
+  const bateria = clamp(((c.bat||4000)-3000)/5500*7, 0, 7) + clamp(carga/100*3, 0, 3);
+  const anos = t => +((String(c.upd||"").match(new RegExp("(\\d+) anos \\("+t)))||[0,0])[1];
+  let os = anos("sistema"), seg = anos("segurança") || os;
+  if(c.marca==="Apple"){ os = os || 6; seg = seg || 6; est.push("atualizacoes"); }
+  else if(!os){ os = 1; seg = seg || 2; est.push("atualizacoes"); }
+  const atualizacoes = clamp(os*.9 + seg*.6);
+  const n = {desempenho, camera:clamp(camera), tela:clamp(tela), bateria:clamp(bateria), atualizacoes};
+  n.tecnica = PESOS.reduce((t,[k,,w])=>t + n[k]*w/100, 0);
+  const cr = c.antigo && CRITICA[c.antigo];
+  n.critica = cr ? cr[0]/10 : null; n.reviews = cr ? cr[1] : 0;
+  n.final = n.critica != null ? (n.critica + n.tecnica)/2 : n.tecnica;
+  const p = catP(c); n.preco = p ? p.atualN : null;
+  n.est = est;
+  return n;
+}
+const MARCA_COR = {Samsung:"#1428A0",Apple:"#1C1C1C",Motorola:"#5C88DA",Redmi:"#FF6900",POCO:"#FFD000",Xiaomi:"#FF6900"};
+function catImg(c, cls){
+  const p = catP(c);
+  if(p) return `<img class="${cls||""}" src="${R}${p.cut}" alt="${esc(c.marca+" "+c.nome)}" loading="lazy">`;
+  return `<span class="cat-ico ${cls||""}" aria-hidden="true"><svg viewBox="0 0 40 64"><rect x="2" y="2" width="36" height="60" rx="7" fill="none" stroke="currentColor" stroke-width="2"/><rect x="15" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg><b style="color:${MARCA_COR[c.marca]||"currentColor"}">${esc(c.marca[0])}</b></span>`;
+}
+const SEG_NOME = {topo:"Topo de linha", intermediario:"Intermediário", entrada:"Entrada"};
+const nota1 = v => v == null ? "—" : v.toFixed(1).replace(".", ",");
+
+function renderRanking2(){
+  const main = document.getElementById("content");
+  const L = CAT().map(c=>({c, n:notasCat(c)}));
+  const comPreco = L.filter(x=>x.n.preco);
+  const maxRaw = Math.max(...comPreco.map(x=>x.n.final/Math.sqrt(x.n.preco)), 1);
+  L.forEach(x=>{ x.cb = x.n.preco ? (x.n.final/Math.sqrt(x.n.preco))/maxRaw*10 : null; });
+  let ordem = "nota", seg = "";
+  main.classList.add("h2");
+  main.innerHTML = `<header class="pg-head"><h1>Ranking</h1><p>Metade da nota vem da crítica especializada, a média das avaliações publicadas por sites de tecnologia do mundo todo. A outra metade vem de testes de laboratório e da ficha técnica. Depois comparamos com o preço médio de hoje.</p></header>
+    <div class="rk-filtros" role="toolbar" aria-label="Ordenar e filtrar">
+      <b>Ordenar por:</b>
+      ${[["cb","Custo-benefício"],["nota","Nota final"],["critica","Nota crítica"]].map(([k,l])=>`<button type="button" class="rk-f" data-ord="${k}">${l}</button>`).join("")}
+      <span class="rk-sep" aria-hidden="true"></span>
+      ${[["topo","Topo de linha"],["intermediario","Intermediário"],["entrada","Entrada"]].map(([k,l])=>`<button type="button" class="rk-f" data-seg="${k}">${l}</button>`).join("")}
+    </div>
+    <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span>Crítica</span><span>Nota final</span><span>Custo-benefício</span><span>Preço hoje</span></div><ol class="rk-lista" id="rkLista"></ol>
+      <p class="rk-nota" id="rkNota"></p></section>
+    <p class="rk-met">Notas de 0 a 10. Crítica: média das análises reunidas pelo Notebookcheck. Laboratório e ficha: desempenho (Geekbench 6), câmera, tela, bateria e atualizações; quando não há medição própria, o desempenho é estimado pelo processador. Custo-benefício compara a nota final com o preço de hoje. Aparelhos marcados com “venda no Brasil não confirmada” ainda não têm versão oficial confirmada aqui.</p>`;
+  const draw = () => {
+    let arr = L.filter(x=>!seg || x.c.seg===seg);
+    if(ordem==="cb") arr = arr.filter(x=>x.cb!=null).sort((a,b)=>b.cb-a.cb);
+    else if(ordem==="critica") arr = arr.filter(x=>x.n.critica!=null).sort((a,b)=>b.n.critica-a.n.critica);
+    else arr = arr.sort((a,b)=>b.n.final-a.n.final);
+    const top = arr.slice(0,10);
+    document.getElementById("rkLista").innerHTML = top.map((x,i)=>{ const c=x.c;
+      return `<li class="rk-item${i<3?" top top"+(i+1):""}">
+        <span class="rk-pos">${i+1}</span>
+        <span class="rk-cel"><span class="rk-img">${catImg(c)}</span><span class="rk-nome"><b>${esc(c.nome)}</b><small>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · <em class="rk-nbr">venda no Brasil não confirmada</em>`}</small></span></span>
+        <span class="rk-v" data-l="Crítica">${x.n.critica!=null ? nota1(x.n.critica) : `<em class="rk-sem">sem nota</em>`}</span>
+        <span class="rk-v rk-final" data-l="Nota final">${nota1(x.n.final)}</span>
+        <span class="rk-v" data-l="Custo-benefício">${x.cb!=null ? nota1(x.cb) : `<em class="rk-sem">sem preço</em>`}</span>
+        <span class="rk-v rk-preco" data-l="Preço hoje">${x.n.preco ? "≈ "+brl(x.n.preco) : `<em class="rk-sem">em pesquisa</em>`}</span>
+      </li>`; }).join("") || `<li class="rk-vazio">Ainda não temos aparelhos suficientes com esses dados nesta categoria.</li>`;
+    const total = L.filter(x=>!seg || x.c.seg===seg).length;
+    document.getElementById("rkNota").textContent = ordem==="cb" ? `Custo-benefício considera só os aparelhos que já têm preço pesquisado (${arr.length} de ${total}). Os demais entram conforme a pesquisa semanal avança.` :
+      ordem==="critica" ? `Mostrando só aparelhos com análises publicadas (${arr.length} de ${total}).` : `Top 10 entre ${total} aparelhos${seg?" da categoria "+SEG_NOME[seg]:""}.`;
+    main.querySelectorAll("[data-ord]").forEach(b=>b.classList.toggle("on", b.dataset.ord===ordem));
+    main.querySelectorAll("[data-seg]").forEach(b=>b.classList.toggle("on", b.dataset.seg===seg));
+  };
+  main.querySelectorAll("[data-ord]").forEach(b=>b.addEventListener("click", ()=>{ ordem=b.dataset.ord; draw(); }));
+  main.querySelectorAll("[data-seg]").forEach(b=>b.addEventListener("click", ()=>{ seg = seg===b.dataset.seg ? "" : b.dataset.seg; draw(); }));
+  draw();
+}
+
+function renderComparador(){
+  const main = document.getElementById("content");
+  const C = CAT(), byId = id => C.find(c=>c.id===id);
+  const marcas = [...new Set(C.map(c=>c.marca))];
+  const N = 3;
+  let sel = [null,null,null];
+  try{ const s = JSON.parse(localStorage.getItem("cmp-sel2")); localStorage.removeItem("cmp-sel2");
+    if(Array.isArray(s)) s.slice(0,N).forEach((id,i)=>{ if(!id) return; const c = byId(id) || C.find(x=>x.antigo===id); if(c) sel[i]=c.id; }); }catch(e){}
+  main.classList.add("h2");
+  main.innerHTML = `<header class="pg-head"><h1>Comparador</h1><p>Escolha a marca e o modelo de até 3 celulares e veja a ficha técnica, o preço de lançamento e quanto custa hoje.</p></header>
+    <div class="cp-slots">${[0,1,2].map(i=>`<div class="cp-slot" data-i="${i}"><b class="cp-t">Celular ${i+1}</b>
+      <select class="cp-sel cp-marca" aria-label="Marca do celular ${i+1}"><option value="">Marca</option>${marcas.map(m=>`<option>${esc(m)}</option>`).join("")}</select>
+      <select class="cp-sel cp-modelo" aria-label="Modelo do celular ${i+1}" disabled><option value="">Modelo</option></select>
+      <div class="cp-foto"></div></div>`).join("")}</div>
+    <section class="cp-ficha" id="cpFicha"></section>`;
+  const slots = [...main.querySelectorAll(".cp-slot")];
+  const fillModelos = (i, marca) => { const m = slots[i].querySelector(".cp-modelo");
+    m.innerHTML = `<option value="">Modelo</option>` + C.filter(c=>c.marca===marca).sort((a,b)=>a.nome.localeCompare(b.nome)).map(c=>`<option value="${c.id}">${esc(c.nome)}</option>`).join("");
+    m.disabled = !marca; };
+  const linhas = [
+    ["Categoria", c=>SEG_NOME[c.seg]], ["Preço hoje", (c,n)=>n.preco ? "≈ "+brl(n.preco) : "em pesquisa"], ["Preço de lançamento", c=>{ const p=catP(c); return p && p.precoN ? brl(p.precoN) : "—"; }],
+    ["Nota final", (c,n)=>nota1(n.final)], ["Nota da crítica", (c,n)=>n.critica!=null ? nota1(n.critica) : "sem nota"],
+    ["Tela", c=>[c.tela.pol ? String(c.tela.pol).replace(".",",")+"\"" : "", c.tela.tec, c.tela.res].filter(Boolean).join(" · ")],
+    ["Taxa de atualização", c=>c.tela.hz ? c.tela.hz+" Hz" : "60 Hz"], ["Processador", c=>c.chip], ["Memória RAM", c=>c.ram.length ? c.ram.join(" ou ")+" GB" : "—"],
+    ["Armazenamento", c=>c.armaz.map(g=>g>=1000 ? (g/1000)+" TB" : g+" GB").join(", ")], ["Câmeras traseiras", c=>c.cams.join("<br>")], ["Câmera frontal", c=>c.frontal],
+    ["Vídeo", c=>c.video], ["Bateria", c=>c.bat ? c.bat.toLocaleString("pt-BR")+" mAh" : "—"], ["Carregamento", c=>[c.carga ? c.carga+" W com fio" : "", c.semfio && !/^Não/.test(c.semfio) ? c.semfio+" sem fio" : ""].filter(Boolean).join(" · ") || "—"],
+    ["Resistência", c=>c.prot || "—"], ["Peso", c=>c.peso ? c.peso+" g" : "—"], ["Sistema", c=>c.sistema], ["Atualizações", c=>c.upd || (c.marca==="Apple" ? "Sem prazo oficial (costuma ser de 5 a 7 anos)" : "Não informado")],
+    ["5G", c=>c.g5 ? "Sim" : "Não"], ["NFC", c=>c.nfc || "—"], ["Venda no Brasil", c=>c.br ? "Confirmada" : "Não confirmada"]];
+  const draw = () => {
+    slots.forEach((el,i)=>{ const c = sel[i] && byId(sel[i]);
+      if(c){ el.querySelector(".cp-marca").value = c.marca; fillModelos(i, c.marca); el.querySelector(".cp-modelo").value = c.id; }
+      el.querySelector(".cp-foto").innerHTML = c ? `<span class="cp-img">${catImg(c)}</span><b>${esc(c.nome)}</b>` : `<span class="cp-mais" aria-hidden="true">+</span>`;
+      el.classList.toggle("cheio", !!c); });
+    const cs = sel.map(id=>id && byId(id)).filter(Boolean);
+    const box = document.getElementById("cpFicha");
+    if(cs.length < 2){ box.innerHTML = `<p class="cp-vazio">Escolha pelo menos dois celulares para ver a ficha técnica lado a lado.</p>`; return; }
+    const ns = cs.map(notasCat);
+    box.innerHTML = `<table class="cp-tab"><thead><tr><th></th>${cs.map(c=>`<th>${esc(c.marca)} ${esc(c.nome)}</th>`).join("")}</tr></thead><tbody>${
+      linhas.map(([k,fn])=>`<tr><th>${k}</th>${cs.map((c,i)=>`<td>${fn(c,ns[i]) || "—"}</td>`).join("")}</tr>`).join("")}</tbody></table>
+      <p class="cp-fonte">Fichas: ${cs.map(c=>c.fonte ? `<a href="${esc(c.fonte)}" target="_blank" rel="noopener">${esc(c.nome)}</a>` : "").filter(Boolean).join(", ")}. Preços de hoje entram conforme a pesquisa semanal.</p>`;
+  };
+  slots.forEach((el,i)=>{
+    el.querySelector(".cp-marca").addEventListener("change", e=>{ fillModelos(i, e.target.value); sel[i]=null; draw(); });
+    el.querySelector(".cp-modelo").addEventListener("change", e=>{ sel[i] = e.target.value || null; draw(); });
+  });
+  draw();
+}
+
+window.MQ = { header, footer, renderArticles, renderArticle, renderRanking: ()=>renderRanking2(), renderComparador };
 })();
