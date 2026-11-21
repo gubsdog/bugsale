@@ -1632,3 +1632,23 @@ html.v2 .post-head .author{display:flex !important;flex-direction:row !important
 html.v2 .post-head .author .meta{width:auto !important;justify-content:flex-start !important;gap:8px !important;flex-wrap:nowrap !important}
 html.v2 .post-head .author .who{display:flex !important;align-items:center;gap:8px;white-space:nowrap}
 html.v2 .post-head .author .share{display:flex !important;gap:8px;margin:0 !important}
+/* destaque: traço fino, igual ao dos cards, para a foto com fundo branco não "sumir" */
+.h-hero::before{content:"";position:absolute;inset:0;border:1px solid var(--v-line);border-radius:16px;z-index:3;pointer-events:none}
+/* banner do grupo: foto inteira (todos os aparelhos) e texto centralizado, a 32px das bordas */
+.grupo2-img{aspect-ratio:720/480 !important;flex:none !important}
+.grupo2-img img{object-position:50% 50% !important}
+.grupo2-txt{padding:0 32px 32px !important;align-items:center !important;text-align:center !important;justify-content:center}
+@media (min-width:901px){
+  .h-ofertas > .grupo2{contain:none !important}
+  .h-ofertas{align-items:stretch}
+  .o2-lista{justify-content:space-between}
+  .o2{flex:1}
+}
+.b-grupo .grupo2.largo{grid-template-columns:336px 1fr !important;height:224px}
+.b-grupo .grupo2.largo .grupo2-img{height:224px !important;aspect-ratio:auto !important}
+.b-grupo .grupo2.largo .grupo2-img img{object-fit:cover;object-position:50% 50% !important}
+.b-grupo .grupo2.largo .grupo2-img::after{display:none}
+.b-grupo .grupo2.largo .grupo2-txt{padding:32px !important;align-items:center !important;text-align:center !important}
+/* página da marca: "ver todos" à direita, alinhado ao conteúdo */
+.b-tit{justify-content:space-between}
+.grupo2-img::after{height:20% !important}

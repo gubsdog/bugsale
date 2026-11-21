@@ -120,6 +120,9 @@ function header(current){
     document.documentElement.dataset.theme = t;
     try{ localStorage.setItem("bs-theme", t); }catch(e){}
   });
+  /* o modo escolhido segue a pessoa de página em página (também onde o navegador não guarda a escolha) */
+
+  document.addEventListener("click", e=>{ const a = e.target.closest && e.target.closest("a[href]"); if(a && !a.dataset.temaOk){ a.dataset.temaOk = 1; const t = document.documentElement.dataset.theme; try{ const u = new URL(a.getAttribute("href"), location.href); if(u.origin === location.origin){ u.searchParams.set("tema", t); a.setAttribute("href", a.getAttribute("href").split("?")[0].split("#")[0] + "?" + u.searchParams.toString() + (u.hash||"")); } }catch(_){} } }, true);
   /* busca */
   const lupa = el.querySelector(".hdr-lupa"), painel = el.querySelector(".busca"), fundo = el.querySelector(".busca-fundo");
   const input = painel.querySelector("input"), res = painel.querySelector(".busca-res"), limpa = painel.querySelector(".busca-limpa");
