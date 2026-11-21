@@ -37,7 +37,7 @@ def w(path, text):
     open(full, 'w', encoding='utf-8').write(text)
 
 
-# ---------- catálogo (68 modelos: ranking e comparador) ----------
+# ---------- catálogo (modelos: ranking e comparador) ----------
 CAT = json.load(open(os.path.join(ROOT, 'data/catalogo.json'), encoding='utf-8'))
 ANTIGO = {"samsung-galaxy-a07-4g":"galaxy-a07","samsung-galaxy-a17-5g":"galaxy-a17-5g","samsung-galaxy-a57-5g":"galaxy-a57",
   "samsung-galaxy-s26":"galaxy-s26","samsung-galaxy-s26-ultra":"galaxy-s26-ultra","apple-iphone-15":"iphone-15","apple-iphone-16":"iphone-16",
@@ -57,7 +57,9 @@ for m in CAT['modelos']:
         bat=e.get('bateria_mah'), carga=e.get('recarga_com_fio_w'), semfio=e.get('recarga_sem_fio'), peso=e.get('peso_g'),
         dim=e.get('dimensoes'), prot=e.get('protecao'), g5=e.get('rede_5g'), nfc=e.get('nfc'),
         ram=m.get('ram_gb_opcoes') or [], armaz=sorted({v['armazenamento_gb'] for v in vs}),
-        fonte=(m.get('fontes') or {}).get('ficha_tecnica'), demanda=min(dem) if dem else None, antigo=ANTIGO.get(m['id'])))
+        fonte=(m.get('fontes') or {}).get('ficha_tecnica'), demanda=min(dem) if dem else None, antigo=ANTIGO.get(m['id']),
+        preco=m.get('preco_medio_brl'), img=(f"img/cat/{m['id']}.webp" if os.path.exists(os.path.join(ROOT,'static/img/cat',m['id']+'.webp')) else None),
+        precoInfo=(lambda p: p and dict(data=p.get('data_consulta'), canais=p.get('quantidade_canais'), min=p.get('menor_brl'), max=p.get('maior_brl'), gb=p.get('armazenamento_referencia_gb')))(m.get('pesquisa_preco'))))
 
 # ---------- js/data.js (usado pelas páginas) ----------
 phones = {}

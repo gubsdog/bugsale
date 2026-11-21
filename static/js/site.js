@@ -938,16 +938,18 @@ function notasCat(c){
   const cr = c.antigo && CRITICA[c.antigo];
   n.critica = cr ? cr[0]/10 : null; n.reviews = cr ? cr[1] : 0;
   n.final = n.critica != null ? (n.critica + n.tecnica)/2 : n.tecnica;
-  const p = catP(c); n.preco = p ? p.atualN : null;
+  const p = catP(c); n.preco = c.preco || (p ? p.atualN : null);
   n.est = est;
   return n;
 }
 const MARCA_COR = {Samsung:"#1428A0",Apple:"#1C1C1C",Motorola:"#5C88DA",Redmi:"#FF6900",POCO:"#FFD000",Xiaomi:"#FF6900"};
 function catImg(c, cls){
   const p = catP(c);
-  if(p) return `<img class="${cls||""}" src="${R}${p.cut}" alt="${esc(c.marca+" "+c.nome)}" loading="lazy">`;
+  if(c.img || p) return `<img class="${cls||""}" src="${R}${c.img || p.cut}" alt="${esc(c.marca+" "+c.nome)}" loading="lazy">`;
   return `<span class="cat-ico ${cls||""}" aria-hidden="true"><svg viewBox="0 0 40 64"><rect x="2" y="2" width="36" height="60" rx="7" fill="none" stroke="currentColor" stroke-width="2"/><rect x="15" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg><b style="color:${MARCA_COR[c.marca]||"currentColor"}">${esc(c.marca[0])}</b></span>`;
 }
+const ICO_NBR = `<span class="ico-nbr" role="img" aria-label="Venda no Brasil não confirmada" title="Venda no Brasil não confirmada"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 8h13M8 1.5c-2.2 2-2.2 11 0 13M8 1.5c2.2 2 2.2 11 0 13" fill="none" stroke="currentColor" stroke-width="1.1"/></svg></span>`;
+const PESQ_DATA = () => { const d = CAT().map(c=>c.precoInfo&&c.precoInfo.data).filter(Boolean).sort().pop(); return d ? d.split("-").reverse().join("/") : "—"; };
 const SEG_NOME = {topo:"Topo de linha", intermediario:"Intermediário", entrada:"Entrada"};
 const nota1 = v => v == null ? "—" : v.toFixed(1).replace(".", ",");
 
@@ -966,8 +968,9 @@ function renderRanking2(){
       <span class="rk-sep" aria-hidden="true"></span>
       ${[["topo","Topo de linha"],["intermediario","Intermediário"],["entrada","Entrada"]].map(([k,l])=>`<button type="button" class="rk-f" data-seg="${k}">${l}</button>`).join("")}
     </div>
-    <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span>Crítica</span><span>Nota final</span><span>Custo-benefício</span><span>Preço hoje</span></div><ol class="rk-lista" id="rkLista"></ol>
-      <p class="rk-nota" id="rkNota"></p></section>
+    <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span>Crítica</span><span>Custo-benefício</span><span>Nota final</span><span>Preço aprox. hoje</span></div><ol class="rk-lista" id="rkLista"></ol>
+      <p class="rk-nota" id="rkNota"></p>
+      <p class="rk-legenda">${ICO_NBR} Venda no Brasil não confirmada: a ficha é da versão global e ainda não há versão oficial confirmada aqui.</p></section>
     <details class="rk-calc"><summary>Como calculamos</summary><div class="rk-calc-in">
       <p><b>Nota final</b> = metade crítica + metade laboratório e ficha. Todas as notas vão de 0 a 10.</p>
       <p><b>Crítica (50%)</b>: média das análises publicadas por sites de tecnologia do mundo todo, reunidas pelo Notebookcheck. Quando um aparelho ainda não tem análises publicadas, a nota final usa só o laboratório e a ficha, e ele aparece como “sem nota” na coluna da crítica.</p>
@@ -980,8 +983,7 @@ function renderRanking2(){
         <li><b>Atualizações (20%)</b>: anos prometidos de versões do sistema e de segurança. A Apple não divulga prazo; usamos o histórico de 5 a 7 anos.</li>
       </ul>
       <p><b>Custo-benefício</b>: a nota final dividida pela raiz quadrada do preço médio de hoje, convertida para uma escala de 0 a 10, em que 10 é o melhor resultado da lista. Só entram aparelhos com preço pesquisado.</p>
-      <p><b>Preço de hoje</b>: média de ofertas de aparelhos novos em lojas confiáveis, atualizada toda segunda-feira.</p>
-      <p>Aparelhos com “venda no Brasil não confirmada” têm ficha da versão global, sem versão oficial confirmada aqui.</p>
+      <p><b>Preço aproximado hoje</b>: média das menores ofertas de aparelhos novos encontradas em cada loja, na versão de armazenamento com mais lojas vendendo. Não inclui frete nem cupons. Pesquisa de ${PESQ_DATA()}, atualizada toda segunda-feira.</p>
     </div></details>`;
   const draw = () => {
     let arr = L.filter(x=>!seg || x.c.seg===seg);
@@ -992,11 +994,11 @@ function renderRanking2(){
     document.getElementById("rkLista").innerHTML = top.map((x,i)=>{ const c=x.c;
       return `<li class="rk-item${i<3?" top top"+(i+1):""}">
         <span class="rk-pos">${i+1}</span>
-        <span class="rk-cel"><span class="rk-img">${catImg(c)}</span><span class="rk-nome"><b>${esc(c.nome)}</b><small>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · <em class="rk-nbr">venda no Brasil não confirmada</em>`}</small></span></span>
+        <span class="rk-cel"><span class="rk-img">${catImg(c)}</span><span class="rk-nome"><b>${esc(c.nome)}</b><small>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · ${ICO_NBR}`}</small></span></span>
         <span class="rk-v" data-l="Crítica">${x.n.critica!=null ? nota1(x.n.critica) : `<em class="rk-sem">sem nota</em>`}</span>
-        <span class="rk-v rk-final" data-l="Nota final">${nota1(x.n.final)}</span>
         <span class="rk-v" data-l="Custo-benefício">${x.cb!=null ? nota1(x.cb) : `<em class="rk-sem">sem preço</em>`}</span>
-        <span class="rk-v rk-preco" data-l="Preço hoje">${x.n.preco ? "≈ "+brl(x.n.preco) : `<em class="rk-sem">em pesquisa</em>`}</span>
+        <span class="rk-v rk-final" data-l="Nota final">${nota1(x.n.final)}</span>
+        <span class="rk-v rk-preco" data-l="Preço aproximado hoje">${x.n.preco ? "≈ "+brl(x.n.preco) : `<em class="rk-sem">em pesquisa</em>`}</span>
       </li>`; }).join("") || `<li class="rk-vazio">Ainda não temos aparelhos suficientes com esses dados nesta categoria.</li>`;
     const total = L.filter(x=>!seg || x.c.seg===seg).length;
     document.getElementById("rkNota").textContent = ordem==="cb" ? `Custo-benefício considera só os aparelhos que já têm preço pesquisado (${arr.length} de ${total}). Os demais entram conforme a pesquisa semanal avança.` :
@@ -1029,7 +1031,7 @@ function renderComparador(){
     m.innerHTML = `<option value="">Modelo</option>` + C.filter(c=>c.marca===marca).sort((a,b)=>a.nome.localeCompare(b.nome)).map(c=>`<option value="${c.id}">${esc(c.nome)}</option>`).join("");
     m.disabled = !marca; };
   const linhas = [
-    ["Categoria", c=>SEG_NOME[c.seg]], ["Preço hoje", (c,n)=>n.preco ? "≈ "+brl(n.preco) : "em pesquisa"], ["Preço de lançamento", c=>{ const p=catP(c); return p && p.precoN ? brl(p.precoN) : "—"; }],
+    ["Categoria", c=>SEG_NOME[c.seg]], ["Preço aprox. hoje", (c,n)=>n.preco ? "≈ "+brl(n.preco) : "em pesquisa"], ["Preço de lançamento", c=>{ const p=catP(c); return p && p.precoN ? brl(p.precoN) : "—"; }],
     ["Nota final", (c,n)=>nota1(n.final)], ["Nota da crítica", (c,n)=>n.critica!=null ? nota1(n.critica) : "sem nota"],
     ["Tela", c=>[c.tela.pol ? String(c.tela.pol).replace(".",",")+"\"" : "", c.tela.tec, c.tela.res].filter(Boolean).join(" · ")],
     ["Taxa de atualização", c=>c.tela.hz ? c.tela.hz+" Hz" : "60 Hz"], ["Processador", c=>c.chip], ["Memória RAM", c=>c.ram.length ? c.ram.join(" ou ")+" GB" : "—"],

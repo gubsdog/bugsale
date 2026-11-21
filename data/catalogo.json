@@ -1,15 +1,17 @@
 {
-  "versao": "1.0.0-beta",
+  "versao": "1.1.0-beta",
   "data_consulta": "2026-11-21",
   "mercado_alvo": "BR",
-  "total_modelos": 68,
+  "total_modelos": 69,
   "convencoes": {
     "null": "Dado indisponível ou não confirmado.",
     "regiao": "BR ou global quando confirmada para o conjunto de dados indicado. Região nula indica que a ficha pode incluir especificações internacionais.",
     "variantes": "Capacidades documentadas, sem garantia de estoque local. Cada registro agrupa opções de RAM conhecidas para uma capacidade. Lista vazia indica combinação não confirmada. TB convertido em 1000 GB comerciais.",
     "fontes": "Ficha técnica é a fonte padrão. Fabricante indica documentação complementar. Bateria e variantes têm fonte própria. Datas de consulta se aplicam a todos os registros.",
     "segmento": "Classificação editorial do catálogo beta.",
-    "sinais_demanda": "A posição pertence à fonte e ao período indicados. Lista vazia significa ausência de evidência nos recortes selecionados."
+    "sinais_demanda": "A posição pertence à fonte e ao período indicados. Lista vazia significa ausência de evidência nos recortes selecionados.",
+    "preco_medio_brl": "Média aritmética das menores ofertas identificadas por canal na capacidade com mais canais observados (menor capacidade em empate). Amostra de anúncios do varejo voltado ao Brasil, incluindo marketplaces e importadoras locais. Não ponderada por vendas. Considera o preço anunciado do aparelho, inclusive Pix quando indicado. Frete, cupons que exigem ativação, condições por CEP e eventuais encargos no checkout não são estimados. Sem padronização por cor ou RAM. Data da consulta às páginas e índices, sem garantia de estoque ou de atualização da loja na mesma data.",
+    "referencia_exterior": "Amostra complementar para Xiaomi, Redmi e POCO quando localizada no Compras Paraguai. Menor oferta por loja da mesma capacidade na página do produto, com equivalente em reais exibido pela fonte. Com quatro ou mais lojas, exclui cotações acima do triplo ou abaixo de um terço da mediana da amostra. Média de preços no Paraguai antes de frete e eventuais tributos na entrada no Brasil. Capacidade informada separadamente. Não entra na média brasileira. Nulo quando não há cotação identificada."
   },
   "modelos": [
     {
@@ -92,7 +94,42 @@
           "fonte": "https://conferidos.com/celulares-mais-vendidos/",
           "posicao": null
         }
-      ]
+      ],
+      "preco_medio_brl": 819.11,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 3,
+        "menor_brl": 764.1,
+        "maior_brl": 885.22,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy A07 4GB/128GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 764.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a07-4g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/njbqpx",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy A07 128GB, 4GB, Câm. 50MP, Tela 6.7- Verde",
+            "loja": "Amazon",
+            "preco_brl": 808.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a07-4g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/kr52t1",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Galaxy A07 Tela 6.7 128GB 4G 90Hz Câmera Dupla 50MP Preto Samsung",
+            "loja": "Shopee",
+            "preco_brl": 885.22,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a07-4g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/aqw8bj",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-a16-4g",
@@ -169,7 +206,32 @@
           "fonte": "https://www.mobiletime.com.br/noticias/18/09/2026/smartphones-brasil-1s26/",
           "posicao": 5
         }
-      ]
+      ],
+      "preco_medio_brl": 1081.28,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 768.45,
+        "maior_brl": 1394.1,
+        "cotacoes": [
+          {
+            "loja": "Mercado Livre",
+            "titulo": "Celular Samsung Galaxy A16, 128gb + 4gb Ram, Câmera De Até 50mp, Tela 6.7 , Nfc, Ip54, Bateria 5 Ah Verde Claro | Parcelamento sem juros",
+            "armazenamento_gb": 128,
+            "preco_brl": 1394.1,
+            "fonte": "https://www.mercadolivre.com.br/celular-samsung-galaxy-a16-128gb-4gb-ram-camera-de-ate-50mp-tela-67-nfc-ip54-bateria-5-ah-verde-claro/p/MLB44113911?picker=true&product_trigger_id=MLB44113908"
+          },
+          {
+            "loja": "sperkacessorios.com",
+            "titulo": "Smartphone Samsung Galaxy A16 4G 128GB 4GB RAM - Versão Nacional · SPERK",
+            "armazenamento_gb": 128,
+            "preco_brl": 768.45,
+            "fonte": "https://www.sperkacessorios.com/p/smartphone-samsung-galaxy-a16-4g-128gb-4gb-ram-versao-nacional-89875e65"
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-a17-4g",
@@ -240,7 +302,33 @@
           "fonte": "https://www.mobiletime.com.br/noticias/18/09/2026/smartphones-brasil-1s26/",
           "posicao": 2
         }
-      ]
+      ],
+      "preco_medio_brl": 917.27,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 853.19,
+        "maior_brl": 981.35,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy A17-128GB",
+            "loja": "Amazon",
+            "preco_brl": 853.19,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17",
+            "url_oferta": "https://www.oficinadanet.com.br/go/ial7tu",
+            "armazenamento_gb": 128
+          },
+          {
+            "loja": "Mercado Livre",
+            "titulo": "Celular Samsung Galaxy A17 Com Ia, 128gb, 4gb Ram, Câm De 50mp, Tela De 6.7, Nfc, Ip54 - Cinza | Parcelamento sem juros",
+            "armazenamento_gb": 128,
+            "preco_brl": 981.35,
+            "fonte": "https://www.mercadolivre.com.br/celular-samsung-galaxy-a17-com-ia-128gb-4gb-ram-cam-de-50mp-tela-de-67-nfc-ip54-cinza/p/MLB55044657?picker=true&product_trigger_id=MLB54984333"
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-a17-5g",
@@ -311,7 +399,42 @@
           "fonte": "https://conferidos.com/celulares-mais-vendidos/",
           "posicao": null
         }
-      ]
+      ],
+      "preco_medio_brl": 1100.36,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 3,
+        "menor_brl": 999.0,
+        "maior_brl": 1199.0,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy A17 5G 4GB/128GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17-5g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/t37kh2",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy A17 5G 128GB 4GB 6,7”",
+            "loja": "Shopee",
+            "preco_brl": 1103.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17-5g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/fn5epk",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy A17 5G, 128GB, 4GB, 50MP Tela 6.7 - Azul",
+            "loja": "Amazon",
+            "preco_brl": 1199.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a17-5g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/d5vz8t",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-a25-5g",
@@ -374,7 +497,32 @@
         "fabricante": "https://news.samsung.com/br/poderosos-nas-maos-e-economicos-no-bolso-samsung-apresenta-novos-integrantes-da-familia-galaxy-a-no-brasil",
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a25"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 1949.84,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 1899.78,
+        "maior_brl": 1999.9,
+        "cotacoes": [
+          {
+            "loja": "Mercado Livre",
+            "titulo": "Samsung Galaxy A25 5G 5G 128 GB azul-escuro 8 GB RAM | Parcelamento sem juros",
+            "armazenamento_gb": 128,
+            "preco_brl": 1999.9,
+            "fonte": "https://www.mercadolivre.com.br/samsung-galaxy-a25-5g-5g-128-gb-azul-escuro-8-gb-ram/p/MLB33389792"
+          },
+          {
+            "loja": "magazinevoce.com.br",
+            "titulo": "Smartphone Samsung Galaxy A25 5G SM-A256E 128gb Azul 6gb Ram - Samsung Galaxy - Magazine Josiribeiro",
+            "armazenamento_gb": 128,
+            "preco_brl": 1899.78,
+            "fonte": "https://www.magazinevoce.com.br/magazinejosiribeiro/smartphone-samsung-galaxy-a25-5g-sm-a256e-128gb-azul-6gb-ram/p/ef4b5k8d5h/te/galx/?seller_id=acdigital1"
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-a37-5g",
@@ -438,7 +586,42 @@
         "fabricante": "https://www.samsung.com/br/smartphones/galaxy-a/galaxy-a37-5g-awesome-graygreen-256gb-sm-a376bdgkzto/",
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a37"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 1601.33,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 3,
+        "menor_brl": 1599.3,
+        "maior_brl": 1605.4,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy A37 128GB 5G 6GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 1599.3,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a37",
+            "url_oferta": "https://www.oficinadanet.com.br/go/csilpq",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy A37 5G 128GB, 6GB RAM",
+            "loja": "Mercado Livre",
+            "preco_brl": 1599.3,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a37",
+            "url_oferta": "https://www.oficinadanet.com.br/go/aghtw8",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy A37 5G 128GB, 6GB",
+            "loja": "Amazon",
+            "preco_brl": 1605.4,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a37",
+            "url_oferta": "https://www.oficinadanet.com.br/go/eym0xq",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-a55-5g",
@@ -515,7 +698,32 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 22
         }
-      ]
+      ],
+      "preco_medio_brl": 1884.28,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 1879.56,
+        "maior_brl": 1889,
+        "cotacoes": [
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Samsung Galaxy A55 5G 256GB 8GB RAM Azul Escuro - Menor Preço: R$ 1.879,56",
+            "armazenamento_gb": 256,
+            "preco_brl": 1879.56,
+            "fonte": "https://promo.jumpit.com.br/produto/samsung-galaxy-a55-5g-256gb-azul"
+          },
+          {
+            "loja": "Mercado Livre",
+            "titulo": "Samsung Galaxy A55 5G 256GB 8GB RAM Azul Escuro - Menor Preço: R$ 1.879,56",
+            "armazenamento_gb": 256,
+            "preco_brl": 1889,
+            "fonte": "https://promo.jumpit.com.br/produto/samsung-galaxy-a55-5g-256gb-azul"
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-a56-5g",
@@ -595,7 +803,33 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 25
         }
-      ]
+      ],
+      "preco_medio_brl": 2353.98,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 1708.95,
+        "maior_brl": 2999.0,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy A56 5g 256gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 2999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a56",
+            "url_oferta": "https://www.oficinadanet.com.br/go/ajyu9f",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "sperkacessorios.com",
+            "titulo": "Smartphone Samsung Galaxy A56 5G 256GB 8GB RAM - Versão Nacional · SPERK",
+            "armazenamento_gb": 256,
+            "preco_brl": 1708.95,
+            "fonte": "https://www.sperkacessorios.com/p/smartphone-samsung-galaxy-a56-5g-256gb-8gb-ram-versao-nacional-adbc4bab"
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-a57-5g",
@@ -666,7 +900,42 @@
           "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
           "posicao": 9
         }
-      ]
+      ],
+      "preco_medio_brl": 1950.1,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 3,
+        "menor_brl": 1899.0,
+        "maior_brl": 1989.0,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy A57 8GB/128GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 1899.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a57",
+            "url_oferta": "https://www.oficinadanet.com.br/go/qpbr6j",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy A57 5G 128GB, 8GB",
+            "loja": "Amazon",
+            "preco_brl": 1962.3,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a57",
+            "url_oferta": "https://www.oficinadanet.com.br/go/q6ung5",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy A57 128GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 1989.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-a57",
+            "url_oferta": "https://www.oficinadanet.com.br/go/rgf57k",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-s25-fe",
@@ -746,7 +1015,42 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 24
         }
-      ]
+      ],
+      "preco_medio_brl": 3034.2,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 3,
+        "menor_brl": 2789.1,
+        "maior_brl": 3314.7,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy S25 FE 5G, 128GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 2789.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-fe",
+            "url_oferta": "https://www.oficinadanet.com.br/go/3ajvhw",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy S25 FE 5G 128GB",
+            "loja": "Amazon",
+            "preco_brl": 2998.8,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-fe",
+            "url_oferta": "https://www.oficinadanet.com.br/go/yx9787",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy S25 FE 128GB 5G 8GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 3314.7,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-fe",
+            "url_oferta": "https://www.oficinadanet.com.br/go/zz7mhm",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-s26-fe",
@@ -819,7 +1123,42 @@
         "fabricante": "https://news.samsung.com/br/samsung-galaxy-s26-fe-chega-ao-brasil-com-one-ui-9-sete-atualizacoes-de-sistema-operacional-e-de-seguranca-camera-avancada-processador-de-alta-performance-e-galaxy-ai",
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-fe"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 3680.36,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 3,
+        "menor_brl": 3563.01,
+        "maior_brl": 3799.0,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy S26 FE 128GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 3563.01,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-fe",
+            "url_oferta": "https://www.oficinadanet.com.br/go/w3p5cw",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy S26 FE 128GB, 8GB RAM Tela 6,7, Câm. Traseira 50MP+12MP+8MP, Frontal 12MP",
+            "loja": "Shopee",
+            "preco_brl": 3679.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-fe",
+            "url_oferta": "https://www.oficinadanet.com.br/go/niabhl",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Samsung Galaxy S26 FE 128GB 5G 8GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 3799.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-fe",
+            "url_oferta": "https://www.oficinadanet.com.br/go/62w0c1",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-s25",
@@ -908,7 +1247,42 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 10
         }
-      ]
+      ],
+      "preco_medio_brl": 3898.93,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 3898.8,
+        "maior_brl": 3899.0,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy S25 5G, 256GB, 12GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 3898.8,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25",
+            "url_oferta": "https://www.oficinadanet.com.br/go/r7dqvd",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy S25 5G 256GB",
+            "loja": "Amazon",
+            "preco_brl": 3898.99,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25",
+            "url_oferta": "https://www.oficinadanet.com.br/go/qie6v7",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy S25 5G 12GB/256GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 3899.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25",
+            "url_oferta": "https://www.oficinadanet.com.br/go/xyc0gh",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-s25-ultra",
@@ -998,7 +1372,42 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 8
         }
-      ]
+      ],
+      "preco_medio_brl": 5489.03,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 5349.0,
+        "maior_brl": 5599.0,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy S25 Ultra 5G 256GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 5349.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-ultra",
+            "url_oferta": "https://www.oficinadanet.com.br/go/2ss8gr",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy S25 Ultra 5G 256GB - Titânio Cinza",
+            "loja": "Shopee",
+            "preco_brl": 5519.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-ultra",
+            "url_oferta": "https://www.oficinadanet.com.br/go/54gmyf",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy S25 Ultra 5G 256GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 5599.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s25-ultra",
+            "url_oferta": "https://www.oficinadanet.com.br/go/7yeo49",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-s26",
@@ -1072,7 +1481,34 @@
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26",
         "processador": "https://www.samsung.com/br/campaign/galaxy-s26-battery-performance-security/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 5065.0,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 4798.0,
+        "maior_brl": 5332.0,
+        "cotacoes": [
+          {
+            "titulo": "Galaxy S26 5G - 256GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 4798.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26",
+            "url_oferta": "https://www.oficinadanet.com.br/go/rz4gfb",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy S26 5G, 256GB, 12GB RAM, Câmera Tripla de 50+12+10, Tela Grande de 6.3 - Violeta",
+            "loja": "Amazon",
+            "preco_brl": 5332.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26",
+            "url_oferta": "https://www.oficinadanet.com.br/go/7qrmpt",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-s26-plus",
@@ -1146,7 +1582,42 @@
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-plus",
         "processador": "https://www.samsung.com/br/campaign/galaxy-s26-battery-performance-security/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 4887.61,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 4498.2,
+        "maior_brl": 5165.63,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy S26+ 5G, 256GB, 12GB RAM",
+            "loja": "Amazon",
+            "preco_brl": 4498.2,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-plus",
+            "url_oferta": "https://www.oficinadanet.com.br/go/q7m3c8",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy S26 plus, 256gb, 12gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 4999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-plus",
+            "url_oferta": "https://www.oficinadanet.com.br/go/eeuq7y",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy S26+ 5G, 256GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 5165.63,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-plus",
+            "url_oferta": "https://www.oficinadanet.com.br/go/ylk7f9",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-s26-ultra",
@@ -1224,7 +1695,34 @@
         "fabricante": "https://www.samsung.com/br/business/smartphones/galaxy-s/galaxy-s26-ultra-sm-s948bzkkzto/",
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-ultra"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 7918.5,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 2,
+        "menor_brl": 7799.0,
+        "maior_brl": 8038.0,
+        "cotacoes": [
+          {
+            "titulo": "Galaxy S26 Ultra 5G - 512GB",
+            "loja": "Amazon",
+            "preco_brl": 7799.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-ultra",
+            "url_oferta": "https://www.oficinadanet.com.br/go/kw0tf2",
+            "armazenamento_gb": 512
+          },
+          {
+            "titulo": "Samsung Galaxy S26 Ultra 5G, 512GB, 12GB RAM",
+            "loja": "Mercado Livre",
+            "preco_brl": 8038.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-s26-ultra",
+            "url_oferta": "https://www.oficinadanet.com.br/go/3ojewz",
+            "armazenamento_gb": 512
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-z-flip7",
@@ -1296,7 +1794,47 @@
         "fabricante": "https://news.samsung.com/br/samsung-galaxy-z-flip7-recursos-poderosos-de-ai-em-forma-compacta-e-uma-ampla-tela-externa",
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip7"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "tipo_dobravel": "concha",
+      "preco_medio_brl": 5831.84,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 4,
+        "menor_brl": 4668.2,
+        "maior_brl": 7221.11,
+        "cotacoes": [
+          {
+            "loja": "directeletronicos.com.br",
+            "titulo": "Samsung Galaxy Z Flip7 256 GB — Direct Eletrônicos",
+            "armazenamento_gb": 256,
+            "preco_brl": 4939.05,
+            "fonte": "https://directeletronicos.com.br/produtos/samsung-galaxy-z-flip7-256-gb"
+          },
+          {
+            "loja": "appvtex.samsung.com.br",
+            "titulo": "Celular Samsung Galaxy Z Flip7 5G 256GB, 12GB RAM, Tela 6.9\"",
+            "armazenamento_gb": 256,
+            "preco_brl": 7221.11,
+            "fonte": "https://appvtex.samsung.com.br/galaxy-z-flip7/p"
+          },
+          {
+            "loja": "sperkacessorios.com",
+            "titulo": "Smartphone Samsung Galaxy Z Flip7 5G 256GB 12GB RAM - Versão Nacional · SPERK",
+            "armazenamento_gb": 256,
+            "preco_brl": 4668.2,
+            "fonte": "https://www.sperkacessorios.com/p/smartphone-samsung-galaxy-z-flip7-5g-256gb-12gb-ram-versao-nacional-ad1f5a11"
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Celular Samsung Galaxy Z Flip7 256GB Preto 5G Tela 6,9\" Câm. Dupla 50MP Galaxy AI - Galaxy Z Flip 7 - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 6499,
+            "fonte": "https://www.magazineluiza.com.br/celular-samsung-galaxy-z-flip7-256gb-preto-5g-tela-69-cam-dupla-50mp-galaxy-ai/p/240389200/te/gaz7/?seller_id=magazineluiza"
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-z-flip8",
@@ -1368,7 +1906,144 @@
         "fabricante": "https://www.samsung.com/br/smartphones/galaxy-z-flip8/specs/",
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip8"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "tipo_dobravel": "concha",
+      "preco_medio_brl": 6285.72,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 5976.43,
+        "maior_brl": 6595.0,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy Z Flip8, 256GB 12GB RAM Câmera 50MP - Preto | Câmera 50MP",
+            "loja": "Amazon",
+            "preco_brl": 5976.43,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip8",
+            "url_oferta": "https://www.oficinadanet.com.br/go/7bx4cf",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy Z Flip8, 256gb 12gb Ram",
+            "loja": "Mercado Livre",
+            "preco_brl": 6595.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-flip8",
+            "url_oferta": "https://www.oficinadanet.com.br/go/pkmuqq",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
+    },
+    {
+      "id": "samsung-galaxy-z-fold8",
+      "fabricante": "Samsung",
+      "marca": "Samsung",
+      "modelo": "Galaxy Z Fold8",
+      "segmento": "topo_de_linha",
+      "formato": "dobravel",
+      "regiao_ficha": "BR",
+      "ram_gb_opcoes": [
+        12
+      ],
+      "sinais_demanda": [],
+      "fontes": {
+        "fabricante": "https://news.samsung.com/br/samsung-apresenta-os-novos-galaxy-z-fold8-galaxy-z-fold8-ultra-e-galaxy-z-flip8-no-brasil",
+        "ficha_tecnica": "https://news.samsung.com/br/samsung-apresenta-os-novos-galaxy-z-fold8-galaxy-z-fold8-ultra-e-galaxy-z-flip8-no-brasil",
+        "bateria": "https://news.samsung.com/br/samsung-apresenta-os-novos-galaxy-z-fold8-galaxy-z-fold8-ultra-e-galaxy-z-flip8-no-brasil",
+        "complementar": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8"
+      },
+      "variantes_por_capacidade": [
+        {
+          "id": "samsung-galaxy-z-fold8-256gb",
+          "armazenamento_gb": 256,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://news.samsung.com/br/samsung-apresenta-os-novos-galaxy-z-fold8-galaxy-z-fold8-ultra-e-galaxy-z-flip8-no-brasil"
+        },
+        {
+          "id": "samsung-galaxy-z-fold8-512gb",
+          "armazenamento_gb": 512,
+          "ram_gb_documentada": [
+            12
+          ],
+          "regiao": "BR",
+          "fonte": "https://news.samsung.com/br/samsung-apresenta-os-novos-galaxy-z-fold8-galaxy-z-fold8-ultra-e-galaxy-z-flip8-no-brasil"
+        }
+      ],
+      "especificacoes": {
+        "sistema": "Android 17 e One UI 9",
+        "atualizacoes_informadas": "7 gerações do Android e 7 anos de segurança",
+        "processador": "Snapdragon 8 Elite Gen 5 for Galaxy",
+        "gpu": null,
+        "tela": {
+          "tecnologia": "Dynamic AMOLED 2X",
+          "diagonal_pol": 7.6,
+          "frequencia_hz": 120,
+          "resolucao_px": "1848 x 2448",
+          "detalhes": "Tela externa de 5,5 pol., 1248 x 1972 px, até 120 Hz."
+        },
+        "cameras": {
+          "traseiras": [
+            "50 MP principal, f/1.8, OIS",
+            "50 MP ultrawide, f/1.9"
+          ],
+          "frontal": "10 MP em cada tela",
+          "video_traseiro": null,
+          "video_frontal": null
+        },
+        "bateria_mah": 4800,
+        "recarga_com_fio_w": 45,
+        "recarga_sem_fio": "20 W",
+        "peso_g": 201,
+        "peso_descricao": "201 g",
+        "dimensoes": "Aberto: 161,4 × 123,9 × 4,5 mm. Fechado: 81,9 × 123,9 × 9,7 mm.",
+        "protecao": "IP48",
+        "rede_5g": true,
+        "wifi": "Wi-Fi 7",
+        "bluetooth": "6.0",
+        "nfc": null,
+        "usb": null
+      },
+      "tipo_dobravel": "livro",
+      "termos_busca": [
+        "Fold",
+        "dobrável tipo livro",
+        "Samsung Galaxy Z Fold8",
+        "Samsung Fold",
+        "Galaxy Fold",
+        "Z Fold 8"
+      ],
+      "preco_medio_brl": 10249.05,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 9699.0,
+        "maior_brl": 10799.1,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy Z Fold8 256gb, 12gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 9699.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8",
+            "url_oferta": "https://www.oficinadanet.com.br/go/9a8v02",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Samsung Galaxy Z Fold8 256GB",
+            "loja": "Amazon",
+            "preco_brl": 10799.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8",
+            "url_oferta": "https://www.oficinadanet.com.br/go/et3i71",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "samsung-galaxy-z-fold8-ultra",
@@ -1445,7 +2120,49 @@
         "fabricante": "https://news.samsung.com/br/samsung-apresenta-os-novos-galaxy-z-fold8-galaxy-z-fold8-ultra-e-galaxy-z-flip8-no-brasil",
         "bateria": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8-ultra"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "tipo_dobravel": "livro",
+      "termos_busca": [
+        "Fold",
+        "dobrável tipo livro",
+        "Samsung Galaxy Z Fold8 Ultra",
+        "Samsung Fold",
+        "Galaxy Fold",
+        "Z Fold 8 Ultra"
+      ],
+      "preco_medio_brl": 12576.88,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 10532.55,
+        "maior_brl": 14599,
+        "cotacoes": [
+          {
+            "titulo": "Samsung Galaxy Z Fold8 Ultra 256gb, 12gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 12599.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/samsung-galaxy-z-fold8-ultra",
+            "url_oferta": "https://www.oficinadanet.com.br/go/k5447f",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "appvtex.samsung.com.br",
+            "titulo": "Celular Samsung Galaxy Z Fold8 Ultra 256GB, 12GB RAM, 8.0\"",
+            "armazenamento_gb": 256,
+            "preco_brl": 14599,
+            "fonte": "https://appvtex.samsung.com.br/galaxy-z-fold8-ultra/p"
+          },
+          {
+            "loja": "sperkacessorios.com",
+            "titulo": "Smartphone Samsung Galaxy Z Fold8 Ultra 5G 256GB 12GB RAM - Versão Nacional · SPERK",
+            "armazenamento_gb": 256,
+            "preco_brl": 10532.55,
+            "fonte": "https://www.sperkacessorios.com/p/smartphone-samsung-galaxy-z-fold8-ultra-5g-256gb-12gb-ram-versao-nacional-cf9c47fa"
+          }
+        ]
+      }
     },
     {
       "id": "motorola-moto-g06-4g",
@@ -1529,7 +2246,34 @@
           "fonte": "https://conferidos.com/celulares-mais-vendidos/",
           "posicao": null
         }
-      ]
+      ],
+      "preco_medio_brl": 812.06,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 807.36,
+        "maior_brl": 816.76,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Moto G06 128GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 807.36,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g06",
+            "url_oferta": "https://www.oficinadanet.com.br/go/j9ffhf",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Motorola Moto g06 - 128GB 4GB RAM + 8GB Ram Boost, e Camera 50MP com AI Bateria de 5200 mAh Tela 6.9",
+            "loja": "Shopee",
+            "preco_brl": 816.76,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g06",
+            "url_oferta": "https://www.oficinadanet.com.br/go/ba8o6c",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "motorola-moto-g15-4g",
@@ -1599,7 +2343,42 @@
           "fonte": "https://www.mobiletime.com.br/noticias/18/09/2026/smartphones-brasil-1s26/",
           "posicao": 4
         }
-      ]
+      ],
+      "preco_medio_brl": 1179.02,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 928.99,
+        "maior_brl": 1379.08,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Moto g15-256GB 4GB RAM+8GB Ram Boost e Camera 50MP com AI e Night Vision Bateria de 5200 mAh Tela FHD+ 6.7 com Superbrilho NFC - Verde",
+            "loja": "Amazon",
+            "preco_brl": 928.99,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g15",
+            "url_oferta": "https://www.oficinadanet.com.br/go/413o7n",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Moto G15 256gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 1229.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g15",
+            "url_oferta": "https://www.oficinadanet.com.br/go/7z7y1h",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Moto G15 256GB, 4G LTE, 12GB RAM Boost*, Camera 50MP, Tela FHD+ 6.7 - Verde Vegan Leather",
+            "loja": "Shopee",
+            "preco_brl": 1379.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g15",
+            "url_oferta": "https://www.oficinadanet.com.br/go/dbibw2",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "motorola-moto-g17-4g",
@@ -1678,7 +2457,42 @@
           "fonte": "https://conferidos.com/celulares-mais-vendidos/",
           "posicao": null
         }
-      ]
+      ],
+      "preco_medio_brl": 937.62,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 3,
+        "menor_brl": 894.99,
+        "maior_brl": 998.89,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Moto G17 4G - 128GB 4GB Ram + 8GB Ram Boost - Roxo",
+            "loja": "Amazon",
+            "preco_brl": 894.99,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g17",
+            "url_oferta": "https://www.oficinadanet.com.br/go/p32qd6",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Motorola Moto G17 4G - 128GB 4GB RAM + 8GB RAM Boost, camera 50MP Sony Lytia 600",
+            "loja": "Shopee",
+            "preco_brl": 918.98,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g17",
+            "url_oferta": "https://www.oficinadanet.com.br/go/vx06we",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Motorola Moto G17 4g - 128gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 998.89,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g17",
+            "url_oferta": "https://www.oficinadanet.com.br/go/a4dqsd",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "motorola-moto-g35-5g",
@@ -1754,7 +2568,34 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 9
         }
-      ]
+      ],
+      "preco_medio_brl": 1028.5,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 899.0,
+        "maior_brl": 1158.0,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Moto g35 5G - 128GB 4GB RAM+8GB Ram Boost e Camera 50MP com AI NFC Tela 6.7 com Superbrilho - Verde",
+            "loja": "Amazon",
+            "preco_brl": 899.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g35",
+            "url_oferta": "https://www.oficinadanet.com.br/go/3658k5",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Moto G35 5G 128gb - Verde - Vegan Leather",
+            "loja": "Mercado Livre",
+            "preco_brl": 1158.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g35",
+            "url_oferta": "https://www.oficinadanet.com.br/go/0r9pj3",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "motorola-moto-g37",
@@ -1816,7 +2657,34 @@
         "fabricante": "https://www.motorola.com.br/smartphone-motorola-moto-g37-5g-64gb/p?idsku=1970",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g37"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 1151.04,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 1103.08,
+        "maior_brl": 1199.0,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Moto G37 5G - 128GB 4GB RAM + 8GB RAM Boost, Camera 50MP, Bateria de 5200 mAh, tela 6.7 120Hz, NFC",
+            "loja": "Shopee",
+            "preco_brl": 1103.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g37",
+            "url_oferta": "https://www.oficinadanet.com.br/go/jb1oq0",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Motorola Moto G37 5G - 128GB 4GB RAM + 8GB RAM Boost, Camera 50MP com editor magico, Bateria de 5200 mAh e tela 6.7 - Grafite",
+            "loja": "Amazon",
+            "preco_brl": 1199.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g37",
+            "url_oferta": "https://www.oficinadanet.com.br/go/fvdwax",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "motorola-moto-g67-5g",
@@ -1885,7 +2753,42 @@
         "fabricante": "https://www.motorola.com.br/kit-smartphone-motorola-moto-g67-5g-256gb-moto-buds-2/p?workspace=master",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g67"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 1474.53,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 3,
+        "menor_brl": 1426.58,
+        "maior_brl": 1498.5,
+        "cotacoes": [
+          {
+            "titulo": "Motorola G67-128GB",
+            "loja": "Shopee",
+            "preco_brl": 1426.58,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g67",
+            "url_oferta": "https://www.oficinadanet.com.br/go/18q4ap",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Motorola Moto G67 5G 128GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 1498.5,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g67",
+            "url_oferta": "https://www.oficinadanet.com.br/go/wcn20w",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Motorola Moto G67 5G - 128GB",
+            "loja": "Amazon",
+            "preco_brl": 1498.5,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g67",
+            "url_oferta": "https://www.oficinadanet.com.br/go/jg8vfs",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "motorola-moto-g77",
@@ -1948,7 +2851,42 @@
         "fabricante": "https://www.motorola.com.br/smartphones/familia-moto-g/moto-g77",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g77"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 1610.69,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 1517.08,
+        "maior_brl": 1726.0,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Moto G77 5G 256GB  8GB RAM Câmera Traseira 108MP + 8MP Selfie 32MP Tela 6.8 5200mAh -  Marrom",
+            "loja": "Shopee",
+            "preco_brl": 1517.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g77",
+            "url_oferta": "https://www.oficinadanet.com.br/go/1t0hjg",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Moto g77 5G 256GB - 8GB RAM + 16GB RAM Boost, camera 108MP Ultra-Pixel, tela 1.5K extreme Amoled 120hz, ultrarresistente - Marrom",
+            "loja": "Amazon",
+            "preco_brl": 1589.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g77",
+            "url_oferta": "https://www.oficinadanet.com.br/go/03zfrd",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Moto G77 5g - 256gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 1726.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g77",
+            "url_oferta": "https://www.oficinadanet.com.br/go/llxdxs",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "motorola-moto-g86",
@@ -2027,7 +2965,42 @@
           "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
           "posicao": 8
         }
-      ]
+      ],
+      "preco_medio_brl": 1914.07,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 1824.1,
+        "maior_brl": 1999.0,
+        "cotacoes": [
+          {
+            "titulo": "Motorola G86 256GB Vermelho 8GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 1824.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g86",
+            "url_oferta": "https://www.oficinadanet.com.br/go/gyxq91",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Moto g86 5G - 256GB",
+            "loja": "Amazon",
+            "preco_brl": 1919.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g86",
+            "url_oferta": "https://www.oficinadanet.com.br/go/e4d2bd",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Moto G86 5g - 256gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 1999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-moto-g86",
+            "url_oferta": "https://www.oficinadanet.com.br/go/1apy0b",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "motorola-edge-70-fusion",
@@ -2090,7 +3063,34 @@
         "fabricante": "https://www.motorola.com.br/smartphone-motorola-edge-70-fusion-5g-256gb-24-gb-ram/p?idsku=1928",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 2537.04,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 2499.1,
+        "maior_brl": 2574.98,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Edge 70 Fusion 256GB 5G 12GB RAM",
+            "loja": "Magazine Luiza",
+            "preco_brl": 2499.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion",
+            "url_oferta": "https://www.oficinadanet.com.br/go/sh0vkk",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Edge 70 Fusion - 256GB ",
+            "loja": "Shopee",
+            "preco_brl": 2574.98,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion",
+            "url_oferta": "https://www.oficinadanet.com.br/go/nujk0l",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "motorola-edge-70",
@@ -2169,7 +3169,34 @@
           "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
           "posicao": 3
         }
-      ]
+      ],
+      "preco_medio_brl": 2852.77,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 2706.54,
+        "maior_brl": 2999.0,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Edge 70 5G - 12GB/256GB",
+            "loja": "Amazon",
+            "preco_brl": 2706.54,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70",
+            "url_oferta": "https://www.oficinadanet.com.br/go/vndi9k",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Edge 70 5g - 256gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 2999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70",
+            "url_oferta": "https://www.oficinadanet.com.br/go/3b08dl",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "motorola-edge-70-fusion-plus",
@@ -2232,7 +3259,34 @@
         "fabricante": "https://empresas.motorola.com.br/smartphone-corporativo-edge-70-fusion-plus-256gb/p",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion-plus"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 2859.04,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 2499.0,
+        "maior_brl": 3219.08,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Edge 70 Fusion Plus Roxo 5G 256GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 2499.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion-plus",
+            "url_oferta": "https://www.oficinadanet.com.br/go/66samd",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Edge 70 Fusion + 5G 256GB - Verde Claro, 24GB (12GB RAM + 12GB RAM Boost), Câmera 50MP, Tela 6,8",
+            "loja": "Shopee",
+            "preco_brl": 3219.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-fusion-plus",
+            "url_oferta": "https://www.oficinadanet.com.br/go/lx1ooc",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "motorola-edge-70-pro",
@@ -2305,7 +3359,34 @@
         "fabricante": "https://www.motorola.com.br/kit-smartphone-motorola-edge-70-pro-5g-256gb-moto-buds-2-plus/p?idsku=1991&workspace=master",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-pro"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 3436.77,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 3399.0,
+        "maior_brl": 3474.54,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Edge 70 Pro 5g - 256gb 12gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 3399.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-pro",
+            "url_oferta": "https://www.oficinadanet.com.br/go/ybx9m9",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Motorola Edge 70 PRO 5G - 256GB 12GB RAM+12GB Ram Boost, 4 câmeras de 50MP, Tela 1.5K extreme AMOLED",
+            "loja": "Shopee",
+            "preco_brl": 3474.54,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-edge-70-pro",
+            "url_oferta": "https://www.oficinadanet.com.br/go/2a4u26",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "motorola-signature",
@@ -2378,7 +3459,42 @@
         "fabricante": "https://www.motorola.com.br/smartphones/motorola-signature",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-signature"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 5965.73,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 3,
+        "menor_brl": 5599.0,
+        "maior_brl": 6299.1,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Signature 5G 512GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 5599.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-signature",
+            "url_oferta": "https://www.oficinadanet.com.br/go/t42ru0",
+            "armazenamento_gb": 512
+          },
+          {
+            "titulo": "Motorola Signature 5G 512GB 12GB RAM, 3 Cameras 50MP, Extreme AMOLED, Verde Oliva",
+            "loja": "Amazon",
+            "preco_brl": 5999.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-signature",
+            "url_oferta": "https://www.oficinadanet.com.br/go/r62fwj",
+            "armazenamento_gb": 512
+          },
+          {
+            "titulo": "Motorola Signature 512GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 6299.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-signature",
+            "url_oferta": "https://www.oficinadanet.com.br/go/512sog",
+            "armazenamento_gb": 512
+          }
+        ]
+      }
     },
     {
       "id": "motorola-signature-27",
@@ -2449,7 +3565,32 @@
           "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
           "posicao": 1
         }
-      ]
+      ],
+      "preco_medio_brl": 10799.1,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 2,
+        "menor_brl": 10799.1,
+        "maior_brl": 10799.1,
+        "cotacoes": [
+          {
+            "loja": "Motorola",
+            "titulo": "Motorola Signature 27 512GB | Loja Oficial Motorola",
+            "armazenamento_gb": 512,
+            "preco_brl": 10799.1,
+            "fonte": "https://www.motorola.com.br/smartphone-motorola-signature-27-512gb/p?idsku=2028"
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Smartphone Motorola Signature 27 512GB 5G 12GB RAM +12GB RAM Boost Cinza Chumbo 6,8\" Câm. Tripla 50MP+50MP+200MP Selfie 50MP - Motorola Signature - Magazine Luiza",
+            "armazenamento_gb": 512,
+            "preco_brl": 10799.1,
+            "fonte": "https://www.magazineluiza.com.br/smartphone-motorola-signature-27-512gb-5g-12gb-ram-12gb-ram-boost-cinza-chumbo-68-cam-tripla-50mp-50mp-200mp-selfie-50mp/p/242780500/te/mtsi/?seller_id=magazineluiza"
+          }
+        ]
+      }
     },
     {
       "id": "motorola-razr-70",
@@ -2512,7 +3653,41 @@
         "fabricante": "https://empresas.motorola.com.br/smartphone-motorola-razr-70-5g/p",
         "bateria": "https://canaltech.com.br/smartphone/dobravel-da-samsung-despenca-para-r-2699-em-oferta-do-magalu/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "tipo_dobravel": "concha",
+      "preco_medio_brl": 3929.09,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 3599.1,
+        "maior_brl": 4139.08,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Razr 70 5G - 256GB 8GB RAM+16GB Ram Boost, Tela externa 3.6” tela interna 6.9 Extreme Amoled",
+            "loja": "Shopee",
+            "preco_brl": 4139.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-razr-70",
+            "url_oferta": "https://www.oficinadanet.com.br/go/b7k0ek",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "Motorola",
+            "titulo": "Smartphone Dobrável Motorola Razr 70 | Loja Oficial 2026",
+            "armazenamento_gb": 256,
+            "preco_brl": 3599.1,
+            "fonte": "https://www.motorola.com.br/smartphone-motorola-razr-70-5g/p?idsku=1892"
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Smartphone Motorola Razr 70 5G 256GB 8GB RAM, 16GB Ram Boost Tela externa 3.6” e tela interna 6.9 Extreme Amoled 120Hz - Celular Motorola - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 4049.1,
+            "fonte": "https://www.magazineluiza.com.br/smartphone-motorola-razr-70-5g-256gb-8gb-ram-16gb-ram-boost-tela-externa-3-6-e-tela-interna-6-9-extreme-amoled-120hz/p/hb5fe99hab/te/srmt/?partner_id=3440&promoter_id=2882659&seller_id=lojamotorolaoficial"
+          }
+        ]
+      }
     },
     {
       "id": "motorola-razr-70-ultra",
@@ -2575,7 +3750,34 @@
         "fabricante": "https://www.motorola.com.br/smartphone-motorola-razr-70-ultra-5g/p?awc=24534_1794290125_6ee632d5d904a849b351f330d8d9323d&idsku=1902",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-razr-70-ultra"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "tipo_dobravel": "concha",
+      "preco_medio_brl": 9119.09,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 2,
+        "menor_brl": 7199.1,
+        "maior_brl": 11039.08,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Razr 70 Ultra 5G - 512GB 12GB RAM+12GB Ram Boost, Snapdragon 8 Elite, tela interna 7",
+            "loja": "Shopee",
+            "preco_brl": 11039.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-razr-70-ultra",
+            "url_oferta": "https://www.oficinadanet.com.br/go/hqxvp9",
+            "armazenamento_gb": 512
+          },
+          {
+            "loja": "Motorola",
+            "titulo": "Smartphone Dobrável Motorola Razr 70 Ultra | Loja Oficial 2026",
+            "armazenamento_gb": 512,
+            "preco_brl": 7199.1,
+            "fonte": "https://www.motorola.com.br/smartphone-motorola-razr-70-ultra-5g/p?awc=24534_1794030926_aa129e47c041da87b830e1864095c19d&idsku=1901"
+          }
+        ]
+      }
     },
     {
       "id": "motorola-razr-fold",
@@ -2639,7 +3841,41 @@
         "fabricante": "https://www.motorola.com.br/smartphone-motorola-razr-fold-5g/p?awc=24534_1793985011_cd870ecee55c15acbef89dd9840a754a&idsku=1897",
         "bateria": "https://www.oficinadanet.com.br/smartphones/motorola-razr-fold"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "tipo_dobravel": "livro",
+      "termos_busca": [
+        "Fold",
+        "dobrável tipo livro",
+        "Motorola Razr Fold",
+        "Motorola Fold"
+      ],
+      "preco_medio_brl": 10559.04,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 1000,
+        "quantidade_canais": 2,
+        "menor_brl": 10119.08,
+        "maior_brl": 10999.0,
+        "cotacoes": [
+          {
+            "titulo": "Motorola Razr Fold 5G - 1TB 16GB RAM+16GB Ram Boost, Tela interna 8.1 e externa 6.6”, extreme AMOLED",
+            "loja": "Shopee",
+            "preco_brl": 10119.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-razr-fold",
+            "url_oferta": "https://www.oficinadanet.com.br/go/akk8ef",
+            "armazenamento_gb": 1000
+          },
+          {
+            "titulo": "Motorola Razr Fold 5g - 1tb 16gb Ram",
+            "loja": "Mercado Livre",
+            "preco_brl": 10999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/motorola-razr-fold",
+            "url_oferta": "https://www.oficinadanet.com.br/go/0xms9w",
+            "armazenamento_gb": 1000
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-16e",
@@ -2726,7 +3962,34 @@
           "fonte": "https://conferidos.com/celulares-mais-vendidos/",
           "posicao": null
         }
-      ]
+      ],
+      "preco_medio_brl": 3234.52,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 3129.01,
+        "maior_brl": 3340.03,
+        "cotacoes": [
+          {
+            "titulo": "iPhone 16e Apple 128GB - Branco",
+            "loja": "Amazon",
+            "preco_brl": 3129.01,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16e",
+            "url_oferta": "https://www.oficinadanet.com.br/go/j6hojh",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "iPhone 16e (128 GB) - Branco",
+            "loja": "Mercado Livre",
+            "preco_brl": 3340.03,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16e",
+            "url_oferta": "https://www.oficinadanet.com.br/go/cx7zsr",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-17e",
@@ -2797,7 +4060,34 @@
         "fabricante": "https://support.apple.com/pt-br/126470",
         "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17e"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 4567.52,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 4287.55,
+        "maior_brl": 4847.48,
+        "cotacoes": [
+          {
+            "titulo": "Apple iPhone 17e de 256 GB Preto",
+            "loja": "Amazon",
+            "preco_brl": 4287.55,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17e",
+            "url_oferta": "https://www.oficinadanet.com.br/go/9bl7ht",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "iPhone 17E 256GB",
+            "loja": "Shopee",
+            "preco_brl": 4847.48,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17e",
+            "url_oferta": "https://www.oficinadanet.com.br/go/0fu51j",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-15",
@@ -2883,7 +4173,34 @@
           "fonte": "https://conferidos.com/celulares-mais-vendidos/",
           "posicao": null
         }
-      ]
+      ],
+      "preco_medio_brl": 4036.02,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 3999.0,
+        "maior_brl": 4073.03,
+        "cotacoes": [
+          {
+            "titulo": "Apple iPhone 15 (128 GB) - Preto",
+            "loja": "Amazon",
+            "preco_brl": 3999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-15",
+            "url_oferta": "https://www.oficinadanet.com.br/go/x64hxq",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Apple iPhone 15 (128 GB)",
+            "loja": "Mercado Livre",
+            "preco_brl": 4073.03,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-15",
+            "url_oferta": "https://www.oficinadanet.com.br/go/rggag5",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-15-pro-max",
@@ -2965,7 +4282,39 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 6
         }
-      ]
+      ],
+      "preco_medio_brl": 7489.32,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 6399.9,
+        "maior_brl": 8369.07,
+        "cotacoes": [
+          {
+            "loja": "Mercado Livre",
+            "titulo": "Apple iPhone 15 Pro Max (256 GB) - Titânio Preto - Comparar Preços - PlayMart",
+            "armazenamento_gb": 256,
+            "preco_brl": 7699,
+            "fonte": "https://playmart.com.br/produto.php?slug=apple-iphone-15-pro-max-256-gb-titanio-preto"
+          },
+          {
+            "loja": "Shopee",
+            "titulo": "Apple iPhone 15 Pro Max (256 GB) - Titânio Preto - Comparar Preços - PlayMart",
+            "armazenamento_gb": 256,
+            "preco_brl": 6399.9,
+            "fonte": "https://playmart.com.br/produto.php?slug=apple-iphone-15-pro-max-256-gb-titanio-preto"
+          },
+          {
+            "loja": "phonesmart-loja.vercel.app",
+            "titulo": "iPhone 15 Pro Max 256GB Novo | PHONESMART",
+            "armazenamento_gb": 256,
+            "preco_brl": 8369.07,
+            "fonte": "https://phonesmart-loja.vercel.app/produtos/iphone-15-pro-max-256gb-novo-0"
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-16",
@@ -3038,7 +4387,34 @@
         "fabricante": "https://support.apple.com/pt-br/121029",
         "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 4949.22,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 4844.0,
+        "maior_brl": 5054.44,
+        "cotacoes": [
+          {
+            "titulo": "Apple iPhone 16 128GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 4844.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16",
+            "url_oferta": "https://www.oficinadanet.com.br/go/ll05m8",
+            "armazenamento_gb": 128
+          },
+          {
+            "titulo": "Apple iPhone 16 (128 GB) – Preto",
+            "loja": "Amazon",
+            "preco_brl": 5054.44,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-16",
+            "url_oferta": "https://www.oficinadanet.com.br/go/f3t5gj",
+            "armazenamento_gb": 128
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-17",
@@ -3117,7 +4493,34 @@
           "fonte": "https://conferidos.com/celulares-mais-vendidos/",
           "posicao": null
         }
-      ]
+      ],
+      "preco_medio_brl": 5541.11,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 5398.99,
+        "maior_brl": 5683.23,
+        "cotacoes": [
+          {
+            "titulo": "Apple iPhone 17 - 256 GB",
+            "loja": "Amazon",
+            "preco_brl": 5398.99,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17",
+            "url_oferta": "https://www.oficinadanet.com.br/go/zbc84s",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "iPhone 17 256 GB - Azul-névoa",
+            "loja": "Mercado Livre",
+            "preco_brl": 5683.23,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17",
+            "url_oferta": "https://www.oficinadanet.com.br/go/a662i3",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-17-pro",
@@ -3199,7 +4602,40 @@
         "fabricante": "https://support.apple.com/pt-br/125090",
         "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17-pro"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 8594.21,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 7519,
+        "maior_brl": 9359.09,
+        "cotacoes": [
+          {
+            "titulo": "iPhone 17 Pro 256GB",
+            "loja": "Amazon",
+            "preco_brl": 9359.09,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17-pro",
+            "url_oferta": "https://www.oficinadanet.com.br/go/7xleld",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "Mercado Livre",
+            "titulo": "iPhone 17 Pro 256GB - Laranja-cósmico - Distribuidor Autorizado | Parcelamento sem juros",
+            "armazenamento_gb": 256,
+            "preco_brl": 8904.55,
+            "fonte": "https://www.mercadolivre.com.br/iphone-17-pro-256gb-laranja-cosmico-distribuidor-autorizado/p/MLB1055308774?picker=true&product_trigger_id=MLB1055308781"
+          },
+          {
+            "loja": "lojaipremier.com.br",
+            "titulo": "iPhone 17 Pro: preço no Pix e entrega em Campinas | iPremier",
+            "armazenamento_gb": 256,
+            "preco_brl": 7519,
+            "fonte": "https://lojaipremier.com.br/produto/iphone-17-pro"
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-17-pro-max",
@@ -3297,7 +4733,33 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 5
         }
-      ]
+      ],
+      "preco_medio_brl": 9084.05,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 7999,
+        "maior_brl": 10169.1,
+        "cotacoes": [
+          {
+            "titulo": "Apple iPhone 17 Pro Max (256 GB) - Azul intenso",
+            "loja": "Amazon",
+            "preco_brl": 10169.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-17-pro-max",
+            "url_oferta": "https://www.oficinadanet.com.br/go/e3wyha",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "recoverycell.com.br",
+            "titulo": "iPhone 17 Pro Max 256GB · Recovery Cell",
+            "armazenamento_gb": 256,
+            "preco_brl": 7999,
+            "fonte": "https://www.recoverycell.com.br/loja/iphone-17-pro-max-256gb-silver-novo-105dd"
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-air",
@@ -3377,7 +4839,40 @@
         "fabricante": "https://support.apple.com/pt-br/125092",
         "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-air"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 5736.02,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 4799.99,
+        "maior_brl": 6209.08,
+        "cotacoes": [
+          {
+            "titulo": "iPhone 17 Air 256GB 6,5 Polegadas Original Novo Lacrado Garantia Apple de 1 Ano Nota Fiscal.",
+            "loja": "Shopee",
+            "preco_brl": 6209.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-air",
+            "url_oferta": "https://www.oficinadanet.com.br/go/6qxv7o",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "brasilprimecell.com.br",
+            "titulo": "Apple iPhone Air 256 GB Azul-céu Lacrado | PrimeCell",
+            "armazenamento_gb": 256,
+            "preco_brl": 4799.99,
+            "fonte": "https://brasilprimecell.com.br/produto/apple-iphone-air-256-gb-azul-ceu-lacrado"
+          },
+          {
+            "loja": "lineexpress.com.br",
+            "titulo": "iPhone Air 256GB: preço no PIX e em até 21x | Line Express Porto Alegre",
+            "armazenamento_gb": 256,
+            "preco_brl": 6199,
+            "fonte": "https://www.lineexpress.com.br/produtos/iphone-air-2025/"
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-18-pro",
@@ -3468,7 +4963,34 @@
         "fabricante": "https://support.apple.com/en-la/148590",
         "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 11398.95,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 10799.0,
+        "maior_brl": 11998.89,
+        "cotacoes": [
+          {
+            "titulo": "iPhone 18 Pro de 256 GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 10799.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro",
+            "url_oferta": "https://www.oficinadanet.com.br/go/nxs1ml",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Apple iPhone 18 Pro de 256 GB — Prateado",
+            "loja": "Amazon",
+            "preco_brl": 11998.89,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro",
+            "url_oferta": "https://www.oficinadanet.com.br/go/kf0g2l",
+            "armazenamento_gb": 256
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-18-pro-max",
@@ -3559,7 +5081,34 @@
         "fabricante": "https://support.apple.com/es-la/148591",
         "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro-max"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 13919.04,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 2,
+        "menor_brl": 13339.08,
+        "maior_brl": 14499.0,
+        "cotacoes": [
+          {
+            "titulo": "iPhone 18 Pro Max 512GB Glacial",
+            "loja": "Shopee",
+            "preco_brl": 13339.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro-max",
+            "url_oferta": "https://www.oficinadanet.com.br/go/6ethya",
+            "armazenamento_gb": 512
+          },
+          {
+            "titulo": "Apple iPhone 18 Pro Max de 512 GB — Glacial",
+            "loja": "Amazon",
+            "preco_brl": 14499.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-18-pro-max",
+            "url_oferta": "https://www.oficinadanet.com.br/go/2sqk7u",
+            "armazenamento_gb": 512
+          }
+        ]
+      }
     },
     {
       "id": "apple-iphone-duo",
@@ -3649,7 +5198,47 @@
         "fabricante": "https://support.apple.com/pt-br/148588",
         "bateria": "https://www.oficinadanet.com.br/smartphones/apple-iphone-duo"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "tipo_dobravel": "livro",
+      "termos_busca": [
+        "Fold",
+        "dobrável tipo livro",
+        "Apple iPhone Duo",
+        "Apple Duo"
+      ],
+      "preco_medio_brl": 18432.7,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 13499.99,
+        "maior_brl": 21999.0,
+        "cotacoes": [
+          {
+            "titulo": "Apple iPhone Duo (256 GB) - Branco estelar",
+            "loja": "Amazon",
+            "preco_brl": 21999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/apple-iphone-duo",
+            "url_oferta": "https://www.oficinadanet.com.br/go/1zdhy3",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "Mercado Livre",
+            "titulo": "iPhone Duo de 256 GB — Branco-estrela - Distribuidor Autorizado | Parcelamento sem juros",
+            "armazenamento_gb": 256,
+            "preco_brl": 19799.1,
+            "fonte": "https://www.mercadolivre.com.br/iphone-duo-de-256-gb-branco-estrela-distribuidor-autorizado/p/MLB1077712453"
+          },
+          {
+            "loja": "brasilprimecell.com.br",
+            "titulo": "Apple iPhone Duo 256 GB Céu noturno Lacrado | PrimeCell",
+            "armazenamento_gb": 256,
+            "preco_brl": 13499.99,
+            "fonte": "https://brasilprimecell.com.br/produto/apple-iphone-duo-256-gb-ceu-noturno-lacrado"
+          }
+        ]
+      }
     },
     {
       "id": "xiaomi-redmi-13c",
@@ -3730,7 +5319,49 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 21
         }
-      ]
+      ],
+      "preco_medio_brl": 1074.15,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 918.15,
+        "maior_brl": 1230.15,
+        "cotacoes": [
+          {
+            "loja": "mibrasil.com.br",
+            "titulo": "Redmi 13C 128GB | Xiaomi Brasil",
+            "armazenamento_gb": 128,
+            "preco_brl": 918.15,
+            "fonte": "https://www.mibrasil.com.br/smartphone-xiaomi-redmi-13c-4gb-128gb-c00384-p5137"
+          },
+          {
+            "loja": "sperkacessorios.com",
+            "titulo": "Smartphone Xiaomi Redmi 13C 128GB 4GB RAM - Versão Nacional · SPERK",
+            "armazenamento_gb": 128,
+            "preco_brl": 1230.15,
+            "fonte": "https://www.sperkacessorios.com/p/smartphone-xiaomi-redmi-13c-128gb-4gb-ram-versao-nacional-32e55e35"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 570.0,
+          "quantidade_lojas": 1,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-13c-dual-chip-256gb-4g-ram-8gb-global_49677/",
+          "cotacoes": [
+            {
+              "loja": "Mini Carlos",
+              "titulo": "Cel Xiaomi Redmi 13C 8/256GB Negro",
+              "preco_brl": 570.0,
+              "preco_usd": 95.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-13c-8256gb-negro__5541450/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-14c",
@@ -3791,7 +5422,70 @@
         "fabricante": null,
         "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-14c"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 1439.66,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 1329.99,
+        "maior_brl": 1563.99,
+        "cotacoes": [
+          {
+            "loja": "mibrasil.com.br",
+            "titulo": "Redmi 14C 256GB | Xiaomi Brasil",
+            "armazenamento_gb": 256,
+            "preco_brl": 1563.99,
+            "fonte": "https://www.mibrasil.com.br/smartphone-xiaomi-redmi-14c-br-4-4gb-ram-virtual-256gb-azul-cx401-prin-p5582"
+          },
+          {
+            "loja": "Mercado Livre",
+            "titulo": "Xiaomi Redmi 14c 4G 256gb 4gb RAM Android 14 50mpx preto | MercadoLivre",
+            "armazenamento_gb": 256,
+            "preco_brl": 1329.99,
+            "fonte": "https://www.mercadolivre.com.br/xiaomi-redmi-14c-4g-256gb-4gb-ram-android-14-50mpx-preto/p/MLB41540708?picker=true&product_trigger_id=MLB43264591"
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Smartphone Xiaomi Redmi 14C 4+4GB RAM + 256GB, Preto - Redmi 14C - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 1424.99,
+            "fonte": "https://www.magazineluiza.com.br/smartphone-xiaomi-redmi-14c-4-4gb-ram-256gb-preto/p/df3eef89ke/te/r14c/"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 732.0,
+          "quantidade_lojas": 3,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-14c-dual-chip-256gb-4g-ram-8gb-global_55705/",
+          "cotacoes": [
+            {
+              "loja": "Intershop Importados",
+              "titulo": "Celular Xiaomi Redmi 14C 8GB 256GB 6.88\" Verde",
+              "preco_brl": 636.0,
+              "preco_usd": 106.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-14c-8gb-256gb-688-verde__4823974/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Redmi 14C 4G 8GB+256GB Global Black CH",
+              "preco_brl": 900.0,
+              "preco_usd": 150.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-14c-4g-8gb256gb-global-black-ch__5515897/"
+            },
+            {
+              "loja": "Connect Imports",
+              "titulo": "Celular Xiaomi Redmi 14C Dual 6.88 8GB+256GB Lte Dubai",
+              "preco_brl": 660.0,
+              "preco_usd": 110.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-14c-dual-688-8gb256gb-lte-dubai__5059632/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-poco-c75",
@@ -3863,7 +5557,57 @@
         "fabricante": "https://www.mi.com/br/product/poco-c75/specs/",
         "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-c75"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 1154.3,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 869.5,
+        "maior_brl": 1439.1,
+        "cotacoes": [
+          {
+            "titulo": "Xiaomi Poco C75 Dual Sim 256GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 1439.1,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-c75",
+            "url_oferta": "https://www.oficinadanet.com.br/go/e4zp3p",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Smartphone POCO C75 256GB Tela 120Hz Câmera 50MP Bateria 5160mAh MediaTek Helio G81-Ultra - Xiaomi - Poco C75 - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 869.5,
+            "fonte": "https://www.magazineluiza.com.br/smartphone-poco-c75-256gb-tela-120hz-camera-50mp-bateria-5160mah-mediatek-helio-g81-ultra-xiaomi/p/fe61cff33j/te/pc75/?seller_id=mastercomerciodeprodutosltda"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 468.0,
+          "quantidade_lojas": 2,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-c75-dual-chip-256gb-4g-global_56370/",
+          "cotacoes": [
+            {
+              "loja": "Victoria Store",
+              "titulo": "Celular Xiaomi Poco C75 8GB/256GB Green",
+              "preco_brl": 456.0,
+              "preco_usd": 76.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-poco-c75-8gb256gb-green__5746643/"
+            },
+            {
+              "loja": "Connect Imports",
+              "titulo": "Celular Xiaomi Poco C75 Dual Chip 256GB 8G Dubai",
+              "preco_brl": 480.0,
+              "preco_usd": 80.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-c75-dual-chip-256gb-8g-dubai__5059629/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-15",
@@ -3938,7 +5682,147 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 7
         }
-      ]
+      ],
+      "preco_medio_brl": 1394.1,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 1394.1,
+        "maior_brl": 1394.1,
+        "cotacoes": [
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Xiaomi Redmi 15 256GB - Xiaomi - Redmi 15 - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 1394.1,
+            "fonte": "https://www.magazineluiza.com.br/xiaomi-redmi-15-256gb-xiaomi/p/jda5geg95a/te/rd15/?seller_id=atacadoimport"
+          },
+          {
+            "loja": "xiaomiemcuritiba.com.br",
+            "titulo": "Redmi 15 256GB 8GB RAM | Preço em Curitiba – Loja Xiaomi",
+            "armazenamento_gb": 256,
+            "preco_brl": 1394.1,
+            "fonte": "https://www.xiaomiemcuritiba.com.br/redmi/redmi-15-256gb-8gb/"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 1155.14,
+          "quantidade_lojas": 15,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-15-dual-chip-256gb-4g-global_62838/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi Redmi 15 4G Dual 256 GB - Titan Gray",
+              "preco_brl": 1194.0,
+              "preco_usd": 199.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-redmi-15-4g-dual-256-gb-titan-gray__4972852/"
+            },
+            {
+              "loja": "GenZ Atacado",
+              "titulo": "Smartphone Xiaomi Redmi 15 DS Lte 8/256GB 6,9\" 50MP/8MP - Midnight Black (33W)",
+              "preco_brl": 1176.0,
+              "preco_usd": 196.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-15-ds-lte-8256gb-69-50mp8mp-midnight-black-33w__4969074/"
+            },
+            {
+              "loja": "Shopping China",
+              "titulo": "Celular Xiaomi Redmi 15 4G 8GB 256GB 25062RN2DL Midnight Black",
+              "preco_brl": 1140.0,
+              "preco_usd": 190.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-15-4g-8gb-256gb-25062rn2dl-midnight-black__4996368/"
+            },
+            {
+              "loja": "New Zone",
+              "titulo": "Xiaomi Cel Redmi 15 6.9\" DS Lte 8/256GB 33W Sandy Purple",
+              "preco_brl": 1176.0,
+              "preco_usd": 196.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-cel-redmi-15-69-ds-lte-8256gb-33w-sandy-purple__4975392/"
+            },
+            {
+              "loja": "Visãovip",
+              "titulo": "Celular Xiaomi Redmi 15 8GB de Ram / 256GB / Tela 6.9\" / Dual Sim Lte - Sandy Roxo (Global)",
+              "preco_brl": 1170.0,
+              "preco_usd": 195.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-15-8gb-de-ram-256gb-tela-69-dual-sim-lte-sandy-roxo-global__4986058/"
+            },
+            {
+              "loja": "Atlantico Shop",
+              "titulo": "Smartphone Xiaomi Redmi 15 DS Lte 6.9\" 8/256GB - Midnight Black",
+              "preco_brl": 1170.0,
+              "preco_usd": 195.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-15-ds-lte-69-8256gb-midnight-black__4967974/"
+            },
+            {
+              "loja": "Alborada",
+              "titulo": "Celular Xiaomi Redmi 15 8/256GB Lilas",
+              "preco_brl": 1176.0,
+              "preco_usd": 196.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-15-8256gb-lilas__5411899/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Redmi 15 4G Global 256GB 8GB Ram Dual Sim Tela 6.9\" - Cinza Titânio (Caixa Slim)",
+              "preco_brl": 1078.5,
+              "preco_usd": 179.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-15-4g-global-256gb-8gb-ram-dual-sim-tela-69-cinza-titanio-caixa-slim__5671660/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Redmi 15 4G 8GB+256GB Global Black s/fuente",
+              "preco_brl": 1200.0,
+              "preco_usd": 200.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-15-4g-8gb256gb-global-black-sfuente__5525009/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi Redmi 15 4G 256GB /8GB Ram /Dual Sim /6.9\" 50MP - Black (Global) BR",
+              "preco_brl": 1164.0,
+              "preco_usd": 194.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-15-4g-256gb-8gb-ram-dual-sim-69-50mp-black-global-br__5016147/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi Redmi 15 Dual Sim de 256GB/8GB Ram de 6.9″ 50MP/8MP – Midnight Black (Global)",
+              "preco_brl": 1163.94,
+              "preco_usd": 193.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-15-dual-sim-de-256gb8gb-ram-de-69-50mp8mp-midnight-black-global__5062148/"
+            },
+            {
+              "loja": "Asia Store",
+              "titulo": "Redmi 15 8GB+256GB Gray",
+              "preco_brl": 1032.0,
+              "preco_usd": 172.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/redmi-15-8gb256gb-gray__5446701/"
+            },
+            {
+              "loja": "Eletrocell",
+              "titulo": "Celular Xiaomi Redmi 15 Dual Sim de 256GB 8GB Ram de 6.9\" 50MP 8MP - Midnight Black (Global)",
+              "preco_brl": 1164.0,
+              "preco_usd": 194.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-15-dual-sim-de-256gb-8gb-ram-de-69-50mp-8mp-midnight-black-global__5733124/"
+            },
+            {
+              "loja": "Avanza",
+              "titulo": "Celular Xiaomi Redmi 15 Lte Dual 256GB/8GB Ram Midnight Black",
+              "preco_brl": 1146.6,
+              "preco_usd": 191.1,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-15-lte-dual-256gb8gb-ram-midnight-black__5611933/"
+            },
+            {
+              "loja": "Orbe Import",
+              "titulo": "Cel Xiaomi Redmi 15 4G 8/256GB Titan Gray",
+              "preco_brl": 1176.0,
+              "preco_usd": 196.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-15-4g-8256gb-titan-gray__5351642/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-note-14",
@@ -4020,7 +5904,50 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 2
         }
-      ]
+      ],
+      "preco_medio_brl": 2303.5,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 128,
+        "quantidade_canais": 2,
+        "menor_brl": 1421.99,
+        "maior_brl": 3185.0,
+        "cotacoes": [
+          {
+            "titulo": "Xiaomi Redmi Note 14 128gb 6gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 3185.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-14-4g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/saf8j8",
+            "armazenamento_gb": 128
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Xiaomi Redmi Note 14 128GB 6GB Lançamento Câmera 108MP 20MP Tela 6.67 AMOLED 120Hz FHD plus Design Premium Dual SIM Chip IP54 Dolby - Redmi Note 14 - Magazine Luiza",
+            "armazenamento_gb": 128,
+            "preco_brl": 1421.99,
+            "fonte": "https://www.magazineluiza.com.br/xiaomi-redmi-note-14-128gb-6gb-lancamento-camera-108mp-20mp-tela-6-67-amoled-120hz-fhd-plus-design-premium-dual-sim-chip-ip54-dolby/p/he080h6183/te/rn14/?seller_id=betareal"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 954.0,
+          "quantidade_lojas": 1,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-14-dual-chip-256gb-4g-global_57930/",
+          "cotacoes": [
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Smartphone Xiaomi Redmi Note 14 Dual Sim 8GB+256GB 6.67\" - Ocean Blue US 61630",
+              "preco_brl": 954.0,
+              "preco_usd": 159.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-14-dual-sim-8gb256gb-667-ocean-blue-us-61630__4815886/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-note-15",
@@ -4090,7 +6017,183 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 15
         }
-      ]
+      ],
+      "preco_medio_brl": 1570.92,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 1396.84,
+        "maior_brl": 1745.0,
+        "cotacoes": [
+          {
+            "titulo": "Xiaomi Redmi Note 15 Azul 8GB RAM 256GB ROM (2510DRA23L)",
+            "loja": "Amazon",
+            "preco_brl": 1745.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-15-4g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/ngddu2",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "mkdomus.shop",
+            "titulo": "Redmi Note 15 256GB 8GB RAM 4G | MK Domus",
+            "armazenamento_gb": 256,
+            "preco_brl": 1396.84,
+            "fonte": "https://mkdomus.shop/products/redmi-note-15-256gb-8gb-ram-4g"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 1326.8,
+          "quantidade_lojas": 20,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-dual-chip-256gb-4g-global_66045/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi Redmi Note 15 Dual 256 GB - Black",
+              "preco_brl": 1314.0,
+              "preco_usd": 219.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-redmi-note-15-dual-256-gb-black__5149263/"
+            },
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi Redmi Note 15 Dual Sim 256GB/8GB Ram de 6.77\" 108MP/20MP - Preto (Global)",
+              "preco_brl": 1314.0,
+              "preco_usd": 219.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-dual-sim-256gb8gb-ram-de-677-108mp20mp-preto-global__5137484/"
+            },
+            {
+              "loja": "Cellshop",
+              "titulo": "Smartphone Xiaomi Redmi Note 15 Lte Dual Sim 6.77\" 8GB/256GB Purple",
+              "preco_brl": 1350.0,
+              "preco_usd": 225.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-15-lte-dual-sim-677-8gb256gb-purple__5489846/"
+            },
+            {
+              "loja": "Shopping China",
+              "titulo": "Celular Xiaomi Redmi Note 15 8GB 256GB Glacier Blue",
+              "preco_brl": 1314.0,
+              "preco_usd": 219.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-8gb-256gb-glacier-blue__5201508/"
+            },
+            {
+              "loja": "New Zone",
+              "titulo": "Xiaomi Cel Redmi Note 15 6.77\" DS Lte 8/256GB 33W Purple",
+              "preco_brl": 1314.0,
+              "preco_usd": 219.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-cel-redmi-note-15-677-ds-lte-8256gb-33w-purple__5165308/"
+            },
+            {
+              "loja": "Visãovip",
+              "titulo": "Celular Xiaomi Redmi Note 15 8GB de Ram / 256GB / Tela 6.77\" / Dual Sim Lte - Azul (Global)",
+              "preco_brl": 1330.5,
+              "preco_usd": 221.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-8gb-de-ram-256gb-tela-677-dual-sim-lte-azul-global__5141361/"
+            },
+            {
+              "loja": "Star Company",
+              "titulo": "Xiaomi Redmi Note 15 4G 8+256GB Black",
+              "preco_brl": 1336.5,
+              "preco_usd": 222.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-redmi-note-15-4g-8256gb-black__5386955/"
+            },
+            {
+              "loja": "Topdek Informática",
+              "titulo": "Cel Xiaomi Redmi Note 15 8/256GB 4G Preto Global",
+              "preco_brl": 1320.0,
+              "preco_usd": 220.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-note-15-8256gb-4g-preto-global__5429228/"
+            },
+            {
+              "loja": "Atlantico Shop",
+              "titulo": "Smartphone Xiaomi Redmi Note 15 DS Lte 6.77\" 8/256GB - Black",
+              "preco_brl": 1314.0,
+              "preco_usd": 219.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-15-ds-lte-677-8256gb-black__5210758/"
+            },
+            {
+              "loja": "HB Import",
+              "titulo": "Xiaomi Redmi Note 15 256GB 8GB Ram Verde 6.77\" No Paraguai",
+              "preco_brl": 1320.0,
+              "preco_usd": 220.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-redmi-note-15-256gb-8gb-ram-verde-677-no-paraguai__5244499/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Redmi Note 15 4G Global 256GB 8GB Ram Dual Sim Tela 6.77\" - Roxo",
+              "preco_brl": 1314.0,
+              "preco_usd": 219.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-15-4g-global-256gb-8gb-ram-dual-sim-tela-677-roxo__5243847/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Redmi Note 15 4G 8GB+256GB Global Purple",
+              "preco_brl": 1470.0,
+              "preco_usd": 245.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-note-15-4g-8gb256gb-global-purple__5528239/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi Redmi Note 15 4G 256GB 8GB Ram Dual Sim Tela 6.77\" 108MP - Azul (Global)",
+              "preco_brl": 1336.5,
+              "preco_usd": 222.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-4g-256gb-8gb-ram-dual-sim-tela-677-108mp-azul-global__5139316/"
+            },
+            {
+              "loja": "Best Shop Paraguai",
+              "titulo": "Smartphone Xiaomi Redmi Note 15 256GB 8RAM Black Global",
+              "preco_brl": 1314.0,
+              "preco_usd": 219.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-15-256gb-8ram-black-global__5133249/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi Redmi Note 15 Dual Sim 256GB/8GB Ram de 6.77\" 108MP/20MP - Preto (Global)",
+              "preco_brl": 1314.0,
+              "preco_usd": 219.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-dual-sim-256gb8gb-ram-de-677-108mp20mp-preto-global__5137738/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Smartphone Xiaomi Redmi Note 15 Dual Sim 8GB+256GB 6.77\" - Glacier Blue US 73106",
+              "preco_brl": 1356.0,
+              "preco_usd": 226.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-15-dual-sim-8gb256gb-677-glacier-blue-us-73106__5163741/"
+            },
+            {
+              "loja": "Asia Store",
+              "titulo": "Redmi Note 15 8GB+256GB Blue",
+              "preco_brl": 1260.0,
+              "preco_usd": 210.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/redmi-note-15-8gb256gb-blue__5446714/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi Redmi Note 15 Dual Sim 256GB/8GB Ram de 6.77″ 108MP/20MP – Roxo (Global)",
+              "preco_brl": 1313.94,
+              "preco_usd": 218.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-dual-sim-256gb8gb-ram-de-677-108mp20mp-roxo-global__5187402/"
+            },
+            {
+              "loja": "Eletrocell",
+              "titulo": "Celular Xiaomi Redmi Note 15 Dual Sim 256GB 8GB Ram de 6.77\" 108MP 20MP - Forest Gren (Global)",
+              "preco_brl": 1290.0,
+              "preco_usd": 215.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-dual-sim-256gb-8gb-ram-de-677-108mp-20mp-forest-gren-global__5733170/"
+            },
+            {
+              "loja": "Avanza",
+              "titulo": "Celular Xiaomi Redmi Note 15 Lte Dual 256GB/8GB Black",
+              "preco_brl": 1340.46,
+              "preco_usd": 223.41,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-lte-dual-256gb8gb-black__5794049/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-note-14-pro-5g",
@@ -4167,7 +6270,64 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 14
         }
-      ]
+      ],
+      "preco_medio_brl": 2301.59,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 1844.1,
+        "maior_brl": 2759.08,
+        "cotacoes": [
+          {
+            "titulo": "Original Xiaomi redmi note 14 pro 5g 256GB Câmera principal AI de 50MP 5500mAh Global ROM",
+            "loja": "Shopee",
+            "preco_brl": 2759.08,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-14-pro-5g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/ou4aiw",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "Mercado Livre",
+            "titulo": "Xiaomi Redmi Note 14 Pro 5g 256gb/8gb Ram Dual Sim - Capa verde | MercadoLivre",
+            "armazenamento_gb": 256,
+            "preco_brl": 1844.1,
+            "fonte": "https://www.mercadolivre.com.br/xiaomi-redmi-note-14-pro-5g-256gb8gb-ram-dual-sim-capa-verde/p/MLB63161164?picker=true&product_trigger_id=MLB45748091"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 1469.98,
+          "quantidade_lojas": 3,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-14-pro-dual-chip-256gb-5g-global_57924/",
+          "cotacoes": [
+            {
+              "loja": "Flytec Computers",
+              "titulo": "Celular Xiaomi Redmi Note 14 Pro Dual 256GB/8GB 5G Lavender",
+              "preco_brl": 1422.0,
+              "preco_usd": 237.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-14-pro-dual-256gb8gb-5g-lavender__4928851/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi Redmi Note 14 Pro 5G NFC Dual Sim 256GB/8GB Ram de 6.67″ 200+8+2MP/20MP – Midnight Black (Global)",
+              "preco_brl": 1493.94,
+              "preco_usd": 248.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-14-pro-5g-nfc-dual-sim-256gb8gb-ram-de-667-20082mp20mp-midnight-black-global__5008769/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Redmi Note 14 Pro 5G 256GB 8GB Ram DS - Black Global",
+              "preco_brl": 1494.0,
+              "preco_usd": 249.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-14-pro-5g-256gb-8gb-ram-ds-black-global__5338714/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-note-15-5g",
@@ -4239,7 +6399,51 @@
         "fabricante": "https://www.mi.com/br/product/redmi-note-15-5g/specs/",
         "bateria": "https://www.mi.com/br/product/redmi-note-15-5g/specs/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 2037.86,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 1876.71,
+        "maior_brl": 2199.0,
+        "cotacoes": [
+          {
+            "titulo": "Xiaomi Redmi Note 15 5G 256GB/8GB RAM, Processador Snapdragon 6 gen 3, Câmera 108MP, Bateria 5520mAh",
+            "loja": "Shopee",
+            "preco_brl": 1876.71,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-15-5g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/9iz7rm",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Xiaomi Redmi Note 15 5G 8GB/256GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 2199.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-redmi-note-15-5g",
+            "url_oferta": "https://www.oficinadanet.com.br/go/99qvjj",
+            "armazenamento_gb": 256
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 1410.0,
+          "quantidade_lojas": 1,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-15-dual-chip-256gb-5g-global_66044/",
+          "cotacoes": [
+            {
+              "loja": "Asia Store",
+              "titulo": "Redmi Note 15 5G 8GB+256GB Black *No Charger",
+              "preco_brl": 1410.0,
+              "preco_usd": 235.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/redmi-note-15-5g-8gb256gb-black-no-charger__5444348/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-note-17-5g",
@@ -4301,7 +6505,119 @@
         "fabricante": "https://www.mi.com/br/product/redmi-note-17-5g/specs/",
         "bateria": "https://www.mi.com/br/product/redmi-note-17-5g/specs/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 2049.49,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 1799.1,
+        "maior_brl": 2299.87,
+        "cotacoes": [
+          {
+            "loja": "xiaomidecuritiba.com.br",
+            "titulo": "Redmi Note 17 5G 256GB | Preço e Estoque em Curitiba",
+            "armazenamento_gb": 256,
+            "preco_brl": 1799.1,
+            "fonte": "https://www.xiaomidecuritiba.com.br/produto/xiaomi-redmi-note-17-5g-256gb-6gb-ram/"
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Xiaomi Redmi Note 17 5G 6GB RAM 256GB Global Black Lançamento 2026 - Redmi Note 17 - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 2299.87,
+            "fonte": "https://www.magazineluiza.com.br/xiaomi-redmi-note-17-5g-6gb-ram-256gb-global-black-lancamento-2026/p/dg1faj3b58/te/rn17/?seller_id=gigantemix"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 1509.1,
+          "quantidade_lojas": 11,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-dual-chip-256gb-5g-global_70790/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi Redmi Note 17 5G Dual 256 GB - Preto",
+              "preco_brl": 1494.0,
+              "preco_usd": 249.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-redmi-note-17-5g-dual-256-gb-preto__5548860/"
+            },
+            {
+              "loja": "Cellshop",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 5G Dual Sim 6.99\" 6GB/256GB Black",
+              "preco_brl": 1524.0,
+              "preco_usd": 254.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-5g-dual-sim-699-6gb256gb-black__5510957/"
+            },
+            {
+              "loja": "GenZ Atacado",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 5G DS 6/256GB 6.9\" 45W - s.Teal (US)",
+              "preco_brl": 1482.0,
+              "preco_usd": 247.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-5g-ds-6256gb-69-45w-steal-us__5659850/"
+            },
+            {
+              "loja": "TLC",
+              "titulo": "Celular Xiaomi Redmi Note 17 5G 6GB Ram 256GB Purple Eu Global",
+              "preco_brl": 1498.5,
+              "preco_usd": 249.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-5g-6gb-ram-256gb-purple-eu-global__5663182/"
+            },
+            {
+              "loja": "New Zone",
+              "titulo": "Xiaomi Cel Redmi Note 17 5G 6.9\" DS 6/256GB Black 45W",
+              "preco_brl": 1482.0,
+              "preco_usd": 247.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-cel-redmi-note-17-5g-69-ds-6256gb-black-45w__5741349/"
+            },
+            {
+              "loja": "Atlantico Shop",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 5G DS 6.99\" 6/256GB - Purple",
+              "preco_brl": 1482.0,
+              "preco_usd": 247.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-5g-ds-699-6256gb-purple__5744461/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 5G Global 256GB 6GB Ram Dual Sim NFC Tela 6.99\" - Verde",
+              "preco_brl": 1485.0,
+              "preco_usd": 247.5,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-5g-global-256gb-6gb-ram-dual-sim-nfc-tela-699-verde__5625274/"
+            },
+            {
+              "loja": "Avanza",
+              "titulo": "Celular Xiaomi Redmi Note 17 5G Dual 256GB/6GB Black",
+              "preco_brl": 1532.64,
+              "preco_usd": 255.44,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-5g-dual-256gb6gb-black__5626257/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 5G Global 256GB 6GB Ram Dual Sim NFC Tela 6.99\" - SKY Teal",
+              "preco_brl": 1482.0,
+              "preco_usd": 247.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-5g-global-256gb-6gb-ram-dual-sim-nfc-tela-699-sky-teal__5665901/"
+            },
+            {
+              "loja": "Asia Store",
+              "titulo": "Redmi Note 17 5G 6GB+256GB SKY Teal",
+              "preco_brl": 1500.0,
+              "preco_usd": 250.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/redmi-note-17-5g-6gb256gb-sky-teal__5550768/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi Redmi Note 17 5G 6GB+256GB Celestial Purple 84112-MZB0Q63EU",
+              "preco_brl": 1638.0,
+              "preco_usd": 273.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-redmi-note-17-5g-6gb256gb-celestial-purple-84112-mzb0q63eu__5590605/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-note-17-pro-5g",
@@ -4374,7 +6690,182 @@
         "fabricante": "https://www.mi.com/br/product/redmi-note-17-pro-5g/specs/",
         "bateria": "https://www.mi.com/br/product/redmi-note-17-pro-5g/specs/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 2482.65,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 2238.75,
+        "maior_brl": 2780.1,
+        "cotacoes": [
+          {
+            "loja": "xiaomiemcuritiba.com.br",
+            "titulo": "Redmi Note 17 Pro 5G 256GB 8GB | Curitiba – Xiaomi em Curitiba",
+            "armazenamento_gb": 256,
+            "preco_brl": 2429.1,
+            "fonte": "https://www.xiaomiemcuritiba.com.br/redmi/redmi-note-17-pro-5g-256gb-8gb/"
+          },
+          {
+            "loja": "mkdomus.shop",
+            "titulo": "Redmi Note 17 Pro NFC 256GB 8GB RAM 5G | MK Domus",
+            "armazenamento_gb": 256,
+            "preco_brl": 2238.75,
+            "fonte": "https://mkdomus.shop/products/redmi-note-17-pro-nfc-256gb-8gb-ram-5g"
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Xiaomi Redmi Note 17 Pro 5G 256GB ROXO - Redmi Note 17 - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 2780.1,
+            "fonte": "https://www.magazineluiza.com.br/xiaomi-redmi-note-17-pro-5g-256gb-roxo/p/jc42bgd62a/te/rn17/"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 1907.12,
+          "quantidade_lojas": 19,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-256gb-5g-ram-8gb-global_70554/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi Redmi Note 17 Pro 5G Dual 256 GB 8GB Ram - Preto",
+              "preco_brl": 1896.0,
+              "preco_usd": 316.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-redmi-note-17-pro-5g-dual-256-gb-8gb-ram-preto__5547238/"
+            },
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro 5G Dual Sim de 256GB/8GB Ram de 6.83\" 50+8MP/16MP - Satin Orange",
+              "preco_brl": 1896.0,
+              "preco_usd": 316.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-5g-dual-sim-de-256gb8gb-ram-de-683-508mp16mp-satin-orange__5545491/"
+            },
+            {
+              "loja": "Cellshop",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro 5G Dual Sim 6.83\" 8GB/256GB SKY Blue",
+              "preco_brl": 1896.0,
+              "preco_usd": 316.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-5g-dual-sim-683-8gb256gb-sky-blue__5617471/"
+            },
+            {
+              "loja": "TLC",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro 5G 8GB Ram 256GB Purple Eu Global",
+              "preco_brl": 1944.0,
+              "preco_usd": 324.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-5g-8gb-ram-256gb-purple-eu-global__5653642/"
+            },
+            {
+              "loja": "Visãovip",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro 5G NFC 8GB de Ram / 256GB / Tela 6.83\" / Dual Sim 5G - Purple (Global)",
+              "preco_brl": 1906.5,
+              "preco_usd": 317.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-5g-nfc-8gb-de-ram-256gb-tela-683-dual-sim-5g-purple-global__5651157/"
+            },
+            {
+              "loja": "Topdek Informática",
+              "titulo": "Cel Xiaomi Redmi Note 17 Pro DS 5G 8/256GB Preto",
+              "preco_brl": 1896.0,
+              "preco_usd": 316.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-note-17-pro-ds-5g-8256gb-preto__5664415/"
+            },
+            {
+              "loja": "Atlantico Shop",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro 5G DS 6.83\" 8/256GB - Black",
+              "preco_brl": 1890.0,
+              "preco_usd": 315.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-5g-ds-683-8256gb-black__5546099/"
+            },
+            {
+              "loja": "Alborada",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro 5G 8GB/256GB Global - Lilás",
+              "preco_brl": 1906.5,
+              "preco_usd": 317.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-5g-8gb256gb-global-lilas__5652436/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro 5G 256GB 8GB Ram Dual Sim Tela 6.83\" Chinês - Azul",
+              "preco_brl": 1618.5,
+              "preco_usd": 269.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-5g-256gb-8gb-ram-dual-sim-tela-683-chines-azul__5602066/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Redmi Note 17 Pro 5G 8GB+256GB Orange",
+              "preco_brl": 2070.0,
+              "preco_usd": 345.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-note-17-pro-5g-8gb256gb-orange__5594646/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro 5G 256GB 8GB Ram Dual Sim NFC 6.83\" - Azul (Global)",
+              "preco_brl": 1896.0,
+              "preco_usd": 316.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-5g-256gb-8gb-ram-dual-sim-nfc-683-azul-global__5659183/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro 5G Dual Sim de 256GB/8GB Ram de 6.83\" 50+8MP/16MP - Preto",
+              "preco_brl": 1896.0,
+              "preco_usd": 316.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-5g-dual-sim-de-256gb8gb-ram-de-683-508mp16mp-preto__5546429/"
+            },
+            {
+              "loja": "Avanza",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro 5G Dual 256GB/8GB Morado",
+              "preco_brl": 1949.82,
+              "preco_usd": 324.97,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-5g-dual-256gb8gb-morado__5626260/"
+            },
+            {
+              "loja": "Play Box",
+              "titulo": "Cell Xiaomi Redmi Note 17 Pro 5G 8GB Ram 256GB - Azul",
+              "preco_brl": 1914.0,
+              "preco_usd": 319.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cell-xiaomi-redmi-note-17-pro-5g-8gb-ram-256gb-azul__5796949/"
+            },
+            {
+              "loja": "Asia Store",
+              "titulo": "Redmi Note 17 Pro 5G 8GB+256GB SKY Blue",
+              "preco_brl": 1920.0,
+              "preco_usd": 320.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/redmi-note-17-pro-5g-8gb256gb-sky-blue__5550766/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro 5G Global 256GB 8GB Ram Dual Sim NFC Tela 6.83\" - Purple",
+              "preco_brl": 1890.0,
+              "preco_usd": 315.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-5g-global-256gb-8gb-ram-dual-sim-nfc-tela-683-purple__5674374/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro 5G Global 256GB 8GB Ram Dual Sim NFC Tela 6.83″ – Preto",
+              "preco_brl": 1895.94,
+              "preco_usd": 315.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-5g-global-256gb-8gb-ram-dual-sim-nfc-tela-683-preto__5550351/"
+            },
+            {
+              "loja": "Eletrocell",
+              "titulo": "Cel Xiaomi Redmi Note 17 Pro Dual 6.83\" 8GB+256GB 5G 50/16MP Roxo",
+              "preco_brl": 1896.0,
+              "preco_usd": 316.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-note-17-pro-dual-683-8gb256gb-5g-5016mp-roxo__5736797/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi Redmi Note 17 Pro 5G 8GB+256GB Satin Orange 81022-MZB0OYUEU",
+              "preco_brl": 2058.0,
+              "preco_usd": 343.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-redmi-note-17-pro-5g-8gb256gb-satin-orange-81022-mzb0oyueu__5542667/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-poco-x7-pro",
@@ -4461,7 +6952,147 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 1
         }
-      ]
+      ],
+      "preco_medio_brl": 2440.3,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 2339.1,
+        "maior_brl": 2541.5,
+        "cotacoes": [
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Smartphone Xiaomi Poco X7 Pro 8 GB 256 - Xiaomi - Poco X7 Pro - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 2339.1,
+            "fonte": "https://www.magazineluiza.com.br/smartphone-xiaomi-poco-x7-pro-8-gb-256-xiaomi/p/ae3bgdkjf4/te/pc7p/"
+          },
+          {
+            "loja": "m.magazineluiza.com.br",
+            "titulo": "Smartphone Xiaomi POCO X7 Pro 8+256GB - Poco X7 Pro - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 2541.5,
+            "fonte": "https://m.magazineluiza.com.br/smartphone-xiaomi-poco-x7-pro-8-256gb/p/bahb55jbf6/te/pc7p/"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 512,
+          "media_brl": 2467.5,
+          "quantidade_lojas": 15,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-dual-chip-512gb-5g-global_57933/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi Poco X7 Pro 5G Dual 512 GB 12 Ram - Verde",
+              "preco_brl": 2160.0,
+              "preco_usd": 360.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-poco-x7-pro-5g-dual-512-gb-12-ram-verde__4664478/"
+            },
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi Poco X7 Pro NFC Dual Sim 512GB/12GB Ram de 6.67\" 50+8MP/20MP - Verde (Global)",
+              "preco_brl": 2130.0,
+              "preco_usd": 355.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-nfc-dual-sim-512gb12gb-ram-de-667-508mp20mp-verde-global__4624840/"
+            },
+            {
+              "loja": "Visãovip",
+              "titulo": "Celular Xiaomi Poco X7 Pro 12GB de Ram / 512GB / Tela 6.67\" / Dual Sim 5G - Preto (Global)",
+              "preco_brl": 2340.0,
+              "preco_usd": 390.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-12gb-de-ram-512gb-tela-667-dual-sim-5g-preto-global__4628683/"
+            },
+            {
+              "loja": "Flytec Computers",
+              "titulo": "Celular Xiaomi Poco X7 Pro 5G 12GB+512GB Black Eu",
+              "preco_brl": 2340.0,
+              "preco_usd": 390.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-5g-12gb512gb-black-eu__4874199/"
+            },
+            {
+              "loja": "Atlantico Shop",
+              "titulo": "Smartphone Xiaomi Poco X7 Pro DS 5G 6.67\" 12/512GB - Green",
+              "preco_brl": 2130.0,
+              "preco_usd": 355.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x7-pro-ds-5g-667-12512gb-green__4741169/"
+            },
+            {
+              "loja": "Alborada",
+              "titulo": "Celular Xiaomi Poco X7 Pro 12GB 512GB 5G Verde BR",
+              "preco_brl": 2152.5,
+              "preco_usd": 358.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-12gb-512gb-5g-verde-br__5421919/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Poco X7 Pro 5G Global 512GB 12GB Ram Dual Sim Tela 6.67\" - Verde",
+              "preco_brl": 2152.5,
+              "preco_usd": 358.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x7-pro-5g-global-512gb-12gb-ram-dual-sim-tela-667-verde__4624015/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Poco X7 Pro 5G 12+512GB Global Green",
+              "preco_brl": 2340.0,
+              "preco_usd": 390.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-poco-x7-pro-5g-12512gb-global-green__5523264/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi Poco X7 Pro 5G 512GB / 12GB Ram / Dual Sim / Tela 6.67 / 50MP - Verde (Global)",
+              "preco_brl": 2152.5,
+              "preco_usd": 358.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-5g-512gb-12gb-ram-dual-sim-tela-667-50mp-verde-global__4630771/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi Poco X7 Pro NFC Dual Sim 512GB/12GB Ram de 6.67\" 50+8MP/20MP - Verde (Global)",
+              "preco_brl": 2130.0,
+              "preco_usd": 355.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-nfc-dual-sim-512gb12gb-ram-de-667-508mp20mp-verde-global__4625340/"
+            },
+            {
+              "loja": "Paraguay Comunicaciones",
+              "titulo": "Xiaomi Poco X7 Pro 5G 12RAM 512GB 2CHIP Negro",
+              "preco_brl": 2280.0,
+              "preco_usd": 380.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-poco-x7-pro-5g-12ram-512gb-2chip-negro__5746774/"
+            },
+            {
+              "loja": "Avanza",
+              "titulo": "Celular Xiaomi Poco X7 Pro Dual 512GB/12GB Ram 5G Green",
+              "preco_brl": 2218.62,
+              "preco_usd": 369.77,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-dual-512gb12gb-ram-5g-green__5605022/"
+            },
+            {
+              "loja": "Eletrocell",
+              "titulo": "Celular Xiaomi Poco X7 Pro NFC Dual Sim 512GB 12GB Ram de 6.67\" 50+8MP 20MP - Preto",
+              "preco_brl": 2340.0,
+              "preco_usd": 390.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-nfc-dual-sim-512gb-12gb-ram-de-667-508mp-20mp-preto__5737037/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Poco X7 Pro 5G 512GB 12GB Ram DS - Black Global",
+              "preco_brl": 5994.0,
+              "preco_usd": 999.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x7-pro-5g-512gb-12gb-ram-ds-black-global__5338712/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi Poco X7 Pro NFC Dual Sim 512GB/12GB Ram de 6.67″ 50+8MP/20MP – Verde (Global)",
+              "preco_brl": 2152.44,
+              "preco_usd": 358.74,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x7-pro-nfc-dual-sim-512gb12gb-ram-de-667-508mp20mp-verde-global__4703202/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-poco-x8-pro",
@@ -4548,7 +7179,191 @@
           "fonte": "https://comparecelular.com/mais-buscados/",
           "posicao": 3
         }
-      ]
+      ],
+      "preco_medio_brl": 2942.0,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 2885.0,
+        "maior_brl": 2999.0,
+        "cotacoes": [
+          {
+            "titulo": "Xiaomi Poco X8 Pro 5G 256GB 8GB Ram Branco Global | Global",
+            "loja": "Amazon",
+            "preco_brl": 2885.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-x8-pro",
+            "url_oferta": "https://www.oficinadanet.com.br/go/a31ehh",
+            "armazenamento_gb": 256
+          },
+          {
+            "titulo": "Xiaomi Poco X8 Pro 256gb 8gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 2999.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-x8-pro",
+            "url_oferta": "https://www.oficinadanet.com.br/go/36i6yh",
+            "armazenamento_gb": 256
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 2303.9,
+          "quantidade_lojas": 21,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-dual-chip-256gb-5g-global_67543/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi Poco X8 Pro 5G Dual 256 GB 8 GB Ram - Yellow",
+              "preco_brl": 2236.5,
+              "preco_usd": 372.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-poco-x8-pro-5g-dual-256-gb-8-gb-ram-yellow__5430328/"
+            },
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi Poco X8 Pro NFC Dual Sim de 256GB/8GB Ram de 6.59\" 50+8MP/20MP - Verde Menta (Global)",
+              "preco_brl": 2340.0,
+              "preco_usd": 390.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-256gb8gb-ram-de-659-508mp20mp-verde-menta-global__5218170/"
+            },
+            {
+              "loja": "Cellshop",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro 5G Dual Sim 6.59\" 8GB/256GB Yellow (Global)",
+              "preco_brl": 2274.0,
+              "preco_usd": 379.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-5g-dual-sim-659-8gb256gb-yellow-global__5382539/"
+            },
+            {
+              "loja": "GenZ Atacado",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro 5G DS 8/256GB 6.59 50/16MP - Yellow",
+              "preco_brl": 2274.0,
+              "preco_usd": 379.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-5g-ds-8256gb-659-5016mp-yellow__5477430/"
+            },
+            {
+              "loja": "Shopping China",
+              "titulo": "Celular Xiaomi Poco X8 Pro 5G 8GB Ram 256GB White",
+              "preco_brl": 2370.0,
+              "preco_usd": 395.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-5g-8gb-ram-256gb-white__5250092/"
+            },
+            {
+              "loja": "TLC",
+              "titulo": "Celular Xiaomi Poco X8 Pro 5G 8GB Ram 256GB Yellow Eu Global",
+              "preco_brl": 2208.0,
+              "preco_usd": 368.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-5g-8gb-ram-256gb-yellow-eu-global__5543438/"
+            },
+            {
+              "loja": "New Zone",
+              "titulo": "Xiaomi Cel Poco X8 Pro 5G 6.59\" DS 8/256GB 100W US Yellow",
+              "preco_brl": 2274.0,
+              "preco_usd": 379.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-cel-poco-x8-pro-5g-659-ds-8256gb-100w-us-yellow__5478368/"
+            },
+            {
+              "loja": "Visãovip",
+              "titulo": "Celular Xiaomi Poco X8 Pro 8GB de Ram / 256GB / Tela 6.59\" / Dual Sim 5G - Amarelo (Global)",
+              "preco_brl": 2262.0,
+              "preco_usd": 377.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-8gb-de-ram-256gb-tela-659-dual-sim-5g-amarelo-global__5390119/"
+            },
+            {
+              "loja": "Star Company",
+              "titulo": "Xiaomi Poco X8 Pro 5G 8+256GB Green",
+              "preco_brl": 2188.5,
+              "preco_usd": 364.75,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-poco-x8-pro-5g-8256gb-green__5487306/"
+            },
+            {
+              "loja": "Atlantico Shop",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro DS 5G 6.59\" 8/256GB - Yellow",
+              "preco_brl": 2274.0,
+              "preco_usd": 379.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-ds-5g-659-8256gb-yellow__5740663/"
+            },
+            {
+              "loja": "Alborada",
+              "titulo": "Celular Xiaomi Poco X8 Pro 8GB 256GB 5G Branco",
+              "preco_brl": 2370.0,
+              "preco_usd": 395.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-8gb-256gb-5g-branco__5412877/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro 5G Global 256GB 8GB Ram Dual Sim Tela 6.59\" - Amarelo",
+              "preco_brl": 2322.0,
+              "preco_usd": 387.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-5g-global-256gb-8gb-ram-dual-sim-tela-659-amarelo__5389915/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Poco X8 Pro 5G 8+256GB Global Green",
+              "preco_brl": 2400.0,
+              "preco_usd": 400.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-poco-x8-pro-5g-8256gb-global-green__5517756/"
+            },
+            {
+              "loja": "Best Shop Paraguai",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro 256GB 8RAM 5G Yellow",
+              "preco_brl": 2274.0,
+              "preco_usd": 379.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-256gb-8ram-5g-yellow__5401453/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi Poco X8 Pro 5G 256GB 8GB Ram Dual Sim Tela 6.59\" - Amarelo (Global)",
+              "preco_brl": 2274.0,
+              "preco_usd": 379.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-5g-256gb-8gb-ram-dual-sim-tela-659-amarelo-global__5399291/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi Poco X8 Pro NFC Dual Sim de 256GB/8GB Ram de 6.59\" 50+8MP/20MP - Verde Menta (Global)",
+              "preco_brl": 2322.0,
+              "preco_usd": 387.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-256gb8gb-ram-de-659-508mp20mp-verde-menta-global__5218151/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro 5G 256GB 8GB Ram DS - Green Global",
+              "preco_brl": 2322.0,
+              "preco_usd": 387.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-5g-256gb-8gb-ram-ds-green-global__5368382/"
+            },
+            {
+              "loja": "Asia Store",
+              "titulo": "Poco X8 Pro 8GB+256GB Black",
+              "preco_brl": 2460.0,
+              "preco_usd": 410.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/poco-x8-pro-8gb256gb-black__5453251/"
+            },
+            {
+              "loja": "Avanza",
+              "titulo": "Celular Xiaomi Poco X8 Pro Dual 256GB/8GB Ram 5G Yellow",
+              "preco_brl": 2298.96,
+              "preco_usd": 383.16,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-dual-256gb8gb-ram-5g-yellow__5605030/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi Poco X8 Pro NFC Dual Sim de 256GB/8GB Ram de 6.59″ 50+8MP/20MP – Verde Menta (Global)",
+              "preco_brl": 2261.94,
+              "preco_usd": 376.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-256gb8gb-ram-de-659-508mp20mp-verde-menta-global__5221819/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi Poco X8 Pro 5G 8GB+256GB White 74319-MZB0N2UEU",
+              "preco_brl": 2376.0,
+              "preco_usd": 396.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-poco-x8-pro-5g-8gb256gb-white-74319-mzb0n2ueu__5239222/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-poco-x8-pro-max",
@@ -4627,7 +7442,183 @@
           "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
           "posicao": 2
         }
-      ]
+      ],
+      "preco_medio_brl": 3473.33,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 3284.1,
+        "maior_brl": 3836.0,
+        "cotacoes": [
+          {
+            "titulo": "Xiaomi Poco X8 Pro Max - 256 GB",
+            "loja": "Mercado Livre",
+            "preco_brl": 3836.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-poco-x8-pro-max",
+            "url_oferta": "https://www.oficinadanet.com.br/go/gxwyra",
+            "armazenamento_gb": 256
+          },
+          {
+            "loja": "xiaomiemcuritiba.com.br",
+            "titulo": "POCO X8 Pro Max 256GB 12GB RAM | Preço em Curitiba – Loja Xiaomi",
+            "armazenamento_gb": 256,
+            "preco_brl": 3284.1,
+            "fonte": "https://www.xiaomiemcuritiba.com.br/poco/poco-x8-pro-max-256gb-12gb/"
+          },
+          {
+            "loja": "importadostimbo.com.br",
+            "titulo": "Poco X8 Pro Max 5G 12GB/256GB Preto | Importados Timbó",
+            "armazenamento_gb": 256,
+            "preco_brl": 3299.9,
+            "fonte": "https://importadostimbo.com.br/produto/poco-x8-pro-max-5g-12gb-ram-256gb-preto/"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 2950.59,
+          "quantidade_lojas": 19,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-max-dual-chip-256gb-5g-global_67541/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi Poco X8 Pro Max 5G Dual 256 GB - Preto",
+              "preco_brl": 2910.0,
+              "preco_usd": 485.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-poco-x8-pro-max-5g-dual-256-gb-preto__5224221/"
+            },
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi Poco X8 Pro Max NFC Dual Sim de 256GB/12GB Ram de 6.83\" 50+8MP/20MP - Laranja (Global)",
+              "preco_brl": 2880.0,
+              "preco_usd": 480.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-max-nfc-dual-sim-de-256gb12gb-ram-de-683-508mp20mp-laranja-global__5366512/"
+            },
+            {
+              "loja": "Cellshop",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro Max 5G Dual Sim 6.83\" 12GB/256GB Black (Global)",
+              "preco_brl": 3168.0,
+              "preco_usd": 528.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-max-5g-dual-sim-683-12gb256gb-black-global__5377666/"
+            },
+            {
+              "loja": "GenZ Atacado",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro Max 5G DS 12/256GB 6.83\" 50+8/20MP 100W - Blue",
+              "preco_brl": 2940.0,
+              "preco_usd": 490.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-max-5g-ds-12256gb-683-50820mp-100w-blue__5478421/"
+            },
+            {
+              "loja": "Shopping China",
+              "titulo": "Celular Xiaomi Poco X8 Pro Max 12GB Ram 256GB Blue",
+              "preco_brl": 3150.0,
+              "preco_usd": 525.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-max-12gb-ram-256gb-blue__5250095/"
+            },
+            {
+              "loja": "New Zone",
+              "titulo": "Xiaomi Cel Poco X8 Pro Max 5G 6.83\" DS 12/256GB 100W US Blue",
+              "preco_brl": 2940.0,
+              "preco_usd": 490.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-cel-poco-x8-pro-max-5g-683-ds-12256gb-100w-us-blue__5446559/"
+            },
+            {
+              "loja": "Visãovip",
+              "titulo": "Celular Xiaomi Poco X8 Pro Max 12GB de Ram / 256GB / Tela 6.83\" / Dual Sim 5G - Preto (Global)",
+              "preco_brl": 2892.0,
+              "preco_usd": 482.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-max-12gb-de-ram-256gb-tela-683-dual-sim-5g-preto-global__5227592/"
+            },
+            {
+              "loja": "Atlantico Shop",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro Max DS 5G 6.83\" 12/256GB - White",
+              "preco_brl": 2886.0,
+              "preco_usd": 481.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-max-ds-5g-683-12256gb-white__5788712/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro Max 5G Global 256GB 12GB Ram Dual Sim Tela 6.83\" - Preto (Caixa Slim) (Lacre Pequeno)",
+              "preco_brl": 2694.0,
+              "preco_usd": 449.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-max-5g-global-256gb-12gb-ram-dual-sim-tela-683-preto-caixa-slim-lacre-pequeno__5485453/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Poco X8 Pro Max 5G 12+256GB Global Blue",
+              "preco_brl": 3060.0,
+              "preco_usd": 510.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-poco-x8-pro-max-5g-12256gb-global-blue__5517759/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi Poco X8 Pro Max 5G 256GB 12GB Ram Dual Sim Tela 6.83\" - Preto (Global)",
+              "preco_brl": 2952.0,
+              "preco_usd": 492.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-max-5g-256gb-12gb-ram-dual-sim-tela-683-preto-global__5245232/"
+            },
+            {
+              "loja": "Best Shop Paraguai",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro Max 256GB 12RAM 5G Blue Global",
+              "preco_brl": 2886.0,
+              "preco_usd": 481.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-max-256gb-12ram-5g-blue-global__5238749/"
+            },
+            {
+              "loja": "Mini Carlos",
+              "titulo": "Celular Xiaomi Poco X8 Pro Max 5G Dual Sim 12GB/256GB Azul",
+              "preco_brl": 3000.0,
+              "preco_usd": 500.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-max-5g-dual-sim-12gb256gb-azul__5795678/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi Poco X8 Pro Max NFC Dual Sim de 256GB/12GB Ram de 6.83\" 50+8MP/20MP - Azul (Global)",
+              "preco_brl": 2880.0,
+              "preco_usd": 480.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-max-nfc-dual-sim-de-256gb12gb-ram-de-683-508mp20mp-azul-global__5218146/"
+            },
+            {
+              "loja": "Orbe Import",
+              "titulo": "Cel Xiaomi Poco X8 Pro Max 5G 12/256GB White Global",
+              "preco_brl": 2694.0,
+              "preco_usd": 449.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-poco-x8-pro-max-5g-12256gb-white-global__5789624/"
+            },
+            {
+              "loja": "Avanza",
+              "titulo": "Celular Xiaomi Poco X8 Pro Max Dual 256GB/12GB Ram 5G Blue",
+              "preco_brl": 2991.12,
+              "preco_usd": 498.52,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-x8-pro-max-dual-256gb12gb-ram-5g-blue__5605039/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Poco X8 Pro Max 5G 256GB 12GB Ram DS - White Global",
+              "preco_brl": 2910.0,
+              "preco_usd": 485.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-x8-pro-max-5g-256gb-12gb-ram-ds-white-global__5449530/"
+            },
+            {
+              "loja": "Asia Store",
+              "titulo": "Poco X8 Pro Max 12GB+256GB Black",
+              "preco_brl": 3060.0,
+              "preco_usd": 510.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/poco-x8-pro-max-12gb256gb-black__5488968/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi Poco X8 Pro Max 5G 12GB+256GB White US 76235",
+              "preco_brl": 3168.0,
+              "preco_usd": 528.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-poco-x8-pro-max-5g-12gb256gb-white-us-76235__5335064/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-redmi-note-17-pro-max-5g",
@@ -4697,7 +7688,168 @@
           "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
           "posicao": 4
         }
-      ]
+      ],
+      "preco_medio_brl": 2773.2,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 3,
+        "menor_brl": 2695.5,
+        "maior_brl": 2834.1,
+        "cotacoes": [
+          {
+            "loja": "mkdomus.shop",
+            "titulo": "Redmi Note 17 Pro Max 256GB 8GB RAM 5G | MK Domus",
+            "armazenamento_gb": 256,
+            "preco_brl": 2790,
+            "fonte": "https://mkdomus.shop/products/redmi-note-17-pro-max-256gb-8gb-ram-5g"
+          },
+          {
+            "loja": "xiaomiemcuritiba.com.br",
+            "titulo": "Redmi Note 17 Pro Max 256GB em Curitiba | Preço e garantia",
+            "armazenamento_gb": 256,
+            "preco_brl": 2834.1,
+            "fonte": "https://www.xiaomiemcuritiba.com.br/redmi/redmi-note-17-pro-max-5g-256gb-8gb/"
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Smartphone Xiaomi Redmi Note 17Pro Max 5G 256gb - 8GB Ram Preto - Redmi Note 17 - Magazine Luiza",
+            "armazenamento_gb": 256,
+            "preco_brl": 2695.5,
+            "fonte": "https://www.magazineluiza.com.br/smartphone-xiaomi-redmi-note-17pro-max-5g-256gb-8gb-ram-preto/p/ga5bccej80/te/rn17/?seller_id=mcscomerciodevariedades"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 2378.12,
+          "quantidade_lojas": 17,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-max-dual-chip-256gb-5g-global_70737/",
+          "cotacoes": [
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro Max 5G NFC Dual Sim de 256GB/8GB Ram de 6.83\" 50+8MP/32MP - Verde",
+              "preco_brl": 2370.0,
+              "preco_usd": 395.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-max-5g-nfc-dual-sim-de-256gb8gb-ram-de-683-508mp32mp-verde__5539736/"
+            },
+            {
+              "loja": "Cellshop",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro Max 5G Dual Sim 6.83\" 8GB/256GB Cloud Blush",
+              "preco_brl": 2394.0,
+              "preco_usd": 399.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-max-5g-dual-sim-683-8gb256gb-cloud-blush__5617480/"
+            },
+            {
+              "loja": "GenZ Atacado",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro Max 5G DS 8/256GB 6.83\" 50/32MP - Purple",
+              "preco_brl": 2322.0,
+              "preco_usd": 387.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-max-5g-ds-8256gb-683-5032mp-purple__5648450/"
+            },
+            {
+              "loja": "New Zone",
+              "titulo": "Xiaomi Cel Redmi Note 17 Pro Max 5G 6.83\" DS 8/256GB Black US",
+              "preco_brl": 2322.0,
+              "preco_usd": 387.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-cel-redmi-note-17-pro-max-5g-683-ds-8256gb-black-us__5746121/"
+            },
+            {
+              "loja": "Visãovip",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro Max 5G 8GB de Ram / 256GB / Tela 6.83\" / Dual Sim 5G - Cloud Blush (Global)",
+              "preco_brl": 2334.0,
+              "preco_usd": 389.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-max-5g-8gb-de-ram-256gb-tela-683-dual-sim-5g-cloud-blush-global__5625370/"
+            },
+            {
+              "loja": "Atlantico Shop",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro Max 5G DS 6.83\" 8/256GB - Green",
+              "preco_brl": 2322.0,
+              "preco_usd": 387.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-max-5g-ds-683-8256gb-green__5645931/"
+            },
+            {
+              "loja": "Alborada",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro Max 5G 8GB 256GB - Preto",
+              "preco_brl": 2322.0,
+              "preco_usd": 387.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-max-5g-8gb-256gb-preto__5617194/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro Max 5G Global 256GB 8GB Ram Dual Sim NFC Tela 6.83\" - Roxo",
+              "preco_brl": 2322.0,
+              "preco_usd": 387.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-max-5g-global-256gb-8gb-ram-dual-sim-nfc-tela-683-roxo__5541422/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Redmi Note 17 Pro Max 5G 8GB+256GB Roxo",
+              "preco_brl": 2580.0,
+              "preco_usd": 430.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-redmi-note-17-pro-max-5g-8gb256gb-roxo__5619251/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro Max 5G 256GB 8GB Ram Dual Sim NFC 6.83\" - Rosa (Global)",
+              "preco_brl": 2514.0,
+              "preco_usd": 419.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-max-5g-256gb-8gb-ram-dual-sim-nfc-683-rosa-global__5741119/"
+            },
+            {
+              "loja": "Casa Americana",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro Max 5G 8GB 256GB Preto",
+              "preco_brl": 2394.06,
+              "preco_usd": 399.01,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-max-5g-8gb-256gb-preto__5646032/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi Redmi Note 17 Pro Max 5G NFC Dual Sim de 256GB/8GB Ram de 6.83\" 50+8MP/32MP - Verde",
+              "preco_brl": 2370.0,
+              "preco_usd": 395.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-redmi-note-17-pro-max-5g-nfc-dual-sim-de-256gb8gb-ram-de-683-508mp32mp-verde__5540729/"
+            },
+            {
+              "loja": "Asia Store",
+              "titulo": "Redmi Note 17 Pro Max 5G 8GB+256GB Green",
+              "preco_brl": 2340.0,
+              "preco_usd": 390.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/redmi-note-17-pro-max-5g-8gb256gb-green__5550757/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro Max 5G Global 256GB 8GB Ram Dual Sim NFC Tela 6.83\" - Green",
+              "preco_brl": 2316.0,
+              "preco_usd": 386.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-max-5g-global-256gb-8gb-ram-dual-sim-nfc-tela-683-green__5547348/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Smartphone Xiaomi Redmi Note 17 Pro Max 5G Global 256GB 8GB Ram Dual Sim NFC Tela 6.83″ – Verde",
+              "preco_brl": 2346.0,
+              "preco_usd": 391.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-redmi-note-17-pro-max-5g-global-256gb-8gb-ram-dual-sim-nfc-tela-683-verde__5550198/"
+            },
+            {
+              "loja": "Paris Store",
+              "titulo": "Xiaomi Redmi Note 17 Pro Max 8GB/256GB 5G Black",
+              "preco_brl": 2400.0,
+              "preco_usd": 400.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-redmi-note-17-pro-max-8gb256gb-5g-black__5658779/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi Redmi Note 17 Pro Max 5G 8GB+256GB Green 81165-MZB0P2TEU",
+              "preco_brl": 2460.0,
+              "preco_usd": 410.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-redmi-note-17-pro-max-5g-8gb256gb-green-81165-mzb0p2teu__5514252/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-17t",
@@ -4761,7 +7913,79 @@
         "fabricante": "https://www.mi.com/br/product/xiaomi-17t/specs/",
         "bateria": "https://www.mi.com/br/product/xiaomi-17t/specs/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 4275.58,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 2,
+        "menor_brl": 4217.0,
+        "maior_brl": 4334.15,
+        "cotacoes": [
+          {
+            "titulo": "Xiaomi 17T - 512gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 4217.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-17t",
+            "url_oferta": "https://www.oficinadanet.com.br/go/1rtqmf",
+            "armazenamento_gb": 512
+          },
+          {
+            "titulo": "Xiaomi 17T Azul com 12GB RAM e 512GB",
+            "loja": "Magazine Luiza",
+            "preco_brl": 4334.15,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-17t",
+            "url_oferta": "https://www.oficinadanet.com.br/go/u0b7cz",
+            "armazenamento_gb": 512
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 3041.99,
+          "quantidade_lojas": 5,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-17t-dual-chip-256gb-5g-global_69148/",
+          "cotacoes": [
+            {
+              "loja": "Star Company",
+              "titulo": "Xiaomi 17T 5G 12+256GB Black",
+              "preco_brl": 3000.0,
+              "preco_usd": 500.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-17t-5g-12256gb-black__5661864/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi 17T Leica 5G 12GB+256GB Global Blue s/fonte",
+              "preco_brl": 3120.0,
+              "preco_usd": 520.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-17t-leica-5g-12gb256gb-global-blue-sfonte__5535319/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi 17T 5G 256GB 12GB Ram Dual Sim Tela 6.59\" - Azul (Global) Caixa Slim",
+              "preco_brl": 3030.0,
+              "preco_usd": 505.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17t-5g-256gb-12gb-ram-dual-sim-tela-659-azul-global-caixa-slim__5550108/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi 17T NFC Dual Sim de 256GB/12GB Ram de 6.59″ 50+50+12MP/32MP – Preto (Global)",
+              "preco_brl": 3029.94,
+              "preco_usd": 504.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17t-nfc-dual-sim-de-256gb12gb-ram-de-659-505012mp32mp-preto-global__5547512/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi 17T 5G 12GB+256GB Black 76720-MZB0NYFUS",
+              "preco_brl": 3030.0,
+              "preco_usd": 505.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-17t-5g-12gb256gb-black-76720-mzb0nyfus__5434273/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-17",
@@ -4834,7 +8058,98 @@
         "fabricante": "https://www.mi.com/global/product/xiaomi-17/specs/",
         "bateria": "https://www.mi.com/global/product/xiaomi-17/specs/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 5535.77,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 4,
+        "menor_brl": 5199.9,
+        "maior_brl": 5759.1,
+        "cotacoes": [
+          {
+            "loja": "directeletronicos.com.br",
+            "titulo": "Xiaomi 17 12 GB RAM 512 GB — Direct Eletrônicos",
+            "armazenamento_gb": 512,
+            "preco_brl": 5615.45,
+            "fonte": "https://directeletronicos.com.br/produtos/xiaomi-mi-17-12-gb-ram-512-gb"
+          },
+          {
+            "loja": "xiaomiemcuritiba.com.br",
+            "titulo": "Xiaomi 17 512GB 12GB RAM | Preço em Curitiba – Loja Xiaomi",
+            "armazenamento_gb": 512,
+            "preco_brl": 5759.1,
+            "fonte": "https://www.xiaomiemcuritiba.com.br/xiaomi/xiaomi-17-512gb-12gb/"
+          },
+          {
+            "loja": "importadostimbo.com.br",
+            "titulo": "Xiaomi 17 12GB/512GB Preto | Importados Timbó",
+            "armazenamento_gb": 512,
+            "preco_brl": 5199.9,
+            "fonte": "https://importadostimbo.com.br/produto/xiaomi-17-12gb-ram-512gb-preto-197/"
+          },
+          {
+            "loja": "moralesimports.com.br",
+            "titulo": "Xiaomi 17 5G NFC Dual SIM de 512GB 12GB RAM de 6.3\" 50+50+50MP 50MP GLOBAL - Morales Imports",
+            "armazenamento_gb": 512,
+            "preco_brl": 5568.64,
+            "fonte": "https://moralesimports.com.br/produto/xiaomi-17-5g-nfc-dual-sim-de-512gb-12gb-ram-de-63-505050mp-50mp-global"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 512,
+          "media_brl": 4974.99,
+          "quantidade_lojas": 6,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-17-dual-chip-512gb-5g_65675/",
+          "cotacoes": [
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi 17 NFC Dual Sim de 512GB/12GB Ram de 6.3\" 50+50+50MP/50MP - Black (Global) (CX Slim) + Carregador",
+              "preco_brl": 4920.0,
+              "preco_usd": 820.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17-nfc-dual-sim-de-512gb12gb-ram-de-63-505050mp50mp-black-global-cx-slim-carregador__5333264/"
+            },
+            {
+              "loja": "Shopping China",
+              "titulo": "Celular Xiaomi 17 12GB Ram 512GB Slim Ice Blue",
+              "preco_brl": 5202.0,
+              "preco_usd": 867.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17-12gb-ram-512gb-slim-ice-blue__5342042/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi 17 5G 12GB+512GB Global Blue s/fonte",
+              "preco_brl": 4920.0,
+              "preco_usd": 820.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-17-5g-12gb512gb-global-blue-sfonte__5512567/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi 17 NFC Dual Sim de 512GB/12GB Ram de 6.3\" 50+50+50MP/50MP - Black (Global) (CX Slim) + Carregador",
+              "preco_brl": 4920.0,
+              "preco_usd": 820.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17-nfc-dual-sim-de-512gb12gb-ram-de-63-505050mp50mp-black-global-cx-slim-carregador__5334457/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi 17 NFC Dual Sim de 512GB/12GB Ram de 6.3″ 50+50+50MP/50MP – Blue",
+              "preco_brl": 4919.94,
+              "preco_usd": 819.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17-nfc-dual-sim-de-512gb12gb-ram-de-63-505050mp50mp-blue__5547514/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi 17 5G 12GB+512GB Black Eu 72971 CX/Slim s/Carg",
+              "preco_brl": 4968.0,
+              "preco_usd": 828.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-17-5g-12gb512gb-black-eu-72971-cxslim-scarg__5256101/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-17-ultra",
@@ -4907,7 +8222,119 @@
         "fabricante": "https://www.mi.com/global/product/xiaomi-17-ultra/specs/",
         "bateria": "https://www.mi.com/global/product/xiaomi-17-ultra/specs/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 7665.94,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 4,
+        "menor_brl": 6828.6,
+        "maior_brl": 8169.05,
+        "cotacoes": [
+          {
+            "loja": "directeletronicos.com.br",
+            "titulo": "Xiaomi 17 Ultra 16 GB RAM 512 GB — Direct Eletrônicos",
+            "armazenamento_gb": 512,
+            "preco_brl": 8169.05,
+            "fonte": "https://directeletronicos.com.br/produtos/xiaomi-17-ultra-16gb-512-gb"
+          },
+          {
+            "loja": "byteseletronicos.com.br",
+            "titulo": "Xiaomi 17 Ultra 16 GB RAM / 512 GB — Bytes Eletrônicos",
+            "armazenamento_gb": 512,
+            "preco_brl": 8077,
+            "fonte": "https://byteseletronicos.com.br/produto/celular-xiaomi-17-ultra-16-ram-512-gb-novo"
+          },
+          {
+            "loja": "shop.madrideletronicos.com",
+            "titulo": "⭐ Xiaomi 17 Ultra | 16/512GB | Preço R$ 6.828,60 no Pix",
+            "armazenamento_gb": 512,
+            "preco_brl": 6828.6,
+            "fonte": "https://shop.madrideletronicos.com/produto/celular-xiaomi-17-ultra-16-512gb-dual-sim-6-9-black"
+          },
+          {
+            "loja": "moralesimports.com.br",
+            "titulo": "Xiaomi 17 Ultra Global 512GB 16GB RAM Dual SIM Tela 6.9\" GLOBAL - Morales Imports",
+            "armazenamento_gb": 512,
+            "preco_brl": 7589.12,
+            "fonte": "https://moralesimports.com.br/produto/xiaomi-17-ultra-global-512gb-16gb-ram-dual-sim-tela-69-global"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 512,
+          "media_brl": 6719.99,
+          "quantidade_lojas": 9,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-17-ultra-dual-chip-512gb-5g-global_68242/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi 17 Ultra 5G Dual 512 GB - Preto",
+              "preco_brl": 6750.0,
+              "preco_usd": 1125.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-17-ultra-5g-dual-512-gb-preto__5259623/"
+            },
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi 17 Ultra NFC Dual Sim de 512GB/16GB Ram de 6.9\" 200+50+50MP/50MP - Branco (Global) (CX Slim)",
+              "preco_brl": 6600.0,
+              "preco_usd": 1100.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17-ultra-nfc-dual-sim-de-512gb16gb-ram-de-69-2005050mp50mp-branco-global-cx-slim__5472202/"
+            },
+            {
+              "loja": "Go Shop",
+              "titulo": "Cel Xiaomi 17 Ultra 5G 16/512GB Black",
+              "preco_brl": 6840.0,
+              "preco_usd": 1140.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-17-ultra-5g-16512gb-black__5377521/"
+            },
+            {
+              "loja": "Madrid Center",
+              "titulo": "Celular Xiaomi 17 Ultra - 16/512GB - Dual-Sim - 6.9\" - Black",
+              "preco_brl": 6960.0,
+              "preco_usd": 1160.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17-ultra-16512gb-dual-sim-69-black__5661715/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi 17 Ultra Global 512GB 16GB Ram Dual Sim Tela 6.9\" - Preto (Caixa Slim) (Lacre Pequeno)",
+              "preco_brl": 6600.0,
+              "preco_usd": 1100.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-17-ultra-global-512gb-16gb-ram-dual-sim-tela-69-preto-caixa-slim-lacre-pequeno__5548911/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi 17 Ultra 16GB+512GB Global Green Slim CH",
+              "preco_brl": 6780.0,
+              "preco_usd": 1130.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-17-ultra-16gb512gb-global-green-slim-ch__5735332/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi 17 Ultra NFC Dual Sim de 512GB/16GB Ram de 6.9\" 200+50+50MP/50MP - Branco (Global) (CX Slim)",
+              "preco_brl": 6600.0,
+              "preco_usd": 1100.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17-ultra-nfc-dual-sim-de-512gb16gb-ram-de-69-2005050mp50mp-branco-global-cx-slim__5473200/"
+            },
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi 17 Ultra NFC Dual Sim de 512GB/16GB Ram de 6.9″ 200+50+50MP/50MP – Branco (Global)",
+              "preco_brl": 6599.94,
+              "preco_usd": 1099.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-17-ultra-nfc-dual-sim-de-512gb16gb-ram-de-69-2005050mp50mp-branco-global__5547476/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi 17 Ultra 5G 16GB+512GB Black 72995-MZB0MN9EU CX Slim",
+              "preco_brl": 6750.0,
+              "preco_usd": 1125.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-17-ultra-5g-16gb512gb-black-72995-mzb0mn9eu-cx-slim__5489048/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-15t-pro",
@@ -4989,7 +8416,50 @@
         "fabricante": null,
         "bateria": "https://www.oficinadanet.com.br/smartphones/xiaomi-15t-pro"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 5138.42,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 2,
+        "menor_brl": 4777.84,
+        "maior_brl": 5499.0,
+        "cotacoes": [
+          {
+            "titulo": "Xiaomi 15t Pro 5g 12+12gb Ram + 512gb",
+            "loja": "Mercado Livre",
+            "preco_brl": 5499.0,
+            "fonte": "https://www.oficinadanet.com.br/smartphones/xiaomi-15t-pro",
+            "url_oferta": "https://www.oficinadanet.com.br/go/a7kuk4",
+            "armazenamento_gb": 512
+          },
+          {
+            "loja": "Magazine Luiza",
+            "titulo": "Smartphone Celular Xiaomi 15T Pro 5G 512GB, 12GB RAM - Xiaomi 15T Pro - Magazine Luiza",
+            "armazenamento_gb": 512,
+            "preco_brl": 4777.84,
+            "fonte": "https://www.magazineluiza.com.br/smartphone-celular-xiaomi-15t-pro-5g-512gb-12gb-ram/p/kh3be90e72/te/x15p/"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 3809.94,
+          "quantidade_lojas": 1,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-15t-pro-dual-chip-256gb-5g-global_68244/",
+          "cotacoes": [
+            {
+              "loja": "Prime Shop",
+              "titulo": "Celular Xiaomi 15T Pro Dual Chip 256GB 5G Global – Black",
+              "preco_brl": 3809.94,
+              "preco_usd": 634.99,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-15t-pro-dual-chip-256gb-5g-global-black__5547519/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-poco-f9-pro",
@@ -5069,7 +8539,98 @@
           "fonte": "https://www.oficinadanet.com.br/smartphones/73831-celulares-mais-buscados-novembro-2026",
           "posicao": 6
         }
-      ]
+      ],
+      "preco_medio_brl": 4846.19,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 256,
+        "quantidade_canais": 2,
+        "menor_brl": 4370.96,
+        "maior_brl": 5321.42,
+        "cotacoes": [
+          {
+            "loja": "moralesimports.com.br",
+            "titulo": "Poco F9 Pro 5G Global 256GB 12GB RAM Dual SIM Tela 6.59\" GLOBAL - Morales Imports",
+            "armazenamento_gb": 256,
+            "preco_brl": 4370.96,
+            "fonte": "https://moralesimports.com.br/produto/poco-f9-pro-5g-global-256gb-12gb-ram-dual-sim-tela-659-global"
+          },
+          {
+            "loja": "cwtbimport.com.br",
+            "titulo": "Smartphone Xiaomi Poco F9 Pro 5G Dual Sim 6.59\" 12GB/256GB",
+            "armazenamento_gb": 256,
+            "preco_brl": 5321.42,
+            "fonte": "https://www.cwtbimport.com.br/produtos/smartphone-xiaomi-poco-f9-pro-5g-dual-sim-6-59-12gb-256gb-18efn/?entry_path=category"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 256,
+          "media_brl": 3950.0,
+          "quantidade_lojas": 8,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-f9-pro-dual-chip-256gb-5g-global_70565/",
+          "cotacoes": [
+            {
+              "loja": "Nissei",
+              "titulo": "Xiaomi Poco F9 Pro 5G Dual 256 GB - White",
+              "preco_brl": 3834.0,
+              "preco_usd": 639.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-poco-f9-pro-5g-dual-256-gb-white__5594683/"
+            },
+            {
+              "loja": "Mega Eletrônicos",
+              "titulo": "Celular Xiaomi Poco F9 Pro NFC Dual Sim de 256GB/12GB Ram de 6.59\" 200+50+8MP/32MP - Branco (Global)",
+              "preco_brl": 3834.0,
+              "preco_usd": 639.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-f9-pro-nfc-dual-sim-de-256gb12gb-ram-de-659-200508mp32mp-branco-global__5602039/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Poco F9 Pro 5G Global 256GB 12GB Ram Dual Sim Tela 6.59\" - Preto",
+              "preco_brl": 3888.0,
+              "preco_usd": 648.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-f9-pro-5g-global-256gb-12gb-ram-dual-sim-tela-659-preto__5510664/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Poco F9 Pro 5G 12+256GB Global White",
+              "preco_brl": 4170.0,
+              "preco_usd": 695.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-poco-f9-pro-5g-12256gb-global-white__5668927/"
+            },
+            {
+              "loja": "Best Shop Paraguai",
+              "titulo": "Smartphone Xiaomi Poco F9 Pro 12RAM 256GB 5G Black Global",
+              "preco_brl": 3834.0,
+              "preco_usd": 639.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-f9-pro-12ram-256gb-5g-black-global__5536194/"
+            },
+            {
+              "loja": "Mega Eletro",
+              "titulo": "Celular Xiaomi Poco F9 Pro NFC Dual Sim de 256GB/12GB Ram de 6.59\" 200+50+8MP/32MP - Aurora Green (Global)",
+              "preco_brl": 3834.0,
+              "preco_usd": 639.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-f9-pro-nfc-dual-sim-de-256gb12gb-ram-de-659-200508mp32mp-aurora-green-global__5612556/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Poco F9 Pro 5G 256GB 12GB Ram DS - Black Global",
+              "preco_brl": 4260.0,
+              "preco_usd": 710.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-f9-pro-5g-256gb-12gb-ram-ds-black-global__5514169/"
+            },
+            {
+              "loja": "Avanza",
+              "titulo": "Celular Xiaomi Poco F9 Pro Dual 256GB/12GB Ram 5G Black",
+              "preco_brl": 3945.96,
+              "preco_usd": 657.66,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-f9-pro-dual-256gb12gb-ram-5g-black__5620391/"
+            }
+          ]
+        }
+      }
     },
     {
       "id": "xiaomi-poco-f9-ultra",
@@ -5152,7 +8713,112 @@
         "fabricante": "https://www.mi.com/br/product/poco-f9-ultra/specs/",
         "bateria": "https://www.mi.com/br/product/poco-f9-ultra/specs/"
       },
-      "sinais_demanda": []
+      "sinais_demanda": [],
+      "preco_medio_brl": 7398.88,
+      "pesquisa_preco": {
+        "data_consulta": "2026-11-21",
+        "mercado": "BR",
+        "armazenamento_referencia_gb": 512,
+        "quantidade_canais": 2,
+        "menor_brl": 7299,
+        "maior_brl": 7498.76,
+        "cotacoes": [
+          {
+            "loja": "KaBuM!",
+            "titulo": "Celular Xiaomi Poco F9 Ultra 512GB 16GB RAM de 6.9\"",
+            "armazenamento_gb": 512,
+            "preco_brl": 7498.76,
+            "fonte": "https://menorprecoagora.com.br/produto/celular-xiaomi-poco-f9-ultra-512gb-16gb-ram-de-6-9-200-50-50mp-32mp-preto-g"
+          },
+          {
+            "loja": "eletroinfoonline.com",
+            "titulo": "Smartphone Xiaomi Poco F9 Ultra 5G Global 512GB 16GB RAM Dual SIM",
+            "armazenamento_gb": 512,
+            "preco_brl": 7299,
+            "fonte": "https://eletroinfoonline.com/products/smartphone-xiaomi-poco-f9-ultra-5g-global-512gb-16gb-ram-dual-sim"
+          }
+        ],
+        "referencia_exterior": {
+          "pais_compra": "PY",
+          "entrega_no_brasil_confirmada": false,
+          "armazenamento_gb": 512,
+          "media_brl": 5054.4,
+          "quantidade_lojas": 10,
+          "fonte": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-f9-ultra-dual-chip-512gb-5g-global_70562/",
+          "cotacoes": [
+            {
+              "loja": "Shopping China",
+              "titulo": "Celular Xiaomi Poco F9 Ultra 16GB Ram 512GB Black",
+              "preco_brl": 5130.0,
+              "preco_usd": 855.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-f9-ultra-16gb-ram-512gb-black__5745256/"
+            },
+            {
+              "loja": "TLC",
+              "titulo": "Celular Xiaomi Poco F9 Ultra 5G 16GB Ram 512GB Black Eu Global",
+              "preco_brl": 5052.0,
+              "preco_usd": 842.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-f9-ultra-5g-16gb-ram-512gb-black-eu-global__5590427/"
+            },
+            {
+              "loja": "New Zone",
+              "titulo": "Xiaomi Cel Poco F9 Ultra 5G 6.9\" DS 16/512GB 100W Black",
+              "preco_brl": 5010.0,
+              "preco_usd": 835.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-cel-poco-f9-ultra-5g-69-ds-16512gb-100w-black__5625569/"
+            },
+            {
+              "loja": "Atacado Connect",
+              "titulo": "Smartphone Xiaomi Poco F9 Ultra 5G Global 512GB 16GB Ram Dual Sim Tela 6.9\" - Preto",
+              "preco_brl": 5010.0,
+              "preco_usd": 835.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-f9-ultra-5g-global-512gb-16gb-ram-dual-sim-tela-69-preto__5510670/"
+            },
+            {
+              "loja": "LG Importados",
+              "titulo": "Cel Xiaomi Poco F9 Ultra 5G 16+512GB Global Black",
+              "preco_brl": 5220.0,
+              "preco_usd": 870.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/cel-xiaomi-poco-f9-ultra-5g-16512gb-global-black__5619244/"
+            },
+            {
+              "loja": "Super Games",
+              "titulo": "Celular Xiaomi Poco F9 Ultra 5G 512GB 16GB Ram Dual Sim Tela 6.9\" - Preto (Global)",
+              "preco_brl": 5010.0,
+              "preco_usd": 835.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celular-xiaomi-poco-f9-ultra-5g-512gb-16gb-ram-dual-sim-tela-69-preto-global__5648747/"
+            },
+            {
+              "loja": "Asia Store",
+              "titulo": "Poco F9 Ultra 16GB+512GB Black",
+              "preco_brl": 5034.0,
+              "preco_usd": 839.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/poco-f9-ultra-16gb512gb-black__5549604/"
+            },
+            {
+              "loja": "Tellecon Cell",
+              "titulo": "Smartphone Xiaomi Poco F9 Ultra 5G 512GB 16GB Ram DS - Black Global",
+              "preco_brl": 5040.0,
+              "preco_usd": 840.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/smartphone-xiaomi-poco-f9-ultra-5g-512gb-16gb-ram-ds-black-global__5669576/"
+            },
+            {
+              "loja": "Roma Shopping",
+              "titulo": "Cel.Xiaomi Poco F9 Ultra 5G 16GB+ 512GB Black 88045-MZB0QPHEU",
+              "preco_brl": 5028.0,
+              "preco_usd": 838.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/celxiaomi-poco-f9-ultra-5g-16gb-512gb-black-88045-mzb0qpheu__5542659/"
+            },
+            {
+              "loja": "Paris Store",
+              "titulo": "Xiaomi Poco F9 Ultra 16GB/512GB 5G Black",
+              "preco_brl": 5010.0,
+              "preco_usd": 835.0,
+              "url_oferta": "https://www.comprasparaguai.com.br/xiaomi-poco-f9-ultra-16gb512gb-5g-black__5658350/"
+            }
+          ]
+        }
+      }
     }
   ]
 }
