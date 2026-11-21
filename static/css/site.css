@@ -1614,3 +1614,21 @@ html.v2 .ficha-cmp thead th,html.v2 .ficha-cmp thead{background:transparent !imp
 html.v2 .ficha-cmp thead th{border-bottom:2px solid var(--v-line) !important;font:700 14px var(--body) !important}
 html.v2 .preco-chart.cmp2 .lg{color:var(--v-soft) !important}
 html.v2 .alvo .al-tag,html.v2 .alvo [class*="badge"]{color:var(--v-ink)}
+/* artigo: caixa do autor ocupa toda a coluna do texto, terminando a 32px da caixa de ofertas */
+html.v2 .post-head .author{align-self:stretch !important;width:auto !important}
+html.v2 .post-head .author .meta{display:flex !important;align-items:center;justify-content:space-between;width:100%;gap:16px}
+html.v2 .post-head .author .share{margin-left:auto}
+/* comparativo: uma régua por aparelho, uma embaixo da outra */
+html.v2 .alvo-cmp{grid-template-columns:1fr !important}
+/* página da marca: banner do grupo mais baixo, foto mostrando bem os aparelhos */
+.b-grupo .grupo2.largo{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);height:224px}
+.b-grupo .grupo2.largo .grupo2-img{min-height:0;height:224px}
+.b-grupo .grupo2.largo .grupo2-img img{object-position:50% 18%}
+.b-grupo .grupo2.largo .grupo2-txt{padding:24px 40px;gap:8px}
+.b-grupo .grupo2.largo .grupo2-txt b{font-size:20px}
+.b-grupo .grupo2.largo .grupo2-btn{margin-top:8px}
+@media (max-width:760px){ .b-grupo .grupo2.largo{height:auto} .b-grupo .grupo2.largo .grupo2-img{height:auto} }
+html.v2 .post-head .author{display:flex !important;flex-direction:row !important;align-items:center !important;justify-content:space-between !important;gap:16px !important;min-height:0 !important;height:auto !important;flex-wrap:nowrap !important}
+html.v2 .post-head .author .meta{width:auto !important;justify-content:flex-start !important;gap:8px !important;flex-wrap:nowrap !important}
+html.v2 .post-head .author .who{display:flex !important;align-items:center;gap:8px;white-space:nowrap}
+html.v2 .post-head .author .share{display:flex !important;gap:8px;margin:0 !important}
