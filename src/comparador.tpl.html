@@ -219,8 +219,8 @@ const NA_TEXT = {preco:"Sem preço oficial no Brasil", cores:"—"};
 
 const MAX = 2;   /* dois aparelhos por vez, no computador e no celular */
 let selected = [null,null];
-try{ const s = JSON.parse(localStorage.getItem("cmp-sel2")); if(Array.isArray(s)&&s.length>=2) selected = s.slice(0,MAX).map(id=>PHONES.some(p=>p.id===id)?id:null); }catch(e){}
-if(!selected.some(Boolean)) selected = ["razr-70-ultra","edge-70-pro"];   /* começa com os dois modelos de teste */
+/* a página sempre abre vazia; a única exceção é o botão "Comparar o [modelo]", que deixa o modelo escolhido para esta visita */
+try{ const s = JSON.parse(localStorage.getItem("cmp-sel2")); localStorage.removeItem("cmp-sel2"); if(Array.isArray(s)&&s.length>=2) selected = s.slice(0,MAX).map(id=>PHONES.some(p=>p.id===id)?id:null); }catch(e){}
 const byId = id => PHONES.find(p=>p.id===id);
 let brandOf = selected.map(id => id ? byId(id).marca : "");
 
@@ -233,7 +233,7 @@ function offBadge(p){
   if(pct <= 0) return "";
   return `<span class="off${pct>=40?" hot":""}">-${pct}%</span>`;
 }
-function save(){ try{ localStorage.setItem("cmp-sel2", JSON.stringify(selected)); }catch(e){} }
+function save(){ /* não guarda a escolha: a página sempre abre vazia */ }
 
 function renderSlots(){
   const wrap = $("#slots"); wrap.innerHTML = "";

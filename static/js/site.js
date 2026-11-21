@@ -82,17 +82,61 @@ function reveal(root){
 }
 
 /* ---------- cabeçalho ---------- */
+const ICO_LUPA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+const ICO_SOL = '<svg class="i-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+const ICO_LUA = '<svg class="i-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+/* "Modelos mais buscados": 2 topos de linha, 2 intermediários, 2 de entrada. Revisar de tempos em tempos. */
+const MAIS_BUSCADOS = ["iphone-17","galaxy-s26-ultra","moto-g-max","galaxy-a57","galaxy-a17-5g","galaxy-a07"];
+const modeloURL = p => `${R}${BRAND_PAGE[p.marca] || "index.html"}?modelo=${p.id}`;
+const semAcento = t => String(t).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+
 function header(current){
   const el = document.getElementById("site-header");
   if(!el) return;
-  el.className = "site-header";
-  document.documentElement.classList.toggle("home", current === "home");
-  el.innerHTML = `<div class="bar">
-      <a class="brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
-      <div class="tools"><div class="tagline">O preço que parece bug.</div></div>
-      <nav class="nav" id="site-nav" aria-label="Seções">${MENU.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}${key==="comparador"?" cta":""}">${label}</a>`).join("")}</nav>
-    </div>`;
-  /* barra inferior do celular: no máximo 5 itens; as marcas ficam juntas em "Marcas" */
+  el.className = "hdr";
+  const home = current === "home";
+  document.documentElement.classList.toggle("home", home);
+  document.documentElement.classList.toggle("v2", home);   /* visual novo: por enquanto só na tela inicial */
+  const links = MENU.filter(([,,k])=>k!=="home");
+  el.innerHTML = `<div class="hdr-bar">
+      <a class="hdr-brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
+      <nav class="hdr-nav" aria-label="Seções">${links.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}${key==="comparador"?" cta":""}">${key==="comparador"?"Comparador":label}</a>`).join("")}</nav>
+      <div class="hdr-tools">
+        <button type="button" class="hdr-ico hdr-lupa" aria-label="Buscar modelo" aria-expanded="false" aria-controls="busca">${ICO_LUPA}</button>
+        <button type="button" class="hdr-ico hdr-tema" aria-label="Alternar modo claro e escuro">${ICO_SOL}${ICO_LUA}</button>
+      </div>
+    </div>
+    <div class="busca" id="busca" hidden>
+      <div class="busca-in">
+        <label class="busca-campo">${ICO_LUPA}<input type="search" placeholder="Buscar modelo de celular" aria-label="Buscar modelo de celular" autocomplete="off"><button type="button" class="busca-limpa" aria-label="Limpar" hidden>×</button></label>
+        <div class="busca-res"></div>
+      </div>
+    </div>
+    <div class="busca-fundo" hidden></div>`;
+  /* modo claro / escuro */
+  el.querySelector(".hdr-tema").addEventListener("click", ()=>{
+    const t = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    document.documentElement.dataset.theme = t;
+    try{ localStorage.setItem("bs-theme", t); }catch(e){}
+  });
+  /* busca */
+  const lupa = el.querySelector(".hdr-lupa"), painel = el.querySelector(".busca"), fundo = el.querySelector(".busca-fundo");
+  const input = painel.querySelector("input"), res = painel.querySelector(".busca-res"), limpa = painel.querySelector(".busca-limpa");
+  const item = p => `<a href="${modeloURL(p)}"><span aria-hidden="true">→</span>${esc(p.full)}</a>`;
+  const desenha = () => {
+    const q = semAcento(input.value.trim());
+    limpa.hidden = !q;
+    if(!q){ res.innerHTML = `<p class="busca-t">Modelos mais buscados</p>${MAIS_BUSCADOS.map(P).filter(Boolean).map(item).join("")}`; return; }
+    const achou = Object.values(MQ_DATA.phones).filter(p=>semAcento(p.full).includes(q)).slice(0,8);
+    res.innerHTML = achou.length ? `<p class="busca-t">Modelos</p>${achou.map(item).join("")}` : `<p class="busca-t">Nenhum modelo encontrado para “${esc(input.value)}”.</p>`;
+  };
+  const abre = on => { painel.hidden = !on; fundo.hidden = !on; lupa.setAttribute("aria-expanded", on); document.documentElement.classList.toggle("busca-on", on); if(on){ desenha(); setTimeout(()=>input.focus(), 30); } };
+  lupa.addEventListener("click", ()=>abre(painel.hidden));
+  fundo.addEventListener("click", ()=>abre(false));
+  input.addEventListener("input", desenha);
+  limpa.addEventListener("click", ()=>{ input.value=""; desenha(); input.focus(); });
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !painel.hidden){ abre(false); lupa.focus(); } });
+  /* barra inferior do celular (sem mudanças) */
   if(!document.querySelector(".dock")){
     const isBrand = ["Samsung","Apple","Motorola"].includes(current);
     const brands = MENU.filter(([,,k])=>["Samsung","Apple","Motorola"].includes(k));
@@ -111,34 +155,24 @@ function header(current){
     document.addEventListener("click", e=>{ if(!sheet.hidden && !dock.contains(e.target)) setSheet(false); });
     document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !sheet.hidden){ setSheet(false); bb.focus(); } });
   }
-  let lastY = window.scrollY;
-  const mq = window.matchMedia("(max-width:760px)");
-  const onScroll = () => {
-    const y = window.scrollY;
-    el.classList.toggle("compact", y > 40);
-    document.documentElement.classList.toggle("scrolled", y > 24);
-    if(current !== "comparador"){
-      if(mq.matches && y > 160 && y > lastY + 4 && !el.contains(document.activeElement)) el.classList.add("hide");
-      else if(y < lastY - 4 || y < 160 || !mq.matches) el.classList.remove("hide");
-    }
-    lastY = y;
-  };
-  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
 }
 
 function footer(){
   const el = document.getElementById("site-footer");
   if(!el) return;
-  el.className = "site-footer";
-  el.innerHTML = `<div class="wrap"><div class="cols">
-      <div><a class="brand foot-brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
-        <p class="slogan">o preço que parece bug</p>
-        <p style="max-width:40ch;margin:16px 0 0">Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
-      <div class="ft-secoes"><h5>Seções</h5>${MENU.map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
-      <div><h5>Bugsale</h5><a href="${R}sobre.html">Sobre e como avaliamos</a><a href="${R}privacidade.html">Política de privacidade</a></div>
-      <div><h5>Comunidade</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="https://chat.whatsapp.com/Bvj5qZL97Ui5iRBZTvxvzY" target="_blank" rel="noopener">Comunidade no WhatsApp</a></div>
-    </div><div class="fine">Preços médios e fichas técnicas de nov/2026, a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia. Fotos: divulgação das marcas.</div></div>`;
+  el.className = "ftr";
+  el.innerHTML = `<div class="ftr-in">
+      <div class="ftr-cols">
+        <div><a class="hdr-brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
+          <p>Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
+        <div><h5>Seções</h5>${MENU.filter(([,,k])=>k!=="home").map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
+        <div><h5>Bugsale</h5><a href="${R}sobre.html">Sobre e como avaliamos</a><a href="${R}privacidade.html">Política de privacidade</a></div>
+        <div><h5>Comunidade</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="${GRUPO}" target="_blank" rel="noopener">Grupo de ofertas no WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="ftr-fine">Preços médios e fichas técnicas atualizados semanalmente a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia. Fotos: divulgação das marcas.</div>`;
 }
+const GRUPO = "https://chat.whatsapp.com/Bvj5qZL97Ui5iRBZTvxvzY";
 
 /* ---------- artigos ---------- */
 const P = id => MQ_DATA.phones[id];
@@ -248,7 +282,78 @@ const communityHTML = `<div class="box community"><h4>Promoções todo dia</h4><
 /* página: lista de artigos (home = todas as marcas; página de marca = só aquela) */
 const porData = (a,b) => (b.pub||b.data).localeCompare(a.pub||a.data);
 const publicados = () => MQ_DATA.articles.filter(a=>!a.locked);
+
+/* ================= tela inicial (visual novo, minimalista, claro e escuro) ================= */
+const PERFIL_CURTO = {
+  "razr-70-ultra":"Para quem quer um dobrável de bolso, com tela externa útil e selfies caprichadas.",
+  "galaxy-s26-ultra":"Para quem fotografa muito, quer zoom de verdade e vai ficar anos com o celular.",
+  "iphone-16":"Para quem vem de um iPhone mais antigo e quer um iPhone atual gastando menos.",
+  "moto-g86":"Para quem quer resistência à água e bateria para o dia todo, sem gastar muito.",
+  "galaxy-a57":"Para quem quer um Samsung bonito e com atualização garantida por muitos anos.",
+  "iphone-17":"Para quem quer tela de 120 Hz, mais espaço e um iPhone para muitos anos."
+};
+const tag2 = a => `<span class="tg"><span>${esc(a.cat)}</span><b>${esc(P(a.phone).marcaMenu)}</b></span>`;
+function img2(p, grande){
+  if(p.foto) return `<img src="${R}${grande ? p.foto.src : p.foto.sm}" alt="${esc(p.full)} em uso" style="object-position:${p.foto.pos}" loading="lazy">`;
+  return `<span class="studio"><img src="${R}${p.cut}" alt="${esc(p.full)}" loading="lazy"></span>`;
+}
+function bloqueado2(a){ return a.locked ? ` locked" role="group" tabindex="0" aria-label="${esc(a.titulo)}: será lançado ${quandoLanca(a.pub)}` : ""; }
+function chip2(a){ return a.locked ? `<span class="chip2">Será lançado ${quandoLanca(a.pub)}</span>` : ""; }
+function heroHTML2(a){
+  const p = P(a.phone);
+  return `<a class="h-hero" href="${artURL(a)}"><span class="h-img">${img2(p, true)}</span>
+    <span class="h-txt">${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span><span class="h-dek">${esc(a.dek)}</span></span></a>`;
+}
+function ladoHTML2(a){
+  const p = P(a.phone), tagN = a.locked ? "div" : "a", href = a.locked ? "" : ` href="${artURL(a)}"`;
+  const prev = (a.locked && MQ_DATA.preview && !a.chamada) ? `<a class="prev2" href="${artURL(a)}">prévia</a>` : "";
+  return `<${tagN} class="h-lado${bloqueado2(a)}"${href}><span class="h-img">${img2(p)}${prev}</span>
+    <span class="h-txt">${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span>${chip2(a)}</span></${tagN}>`;
+}
+function recenteHTML2(a){
+  const p = P(a.phone), tagN = a.locked ? "div" : "a", href = a.locked ? "" : ` href="${artURL(a)}"`;
+  const prev = (a.locked && MQ_DATA.preview && !a.chamada) ? `<a class="prev2" href="${artURL(a)}">prévia</a>` : "";
+  return `<${tagN} class="h-card${bloqueado2(a)}"${href}><span class="h-img">${img2(p)}${prev}</span>
+    ${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span><span class="h-dek">${esc(a.dek)}</span>${chip2(a)}</${tagN}>`;
+}
+function melhoresOfertas(n){
+  const C = Object.values(MQ_DATA.phones).filter(p=>p.ofertas && p.ofertas.lista && p.ofertas.lista.length);
+  const bomDe = p => { const a = MQ_DATA.articles.find(x=>x.phone===p.id && x.alvo); return (a && a.alvo.bom) || alvoAuto(p).bom; };
+  return C.map(p=>{ const o = p.ofertas.lista.slice().sort((x,y)=>x.preco-y.preco)[0]; return {p, o, r:o.preco/bomDe(p)}; })
+          .sort((x,y)=>x.r-y.r).slice(0,n);
+}
+function ofertaLinha2({p,o}){
+  return `<div class="o2"><span class="o2-img">${img2(p)}</span>
+    <div class="o2-txt"><b>${esc(p.full)}</b><span>${esc(PERFIL_CURTO[p.id] || "")}</span><small>${brl(o.preco)} na ${esc(o.loja)}</small></div>
+    <a class="o2-btn" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta</a></div>`;
+}
+function renderHome(){
+  const main = document.getElementById("content");
+  const arts = publicados().sort(porData);
+  const teasers = MQ_DATA.articles.filter(a=>a.locked && a.teaser).sort((a,b)=>a.pub.localeCompare(b.pub));
+  const [first, ...rest] = arts;
+  const fila = rest.concat(teasers);              /* publicados mais novos primeiro, depois os que serão lançados */
+  const lado = fila.slice(0,3), recentes = fila.slice(3,7);
+  const ofs = melhoresOfertas(3);
+  main.classList.add("h2");
+  main.innerHTML = `
+    <a class="h-cmp" href="${R}comparador.html"><span><b>Em dúvida entre dois celulares?</b> Compare ficha, preço e atualizações lado a lado.</span><span class="h-cmp-btn">Abrir o comparador →</span></a>
+    <section class="h-top" aria-label="Destaques">${first ? heroHTML2(first) : ""}<div class="h-lados">${lado.map(ladoHTML2).join("")}</div></section>
+    ${recentes.length ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${recentes.map(recenteHTML2).join("")}</div>` : ""}
+    <h2 class="h-sec">Melhores ofertas</h2>
+    <section class="h-ofertas"><div class="o2-lista">${ofs.map(ofertaLinha2).join("")}<small class="o2-nota">Preços pesquisados${ofs[0] && ofs[0].p.ofertas.pesquisa ? ` em ${dataHora(ofs[0].p.ofertas.pesquisa)}` : ""}. Links de afiliado: a Bugsale pode ganhar uma comissão, sem custo extra para você.</small></div>
+      <a class="grupo2" href="${GRUPO}" target="_blank" rel="noopener"><span class="grupo2-img"><img src="${R}img/grupo-ofertas.webp" alt="Celulares de várias marcas lado a lado" loading="lazy"></span>
+        <span class="grupo2-txt"><span class="grupo2-logo">${LOCKUP}</span><b>Entre no nosso grupo de ofertas de celulares</b><span>Ofertas diárias, conferidas com o histórico de preço. Só promoção que vale o seu Pix.</span><span class="grupo2-btn">Entrar no grupo</span></span></a>
+    </section>`;
+  main.querySelectorAll(".locked").forEach(c=>{
+    const go = ()=>{ const ch = c.querySelector(".chip2"); if(!ch) return; ch.classList.remove("shine"); void ch.offsetWidth; ch.classList.add("shine"); };
+    c.addEventListener("click", e=>{ if(!e.target.closest(".prev2")) go(); });
+    c.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } });
+  });
+}
+
 function renderArticles(brand){
+  if(!brand) return renderHome();
   const main = document.getElementById("content");
   const modelo = new URLSearchParams(location.search).get("modelo");
   let arts = publicados().filter(a => !brand || P(a.phone).marca === brand || (a.vs && P(a.vs).marca === brand)).sort(porData);
