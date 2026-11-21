@@ -1599,3 +1599,9 @@ html.v2[data-theme="light"]{--v-hdr:#EBEBEB}
 .h-cmp-art img{mix-blend-mode:normal;filter:drop-shadow(0 16px 24px rgba(0,0,0,.3))}
 .h-cmp-art .c1{left:24px;transform:rotate(-10deg)}
 .h-cmp-art .c2{right:24px;transform:rotate(10deg)}
+/* banner do grupo: mesma altura da coluna de ofertas, terminando junto com a linha da data da pesquisa */
+@media (min-width:901px){
+  .h-ofertas > .grupo2{contain:size;height:auto;min-height:0}
+  .h-ofertas > .grupo2 .grupo2-img{aspect-ratio:auto;flex:1 1 auto;min-height:96px}
+  .h-ofertas > .grupo2 .grupo2-txt{flex:none;justify-content:flex-start;padding-bottom:32px}
+}
