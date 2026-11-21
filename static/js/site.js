@@ -96,7 +96,8 @@ function header(current){
   el.className = "hdr";
   const home = current === "home";
   document.documentElement.classList.toggle("home", home);
-  document.documentElement.classList.toggle("v2", home);   /* visual novo: por enquanto só na tela inicial */
+  const v2 = home || /[?&]v2\b/.test(location.search);   /* visual novo: tela inicial; nas outras páginas só com ?v2 (prévia) */
+  document.documentElement.classList.toggle("v2", v2);
   const links = MENU.filter(([,,k])=>k!=="home");
   el.innerHTML = `<div class="hdr-bar">
       <a class="hdr-brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
@@ -219,7 +220,7 @@ function ofertaHTML(p){
   return `<section class="ofertas" aria-label="Melhores ofertas">
     <div class="of-head"><span class="of-label">Melhores ofertas encontradas</span><span class="of-meta">${meta}</span></div>
     <div class="of-grid">${slots}</div>
-    <small class="of-nota">${lista.length ? "Links de afiliado: a Bugsale pode ganhar uma comissão, sem custo extra para você. Preços sujeitos a mudança nas lojas." : "Quando a pesquisa sair, você escolhe entre as 3 lojas com o melhor preço."}</small>
+    <small class="of-nota">${lista.length ? "Preços sujeitos a mudança nas lojas." : ""}</small>
   </section>`;
 }
 /* visual do artigo: foto oficial de uso quando existe; senão, o aparelho num "estúdio" com a cara da Bugsale */
@@ -341,7 +342,7 @@ function renderHome(){
     <section class="h-top" aria-label="Destaques">${first ? heroHTML2(first) : ""}<div class="h-lados">${lado.map(ladoHTML2).join("")}</div></section>
     ${recentes.length ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${recentes.map(recenteHTML2).join("")}</div>` : ""}
     <h2 class="h-sec">Melhores ofertas</h2>
-    <section class="h-ofertas"><div class="o2-lista">${ofs.map(ofertaLinha2).join("")}<small class="o2-nota">Preços pesquisados${ofs[0] && ofs[0].p.ofertas.pesquisa ? ` em ${dataHora(ofs[0].p.ofertas.pesquisa)}` : ""}. Links de afiliado: a Bugsale pode ganhar uma comissão, sem custo extra para você.</small></div>
+    <section class="h-ofertas"><div class="o2-lista">${ofs.map(ofertaLinha2).join("")}<small class="o2-nota">Preços pesquisados${ofs[0] && ofs[0].p.ofertas.pesquisa ? ` em ${dataHora(ofs[0].p.ofertas.pesquisa)}` : ""}.</small></div>
       <a class="grupo2" href="${GRUPO}" target="_blank" rel="noopener"><span class="grupo2-img"><img src="${R}img/grupo-ofertas.webp" alt="Celulares de várias marcas lado a lado" loading="lazy"></span>
         <span class="grupo2-txt"><span class="grupo2-logo">${LOCKUP}</span><b>Entre no nosso grupo de ofertas de celulares</b><span>Ofertas diárias, conferidas com o histórico de preço. Só promoção que vale o seu Pix.</span><span class="grupo2-btn">Entrar no grupo</span></span></a>
     </section>`;
@@ -352,8 +353,34 @@ function renderHome(){
   });
 }
 
+function grupoHTML2(largo){
+  return `<a class="grupo2${largo?" largo":""}" href="${GRUPO}" target="_blank" rel="noopener"><span class="grupo2-img"><img src="${R}img/grupo-ofertas.webp" alt="Celulares de várias marcas lado a lado" loading="lazy"></span>
+    <span class="grupo2-txt"><span class="grupo2-logo">${LOCKUP}</span><b>Entre no nosso grupo de ofertas de celulares</b><span>Ofertas diárias, conferidas com o histórico de preço. Só promoção que vale o seu Pix.</span><span class="grupo2-btn">Entrar no grupo</span></span></a>`;
+}
+function renderBrand2(brand){
+  const main = document.getElementById("content");
+  const modelo = new URLSearchParams(location.search).get("modelo");
+  const label = brand==="Apple" ? "iPhone" : brand, pg = BRAND_PAGE[brand];
+  const ids = Object.keys(MQ_DATA.phones).filter(id=>P(id).marca===brand);
+  let arts = publicados().filter(a => P(a.phone).marca === brand || (a.vs && P(a.vs).marca === brand)).sort(porData);
+  if(modelo) arts = arts.filter(a => a.phone===modelo || a.vs===modelo);
+  const keep = /[?&]v2\b/.test(location.search) ? "&v2" : "";
+  const modelos = `<div class="b-modelos">${ids.map(id=>{ const p=P(id); return `<a class="b-mod${id===modelo?" on":""}" href="${R}${pg}?modelo=${id}${keep}"><span class="b-mod-img"><img src="${R}${p.cut}" alt="" loading="lazy"></span><span>${esc(p.nome)}</span></a>`; }).join("")}</div>`;
+  const [first, ...rest] = arts;
+  let corpo = "";
+  if(!arts.length){
+    corpo = `<div class="b-vazio"><span>Ainda não temos conteúdo sobre o ${esc(P(modelo).nome)}. Veja a ficha e o preço no comparador.</span><button class="o2-btn" type="button" data-compare="${modelo}">Comparar o ${esc(P(modelo).nome)}</button></div>`;
+  } else {
+    corpo = `<section class="h-top" aria-label="Destaques">${heroHTML2(first)}<div class="h-lados">${rest.slice(0,3).map(ladoHTML2).join("")}</div></section>
+      ${rest.length > 3 ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${rest.slice(3,7).map(recenteHTML2).join("")}</div>` : ""}`;
+  }
+  main.classList.add("h2");
+  main.innerHTML = `<h1 class="b-tit">${esc(label)}${modelo ? ` <a class="b-limpa" href="${R}${pg}${keep?"?v2":""}">ver todos</a>` : ""}</h1>${modelos}${corpo}<div class="b-grupo">${grupoHTML2(true)}</div>`;
+}
+
 function renderArticles(brand){
   if(!brand) return renderHome();
+  if(document.documentElement.classList.contains("v2")) return renderBrand2(brand);
   const main = document.getElementById("content");
   const modelo = new URLSearchParams(location.search).get("modelo");
   let arts = publicados().filter(a => !brand || P(a.phone).marca === brand || (a.vs && P(a.vs).marca === brand)).sort(porData);
@@ -416,7 +443,7 @@ function ofertaMiniHTML(p, titulo, cls){
     return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(x.loja)}</span><span class="om-dir">${comPreco?`<b>${brl(x.preco)}</b>`:""}<i aria-hidden="true">↗</i></span></a>`
              : `<span class="om-btn vazio" aria-disabled="true"><span class="om-loja">Oferta ${i+1}</span><span class="om-dir"><b>em breve</b></span></span>`;
   }).join("");
-  return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div>${lista.length ? `<small class="om-nota">Links de afiliado: a Bugsale pode ganhar uma comissão, sem custo extra para você. Preços sujeitos a mudança nas lojas.</small>` : ""}</section>`;
+  return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
 }
 
 /* histórico de preço: cada ponto é uma pesquisa datada (p.historico = [{data:"2026-04-29", preco:12999}, ...]).
@@ -700,7 +727,7 @@ function renderArticle(){
     </div>
   </article>
   <div class="section-title"><h2>Leia também</h2><a href="${R}index.html">Ver todos →</a></div>
-  <div class="grid4 swipe">${related.map(cardHTML).join("")}</div>`;
+  ${document.documentElement.classList.contains("v2") ? `<div class="h-grid">${related.slice(0,4).map(recenteHTML2).join("")}</div>` : `<div class="grid4 swipe">${related.map(cardHTML).join("")}</div>`}`;
   reveal(main);
   const cp = document.getElementById("copyLink");
   const canShare = !!navigator.share && window.matchMedia("(pointer:coarse)").matches;
