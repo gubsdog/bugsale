@@ -340,7 +340,7 @@ function renderHome(){
   main.innerHTML = `
     <a class="h-cmp" href="${R}comparador.html" aria-label="Abrir o comparador de celulares">
       <span class="h-cmp-txt"><span class="h-cmp-k">Comparador Bugsale</span><b>Em dúvida entre dois celulares?</b><span>Coloque lado a lado ficha, preço de hoje e quanto tempo cada um recebe atualização.</span><span class="h-cmp-btn">Comparar agora →</span></span>
-      <span class="h-cmp-art" aria-hidden="true">${(()=>{ const a=P("galaxy-s26-ultra"), b=P("iphone-17"); return `<img class="c1" src="${R}${a.cut}" alt=""><span class="vs">VS</span><img class="c2" src="${R}${b.cut}" alt="">`; })()}</span></a>
+      <span class="h-cmp-art" aria-hidden="true">${(()=>{ const a=P("galaxy-s26-ultra"), b=P("iphone-17"); return `<img class="c1" src="${R}img/s26u-t.webp" alt=""><span class="vs">VS</span><img class="c2" src="${R}img/ip17-t.webp" alt="">`; })()}</span></a>
     <section class="h-top" aria-label="Destaques">${first ? heroHTML2(first) : ""}<div class="h-lados">${lado.map(ladoHTML2).join("")}</div></section>
     ${recentes.length ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${recentes.map(recenteHTML2).join("")}</div>` : ""}
     <h2 class="h-sec">Melhores ofertas</h2>

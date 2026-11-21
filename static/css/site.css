@@ -1596,3 +1596,6 @@ html.v2[data-theme="light"]{--v-hdr:#EBEBEB}
 .h-cmp-art img{mix-blend-mode:multiply;filter:none;height:172px}
 .h-cmp-art .c1{left:8px}
 .h-cmp-art .c2{right:8px}
+.h-cmp-art img{mix-blend-mode:normal;filter:drop-shadow(0 16px 24px rgba(0,0,0,.3))}
+.h-cmp-art .c1{left:24px;transform:rotate(-10deg)}
+.h-cmp-art .c2{right:24px;transform:rotate(10deg)}
