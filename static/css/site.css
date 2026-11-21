@@ -1820,3 +1820,4 @@ html.v2[data-theme="light"] .cp-sel{background-color:#EDEDED}
 .cp-fix.on{opacity:1;transform:none}
 .cp-fix-cel{position:absolute;top:0;bottom:0;display:flex;align-items:center;padding:0 16px;font:700 14px var(--body);color:var(--v-ink);overflow:hidden}
 html.v2 .cp-sel{color:var(--v-ink);border:1px solid var(--v-line)}html.v2 .cp-sel:hover:not(:disabled),html.v2 .cp-sel:focus-visible{border-color:var(--v-purple)}
+html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !important;box-shadow:none !important}html.v2 .cp-th small{color:var(--v-soft)}
