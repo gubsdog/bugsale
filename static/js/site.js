@@ -1,6 +1,17 @@
 /* Bugsale · cabeçalho, menu e páginas de artigos (dados em js/data.js) */
 (function(){
 const R = window.MQ_ROOT || "";   /* prefixo até a raiz do site ("" na raiz, "../../" nos artigos) */
+/* modo claro/escuro: guarda a escolha em três lugares, porque nem todo navegador (ou o iframe da prévia) mantém o localStorage */
+function salvaTema(t){
+  try{ localStorage.setItem("bs-theme", t); }catch(e){}
+  try{ window.name = (String(window.name).replace(/;?bs-theme=\w+/g,"") + ";bs-theme=" + t).replace(/^;/,""); }catch(e){}
+  try{ const u = new URL(location.href); u.searchParams.set("tema", t); history.replaceState(history.state, "", u.pathname + u.search + u.hash); }catch(e){}
+}
+function comTema(href){
+  try{ const u = new URL(href, location.href); if(u.origin !== location.origin || /^(mailto|tel|javascript):/i.test(href)) return null;
+    u.searchParams.set("tema", document.documentElement.dataset.theme || "dark");
+    return href.split("?")[0].split("#")[0] + "?" + u.searchParams.toString() + (u.hash||""); }catch(e){ return null; }
+}
 const LOGO = `<svg class="bug" viewBox="0 0 10.889 8.889" aria-hidden="true"><g fill="#D4AF5A"><rect x="1" y="0" width="0.889" height="0.889"/><rect x="9" y="0" width="0.889" height="0.889"/><rect x="2" y="1" width="0.889" height="0.889"/><rect x="4" y="1" width="0.889" height="0.889"/><rect x="5" y="1" width="0.889" height="0.889"/><rect x="6" y="1" width="0.889" height="0.889"/><rect x="8" y="1" width="0.889" height="0.889"/><rect x="4" y="2" width="0.889" height="0.889"/><rect x="5" y="2" width="0.889" height="0.889"/><rect x="6" y="2" width="0.889" height="0.889"/><rect x="0" y="3" width="0.889" height="0.889"/><rect x="2" y="3" width="0.889" height="0.889"/><rect x="3" y="3" width="0.889" height="0.889"/><rect x="4" y="3" width="0.889" height="0.889"/><rect x="5" y="3" width="0.889" height="0.889"/><rect x="6" y="3" width="0.889" height="0.889"/><rect x="7" y="3" width="0.889" height="0.889"/><rect x="8" y="3" width="0.889" height="0.889"/><rect x="10" y="3" width="0.889" height="0.889"/><rect x="1" y="4" width="0.889" height="0.889"/><rect x="2" y="4" width="0.889" height="0.889"/><rect x="3" y="4" width="0.889" height="0.889"/><rect x="4" y="4" width="0.889" height="0.889"/><rect x="6" y="4" width="0.889" height="0.889"/><rect x="7" y="4" width="0.889" height="0.889"/><rect x="8" y="4" width="0.889" height="0.889"/><rect x="9" y="4" width="0.889" height="0.889"/><rect x="0" y="5" width="0.889" height="0.889"/><rect x="2" y="5" width="0.889" height="0.889"/><rect x="3" y="5" width="0.889" height="0.889"/><rect x="4" y="5" width="0.889" height="0.889"/><rect x="6" y="5" width="0.889" height="0.889"/><rect x="7" y="5" width="0.889" height="0.889"/><rect x="8" y="5" width="0.889" height="0.889"/><rect x="10" y="5" width="0.889" height="0.889"/><rect x="1" y="6" width="0.889" height="0.889"/><rect x="2" y="6" width="0.889" height="0.889"/><rect x="3" y="6" width="0.889" height="0.889"/><rect x="4" y="6" width="0.889" height="0.889"/><rect x="6" y="6" width="0.889" height="0.889"/><rect x="7" y="6" width="0.889" height="0.889"/><rect x="8" y="6" width="0.889" height="0.889"/><rect x="9" y="6" width="0.889" height="0.889"/><rect x="0" y="7" width="0.889" height="0.889"/><rect x="2" y="7" width="0.889" height="0.889"/><rect x="3" y="7" width="0.889" height="0.889"/><rect x="4" y="7" width="0.889" height="0.889"/><rect x="6" y="7" width="0.889" height="0.889"/><rect x="7" y="7" width="0.889" height="0.889"/><rect x="8" y="7" width="0.889" height="0.889"/><rect x="10" y="7" width="0.889" height="0.889"/><rect x="3" y="8" width="0.889" height="0.889"/><rect x="4" y="8" width="0.889" height="0.889"/><rect x="6" y="8" width="0.889" height="0.889"/><rect x="7" y="8" width="0.889" height="0.889"/></g></svg>`;
 const LOGO_SQ = `<svg viewBox="-0.5 -1.5 12 12" aria-hidden="true" shape-rendering="crispEdges"><g fill="#D4AF5A"><rect x="1" y="0" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="10" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="9" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="10" y="5" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="3" y="7" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="3" y="8" width="1" height="1"/><rect x="4" y="8" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="7" y="8" width="1" height="1"/></g></svg>`;
 window.MQ_LOGO = LOGO;
@@ -118,11 +129,11 @@ function header(current){
   el.querySelector(".hdr-tema").addEventListener("click", ()=>{
     const t = document.documentElement.dataset.theme === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = t;
-    try{ localStorage.setItem("bs-theme", t); }catch(e){}
+    salvaTema(t);
   });
   /* o modo escolhido segue a pessoa de página em página (também onde o navegador não guarda a escolha) */
 
-  document.addEventListener("click", e=>{ const a = e.target.closest && e.target.closest("a[href]"); if(a && !a.dataset.temaOk){ a.dataset.temaOk = 1; const t = document.documentElement.dataset.theme; try{ const u = new URL(a.getAttribute("href"), location.href); if(u.origin === location.origin){ u.searchParams.set("tema", t); a.setAttribute("href", a.getAttribute("href").split("?")[0].split("#")[0] + "?" + u.searchParams.toString() + (u.hash||"")); } }catch(_){} } }, true);
+  document.addEventListener("click", e=>{ const a = e.target.closest && e.target.closest("a[href]"); if(a){ const h = comTema(a.getAttribute("href")); if(h) a.setAttribute("href", h); } }, true);
   /* busca */
   const lupa = el.querySelector(".hdr-lupa"), painel = el.querySelector(".busca"), fundo = el.querySelector(".busca-fundo");
   const input = painel.querySelector("input"), res = painel.querySelector(".busca-res"), limpa = painel.querySelector(".busca-limpa");
@@ -895,7 +906,7 @@ document.addEventListener("click", e=>{
   if(!t) return;
   e.preventDefault();
   try{ localStorage.setItem("cmp-sel2", JSON.stringify([t.dataset.compare, null])); }catch(err){}
-  location.href = R+"comparador.html";
+  location.href = comTema(R+"comparador.html") || R+"comparador.html";
 });
 
 try{ if("scrollRestoration" in history) history.scrollRestoration = "manual"; }catch(e){}
