@@ -1307,3 +1307,7 @@ blockquote.verdict p{margin-bottom:8px}
 .grid4 > .card .prev-link{position:absolute;top:16px;right:16px;margin:0;z-index:3;font-size:11px;background:rgba(0,0,0,.55);padding:4px 8px;border-radius:8px}
 .grid4 > .card .prev-link{top:auto;bottom:24px;right:16px}
 .card .thumb .prev-link{position:absolute !important;top:8px !important;right:8px !important;bottom:auto !important;left:auto;z-index:3;font-size:11px;background:rgba(0,0,0,.6);color:#F4F4F1;padding:4px 8px;border-radius:8px;margin:0}
+/* botão "Comparar o modelo": tamanho de botão comum; roxo ao passar o mouse */
+.model-bar .btn{min-height:0 !important;height:32px;padding:0 16px !important;font-size:13px !important;font-weight:600;width:auto !important;flex:none;background:transparent !important;color:#F4F4F1 !important;border:1px solid rgba(255,255,255,.24) !important;box-shadow:none !important;transition:background .2s ease,border-color .2s ease}
+.model-bar .btn:hover,.model-bar .btn:focus-visible{background:#7C5CFF !important;border-color:#7C5CFF !important}
+@media (max-width:760px){ .model-bar .btn{width:auto !important} }
