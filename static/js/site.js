@@ -968,7 +968,21 @@ function renderRanking2(){
     </div>
     <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span>Crítica</span><span>Nota final</span><span>Custo-benefício</span><span>Preço hoje</span></div><ol class="rk-lista" id="rkLista"></ol>
       <p class="rk-nota" id="rkNota"></p></section>
-    <p class="rk-met">Notas de 0 a 10. Crítica: média das análises reunidas pelo Notebookcheck. Laboratório e ficha: desempenho (Geekbench 6), câmera, tela, bateria e atualizações; quando não há medição própria, o desempenho é estimado pelo processador. Custo-benefício compara a nota final com o preço de hoje. Aparelhos marcados com “venda no Brasil não confirmada” ainda não têm versão oficial confirmada aqui.</p>`;
+    <details class="rk-calc"><summary>Como calculamos</summary><div class="rk-calc-in">
+      <p><b>Nota final</b> = metade crítica + metade laboratório e ficha. Todas as notas vão de 0 a 10.</p>
+      <p><b>Crítica (50%)</b>: média das análises publicadas por sites de tecnologia do mundo todo, reunidas pelo Notebookcheck. Quando um aparelho ainda não tem análises publicadas, a nota final usa só o laboratório e a ficha, e ele aparece como “sem nota” na coluna da crítica.</p>
+      <p><b>Laboratório e ficha (50%)</b>, com estes pesos:</p>
+      <ul>
+        <li><b>Desempenho (25%)</b>: resultado do Geekbench 6 multi-core. Sem medição própria, estimamos pelo processador.</li>
+        <li><b>Câmera (20%)</b>: estabilização óptica, ultrawide, teleobjetivas com zoom óptico e gravação em 4K ou 8K.</li>
+        <li><b>Tela (15%)</b>: taxa de atualização, tecnologia (OLED ou LCD), LTPO e resolução.</li>
+        <li><b>Bateria (20%)</b>: capacidade em mAh e velocidade de carregamento.</li>
+        <li><b>Atualizações (20%)</b>: anos prometidos de versões do sistema e de segurança. A Apple não divulga prazo; usamos o histórico de 5 a 7 anos.</li>
+      </ul>
+      <p><b>Custo-benefício</b>: a nota final dividida pela raiz quadrada do preço médio de hoje, convertida para uma escala de 0 a 10, em que 10 é o melhor resultado da lista. Só entram aparelhos com preço pesquisado.</p>
+      <p><b>Preço de hoje</b>: média de ofertas de aparelhos novos em lojas confiáveis, atualizada toda segunda-feira.</p>
+      <p>Aparelhos com “venda no Brasil não confirmada” têm ficha da versão global, sem versão oficial confirmada aqui.</p>
+    </div></details>`;
   const draw = () => {
     let arr = L.filter(x=>!seg || x.c.seg===seg);
     if(ordem==="cb") arr = arr.filter(x=>x.cb!=null).sort((a,b)=>b.cb-a.cb);

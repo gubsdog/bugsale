@@ -1724,3 +1724,14 @@ html.v2[data-theme="dark"] .rk-item.top3 .rk-pos{color:#C9875A}
 .cp-fonte{font-size:12px;color:var(--v-soft);margin:16px 0 0}
 .cp-fonte a{color:inherit}
 @media (max-width:760px){ .cp-slots{grid-template-columns:1fr 1fr} .cp-slot[data-i="2"]{display:none} }
+.rk-calc{margin:24px 0 0;background:var(--v-surface);border:1px solid var(--v-line);border-radius:16px;overflow:hidden}
+.rk-calc summary{cursor:pointer;list-style:none;padding:16px 24px;font:700 15px var(--body);color:var(--v-ink);display:flex;justify-content:space-between;align-items:center}
+.rk-calc summary::-webkit-details-marker{display:none}
+.rk-calc summary::after{content:"+";font:400 22px var(--body);color:var(--v-soft);transition:transform .2s}
+.rk-calc[open] summary::after{transform:rotate(45deg)}
+.rk-calc-in{padding:0 24px 24px;font-size:14px;line-height:1.6;color:var(--v-ink)}
+.rk-calc-in p{margin:0 0 12px}
+.rk-calc-in ul{margin:0 0 12px;padding-left:20px}
+.rk-calc-in li{margin-bottom:6px}
+.rk-calc-in li,.rk-calc-in p:last-child{color:var(--v-soft)}
+.rk-calc-in b{color:var(--v-ink)}
