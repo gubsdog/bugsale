@@ -953,11 +953,63 @@ const PESQ_DATA = () => { const d = CAT().map(c=>c.precoInfo&&c.precoInfo.data).
 const SEG_NOME = {topo:"Topo de linha", intermediario:"Intermediário", entrada:"Entrada"};
 const nota1 = v => v == null ? "—" : v.toFixed(1).replace(".", ",");
 
+const ORD_NOME = {cb:"custo-benefício", nota:"nota final", critica:"nota da crítica"};
+function resumoCat(c){
+  const t = c.tela || {}, p = [];
+  if(t.tec) p.push(`tela ${t.tec.replace(/\s*\d+X$/i,"")}${t.hz?` de ${t.hz} Hz`:""}`);
+  if((c.cams||[]).some(x=>/OIS/i.test(x))) p.push("câmera com estabilização");
+  if(c.bat) p.push(`bateria de ${c.bat.toLocaleString("pt-BR")} mAh`);
+  const os = +(String(c.upd||"").match(/(\d+) anos \(sistema/)||[0,0])[1]; if(os) p.push(`${os} anos de sistema`);
+  const s = p.join(", "); return s ? s[0].toUpperCase()+s.slice(1) : "";
+}
+function painelRk(x, pos, ordem){
+  const c = x.c, n = x.n, src = c.img || (catP(c) ? catP(c).cut : null);
+  const fmt = v => v==null ? "—" : nota1(v);
+  const cor = v => v < 4 ? "#D9534F" : v >= 7 ? "#2FA86B" : "var(--v-gold)";
+  const anel = (v, cr) => `<svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="30" fill="none" stroke="var(--v-line)" stroke-width="6"/>${v!=null?`<circle cx="36" cy="36" r="30" fill="none" stroke="${cr}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${(v/10*188.5).toFixed(1)} 188.5" transform="rotate(-90 36 36)"/>`:""}<text x="36" y="42" text-anchor="middle">${v!=null?fmt(v):"—"}</text></svg>`;
+  const POS = [["Câmera","camera",16,24],["Desempenho","desempenho",16,176],["Bateria","bateria",16,328],["Tela","tela",272,88],["Atualizações","atualizacoes",272,248]];
+  const etq = POS.map(([t,k,l,tp])=>`<div class="xp-tag" style="left:${l}px;top:${tp}px"><span>${t}${n.est.includes(k)?" <em title=\"Estimado pela ficha\">*</em>":""}</span><b>${fmt(n[k])}</b><i style="--p:${n[k]*10}%;--c:${cor(n[k])}"></i></div>`).join("");
+  const camadas = src ? Array.from({length:14},(_,i)=>`<img class="ly" src="${R}${src}" alt="" style="transform:translateZ(-${((i+1)*1.4).toFixed(1)}px)">`).join("") : "";
+  const tel = src ? `<div class="xp-tel" style="--m:url('${R}${src}')"><div class="cam">${camadas}</div><img class="fr" src="${R}${src}" alt="${esc(c.marca+" "+c.nome)}"><span class="brilho"></span><img class="ref" src="${R}${src}" alt=""></div>` : `<div class="xp-tel xp-semfoto">${catImg(c)}</div>`;
+  const pr = n.preco, pi = c.precoInfo || {};
+  const baixo = pr ? Math.round(pr*.9/10)*10 : null, alto = pr ? Math.round(pr*1.1/10)*10 : null;
+  const regua = pr ? `<div class="xp-preco"><h4>Quanto pagar</h4><p>Preço aproximado de hoje${pi.canais?`, pesquisado em ${pi.canais} ${pi.canais>1?"lojas":"loja"}`:""}${pi.data?` em ${pi.data.slice(8,10)}/${pi.data.slice(5,7)}`:""}${pi.gb?`, versão de ${pi.gb>=1000?pi.gb/1000+" TB":pi.gb+" GB"}`:""}.</p>
+      <div class="xp-regua"><div class="xp-hoje" style="left:50%">Hoje ≈ ${brl(pr)}</div></div>
+      <div class="xp-faixas"><div><b>até ${brl(baixo)}</b>Super promoção</div><div><b>${brl(baixo)} a ${brl(alto)}</b>Preço justo</div><div><b>acima de ${brl(alto)}</b>Caro</div></div></div>`
+    : `<div class="xp-preco"><h4>Quanto pagar</h4><p>Ainda não temos preço pesquisado para este aparelho.</p></div>`;
+  const art = c.antigo && publicados().filter(a=>a.phone===c.antigo).sort(porData)[0];
+  const sobreCb = x.cb==null ? "Sem preço pesquisado" : x.cb>=9 ? "Entre os melhores da lista" : x.cb>=7 ? "Acima da média" : x.cb>=5 ? "Na média da lista" : "Abaixo da média";
+  return `<li class="xp"><div class="xp-palco"><div class="xp-luz"></div><div class="xp-anel"></div><div class="xp-chao"></div>
+      <svg class="xp-lin" viewBox="0 0 400 440" aria-hidden="true"><g stroke="var(--v-gold)" stroke-width="1.2" fill="var(--v-gold)">
+      <line x1="128" y1="58" x2="172" y2="90"/><circle cx="172" cy="90" r="3"/><line x1="128" y1="210" x2="176" y2="200"/><circle cx="176" cy="200" r="3"/>
+      <line x1="128" y1="362" x2="180" y2="316"/><circle cx="180" cy="316" r="3"/><line x1="272" y1="122" x2="232" y2="140"/><circle cx="232" cy="140" r="3"/>
+      <line x1="272" y1="282" x2="228" y2="268"/><circle cx="228" cy="268" r="3"/></g></svg>
+      ${tel}${etq}</div>
+    <div class="xp-dir">
+      <div class="xp-tit"><span class="xp-selo">${pos}º em ${ORD_NOME[ordem]}</span><h3>${esc(c.nome)}</h3><p>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · ${ICO_NBR}`}${resumoCat(c)?" · "+esc(resumoCat(c)):""}</p></div>
+      <div class="xp-aneis">
+        <div class="xp-nota">${anel(n.critica,"var(--v-purple)")}<div><small>Crítica</small><span>${n.critica!=null?`Média de ${n.reviews} ${n.reviews>1?"análises":"análise"}`:"Sem análises publicadas"}</span></div></div>
+        <div class="xp-nota">${anel(x.cb,"#2FA86B")}<div><small>Custo-benefício</small><span>${sobreCb}</span></div></div>
+        <div class="xp-nota">${anel(n.final,"var(--v-gold)")}<div><small>Nota final</small><span>${n.critica!=null?"Crítica + laboratório":"Só laboratório e ficha"}</span></div></div>
+      </div>
+      ${regua}
+      <div class="xp-pe">${art?`<a class="xp-btn p" href="${R}artigos/${art.id}/">Ler a análise</a>`:""}<button type="button" class="xp-btn${art?"":" p"}" data-compare="${c.id}">Comparar com outro</button></div>
+      ${n.est.length?`<small class="xp-obs">* Estimado pela ficha técnica, sem medição publicada.</small>`:""}
+    </div></li>`;
+}
+function inclinaRk(el){
+  const palco = el && el.querySelector(".xp-palco"), tel = palco && palco.querySelector(".xp-tel");
+  if(!tel || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  palco.addEventListener("pointermove", e=>{ const r = palco.getBoundingClientRect(); const dx = (e.clientX-r.left)/r.width-.5, dy = (e.clientY-r.top)/r.height-.5;
+    tel.style.setProperty("--ry", (-30 + dx*24).toFixed(1)+"deg"); tel.style.setProperty("--rx", (12 - dy*14).toFixed(1)+"deg"); tel.style.setProperty("--bx", (dx*60+50).toFixed(0)+"%"); });
+  palco.addEventListener("pointerleave", ()=>{ tel.style.removeProperty("--ry"); tel.style.removeProperty("--rx"); tel.style.removeProperty("--bx"); });
+}
+
 function renderRanking2(){
   const main = document.getElementById("content");
   const L = CAT().map(c=>({c, n:notasCat(c)}));
   const comPreco = L.filter(x=>x.n.preco);
-  const maxRaw = Math.max(...comPreco.map(x=>x.n.final/Math.sqrt(x.n.preco)), 1);
+  const maxRaw = Math.max(...comPreco.map(x=>x.n.final/Math.sqrt(x.n.preco)));
   L.forEach(x=>{ x.cb = x.n.preco ? (x.n.final/Math.sqrt(x.n.preco))/maxRaw*10 : null; });
   let ordem = "nota", seg = "";
   main.classList.add("h2");
@@ -992,7 +1044,7 @@ function renderRanking2(){
     else arr = arr.sort((a,b)=>b.n.final-a.n.final);
     const top = arr.slice(0,10);
     document.getElementById("rkLista").innerHTML = top.map((x,i)=>{ const c=x.c;
-      return `<li class="rk-item${i<3?" top top"+(i+1):""}">
+      return `<li class="rk-item${i<3?" top top"+(i+1):""}" data-id="${c.id}" data-pos="${i+1}" tabindex="0" role="button" aria-expanded="false">
         <span class="rk-pos">${i+1}</span>
         <span class="rk-cel"><span class="rk-img">${catImg(c)}</span><span class="rk-nome"><b>${esc(c.nome)}</b><small>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · ${ICO_NBR}`}</small></span></span>
         <span class="rk-v" data-l="Crítica">${x.n.critica!=null ? nota1(x.n.critica) : `<em class="rk-sem">sem nota</em>`}</span>
@@ -1006,6 +1058,20 @@ function renderRanking2(){
     main.querySelectorAll("[data-ord]").forEach(b=>b.classList.toggle("on", b.dataset.ord===ordem));
     main.querySelectorAll("[data-seg]").forEach(b=>b.classList.toggle("on", b.dataset.seg===seg));
   };
+  const lista = document.getElementById("rkLista");
+  lista.addEventListener("click", e=>{
+    if(e.target.closest("a,button")) return;
+    const li = e.target.closest(".rk-item"); if(!li) return;
+    const aberto = li.classList.contains("aberto");
+    lista.querySelectorAll(".rk-item.aberto").forEach(x=>{ x.classList.remove("aberto"); x.setAttribute("aria-expanded","false"); });
+    lista.querySelectorAll(".xp").forEach(x=>x.remove());
+    if(aberto) return;
+    const x = L.find(y=>y.c.id===li.dataset.id); if(!x) return;
+    li.classList.add("aberto"); li.setAttribute("aria-expanded","true");
+    li.insertAdjacentHTML("afterend", painelRk(x, +li.dataset.pos, ordem));
+    inclinaRk(li.nextElementSibling);
+  });
+  lista.addEventListener("keydown", e=>{ if((e.key==="Enter"||e.key===" ") && e.target.classList.contains("rk-item")){ e.preventDefault(); e.target.click(); } });
   main.querySelectorAll("[data-ord]").forEach(b=>b.addEventListener("click", ()=>{ ordem=b.dataset.ord; draw(); }));
   main.querySelectorAll("[data-seg]").forEach(b=>b.addEventListener("click", ()=>{ seg = seg===b.dataset.seg ? "" : b.dataset.seg; draw(); }));
   draw();
