@@ -96,7 +96,7 @@ function header(current){
   el.className = "hdr";
   const home = current === "home";
   document.documentElement.classList.toggle("home", home);
-  const v2 = home || /[?&]v2\b/.test(location.search);   /* visual novo: tela inicial; nas outras páginas só com ?v2 (prévia) */
+  const v2 = ["home","artigo","Samsung","Apple","Motorola"].includes(current) || /[?&]v2\b/.test(location.search);   /* visual novo: início, artigos e marcas; ranking e comparador ainda no visual antigo */
   document.documentElement.classList.toggle("v2", v2);
   const links = MENU.filter(([,,k])=>k!=="home");
   el.innerHTML = `<div class="hdr-bar">
