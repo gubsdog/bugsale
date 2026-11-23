@@ -658,8 +658,8 @@ function seriePreco(p){
 }
 function fichaCmpHTML(p, q){
   const L = [["Preço médio hoje",x=>`≈ ${brl(x.atualN)}`],["Preço de lançamento",x=>x.precoN?brl(x.precoN):"—"],["Lançamento",x=>x.specs.lancamento],["Tela",x=>x.specs.tela],["Taxa de atualização",x=>x.specs.taxa],["Processador",x=>x.specs.chip],["Memória RAM",x=>x.specs.ram],["Armazenamento",x=>x.specs.armaz],["Câmeras traseiras",x=>x.specs.camTras],["Câmera frontal",x=>x.specs.camFrontal],["Vídeo",x=>x.specs.video],["Bateria",x=>x.specs.bateria],["Carregamento",x=>x.specs.carga],["Resistência",x=>x.specs.resist],["Peso",x=>x.specs.peso],["Sistema",x=>x.specs.sistema],["Atualizações",x=>x.specs.updResumo]];
-  const rows = L.map(([k,fn])=>{ const a=fn(p)||"—", b=fn(q)||"—"; return `<tr><th>${k}</th><td>${esc(a)}</td><td>${esc(b)}</td></tr>`; }).join("");
-  return `<div class="ficha ficha-cmp"><h3>Ficha técnica lado a lado</h3><div class="fc-wrap"><table><thead><tr><th></th><th>${esc(p.nome)}</th><th>${esc(q.nome)}</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  const rows = L.map(([k,fn])=>{ const a=fn(p)||"—", b=fn(q)||"—"; return `<tr><th><span>${k}</span></th><td>${esc(a)}</td><td>${esc(b)}</td></tr>`; }).join("");
+  return `<div class="ficha ficha-cmp"><h3>Ficha técnica lado a lado</h3><div class="fc-wrap"><table style="--n:2"><colgroup><col class="fc-c0"><col><col></colgroup><thead><tr><th></th><th>${esc(p.nome)}</th><th>${esc(q.nome)}</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
 }
 function precoChart2HTML(p, q){
   const A = seriePreco(p), Bq = seriePreco(q);
@@ -692,7 +692,7 @@ function renderArticle(){
   const a = MQ_DATA.articles.find(x=>x.id===id) || publicados().find(x=>x.phone===id) || publicados().sort(porData)[0];
   const p = P(a.phone), s = p.specs, B = MQ_DATA.bodies[a.id] || {}, S = B.secoes || {};
   const b = [S.abertura || B.abertura, S.para_quem || B.para_quem, S.veredito || B.veredito];
-  const TIPO = {review:"Review", comparativo:"Comparativo", vale:"Vale a pena?", ocasiao:a.cat};
+  const TIPO = {review:"Review", comparativo:"Comparativo", vale:"Vale a pena?", ocasiao:a.cat, novidade:"Novidade"};
   document.title = `${a.titulo} · Bugsale`;
   const pct = p.precoN ? Math.round((1 - p.atualN/p.precoN)*100) : null;
   const brandPage0 = ({Samsung:"samsung.html",Apple:"iphone.html",Motorola:"motorola.html"}[p.marca]);
@@ -713,6 +713,40 @@ function renderArticle(){
   const ondeComprar = cmp ? `${ofertaMiniHTML(ind, `Onde comprar o ${esc(ind.nome)}, nossa indicação`)}${outro.ofertas && outro.ofertas.lista && outro.ofertas.lista.length ? `<details class="om-outro"><summary>Ver as ofertas do ${esc(outro.nome)}</summary>${ofertaMiniHTML(outro)}</details>` : ""}` : ofertaMiniHTML(p);
   const related = publicados().filter(x=>x.id!==a.id).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || porData(x,y)).slice(0,4);
   const shareText = encodeURIComponent(`${a.titulo} · Bugsale`);
+  if(a.tipo==="novidade"){
+    const T = S.tabela || {cols:[], linhas:[]};
+    const tab = `<div class="ficha ficha-cmp ficha-nov"><h3>${esc(T.titulo || "Ficha técnica")}</h3><div class="fc-wrap"><table style="--n:${T.cols.length}"><colgroup><col class="fc-c0">${T.cols.map(()=>"<col>").join("")}</colgroup><thead><tr><th></th>${T.cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${T.linhas.map(l=>`<tr><th><span>${esc(l[0])}</span></th>${l.slice(1).map(v=>`<td>${esc(v||"—")}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${T.nota?`<small class="fc-nota">${esc(T.nota)}</small>`:""}</div>`;
+    const par = x => (Array.isArray(x)?x:[x]).filter(Boolean).map(t=>`<p>${esc(t)}</p>`).join("");
+    main.innerHTML = `
+  <article class="post post-nov">
+    <nav class="crumb" aria-label="Você está em"><a href="${R}index.html">Início</a> / ${brandPage?`<a href="${brandPage}">${esc(p.marcaMenu)}</a>`:esc(p.marcaMenu)}</nav>
+    <div class="post-head">
+      <span class="kicker">Novidade · <span class="brandtag">${esc(p.marcaMenu)}</span></span>
+      <h1>${esc(a.titulo)}</h1>
+      <p class="dek">${esc(a.dek)}</p>
+      <div class="author">
+        <div class="meta"><span class="avatar">${LOGO_SQ}</span><span class="who"><b>Equipe Bugsale</b><span class="sep" aria-hidden="true">·</span><time datetime="${a.data}">${dataBR(a.data)}</time></span></div>
+        <div class="share"><a class="ico-btn wa" href="https://wa.me/?text=${shareText}%20${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">${ICO_WA}</a><button type="button" class="ico-btn" id="copyLink" aria-label="Copiar link" title="Copiar link">${ICO_LINK}</button></div>
+      </div>
+    </div>
+    <aside class="ofertas-mini om-topo nov-topo"><span class="nov-k">Ainda não foi lançado</span><p>${esc(S.status || "A fabricante ainda não apresentou o aparelho. As informações abaixo vêm de vazamentos e podem mudar.")}</p>
+      <dl>${(S.resumoTopo||[]).map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></aside>
+    <figure class="cover"><div class="art ${vcls(p)}">${visual(p)}</div><figcaption>${esc(p.foto ? p.foto.credito : "")}.</figcaption></figure>
+    <div class="post-body">
+      <p class="lede">${esc(b[0])}</p>
+      <h2>O que já se sabe</h2>${par(S.oferece)}
+      ${tab}
+      <h2>Quanto deve custar</h2>${par(S.preco)}
+      <h2>Contra quem ele briga</h2>${par(S.concorrentes)}
+      <h2>Para quem ele faz sentido</h2>${par(b[1])}
+      <blockquote class="verdict"><span class="kicker">O que esperar</span><p>${esc(b[2])}</p></blockquote>
+      <div class="tags"><a href="${brandPage||R+"index.html"}">${esc(p.marcaMenu)}</a><span>${esc(a.cat)}</span><span>Dobráveis</span></div>
+      <p class="note">${S.fontes ? "Fontes: " + S.fontes.map(f=>`<a href="${f[1]}" target="_blank" rel="noopener">${esc(f[0])}</a>`).join(", ") + ". " : ""}Informações reunidas em ${dataBR(a.data)}. Especificações e preço ainda não confirmados pela fabricante.</p>
+    </div>
+  </article>
+  <div class="section-title"><h2>Leia também</h2><a href="${R}index.html">Ver todos →</a></div>
+  <div class="h-grid">${related.slice(0,4).map(recenteHTML2).join("")}</div>`;
+  } else
   main.innerHTML = `
   <article class="post">
     <nav class="crumb" aria-label="Você está em"><a href="${R}index.html">Início</a> / ${brandPage?`<a href="${brandPage}">${esc(p.marcaMenu)}</a>`:esc(p.marcaMenu)}</nav>
@@ -753,6 +787,12 @@ function renderArticle(){
   <div class="section-title"><h2>Leia também</h2><a href="${R}index.html">Ver todos →</a></div>
   ${document.documentElement.classList.contains("v2") ? `<div class="h-grid">${related.slice(0,4).map(recenteHTML2).join("")}</div>` : `<div class="grid4 swipe">${related.map(cardHTML).join("")}</div>`}`;
   reveal(main);
+  /* ficha lado a lado: coluna dos itens só do tamanho do maior rótulo + 24px; as dos aparelhos dividem o resto igualmente */
+  const ajustaFicha = () => main.querySelectorAll(".ficha-cmp table").forEach(t=>{
+    const w = Math.max(...[...t.querySelectorAll("tbody th > span")].map(x=>x.getBoundingClientRect().width));
+    const c0 = t.querySelector(".fc-c0"); if(c0 && w) c0.style.width = Math.min(Math.ceil(w) + 24, t.clientWidth * .4) + "px";
+  });
+  ajustaFicha(); addEventListener("resize", ajustaFicha);
   const cp = document.getElementById("copyLink");
   const canShare = !!navigator.share && window.matchMedia("(pointer:coarse)").matches;
   if(canShare){ cp.setAttribute("aria-label","Compartilhar"); cp.title = "Compartilhar"; }

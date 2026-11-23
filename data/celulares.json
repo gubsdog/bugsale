@@ -230,7 +230,7 @@
   "specs": {
    "lancamento": "Fev/2026",
    "precoN": 7499,
-   "atualN": 4114,
+   "atualN": 3998,
    "minimoN": 3523,
    "tela": "6,3\" Dynamic LTPO AMOLED 2X · 1080×2340",
    "taxaN": 120,
@@ -256,7 +256,7 @@
    "updSeg": null,
    "updSegN": null,
    "preco": "R$ 7.499",
-   "atual": "R$ 4.114",
+   "atual": "R$ 3.998",
    "minimo": "R$ 3.523",
    "taxa": "120 Hz",
    "bateria": "4.300 mAh",
@@ -269,24 +269,29 @@
    "posicao": "50% 55%"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T10:30",
+   "pesquisa": "2026-11-23T12:30",
    "lista": [
+    {
+     "loja": "Mercado Livre",
+     "preco": 3998.0,
+     "url": "https://meli.la/2BuyKrD"
+    },
     {
      "loja": "Amazon",
      "preco": 3998.7,
-     "url": "https://www.amazon.com.br/dp/B0GKQTJD9P"
+     "url": "https://link.amazon/B07Cbfg5L"
     },
     {
      "loja": "Magalu",
-     "preco": 4229.1,
-     "url": "https://www.magazineluiza.com.br/celular-samsung-galaxy-s26-preto-5g-256gb-galaxy-ai-63-12gb-ram-cam-tripla-50-12-10mp-bateria-4300mah-dual-chip/p/241149600/te/gs26/"
+     "preco": 3998.7,
+     "url": "https://magazineluiza.onelink.me/589508454/7gtd6uvq"
     }
    ]
   },
   "historico": [
    {
     "data": "2026-11-23",
-    "preco": 4114
+    "preco": 3998
    }
   ]
  },
@@ -544,7 +549,7 @@
   "specs": {
    "lancamento": "Set/2025",
    "precoN": 7999,
-   "atualN": 5436,
+   "atualN": 5542,
    "minimoN": 4669,
    "tela": "6,3\" LTPO Super Retina XDR OLED · 1206×2622",
    "taxaN": 120,
@@ -570,7 +575,7 @@
    "updSeg": "Sem número oficial",
    "updSegN": null,
    "preco": "R$ 7.999",
-   "atual": "R$ 5.436",
+   "atual": "R$ 5.542",
    "minimo": "R$ 4.669",
    "taxa": "120 Hz",
    "bateria": "3.692 mAh",
@@ -579,17 +584,22 @@
    "updResumo": "Atualizações sem número oficial"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T10:30",
+   "pesquisa": "2026-11-23T12:30",
    "lista": [
     {
      "loja": "Amazon",
      "preco": 5273.1,
-     "url": "https://www.amazon.com.br/dp/B0GQW2J4SK"
+     "url": "https://link.amazon/B0gfzHlMS"
+    },
+    {
+     "loja": "Mercado Livre",
+     "preco": 5566.0,
+     "url": "https://meli.la/1Q361Fc"
     },
     {
      "loja": "Magalu",
-     "preco": 5599.0,
-     "url": "https://www.magazineluiza.com.br/apple-iphone-17-256gb-azul-nevoa-63-48mp-ios-5g/p/241268300/te/ip17/"
+     "preco": 5785.63,
+     "url": "https://magazineluiza.onelink.me/589508454/v6pfmnw4"
     }
    ]
   },
@@ -616,7 +626,7 @@
    },
    {
     "data": "2026-11-23",
-    "preco": 5436
+    "preco": 5542
    }
   ],
   "historicoFonte": "Zoom"
@@ -760,7 +770,7 @@
   "specs": {
    "lancamento": "Mai/2026",
    "precoN": 2799,
-   "atualN": 1969,
+   "atualN": 1874,
    "minimoN": 1439,
    "tela": "6,8\" pOLED · 1272×2772",
    "taxaN": 120,
@@ -786,7 +796,7 @@
    "updSeg": "3 anos",
    "updSegN": 3,
    "preco": "R$ 2.799",
-   "atual": "R$ 1.969",
+   "atual": "R$ 1.874",
    "minimo": "R$ 1.439",
    "taxa": "120 Hz",
    "bateria": "5.200 mAh",
@@ -799,24 +809,29 @@
    "posicao": "45% 40%"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T10:30",
+   "pesquisa": "2026-11-23T12:30",
    "lista": [
     {
      "loja": "Amazon",
      "preco": 1599.0,
-     "url": "https://www.amazon.com.br/dp/B0GZQX7CBJ"
+     "url": "https://link.amazon/B0hNLYyev"
+    },
+    {
+     "loja": "Mercado Livre",
+     "preco": 1685.0,
+     "url": "https://meli.la/1wGfUkt"
     },
     {
      "loja": "Magalu",
      "preco": 2339.1,
-     "url": "https://www.magazineluiza.com.br/smartphone-motorola-moto-g-max-256gb-5g-8gb-ram-8gb-ram-boost-inteligente-grafite-68-cam-dupla-200mp-8mp-selfie-32mp/p/241890500/te/srmt/"
+     "url": "https://magazineluiza.onelink.me/589508454/p5lpzwq9"
     }
    ]
   },
   "historico": [
    {
     "data": "2026-11-23",
-    "preco": 1969
+    "preco": 1874
    }
   ]
  },
@@ -1052,7 +1067,7 @@
    "lancamento": "Mar/2026",
    "precoN": null,
    "atualN": 2860,
-   "minimoN": 1999,
+   "minimoN": 1989,
    "tela": "6,59\" AMOLED · 1268×2756",
    "taxaN": 120,
    "telaExt": null,
@@ -1079,33 +1094,82 @@
    "updSegN": 6,
    "preco": null,
    "atual": "R$ 2.860",
-   "minimo": "R$ 1.999",
+   "minimo": "R$ 1.989",
    "taxa": "120 Hz",
    "bateria": "6.500 mAh",
    "cores": null,
    "updResumo": "4 atualizações do sistema · 6 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T10:30",
+   "pesquisa": "2026-11-23T12:30",
    "lista": [
     {
      "loja": "Amazon",
      "preco": 2745.5,
-     "url": "https://www.amazon.com.br/dp/B0G2F7D1FH"
+     "url": "https://link.amazon/B008Ts5O6"
     },
     {
      "loja": "Magalu",
      "preco": 2974.15,
-     "url": "https://www.magazineluiza.com.br/celular-xiaomi-poco-x8-pro-de-256gb-8gb-ram-preto-global-xiaomi/p/cge45d1ch9/te/pc8p/"
+     "url": "https://magazineluiza.onelink.me/589508454/rfbmqg44"
     }
    ]
   },
   "historico": [
    {
+    "data": "2026-05-23",
+    "preco": 2374,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-06-18",
+    "preco": 2179,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-07-21",
+    "preco": 2322,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-08-23",
+    "preco": 2349,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-09-24",
+    "preco": 2449,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-10-18",
+    "preco": 2464,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-10-20",
+    "preco": 1989,
+    "fonte": "zoom"
+   },
+   {
+    "data": "2026-11-05",
+    "preco": 2534,
+    "fonte": "zoom"
+   },
+   {
     "data": "2026-11-23",
     "preco": 2860
    }
-  ]
+  ],
+  "ofertasExtra": [
+   {
+    "loja": "Mercado Livre",
+    "versao": "512 GB",
+    "preco": 3152.0,
+    "url": "https://meli.la/1AJFFSS"
+   }
+  ],
+  "historicoFonte": "Zoom"
  },
  {
   "id": "poco-x8-pro-max",
@@ -1169,6 +1233,55 @@
      "url": ""
     }
    ]
+  }
+ },
+ {
+  "id": "razr-flex",
+  "marca": "Motorola",
+  "nome": "Razr Flex",
+  "tipo": "Dobrável tipo livro (formato passaporte)",
+  "img": "razr-flex",
+  "novidade": true,
+  "foto": {
+   "credito": "Imagem ilustrativa criada pela Bugsale; o aparelho ainda não foi apresentado",
+   "posicao": "60% 45%"
+  },
+  "specs": {
+   "lancamento": "Previsto para dez/2026 ou início de 2027 (não confirmado)",
+   "precoN": null,
+   "atualN": null,
+   "minimoN": null,
+   "tela": "6,92\" OLED · 2364 × 1728 (rumor)",
+   "taxaN": 165,
+   "taxa": "165 Hz",
+   "telaExt": "4,97\" OLED (rumor)",
+   "chip": "Snapdragon 8 Gen 5 (rumor)",
+   "ram": "12 GB",
+   "ramN": 12,
+   "armaz": "256 GB (512 GB não confirmado)",
+   "armazN": 256,
+   "camTras": "50 MP principal + 50 MP ultrawide",
+   "zoom": "Digital até 30x",
+   "camFrontal": "32 MP nas duas telas",
+   "video": "—",
+   "bateriaN": 5000,
+   "bateria": "5.000 mAh",
+   "carga": "Sem fio 25 W; com fio não revelado",
+   "cargaN": null,
+   "resist": "IP48/IP49 (rumor)",
+   "pesoN": 215,
+   "peso": "215 g",
+   "espessura": "12,6 mm fechado · 5,8 mm aberto",
+   "sistema": "Android 17",
+   "updOS": "—",
+   "updOSN": null,
+   "updSeg": "—",
+   "updSegN": null,
+   "cores": "Dark Botanical Garden (verde) e Coriander (marrom)",
+   "preco": "—",
+   "atual": "—",
+   "minimo": "—",
+   "updResumo": "A Motorola ainda não divulgou a política de atualizações."
   }
  }
 ]

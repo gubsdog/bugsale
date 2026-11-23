@@ -1995,3 +1995,37 @@ html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !i
   html.v2 .cp-slot .cp-foto .cp-info{grid-column:1/-1;grid-row:5;flex-direction:row;flex-wrap:wrap;gap:4px 16px}
 }
 @media (max-width:760px){ html.v2 .cp-slot[data-i="2"]{display:none !important} }
+/* ficha lado a lado: colunas dos aparelhos sempre iguais */
+.ficha-cmp table{table-layout:fixed;width:100%}
+.ficha-cmp tbody th{width:auto !important;padding-right:24px !important;white-space:normal}
+.ficha-cmp tbody th > span{display:inline}
+.ficha-cmp td{width:auto !important;overflow-wrap:anywhere}
+.ficha-cmp col.fc-c0{width:160px}
+/* aviso de fontes e data da pesquisa: bem pequeno, em todos os artigos */
+.post-body .note,html.v2 .post-body .note{font-size:11px !important;line-height:1.4 !important;color:var(--v-soft) !important;margin-top:16px}
+/* artigo de novidade (aparelho ainda não lançado) */
+.nov-aviso{margin:24px 0;padding:16px 20px;border-radius:16px;background:color-mix(in srgb,var(--v-gold,#D4AF5A) 14%,transparent);border:1px solid color-mix(in srgb,var(--v-gold,#D4AF5A) 40%,transparent);font-size:14px;line-height:1.5}
+.nov-aviso b{display:block;margin-bottom:4px}
+.ficha-nov .fc-nota{display:block;margin-top:8px;font-size:11px;color:var(--v-soft)}
+.post-body .note a{color:inherit;text-decoration:underline}
+@media (max-width:760px){
+  /* ficha lado a lado no celular: rótulo em faixa, valores lado a lado com a mesma largura */
+  .ficha-cmp .fc-wrap{overflow:visible}
+  .ficha-cmp table,.ficha-cmp thead,.ficha-cmp tbody{display:block;width:100%}
+  .ficha-cmp colgroup{display:none}
+  .ficha-cmp tr{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr))}
+  .ficha-cmp thead th:first-child{display:none}
+  .ficha-cmp thead th{padding:8px !important;font-size:13px !important}
+  .ficha-cmp tbody tr{border-top:1px solid var(--v-line)}
+  .ficha-cmp tbody th{grid-column:1/-1;padding:8px 8px 2px !important;border:0 !important;font:700 10px var(--body) !important;letter-spacing:.08em;text-transform:uppercase;color:var(--v-soft) !important}
+  .ficha-cmp td{padding:2px 8px 10px !important;border:0 !important;font-size:13px}
+}
+.nov-topo{display:flex;flex-direction:column;gap:8px;padding:24px !important}
+.nov-topo .nov-k{align-self:flex-start;padding:4px 12px;border-radius:999px;background:color-mix(in srgb,var(--v-gold) 22%,transparent);color:var(--v-ink);font:700 11px var(--body);letter-spacing:.08em;text-transform:uppercase}
+.nov-topo p{margin:0;font-size:13px;line-height:1.5;color:var(--v-soft)}
+.nov-topo dl{margin:8px 0 0;display:flex;flex-direction:column;gap:0}
+.nov-topo dl div{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-top:1px solid var(--v-line);font-size:13px}
+.nov-topo dt{color:var(--v-soft)}
+.nov-topo dd{margin:0;text-align:right;font-weight:600;color:var(--v-ink)}
+@media (max-width:760px){ .ficha-cmp thead th{display:block !important;width:auto !important;min-width:0;white-space:normal !important;padding:8px !important} .ficha-cmp thead th + th{border-left:0} }
+@media (max-width:760px){ .ficha-cmp thead th:first-child{display:none !important} }
