@@ -120,14 +120,14 @@ function header(current){
   const links = MENU.filter(([,,k])=>k!=="home");
   el.innerHTML = `<div class="hdr-bar">
       <a class="hdr-brand" href="${R}index.html" aria-label="Bugsale, página inicial">${LOCKUP}</a>
-      <nav class="hdr-nav" aria-label="Seções">${links.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}${key==="comparador"?" cta":""}">${key==="comparador"?"Comparador":label}</a>`).join("")}</nav>
+      <nav class="hdr-nav" aria-label="Seções">${links.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}${key==="comparador"?" cta":""}">${key==="comparador"?"Comparador":label}${key==="comparador"?'<span class="m-novo">novo</span>':""}</a>`).join("")}</nav>
       <div class="hdr-tools">
         <button type="button" class="hdr-ico hdr-lupa" aria-label="Buscar modelo" aria-expanded="false" aria-controls="busca">${ICO_LUPA}</button>
         <button type="button" class="hdr-ico hdr-tema" aria-label="Alternar modo claro e escuro">${ICO_SOL}${ICO_LUA}</button>
         <button type="button" class="hdr-ico hdr-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuM"><span></span><span></span><span></span></button>
       </div>
     </div>
-    <nav class="menu-m" id="menuM" aria-label="Menu" hidden>${links.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}">${key==="comparador"?"Comparador":label}<span aria-hidden="true">→</span></a>`).join("")}</nav>
+    <nav class="menu-m" id="menuM" aria-label="Menu" hidden>${links.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}">${key==="comparador"?"Comparador":label}${key==="comparador"?'<span class="m-novo">novo</span>':""}<span aria-hidden="true">→</span></a>`).join("")}</nav>
     <div class="busca" id="busca" hidden>
       <div class="busca-in">
         <label class="busca-campo">${ICO_LUPA}<input type="search" placeholder="Buscar modelo de celular" aria-label="Buscar modelo de celular" autocomplete="off"><button type="button" class="busca-limpa" aria-label="Limpar" hidden>×</button></label>

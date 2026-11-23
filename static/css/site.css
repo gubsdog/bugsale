@@ -2082,3 +2082,7 @@ html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !i
 html.v2 .ofertas-mini.om-nada{display:flex !important;flex-direction:column}
 .om-nada .om-nada-t{flex:1;display:grid;place-items:center;min-height:160px;margin:8px 0 0;padding:16px;border:1px dashed var(--v-line);border-radius:8px;text-align:center;font-size:14px;line-height:1.5;color:var(--v-soft)}
 @media (max-width:760px){ .om-nada .om-nada-t{min-height:96px} }
+
+/* selo "novo" no menu (ferramenta nova) */
+.m-novo{margin-left:8px;padding:0 8px;height:16px;display:inline-flex;align-items:center;border-radius:999px;background:var(--v-purple,#7C5CFF);color:#fff;font:700 10px var(--body);letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;line-height:1}
+html.v2 .menu-m a .m-novo{margin-right:auto;color:#fff;font-weight:700}
