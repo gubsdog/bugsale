@@ -994,7 +994,8 @@ function notasCat(c){
   const n = {desempenho, camera:clamp(camera), tela:clamp(tela), bateria:clamp(bateria), atualizacoes};
   n.tecnica = PESOS.reduce((t,[k,,w])=>t + n[k]*w/100, 0);
   const cr = c.antigo && CRITICA[c.antigo];
-  n.critica = cr ? cr[0]/10 : null; n.reviews = cr ? cr[1] : 0;
+  if(c.critica && c.critica.nota != null){ n.critica = c.critica.nota; n.reviews = c.critica.n; }   // catálogo: média de análises editoriais (nota em 10)
+  else { n.critica = cr ? cr[0]/10 : null; n.reviews = cr ? cr[1] : 0; }
   n.final = n.critica != null ? (n.critica + n.tecnica)/2 : n.tecnica;
   const p = catP(c); n.preco = c.preco || (p ? p.atualN : null);
   n.est = est;
@@ -1047,10 +1048,11 @@ function painelRk(x, pos, ordem){
     <div class="xp-dir">
       <div class="xp-tit"><span class="xp-selo">${pos}º em ${ORD_NOME[ordem]}</span><h3>${esc(c.nome)}</h3><p>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · ${ICO_NBR}`}${resumoCat(c)?" · "+esc(resumoCat(c)):""}</p></div>
       <div class="xp-aneis">
-        <div class="xp-nota">${anel(n.critica,"var(--v-purple)")}<div><small>Crítica</small><span>${n.critica!=null?`Média de ${n.reviews} ${n.reviews>1?"análises":"análise"}`:"Sem análises publicadas"}</span></div></div>
+        <div class="xp-nota">${anel(n.critica,"var(--v-purple)")}<div><small>Crítica</small><span${c.critica && c.critica.fontes.length ? ` title="${esc(c.critica.fontes.map(f=>f.v+": "+String(f.n).replace(".",",")).join(" · "))}"` : ""}>${n.critica!=null?`Média de ${n.reviews} ${n.reviews>1?"análises":"análise"}`:"Sem análises publicadas"}</span></div></div>
         <div class="xp-nota">${anel(x.cb,"#2FA86B")}<div><small>Custo-benefício</small><span>${sobreCb}</span></div></div>
         <div class="xp-nota">${anel(n.final,"var(--v-gold)")}<div><small>Nota final</small><span>${n.critica!=null?"Crítica + laboratório":"Só laboratório e ficha"}</span></div></div>
       </div>
+      ${c.critica && c.critica.sintese ? `<div class="xp-crit"><b>O que diz a crítica</b><p>${esc(c.critica.sintese)}</p>${c.critica.fontes.length?`<small>${c.critica.fontes.map(f=>`<a href="${esc(f.u)}" target="_blank" rel="noopener">${esc(f.v)}</a> ${String(f.n).replace(".",",")}`).join(" · ")}</small>`:""}</div>` : ""}
       ${regua}
       ${art?`<div class="xp-pe"><a class="xp-btn p" href="${R}artigos/${art.id}/">Ler a análise</a></div>`:""}
       ${n.est.length?`<small class="xp-obs">* Estimado pela ficha técnica, sem medição publicada.</small>`:""}
@@ -1086,7 +1088,7 @@ function renderRanking2(){
       <p class="rk-legenda">${ICO_NBR} Venda no Brasil não confirmada: a ficha é da versão global e ainda não há versão oficial confirmada aqui.</p></section>
     <details class="rk-calc"><summary>Como calculamos</summary><div class="rk-calc-in">
       <p><b>Nota final</b> = metade crítica + metade laboratório e ficha. Todas as notas vão de 0 a 10.</p>
-      <p><b>Crítica (50%)</b>: média das análises publicadas por sites de tecnologia do mundo todo, reunidas pelo Notebookcheck. Quando um aparelho ainda não tem análises publicadas, a nota final usa só o laboratório e a ficha, e ele aparece como “sem nota” na coluna da crítica.</p>
+      <p><b>Crítica (50%)</b>: média simples das notas gerais de análises publicadas por sites de tecnologia do Brasil e de fora (como GSMArena, Oficina da Net, Tecnoblog, Canaltech e PhoneArena), convertidas para a escala de 0 a 10. Cada site conta uma vez. Abra um celular no ranking para ver quantas análises entraram na média. Quando um aparelho ainda não tem análises publicadas, a nota final usa só o laboratório e a ficha, e ele aparece como “sem nota” na coluna da crítica.</p>
       <p><b>Laboratório e ficha (50%)</b>, com estes pesos:</p>
       <ul>
         <li><b>Desempenho (25%)</b>: resultado do Geekbench 6 multi-core. Sem medição própria, estimamos pelo processador.</li>

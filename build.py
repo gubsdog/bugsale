@@ -48,7 +48,11 @@ cat = []
 for m in CAT['modelos']:
     e = m['especificacoes']; t = e.get('tela') or {}; cams = e.get('cameras') or {}
     vs = m.get('variantes_por_capacidade') or []
-    br = not (any(v.get('regiao') == 'global' for v in vs) and not any(v.get('regiao') == 'BR' for v in vs))   # aviso só quando a ficha é global sem versão BR confirmada
+    regs = {r for v in vs for r in ((v.get('regioes') or []) + [v.get('regiao')]) if r} | {x.get('regiao') for x in (m.get('configuracoes_memoria') or []) if x.get('regiao')}
+    br = not ('global' in regs and 'BR' not in regs)   # aviso só quando a ficha é global sem versão BR confirmada
+    ce = m.get('critica_especializada') or {}
+    crit = dict(nota=ce.get('nota_media_0_10'), n=ce.get('quantidade_veiculos_com_nota') or 0, sintese=ce.get('sintese'),
+                fontes=[dict(v=f.get('veiculo'), u=f.get('url'), n=f.get('nota_em_10')) for f in (ce.get('fontes') or []) if f.get('nota_em_10') is not None]) if ce.get('nota_media_0_10') is not None else None
     dem = [d['posicao'] for d in (m.get('sinais_demanda') or []) if d.get('posicao')]
     cat.append(dict(id=m['id'], nome=m['modelo'], marca=m['marca'], fab=m['fabricante'], seg=SEG.get(m['segmento'],'intermediario'),
         segOrig=m['segmento'], formato=m['formato'], br=br, sistema=e.get('sistema'), upd=e.get('atualizacoes_informadas'),
@@ -56,7 +60,8 @@ for m in CAT['modelos']:
         cams=cams.get('traseiras') or [], frontal=cams.get('frontal'), video=cams.get('video_traseiro'),
         bat=e.get('bateria_mah'), carga=e.get('recarga_com_fio_w'), semfio=e.get('recarga_sem_fio'), peso=e.get('peso_g'),
         dim=e.get('dimensoes'), prot=e.get('protecao'), g5=e.get('rede_5g'), nfc=e.get('nfc'),
-        ram=m.get('ram_gb_opcoes') or [], armaz=sorted({v['armazenamento_gb'] for v in vs}),
+        ram=m.get('ram_gb_opcoes') or [], armaz=m.get('armazenamento_gb_opcoes') or sorted({v['armazenamento_gb'] for v in vs}), critica=crit,
+        regFicha=m.get('regiao_ficha'), revisao=(m.get('revisao_tecnica') or {}).get('fonte_principal'),
         fonte=(m.get('fontes') or {}).get('ficha_tecnica'), demanda=min(dem) if dem else None, antigo=ANTIGO.get(m['id']),
         preco=m.get('preco_medio_brl'), img=(f"img/cat/{m['id']}.webp" if os.path.exists(os.path.join(ROOT,'static/img/cat',m['id']+'.webp')) else None),
         precoInfo=(lambda p: p and dict(data=p.get('data_consulta'), canais=p.get('quantidade_canais'), min=p.get('menor_brl'), max=p.get('maior_brl'), gb=p.get('armazenamento_referencia_gb')))(m.get('pesquisa_preco'))))

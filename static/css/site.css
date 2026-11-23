@@ -2029,3 +2029,8 @@ html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !i
 .nov-topo dd{margin:0;text-align:right;font-weight:600;color:var(--v-ink)}
 @media (max-width:760px){ .ficha-cmp thead th{display:block !important;width:auto !important;min-width:0;white-space:normal !important;padding:8px !important} .ficha-cmp thead th + th{border-left:0} }
 @media (max-width:760px){ .ficha-cmp thead th:first-child{display:none !important} }
+.xp-crit{padding:16px 20px;border-radius:16px;background:var(--v-surface);border:1px solid var(--v-line);font-size:13px;line-height:1.5}
+.xp-crit b{display:block;font-size:13px;color:var(--v-ink);margin-bottom:4px}
+.xp-crit p{margin:0 0 8px;color:var(--v-soft)}
+.xp-crit small{font-size:11px;color:var(--v-soft)}
+.xp-crit a{color:var(--v-ink);text-decoration:underline;text-underline-offset:2px}
