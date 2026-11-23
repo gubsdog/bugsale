@@ -2069,3 +2069,11 @@ html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !i
 @media (max-width:760px){ .cp-sug-in{padding:16px} .cp-sug-b{padding:8px} }
 .cp-info b{color:var(--v-ink)}
 .cp-info .ico-nbr{vertical-align:-3px}
+/* comparador: rótulo à esquerda e lixeira à direita no topo do card */
+.cp-topo{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:32px;margin-bottom:8px}
+.cp-topo .cp-t{margin:0 !important;text-align:left !important}
+.cp-del{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;border:1px solid transparent;background:none;color:var(--v-soft);cursor:pointer;transition:color .2s,background .2s,border-color .2s}
+.cp-del[hidden]{display:none}
+.cp-del svg{width:18px;height:18px}
+.cp-del:hover,.cp-del:focus-visible{color:#D9534F;background:color-mix(in srgb,#D9534F 10%,transparent);border-color:color-mix(in srgb,#D9534F 30%,transparent);outline:0}
+@media (max-width:760px){ html.v2 .cp-slot .cp-topo{grid-column:1;margin:0} }

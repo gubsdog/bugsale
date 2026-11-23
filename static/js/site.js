@@ -1198,7 +1198,7 @@ function renderComparador(){
     if(Array.isArray(s)) s.slice(0,N).forEach((id,i)=>{ if(!id) return; const c = byId(id) || C.find(x=>x.antigo===id); if(c) sel[i]=c.id; }); }catch(e){}
   main.classList.add("h2");
   main.innerHTML = `<header class="pg-head"><h1>Comparador</h1><p>Escolha a marca e o modelo de até 3 celulares e veja a ficha técnica, o preço de lançamento e quanto custa hoje.</p></header>
-    <div class="cp-slots">${[0,1,2].map(i=>`<div class="cp-slot" data-i="${i}"><b class="cp-t">Celular ${i+1}</b>
+    <div class="cp-slots">${[0,1,2].map(i=>`<div class="cp-slot" data-i="${i}"><div class="cp-topo"><b class="cp-t">Celular ${i+1}</b><button type="button" class="cp-del" aria-label="Tirar o celular ${i+1} do comparativo" title="Tirar do comparativo" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.6 8.5h5.8l.6-8.5M7 7v4M9 7v4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
       <select class="cp-sel cp-marca" aria-label="Marca do celular ${i+1}"><option value="">Marca</option>${marcas.map(m=>`<option>${esc(m)}</option>`).join("")}</select>
       <select class="cp-sel cp-modelo" aria-label="Modelo do celular ${i+1}" disabled><option value="">Modelo</option></select>
       <div class="cp-foto"></div></div>`).join("")}</div>
@@ -1243,7 +1243,7 @@ function renderComparador(){
     slots.forEach((el,i)=>{ const c = sel[i] && byId(sel[i]);
       if(c){ el.querySelector(".cp-marca").value = c.marca; fillModelos(i, c.marca, true); el.querySelector(".cp-modelo").value = c.id; }
       el.querySelector(".cp-foto").innerHTML = c ? `<span class="cp-img">${catImg(c)}</span><b>${esc(c.nome)}</b>${infoLanc(c)}` : `<span class="cp-mais" aria-hidden="true">+</span>`;
-      el.classList.toggle("cheio", !!c); });
+      el.classList.toggle("cheio", !!c); el.querySelector(".cp-del").hidden = !c; });
     sugestoes();
     const cs = sel.map(id=>id && byId(id)).filter(Boolean);
     const box = document.getElementById("cpFicha");
@@ -1273,6 +1273,10 @@ function renderComparador(){
   addEventListener("scroll", posFix, {passive:true}); addEventListener("resize", posFix);
   document.getElementById("cpFicha").addEventListener("scroll", posFix, {passive:true});
   slots.forEach((el,i)=>{
+    el.querySelector(".cp-del").addEventListener("click", ()=>{
+      sel = sel.filter((_,k)=>k!==i).concat([null]);   // os da direita andam uma casa para a esquerda
+      slots.forEach((o,k)=>{ if(!sel[k]){ o.querySelector(".cp-marca").value = ""; const m = o.querySelector(".cp-modelo"); m.innerHTML = `<option value="">Modelo</option>`; m.disabled = true; } });
+      draw(); });
     el.querySelector(".cp-marca").addEventListener("change", e=>{ fillModelos(i, e.target.value); sel[i]=null; draw(); });
     el.querySelector(".cp-modelo").addEventListener("change", e=>{ sel[i] = e.target.value || null; draw();
       slots.forEach((o,k)=>{ if(k!==i && !sel[k]){ const mk = o.querySelector(".cp-marca").value; if(mk) fillModelos(k, mk); } }); });
