@@ -2077,3 +2077,8 @@ html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !i
 .cp-del svg{width:18px;height:18px}
 .cp-del:hover,.cp-del:focus-visible{color:#D9534F;background:color-mix(in srgb,#D9534F 10%,transparent);border-color:color-mix(in srgb,#D9534F 30%,transparent);outline:0}
 @media (max-width:760px){ html.v2 .cp-slot .cp-topo{grid-column:1;margin:0} }
+
+/* novidade sem produto à venda: card de ofertas com aviso centralizado */
+html.v2 .ofertas-mini.om-nada{display:flex !important;flex-direction:column}
+.om-nada .om-nada-t{flex:1;display:grid;place-items:center;min-height:160px;margin:8px 0 0;padding:16px;border:1px dashed var(--v-line);border-radius:8px;text-align:center;font-size:14px;line-height:1.5;color:var(--v-soft)}
+@media (max-width:760px){ .om-nada .om-nada-t{min-height:96px} }

@@ -741,7 +741,7 @@ function renderArticle(){
         <div class="share"><a class="ico-btn wa" href="https://wa.me/?text=${shareText}%20${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">${ICO_WA}</a><button type="button" class="ico-btn" id="copyLink" aria-label="Copiar link" title="Copiar link">${ICO_LINK}</button></div>
       </div>
     </div>
-    ${p.ofertas && p.ofertas.lista && p.ofertas.lista.length ? ofertaMiniHTML(p, "Melhores ofertas encontradas", "om-topo") : ""}
+    ${p.ofertas && p.ofertas.lista && p.ofertas.lista.length ? ofertaMiniHTML(p, "Melhores ofertas encontradas", "om-topo") : `<section class="ofertas-mini om-topo om-nada" aria-label="Onde comprar"><div class="om-head"><b>Melhores ofertas encontradas</b></div><p class="om-nada-t">Nenhum link de oferta deste produto foi encontrado.</p></section>`}
     <figure class="cover"><div class="art ${vcls(p)}">${visual(p)}</div><figcaption>${esc(p.foto ? p.foto.credito : "")}.</figcaption></figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
