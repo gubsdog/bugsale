@@ -86,15 +86,35 @@
   "data": "2026-11-23",
   "categoria": "Review",
   "titulo": "Moto G Max: câmera de 200 MP por menos de R$ 2 mil",
-  "resumo": "A ficha impressiona, mas a Motorola só promete 3 anos de segurança e não diz quantas versões do Android ele recebe.",
-  "chamada": "Câmera de 200 MP, tela pOLED de 6,8 polegadas e resistência IP69. No papel, o Moto G Max parece um topo de linha. O preço diz outra coisa: menos de R$ 2 mil.",
-  "para_quem": "É para quem quer tela grande e câmera com muitos detalhes gastando pouco, e troca de celular a cada dois ou três anos.",
-  "veredito": "A ficha é ótima pelo preço, mas o processador é de entrada e a Motorola só garante 3 anos de segurança. É um bom aparelho para pouco tempo de uso.",
+  "resumo": "Câmera de 200 MP, tela enorme e resistência de sobra por R$ 1.599. O preço baixou, mas o processador é simples e a Motorola só promete 3 anos de segurança.",
+  "chamada": "Lançado em maio por R$ 2.799, o Moto G Max já aparece por R$ 1.599. Ele tem a melhor câmera da linha Moto G, tela de 6,8 polegadas e aguenta água, poeira e queda. Mostramos onde ele brilha, onde ele economiza e até quanto vale pagar.",
+  "para_quem": "Ele combina com quem tira foto de tudo, quer tela grande para série e vídeo, vive com o celular na rua, na chuva ou na obra, e costuma trocar de aparelho a cada dois ou três anos. Não é para quem joga pesado nem para quem quer ficar cinco anos com o mesmo celular.",
+  "veredito": "O Moto G Max entrega muito pelo preço: câmera que faz bonito, tela grande e brilhante, bateria para o dia inteiro e uma resistência que poucos têm nessa faixa. O ponto fraco é o processador de entrada e a promessa curta de atualizações. Até R$ 1.600 na versão de 256 GB, é boa compra. Abaixo de R$ 1.450, vale correr. Acima de R$ 1.900, o Moto G86 entrega um processador melhor pelo mesmo dinheiro.",
   "slug": "moto-g-max-review",
   "publicar": "2026-11-23T07:00",
   "tipo": "review",
   "teaser": true,
-  "pronto": false
+  "pronto": true,
+  "alvo": {
+   "versao": "256 GB",
+   "otimo": 1450,
+   "bom": 1600,
+   "caro": 1900
+  },
+  "secoes": {
+   "abertura": "O Moto G Max chegou em maio como o Moto G mais caprichado que a Motorola já fez, com câmera de 200 MP e preço sugerido de R$ 2.799. Seis meses depois, na nossa pesquisa de hoje, 23/11, ele aparece por R$ 1.599 na Amazon. Pagando isso, a pergunta é simples: a câmera e a tela compensam um processador modesto e uma promessa curta de atualizações?",
+   "oferece": [
+    "A primeira coisa que chama atenção é a tela. São 6,8 polegadas de AMOLED com resolução 1.5K e 120 Hz, e o brilho chega a 5.000 nits, segundo a Motorola. Na prática, dá para ver o mapa no sol do meio-dia, assistir a série no ônibus sem apertar os olhos e rolar o Instagram sem aquela sensação de travadinha.",
+    "A câmera principal de 200 MP tem estabilização óptica, e isso ajuda muito na foto tirada com pressa, na festa ou no fim da tarde. No dia a dia, ela junta os pixels e entrega fotos de tamanho normal, mais limpas no escuro. O modo de 200 MP fica para quando você quer recortar depois: a foto do grupo vira um retrato só de quem importa, e a placa lá longe dá para ler. A ultrawide de 8 MP é bem mais simples e perde detalhe na paisagem, e a frontal de 32 MP resolve bem a selfie e a chamada de vídeo.",
+    "Por dentro está o MediaTek Dimensity 6400, um processador de entrada. Para WhatsApp, banco, redes, YouTube e GPS, ele dá conta. Em jogos pesados, é preciso baixar a qualidade gráfica, e a foto no modo de 200 MP pode levar um instante para ser salva. São 8 GB de RAM e 256 GB de armazenamento, espaço suficiente para anos de fotos.",
+    "Resistência é onde ele se destaca de verdade. Ele tem certificação IP66, IP68 e IP69, que cobre poeira, mergulho e jato de água, além do teste militar MIL-STD-810H e vidro Gorilla Glass 7i. É o tipo de celular que aguenta cair da mesa do bar, tomar chuva na moto e ir para a piscina com as crianças.",
+    "A bateria de 5.200 mAh fecha o dia com folga em uso normal, e a Motorola fala em até dois dias com uso leve. O carregamento de 33 W não é dos mais rápidos, mas recupera boa parte da carga enquanto você toma café e se arruma."
+   ],
+   "preco": "Ele chegou ao Brasil por R$ 2.799. Na nossa pesquisa de 23/11, o menor preço estava na Amazon, R$ 1.599 na versão de 256 GB, e na Magalu ele aparecia por R$ 2.339 no Pix. Não conseguimos consultar o Mercado Livre desta vez. Para comparar, o Moto G77, que usa o mesmo processador e tem câmera de 108 MP, estava por R$ 1.589 na Amazon, e o Moto G86, com processador mais forte, por R$ 1.919.",
+   "atualizacoes": "Ele saiu de fábrica com Android 16. A Motorola promete três anos de atualizações de segurança, mas não diz quantas versões novas do Android ele vai receber. Isso pesa: o Moto G77, irmão com o mesmo processador, tem promessa de três atualizações do sistema e quatro anos e meio de segurança. Se você troca de celular a cada dois ou três anos, o G Max atende bem. Se pretende ficar mais tempo, é bom levar isso em conta.",
+   "para_quem": "Ele combina com quem tira foto de tudo, quer tela grande para série e vídeo, vive com o celular na rua, na chuva ou na obra, e costuma trocar de aparelho a cada dois ou três anos. Não é para quem joga pesado nem para quem quer ficar cinco anos com o mesmo celular.",
+   "veredito": "O Moto G Max entrega muito pelo preço: câmera que faz bonito, tela grande e brilhante, bateria para o dia inteiro e uma resistência que poucos têm nessa faixa. O ponto fraco é o processador de entrada e a promessa curta de atualizações. Até R$ 1.600 na versão de 256 GB, é boa compra. Abaixo de R$ 1.450, vale correr. Acima de R$ 1.900, o Moto G86 entrega um processador melhor pelo mesmo dinheiro."
+  }
  },
  {
   "celular": "galaxy-s26",
@@ -342,13 +362,40 @@
   "tipo": "comparativo",
   "categoria": "Comparativo",
   "titulo": "Galaxy S26 ou iPhone 17: qual vale mais o seu dinheiro?",
-  "resumo": "Dois topos de linha de tamanho parecido, com preços cada vez mais próximos. Comparamos tela, câmera, bateria e tempo de atualização para dizer qual compensa.",
+  "resumo": "O Galaxy S26 está perto de R$ 4.000 e o iPhone 17 passa de R$ 5.200. Comparamos tela, câmera, bateria e atualizações para dizer qual compensa.",
   "data": "2026-11-24",
   "teaser": true,
-  "pronto": false,
-  "chamada": "Dois topos de linha de tamanho parecido, com preços cada vez mais próximos. Comparamos tela, câmera, bateria e tempo de atualização para dizer qual compensa.",
-  "para_quem": "",
-  "veredito": ""
+  "pronto": true,
+  "chamada": "São dois topos de linha compactos, com tela de 6,3 polegadas, lançados por mais de R$ 7.400. Hoje, o Galaxy S26 custa uns R$ 1.300 a menos que o iPhone 17. Mostramos o que essa diferença compra e qual vale mais o seu dinheiro.",
+  "para_quem": "O Galaxy S26 combina com quem quer um topo de linha pequeno e leve, usa zoom para fotografar show, palco e viagem, gosta de mexer nas configurações e quer garantia longa de atualizações. O iPhone 17 combina com quem já tem Mac, iPad, AirPods ou Apple Watch, grava muito vídeo para redes sociais e se importa com o valor de revenda.",
+  "veredito": "Os dois são ótimos e vão durar muitos anos. O iPhone 17 grava vídeo melhor, carrega mais rápido e conversa com o resto da Apple. O Galaxy S26 tem zoom óptico de 3x, 12 GB de RAM, promessa formal de sete anos de atualizações e custa uns R$ 1.300 a menos. Para a maioria das pessoas, nossa indicação é o Galaxy S26: até R$ 4.000 na versão de 256 GB é bom preço, e abaixo de R$ 3.600 vale correr. Se você já vive no mundo da Apple ou grava muito vídeo, vá de iPhone 17: até R$ 5.300 é bom preço por ele.",
+  "indicado": "galaxy-s26",
+  "alvo": {
+   "versao": "256 GB",
+   "otimo": 3600,
+   "bom": 4000,
+   "caro": 4500
+  },
+  "alvoVs": {
+   "versao": "256 GB",
+   "otimo": 4900,
+   "bom": 5300,
+   "caro": 5800
+  },
+  "secoes": {
+   "abertura": "Quem quer um topo de linha que caiba no bolso acaba olhando para esses dois. O Galaxy S26 foi lançado em fevereiro por R$ 7.499, e o iPhone 17, em setembro de 2025, por R$ 7.999. Na nossa pesquisa de 23/11, o Galaxy S26 de 256 GB estava por R$ 3.998 na Amazon e R$ 4.229 na Magalu. O iPhone 17, que também começa com 256 GB, aparecia por R$ 5.273 na Amazon e R$ 5.599 na Magalu. A diferença gira em torno de R$ 1.300.",
+   "oferece": [
+    "Na mão, os dois têm tela de 6,3 polegadas com 120 Hz, então a rolagem é lisa e o celular cabe no bolso da calça. O Galaxy é um pouco mais leve e mais fino, com 167 gramas e 7,2 mm, contra 177 gramas e 8 mm do iPhone. A tela do iPhone tem resolução um pouco maior, mas, no Instagram ou na série do fim de semana, as duas são bonitas e bem brilhantes.",
+    "No desempenho, nenhum dos dois vai te deixar esperando. O Exynos 2600 do Galaxy e o A19 do iPhone rodam jogo pesado, edição de vídeo e dezenas de apps abertos sem esforço. O Galaxy tem 12 GB de RAM, contra 8 GB do iPhone, o que ajuda a manter os apps abertos quando você troca de um para outro o dia inteiro.",
+    "Na câmera, a diferença está no tipo de foto. O Galaxy tem uma teleobjetiva com zoom óptico de 3x, que faz diferença no show, na apresentação da escola e naquela foto do prato sem chegar perto da mesa. O iPhone não tem teleobjetiva, mas tem principal e ultrawide de 48 MP, e a foto do grupo e da paisagem sai com mais detalhe. Nos testes da imprensa especializada, o iPhone costuma sair na frente nas fotos do dia a dia e, principalmente, no vídeo. A câmera da frente também é melhor no iPhone, com 18 MP contra 12 MP.",
+    "Os dois fecham um dia de uso normal. A diferença está na tomada: o iPhone aceita 40 W com fio, enquanto o Galaxy fica nos 25 W, então o iPhone recupera a carga mais rápido enquanto você se arruma. Os dois carregam sem fio.",
+    "E tem a questão do ecossistema. Se você já usa Mac, AirPods ou Apple Watch, o iPhone se encaixa sem esforço, e o valor de revenda costuma ser maior. O Galaxy conversa bem com computadores Windows e com relógios e fones da Samsung, e dá mais liberdade para personalizar o aparelho."
+   ],
+   "preco": "O Galaxy S26 foi lançado por R$ 7.499 e o iPhone 17 por R$ 7.999. Na nossa pesquisa de 23/11, o Galaxy S26 de 256 GB estava a R$ 3.998 na Amazon e R$ 4.229 na Magalu. O iPhone 17 de 256 GB estava a R$ 5.273 na Amazon e R$ 5.599 na Magalu. Os menores preços que já registramos foram R$ 3.523 para o Galaxy S26 e R$ 4.669 para o iPhone 17.",
+   "atualizacoes": "Aqui o Galaxy leva vantagem no papel. A Samsung promete sete anos de atualizações do sistema e de segurança para o Galaxy S26, o que leva o aparelho até 2033. A Apple não divulga um prazo oficial, mas os iPhones costumam ser atualizados por cinco a sete anos, o que coloca o iPhone 17 entre 2030 e 2032. Na prática, os dois vão durar mais do que a maioria das pessoas fica com um celular.",
+   "para_quem": "O Galaxy S26 combina com quem quer um topo de linha pequeno e leve, usa zoom para fotografar show, palco e viagem, gosta de mexer nas configurações e quer garantia longa de atualizações. O iPhone 17 combina com quem já tem Mac, iPad, AirPods ou Apple Watch, grava muito vídeo para redes sociais e se importa com o valor de revenda.",
+   "veredito": "Os dois são ótimos e vão durar muitos anos. O iPhone 17 grava vídeo melhor, carrega mais rápido e conversa com o resto da Apple. O Galaxy S26 tem zoom óptico de 3x, 12 GB de RAM, promessa formal de sete anos de atualizações e custa uns R$ 1.300 a menos. Para a maioria das pessoas, nossa indicação é o Galaxy S26: até R$ 4.000 na versão de 256 GB é bom preço, e abaixo de R$ 3.600 vale correr. Se você já vive no mundo da Apple ou grava muito vídeo, vá de iPhone 17: até R$ 5.300 é bom preço por ele."
+  }
  },
  {
   "slug": "poco-x8-pro-vs-moto-g86",
@@ -358,13 +405,40 @@
   "tipo": "comparativo",
   "categoria": "Comparativo",
   "titulo": "POCO X8 Pro ou Moto G86: bateria gigante ou resistência total?",
-  "resumo": "Um aposta em bateria e carregamento rápido, o outro em resistência à água e poeira. Mostramos qual combina com o seu dia a dia.",
+  "resumo": "O POCO X8 Pro tem processador muito mais forte, bateria maior e recarga de 100 W. O Moto G86 é mais leve, tem certificação militar e custa uns R$ 800 a menos.",
   "data": "2026-11-24",
   "teaser": true,
-  "pronto": false,
-  "chamada": "Um aposta em bateria e carregamento rápido, o outro em resistência à água e poeira. Mostramos qual combina com o seu dia a dia.",
-  "para_quem": "",
-  "veredito": ""
+  "pronto": true,
+  "chamada": "Os dois aguentam chuva e mergulho, então a briga não é só de resistência. O POCO X8 Pro aposta em desempenho e bateria; o Moto G86, em leveza, certificação militar e preço. Mostramos qual combina com o seu dia a dia.",
+  "para_quem": "O POCO X8 Pro combina com quem joga no celular, passa o dia longe da tomada, quer recarga rapidíssima e pretende ficar quatro anos ou mais com o aparelho. O Moto G86 combina com quem quer gastar menos de R$ 2 mil, usa o celular para redes, fotos e trabalho, trabalha na rua e prefere um aparelho mais leve, com cartão de memória e garantia da Motorola.",
+  "veredito": "O POCO X8 Pro é o celular mais completo: processador de outra categoria, bateria maior, recarga de 100 W e mais anos de atualização. O Moto G86 é mais leve, tem certificação militar, aceita cartão de memória e custa uns R$ 800 a menos. Para quem pode chegar perto de R$ 2.750, nossa indicação é o POCO X8 Pro: até R$ 2.500 na versão de 256 GB é bom preço, e abaixo de R$ 2.300 vale correr. Se o orçamento para em R$ 2 mil, o Moto G86 é ótima escolha, mas espere ele voltar para perto de R$ 1.500.",
+  "indicado": "poco-x8-pro",
+  "alvo": {
+   "versao": "256 GB",
+   "otimo": 2300,
+   "bom": 2500,
+   "caro": 2900
+  },
+  "alvoVs": {
+   "versao": "256 GB",
+   "otimo": 1400,
+   "bom": 1500,
+   "caro": 1700
+  },
+  "secoes": {
+   "abertura": "Na faixa entre R$ 2 mil e R$ 3 mil, esses dois aparecem em quase toda busca. O Moto G86 chegou em maio de 2025 por R$ 2.499 e virou um dos Moto G mais vendidos. O POCO X8 Pro foi lançado oficialmente no Brasil em março de 2026. Na nossa pesquisa de 23/11, o G86 de 256 GB estava por R$ 1.919 na Amazon e R$ 1.999 na Magalu, e o POCO X8 Pro de 256 GB, por R$ 2.745 na Amazon e R$ 2.974 na Magalu. A diferença fica perto de R$ 800.",
+   "oferece": [
+    "A maior diferença está por dentro. O POCO X8 Pro usa o Dimensity 8500 Ultra, um processador que roda jogo pesado com gráfico no alto e continua liso depois de uma hora de partida. O Dimensity 7300 do Moto G86 dá conta de WhatsApp, Instagram, banco e jogos leves sem engasgar, mas não é feito para quem joga sério.",
+    "Na bateria, o POCO também sai na frente. São 6.500 mAh com tecnologia de silício-carbono e recarga de 100 W: num teste da Oficina da Net, ele foi de zero a cheio em 42 minutos, o tempo de um banho e um café. O Moto G86 tem 5.200 mAh e recarga de 30 W, o que já fecha o dia com folga para a maioria das pessoas, mas pede mais tempo na tomada.",
+    "Na resistência, os dois aguentam muito. O Moto G86 tem IP68 e IP69 e o POCO X8 Pro tem IP68 e IP69K, então ambos encaram chuva, poeira, mergulho e jato de água. A vantagem do G86 é o teste militar MIL-STD-810H, que cobre queda e variação de temperatura, e o peso: são 185 gramas contra 201 gramas do POCO, diferença que se sente no bolso ao fim do dia.",
+    "As telas são parecidas: AMOLED de 1.5K com 120 Hz nos dois, com 6,59 polegadas no POCO e 6,67 polegadas no Moto. Na câmera, os dois têm principal de 50 MP com estabilização e ultrawide de 8 MP, e fazem fotos bonitas de dia. O POCO grava em 4K a 60 quadros, mais fluido para quem filma esporte e viagem, e o G86 tem câmera da frente de 32 MP, melhor para selfie e chamada de vídeo. O G86 ainda aceita cartão de memória, e o POCO não.",
+    "Um cuidado na hora de comprar: muitas ofertas do POCO X8 Pro são da versão global, vendida por lojistas parceiros dentro das grandes lojas. Vale conferir quem é o vendedor e como funciona a garantia antes de fechar. O Moto G86 é vendido pela própria Motorola e pelas grandes lojas, com garantia da marca no Brasil."
+   ],
+   "preco": "O Moto G86 foi lançado por R$ 2.499. Na nossa pesquisa de 23/11, ele estava a R$ 1.919 na Amazon e R$ 1.999 na Magalu, na versão de 256 GB. O POCO X8 Pro de 256 GB estava a R$ 2.745 na Amazon e R$ 2.974 na Magalu, as duas ofertas da versão global. Os menores preços que já registramos foram R$ 1.334 para o Moto G86 e R$ 1.999 para o POCO X8 Pro.",
+   "atualizacoes": "O POCO X8 Pro sai de fábrica com Android 16 e HyperOS 3, e a Xiaomi promete quatro anos de atualizações do sistema e seis anos de segurança. O Moto G86 saiu com Android 15, com promessa de duas atualizações do sistema, até o Android 17, e quatro anos de segurança. Se você fica três anos com o celular, os dois atendem. Se pretende ficar mais, o POCO vai continuar atualizado por mais tempo.",
+   "para_quem": "O POCO X8 Pro combina com quem joga no celular, passa o dia longe da tomada, quer recarga rapidíssima e pretende ficar quatro anos ou mais com o aparelho. O Moto G86 combina com quem quer gastar menos de R$ 2 mil, usa o celular para redes, fotos e trabalho, trabalha na rua e prefere um aparelho mais leve, com cartão de memória e garantia da Motorola.",
+   "veredito": "O POCO X8 Pro é o celular mais completo: processador de outra categoria, bateria maior, recarga de 100 W e mais anos de atualização. O Moto G86 é mais leve, tem certificação militar, aceita cartão de memória e custa uns R$ 800 a menos. Para quem pode chegar perto de R$ 2.750, nossa indicação é o POCO X8 Pro: até R$ 2.500 na versão de 256 GB é bom preço, e abaixo de R$ 2.300 vale correr. Se o orçamento para em R$ 2 mil, o Moto G86 é ótima escolha, mas espere ele voltar para perto de R$ 1.500."
+  }
  },
  {
   "slug": "melhores-celulares-ate-1500",

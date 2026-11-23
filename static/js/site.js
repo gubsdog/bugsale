@@ -116,8 +116,10 @@ function header(current){
       <div class="hdr-tools">
         <button type="button" class="hdr-ico hdr-lupa" aria-label="Buscar modelo" aria-expanded="false" aria-controls="busca">${ICO_LUPA}</button>
         <button type="button" class="hdr-ico hdr-tema" aria-label="Alternar modo claro e escuro">${ICO_SOL}${ICO_LUA}</button>
+        <button type="button" class="hdr-ico hdr-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuM"><span></span><span></span><span></span></button>
       </div>
     </div>
+    <nav class="menu-m" id="menuM" aria-label="Menu" hidden>${links.map(([href,label,key])=>`<a href="${href}" class="${key===current?"on":""}">${key==="comparador"?"Comparador":label}<span aria-hidden="true">→</span></a>`).join("")}</nav>
     <div class="busca" id="busca" hidden>
       <div class="busca-in">
         <label class="busca-campo">${ICO_LUPA}<input type="search" placeholder="Buscar modelo de celular" aria-label="Buscar modelo de celular" autocomplete="off"><button type="button" class="busca-limpa" aria-label="Limpar" hidden>×</button></label>
@@ -134,6 +136,12 @@ function header(current){
   /* o modo escolhido segue a pessoa de página em página (também onde o navegador não guarda a escolha) */
 
   document.addEventListener("click", e=>{ const a = e.target.closest && e.target.closest("a[href]"); if(a){ const h = comTema(a.getAttribute("href")); if(h) a.setAttribute("href", h); } }, true);
+  /* menu sanduíche (celular) */
+  const bMenu = el.querySelector(".hdr-menu"), menuM = el.querySelector(".menu-m");
+  const abreMenu = on => { menuM.hidden = !on; bMenu.setAttribute("aria-expanded", on); bMenu.setAttribute("aria-label", on ? "Fechar menu" : "Abrir menu"); document.documentElement.classList.toggle("menu-on", on); };
+  bMenu.addEventListener("click", e=>{ e.stopPropagation(); if(!painel.hidden) abre(false); abreMenu(menuM.hidden); });
+  document.addEventListener("click", e=>{ if(!menuM.hidden && !menuM.contains(e.target)) abreMenu(false); });
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !menuM.hidden){ abreMenu(false); bMenu.focus(); } });
   /* busca */
   const lupa = el.querySelector(".hdr-lupa"), painel = el.querySelector(".busca"), fundo = el.querySelector(".busca-fundo");
   const input = painel.querySelector("input"), res = painel.querySelector(".busca-res"), limpa = painel.querySelector(".busca-limpa");
@@ -146,13 +154,13 @@ function header(current){
     res.innerHTML = achou.length ? `<p class="busca-t">Modelos</p>${achou.map(item).join("")}` : `<p class="busca-t">Nenhum modelo encontrado para “${esc(input.value)}”.</p>`;
   };
   const abre = on => { painel.hidden = !on; fundo.hidden = !on; lupa.setAttribute("aria-expanded", on); document.documentElement.classList.toggle("busca-on", on); if(on){ desenha(); setTimeout(()=>input.focus(), 30); } };
-  lupa.addEventListener("click", ()=>abre(painel.hidden));
+  lupa.addEventListener("click", ()=>{ abreMenu(false); abre(painel.hidden); });
   fundo.addEventListener("click", ()=>abre(false));
   input.addEventListener("input", desenha);
   limpa.addEventListener("click", ()=>{ input.value=""; desenha(); input.focus(); });
   document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !painel.hidden){ abre(false); lupa.focus(); } });
   /* barra inferior do celular (sem mudanças) */
-  if(!document.querySelector(".dock")){
+  if(!v2 && !document.querySelector(".dock")){
     const isBrand = ["Samsung","Apple","Motorola"].includes(current);
     const brands = MENU.filter(([,,k])=>["Samsung","Apple","Motorola"].includes(k));
     const dock = document.createElement("nav");
@@ -353,7 +361,7 @@ function renderHome(){
   main.classList.add("h2");
   main.innerHTML = `
     <a class="h-cmp" href="${R}comparador.html" aria-label="Abrir o comparador de celulares">
-      <span class="h-cmp-txt"><span class="h-cmp-k">Comparador Bugsale</span><b>Em dúvida entre dois celulares?</b><span>Coloque lado a lado ficha, preço de hoje e quanto tempo cada um recebe atualização.</span><span class="h-cmp-btn">Comparar agora →</span></span>
+      <span class="h-cmp-txt"><span class="h-cmp-k">Comparador Bugsale</span><b>Em dúvida entre dois celulares?</b><span class="h-cmp-d">Coloque lado a lado ficha, preço de hoje e quanto tempo cada um recebe atualização.</span><span class="h-cmp-m">Compare lado a lado os modelos que você está de olho.</span><span class="h-cmp-btn">Comparar agora →</span></span><span class="h-cmp-seta" aria-hidden="true">→</span>
       <span class="h-cmp-art" aria-hidden="true">${(()=>{ const a=P("galaxy-s26-ultra"), b=P("iphone-17"); return `<img class="c1" src="${R}img/s26u-t.webp" alt=""><span class="vs">VS</span><img class="c2" src="${R}img/ip17-t.webp" alt="">`; })()}</span></a>
     <section class="h-top" aria-label="Destaques">${first ? heroHTML2(first) : ""}<div class="h-lados">${lado.map(ladoHTML2).join("")}</div></section>
     ${recentes.length ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${recentes.map(recenteHTML2).join("")}</div>` : ""}
@@ -361,8 +369,8 @@ function renderHome(){
     <section class="h-ofertas"><div class="o2-lista">${ofs.map(ofertaLinha2).join("")}</div>
       <a class="grupo2" href="${GRUPO}" target="_blank" rel="noopener"><span class="grupo2-img"><img src="${R}img/grupo-ofertas.webp" alt="Celulares de várias marcas lado a lado" loading="lazy"></span>
         <span class="grupo2-txt"><span class="grupo2-logo">${LOCKUP}</span><b>Entre no nosso grupo de ofertas de celulares</b><span>Ofertas diárias, conferidas com o histórico de preço. Só promoção que vale o seu Pix.</span><span class="grupo2-btn">Entrar no grupo</span></span></a>
-    </section>
-    <small class="o2-nota">Preços pesquisados${ofs[0] && ofs[0].p.ofertas.pesquisa ? ` em ${dataHora(ofs[0].p.ofertas.pesquisa)}` : ""}.</small>`;
+      <small class="o2-nota">Preços pesquisados${ofs[0] && ofs[0].p.ofertas.pesquisa ? ` em ${dataHora(ofs[0].p.ofertas.pesquisa)}` : ""}.</small>
+    </section>`;
   main.querySelectorAll(".locked").forEach(c=>{
     const go = ()=>{ const ch = c.querySelector(".chip2"); if(!ch) return; ch.classList.remove("shine"); void ch.offsetWidth; ch.classList.add("shine"); };
     c.addEventListener("click", e=>{ if(!e.target.closest(".prev2")) go(); });
@@ -726,12 +734,11 @@ function renderArticle(){
     </figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
-      ${a.tipo==="ocasiao" ? alvoHTML(a, p) : ""}
       <h2>O que ele oferece</h2>${S.oferece ? S.oferece.map(x=>Array.isArray(x) ? `<p><b>${esc(x[0])}.</b> ${esc(x[1])}</p>` : `<p>${esc(x)}</p>`).join("") : textoOferece(a.phone, p)}
       ${cmp ? fichaCmpHTML(p, cmp) : `<div class="ficha"><h3>Ficha técnica</h3><table>${ficha}</table></div>`}
       <h2>Quanto custa hoje</h2>${para(S.preco ? esc(S.preco) : preco)}
       ${cmp ? precoChart2HTML(p, cmp) : precoChartHTML(p)}
-      ${cmp ? `<div class="alvo-cmp">${alvoHTML(a, p).replace("<b>", `<b>${esc(p.nome)} · `)}${alvoHTML({alvo:a.alvoVs}, cmp).replace("<b>", `<b>${esc(cmp.nome)} · `)}</div>` : a.tipo==="ocasiao" ? "" : alvoHTML(a, p)}
+      ${cmp ? `<div class="alvo-cmp">${alvoHTML(a, p).replace("<b>", `<b>${esc(p.nome)} · `)}${alvoHTML({alvo:a.alvoVs}, cmp).replace("<b>", `<b>${esc(cmp.nome)} · `)}</div>` : alvoHTML(a, p)}
       <h2>Atualizações</h2>${para(S.atualizacoes ? esc(S.atualizacoes) : upd + textoUpd(p))}
       ${galeriaHTML(p)}
       <h2>Para quem vale</h2>${para(esc(b[1]))}
@@ -996,6 +1003,7 @@ function painelRk(x, pos, ordem){
       <line x1="128" y1="362" x2="180" y2="316"/><circle cx="180" cy="316" r="3"/><line x1="272" y1="122" x2="232" y2="140"/><circle cx="232" cy="140" r="3"/>
       <line x1="272" y1="282" x2="228" y2="268"/><circle cx="228" cy="268" r="3"/></g></svg>
       ${tel}${etq}</div>
+    <button type="button" class="xp-btn xp-cmp" data-compare="${c.id}">Comparar com outro</button>
     <div class="xp-dir">
       <div class="xp-tit"><span class="xp-selo">${pos}º em ${ORD_NOME[ordem]}</span><h3>${esc(c.nome)}</h3><p>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · ${ICO_NBR}`}${resumoCat(c)?" · "+esc(resumoCat(c)):""}</p></div>
       <div class="xp-aneis">
@@ -1004,7 +1012,7 @@ function painelRk(x, pos, ordem){
         <div class="xp-nota">${anel(n.final,"var(--v-gold)")}<div><small>Nota final</small><span>${n.critica!=null?"Crítica + laboratório":"Só laboratório e ficha"}</span></div></div>
       </div>
       ${regua}
-      <div class="xp-pe">${art?`<a class="xp-btn p" href="${R}artigos/${art.id}/">Ler a análise</a>`:""}<button type="button" class="xp-btn${art?"":" p"}" data-compare="${c.id}">Comparar com outro</button></div>
+      ${art?`<div class="xp-pe"><a class="xp-btn p" href="${R}artigos/${art.id}/">Ler a análise</a></div>`:""}
       ${n.est.length?`<small class="xp-obs">* Estimado pela ficha técnica, sem medição publicada.</small>`:""}
     </div></li>`;
 }
@@ -1028,10 +1036,12 @@ function renderRanking2(){
     <div class="rk-filtros" role="toolbar" aria-label="Ordenar e filtrar">
       <b>Ordenar por:</b>
       ${[["cb","Custo-benefício"],["nota","Nota final"],["critica","Nota crítica"]].map(([k,l])=>`<button type="button" class="rk-f" data-ord="${k}">${l}</button>`).join("")}
+      <div class="rk-ordm"><button type="button" class="rk-ordm-b" aria-haspopup="true" aria-expanded="false">Ordenar por: <b id="rkOrdNome">Custo-benefício</b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="rk-ordm-l" role="menu" hidden>${[["cb","Custo-benefício","Nota final em relação ao preço de hoje"],["nota","Nota final","Crítica + laboratório e ficha"],["critica","Nota da crítica","Média das análises publicadas"]].map(([k,l,d])=>`<button type="button" role="menuitemradio" data-ord="${k}"><b>${l}</b><small>${d}</small></button>`).join("")}</div></div>
       <span class="rk-sep" aria-hidden="true"></span>
       ${[["topo","Topo de linha"],["intermediario","Intermediário"],["entrada","Entrada"]].map(([k,l])=>`<button type="button" class="rk-f" data-seg="${k}">${l}</button>`).join("")}
     </div>
-    <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span>Crítica</span><span>Custo-benefício</span><span>Nota final</span><span>Preço aprox. hoje</span></div><ol class="rk-lista" id="rkLista"></ol>
+    <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span>Crítica</span><span>Custo-benefício</span><span>Nota final</span><span>Preço aprox. hoje</span><span></span></div><p class="rk-dica">Clique em um celular para ver a análise completa.</p><ol class="rk-lista" id="rkLista"></ol>
       <p class="rk-nota" id="rkNota"></p>
       <p class="rk-legenda">${ICO_NBR} Venda no Brasil não confirmada: a ficha é da versão global e ainda não há versão oficial confirmada aqui.</p></section>
     <details class="rk-calc"><summary>Como calculamos</summary><div class="rk-calc-in">
@@ -1062,11 +1072,15 @@ function renderRanking2(){
         <span class="rk-v" data-l="Custo-benefício">${x.cb!=null ? nota1(x.cb) : `<em class="rk-sem">sem preço</em>`}</span>
         <span class="rk-v rk-final" data-l="Nota final">${nota1(x.n.final)}</span>
         <span class="rk-v rk-preco" data-l="Preço aproximado hoje">${x.n.preco ? "≈ "+brl(x.n.preco) : `<em class="rk-sem">em pesquisa</em>`}</span>
+        <span class="rk-seta" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </li>`; }).join("") || `<li class="rk-vazio">Ainda não temos aparelhos suficientes com esses dados nesta categoria.</li>`;
     const total = L.filter(x=>!seg || x.c.seg===seg).length;
     document.getElementById("rkNota").textContent = ordem==="cb" ? `Custo-benefício considera só os aparelhos que já têm preço pesquisado (${arr.length} de ${total}). Os demais entram conforme a pesquisa semanal avança.` :
       ordem==="critica" ? `Mostrando só aparelhos com análises publicadas (${arr.length} de ${total}).` : `Top 10 entre ${total} aparelhos${seg?" da categoria "+SEG_NOME[seg]:""}.`;
-    main.querySelectorAll("[data-ord]").forEach(b=>b.classList.toggle("on", b.dataset.ord===ordem));
+    main.querySelectorAll("[data-ord]").forEach(b=>{ b.classList.toggle("on", b.dataset.ord===ordem); if(b.getAttribute("role")==="menuitemradio") b.setAttribute("aria-checked", b.dataset.ord===ordem); });
+    document.getElementById("rkLista").dataset.ord = ordem;
+    document.getElementById("rkOrdNome").textContent = {cb:"Custo-benefício", nota:"Nota final", critica:"Nota da crítica"}[ordem];
+    const p1 = document.querySelector("#rkLista .rk-item"); if(p1 && !draw.dica){ p1.classList.add("dica"); draw.dica = 1; }
     main.querySelectorAll("[data-seg]").forEach(b=>b.classList.toggle("on", b.dataset.seg===seg));
   };
   const lista = document.getElementById("rkLista");
@@ -1083,7 +1097,12 @@ function renderRanking2(){
     inclinaRk(li.nextElementSibling);
   });
   lista.addEventListener("keydown", e=>{ if((e.key==="Enter"||e.key===" ") && e.target.classList.contains("rk-item")){ e.preventDefault(); e.target.click(); } });
-  main.querySelectorAll("[data-ord]").forEach(b=>b.addEventListener("click", ()=>{ ordem=b.dataset.ord; draw(); }));
+  const ordB = main.querySelector(".rk-ordm-b"), ordL = main.querySelector(".rk-ordm-l");
+  const abreOrd = on => { ordL.hidden = !on; ordB.setAttribute("aria-expanded", on); };
+  ordB.addEventListener("click", e=>{ e.stopPropagation(); abreOrd(ordL.hidden); });
+  document.addEventListener("click", e=>{ if(!ordL.hidden && !ordL.contains(e.target)) abreOrd(false); });
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !ordL.hidden){ abreOrd(false); ordB.focus(); } });
+  main.querySelectorAll("[data-ord]").forEach(b=>b.addEventListener("click", ()=>{ ordem=b.dataset.ord; abreOrd(false); draw(); }));
   main.querySelectorAll("[data-seg]").forEach(b=>b.addEventListener("click", ()=>{ seg = seg===b.dataset.seg ? "" : b.dataset.seg; draw(); }));
   draw();
 }

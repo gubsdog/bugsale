@@ -230,7 +230,7 @@
   "specs": {
    "lancamento": "Fev/2026",
    "precoN": 7499,
-   "atualN": 4188,
+   "atualN": 4114,
    "minimoN": 3523,
    "tela": "6,3\" Dynamic LTPO AMOLED 2X · 1080×2340",
    "taxaN": 120,
@@ -256,7 +256,7 @@
    "updSeg": null,
    "updSegN": null,
    "preco": "R$ 7.499",
-   "atual": "R$ 4.188",
+   "atual": "R$ 4.114",
    "minimo": "R$ 3.523",
    "taxa": "120 Hz",
    "bateria": "4.300 mAh",
@@ -269,25 +269,26 @@
    "posicao": "50% 55%"
   },
   "ofertas": {
-   "pesquisa": "",
+   "pesquisa": "2026-11-23T10:30",
    "lista": [
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Amazon",
+     "preco": 3998.7,
+     "url": "https://www.amazon.com.br/dp/B0GKQTJD9P"
     },
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Magalu",
+     "preco": 4229.1,
+     "url": "https://www.magazineluiza.com.br/celular-samsung-galaxy-s26-preto-5g-256gb-galaxy-ai-63-12gb-ram-cam-tripla-50-12-10mp-bateria-4300mah-dual-chip/p/241149600/te/gs26/"
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-23",
+    "preco": 4114
+   }
+  ]
  },
  {
   "id": "galaxy-s26-ultra",
@@ -543,7 +544,7 @@
   "specs": {
    "lancamento": "Set/2025",
    "precoN": 7999,
-   "atualN": 5559,
+   "atualN": 5436,
    "minimoN": 4669,
    "tela": "6,3\" LTPO Super Retina XDR OLED · 1206×2622",
    "taxaN": 120,
@@ -569,7 +570,7 @@
    "updSeg": "Sem número oficial",
    "updSegN": null,
    "preco": "R$ 7.999",
-   "atual": "R$ 5.559",
+   "atual": "R$ 5.436",
    "minimo": "R$ 4.669",
    "taxa": "120 Hz",
    "bateria": "3.692 mAh",
@@ -578,22 +579,17 @@
    "updResumo": "Atualizações sem número oficial"
   },
   "ofertas": {
-   "pesquisa": "",
+   "pesquisa": "2026-11-23T10:30",
    "lista": [
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Amazon",
+     "preco": 5273.1,
+     "url": "https://www.amazon.com.br/dp/B0GQW2J4SK"
     },
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Magalu",
+     "preco": 5599.0,
+     "url": "https://www.magazineluiza.com.br/apple-iphone-17-256gb-azul-nevoa-63-48mp-ios-5g/p/241268300/te/ip17/"
     }
    ]
   },
@@ -617,6 +613,10 @@
     "data": "2026-11-14",
     "preco": 5699,
     "fonte": "zoom"
+   },
+   {
+    "data": "2026-11-23",
+    "preco": 5436
    }
   ],
   "historicoFonte": "Zoom"
@@ -630,7 +630,7 @@
   "specs": {
    "lancamento": "Mai/2025",
    "precoN": 2499,
-   "atualN": 1936,
+   "atualN": 1959,
    "minimoN": 1334,
    "tela": "6,67\" pOLED · 1220×2712",
    "taxaN": 120,
@@ -656,7 +656,7 @@
    "updSeg": "4 anos",
    "updSegN": 4,
    "preco": "R$ 2.499",
-   "atual": "R$ 1.936",
+   "atual": "R$ 1.959",
    "minimo": "R$ 1.334",
    "taxa": "120 Hz",
    "bateria": "5.200 mAh",
@@ -665,21 +665,16 @@
    "updResumo": "2 atualizações do sistema · 4 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "2026-11-17T21:19",
+   "pesquisa": "2026-11-23T10:30",
    "lista": [
     {
-     "loja": "Mercado Livre",
-     "preco": 1891,
-     "url": "https://meli.la/1oGw4Dn"
-    },
-    {
      "loja": "Amazon",
-     "preco": 1919,
+     "preco": 1919.1,
      "url": "https://link.amazon/B0aZ6NVG5"
     },
     {
      "loja": "Magalu",
-     "preco": 1999,
+     "preco": 1999.0,
      "url": "https://magazineluiza.onelink.me/589508454/0tuo286b"
     }
    ]
@@ -748,6 +743,10 @@
    {
     "data": "2026-11-17",
     "preco": 1936
+   },
+   {
+    "data": "2026-11-23",
+    "preco": 1959
    }
   ],
   "historicoFonte": "Zoom"
@@ -759,9 +758,9 @@
   "tipo": "Tradicional (barra)",
   "img": "gmax",
   "specs": {
-   "lancamento": "Ago/2026",
+   "lancamento": "Mai/2026",
    "precoN": 2799,
-   "atualN": 1804,
+   "atualN": 1969,
    "minimoN": 1439,
    "tela": "6,8\" pOLED · 1272×2772",
    "taxaN": 120,
@@ -776,9 +775,9 @@
    "camFrontal": "32 MP",
    "video": "Até 2K a 30 fps",
    "bateriaN": 5200,
-   "carga": "30 W",
-   "cargaN": 30,
-   "resist": "IP68/IP69",
+   "carga": "33 W",
+   "cargaN": 33,
+   "resist": "IP66/IP68/IP69 · MIL-STD-810H",
    "pesoN": 183,
    "espessura": "7,3 mm",
    "sistema": "Android 16",
@@ -787,7 +786,7 @@
    "updSeg": "3 anos",
    "updSegN": 3,
    "preco": "R$ 2.799",
-   "atual": "R$ 1.804",
+   "atual": "R$ 1.969",
    "minimo": "R$ 1.439",
    "taxa": "120 Hz",
    "bateria": "5.200 mAh",
@@ -800,25 +799,26 @@
    "posicao": "45% 40%"
   },
   "ofertas": {
-   "pesquisa": "",
+   "pesquisa": "2026-11-23T10:30",
    "lista": [
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Amazon",
+     "preco": 1599.0,
+     "url": "https://www.amazon.com.br/dp/B0GZQX7CBJ"
     },
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Magalu",
+     "preco": 2339.1,
+     "url": "https://www.magazineluiza.com.br/smartphone-motorola-moto-g-max-256gb-5g-8gb-ram-8gb-ram-boost-inteligente-grafite-68-cam-dupla-200mp-8mp-selfie-32mp/p/241890500/te/srmt/"
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-23",
+    "preco": 1969
+   }
+  ]
  },
  {
   "id": "edge-70",
@@ -1051,7 +1051,7 @@
   "specs": {
    "lancamento": "Mar/2026",
    "precoN": null,
-   "atualN": 2208,
+   "atualN": 2860,
    "minimoN": 1999,
    "tela": "6,59\" AMOLED · 1268×2756",
    "taxaN": 120,
@@ -1068,7 +1068,7 @@
    "bateriaN": 6500,
    "carga": "100 W",
    "cargaN": 100,
-   "resist": "IP68",
+   "resist": "IP68/IP69K",
    "pesoN": 201.5,
    "peso": "201,5 g",
    "espessura": "8,4 mm",
@@ -1078,7 +1078,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": null,
-   "atual": "R$ 2.208",
+   "atual": "R$ 2.860",
    "minimo": "R$ 1.999",
    "taxa": "120 Hz",
    "bateria": "6.500 mAh",
@@ -1086,25 +1086,26 @@
    "updResumo": "4 atualizações do sistema · 6 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "",
+   "pesquisa": "2026-11-23T10:30",
    "lista": [
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Amazon",
+     "preco": 2745.5,
+     "url": "https://www.amazon.com.br/dp/B0G2F7D1FH"
     },
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Magalu",
+     "preco": 2974.15,
+     "url": "https://www.magazineluiza.com.br/celular-xiaomi-poco-x8-pro-de-256gb-8gb-ram-preto-global-xiaomi/p/cge45d1ch9/te/pc8p/"
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-23",
+    "preco": 2860
+   }
+  ]
  },
  {
   "id": "poco-x8-pro-max",
