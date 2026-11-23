@@ -8,7 +8,7 @@
   "specs": {
    "lancamento": "Set/2025",
    "precoN": 899,
-   "atualN": 753,
+   "atualN": 767,
    "minimoN": 533,
    "tela": "6,7\" PLS LCD · 720×1600",
    "taxaN": 90,
@@ -34,7 +34,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": "R$ 899",
-   "atual": "R$ 753",
+   "atual": "R$ 767",
    "minimo": "R$ 533",
    "taxa": "90 Hz",
    "bateria": "5.000 mAh",
@@ -61,7 +61,13 @@
      "url": ""
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-23",
+    "preco": 767
+   }
+  ]
  },
  {
   "id": "galaxy-a17-5g",
@@ -140,7 +146,7 @@
   "specs": {
    "lancamento": "Mar/2026",
    "precoN": 3599,
-   "atualN": 1891,
+   "atualN": 1896,
    "minimoN": 1457,
    "tela": "6,7\" Super AMOLED Plus · 1080×2340",
    "taxaN": 120,
@@ -166,7 +172,7 @@
    "updSeg": null,
    "updSegN": null,
    "preco": "R$ 3.599",
-   "atual": "R$ 1.891",
+   "atual": "R$ 1.896",
    "minimo": "R$ 1.457",
    "taxa": "120 Hz",
    "bateria": "5.000 mAh",
@@ -217,6 +223,10 @@
    {
     "data": "2026-11-17",
     "preco": 1891
+   },
+   {
+    "data": "2026-11-23",
+    "preco": 1896
    }
   ],
   "historicoFonte": "Zoom"
@@ -1243,8 +1253,8 @@
   "img": "razr-flex",
   "novidade": true,
   "foto": {
-   "credito": "Imagem ilustrativa criada pela Bugsale; o aparelho ainda não foi apresentado",
-   "posicao": "60% 45%"
+   "credito": "Imagem: divulgação",
+   "posicao": "50% 55%"
   },
   "specs": {
    "lancamento": "Previsto para dez/2026 ou início de 2027 (não confirmado)",
