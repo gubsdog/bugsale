@@ -1175,6 +1175,16 @@ function infoLanc(c){
   const upd = c.upd ? `Atualizações: ${c.upd.replace(/\(([^)]+)\)/g,"de $1")}` : (updMarca(c.marca) ? `Sem prazo informado; ${updMarca(c.marca)}` : "Atualizações: não informado");
   return `<span class="cp-info"><span>${linha1}</span><span>${esc(upd)}</span></span>`;
 }
+/* comparador: quem faz sentido comparar com quem (categoria do catálogo + preço de hoje) */
+const SEG_RANK = {entrada:0, intermediario_entrada:1, intermediario:2, intermediario_premium:3, topo_de_linha:4};
+const SEG_LONGO = {entrada:"entrada", intermediario_entrada:"intermediário de entrada", intermediario:"intermediário", intermediario_premium:"intermediário premium", topo_de_linha:"topo de linha"};
+const precoRef = c => notasCat(c).preco || lancPreco(c) || null;
+function distCmp(a, b){
+  const ra = SEG_RANK[a.segOrig] ?? 2, rb = SEG_RANK[b.segOrig] ?? 2;
+  const pa = precoRef(a), pb = precoRef(b);
+  return Math.abs(ra - rb) + (pa && pb ? 1.5*Math.abs(Math.log(pa/pb)) : .6) + (a.formato !== b.formato ? .5 : 0);
+}
+const parecido = (a, b) => distCmp(a, b) <= 1.1;
 function renderComparador(){
   const main = document.getElementById("content");
   const C = CAT(), byId = id => C.find(c=>c.id===id);
@@ -1189,12 +1199,34 @@ function renderComparador(){
       <select class="cp-sel cp-marca" aria-label="Marca do celular ${i+1}"><option value="">Marca</option>${marcas.map(m=>`<option>${esc(m)}</option>`).join("")}</select>
       <select class="cp-sel cp-modelo" aria-label="Modelo do celular ${i+1}" disabled><option value="">Modelo</option></select>
       <div class="cp-foto"></div></div>`).join("")}</div>
+    <section class="cp-sug" id="cpSug" aria-live="polite"></section>
     <section class="cp-ficha" id="cpFicha"></section>
     <div class="cp-fix" id="cpFix" aria-hidden="true"><div class="cp-fix-in"></div></div>`;
   const slots = [...main.querySelectorAll(".cp-slot")];
-  const fillModelos = (i, marca) => { const m = slots[i].querySelector(".cp-modelo");
-    m.innerHTML = `<option value="">Modelo</option>` + C.filter(c=>c.marca===marca).sort((a,b)=>a.nome.localeCompare(b.nome)).map(c=>`<option value="${c.id}">${esc(c.nome)}</option>`).join("");
+  const visiveis = () => matchMedia("(max-width:760px)").matches ? 2 : N;
+  const refDe = i => { const j = sel.findIndex((id,k)=>id && k!==i); return j >= 0 ? byId(sel[j]) : null; };
+  const fillModelos = (i, marca, semRec) => { const m = slots[i].querySelector(".cp-modelo");
+    const lista = C.filter(c=>c.marca===marca).sort((a,b)=>a.nome.localeCompare(b.nome));
+    const ref = semRec ? null : refDe(i);
+    const opt = (c, rec) => `<option value="${c.id}">${esc(c.nome)}${rec ? "  ★ recomendado" : ""}</option>`;
+    if(ref && marca){
+      const bons = lista.filter(c=>c.id!==ref.id && parecido(c, ref)).sort((a,b)=>distCmp(a,ref)-distCmp(b,ref));
+      const outros = lista.filter(c=>!bons.includes(c));
+      m.innerHTML = `<option value="">Modelo</option>` + (bons.length ? `<optgroup label="Mais parecidos com o ${esc(ref.nome)}">${bons.map((c,k)=>opt(c, k===0)).join("")}</optgroup>` : "")
+        + (outros.length ? `<optgroup label="${bons.length ? "Outras categorias" : `Nenhum ${esc(marca)} na mesma faixa do ${esc(ref.nome)}`}">${outros.map(c=>opt(c)).join("")}</optgroup>` : "");
+    } else m.innerHTML = `<option value="">Modelo</option>` + lista.map(c=>opt(c)).join("");
     m.disabled = !marca; };
+  const sugestoes = () => {
+    const box = document.getElementById("cpSug");
+    const vazio = sel.slice(0, visiveis()).findIndex(x=>!x);
+    const ref = sel[0] ? byId(sel[0]) : sel.map(id=>id && byId(id)).find(Boolean);
+    if(!ref || vazio < 0){ box.innerHTML = ""; return; }
+    const ja = new Set(sel.filter(Boolean));
+    const cand = C.filter(c=>!ja.has(c.id)).map(c=>({c, d:distCmp(c, ref)})).sort((a,b)=>(a.c.marca===ref.marca)-(b.c.marca===ref.marca) || a.d-b.d).slice(0,4);
+    box.innerHTML = `<div class="cp-sug-in"><div class="cp-sug-t"><b>Boas comparações para o ${esc(ref.nome)}</b><span>Celulares da mesma categoria (${esc(SEG_LONGO[ref.segOrig]||SEG_NOME[ref.seg])}) e faixa de preço parecida. Toque para colocar no Celular ${vazio+1}.</span></div>
+      <div class="cp-sug-l">${cand.map(({c})=>{ const pr = precoRef(c); return `<button type="button" class="cp-sug-b" data-id="${c.id}"><span class="cp-sug-img">${catImg(c)}</span><span><small>${esc(c.marca)}</small><b>${esc(c.nome)}</b><em>${pr ? "≈ "+brl(pr) : SEG_NOME[c.seg]}</em></span></button>`; }).join("")}</div></div>`;
+    box.querySelectorAll(".cp-sug-b").forEach(b=>b.addEventListener("click", ()=>{ const k = sel.slice(0, visiveis()).findIndex(x=>!x); if(k<0) return; sel[k] = b.dataset.id; draw(); slots[k].scrollIntoView({behavior:"smooth", block:"nearest"}); }));
+  };
   const linhas = [
     ["Categoria", c=>SEG_NOME[c.seg]], ["Preço aprox. hoje", (c,n)=>n.preco ? "≈ "+brl(n.preco) : "em pesquisa", (c,n)=>n.preco ? -n.preco : null], ["Preço de lançamento", c=>lancPreco(c) ? brl(lancPreco(c)) : "não informado"],
     ["Nota final", (c,n)=>nota1(n.final), (c,n)=>+n.final.toFixed(1)], ["Nota da crítica", (c,n)=>n.critica!=null ? nota1(n.critica) : "sem nota", (c,n)=>n.critica!=null ? +n.critica.toFixed(1) : null],
@@ -1206,15 +1238,18 @@ function renderComparador(){
     ["5G", c=>c.g5 ? "Sim" : "Não", c=>c.g5 ? 1 : 0], ["NFC", c=>c.nfc || "—"], ["Venda no Brasil", c=>c.br ? "Confirmada" : "Não confirmada"]];
   const draw = () => {
     slots.forEach((el,i)=>{ const c = sel[i] && byId(sel[i]);
-      if(c){ el.querySelector(".cp-marca").value = c.marca; fillModelos(i, c.marca); el.querySelector(".cp-modelo").value = c.id; }
+      if(c){ el.querySelector(".cp-marca").value = c.marca; fillModelos(i, c.marca, true); el.querySelector(".cp-modelo").value = c.id; }
       el.querySelector(".cp-foto").innerHTML = c ? `<span class="cp-img">${catImg(c)}</span><b>${esc(c.nome)}</b>${infoLanc(c)}` : `<span class="cp-mais" aria-hidden="true">+</span>`;
       el.classList.toggle("cheio", !!c); });
+    sugestoes();
     const cs = sel.map(id=>id && byId(id)).filter(Boolean);
     const box = document.getElementById("cpFicha");
     if(cs.length < 2){ box.innerHTML = `<p class="cp-vazio">Escolha pelo menos dois celulares para ver a ficha técnica lado a lado.</p>`; return; }
     const ns = cs.map(notasCat);
     const cab = c => `<span class="cp-th"><span class="cp-th-img">${catImg(c)}</span><span><small>${esc(c.marca)}</small>${esc(c.nome)}</span></span>`;
-    box.innerHTML = `<table class="cp-tab" data-k="${cs.map(c=>c.id).join()}" style="--n:${cs.length}"><colgroup><col class="cp-c0">${cs.map(()=>`<col>`).join("")}</colgroup><thead><tr><th></th>${cs.map(c=>`<th>${cab(c)}</th>`).join("")}</tr></thead><tbody>${
+    const rk = cs.map(c=>SEG_RANK[c.segOrig] ?? 2), longe = Math.max(...rk) - Math.min(...rk) >= 2;
+    const aviso = longe ? `<div class="cp-aviso"><b>Categorias bem diferentes</b><span>Você está comparando ${(l=>l.length>2 ? l.slice(0,-1).join(", ")+" e "+l[l.length-1] : l.join(" com "))(cs.map(c=>`o ${esc(c.nome)} (${esc(SEG_LONGO[c.segOrig]||SEG_NOME[c.seg])})`))}. A comparação vale, mas as diferenças tendem a ser grandes em quase tudo. Para um comparativo mais equilibrado, escolha celulares da mesma categoria: a lista de modelos mostra primeiro os mais parecidos.</span></div>` : "";
+    box.innerHTML = aviso + `<table class="cp-tab" data-k="${cs.map(c=>c.id).join()}" style="--n:${cs.length}"><colgroup><col class="cp-c0">${cs.map(()=>`<col>`).join("")}</colgroup><thead><tr><th></th>${cs.map(c=>`<th>${cab(c)}</th>`).join("")}</tr></thead><tbody>${
       linhas.map(([k,fn,cmp])=>{ const ven = vencedores(cmp, cs, ns);
         return `<tr><th>${k}</th>${cs.map((c,i)=>`<td${ven.includes(i)?' class="ven"':""}>${fn(c,ns[i]) || "—"}</td>`).join("")}</tr>`; }).join("")}</tbody></table>
       <p class="cp-leg"><span class="cp-leg-cor" aria-hidden="true"></span>Destaque em roxo: o celular que se sai melhor em cada item.</p>
@@ -1236,7 +1271,8 @@ function renderComparador(){
   document.getElementById("cpFicha").addEventListener("scroll", posFix, {passive:true});
   slots.forEach((el,i)=>{
     el.querySelector(".cp-marca").addEventListener("change", e=>{ fillModelos(i, e.target.value); sel[i]=null; draw(); });
-    el.querySelector(".cp-modelo").addEventListener("change", e=>{ sel[i] = e.target.value || null; draw(); });
+    el.querySelector(".cp-modelo").addEventListener("change", e=>{ sel[i] = e.target.value || null; draw();
+      slots.forEach((o,k)=>{ if(k!==i && !sel[k]){ const mk = o.querySelector(".cp-marca").value; if(mk) fillModelos(k, mk); } }); });
   });
   draw();
 }
