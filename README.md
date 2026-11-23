@@ -77,7 +77,7 @@ Em `data/celulares.json`, para cada celular:
 
 ## Pesquisa semanal de preços
 
-Toda segunda uma tarefa agendada pesquisa o menor preço de cada modelo e acrescenta um ponto em `historico`. Ela atualiza `atualN` (preço médio de hoje) e, se for o caso, `minimoN` (menor preço já visto). Tudo vai numa branch `pesquisa-AAAA-MM-DD` com um pull request. Nada entra na `main` sem aprovação.
+Toda segunda uma tarefa agendada pesquisa o menor preço de cada modelo e acrescenta um ponto em `historico`. Ela atualiza `atualN` (preço médio de hoje) e, se for o caso, `minimoN` (menor preço já visto). A atualização é automática: o commit vai direto na `main` (o site publica sozinho), sem precisar de aprovação, e ao final a tarefa avisa no app que o check-in de preços médios foi feito.
 
 ## Tom dos textos
 
