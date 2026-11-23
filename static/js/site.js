@@ -1,15 +1,23 @@
 /* Bugsale · cabeçalho, menu e páginas de artigos (dados em js/data.js) */
 (function(){
 const R = window.MQ_ROOT || "";   /* prefixo até a raiz do site ("" na raiz, "../../" nos artigos) */
-/* modo claro/escuro: guarda a escolha em três lugares, porque nem todo navegador (ou o iframe da prévia) mantém o localStorage */
+/* modo claro/escuro: o padrão é o automático (segue o navegador; se não der para saber, claro).
+   Quem clica no sol/lua fixa o modo; escolher o mesmo modo do navegador volta para o automático.
+   A escolha fica em três lugares, porque nem todo navegador (ou o iframe da prévia) mantém o localStorage */
+const temaSistema = () => { try{ return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }catch(e){ return "light"; } };
+const temaManual = () => document.documentElement.dataset.temaManual === "1";
 function salvaTema(t){
-  try{ localStorage.setItem("bs-theme", t); }catch(e){}
-  try{ window.name = (String(window.name).replace(/;?bs-theme=\w+/g,"") + ";bs-theme=" + t).replace(/^;/,""); }catch(e){}
-  try{ const u = new URL(location.href); u.searchParams.set("tema", t); history.replaceState(history.state, "", u.pathname + u.search + u.hash); }catch(e){}
+  const auto = !t;
+  document.documentElement.dataset.temaManual = auto ? "" : "1";
+  try{ auto ? localStorage.removeItem("bs-theme") : localStorage.setItem("bs-theme", t); }catch(e){}
+  try{ window.name = (String(window.name).replace(/;?bs-theme=\w+/g,"") + (auto ? "" : ";bs-theme=" + t)).replace(/^;/,""); }catch(e){}
+  try{ const u = new URL(location.href); u.searchParams.set("tema", auto ? "auto" : t); history.replaceState(history.state, "", u.pathname + u.search + u.hash); }catch(e){}
 }
+/* no automático, acompanha a troca de modo do sistema na hora */
+try{ matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ()=>{ if(!temaManual()) document.documentElement.dataset.theme = temaSistema(); }); }catch(e){}
 function comTema(href){
   try{ const u = new URL(href, location.href); if(u.origin !== location.origin || /^(mailto|tel|javascript):/i.test(href)) return null;
-    u.searchParams.set("tema", document.documentElement.dataset.theme || "dark");
+    u.searchParams.set("tema", temaManual() ? (document.documentElement.dataset.theme || "light") : "auto");
     return href.split("?")[0].split("#")[0] + "?" + u.searchParams.toString() + (u.hash||""); }catch(e){ return null; }
 }
 const LOGO = `<svg class="bug" viewBox="0 0 10.889 8.889" aria-hidden="true"><g fill="#D4AF5A"><rect x="1" y="0" width="0.889" height="0.889"/><rect x="9" y="0" width="0.889" height="0.889"/><rect x="2" y="1" width="0.889" height="0.889"/><rect x="4" y="1" width="0.889" height="0.889"/><rect x="5" y="1" width="0.889" height="0.889"/><rect x="6" y="1" width="0.889" height="0.889"/><rect x="8" y="1" width="0.889" height="0.889"/><rect x="4" y="2" width="0.889" height="0.889"/><rect x="5" y="2" width="0.889" height="0.889"/><rect x="6" y="2" width="0.889" height="0.889"/><rect x="0" y="3" width="0.889" height="0.889"/><rect x="2" y="3" width="0.889" height="0.889"/><rect x="3" y="3" width="0.889" height="0.889"/><rect x="4" y="3" width="0.889" height="0.889"/><rect x="5" y="3" width="0.889" height="0.889"/><rect x="6" y="3" width="0.889" height="0.889"/><rect x="7" y="3" width="0.889" height="0.889"/><rect x="8" y="3" width="0.889" height="0.889"/><rect x="10" y="3" width="0.889" height="0.889"/><rect x="1" y="4" width="0.889" height="0.889"/><rect x="2" y="4" width="0.889" height="0.889"/><rect x="3" y="4" width="0.889" height="0.889"/><rect x="4" y="4" width="0.889" height="0.889"/><rect x="6" y="4" width="0.889" height="0.889"/><rect x="7" y="4" width="0.889" height="0.889"/><rect x="8" y="4" width="0.889" height="0.889"/><rect x="9" y="4" width="0.889" height="0.889"/><rect x="0" y="5" width="0.889" height="0.889"/><rect x="2" y="5" width="0.889" height="0.889"/><rect x="3" y="5" width="0.889" height="0.889"/><rect x="4" y="5" width="0.889" height="0.889"/><rect x="6" y="5" width="0.889" height="0.889"/><rect x="7" y="5" width="0.889" height="0.889"/><rect x="8" y="5" width="0.889" height="0.889"/><rect x="10" y="5" width="0.889" height="0.889"/><rect x="1" y="6" width="0.889" height="0.889"/><rect x="2" y="6" width="0.889" height="0.889"/><rect x="3" y="6" width="0.889" height="0.889"/><rect x="4" y="6" width="0.889" height="0.889"/><rect x="6" y="6" width="0.889" height="0.889"/><rect x="7" y="6" width="0.889" height="0.889"/><rect x="8" y="6" width="0.889" height="0.889"/><rect x="9" y="6" width="0.889" height="0.889"/><rect x="0" y="7" width="0.889" height="0.889"/><rect x="2" y="7" width="0.889" height="0.889"/><rect x="3" y="7" width="0.889" height="0.889"/><rect x="4" y="7" width="0.889" height="0.889"/><rect x="6" y="7" width="0.889" height="0.889"/><rect x="7" y="7" width="0.889" height="0.889"/><rect x="8" y="7" width="0.889" height="0.889"/><rect x="10" y="7" width="0.889" height="0.889"/><rect x="3" y="8" width="0.889" height="0.889"/><rect x="4" y="8" width="0.889" height="0.889"/><rect x="6" y="8" width="0.889" height="0.889"/><rect x="7" y="8" width="0.889" height="0.889"/></g></svg>`;
@@ -131,7 +139,7 @@ function header(current){
   el.querySelector(".hdr-tema").addEventListener("click", ()=>{
     const t = document.documentElement.dataset.theme === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = t;
-    salvaTema(t);
+    salvaTema(t === temaSistema() ? null : t);   /* igual ao navegador = volta para o automático */
   });
   /* o modo escolhido segue a pessoa de página em página (também onde o navegador não guarda a escolha) */
 
