@@ -1167,10 +1167,11 @@ function updMarca(marca){
   const top = Object.entries(cont).sort((a,b)=>b[1]-a[1])[0];
   return top ? `a ${marca} costuma oferecer ${top[0].replace(/\(([^)]+)\)/g,"de $1")}` : "";
 }
+const lancPreco = c => (c.lanc && c.lanc.preco_brl) || (catP(c) && catP(c).precoN) || null;
+const lancData = c => { if(c.lanc && c.lanc.data){ const [y,m] = c.lanc.data.split("-"); return `${MES[+m-1]}/${y}`; } const p = catP(c), s = p && p.specs; return s && s.lancamento ? s.lancamento.replace(/\s*\(.*\)/,"").toLowerCase() : null; };
 function infoLanc(c){
-  const p = catP(c), s = p && p.specs;
-  const lanc = s && s.lancamento ? s.lancamento.replace(/\s*\(.*\)/,"").toLowerCase() : null;
-  const linha1 = lanc || (p && p.precoN) ? `Lançado${lanc?` em ${lanc}`:""}${p && p.precoN?` por ${brl(p.precoN)}`:""}` : "Data e preço de lançamento em pesquisa";
+  const lanc = lancData(c), pr = lancPreco(c);
+  const linha1 = lanc || pr ? `Lançado${lanc?` em ${lanc}`:""}${pr?` por ${brl(pr)}`:" (sem preço oficial no Brasil)"}` : "Data e preço de lançamento não encontrados";
   const upd = c.upd ? `Atualizações: ${c.upd.replace(/\(([^)]+)\)/g,"de $1")}` : (updMarca(c.marca) ? `Sem prazo informado; ${updMarca(c.marca)}` : "Atualizações: não informado");
   return `<span class="cp-info"><span>${linha1}</span><span>${esc(upd)}</span></span>`;
 }
@@ -1195,7 +1196,7 @@ function renderComparador(){
     m.innerHTML = `<option value="">Modelo</option>` + C.filter(c=>c.marca===marca).sort((a,b)=>a.nome.localeCompare(b.nome)).map(c=>`<option value="${c.id}">${esc(c.nome)}</option>`).join("");
     m.disabled = !marca; };
   const linhas = [
-    ["Categoria", c=>SEG_NOME[c.seg]], ["Preço aprox. hoje", (c,n)=>n.preco ? "≈ "+brl(n.preco) : "em pesquisa", (c,n)=>n.preco ? -n.preco : null], ["Preço de lançamento", c=>{ const p=catP(c); return p && p.precoN ? brl(p.precoN) : "—"; }],
+    ["Categoria", c=>SEG_NOME[c.seg]], ["Preço aprox. hoje", (c,n)=>n.preco ? "≈ "+brl(n.preco) : "em pesquisa", (c,n)=>n.preco ? -n.preco : null], ["Preço de lançamento", c=>lancPreco(c) ? brl(lancPreco(c)) : "não informado"],
     ["Nota final", (c,n)=>nota1(n.final), (c,n)=>+n.final.toFixed(1)], ["Nota da crítica", (c,n)=>n.critica!=null ? nota1(n.critica) : "sem nota", (c,n)=>n.critica!=null ? +n.critica.toFixed(1) : null],
     ["Tela", c=>[c.tela.pol ? String(c.tela.pol).replace(".",",")+"\"" : "", c.tela.tec, c.tela.res].filter(Boolean).join(" · "), (c,n)=>n.tela],
     ["Taxa de atualização", c=>c.tela.hz ? c.tela.hz+" Hz" : "60 Hz", c=>c.tela.hz || 60], ["Processador", c=>c.chip, (c,n)=>+n.desempenho.toFixed(1)], ["Memória RAM", c=>c.ram.length ? c.ram.join(" ou ")+" GB" : "—", c=>c.ram.length ? Math.max(...c.ram) : null],

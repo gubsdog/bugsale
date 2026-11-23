@@ -61,7 +61,7 @@ for m in CAT['modelos']:
         bat=e.get('bateria_mah'), carga=e.get('recarga_com_fio_w'), semfio=e.get('recarga_sem_fio'), peso=e.get('peso_g'),
         dim=e.get('dimensoes'), prot=e.get('protecao'), g5=e.get('rede_5g'), nfc=e.get('nfc'),
         ram=m.get('ram_gb_opcoes') or [], armaz=m.get('armazenamento_gb_opcoes') or sorted({v['armazenamento_gb'] for v in vs}), critica=crit,
-        regFicha=m.get('regiao_ficha'), revisao=(m.get('revisao_tecnica') or {}).get('fonte_principal'),
+        regFicha=m.get('regiao_ficha'), lanc=m.get('lancamento'), revisao=(m.get('revisao_tecnica') or {}).get('fonte_principal'),
         fonte=(m.get('fontes') or {}).get('ficha_tecnica'), demanda=min(dem) if dem else None, antigo=ANTIGO.get(m['id']),
         preco=m.get('preco_medio_brl'), img=(f"img/cat/{m['id']}.webp" if os.path.exists(os.path.join(ROOT,'static/img/cat',m['id']+'.webp')) else None),
         precoInfo=(lambda p: p and dict(data=p.get('data_consulta'), canais=p.get('quantidade_canais'), min=p.get('menor_brl'), max=p.get('maior_brl'), gb=p.get('armazenamento_referencia_gb')))(m.get('pesquisa_preco'))))
