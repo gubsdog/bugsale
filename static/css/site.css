@@ -2067,3 +2067,5 @@ html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !i
 .cp-aviso span{color:var(--v-soft)}
 @media (max-width:900px){ .cp-sug-l{grid-template-columns:repeat(2,minmax(0,1fr))} }
 @media (max-width:760px){ .cp-sug-in{padding:16px} .cp-sug-b{padding:8px} }
+.cp-info b{color:var(--v-ink)}
+.cp-info .ico-nbr{vertical-align:-3px}

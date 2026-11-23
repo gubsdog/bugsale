@@ -1170,8 +1170,11 @@ function updMarca(marca){
 const lancPreco = c => (c.lanc && c.lanc.preco_brl) || (catP(c) && catP(c).precoN) || null;
 const lancData = c => { if(c.lanc && c.lanc.data){ const [y,m] = c.lanc.data.split("-"); return `${MES[+m-1]}/${y}`; } const p = catP(c), s = p && p.specs; return s && s.lancamento ? s.lancamento.replace(/\s*\(.*\)/,"").toLowerCase() : null; };
 function infoLanc(c){
-  const lanc = lancData(c), pr = lancPreco(c);
-  const linha1 = lanc || pr ? `Lançado${lanc?` em ${lanc}`:""}${pr?` por ${brl(pr)}`:" (sem preço oficial no Brasil)"}` : "Data e preço de lançamento não encontrados";
+  const pr = notasCat(c).preco, pi = c.precoInfo || {};
+  const quando = pi.data ? ` (pesquisa de ${pi.data.slice(8,10)}/${pi.data.slice(5,7)})` : "";
+  const linha1 = !c.br
+    ? `${ICO_NBR} Sem venda oficial no Brasil${pr ? ` · ≈ ${brl(pr)} em importadoras${quando}` : ""}`
+    : pr ? `Preço médio hoje: <b>≈ ${brl(pr)}</b>${quando}` : "Preço médio hoje: em pesquisa";
   const upd = c.upd ? `Atualizações: ${c.upd.replace(/\(([^)]+)\)/g,"de $1")}` : (updMarca(c.marca) ? `Sem prazo informado; ${updMarca(c.marca)}` : "Atualizações: não informado");
   return `<span class="cp-info"><span>${linha1}</span><span>${esc(upd)}</span></span>`;
 }
