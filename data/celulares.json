@@ -8,7 +8,7 @@
   "specs": {
    "lancamento": "Set/2025",
    "precoN": 899,
-   "atualN": 753,
+   "atualN": 767,
    "minimoN": 533,
    "tela": "6,7\" PLS LCD · 720×1600",
    "taxaN": 90,
@@ -34,7 +34,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": "R$ 899",
-   "atual": "R$ 753",
+   "atual": "R$ 767",
    "minimo": "R$ 533",
    "taxa": "90 Hz",
    "bateria": "5.000 mAh",
@@ -61,7 +61,13 @@
      "url": ""
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-23",
+    "preco": 767
+   }
+  ]
  },
  {
   "id": "galaxy-a17-5g",
@@ -140,7 +146,7 @@
   "specs": {
    "lancamento": "Mar/2026",
    "precoN": 3599,
-   "atualN": 1891,
+   "atualN": 1896,
    "minimoN": 1457,
    "tela": "6,7\" Super AMOLED Plus · 1080×2340",
    "taxaN": 120,
@@ -166,7 +172,7 @@
    "updSeg": null,
    "updSegN": null,
    "preco": "R$ 3.599",
-   "atual": "R$ 1.891",
+   "atual": "R$ 1.896",
    "minimo": "R$ 1.457",
    "taxa": "120 Hz",
    "bateria": "5.000 mAh",
@@ -217,6 +223,10 @@
    {
     "data": "2026-11-17",
     "preco": 1891
+   },
+   {
+    "data": "2026-11-23",
+    "preco": 1896
    }
   ],
   "historicoFonte": "Zoom"
@@ -630,7 +640,7 @@
   "specs": {
    "lancamento": "Mai/2025",
    "precoN": 2499,
-   "atualN": 1936,
+   "atualN": 1873,
    "minimoN": 1334,
    "tela": "6,67\" pOLED · 1220×2712",
    "taxaN": 120,
@@ -656,7 +666,7 @@
    "updSeg": "4 anos",
    "updSegN": 4,
    "preco": "R$ 2.499",
-   "atual": "R$ 1.936",
+   "atual": "R$ 1.873",
    "minimo": "R$ 1.334",
    "taxa": "120 Hz",
    "bateria": "5.200 mAh",
@@ -748,6 +758,10 @@
    {
     "data": "2026-11-17",
     "preco": 1936
+   },
+   {
+    "data": "2026-11-23",
+    "preco": 1873
    }
   ],
   "historicoFonte": "Zoom"
@@ -829,7 +843,7 @@
   "specs": {
    "lancamento": "Mar/2026 (Brasil)",
    "precoN": 4499,
-   "atualN": 2845,
+   "atualN": 3379,
    "minimoN": 1703,
    "tela": "6,7\" pOLED · 1220×2712",
    "taxaN": 120,
@@ -855,7 +869,7 @@
    "updSeg": "5 anos",
    "updSegN": 5,
    "preco": "R$ 4.499",
-   "atual": "R$ 2.845",
+   "atual": "R$ 3.379",
    "minimo": "R$ 1.703",
    "taxa": "120 Hz",
    "bateria": "4.800 mAh",
@@ -882,7 +896,13 @@
      "url": ""
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-23",
+    "preco": 3379
+   }
+  ]
  },
  {
   "id": "edge-70-pro",
