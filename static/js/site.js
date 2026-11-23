@@ -320,22 +320,23 @@ function img2(p, grande){
   if(p.foto) return `<img src="${R}${grande ? p.foto.src : p.foto.sm}" alt="${esc(p.full)} em uso" style="object-position:${p.foto.pos}" loading="lazy">`;
   return `<span class="studio"><img src="${R}${p.cut}" alt="${esc(p.full)}" loading="lazy"></span>`;
 }
-function bloqueado2(a){ return a.locked ? ` locked" role="group" tabindex="0" aria-label="${esc(a.titulo)}: será lançado ${quandoLanca(a.pub)}` : ""; }
-function chip2(a){ return a.locked ? `<span class="chip2">Será lançado ${quandoLanca(a.pub)}</span>` : ""; }
+const prevOK = a => !!(MQ_DATA.preview && a.locked && !a.chamada);
+function bloqueado2(a){ if(prevOK(a)) return " prevok"; return a.locked ? ` locked" role="group" tabindex="0" aria-label="${esc(a.titulo)}: será lançado ${quandoLanca(a.pub)}` : ""; }
+function chip2(a){ if(prevOK(a)) return `<span class="chip2 chip-prev">Prévia · sai ${quandoLanca(a.pub)}</span>`; return a.locked ? `<span class="chip2">Será lançado ${quandoLanca(a.pub)}</span>` : ""; }
 function heroHTML2(a){
   const p = P(a.phone);
   return `<a class="h-hero" href="${artURL(a)}"><span class="h-img">${img2(p, true)}</span>
     <span class="h-txt">${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span><span class="h-dek">${esc(a.dek)}</span></span></a>`;
 }
 function ladoHTML2(a){
-  const p = P(a.phone), tagN = a.locked ? "div" : "a", href = a.locked ? "" : ` href="${artURL(a)}"`;
-  const prev = (a.locked && MQ_DATA.preview && !a.chamada) ? `<a class="prev2" href="${artURL(a)}">prévia</a>` : "";
+  const p = P(a.phone), abre = !a.locked || prevOK(a), tagN = abre ? "a" : "div", href = abre ? ` href="${artURL(a)}"` : "";
+  const prev = "";
   return `<${tagN} class="h-lado${bloqueado2(a)}"${href}><span class="h-img">${img2(p)}${prev}</span>
     <span class="h-txt">${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span>${chip2(a)}</span></${tagN}>`;
 }
 function recenteHTML2(a){
-  const p = P(a.phone), tagN = a.locked ? "div" : "a", href = a.locked ? "" : ` href="${artURL(a)}"`;
-  const prev = (a.locked && MQ_DATA.preview && !a.chamada) ? `<a class="prev2" href="${artURL(a)}">prévia</a>` : "";
+  const p = P(a.phone), abre = !a.locked || prevOK(a), tagN = abre ? "a" : "div", href = abre ? ` href="${artURL(a)}"` : "";
+  const prev = "";
   return `<${tagN} class="h-card${bloqueado2(a)}"${href}><span class="h-img">${img2(p)}${prev}</span>
     ${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span><span class="h-dek">${esc(a.dek)}</span>${chip2(a)}</${tagN}>`;
 }
@@ -388,9 +389,12 @@ function renderBrand2(brand){
   const label = brand==="Apple" ? "iPhone" : brand, pg = BRAND_PAGE[brand];
   const ids = Object.keys(MQ_DATA.phones).filter(id=>P(id).marca===brand);
   let arts = publicados().filter(a => P(a.phone).marca === brand || (a.vs && P(a.vs).marca === brand)).sort(porData);
-  if(modelo) arts = arts.filter(a => a.phone===modelo || a.vs===modelo);
+  if(modelo){
+    arts = arts.filter(a => a.phone===modelo || a.vs===modelo);
+    if(MQ_DATA.preview) arts = arts.concat(MQ_DATA.articles.filter(a => prevOK(a) && (a.phone===modelo || a.vs===modelo)));
+  }
   const keep = /[?&]v2\b/.test(location.search) ? "&v2" : "";
-  const modelos = `<div class="b-modelos">${ids.map(id=>{ const p=P(id); return `<a class="b-mod${id===modelo?" on":""}" href="${R}${pg}?modelo=${id}${keep}"><span class="b-mod-img"><img src="${R}${p.cut}" alt="" loading="lazy"></span><span>${esc(p.nome)}</span></a>`; }).join("")}</div>`;
+  const modelos = `<div class="b-modelos">${ids.map(id=>{ const p=P(id); return `<a class="b-mod${id===modelo?" on":""}" href="${R}${pg}?modelo=${id}${keep}"><span class="b-mod-img"><img src="${R}${p.catImg||p.cut}" alt="" loading="lazy"></span><span>${esc(p.nome)}</span></a>`; }).join("")}</div>`;
   const [first, ...rest] = arts;
   let corpo = "";
   if(!arts.length){

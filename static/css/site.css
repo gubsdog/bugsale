@@ -2034,3 +2034,16 @@ html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !i
 .xp-crit p{margin:0 0 8px;color:var(--v-soft)}
 .xp-crit small{font-size:11px;color:var(--v-soft)}
 .xp-crit a{color:var(--v-ink);text-decoration:underline;text-underline-offset:2px}
+/* prévia de artigo agendado (só na build de prévia) */
+.chip-prev{background:var(--v-purple) !important;color:#fff !important}
+.h-card.prevok,.h-lado.prevok{filter:none !important;cursor:pointer}
+.h-card.prevok img,.h-lado.prevok img{filter:none !important}
+/* página da marca: modelos sem moldura, flutuando, zoom no hover */
+.b-mod-img{background:none !important;border:0 !important;border-radius:0 !important;width:72px;height:80px}
+.b-mod-img img{height:72px;width:auto;max-width:72px;object-fit:contain;transition:transform .25s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 8px 12px rgba(0,0,0,.18))}
+.b-mod:hover .b-mod-img img,.b-mod:focus-visible .b-mod-img img{transform:scale(1.12)}
+.b-mod.on .b-mod-img img{transform:scale(1.12)}
+.b-mod{gap:8px}
+/* ranking: dica com respiro em múltiplos de 8 */
+.rk-dica{margin:16px 16px 16px !important}
+@media (max-width:760px){ html.v2 .rk-dica{margin:8px 8px 16px !important} }

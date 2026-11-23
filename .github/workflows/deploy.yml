@@ -1,5 +1,5 @@
 # Publica o site no GitHub Pages a cada push na branch main
-# e também às 7h e 12h (horário de Brasília), para liberar os artigos agendados.
+# e também às 7h, 12h e 19h (horário de Brasília), para liberar os artigos agendados.
 name: Publicar site
 
 on:
@@ -8,6 +8,7 @@ on:
   schedule:
     - cron: "2 10 * * *"   # 7h02 BRT
     - cron: "2 15 * * *"   # 12h02 BRT
+    - cron: "2 22 * * *"   # 19h02 BRT
   workflow_dispatch:
 
 permissions:

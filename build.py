@@ -85,13 +85,16 @@ for c in celulares:
     if c.get('historico'): q['historico'] = c['historico']   # [{"mes": "2026-03", "preco": 3299}, ...]
     if c.get('historicoFonte'): q['historicoFonte'] = c['historicoFonte']
     if c.get('galeria'): q['galeria'] = c['galeria']         # [{"src": "img/galeria/x.webp", "legenda": "...", "credito": "..."}]
+    rev = {v: k for k, v in ANTIGO.items()}.get(c['id'])
+    if rev and os.path.exists(os.path.join(ROOT, 'static/img/cat', rev + '.webp')): q['catImg'] = f"img/cat/{rev}.webp"
+    elif os.path.exists(os.path.join(ROOT, 'static/img/cat', c['id'] + '.webp')): q['catImg'] = f"img/cat/{c['id']}.webp"
     phones[c['id']] = q
 for a in artigos: a.setdefault('slug', a['celular'])
 slugs = [a['slug'] for a in artigos]
 assert len(slugs) == len(set(slugs)), 'dois artigos com o mesmo slug'
 
 # ---------- agendamento ----------
-# "publicar": "AAAA-MM-DDTHH:MM" no horário de Brasília. O robô diário do GitHub refaz o site às 7h e às 12h,
+# "publicar": "AAAA-MM-DDTHH:MM" no horário de Brasília. O robô diário do GitHub refaz o site às 7h, 12h e 19h,
 # e só publica o que já chegou na hora. "status": "rascunho" nunca vai ao ar.
 # "teaser": true mostra o card bloqueado ("Será lançado em...") antes da data (usado só no lançamento).
 BRT = datetime.timezone(datetime.timedelta(hours=-3))
