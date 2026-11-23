@@ -348,11 +348,15 @@ function recenteHTML2(a){
   return `<${tagN} class="h-card${bloqueado2(a)}"${href}><span class="h-img">${img2(p)}${prev}</span>
     ${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span><span class="h-dek">${esc(a.dek)}</span>${chip2(a)}</${tagN}>`;
 }
+/* ofertas escolhidas a dedo para a home (celular, loja); se faltar alguma, completa com as melhores automáticas */
+const OFERTAS_HOME = [["razr-70-ultra","Magalu"],["iphone-17","Amazon"],["moto-g-max","Amazon"]];
 function melhoresOfertas(n){
   const C = Object.values(MQ_DATA.phones).filter(p=>p.ofertas && p.ofertas.lista && p.ofertas.lista.length);
+  const fixas = OFERTAS_HOME.map(([id,loja])=>{ const p = MQ_DATA.phones[id] || C.find(x=>x.id===id); const o = p && p.ofertas && (p.ofertas.lista||[]).find(x=>x.loja===loja); return o ? {p, o} : null; }).filter(Boolean).slice(0,n);
+  if(fixas.length >= n) return fixas;
   const bomDe = p => { const a = MQ_DATA.articles.find(x=>x.phone===p.id && x.alvo); return (a && a.alvo.bom) || alvoAuto(p).bom; };
   return C.map(p=>{ const o = p.ofertas.lista.slice().sort((x,y)=>x.preco-y.preco)[0]; return {p, o, r:o.preco/bomDe(p)}; })
-          .sort((x,y)=>x.r-y.r).slice(0,n);
+          .filter(x=>!fixas.some(f=>f.p.id===x.p.id)).sort((x,y)=>x.r-y.r).slice(0,n-fixas.length).reduce((a,x)=>a.concat(x), fixas);
 }
 function ofertaLinha2({p,o}){
   return `<div class="o2"><span class="o2-img">${img2(p)}</span>
@@ -378,7 +382,7 @@ function renderHome(){
     <section class="h-ofertas"><div class="o2-lista">${ofs.map(ofertaLinha2).join("")}</div>
       <a class="grupo2" href="${GRUPO}" target="_blank" rel="noopener"><span class="grupo2-img"><img src="${R}img/grupo-ofertas.webp" alt="Celulares de várias marcas lado a lado" loading="lazy"></span>
         <span class="grupo2-txt"><span class="grupo2-logo">${LOCKUP}</span><b>Entre no nosso grupo de ofertas de celulares</b><span>Ofertas diárias, conferidas com o histórico de preço. Só promoção que vale o seu Pix.</span><span class="grupo2-btn">Entrar no grupo</span></span></a>
-      <small class="o2-nota">Preços pesquisados${ofs[0] && ofs[0].p.ofertas.pesquisa ? ` em ${dataHora(ofs[0].p.ofertas.pesquisa)}` : ""}.</small>
+      ${(()=>{ const d = ofs.map(x=>x.p.ofertas.pesquisa).filter(Boolean).sort().pop(); return `<small class="o2-nota">Preços pesquisados${d ? ` em ${dataHora(d)}` : ""}.</small>`; })()}
     </section>`;
   main.querySelectorAll(".locked").forEach(c=>{
     const go = ()=>{ const ch = c.querySelector(".chip2"); if(!ch) return; ch.classList.remove("shine"); void ch.offsetWidth; ch.classList.add("shine"); };
