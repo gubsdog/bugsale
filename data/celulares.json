@@ -685,17 +685,22 @@
    "updResumo": "2 atualizações do sistema · 4 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T10:30",
+   "pesquisa": "2026-11-24T12:30",
    "lista": [
     {
      "loja": "Amazon",
-     "preco": 1919.1,
+     "preco": 1889.1,
      "url": "https://link.amazon/B0aZ6NVG5"
+    },
+    {
+     "loja": "Mercado Livre",
+     "preco": 1919.0,
+     "url": "https://meli.la/1gpT7Kd"
     },
     {
      "loja": "Magalu",
      "preco": 1999.0,
-     "url": "https://magazineluiza.onelink.me/589508454/0tuo286b"
+     "url": "https://magazineluiza.onelink.me/589508454/fmpzasls"
     }
    ]
   },
@@ -1111,17 +1116,22 @@
    "updResumo": "4 atualizações do sistema · 6 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T12:30",
+   "pesquisa": "2026-11-24T12:30",
    "lista": [
     {
      "loja": "Amazon",
-     "preco": 2745.5,
+     "preco": 2744.55,
      "url": "https://link.amazon/B008Ts5O6"
+    },
+    {
+     "loja": "Mercado Livre",
+     "preco": 2757.0,
+     "url": "https://meli.la/2VF51MV"
     },
     {
      "loja": "Magalu",
      "preco": 2974.15,
-     "url": "https://magazineluiza.onelink.me/589508454/rfbmqg44"
+     "url": "https://magazineluiza.onelink.me/589508454/z6ytykhk"
     }
    ]
   },
@@ -1169,14 +1179,6 @@
    {
     "data": "2026-11-23",
     "preco": 2860
-   }
-  ],
-  "ofertasExtra": [
-   {
-    "loja": "Mercado Livre",
-    "versao": "512 GB",
-    "preco": 3152.0,
-    "url": "https://meli.la/1AJFFSS"
    }
   ],
   "historicoFonte": "Zoom"

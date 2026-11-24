@@ -239,7 +239,7 @@ function heroHTML(a){
 /* 3 melhores ofertas da última pesquisa, cada uma com seu link de afiliado (dados em data/celulares.json > ofertas) */
 function ofertaHTML(p){
   const o = p.ofertas || {lista:[]};
-  const lista = o.lista || [];
+  const lista = (o.lista || []).slice().sort((x,y)=>x.preco-y.preco);   /* sempre do menor para o maior preço */
   const slots = [0,1,2].map(i=>{
     const x = lista[i];
     if(!x) return `<div class="of-slot vazio"><span class="of-loja">Oferta ${i+1}</span><b class="of-preco">—</b><span class="btn of-btn" aria-disabled="true">Em breve</span></div>`;
@@ -479,7 +479,7 @@ const ICO_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 
 /* versão curta das ofertas, para o fim do artigo: só os botões com o nome da loja */
 function ofertaMiniHTML(p, titulo, cls){
-  const lista = (p.ofertas && p.ofertas.lista) || [];
+  const lista = ((p.ofertas && p.ofertas.lista) || []).slice().sort((x,y)=>x.preco-y.preco);   /* do menor para o maior preço */
   const btns = [0,1,2].map(i=>{
     const x = lista[i];
     const comPreco = cls==="om-topo";   /* no topo: loja | preço + seta. No fim do artigo: só a loja | seta */
@@ -544,7 +544,7 @@ function alvoAuto(p){
 const FIM_BF = new Date("2026-11-28T00:00:00-03:00");
 function alvoHTML(a, p){
   const t = a.alvo || alvoAuto(p);
-  const menor = p.ofertas && p.ofertas.lista && p.ofertas.lista[0];
+  const menor = p.ofertas && p.ofertas.lista && p.ofertas.lista.slice().sort((x,y)=>x.preco-y.preco)[0];
   const hoje = menor ? menor.preco : p.atualN;
   const faixa = hoje <= t.otimo ? "otimo" : hoje <= t.bom ? "bom" : hoje >= t.caro ? "caro" : "ok";
   const nomeFaixa = {otimo:"oferta de verdade", bom:"bom preço", ok:"preço normal", caro:"caro"}[faixa];
@@ -575,14 +575,18 @@ const PERSONAS = {
   estilo:      {nome:"O estiloso", ico:"M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z", txt:"Escolhe o celular também pelo visual: quer um aparelho fino, leve e bonito na mão, com tela e câmera boas para o dia a dia.", tags:["Fino e leve","Acabamento","Boa câmera"], nao:"quem quer a maior bateria possível."}
 };
 const PERFIL = {"galaxy-a07":["entrada"],"galaxy-a17-5g":["entrada","intermediario"],"galaxy-a57":["intermediario"],"galaxy-s26":["compacto","topo"],"galaxy-s26-ultra":["topo","camera"],"iphone-15":["ecossistema"],"iphone-16":["ecossistema","intermediario"],"iphone-17":["ecossistema","camera"],"moto-g86":["intermediario","bateria"],"moto-g-max":["camera","tela"],"edge-70":["estilo"],"edge-70-pro":["bateria","camera"],"razr-70-ultra":["dobravel","topo"],"poco-x8-pro":["gamer","bateria"],"poco-x8-pro-max":["gamer","tela"]};
-function personasHTML(id){
-  const ks = PERFIL[id] || ["intermediario"];
-  return `<div class="personas">${ks.map((k,i)=>{const x=PERSONAS[k]; return `<div class="persona${i===0?" principal":""}">
+function personaCard(k, i, o){
+  const x = PERSONAS[k];
+  return `<div class="persona${i===0?" principal":""}"${o!=null?` style="--o:${o}"`:""}>
     <span class="pe-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${x.ico}"/></svg></span>
     <span class="pe-label">${i===0?"Perfil principal":"Também combina com"}</span>
     <b class="pe-nome">${x.nome}</b><p>${x.txt}</p>
     <ul class="pe-tags">${x.tags.map(t=>`<li>${t}</li>`).join("")}</ul>
-    <p class="pe-nao"><span>Não é para</span> ${x.nao}</p></div>`;}).join("")}</div>`;
+    <p class="pe-nao"><span>Não é para</span> ${x.nao}</p></div>`;
+}
+function personasHTML(id){
+  const ks = PERFIL[id] || ["intermediario"];
+  return `<div class="personas">${ks.map((k,i)=>personaCard(k,i)).join("")}</div>`;
 }
 function galeriaHTML(p){
   const g = (p.galeria||[])[0];
@@ -680,28 +684,50 @@ function fichaCmpHTML(p, q){
   return `<div class="ficha ficha-cmp"><h3>Ficha técnica lado a lado</h3><div class="fc-wrap"><table style="--n:2"><colgroup><col class="fc-c0"><col><col></colgroup><thead><tr><th></th><th>${esc(p.nome)}</th><th>${esc(q.nome)}</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
 }
 function precoChart2HTML(p, q){
-  const A = seriePreco(p), Bq = seriePreco(q);
-  const all = A.concat(Bq), t = d => new Date(d+"T12:00:00").getTime();
-  const t0 = Math.min(...all.map(x=>t(x.d))), t1 = Math.max(...all.map(x=>t(x.d)));
+  const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  const hoje = new Date().toISOString().slice(0,10), ano = hoje.slice(0,4), ini = ano+"-01-01";
+  const t = d => new Date(d+"T12:00:00").getTime();
+  /* série do ano: o último preço antes de janeiro vira o ponto de 1º de janeiro */
+  const doAno = S => { const antes = S.filter(x=>x.d < ini).pop(), dentro = S.filter(x=>x.d >= ini && x.d <= hoje);
+    return (antes ? [{d:ini, v:antes.v}] : []).concat(dentro); };
+  const A = doAno(seriePreco(p)), Bq = doAno(seriePreco(q));
+  if(!A.length || !Bq.length) return "";
+  const all = A.concat(Bq), t0 = t(ini), t1 = t(hoje);
   const vmax = Math.max(...all.map(x=>x.v)), vmin = Math.min(...all.map(x=>x.v));
-  const W=640,H=240,pl=16,pr=16,pt=24,pb=40, max=vmax*1.06, min=vmin-(vmax-vmin)*.2;
-  const X = d => pl + (t1===t0?0:(t(d)-t0)/(t1-t0)*(W-pl-pr)), Y = v => pt + (max-v)/(max-min)*(H-pt-pb);
+  const W=720,H=300,pl=56,pr=112,pt=32,pb=40, folga=(vmax-vmin)*.18||200, max=vmax+folga, min=Math.max(0,vmin-folga);
+  const X = d => pl + (t(d)-t0)/(t1-t0)*(W-pl-pr), Y = v => pt + (max-v)/(max-min)*(H-pt-pb);
   const line = S => S.map((x,i)=>`${i?"L":"M"}${X(x.d).toFixed(1)} ${Y(x.v).toFixed(1)}`).join(" ");
-  const dots = (S,c) => S.map((x,i)=>`<circle cx="${X(x.d)}" cy="${Y(x.v)}" r="${i===S.length-1?5:3.5}" class="${c}"/>`).join("") +
-    `<text x="${X(S[S.length-1].d)-10}" y="${Y(S[S.length-1].v)+(c==="c1"?22:-12)}" text-anchor="end" class="pv ${c}">${brl(S[S.length-1].v)}</text>`;
-  const ano = y => `<text x="${X(y+"-01-01")}" y="${H-14}" text-anchor="middle" class="pl">${y}</text>`;
-  const anos = []; for(let y=new Date(t0).getFullYear()+1; y<=new Date(t1).getFullYear(); y++) anos.push(ano(String(y)));
-  return `<figure class="preco-chart cmp2">
-    <figcaption><b>Preço desde o lançamento</b><span class="lg"><i class="l1"></i>${esc(p.nome)}<i class="l2"></i>${esc(q.nome)}</span></figcaption>
-    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Preço do ${esc(p.nome)} e do ${esc(q.nome)} desde o lançamento">
-      <line x1="${pl}" x2="${W-pr}" y1="${H-pb}" y2="${H-pb}" class="axis"/>${anos.join("")}
-      <path d="${line(A)}" class="ln l1"/><path d="${line(Bq)}" class="ln l2"/>${dots(A,"c1")}${dots(Bq,"c2")}
+  const mesAtual = +hoje.slice(5,7);
+  const meses = MESES.slice(0, mesAtual).map((m,i)=>{ const d = `${ano}-${String(i+1).padStart(2,"0")}-01`, x = X(d);
+    return `<line x1="${x}" x2="${x}" y1="${pt}" y2="${H-pb}" class="cg"/><text x="${x}" y="${H-pb+20}" text-anchor="${i===0?"start":"middle"}" class="pl">${m}</text>`; }).join("");
+  const ticks = [vmin, (vmin+vmax)/2, vmax].map(v=>`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" class="cg h"/><text x="${pl-8}" y="${Y(v)+4}" text-anchor="end" class="pl">${brl(Math.round(v/10)*10).replace("R$ ","")}</text>`).join("");
+  const marca = (S, c) => {
+    const ult = S[S.length-1], mx = S.reduce((a,b)=>b.v>a.v?b:a), mn = S.reduce((a,b)=>b.v<a.v?b:a);
+    const lab = (x, txt, dy, cls) => { const px = X(x.d), anc = px > W-pr-80 ? "end" : px < pl+60 ? "start" : "middle";
+      return `<text x="${px}" y="${Y(x.v)+dy}" text-anchor="${anc}" class="pv ${c} ${cls}">${txt}</text>`; };
+    let o = S.map((x,i)=>`<circle cx="${X(x.d)}" cy="${Y(x.v)}" r="${i===S.length-1?5:3}" class="${c}"/>`).join("");
+    if(mx !== ult) o += `<circle cx="${X(mx.d)}" cy="${Y(mx.v)}" r="6" class="${c} anel"/>` + lab(mx, `▲ ${brl(mx.v)}`, -12, "mx");
+    if(mn !== ult && mn !== mx) o += `<circle cx="${X(mn.d)}" cy="${Y(mn.v)}" r="6" class="${c} anel"/>` + lab(mn, `▼ ${brl(mn.v)}`, 22, "mn");
+    /* "hoje" fica à direita do último ponto, fora da área das linhas; se os dois finais estiverem perto, afasta um do outro */
+    const outro = c==="c1" ? Bq[Bq.length-1] : A[A.length-1], perto = outro && Math.abs(Y(outro.v)-Y(ult.v)) < 32;
+    const dy = perto ? (ult.v >= outro.v ? -10 : 18) : 5;
+    o += `<text x="${X(ult.d)+12}" y="${Y(ult.v)+dy}" text-anchor="start" class="pv ${c} at"><tspan class="hj">hoje</tspan> ${brl(ult.v)}</text>`;
+    return o; };
+  return `<figure class="preco-chart cmp2 ano">
+    <figcaption><b>Preço em ${ano}</b><span class="lg"><i class="l1"></i>${esc(p.nome)}<i class="l2"></i>${esc(q.nome)}</span></figcaption>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Preço do ${esc(p.nome)} e do ${esc(q.nome)} de janeiro de ${ano} até hoje">
+      ${ticks}${meses}<line x1="${pl}" x2="${W-pr}" y1="${H-pb}" y2="${H-pb}" class="axis"/>
+      <path d="${line(A)}" class="ln l1"/><path d="${line(Bq)}" class="ln l2"/>${marca(A,"c1")}${marca(Bq,"c2")}
     </svg>
-    <small>Valores aproximados: preço de lançamento e preços médios das nossas pesquisas. O histórico completo de cada aparelho entra a cada pesquisa semanal.</small>
+    <small>▲ maior preço no ano · ▼ menor preço no ano · hoje = preço médio da última pesquisa. Valores aproximados das nossas pesquisas de preço.</small>
   </figure>`;
 }
 function personasCmpHTML(p, q){
-  return `<div class="pe-cmp">${[p,q].map(x=>`<div><h3 class="pe-h">${esc(x.nome)}</h3>${personasHTML(x.id)}</div>`).join("")}</div>`;
+  /* grade em linhas: os cards de mesma linha ficam com a mesma altura; no celular, --o reagrupa por aparelho */
+  const A = PERFIL[p.id] || ["intermediario"], B = PERFIL[q.id] || ["intermediario"], n = Math.max(A.length, B.length);
+  let h = `<h3 class="pe-h" style="--o:0">${esc(p.nome)}</h3><h3 class="pe-h" style="--o:10">${esc(q.nome)}</h3>`;
+  for(let i=0;i<n;i++) h += (A[i] ? personaCard(A[i], i, 1+i) : `<div class="pe-vazio" aria-hidden="true"></div>`) + (B[i] ? personaCard(B[i], i, 11+i) : `<div class="pe-vazio" aria-hidden="true"></div>`);
+  return `<div class="pe-cmp2">${h}</div>`;
 }
 
 function renderArticle(){
@@ -804,10 +830,10 @@ function renderArticle(){
   <div class="section-title"><h2>Leia também</h2><a href="${R}index.html">Ver todos →</a></div>
   ${document.documentElement.classList.contains("v2") ? `<div class="h-grid">${related.slice(0,4).map(recenteHTML2).join("")}</div>` : `<div class="grid4 swipe">${related.map(cardHTML).join("")}</div>`}`;
   reveal(main);
-  /* ficha lado a lado: coluna dos itens só do tamanho do maior rótulo + 24px; as dos aparelhos dividem o resto igualmente */
+  /* ficha lado a lado: coluna dos itens estreita; as dos aparelhos dividem o resto igualmente */
   const ajustaFicha = () => main.querySelectorAll(".ficha-cmp table").forEach(t=>{
-    const w = Math.max(...[...t.querySelectorAll("tbody th > span")].map(x=>x.getBoundingClientRect().width));
-    const c0 = t.querySelector(".fc-c0"); if(c0 && w) c0.style.width = Math.min(Math.ceil(w) + 24, t.clientWidth * .4) + "px";
+    /* rótulos agora são pequenos e em caixa alta: coluna fixa e estreita, o resto fica para os aparelhos */
+    const c0 = t.querySelector(".fc-c0"); if(c0) c0.style.width = "136px";
   });
   ajustaFicha(); addEventListener("resize", ajustaFicha);
   const cp = document.getElementById("copyLink");
