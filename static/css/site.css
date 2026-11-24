@@ -2086,3 +2086,7 @@ html.v2 .ofertas-mini.om-nada{display:flex !important;flex-direction:column}
 /* selo "novo" no menu (ferramenta nova) */
 .m-novo{margin-left:8px;padding:0 8px;height:16px;display:inline-flex;align-items:center;border-radius:999px;background:var(--v-purple,#7C5CFF);color:#fff;font:700 8px var(--body);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;line-height:1}
 html.v2 .menu-m a .m-novo{margin-right:auto;color:#fff;font-weight:700}
+/* ranking: aparelho solto na linha, sem moldura, todos na mesma altura e sem corte */
+html.v2 .rk-img{width:48px;height:56px;border-radius:0;background:none;overflow:visible}
+html.v2 .rk-img img{height:56px;max-height:56px;max-width:48px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 8px rgba(0,0,0,.18))}
+@media (max-width:760px){ html.v2 .rk-item .rk-img{width:40px;height:48px} html.v2 .rk-item .rk-img img{height:48px;max-height:48px;max-width:40px} }
