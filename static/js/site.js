@@ -217,10 +217,12 @@ function offBadge(p){
 const artURL = a => `${R}artigos/${a.id || a.phone}/${window.MQ_DIRINDEX || ""}`;
 function readLink(a){ return `<a class="btn primary" href="${artURL(a)}">Leia o artigo →</a>`; }
 const byline = a => `<span class="avatar">${LOGO_SQ}</span> Equipe Bugsale · <time datetime="${a.data}">${dataBR(a.data)}</time>`;
+/* o celular do artigo, com a capa própria do artigo no lugar da foto quando houver */
+const PA = (a, inteira) => !a.capa ? P(a.phone) : Object.assign({}, P(a.phone), {capa:true, foto: inteira || !a.capa.card ? a.capa : Object.assign({}, a.capa, {src:a.capa.card, sm:a.capa.cardSm})});
 const kicker = a => `<span class="kicker">${esc(a.cat)} · <span class="brandtag">${esc(P(a.phone).marcaMenu)}</span></span>`;
 
 function heroHTML(a){
-  const p = P(a.phone);
+  const p = PA(a);
   const bg = p.foto ? `<img src="${R}${p.foto.sm}" alt="" aria-hidden="true" style="object-position:${p.foto.pos}">` : "";
   return `<article class="hero feature v3 ${vcls(p)}">
     <div class="hero-bg" aria-hidden="true">${bg}</div>
@@ -257,14 +259,14 @@ function ofertaHTML(p){
 }
 /* visual do artigo: foto oficial de uso quando existe; senão, o aparelho num "estúdio" com a cara da Bugsale */
 function visual(p, sm){
-  if(p.foto) return `<img class="ph" src="${R}${sm ? p.foto.sm : p.foto.src}" alt="${esc(p.full)} em uso" style="object-position:${p.foto.pos}" loading="lazy">`;
+  if(p.foto) return `<img class="ph" src="${R}${sm ? p.foto.sm : p.foto.src}" alt="${esc(p.capa ? "Montagem de comparativo com o " + p.full : p.full + " em uso")}" style="object-position:${p.foto.pos}" loading="lazy">`;
   return `<span class="ghost">${esc(p.nome)}</span><span class="floor"></span><img class="cut" src="${R}${p.cut}" alt="${esc(p.full)}" width="160" height="212" loading="lazy">`;
 }
 const vcls = p => p.foto ? "is-photo" : "is-studio";
 /* camada de fundo desfocada: a própria imagem do artigo, que emenda a imagem com o texto */
 const blurBG = p => `<span class="bs-bg" aria-hidden="true">${p.foto ? `<img src="${R}${p.foto.sm}" alt="" loading="lazy" style="object-position:${p.foto.pos}">` : `<img class="c" src="${R}${p.cut}" alt="" loading="lazy">`}</span>`;
 function cardHTML(a){
-  const p = P(a.phone);
+  const p = PA(a);
   return `<a class="card blurred ${vcls(p)}" href="${artURL(a)}">${blurBG(p)}
     <div class="thumb ${vcls(p)}">${visual(p, true)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}<span class="chip glass">≈ ${brl(p.atualN)} ${offBadge(p)}</span></div>
     <span class="card-blur" aria-hidden="true"></span>
@@ -277,7 +279,7 @@ function cardHTML(a){
 }
 /* card de artigo agendado (lançamento): preto e branco, sem link; o toque faz o chip da data brilhar */
 function lockedCardHTML(a){
-  const p = P(a.phone), q = quandoLanca(a.pub);
+  const p = PA(a), q = quandoLanca(a.pub);
   const prev = (MQ_DATA.preview && !a.chamada) ? `<a class="prev-link" href="${artURL(a)}">Abrir prévia (só no preview)</a>` : "";
   return `<div class="card blurred locked ${vcls(p)}" role="group" aria-label="${esc(a.titulo)}: será lançado ${q}" tabindex="0">${blurBG(p)}
     <div class="thumb ${vcls(p)}">${visual(p, true)}${prev}</div>
@@ -290,7 +292,7 @@ function lockedCardHTML(a){
   </div>`;
 }
 function rowHTML(a){
-  const p = P(a.phone);
+  const p = PA(a);
   return `<a class="row blurred tl ${vcls(p)}" href="${artURL(a)}">${blurBG(p)}
     <div class="thumb ${vcls(p)}">${visual(p, true)}</div>
     <div class="row-txt"><h3>${esc(a.titulo)}</h3><p class="meta">${esc(a.dek)}</p></div>
@@ -327,25 +329,25 @@ const PERFIL_CURTO = {
 };
 const tag2 = a => `<span class="tg"><span>${esc(a.cat)}</span><b>${esc(P(a.phone).marcaMenu)}</b></span>`;
 function img2(p, grande){
-  if(p.foto) return `<img src="${R}${grande ? p.foto.src : p.foto.sm}" alt="${esc(p.full)} em uso" style="object-position:${p.foto.pos}" loading="lazy">`;
+  if(p.foto) return `<img src="${R}${grande ? p.foto.src : p.foto.sm}" alt="${esc(p.capa ? "Montagem de comparativo com o " + p.full : p.full + " em uso")}" style="object-position:${p.foto.pos}" loading="lazy">`;
   return `<span class="studio"><img src="${R}${p.cut}" alt="${esc(p.full)}" loading="lazy"></span>`;
 }
 const prevOK = a => !!(MQ_DATA.preview && a.locked && !a.chamada);
 function bloqueado2(a){ if(prevOK(a)) return " prevok"; return a.locked ? ` locked" role="group" tabindex="0" aria-label="${esc(a.titulo)}: será lançado ${quandoLanca(a.pub)}` : ""; }
 function chip2(a){ if(prevOK(a)) return `<span class="chip2 chip-prev">Prévia · sai ${quandoLanca(a.pub)}</span>`; return a.locked ? `<span class="chip2">Será lançado ${quandoLanca(a.pub)}</span>` : ""; }
 function heroHTML2(a){
-  const p = P(a.phone);
+  const p = PA(a);
   return `<a class="h-hero" href="${artURL(a)}"><span class="h-img">${img2(p, true)}</span>
     <span class="h-txt">${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span><span class="h-dek">${esc(a.dek)}</span></span></a>`;
 }
 function ladoHTML2(a){
-  const p = P(a.phone), abre = !a.locked || prevOK(a), tagN = abre ? "a" : "div", href = abre ? ` href="${artURL(a)}"` : "";
+  const p = PA(a), abre = !a.locked || prevOK(a), tagN = abre ? "a" : "div", href = abre ? ` href="${artURL(a)}"` : "";
   const prev = "";
   return `<${tagN} class="h-lado${bloqueado2(a)}"${href}><span class="h-img">${img2(p)}${prev}</span>
     <span class="h-txt">${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span>${chip2(a)}</span></${tagN}>`;
 }
 function recenteHTML2(a){
-  const p = P(a.phone), abre = !a.locked || prevOK(a), tagN = abre ? "a" : "div", href = abre ? ` href="${artURL(a)}"` : "";
+  const p = PA(a), abre = !a.locked || prevOK(a), tagN = abre ? "a" : "div", href = abre ? ` href="${artURL(a)}"` : "";
   const prev = "";
   return `<${tagN} class="h-card${bloqueado2(a)}"${href}><span class="h-img">${img2(p)}${prev}</span>
     ${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span><span class="h-dek">${esc(a.dek)}</span>${chip2(a)}</${tagN}>`;
@@ -708,7 +710,7 @@ function renderArticle(){
   const main = document.getElementById("content");
   const id = window.MQ_ARTICLE || location.hash.replace("#","");
   const a = MQ_DATA.articles.find(x=>x.id===id) || publicados().find(x=>x.phone===id) || publicados().sort(porData)[0];
-  const p = P(a.phone), s = p.specs, B = MQ_DATA.bodies[a.id] || {}, S = B.secoes || {};
+  const p = P(a.phone), pc = PA(a, true), s = p.specs, B = MQ_DATA.bodies[a.id] || {}, S = B.secoes || {};
   const b = [S.abertura || B.abertura, S.para_quem || B.para_quem, S.veredito || B.veredito];
   const TIPO = {review:"Review", comparativo:"Comparativo", vale:"Vale a pena?", ocasiao:a.cat, novidade:"Novidade"};
   document.title = `${a.titulo} · Bugsale`;
@@ -748,7 +750,7 @@ function renderArticle(){
       </div>
     </div>
     ${p.ofertas && p.ofertas.lista && p.ofertas.lista.length ? ofertaMiniHTML(p, "Melhores ofertas encontradas", "om-topo") : `<section class="ofertas-mini om-topo om-nada" aria-label="Onde comprar"><div class="om-head"><b>Melhores ofertas encontradas</b></div><p class="om-nada-t">Nenhum link de oferta deste produto foi encontrado.</p></section>`}
-    <figure class="cover"><div class="art ${vcls(p)}">${visual(p)}</div><figcaption>${esc(p.foto ? p.foto.credito : "")}.</figcaption></figure>
+    <figure class="cover"><div class="art ${vcls(pc)}">${visual(pc)}</div><figcaption>${esc(pc.foto ? pc.foto.credito : "")}.</figcaption></figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>
       <h2>O que já se sabe</h2>${par(S.oferece)}
@@ -776,12 +778,12 @@ function renderArticle(){
         <div class="meta"><span class="avatar">${LOGO_SQ}</span><span class="who"><b>Equipe Bugsale</b><span class="sep" aria-hidden="true">·</span><time datetime="${a.data}">${dataBR(a.data)}</time></span></div>
         <div class="share"><a class="ico-btn wa" href="https://wa.me/?text=${shareText}%20${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">${ICO_WA}</a><button type="button" class="ico-btn" id="copyLink" aria-label="Copiar link" title="Copiar link">${ICO_LINK}</button></div>
       </div>
-      <figure class="cover cover-side" aria-hidden="true"><div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div></figure>
+      <figure class="cover cover-side" aria-hidden="true"><div class="art ${vcls(pc)}">${visual(pc)}${pc.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div></figure>
     </div>
     ${ofertaMiniHTML(ind, cmp ? `Melhores ofertas do ${esc(ind.nome)}` : "Melhores ofertas encontradas", "om-topo")}
     <figure class="cover">
-      <div class="art ${vcls(p)}">${visual(p)}${p.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
-        <figcaption>${p.foto ? `${esc(p.full)} no dia a dia. ${esc(p.foto.credito)}.` : `${esc(p.full)}. Imagem do aparelho: divulgação (via GSMArena).`}</figcaption>
+      <div class="art ${vcls(pc)}">${visual(pc)}${pc.foto ? "" : `<span class="watermark">${brl(p.atualN).replace("R$ ","")}</span>`}</div>
+        <figcaption>${pc.capa ? `${esc(pc.foto.credito)}.` : p.foto ? `${esc(p.full)} no dia a dia. ${esc(p.foto.credito)}.` : `${esc(p.full)}. Imagem do aparelho: divulgação (via GSMArena).`}</figcaption>
     </figure>
     <div class="post-body">
       <p class="lede">${esc(b[0])}</p>

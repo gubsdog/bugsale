@@ -6,7 +6,7 @@ Uso:  python3 build.py            (gera dist/)
 
 Só usa a biblioteca padrão do Python 3.9+.
 """
-import json, os, re, shutil, datetime, sys
+import os, json, re, shutil, datetime, sys
 from html import escape
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -114,6 +114,11 @@ def art_json(a, locked=False):
              titulo=a['titulo'], dek=a['resumo'])
     for k in ('alvo', 'alvoVs', 'vs', 'indicado'):
         if a.get(k): d[k] = a[k]
+    if a.get('capa'):   # capa própria do artigo (ex.: montagem de comparativo) em img/capa/<slug>.webp
+        d['capa'] = dict(src=f"img/capa/{a['slug']}.webp", sm=f"img/capa/{a['slug']}-sm.webp",
+                         pos=a['capa'].get('posicao', '50% 50%'), credito=a['capa']['credito'])
+        if os.path.exists(f"static/img/capa/{a['slug']}-card.webp"):   # versão sem texto para os cards da home
+            d['capa'] |= dict(card=f"img/capa/{a['slug']}-card.webp", cardSm=f"img/capa/{a['slug']}-card-sm.webp")
     if locked: d['locked'] = True
     if a.get('teaser'): d['teaser'] = True
     if not pronto(a): d['chamada'] = True   # card de chamada: ainda sem texto
@@ -164,7 +169,7 @@ page('404.html', 'Página não encontrada · Bugsale', 'Essa página não existe
 for a in paginas:
     c = next(x for x in celulares if x['id'] == a['celular'])
     p = phones[c['id']]
-    img = SITE + (p['foto']['src'] if 'foto' in p else p['img'])
+    img = SITE + (f"img/capa/{a['slug']}.webp" if a.get('capa') else p['foto']['src'] if 'foto' in p else p['img'])
     path = f"artigos/{a['slug']}/index.html"
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": a['titulo'], "description": a['resumo'],
           "image": [img], "datePublished": a['publicar'] + ":00-03:00", "dateModified": a['publicar'] + ":00-03:00", "inLanguage": "pt-BR",
