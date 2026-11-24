@@ -2209,3 +2209,36 @@ html.v2 .menu-m a .m-novo{margin-right:auto;color:#fff;font-weight:700}
 html.v2 .rk-img{width:48px;height:56px;border-radius:0;background:none;overflow:visible}
 html.v2 .rk-img img{height:56px;max-height:56px;max-width:48px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 8px rgba(0,0,0,.18))}
 @media (max-width:760px){ html.v2 .rk-item .rk-img{width:40px;height:48px} html.v2 .rk-item .rk-img img{height:48px;max-height:48px;max-width:40px} }
+/* comparativo: gráfico do ano com meses e marcas de maior/menor/hoje */
+.preco-chart.ano svg{width:100%;height:auto;overflow:visible}
+.preco-chart.ano .cg{stroke:var(--v-line,rgba(255,255,255,.12));stroke-width:1;stroke-dasharray:2 4}
+.preco-chart.ano .cg.h{stroke-dasharray:none;opacity:.6}
+.preco-chart.ano .pl{font:500 12px var(--body);fill:var(--v-soft,#8E8E99)}
+.preco-chart.ano .pv{font:700 13px var(--body)}
+.preco-chart.ano .pv.at{font-size:14px}
+.preco-chart.ano circle.anel{fill:none;stroke-width:2}
+.preco-chart.ano circle.anel.c1{stroke:#D4AF5A}.preco-chart.ano circle.anel.c2{stroke:#7C5CFF}
+html.v2[data-theme="light"] .preco-chart.ano text.c1{fill:#9A7A2C}
+html.v2[data-theme="light"] .preco-chart.ano text.c2{fill:#5B3FD6}
+/* comparativo: personas em linhas, cards da mesma linha com a mesma altura */
+.pe-cmp2{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;align-items:stretch}
+.pe-cmp2 .pe-h{margin:0;align-self:end}
+.pe-cmp2 .persona{height:100%;box-sizing:border-box}
+.pe-cmp2 .persona .pe-nao{margin-top:auto !important}
+html.v2 .persona .pe-nao span{color:#D9534F !important;font-weight:700}
+@media (max-width:760px){ .pe-cmp2{grid-template-columns:1fr} .pe-cmp2 > *{order:var(--o)} .pe-cmp2 .pe-vazio{display:none} .pe-cmp2 .pe-h:not(:first-child){margin-top:16px} }
+/* ficha lado a lado no computador: rótulo pequeno em caixa alta, mais espaço para os dados */
+@media (min-width:761px){
+  .ficha-cmp col.fc-c0{width:136px}
+  html.v2 .ficha-cmp tbody th{padding:16px 16px 16px 0 !important;vertical-align:top}
+  html.v2 .ficha-cmp tbody th > span{display:block;font:700 10px/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--v-soft);padding-top:2px}
+  html.v2 .ficha-cmp td{padding:16px 16px 16px 0 !important;font-size:14px;line-height:1.45;overflow-wrap:normal;word-break:normal}
+  html.v2 .ficha-cmp thead th{padding:8px 16px 16px 0 !important;font-size:15px !important}
+}
+.preco-chart.ano .hj{font:600 11px var(--body);opacity:.8}
+@media (max-width:760px){
+  .preco-chart.ano .pl{font-size:22px}
+  .preco-chart.ano .pv{font-size:22px}.preco-chart.ano .pv.at{font-size:24px}
+  .preco-chart.ano .hj{display:none}
+  .preco-chart.ano .ln{stroke-width:4}
+}
