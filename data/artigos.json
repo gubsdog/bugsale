@@ -202,7 +202,7 @@
   "data": "2026-11-26",
   "categoria": "Vale a pena?",
   "titulo": "Galaxy A07 4G: o celular mais vendido do Brasil vale o preço?",
-  "resumo": "Custa cerca de R$ 753, tem 6 anos de atualização e tela LCD de 90 Hz.",
+  "resumo": "Custa perto de R$ 770, tem 6 anos de atualização e tela LCD de 90 Hz. Vale para o básico, mas por uns R$ 200 a mais o Galaxy A17 5G entrega bem mais.",
   "chamada": "O Galaxy A07 4G foi o celular mais vendido do Brasil no primeiro semestre de 2026. Custa cerca de R$ 753. Vimos se ele vale o que custa.",
   "para_quem": "É para quem quer um celular barato para o básico, como WhatsApp, redes sociais e ligações.",
   "veredito": "A tela LCD de 720p e o vídeo só em Full HD mostram que é um aparelho de entrada. O ponto forte é o suporte de 6 anos, raro nessa faixa. Abaixo de R$ 600, vira uma compra muito boa.",
@@ -210,7 +210,7 @@
   "publicar": "2026-11-26T12:00",
   "tipo": "vale",
   "teaser": true,
-  "pronto": false
+  "pronto": true
  },
  {
   "slug": "galaxy-a57-black-friday",
@@ -452,31 +452,176 @@
   "slug": "melhores-celulares-ate-1500",
   "celular": "galaxy-a17-5g",
   "publicar": "2026-11-26T07:00",
-  "tipo": "ocasiao",
+  "tipo": "lista",
   "categoria": "Black Friday",
   "titulo": "Os melhores celulares até R$ 1.500 na Black Friday",
-  "resumo": "Separamos os aparelhos que mais entregam por até R$ 1.500, com o preço que vale a pena pagar em cada um.",
+  "resumo": "Quatro celulares que entregam muito por até R$ 1.500, mais um que vale esticar um pouco. Com o preço de hoje e o que cada um faz melhor.",
   "data": "2026-11-26",
   "teaser": true,
-  "pronto": false,
-  "chamada": "Separamos os aparelhos que mais entregam por até R$ 1.500, com o preço que vale a pena pagar em cada um.",
+  "pronto": true,
+  "chamada": "Até R$ 1.500 é a faixa em que mais gente compra celular no Brasil, e também a que mais tem armadilha: aparelho com tela de baixa resolução, sem 5G ou que para de receber atualização em dois anos. Separamos os que fogem disso, cada um bom em uma coisa diferente.",
   "para_quem": "",
-  "veredito": ""
+  "veredito": "Se você quer um celular para durar, o Galaxy A17 5G é o mais seguro, pelos 6 anos de atualização. Se quer a melhor tela e um aparelho que aguenta tombo, vá de Moto G67. Se a bateria é tudo, o Redmi 15. E, se der para esticar até uns R$ 1.600, o Galaxy A37 5G é o mais completo de todos.",
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagens dos aparelhos: divulgação"
+  },
+  "secoes": {
+   "blocos": [
+    {
+     "p": [
+      "Os preços abaixo são a média das lojas que pesquisamos nesta semana. Em dia de Black Friday eles mudam a toda hora, então vale conferir antes de fechar."
+     ]
+    },
+    {
+     "item": {
+      "id": "motorola-moto-g67-5g",
+      "faixa": "melhor tela",
+      "titulo": "Moto G67 5G",
+      "texto": [
+       "É difícil achar tela AMOLED de 120 Hz por menos de R$ 1.500, e o G67 tem. A imagem é brilhante e fluida, ótima para vídeo e redes. Ele também tem 5G e passou no teste militar de resistência a quedas (MIL-STD-810H), além de aguentar respingos (IP64).",
+       "O cuidado: a Motorola não informa por quantos anos ele recebe atualizações, e a versão mais barata tem só 4 GB de RAM. Prefira a de 8 GB."
+      ]
+     }
+    },
+    {
+     "item": {
+      "id": "galaxy-a17-5g",
+      "faixa": "mais anos de uso",
+      "titulo": "Galaxy A17 5G",
+      "texto": [
+       "O mais barato da lista e o que mais tempo vai durar: a Samsung promete 6 atualizações do Android e 6 anos de segurança. A tela é Super AMOLED Full HD, ele tem 5G e câmera principal com estabilização.",
+       "O ponto fraco é o processador, que às vezes demora para abrir e trocar de aplicativo. Para WhatsApp, banco e redes, dá conta."
+      ],
+      "alvo": 899
+     }
+    },
+    {
+     "item": {
+      "id": "xiaomi-redmi-15",
+      "faixa": "mais bateria",
+      "titulo": "Redmi 15",
+      "texto": [
+       "São 7.000 mAh de bateria, coisa de celular de R$ 3 mil. Para quem passa o dia na rua, faz entrega ou esquece de carregar, é ele. A tela é grande, de 6,9 polegadas, e tem 144 Hz.",
+       "Em troca, a tela é LCD, ele não tem 5G e a Xiaomi promete só 2 atualizações do sistema."
+      ]
+     }
+    },
+    {
+     "item": {
+      "id": "samsung-galaxy-a37-5g",
+      "faixa": "vale esticar",
+      "titulo": "Galaxy A37 5G",
+      "texto": [
+       "Se der para ir um pouco além dos R$ 1.500, este é o mais completo. Tem resistência à água IP68 (aguenta mergulho), tela Super AMOLED de 120 Hz, grava vídeo em 4K e recebe 6 atualizações do Android.",
+       "O carregador demora para encher a bateria, e ele não é feito para jogos pesados."
+      ]
+     }
+    },
+    {
+     "destaque": [
+      "Se aparecer abaixo de R$ 1.500, corra",
+      "O Moto G86 (tela muito brilhante, IP69 e 256 GB) e o Galaxy A57 já foram vendidos por menos de R$ 1.500. Hoje estão perto de R$ 1.800. Se você vir algum dos dois nessa faixa durante a Black Friday, é melhor negócio que qualquer um desta lista."
+     ]
+    },
+    {
+     "h": "Os que ficaram de fora"
+    },
+    {
+     "p": [
+      "Celulares com tela HD (720p), sem 5G e com processadores Helio G81 ou G85 aparecem muito nessa faixa com desconto grande. Eles funcionam, mas ficam lentos rápido e saem de linha de atualização cedo. Por pouco mais, os modelos acima entregam bem mais."
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "melhores-negocios-black-friday",
   "celular": "razr-70-ultra",
   "publicar": "2026-11-27T07:00",
-  "tipo": "ocasiao",
+  "tipo": "lista",
   "categoria": "Black Friday",
   "titulo": "Os 5 melhores negócios de celular da Black Friday",
   "resumo": "No dia da Black Friday, reunimos as cinco maiores quedas de preço que encontramos, conferidas com o histórico de cada aparelho.",
   "data": "2026-11-27",
   "teaser": true,
-  "pronto": false,
-  "chamada": "No dia da Black Friday, reunimos as cinco maiores quedas de preço que encontramos, conferidas com o histórico de cada aparelho.",
+  "pronto": true,
+  "chamada": "Hoje é o dia. Para não cair em desconto de mentira, cruzamos o preço de cada celular com o histórico dele e com o valor de lançamento. Estes são os cinco que estão mais abaixo do normal, do maior desconto para o menor.",
   "para_quem": "",
-  "veredito": ""
+  "veredito": "O melhor negócio é o Razr 70 Ultra, se você quer um dobrável. Para quase todo mundo, o Galaxy S26 e o Galaxy A57 são as compras mais seguras do dia: estão perto da metade do preço de lançamento e vão receber atualização por muitos anos. Só confira o preço na hora: em Black Friday, ele muda ao longo do dia.",
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagens dos aparelhos: divulgação"
+  },
+  "secoes": {
+   "blocos": [
+    {
+     "p": [
+      "Para entrar nesta lista, o celular precisa estar abaixo do nosso bom preço, que é calculado com base no histórico. Os valores abaixo são atualizados pelo site e mostram a loja mais barata no momento."
+     ]
+    },
+    {
+     "item": {
+      "id": "razr-70-ultra",
+      "faixa": "−65%",
+      "titulo": "Razr 70 Ultra",
+      "texto": [
+       "O dobrável topo de linha da Motorola foi lançado a R$ 12.999 e apareceu por cerca de R$ 4.500 na Magalu. Tem tela interna de 7 polegadas com 165 Hz, tela externa grande o suficiente para usar quase tudo sem abrir e o processador mais forte da Motorola.",
+       "O único ponto de atenção é a resistência IP48: ele aguenta respingo, mas não poeira."
+      ]
+     }
+    },
+    {
+     "item": {
+      "id": "galaxy-a57",
+      "faixa": "−50%",
+      "titulo": "Galaxy A57",
+      "texto": [
+       "Lançado a R$ 3.599, está perto da metade. É o intermediário mais equilibrado da Samsung, com IP68, tela de 120 Hz e 6 atualizações do Android."
+      ],
+      "alvo": 1650
+     }
+    },
+    {
+     "item": {
+      "id": "galaxy-s26",
+      "faixa": "−47%",
+      "titulo": "Galaxy S26",
+      "texto": [
+       "O topo de linha compacto da Samsung saiu por R$ 7.499 e está perto de R$ 4.000. Câmera com zoom de 3 vezes, 7 atualizações do Android e um tamanho que cabe em qualquer bolso."
+      ],
+      "alvo": 4000
+     }
+    },
+    {
+     "item": {
+      "id": "moto-g-max",
+      "faixa": "−43%",
+      "titulo": "Moto G Max",
+      "texto": [
+       "Lançado a R$ 2.799, aparece por menos de R$ 1.600. Tela pOLED de 6,8 polegadas, câmera de 200 MP, 512 GB na versão mais cara e resistência militar. Só tem 3 anos de segurança garantidos."
+      ]
+     }
+    },
+    {
+     "item": {
+      "id": "galaxy-s26-ultra",
+      "faixa": "−40%",
+      "titulo": "Galaxy S26 Ultra",
+      "texto": [
+       "O celular mais completo do ano baixou de R$ 11.499 para menos de R$ 7.000. Câmera de 200 MP, dois zooms ópticos, S Pen e 7 anos de Android."
+      ],
+      "alvo": 6200
+     }
+    },
+    {
+     "destaque": [
+      "Como conferimos",
+      "Comparamos o preço de hoje com o de lançamento e com o histórico de cada aparelho. Se uma loja subiu o preço antes da Black Friday para dar desconto depois, o histórico mostra."
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "razr-flex-o-que-se-sabe",
@@ -851,6 +996,385 @@
     [
      "IDC via I-Connect007: vendas caem 22% no 3º trimestre",
      "https://iconnect007.com/article/152009/global-smartphone-shipments-drop-record-high-of-22-in-q3-2026-as-the-memory-crisis-hits-hard/152006/ein"
+    ]
+   ]
+  }
+ },
+ {
+  "slug": "baterias-gigantes-lancamentos-semana",
+  "celular": "poco-x8-pro",
+  "tipo": "noticia",
+  "categoria": "Notícia",
+  "titulo": "Bateria de 8.000 mAh e celular de 6,6 mm: o que os lançamentos da semana dizem do seu próximo celular",
+  "resumo": "Honor e Huawei mostraram celulares com baterias enormes em corpos finos, e a Xiaomi deve seguir o mesmo caminho. Explicamos o que mudou e por que a bateria às vezes encolhe quando o celular sai da China.",
+  "data": "2026-11-26",
+  "publicar": "2026-11-26T12:00",
+  "teaser": true,
+  "pronto": true,
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagens dos aparelhos: divulgação"
+  },
+  "chamada": "Durante anos, 5.000 mAh foi o padrão de bateria em quase todo celular. Nesta semana, dois lançamentos mostraram que esse número ficou para trás: o Honor Magic 9 Pro Max estreou fora da China com bateria de 8.000 mAh, e a Huawei apresentou um celular de 6,6 mm de espessura com 6.500 mAh.",
+  "veredito": "Se bateria é prioridade para você, a boa notícia é que não precisa esperar esses lançamentos chegarem ao Brasil. O POCO X8 Pro, com 6.500 mAh, e o Redmi Note 17 Pro, com 8.340 mAh, já são vendidos aqui. Só desconfie de ficha técnica de versão chinesa: confira a capacidade da bateria na versão vendida no Brasil antes de comprar.",
+  "secoes": {
+   "blocos": [
+    {
+     "h": "Os lançamentos"
+    },
+    {
+     "p": [
+      "O **Honor Magic 9 Pro Max** foi lançado na China em setembro e, nesta semana, chegou ao mercado internacional, começando pela Malásia. Ele tem duas câmeras de 200 MP (a principal e uma teleobjetiva de 3,5 vezes), cores ajustadas em parceria com a ARRI, fabricante de câmeras de cinema, e processador Snapdragon 8 Elite Extreme Gen 6.",
+      "A versão chinesa tem 8.800 mAh. A que foi lançada em Hong Kong, antes da estreia global, caiu para 8.000 mAh, com a mesma recarga de 100 W com fio e 80 W sem fio.",
+      "Já o **Huawei Mate 90 Air**, anunciado na terça-feira (24), aposta no contrário: ser fino. São 6,6 mm de espessura com tela OLED de 7 polegadas e bateria de 6.500 mAh, com recarga de 66 W. Por enquanto, ele só tem lançamento confirmado na China e usa o HarmonyOS, sistema da Huawei, no lugar do Android."
+     ]
+    },
+    {
+     "h": "Como cabe tanta bateria"
+    },
+    {
+     "p": [
+      "A virada vem das baterias de silício-carbono. Elas guardam mais energia no mesmo espaço que as baterias tradicionais, e por isso os fabricantes conseguem colocar 6.500, 7.000 ou até 8.000 mAh sem deixar o celular grosso. O Honor usa essa tecnologia, assim como o POCO X8 Pro, que já está à venda no Brasil."
+     ]
+    },
+    {
+     "h": "Por que a bateria encolhe fora da China"
+    },
+    {
+     "p": [
+      "Repare no Honor: 8.800 mAh na China, 8.000 mAh fora. Não é caso isolado. Com a Xiaomi aconteceu o mesmo: segundo listagens europeias, o Xiaomi 18 Pro chega à Europa com 6.000 mAh, contra 7.000 mAh na versão chinesa.",
+      "As marcas não costumam explicar a diferença. Na prática, isso quer dizer que a ficha que viraliza na internet, quase sempre da versão chinesa, pode não ser a do aparelho que chega aqui."
+     ]
+    },
+    {
+     "tabela": {
+      "titulo": "Bateria grande que já dá para comprar no Brasil",
+      "cols": [
+       "Celular",
+       "Bateria",
+       "Preço médio hoje"
+      ],
+      "linhas": [
+       [
+        "Redmi Note 17 Pro 5G",
+        "8.340 mAh, 67 W",
+        "perto de R$ 2.500"
+       ],
+       [
+        "Redmi 15",
+        "7.000 mAh, 33 W",
+        "perto de R$ 1.400"
+       ],
+       [
+        "POCO X8 Pro",
+        "6.500 mAh, 100 W",
+        "perto de R$ 2.750"
+       ],
+       [
+        "Edge 70 Pro",
+        "6.500 mAh, 90 W",
+        "perto de R$ 3.300"
+       ]
+      ]
+     }
+    },
+    {
+     "destaque": [
+      "Na prática",
+      "Bateria grande pesa no bolso: o Redmi Note 17 Pro tem 223 gramas. Se você usa o celular com uma mão só, segure um na loja antes de decidir."
+     ]
+    }
+   ],
+   "fontes": [
+    [
+     "GSMArena: Honor Magic9 Pro Max",
+     "https://www.gsmarena.com/newsdetail.php3?c=10001&idNews=74792"
+    ],
+    [
+     "Huawei Central: Magic 9 Pro Max em Hong Kong com bateria menor",
+     "https://www.huaweicentral.com/honor-magic-9-pro-max-debuts-in-hong-kong/amp/"
+    ],
+    [
+     "Notícias ao Minuto: Huawei Mate 90 Air",
+     "https://noticiasaominuto.com/tech/3089257/huawei-anunciou-um-novo-telemovel-ultrafino-veja-as-imagens"
+    ],
+    [
+     "Gagadget: Xiaomi 18 com 7.000 mAh",
+     "https://gagadget.com/en/734753-standard-xiaomi-18-leaks-in-a-live-photo-with-a-7000-mah-battery/"
+    ]
+   ]
+  }
+ },
+ {
+  "slug": "celulares-que-nao-valem-a-pena-black-friday",
+  "celular": "galaxy-a07",
+  "tipo": "lista",
+  "categoria": "Black Friday",
+  "titulo": "5 celulares que não valem a pena na Black Friday, mesmo com desconto",
+  "resumo": "O desconto chama atenção, mas esses cinco celulares têm um porém que pesa no dia a dia. Para cada um, mostramos o que comprar no lugar.",
+  "data": "2026-11-26",
+  "publicar": "2026-11-26T19:00",
+  "teaser": true,
+  "pronto": true,
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagens dos aparelhos: divulgação"
+  },
+  "chamada": "Black Friday é ótima para comprar celular, mas também é quando as lojas desovam o que não vende. Nem todo desconto é bom negócio: às vezes o aparelho é barato porque tem um defeito que você só vai sentir depois de um mês de uso. Separamos cinco que aparecem muito em promoção e o que vale mais a pena levar no lugar.",
+  "veredito": "Nenhum desses é um celular ruim. O problema é o preço que se paga pelo que eles entregam, quando existe uma opção melhor custando o mesmo ou pouco mais. Antes de fechar uma compra, olhe três coisas: se tem 5G, se a tela é Full HD e por quantos anos a marca promete atualizar. Se faltar uma delas, procure a alternativa.",
+  "secoes": {
+   "blocos": [
+    {
+     "item": {
+      "id": "galaxy-a07",
+      "faixa": "tela fraca",
+      "titulo": "Galaxy A07 4G",
+      "alerta": true,
+      "texto": [
+       "Ele recebe 6 anos de atualização, o que é ótimo, mas a tela é LCD de resolução baixa (720p) e ele não tem 5G. No dia a dia, textos e fotos ficam menos nítidos, e daqui a dois ou três anos a falta de 5G vai pesar."
+      ],
+      "altRot": "Leve no lugar",
+      "alt": "o **Galaxy A17 5G**. Custa uns R$ 200 a mais e tem tela Super AMOLED Full HD, 5G e as mesmas 6 atualizações."
+     }
+    },
+    {
+     "item": {
+      "id": "xiaomi-redmi-15",
+      "faixa": "sem 5G",
+      "titulo": "Redmi 15",
+      "alerta": true,
+      "texto": [
+       "A bateria de 7.000 mAh impressiona, mas o processador é antigo, ele não tem 5G e a Xiaomi promete só 2 atualizações do sistema. É um celular que envelhece rápido."
+      ],
+      "altRot": "Leve no lugar",
+      "alt": "o **Moto G67 5G**, que custa parecido, tem tela AMOLED, 5G e resistência a queda."
+     }
+    },
+    {
+     "item": {
+      "id": "xiaomi-redmi-note-17-5g",
+      "faixa": "fraco para o preço",
+      "titulo": "Redmi Note 17 5G",
+      "alerta": true,
+      "texto": [
+       "A bateria de 7.700 mAh e a tela grande são o chamariz. Mas, perto de R$ 2.000, ele usa um processador de entrada (Snapdragon 4 Gen 4), tem uma câmera traseira só e grava no máximo em Full HD. Nos testes, perdeu desempenho em relação ao modelo do ano anterior."
+      ],
+      "altRot": "Leve no lugar",
+      "alt": "o **Galaxy A57**, que custa menos, é bem mais rápido, tem três câmeras, IP68 e 6 atualizações do Android."
+     }
+    },
+    {
+     "item": {
+      "id": "huawei-nova-15-max",
+      "faixa": "sem google",
+      "titulo": "Huawei nova 15 Max",
+      "alerta": true,
+      "texto": [
+       "Tem 8.500 mAh e tela OLED grande, mas não tem 5G nem NFC, então não dá para pagar por aproximação. E, como todo Huawei recente, não vem com a Play Store e os aplicativos do Google: você baixa os apps pela loja da Huawei, e alguns, como bancos, podem dar trabalho."
+      ],
+      "altRot": "Leve no lugar",
+      "alt": "o **Moto G Max**, que sai por menos de R$ 1.600, com 5G, NFC, câmera de 200 MP e resistência a queda e água."
+     }
+    },
+    {
+     "item": {
+      "id": "iphone-15",
+      "faixa": "tela de 60 hz",
+      "titulo": "iPhone 15",
+      "alerta": true,
+      "texto": [
+       "Por perto de R$ 3.800, ele ainda parece um iPhone barato. Mas a tela é de 60 Hz, ele não roda os recursos de inteligência artificial da Apple e a recarga é lenta. Você paga preço de topo de linha por um aparelho de duas gerações atrás."
+      ],
+      "altRot": "Leve no lugar",
+      "alt": "se quer iPhone, o **iPhone 16** (uns R$ 800 a mais) ou, melhor ainda, o **iPhone 17**, que tem tela de 120 Hz. Se não faz questão de iPhone, o **Galaxy S26** custa quase o mesmo que o 15 e é muito mais celular."
+     }
+    },
+    {
+     "destaque": [
+      "Bônus: o celular certo no preço errado",
+      "O Razr 70 Ultra apareceu por cerca de R$ 4.500 na Magalu e por mais de R$ 7.000 em outra loja, no mesmo dia. É o mesmo aparelho. Compare sempre o preço em pelo menos três lojas antes de comprar."
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "galaxy-s27-o-que-ja-se-sabe",
+  "celular": "galaxy-s26",
+  "tipo": "noticia",
+  "categoria": "Notícia",
+  "titulo": "Galaxy S27: quatro modelos, visual novo e o que já vazou do próximo topo de linha da Samsung",
+  "resumo": "A Samsung confirmou que a linha S27 vai ter modelos mais diferentes entre si. Capas vazadas mostram um novo Galaxy S27 Pro e uma câmera redesenhada. Veja o que já se sabe e se vale esperar.",
+  "data": "2026-11-27",
+  "publicar": "2026-11-27T12:00",
+  "teaser": true,
+  "pronto": true,
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagens dos aparelhos: divulgação"
+  },
+  "chamada": "O Galaxy S26 ainda nem completou um ano e o S27 já domina os vazamentos. Nesta semana, apareceram as capas dos quatro modelos da nova linha, e a própria Samsung já tinha dito que eles vão ter identidades bem diferentes. Se você está entre comprar um S26 na Black Friday ou esperar, este texto é para você.",
+  "veredito": "Se você precisa trocar de celular agora, não vale esperar. O S27 só deve chegar no começo de 2027, provavelmente mais caro, por causa da alta da memória. Com o S26 perto de R$ 4.000 e o S26 Ultra abaixo de R$ 7.000, a Black Friday é um momento melhor para comprar do que o lançamento do sucessor.",
+  "secoes": {
+   "blocos": [
+    {
+     "h": "O que a Samsung confirmou"
+    },
+    {
+     "p": [
+      "Na apresentação dos resultados do terceiro trimestre, a Samsung disse que a linha Galaxy S27 terá identidades distintas para atender a diferentes perfis de consumidores. Foi a única informação oficial até agora. O resto vem de vazamentos, que ainda podem mudar."
+     ]
+    },
+    {
+     "h": "Quatro modelos, com um Pro novo"
+    },
+    {
+     "p": [
+      "Os rumores mais consistentes apontam para quatro celulares: Galaxy S27, S27+, S27 Pro e S27 Ultra. O Pro seria a novidade, uma espécie de Ultra sem a caneta S Pen, menor e mais barato.",
+      "As capas vazadas pelo informante Ice Universe mostram que o S27 e o S27+ mantêm o visual atual, com as câmeras em fila. Já o S27 Pro e o S27 Ultra ganham uma área elevada e larga na parte de cima da traseira, parecida com a dos iPhones Pro recentes."
+     ]
+    },
+    {
+     "h": "Câmeras"
+    },
+    {
+     "p": [
+      "Segundo os vazamentos, o zoom óptico de 5 vezes deve continuar exclusivo do Ultra. O S27 Pro usaria a mesma teleobjetiva de 10 MP com zoom de 3 vezes do S26 Ultra, o que deixaria uma diferença clara entre os dois."
+     ]
+    },
+    {
+     "tabela": {
+      "titulo": "O que se espera de cada modelo",
+      "cols": [
+       "Modelo",
+       "Visual",
+       "Destaque"
+      ],
+      "linhas": [
+       [
+        "Galaxy S27",
+        "igual ao S26",
+        "o mais barato da linha"
+       ],
+       [
+        "Galaxy S27+",
+        "igual ao S26+",
+        "tela maior"
+       ],
+       [
+        "Galaxy S27 Pro",
+        "novo, igual ao Ultra",
+        "Ultra menor, sem S Pen"
+       ],
+       [
+        "Galaxy S27 Ultra",
+        "novo",
+        "zoom de 5 vezes e S Pen"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Quando chega e quanto deve custar"
+    },
+    {
+     "p": [
+      "A expectativa é de lançamento no primeiro trimestre de 2027, no mesmo período em que a Samsung costuma apresentar a linha S. Não há preço, mas a tendência é de alta: a Samsung já reajustou o S26 no Brasil em outubro, por causa do custo da memória."
+     ]
+    }
+   ],
+   "fontes": [
+    [
+     "Canaltech: Galaxy S27 terá modelos com propostas diferentes, diz Samsung",
+     "https://canaltech.com.br/smartphone/galaxy-s27-tera-modelos-com-propostas-diferentes-para-cada-publico-diz-samsung/"
+    ],
+    [
+     "GSMArena: capas da linha Galaxy S27",
+     "https://www.gsmarena.com/leaked_galaxy_s27_series_cases_reiterate_new_designs_-news-75107.php"
+    ],
+    [
+     "PhoneArena: câmera do Galaxy S27 Pro",
+     "https://phonearena.com/news/galaxy-s27-series-designs-leak-galaxy-s27-pro-camera-downgrade_id183979"
+    ],
+    [
+     "Android Headlines: diferenças entre os quatro modelos",
+     "https://www.androidheadlines.com/?p=1304181"
+    ]
+   ]
+  }
+ },
+ {
+  "slug": "galaxy-a57-vs-redmi-note-17-pro",
+  "celular": "galaxy-a57",
+  "vs": "redmi-note-17-pro",
+  "publicar": "2026-11-27T19:00",
+  "tipo": "comparativo",
+  "categoria": "Comparativo",
+  "titulo": "Galaxy A57 ou Redmi Note 17 Pro: desempenho e atualizações ou bateria gigante?",
+  "resumo": "O Galaxy A57 é mais rápido, grava em 4K e recebe 6 atualizações do Android. O Redmi Note 17 Pro tem 8.340 mAh, tela mais brilhante e aguenta jato de água. Mostramos qual vale mais o seu dinheiro.",
+  "data": "2026-11-27",
+  "teaser": true,
+  "pronto": true,
+  "indicado": "galaxy-a57",
+  "chamada": "São dois dos intermediários mais procurados da Black Friday, de marcas que brigam pelo mesmo público. A Samsung aposta em equilíbrio e anos de atualização; a Xiaomi, em bateria que dura dois dias. Mostramos qual combina com o seu uso.",
+  "para_quem": "O Galaxy A57 combina com quem quer um celular rápido, fino e leve, grava vídeos para redes e pretende ficar muitos anos com o aparelho. O Redmi Note 17 Pro combina com quem passa o dia longe da tomada, vê muito vídeo, quer uma tela grande e bem brilhante e não se importa com um celular mais pesado.",
+  "veredito": "Para a maioria das pessoas, o Galaxy A57 é a escolha: custa menos, é mais rápido, grava em 4K e recebe atualização por mais tempo. O Redmi Note 17 Pro só vale mais a pena se bateria for a sua prioridade número um. Nesse caso, ele é imbatível, mas espere aparecer abaixo de R$ 2.400 na versão de 256 GB.",
+  "alvo": {
+   "versao": "128 GB",
+   "otimo": 1500,
+   "bom": 1650,
+   "caro": 1800
+  },
+  "alvoVs": {
+   "versao": "256 GB",
+   "otimo": 2200,
+   "bom": 2400,
+   "caro": 2700
+  },
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagens dos aparelhos: divulgação Samsung e Xiaomi"
+  },
+  "secoes": {
+   "abertura": "Na faixa entre R$ 1.800 e R$ 2.500, esses dois aparecem em quase toda busca de Black Friday. O Galaxy A57 foi lançado em março de 2026 por R$ 3.599 e hoje está perto de R$ 1.800. O Redmi Note 17 Pro chegou em agosto e aparece entre R$ 2.200 e R$ 2.800, dependendo da loja. A diferença fica entre R$ 500 e R$ 900.",
+   "oferece": [
+    [
+     "Desempenho",
+     "O Galaxy A57 usa o Exynos 1680, um processador de categoria acima do Snapdragon 6s Gen 4 do Redmi. No dia a dia, o A57 abre e troca de aplicativos com mais folga e aguenta melhor jogos médios. O Tecnoblog resumiu o Redmi como um celular de muita bateria e pouco poder de fogo."
+    ],
+    [
+     "Bateria",
+     "Aqui o Redmi ganha com folga. São 8.340 mAh contra 5.000 mAh do Samsung, e a recarga é de 67 W, contra 45 W. Na prática, o Redmi aguenta dois dias de uso moderado, enquanto o A57 fecha um dia com tranquilidade."
+    ],
+    [
+     "Tela",
+     "As duas são AMOLED de 120 Hz. A do Redmi é maior (6,83 contra 6,7 polegadas), tem resolução um pouco mais alta e é mais brilhante: a Notebookcheck chegou a dizer que ela faz a tela do A57 parecer pálida."
+    ],
+    [
+     "Câmeras e vídeo",
+     "O A57 tem três câmeras (50 MP com estabilização, ultrawide de 12 MP e macro) e grava em 4K. O Redmi tem principal de 50 MP e ultrawide de 8 MP, e grava no máximo em Full HD. Para quem faz vídeo para redes, o Samsung leva vantagem."
+    ],
+    [
+     "Corpo e resistência",
+     "Os dois aguentam mergulho (IP68), e o Redmi ainda tem IP69K, que cobre jato de água forte. Em compensação, ele pesa 223 gramas, contra 179 gramas do A57, que também é bem mais fino."
+    ]
+   ],
+   "preco": "O Galaxy A57 foi lançado a R$ 3.599 e, na nossa pesquisa, estava a R$ 1.812 no Mercado Livre, R$ 1.899 na Amazon e R$ 1.962 na Magalu. O menor preço que já registramos foi R$ 1.457. O Redmi Note 17 Pro não teve preço oficial divulgado no Brasil: na pesquisa de 21/11, a versão de 256 GB variava de R$ 2.239 a R$ 2.780, com média perto de R$ 2.480.",
+   "atualizacoes": "O Galaxy A57 sai com Android 16 e a Samsung promete 6 atualizações do sistema. O Redmi Note 17 Pro sai com HyperOS 3, e a Xiaomi informa 4 anos de atualizações do sistema. Se você troca de celular a cada dois ou três anos, os dois atendem. Se quer ficar mais tempo, o A57 vai durar mais.",
+   "para_quem": "O Galaxy A57 combina com quem quer um celular rápido, fino e leve, grava vídeos para redes e pretende ficar muitos anos com o aparelho. O Redmi Note 17 Pro combina com quem passa o dia longe da tomada, vê muito vídeo, quer uma tela grande e bem brilhante e não se importa com um celular mais pesado.",
+   "veredito": "Para a maioria das pessoas, o Galaxy A57 é a escolha: custa menos, é mais rápido, grava em 4K e recebe atualização por mais tempo. O Redmi Note 17 Pro só vale mais a pena se bateria for a sua prioridade número um. Nesse caso, ele é imbatível, mas espere aparecer abaixo de R$ 2.400 na versão de 256 GB.",
+   "fontes": [
+    [
+     "Tecnoblog: review do Redmi Note 17 Pro 5G",
+     "https://tecnoblog.net/testamos/review-do-redmi-note-17-pro-5g-muita-bateria-pouco-poder-de-fogo/"
+    ],
+    [
+     "Notebookcheck: review do Redmi Note 17 Pro 5G",
+     "https://www.notebookcheck.net/Brilliant-battery-life-incredible-camera-Redmi-Note-17-Pro-5G-smartphone-review.1415600.0.html"
+    ],
+    [
+     "Xiaomi: ficha do Redmi Note 17 Pro 5G",
+     "https://www.mi.com/br/product/redmi-note-17-pro-5g/specs/"
     ]
    ]
   }

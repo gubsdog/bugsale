@@ -1295,5 +1295,65 @@
    "minimo": "—",
    "updResumo": "A Motorola ainda não divulgou a política de atualizações."
   }
+ },
+ {
+  "id": "redmi-note-17-pro",
+  "marca": "Xiaomi",
+  "nome": "Redmi Note 17 Pro 5G",
+  "tipo": "Tradicional (barra)",
+  "img": "rn17p",
+  "specs": {
+   "lancamento": "Ago/2026",
+   "precoN": null,
+   "atualN": 2483,
+   "minimoN": 2239,
+   "tela": "6,83\" AMOLED · 1280×2772",
+   "taxaN": 120,
+   "telaExt": null,
+   "chip": "Snapdragon 6s Gen 4",
+   "ram": "6, 8 ou 12 GB",
+   "ramN": 12,
+   "armaz": "256 ou 512 GB",
+   "armazN": 512,
+   "camTras": "50 MP principal + 8 MP ultrawide",
+   "zoom": null,
+   "camFrontal": "16 MP",
+   "video": "Até Full HD a 60 fps",
+   "bateriaN": 8340,
+   "carga": "67 W",
+   "cargaN": 67,
+   "resist": "IP68/IP69K",
+   "pesoN": 223,
+   "peso": "223 g",
+   "espessura": "8,6 mm",
+   "sistema": "Android (HyperOS 3)",
+   "updOS": "4 anos",
+   "updOSN": 4,
+   "updSeg": null,
+   "updSegN": null,
+   "preco": null,
+   "atual": "R$ 2.483",
+   "minimo": "R$ 2.239",
+   "taxa": "120 Hz",
+   "bateria": "8.340 mAh",
+   "cores": null,
+   "updResumo": "4 anos de atualizações do sistema"
+  },
+  "ofertas": {
+   "pesquisa": "2026-11-21",
+   "lista": [
+    {
+     "loja": "Magalu",
+     "preco": 2780.1,
+     "url": "https://www.magazineluiza.com.br/xiaomi-redmi-note-17-pro-5g-256gb-roxo/p/jc42bgd62a/te/rn17/"
+    }
+   ]
+  },
+  "historico": [
+   {
+    "data": "2026-11-21",
+    "preco": 2483
+   }
+  ]
  }
 ]

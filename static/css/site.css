@@ -2441,7 +2441,7 @@ html .gm-pe{margin-top:16px}
 .mt-item{display:grid;grid-template-columns:160px 1fr;gap:24px;margin:24px 0;padding:24px;border:1px solid var(--v-line);border-radius:16px;background:var(--v-surface)}
 .mt-item-img{display:flex;align-items:flex-start;justify-content:center;padding-top:8px}
 .mt-item-img img{width:100%;max-width:160px;height:auto;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.18))}
-.mt-faixa{display:inline-block;font:400 13px/1 "Silkscreen",var(--body),monospace;text-transform:lowercase;background:var(--v-gold);color:#0B0B0D;padding:8px 8px;border-radius:2px}
+.mt-faixa{display:inline-block;font:400 13px/1 var(--pixel);text-transform:lowercase;background:var(--v-gold);color:#0B0B0D;padding:8px 8px;border-radius:2px}
 .mt-alerta .mt-faixa{background:#E5383B;color:#F4F4F1}
 html.v2 .post-body .mt-item h3{margin:16px 0 8px;font:700 24px/1.2 var(--display);letter-spacing:-.02em;color:var(--v-ink)}
 html.v2 .post-body .mt-item p{font-size:15px;line-height:1.6;margin:0 0 8px}
@@ -2454,7 +2454,7 @@ html.v2 .post-body .mt-alt{font-size:14px;color:var(--v-soft) !important}
 .mt-preco s{font:500 16px/1.4 var(--body);color:var(--v-soft)}
 .mt-acoes{display:flex;flex-wrap:wrap;gap:8px}
 .mt-dest{margin:24px 0;padding:16px 24px;border-radius:16px;border:1px solid color-mix(in srgb,var(--v-purple) 40%,transparent);background:color-mix(in srgb,var(--v-purple) 8%,transparent)}
-.mt-dest .kicker{font:400 13px "Silkscreen",var(--body),monospace;text-transform:lowercase;color:var(--v-purple)}
+.mt-dest .kicker{font:400 13px var(--pixel);text-transform:lowercase;color:var(--v-purple)}
 html.v2 .post-body .mt-dest p{margin:8px 0 0}
 .mt-tab table{width:100%}
 .post-body ul{margin:0 0 16px;padding-left:24px;line-height:1.7}
@@ -2464,3 +2464,35 @@ html.v2 .post-body .mt-dest p{margin:8px 0 0}
   .mt-acoes .btn{flex:1;justify-content:center}
 }
 .mt-tab thead th{color:#F4F4F1 !important}
+/* banner do comparador: sem o nome, título + texto + botão embaixo */
+html.v2 .h-cmp-k{display:none !important}
+@media (min-width:761px){
+  html.v2 .h-cmp-txt{flex-direction:column !important;align-items:flex-start !important;gap:8px !important;padding:24px 0 !important}
+  html.v2 .h-cmp-txt > span:not(.h-cmp-btn){order:0 !important;flex-basis:auto !important}
+  html.v2 .h-cmp-btn{order:0 !important;margin-top:8px !important}
+  html.v2 .h-cmp-art{height:152px}html.v2 .h-cmp{min-height:152px}
+  html.v2 .h-cmp-art img{height:152px}
+}
+@media (max-width:760px){
+  html.v2 .h-cmp{flex-direction:column !important;align-items:flex-start !important;gap:8px !important;padding:24px !important}
+  html.v2 .h-cmp-seta{display:none !important}
+  html.v2 .h-cmp-btn{display:inline-block !important;margin-top:8px}
+}
+/* página de agendados (só prévia) */
+.ag{max-width:880px;margin:32px auto 64px}
+.ag h1{font:700 40px/1.1 var(--display);letter-spacing:-.03em;margin:8px 0}
+.ag-sub{color:var(--v-soft);margin:0 0 24px}
+.ag-dia{font:700 20px/1.2 var(--body);margin:32px 0 16px;text-transform:capitalize}
+.ag-lista{display:flex;flex-direction:column;gap:8px}
+.ag-item{display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:center;padding:16px;border:1px solid var(--v-line);border-radius:16px;background:var(--v-surface);color:var(--v-ink) !important;text-decoration:none}
+a.ag-item:hover{border-color:var(--v-gold)}
+.ag-falta{opacity:.6}
+.ag-img{position:relative;width:96px;height:72px;border-radius:8px;overflow:hidden;display:block;background:#0B0B0D}
+.ag-img img{width:100%;height:100%;object-fit:cover}
+.ag-txt{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ag-meta{font-size:12px;color:var(--v-soft)}
+.ag-tit{font-weight:700;font-size:16px;line-height:1.3}
+.ag-dek{font-size:13px;color:var(--v-soft);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ag-ir{font-weight:700;font-size:13px;white-space:nowrap;color:var(--v-ink)}
+@media (max-width:760px){ .ag{margin:16px 0 48px} .ag h1{font-size:28px} .ag-item{grid-template-columns:72px 1fr} .ag-img{width:72px;height:56px} .ag-ir{display:none} }
+.ag-img img{position:absolute;inset:0;width:100% !important;height:100% !important;object-fit:cover}

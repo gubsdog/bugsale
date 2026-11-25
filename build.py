@@ -42,7 +42,7 @@ CAT = json.load(open(os.path.join(ROOT, 'data/catalogo.json'), encoding='utf-8')
 ANTIGO = {"samsung-galaxy-a07-4g":"galaxy-a07","samsung-galaxy-a17-5g":"galaxy-a17-5g","samsung-galaxy-a57-5g":"galaxy-a57",
   "samsung-galaxy-s26":"galaxy-s26","samsung-galaxy-s26-ultra":"galaxy-s26-ultra","apple-iphone-15":"iphone-15","apple-iphone-16":"iphone-16",
   "apple-iphone-17":"iphone-17","motorola-moto-g86":"moto-g86","motorola-edge-70":"edge-70","motorola-edge-70-pro":"edge-70-pro",
-  "motorola-razr-70-ultra":"razr-70-ultra","xiaomi-poco-x8-pro":"poco-x8-pro","xiaomi-poco-x8-pro-max":"poco-x8-pro-max"}
+  "motorola-razr-70-ultra":"razr-70-ultra","xiaomi-poco-x8-pro":"poco-x8-pro","xiaomi-poco-x8-pro-max":"poco-x8-pro-max","xiaomi-redmi-note-17-pro-5g":"redmi-note-17-pro"}
 SEG = {"entrada":"entrada","intermediario_entrada":"intermediario","intermediario":"intermediario","intermediario_premium":"intermediario","topo_de_linha":"topo"}
 cat = []
 for m in CAT['modelos']:
@@ -237,6 +237,9 @@ for a in paginas:
 # ---------- comparador (visual novo, até 3 aparelhos do catálogo) ----------
 page('comparador.html', 'Comparador de celulares · Bugsale', 'Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço de hoje e promessa de atualizações.', 'comparador', 'MQ.renderComparador();',
      content=ssr_lista('Comparador de celulares', 'Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço de hoje e promessa de atualizações. São ' + str(len(cat)) + ' modelos de Samsung, Apple, Motorola, Xiaomi e Huawei.', [], ''))
+
+if PREVIEW:   # só na prévia do artifact: lista dos agendados (nunca gerada no build oficial)
+    page('agendados.html', 'Artigos agendados (prévia) · Bugsale', 'Prévia dos artigos agendados.', 'agendados', 'MQ.renderAgendados();', index=False)
 
 # ---------- sitemap e robots ----------
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

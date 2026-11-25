@@ -35,6 +35,8 @@ const MENU = [
   [R+"index.html#celular-ideal","Celular ideal","game"],
   [R+"comparador.html","Comparador de preços","comparador"]
 ];
+/* só na prévia do Claude (artifact): página com os artigos agendados. Nunca vai para o GitHub. */
+if(window.MQ_DATA && MQ_DATA.preview) MENU.push([R+"agendados.html","Agendados","agendados"]);
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const brl = n => "R$ " + Math.round(n).toLocaleString("pt-BR");
 const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
@@ -590,7 +592,7 @@ const PERSONAS = {
   compacto:    {nome:"O minimalista exigente", ico:"M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2", txt:"Quer um topo de linha que caiba numa mão e não pese no bolso, sem abrir mão de desempenho e câmera boa.", tags:["Usa com uma mão","Desempenho alto","Câmera boa"], nao:"quem passa o dia vendo vídeo e quer tela grande."},
   estilo:      {nome:"O estiloso", ico:"M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z", txt:"Escolhe o celular também pelo visual: quer um aparelho fino, leve e bonito na mão, com tela e câmera boas para o dia a dia.", tags:["Fino e leve","Acabamento","Boa câmera"], nao:"quem quer a maior bateria possível."}
 };
-const PERFIL = {"galaxy-a07":["entrada"],"galaxy-a17-5g":["entrada","intermediario"],"galaxy-a57":["intermediario"],"galaxy-s26":["compacto","topo"],"galaxy-s26-ultra":["topo","camera"],"iphone-15":["ecossistema"],"iphone-16":["ecossistema","intermediario"],"iphone-17":["ecossistema","camera"],"moto-g86":["intermediario","bateria"],"moto-g-max":["camera","tela"],"edge-70":["estilo"],"edge-70-pro":["bateria","camera"],"razr-70-ultra":["dobravel","topo"],"poco-x8-pro":["gamer","bateria"],"poco-x8-pro-max":["gamer","tela"]};
+const PERFIL = {"galaxy-a07":["entrada"],"galaxy-a17-5g":["entrada","intermediario"],"galaxy-a57":["intermediario"],"galaxy-s26":["compacto","topo"],"galaxy-s26-ultra":["topo","camera"],"iphone-15":["ecossistema"],"iphone-16":["ecossistema","intermediario"],"iphone-17":["ecossistema","camera"],"moto-g86":["intermediario","bateria"],"moto-g-max":["camera","tela"],"edge-70":["estilo"],"edge-70-pro":["bateria","camera"],"razr-70-ultra":["dobravel","topo"],"poco-x8-pro":["gamer","bateria"],"poco-x8-pro-max":["gamer","tela"],"redmi-note-17-pro":["bateria","tela"]};
 function personaCard(k, i, o){
   const x = PERSONAS[k];
   return `<div class="persona${i===0?" principal":""}"${o!=null?` style="--o:${o}"`:""}>
@@ -778,7 +780,11 @@ function renderArticle(){
     const inl = t => esc(t).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
     const pars = x => (Array.isArray(x)?x:[x]).filter(Boolean).map(t=>`<p>${inl(t)}</p>`).join("");
     const itemHTML = (it, i) => {
-      const q = P(it.id); if(!q) return "";
+      let q = P(it.id);
+      if(!q){ /* celular só do catálogo (sem página própria): foto, nome e preço médio do catálogo */
+        const c = CAT().find(x=>x.id===it.id); if(!c) return "";
+        q = {id:c.id, full:`${c.marca==="Apple"?"":c.marca+" "}${c.nome}`, catImg:c.img, atualN:c.preco, precoN:null, ofertas:null, soCat:true};
+      }
       const ofs = (q.ofertas && q.ofertas.lista || []).filter(o=>o.preco).sort((x,y)=>x.preco-y.preco), o = ofs[0];
       const hoje = o ? o.preco : q.atualN, art = publicados().find(x=>x.phone===q.id && x.id!==a.id);
       return `<section class="mt-item${it.alerta?" mt-alerta":""}">
@@ -788,8 +794,8 @@ function renderArticle(){
           <h3>${esc(it.titulo || q.full)}</h3>
           ${pars(it.texto)}
           ${it.alt ? `<p class="mt-alt"><b>${it.altRot ? esc(it.altRot) : "Alternativa"}:</b> ${inl(it.alt)}</p>` : ""}
-          <div class="mt-preco"><span><small>${o ? `menor preço hoje · ${esc(o.loja)}` : "preço médio hoje"}</small><b>${brl(hoje)}</b></span>${it.alvo ? `<span><small>bom preço</small><b class="mt-ok">até ${brl(it.alvo)}</b></span>` : ""}${q.precoN ? `<span><small>lançamento</small><s>${brl(q.precoN)}</s></span>` : ""}</div>
-          <div class="mt-acoes">${o ? `<a class="btn primary" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta ${o.loja==="Mercado Livre"?"no":"na"} ${esc(o.loja)} →</a>` : ""}${art ? `<a class="btn" href="${artURL(art)}">Ler a análise</a>` : `<button class="btn" type="button" data-compare="${q.id}">Abrir no comparador</button>`}</div>
+          <div class="mt-preco"><span><small>${o ? `menor preço hoje · ${esc(o.loja)}` : q.soCat ? "preço médio nas lojas" : "preço médio hoje"}</small><b>${brl(hoje)}</b></span>${it.alvo ? `<span><small>bom preço</small><b class="mt-ok">até ${brl(it.alvo)}</b></span>` : ""}${q.precoN ? `<span><small>lançamento</small><s>${brl(q.precoN)}</s></span>` : ""}</div>
+          <div class="mt-acoes">${o ? `<a class="btn primary" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta ${o.loja==="Mercado Livre"?"no":"na"} ${esc(o.loja)} →</a>` : ""}${art ? `<a class="btn" href="${artURL(art)}">Ler a análise</a>` : q.soCat ? `<a class="btn" href="${R}comparador.html">Ver no comparador</a>` : `<button class="btn" type="button" data-compare="${q.id}">Abrir no comparador</button>`}</div>
         </div></section>`;
     };
     const blocoHTML = (k, i) => k.h ? `<h2>${esc(k.h)}</h2>` : k.p ? pars(k.p) : k.item ? itemHTML(k.item, i) : k.lista ? `<ul>${k.lista.map(t=>`<li>${inl(t)}</li>`).join("")}</ul>`
@@ -1907,5 +1913,21 @@ function gameInicia(){
   if(!visto && !gLer() && !/[?&]semgame\b/.test(location.search)) setTimeout(()=>{ if(!document.querySelector(".busca:not([hidden])")) gameAbre(); }, 3000);
 }
 
-window.MQ = { header, footer, renderArticles, renderArticle, renderRanking: ()=>renderRanking2(), renderComparador };
+
+function renderAgendados(){
+  const main = document.getElementById("content");
+  const L = MQ_DATA.articles.filter(a=>a.locked).sort((a,b)=>a.pub.localeCompare(b.pub));
+  const dia = d => { const x = new Date(d+"T12:00:00"); return x.toLocaleDateString("pt-BR",{weekday:"long", day:"2-digit", month:"2-digit"}); };
+  const grupos = {}; L.forEach(a=>{ (grupos[a.pub.slice(0,10)] = grupos[a.pub.slice(0,10)] || []).push(a); });
+  const TIP = {lista:"Guia", noticia:"Notícia", comparativo:"Comparativo", vale:"Vale a pena?", ocasiao:"Black Friday", novidade:"Novidade", review:"Review"};
+  main.innerHTML = `<section class="ag"><span class="kicker">Só na prévia</span><h1>Artigos agendados</h1>
+    <p class="ag-sub">Esta página existe só aqui no artifact. Ela não é gerada no site oficial: lá, cada artigo aparece sozinho no horário marcado.</p>
+    ${Object.keys(grupos).length ? Object.entries(grupos).map(([d, as])=>`<h2 class="ag-dia">${esc(dia(d))}</h2><div class="ag-lista">${as.map(a=>{
+      const p = PA(a), ok = !a.chamada;
+      return `<${ok?"a":"div"} class="ag-item${ok?"":" ag-falta"}"${ok?` href="${artURL(a)}"`:""}><span class="ag-img">${img2(p)}</span>
+        <span class="ag-txt"><span class="ag-meta"><b>${a.pub.slice(11,16)}</b> · ${esc(TIP[a.tipo]||a.cat)}${ok?"":" · <i>sem texto ainda</i>"}</span>
+        <span class="ag-tit">${esc(a.titulo)}</span><span class="ag-dek">${esc(a.dek)}</span></span>${ok?`<span class="ag-ir">Ler prévia →</span>`:""}</${ok?"a":"div"}>`;}).join("")}</div>`).join("") : `<p>Nenhum artigo agendado.</p>`}
+  </section>`;
+}
+window.MQ = { header, footer, renderArticles, renderArticle, renderRanking: ()=>renderRanking2(), renderComparador, renderAgendados };
 })();
