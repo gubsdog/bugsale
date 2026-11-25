@@ -818,13 +818,6 @@ function renderArticle(){
         <div class="share"><a class="ico-btn wa" href="https://wa.me/?text=${shareText}%20${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">${ICO_WA}</a><button type="button" class="ico-btn" id="copyLink" aria-label="Copiar link" title="Copiar link">${ICO_LINK}</button></div>
       </div>
     </div>
-    ${(()=>{ /* card de melhores preços ao lado do título: o menor preço de hoje de cada celular citado */
-      const ids = S.ofertasTopo || (S.blocos||[]).filter(k=>k.item).map(k=>k.item.id);
-      const rows = ids.map(id=>P(id)).filter(q=>q && q.ofertas && q.ofertas.lista && q.ofertas.lista.length).map(q=>({q, o:q.ofertas.lista.slice().sort((x,y)=>x.preco-y.preco)[0]})).slice(0,5);
-      if(!rows.length) return "";
-      const pesq = rows.map(r=>r.q.ofertas.pesquisa).filter(Boolean).sort().pop();
-      return `<section class="ofertas-mini om-topo om-varios" aria-label="Melhores preços de hoje"><div class="om-head"><b>Melhores preços de hoje</b><span>${pesq?`Pesquisa em ${dataHora(pesq)}`:""}</span></div>${rows.map((r,i)=>`<a class="om-btn${i===0?" melhor":""}" href="${esc(r.o.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(r.q.nome)}<small>${esc(r.o.loja)}</small></span><span class="om-dir"><b>${brl(r.o.preco)}</b><i aria-hidden="true">↗</i></span></a>`).join("")}</section>`;
-    })()}
     ${a.capa ? `<figure class="cover"><div class="art ${vcls(pc)}">${visual(pc)}</div><figcaption>${esc(a.capa.credito)}.</figcaption></figure>` : ""}
     <div class="post-body">
       ${b[0] ? `<p class="lede">${inl(b[0])}</p>` : ""}
