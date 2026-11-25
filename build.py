@@ -136,7 +136,7 @@ TAGLINE = 'Reviews, ranking de custo-benefício e o preço justo de celulares no
 # ---------- texto no HTML (para o Google): versão simples do artigo que o JavaScript troca pela página completa ----------
 E = lambda t: escape(str(t), quote=True)
 def _paras(v):
-    if isinstance(v, str): return f'<p>{E(v)}</p>' if v.strip() else ''
+    if isinstance(v, str): return f'<p>{E(v.replace("**", ""))}</p>' if v.strip() else ''
     if isinstance(v, list): return ''.join(_paras(x) if not isinstance(x, list) else '' for x in v)
     return ''
 def ssr_artigo(a):
@@ -162,6 +162,17 @@ def ssr_artigo(a):
     ofs = [(phones[i], o) for i in ids if i in phones for o in sorted((phones[i].get('ofertas') or {}).get('lista', []), key=lambda o: o['preco'])]
     if ofs:
         h.append('<h2>Onde comprar</h2><ul>' + ''.join(f'<li><a href="{E(o["url"])}" rel="sponsored nofollow noopener">{E(p["full"])} {"no" if o["loja"] == "Mercado Livre" else "na"} {E(o["loja"])}: R$ {o["preco"]:,.0f}</a></li>'.replace(',', '.') for p, o in ofs) + '</ul>')
+    for k in S.get('blocos') or []:   # matérias livres (guias e notícias)
+        if k.get('h'): h.append(f'<h2>{E(k["h"])}</h2>')
+        elif k.get('p'): h.append(_paras(k['p']))
+        elif k.get('lista'): h.append('<ul>' + ''.join(f'<li>{E(t)}</li>' for t in k['lista']) + '</ul>')
+        elif k.get('destaque'): h.append(f'<p><b>{E(k["destaque"][0])}:</b> {E(k["destaque"][1])}</p>')
+        elif k.get('item'):
+            it = k['item']; q = phones.get(it['id'], {})
+            h.append(f'<h3>{E(it.get("faixa",""))} {E(it.get("titulo") or q.get("full",""))}</h3>' + _paras(it.get('texto', '')))
+        elif k.get('tabela'):
+            T = k['tabela']
+            h.append('<table><thead><tr>' + ''.join(f'<th>{E(c)}</th>' for c in T['cols']) + '</tr></thead><tbody>' + ''.join('<tr>' + ''.join(f'<td>{E(x)}</td>' for x in r) + '</tr>' for r in T['linhas']) + '</tbody></table>')
     if S.get('fontes'): h.append('<h2>Fontes</h2><ul>' + ''.join(f'<li><a href="{E(u)}" rel="noopener">{E(n)}</a></li>' for n, u in S['fontes']) + '</ul>')
     h.append('</article>')
     return ''.join(h)
