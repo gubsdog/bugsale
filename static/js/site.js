@@ -37,6 +37,9 @@ const MENU = [
 ];
 /* só na prévia do Claude (artifact): página com os artigos agendados. Nunca vai para o GitHub. */
 if(window.MQ_DATA && MQ_DATA.preview) MENU.push([R+"agendados.html","Agendados","agendados"]);
+/* game "Celular ideal": por enquanto só na prévia do artifact (ainda não lançado no site) */
+const GAME_ON = !!(window.MQ_DATA && MQ_DATA.preview);
+if(!GAME_ON) MENU.splice(MENU.findIndex(m=>m[2]==="game"),1);
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const brl = n => "R$ " + Math.round(n).toLocaleString("pt-BR");
 const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
@@ -1913,6 +1916,7 @@ function gameAbre(forcar){
   if(salvo && salvo.r && !forcar){ r = salvo.r; resultado(gameCalcula(r)); } else intro();
 }
 function gameInicia(){
+  if(!GAME_ON) return;
   document.addEventListener("click", e=>{ const a = e.target.closest && e.target.closest('a[href*="#celular-ideal"]'); if(!a || !document.documentElement.classList.contains("v2")) return; e.preventDefault(); const mm = document.getElementById("menuM"); if(mm && !mm.hidden) document.querySelector(".hdr-menu").click(); gameAbre(); });
   if(!document.documentElement.classList.contains("v2")) return;
   if(location.hash === "#celular-ideal"){ setTimeout(()=>gameAbre(), 300); return; }
