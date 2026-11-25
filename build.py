@@ -66,6 +66,26 @@ for m in CAT['modelos']:
         preco=m.get('preco_medio_brl'), img=(f"img/cat/{m['id']}.webp" if os.path.exists(os.path.join(ROOT,'static/img/cat',m['id']+'.webp')) else None),
         precoInfo=(lambda p: p and dict(data=p.get('data_consulta'), canais=p.get('quantidade_canais'), min=p.get('menor_brl'), max=p.get('maior_brl'), gb=p.get('armazenamento_referencia_gb')))(m.get('pesquisa_preco'))))
 
+# ---------- links de afiliado aplicados automaticamente ----------
+# Amazon: link do produto + tag; Magalu: link do produto + códigos do Parceiro Magalu.
+# Links curtos já gerados nos painéis (link.amazon, onelink, meli.la) passam direto.
+# Mercado Livre: o contrato pede o gerador oficial, então os links do ML continuam vindo do painel.
+from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
+AMAZON_TAG = 'bugsale-20'
+MAGALU = dict(partner_id='3440', promoter_id='5850299', seller_id='magazineluiza')
+def afiliado(url):
+    u = urlsplit(url); host = u.netloc.lower(); q = dict(parse_qsl(u.query))
+    if host.endswith('amazon.com.br'):
+        import re
+        m = re.search(r'/(?:dp|gp/product)/([A-Z0-9]{10})', u.path)
+        if m: return f'https://www.amazon.com.br/dp/{m.group(1)}?tag={AMAZON_TAG}'
+        q['tag'] = AMAZON_TAG
+    elif host.endswith('magazineluiza.com.br'):
+        for k, v in MAGALU.items(): q.setdefault(k, v)
+    else:
+        return url
+    return urlunsplit((u.scheme or 'https', u.netloc, u.path, urlencode(q), ''))
+
 # ---------- js/data.js (usado pelas páginas) ----------
 phones = {}
 for c in celulares:
@@ -79,7 +99,7 @@ for c in celulares:
     cut = f"img/cut/{c['img']}.webp"
     q['cut'] = cut if os.path.exists(os.path.join(DIST, cut)) else q['img']
     o = c.get('ofertas') or {}
-    lista = [x for x in o.get('lista', []) if x.get('preco') and x.get('url')][:3]
+    lista = [dict(x, url=afiliado(x['url'])) for x in o.get('lista', []) if x.get('preco') and x.get('url')][:3]
     if lista:
         q['ofertas'] = dict(pesquisa=o.get('pesquisa',''), lista=sorted(lista, key=lambda x: x['preco']))
     if c.get('historico'): q['historico'] = c['historico']   # [{"mes": "2026-03", "preco": 3299}, ...]
