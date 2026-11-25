@@ -2496,3 +2496,16 @@ a.ag-item:hover{border-color:var(--v-gold)}
 .ag-ir{font-weight:700;font-size:13px;white-space:nowrap;color:var(--v-ink)}
 @media (max-width:760px){ .ag{margin:16px 0 48px} .ag h1{font-size:28px} .ag-item{grid-template-columns:72px 1fr} .ag-img{width:72px;height:56px} .ag-ir{display:none} }
 .ag-img img{position:absolute;inset:0;width:100% !important;height:100% !important;object-fit:cover}
+
+/* matérias: etiquetas em Inter (a fonte pixelada fica para o game) e card de preços ao lado do título */
+.mt-faixa{font:700 12px/1 var(--body) !important;text-transform:uppercase !important;letter-spacing:.06em}
+.mt-dest .kicker{font:700 12px var(--body) !important;text-transform:uppercase !important;letter-spacing:.06em}
+.om-varios .om-loja{display:flex;flex-direction:column;gap:2px;font-weight:600}
+.om-varios .om-loja small{font-weight:400;font-size:12px;opacity:.7}
+.om-varios .om-btn.melhor .om-loja small{opacity:.8}
+.om-varios .om-btn{height:auto !important;min-height:48px;padding:8px 16px !important;align-items:center}
+.om-varios .om-loja{line-height:1.25}
+html.v2 .ofertas-mini.om-varios .om-btn{height:auto !important;min-height:52px !important;padding:8px 16px 8px 20px !important;border-radius:16px !important}
+html.v2 .ofertas-mini.om-varios .om-loja{display:flex !important;flex-direction:column !important;align-items:flex-start !important;text-align:left !important;gap:2px}
+html.v2 .ofertas-mini.om-varios .om-loja small{font:400 12px var(--body) !important}
+html.v2 .ofertas-mini.om-varios .om-btn + .om-btn{margin-top:8px !important}

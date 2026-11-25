@@ -78,7 +78,7 @@
   "specs": {
    "lancamento": "Ago/2025",
    "precoN": 1699,
-   "atualN": 962,
+   "atualN": 911,
    "minimoN": 764,
    "tela": "6,7\" Super AMOLED · 1080×2340",
    "taxaN": 90,
@@ -104,7 +104,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": "R$ 1.699",
-   "atual": "R$ 962",
+   "atual": "R$ 911",
    "minimo": "R$ 764",
    "taxa": "90 Hz",
    "bateria": "5.000 mAh",
@@ -117,25 +117,21 @@
    "posicao": "62% 45%"
   },
   "ofertas": {
-   "pesquisa": "",
+   "pesquisa": "2026-11-25T18:05",
    "lista": [
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Amazon",
+     "preco": 911.05,
+     "url": "https://www.amazon.com.br/dp/B0FPPQ5T37"
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-25",
+    "preco": 911
+   }
+  ]
  },
  {
   "id": "galaxy-a57",
