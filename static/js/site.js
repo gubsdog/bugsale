@@ -800,7 +800,7 @@ function renderArticle(){
       const pesq = rows.map(r=>r.q.ofertas.pesquisa).filter(Boolean).sort().pop();
       return `<section class="ofertas-mini om-topo om-varios" aria-label="Melhores preços de hoje"><div class="om-head"><b>Melhores preços de hoje</b><span>${pesq?`Pesquisa em ${dataHora(pesq)}`:""}</span></div>${rows.map((r,i)=>`<a class="om-btn${i===0?" melhor":""}" href="${esc(r.o.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(r.q.nome)}<small>${esc(r.o.loja)}</small></span><span class="om-dir"><b>${brl(r.o.preco)}</b><i aria-hidden="true">↗</i></span></a>`).join("")}</section>`;
     })()}
-    ${a.capa ? `<figure class="cover mt-cover"><img src="${R}${a.capa.src}" alt="${esc(a.titulo)}" width="1600" height="1200"><figcaption>${esc(a.capa.credito)}.</figcaption></figure>` : ""}
+    ${a.capa ? `<figure class="cover"><div class="art ${vcls(pc)}">${visual(pc)}</div><figcaption>${esc(a.capa.credito)}.</figcaption></figure>` : ""}
     <div class="post-body">
       ${b[0] ? `<p class="lede">${inl(b[0])}</p>` : ""}
       ${corpo}
