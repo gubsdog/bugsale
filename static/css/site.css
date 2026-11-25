@@ -2363,3 +2363,23 @@ html.js main > .ssr{visibility:hidden}
 .ssr,.ssr h1,.ssr h2{position:relative;z-index:1;color:#161618}
 .ssr-k,.ssr-by,.ssr-dek,.ssr li span{color:#55555C}
 .ssr a{color:#5B3FD6}
+
+/* game: cena em pixel art e escolha de personagem */
+.gm-cena{margin:8px 56px 16px 0;border-radius:16px;overflow:hidden;border:1px solid var(--v-line);background:#0e0c14;line-height:0}
+.gm-cena canvas{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges}
+.gm-top + .gm-cena{margin-right:0}
+.gm-intro .gm-cena-intro{margin:0;align-self:center}
+.gm-avs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gm-av{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border-radius:16px;border:1px solid var(--v-line);background:var(--v-bg);color:var(--v-ink);cursor:pointer;font:600 14px var(--body);transition:transform .15s,border-color .15s}
+.gm-av:hover{transform:translateY(-2px)}
+.gm-av canvas{width:96px;height:128px;image-rendering:pixelated;image-rendering:crisp-edges}
+.gm-av.on{border-color:var(--v-gold);box-shadow:inset 0 0 0 1px var(--v-gold);background:color-mix(in srgb,var(--v-gold) 8%,var(--v-bg))}
+@media (min-width:761px){ .gm-cena:not(.gm-cena-intro){max-width:384px;margin-left:auto;margin-right:auto} .gm-intro{grid-template-columns:320px 1fr} }
+@media (max-width:760px){
+  .gm-cena{margin:8px 0 8px}
+  .gm-intro .gm-cena-intro{order:-1}
+  .gm-av canvas{width:72px;height:96px}
+  .gm-avs{gap:8px}
+  html .gm-card{min-height:88px;gap:8px;padding:16px}
+  .gm-ic{width:40px;height:40px;border-radius:8px}
+}

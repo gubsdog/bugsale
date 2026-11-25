@@ -1392,6 +1392,193 @@ function renderComparador(){
   draw();
 }
 
+/* ---------- game: cenas em pixel art 16 bits (canvas 128x72, ampliado sem suavizar) ---------- */
+const PIX = (() => {
+  const W = 128, H = 72, CH = 56;   /* CH = linha do chão */
+  const PAL = {K:"#1b1420",H:"#3a2318",h:"#603c28",S:"#c98a5e",s:"#a86c45",W:"#f2f0ea",P:"#7c5cff",p:"#5b3fd6",D:"#2b2b3a",d:"#1e1e2a",
+    G:"#d4af5a",g:"#a8862f",F:"#26262e",L:"#8fe3c8",R:"#d9534f",O:"#4caf50",Y:"#e0a030",B:"#e88a8a",k:"#342446",C:"#468cdc",c:"#2864b4",N:"#f0c896",T:"#5ac878",A:"#9aa0b8",a:"#6a7088"};
+  const col = v => PAL[v] || v;
+  const R = (c,x,y,w,h,v) => { if(w<=0||h<=0) return; c.fillStyle = col(v); c.fillRect(Math.round(x),Math.round(y),w,h); };
+  const put = (c,rows,x,y,flip) => { x = Math.round(x); y = Math.round(y);
+    rows.forEach((r,j)=>{ if(flip) r = [...r].reverse().join(""); for(let i=0;i<r.length;i++){ const v = PAL[r[i]]; if(v){ c.fillStyle = v; c.fillRect(x+i,y+j,1,1); } } }); };
+  /* ---- personagens ---- */
+  const TOP = {
+    girl:["......KKKKKK......","....KKHHHHHHKK....","...KHHHHHHHHHHK...","..KHHhhHHHHHHHHK..","..KHHHHHHHHHHHHKK.","..KHSSSSSSSSSSHKHK","..KHSSSSSSSSSSHKHK"],
+    boy: ["..................","....KKKKKKKKKK....","...KHhHHHhHHHhK...","..KHHHHHHHHHHHHK..","..KHHHHHHHHHHHHK..","..KHSSSSSSSSSSHK..","..KSSSSSSSSSSSSK.."]};
+  const FACE = {
+    feliz: ["..KSSKSSSSSSKSSK..","..KSSKSSSSSSKSSK..","..KSBSSSSSSSSBSK..","...KSSSKSSKSSSK...","....KKSSKKSSKK...."],
+    neutro:["..KSSKSSSSSSKSSK..","..KSSKSSSSSSKSSK..","..KSBSSSSSSSSBSK..","...KSSSSKKSSSSK...","....KKSSSSSSKK...."],
+    triste:["..KSSSSSSSSSSSSK..","..KSKKSSSSSSKKSK..","..KSSSSSSSSSSCSK..","...KSSSSKKSSSCK...","....KKSKSSKSKK...."],
+    susto: ["..KSKKSSSSSSKKSK..","..KSKKSSSSSSKKSK..","..KSSSSSSSSSSSSK..","...KSSSSKKSSSSK...","....KKSSKKSSKK...."],
+    dorme: ["..KSSSSSSSSSSSSK..","..KSKKSSSSSSKKSK..","..KSBSSSSSSSSBSK..","...KSSSSSSSSSSK...","....KKSSKKSSKK...."],
+    pisca: ["..KSSKSSSSSSSSSK..","..KSSKSSSSSSKKSK..","..KSBSSSSSSSSBSK..","...KSSSKSSKSSSK...","....KKSSKKSSKK...."]};
+  const LEG = ["....KDDDDDDDDK....","....KDDDKKDDDK....","....KDDK..KDDK....","....KDDK..KDDK....","....KSSK..KSSK....","...KWWWK..KWWWK...","...KKKKK..KKKKK..."];
+  const BODY = {
+    cel:  ["......KSSSSK......","....KKPPPPPPKK....","...KPPPPPPPPPPK...","..KPPPKFFFFKPPPK..","..KPPSKFLLFKSPPK..","..KPPSKFLLFKSPPK..","..KPpSKFFFFKSpPK..","...KKPPPPPPPPKK...","....KPPPPPPPPK...."],
+    cima: ["..KK..KSSSSK..KK..","..KSKKPPPPPPKKSK..","...KSPPPPPPPPSK...","....KPPPPPPPPK....","....KPPPPPPPPK....","....KPPPPPPPPK....","....KPpPPPPpPK....","....KPPPPPPPPK....","....KPPPPPPPPK...."],
+    baixo:["......KSSSSK......","....KKPPPPPPKK....","...KPPPPPPPPPPK...","..KPPKPPPPPPKPPK..","..KPPKPPPPPPKPPK..","..KPSKPPPPPPKPPK..","..KSSKPPPPPPKSFK..","...KKKPPPPPPKKFK..","....KPPPPPPPPKK..."],
+    jogo: ["......KSSSSK......","....KKPPPPPPKK....","...KPPPPPPPPPPK...","..KSKFFFFFFFFFKSK.","..KSKFLLLLLLLFKSK.","..KSKFLLLLLLLFKSK.","...KKFFFFFFFFFKK..","....KPPPPPPPPK....","....KPPPPPPPPK...."],
+    selfie:["......KSSSSK...KK.","....KKPPPPPPKKKFK.","...KPPPPPPPPPKSFK.","..KPPKPPPPPPPKSK..","..KPPKPPPPPPPPK...","..KPSKPPPPPPPPK...","..KSSKPPPPPPPPK...","...KKKPPPPPPPPK...","....KPPPPPPPPK...."]};
+  const BUG = ["...K..........K...","....K........K....",".....K......K.....","....KKKKKKKKKK....","...KkkkkkkkkkkK...","..KkWWKkkkkKWWkK..","..KkWKKkkkkKKWkK..","...KkkkkKKkkkkK...","..KKGGGGGKGGGGGKK.",".KGGgGGGGKGGGGgGGK","KGGGGGGGGKGGGGGGGK","KGGGGGGGGKGGGGGGGK","KGGGGGGGGKGGGGGGGK","KGgGGGGGGKGGGGGGgK",".KGGGGGGGKGGGGGGK.",".KGGGGGGGKGGGGGGK.","..KKGGGGGKGGGGKK..","...KKKKKKKKKKKK...","...K.K......K.K...","..K..K......K..K.."];
+  /* desenha o personagem com os pés na linha y (28 px de altura); bug tem 20 */
+  function pessoa(c, av, x, pe, face="feliz", pose="cel", camisa){
+    if(av === "bug"){
+      const y = pe - 20; put(c, BUG, x, y);
+      if(face==="triste"){ R(c,x+5,y+7,1,2,"C"); } if(face==="susto"){ R(c,x+4,y+4,2,1,"W"); R(c,x+12,y+4,2,1,"W"); }
+      if(face==="dorme"){ R(c,x+4,y+5,3,2,"k"); R(c,x+11,y+5,3,2,"k"); R(c,x+4,y+6,3,1,"W"); R(c,x+11,y+6,3,1,"W"); }
+      if(face==="feliz"||face==="pisca"){ R(c,x+5,y+6,1,1,"W"); if(face==="pisca"){ R(c,x+12,y+5,2,2,"k"); R(c,x+12,y+6,2,1,"W"); } }
+      if(pose==="cel"||pose==="selfie"){ R(c,x+7,y+10,5,7,"K"); R(c,x+8,y+11,3,5,"L"); }
+      if(pose==="jogo"){ R(c,x+4,y+11,10,5,"K"); R(c,x+5,y+12,8,3,"L"); }
+      if(pose==="baixo"){ R(c,x+14,y+13,3,5,"K"); R(c,x+15,y+14,1,3,"F"); }
+      if(pose==="cima"){ R(c,x-1,y+6,2,2,"K"); R(c,x+17,y+6,2,2,"K"); }
+      return;
+    }
+    let rows = TOP[av==="boy"?"boy":"girl"].concat(FACE[face]||FACE.feliz, BODY[pose]||BODY.cel, LEG);
+    if(av === "boy") rows = rows.map(r=>r.replace(/P/g,"G").replace(/p/g,"g"));
+    if(camisa) rows = rows.map(r=>r.replace(/P/g,camisa[0]).replace(/p/g,camisa[1]));
+    put(c, rows, x, pe - rows.length);
+  }
+  /* ---- objetos ---- */
+  const HEART = [".KK.KK.","KRRKRRK","KRRRRRK",".KRRRK.","..KRK..","...K..."];
+  const COIN = [".KKK.","KGGgK","KGYgK","KGGgK",".KKK."];
+  const PIG = ["....KKKKKKKK.....","..KKBBBBBBBBKK...",".KBBBBBBBBBBBBK..","KBBBKBBBBBBBBBBKK","KBBBBBBBBBBBBBBBK","KBBBBBBBBBBBBBBRK","KBBBBBBBBBBBBBBBK",".KBBBBBBBBBBBBBK.","..KKBBKKKKKBBKK..","...KKK.....KKK..."];
+  const CROWN = ["K..K..K","KGKGKGK","KGGGGGK","KKKKKKK"];
+  const balao = (c,x,y,w=16,h=7,pts=true) => { R(c,x,y,w,h,"K"); R(c,x+1,y+1,w-2,h-2,"W"); R(c,x+2,y+h,3,2,"K"); R(c,x+3,y+h-1,1,1,"W"); if(pts) for(let i=0;i<3;i++) R(c,x+3+i*4,y+3,2,1,"K"); };
+  const bateria = (c,x,y,n,v) => { R(c,x,y,14,7,"K"); R(c,x+14,y+2,2,3,"K"); R(c,x+1,y+1,12,5,"#19191e"); R(c,x+1,y+1,Math.max(1,Math.round(12*n)),5,v); };
+  const brilho = (c,x,y,v,f) => { const s = f%2; R(c,x,y,1,1,v); if(s){ R(c,x-1,y,1,1,v); R(c,x+1,y,1,1,v); R(c,x,y-1,1,1,v); R(c,x,y+1,1,1,v); } };
+  const sobe = (t, vel, alt, fase=0) => ((t/vel + fase) % 1) * alt;   /* 0..alt em loop */
+  /* fonte 3x5 (M e W com 5) */
+  const FN = {"0":"111101101101111","1":"010110010010111","2":"111001111100111","3":"111001111001111","4":"101101111001001","5":"111100111001111","6":"111100111101111","7":"111001001001001","8":"111101111101111","9":"111101111001111",
+    "%":"101001010100101","A":"010101111101101","T":"111010010010010","C":"111100100100111","H":"101101111101101"," ":"000000000000000","!":"010010010000010","?":"111001011000010","Z":"111001010100111","X":"101101010101101","$":"011110010011110",
+    "R":"110101110101101","E":"111100110100111","S":"111100111001111","O":"111101101101111","N":"110101101101101","F":"111100110100100","I":"111010010010111","Q":"111101101111011","U":"101101101101111","D":"110101101101110","L":"100100100100111","P":"111101111100100",
+    "V":"101101101101010","B":"110101110101110","G":"111100101101111","J":"001001001101111","K":"101101110101101","Y":"101101010010010","+":"000010111010000",":":"000010000010000","-":"000000111000000"};
+  const F5 = {M:"1000111011101011000110001",W:"1000110001101011101110001"};
+  function texto(c,x,y,s,v="W"){ for(const ch0 of s){ const ch = ch0.toUpperCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+      if(F5[ch]){ [...F5[ch]].forEach((b,k)=>{ if(b==="1") R(c,x+k%5,y+(k/5|0),1,1,v); }); x += 6; continue; }
+      if(ch==="."){ R(c,x,y+4,1,1,v); x += 2; continue; }
+      [...(FN[ch]||FN[" "])].forEach((b,k)=>{ if(b==="1") R(c,x+k%3,y+(k/3|0),1,1,v); }); x += 4; } }
+  const largura = s => [...s].reduce((a,ch)=>a + ("MWmw".includes(ch)?6:ch==="."?2:4), 0) - 1;
+  const textoC = (c,cx,y,s,v) => texto(c, Math.round(cx - largura(s)/2), y, s, v);
+  /* ---- cenários ---- */
+  const chao = (c,a,b) => { R(c,0,CH,W,H-CH,a); for(let x=0;x<W;x+=8) R(c,x,CH,1,H-CH,b); };
+  const quarto = (c,noite) => { R(c,0,0,W,H,noite?"#161a36":"#463a62"); R(c,86,16,26,18,"K"); R(c,87,17,24,16,noite?"#22285a":"#ffc478"); if(!noite) R(c,87,17,24,6,"#ffe2a0"); R(c,98,17,1,16,"K"); R(c,87,25,24,1,"K");
+    if(noite){ for(let dx=0;dx<8;dx++) for(let dy=0;dy<8;dy++) if((dx-3.5)**2+(dy-3.5)**2<=14 && (dx-6)**2+(dy-2)**2>10) R(c,92+dx,19+dy,1,1,"#f0e6aa"); }
+    chao(c, noite?"#28243c":"#5c4030", noite?"#221e34":"#4c3426"); };
+  const cama = (c,x) => { R(c,x,CH-12,40,12,"K"); R(c,x+1,CH-11,38,11,"#e6e6f0"); R(c,x+1,CH-11,9,5,"W"); R(c,x+11,CH-8,28,8,"C"); R(c,x+11,CH-8,28,2,"c"); };
+  const criado = (c,x) => { R(c,x,CH-10,13,10,"K"); R(c,x+1,CH-9,11,9,"#785032"); };
+  const sala = c => { R(c,0,0,W,H,"#2e4256"); chao(c,"#46384a","#3c303e"); };
+  const sofa = (c,x,w=80) => { R(c,x,CH-16,w,16,"K"); R(c,x+1,CH-15,w-2,14,"p"); R(c,x+1,CH-15,w-2,4,"P"); R(c,x-4,CH-19,6,19,"K"); R(c,x-3,CH-18,4,17,"p"); R(c,x+w-2,CH-19,6,19,"K"); R(c,x+w-1,CH-18,4,17,"p"); };
+  const estrelas = (c,t,bg="#120e1e") => { R(c,0,0,W,H,bg); for(let i=0;i<40;i++){ const x = (i*37)%W, y = 12 + (i*23)%44; R(c,x,y,1,1,(i+(t/300|0))%5?"#504678":"#a096d2"); } };
+  const rua = (c,t) => { R(c,0,0,W,H,"#96b4d7"); [[0,26],[16,18],[32,30],[96,24],[110,32]].forEach(([x,h])=>R(c,x,CH-6-h,16,h,"#5a6078")); for(let x=4;x<W;x+=8) R(c,x,CH-16,2,2,"#f0dc8c");
+    R(c,0,CH-4,W,H,"#46464f"); R(c,0,CH-4,W,1,"#c8c8c8"); for(let x=((t/60|0)%20)-20;x<W;x+=20) R(c,x+4,CH+8,10,1,"W"); R(c,100,CH-30,1,26,"K"); R(c,97,CH-31,7,2,"K"); R(c,98,CH-29,5,1,"#ffe696"); };
+  const montanha = (c,t) => { R(c,0,0,W,H,"#f4a46a"); R(c,0,0,W,24,"#e47a5a"); for(let i=0;i<9;i++) for(let j=0;j<9;j++) if((i-4)**2+(j-4)**2<=16) R(c,84+i,18+j,1,1,"#ffe08a");
+    for(let x=0;x<W;x++){ const h1 = 18+Math.abs(((x*7)%48)-24)*.6, h2 = 10+Math.abs(((x*5+20)%60)-30)*.4; R(c,x,CH-h1,1,h1,"#6a4a7a"); R(c,x,CH-h2,1,h2,"#4a3260"); } chao(c,"#3a6a46","#2e5a3a"); };
+  const palco = (c,t) => { R(c,0,0,W,H,"#0c0a14"); const f = t/150|0; ["#d9534f","#7c5cff","#4caf50","#e0a030"].forEach((v,i)=>{ const x = 10 + i*32 + Math.round(Math.sin(f/2+i)*4);
+      c.globalAlpha = .35; for(let y=10;y<CH;y++){ const w = (y-10)*.5; R(c,x-w/2,y,w,1,v); } c.globalAlpha = 1; R(c,x-2,10,4,3,v); });
+    R(c,0,CH-8,W,H,"#1e1a2a"); for(let i=0;i<10;i++) R(c,4+i*13,CH-10+((f+i)%2),6,6,"#2c2640"); };
+  const estudio = c => { R(c,0,0,W,H,"#2a1e3e"); chao(c,"#3a2e52","#322846"); };
+  const ringlight = (c,x,y,f) => { for(let a=0;a<24;a++){ const an = a/24*Math.PI*2; R(c,x+Math.round(Math.cos(an)*9),y+Math.round(Math.sin(an)*9),2,2,f%4<2?"#fff6d8":"#ffeab0"); } R(c,x,y+10,1,CH-y-10,"K"); };
+  const escritorio = c => { R(c,0,0,W,H,"#3c4a52"); R(c,10,16,30,18,"K"); R(c,11,17,28,16,"#cfe6ef"); chao(c,"#5a5048","#4e4640"); R(c,52,CH-14,64,3,"#8a5a34"); R(c,54,CH-11,3,11,"#6a4428"); R(c,110,CH-11,3,11,"#6a4428"); };
+  const laptop = (c,x,y,f) => { R(c,x,y,22,14,"K"); R(c,x+1,y+1,20,12,"#20242e"); for(let i=0;i<4;i++) R(c,x+3,y+3+i*2,6+((f+i)%3)*4,1,"L"); R(c,x-2,y+14,26,2,"A"); };
+  const loja = c => { R(c,0,0,W,H,"#3a2a20"); for(let x=0;x<W;x+=16) R(c,x,10,8,46,"#423024"); chao(c,"#6a5040","#5c4436"); };
+  /* ---- painel do topo ---- */
+  function hud(c, st){
+    R(c,0,0,W,10,"#0e0c14"); const n = st.bat ?? 1, v = n > .6 ? "O" : n > .25 ? "Y" : "R";
+    bateria(c,3,2,n, v==="R" && (st.t/300|0)%2 ? "#5a1e1e" : v);
+    for(let i=0;i<5;i++){ if(i < (st.moedas||0)) put(c,COIN,24+i*6,3); else R(c,25+i*6,4,3,3,"#3c3746"); }
+    texto(c,58,3,"MATCH","G"); R(c,86,3,38,5,"#3c3746"); R(c,86,3,Math.round(38*(st.match||0)),5,"G");
+  }
+  /* ---- cenas (uma por resposta) ---- */
+  const S = {};
+  const bob = t => ((t/420|0)%2);
+  S.abertura = (c,t,av) => { quarto(c,false); cama(c,8); criado(c,58); const f = t/400|0;
+    pessoa(c,av,30,CH-6+0,f%3===0?"pisca":"neutro","cima"); R(c,61,CH-14,6,4,"K"); R(c,62,CH-13,4,2,(f%2)?"L":"#4a8a78"); balao(c,58,CH-30,12,8,false); texto(c,62,CH-28,"?","K"); };
+  S.redes = (c,t,av) => { sala(c); sofa(c,24); pessoa(c,av,55,CH-6-bob(t),"feliz","cel");
+    [[24,0],[82,.33],[40,.66]].forEach(([x,fs],i)=>{ const y = 38 - sobe(t,2200,26,fs); i===1 ? put(c,HEART,x+12,y) : balao(c,x,y,i?14:16,7); });
+    put(c,HEART,100,30 - sobe(t,1800,18,.5)); };
+  S.videos = (c,t,av) => { R(c,0,0,W,H,"#141428"); chao(c,"#241e30","#1e1a28"); R(c,76,18,40,26,"K"); const f = t/180|0; R(c,77,19,38,24,["#2864b4","#7c5cff","#d9534f","#4caf50"][f%4]);
+    c.globalAlpha = .18; R(c,30,10,90,46,"#8fb4ff"); c.globalAlpha = 1; sofa(c,14,46); pessoa(c,av,26,CH-6,"feliz","cel");
+    R(c,50,CH-14,8,6,"K"); R(c,51,CH-13,6,5,"R"); for(let i=0;i<3;i++) R(c,51+i*2,CH-15-((f+i)%2),2,2,"W"); };
+  S.fotos = (c,t,av) => { R(c,0,0,W,H,"#8cc8f0"); R(c,0,30,W,26,"#7ab45a"); chao(c,"#5a9a46","#4e8a3c"); for(let i=0;i<5;i++){ R(c,8+i*26,22,6,12,"#4a7a3a"); R(c,10+i*26,34,2,6,"#5a3a24"); }
+    const f = t/200|0; pessoa(c,av,52,CH,"feliz","selfie"); if(f%10===0){ c.globalAlpha=.3; R(c,0,10,W,H,"W"); c.globalAlpha=1; } R(c,80,18,20,14,"K"); R(c,81,19,18,12,f%8<4?"#f6d860":"#f0b040"); texto(c,82,22,"REC","R"); };
+  S.jogos = (c,t,av) => { estrelas(c,t); chao(c,"#281e3c","#322848"); pessoa(c,av,55,CH,"susto","jogo"); const f = t/140|0;
+    [[42,26],[86,24],[38,38],[92,38],[64,18],[76,16]].forEach(([x,y],i)=>{ if((f+i)%3) brilho(c,x,y,["Y","R","G"][i%3],f+i); });
+    if(f%6<4) textoC(c,64,CH+6,"COMBO X3!","Y"); };
+  S.trabalho = (c,t,av) => { escritorio(c); laptop(c,70,CH-28,t/200|0); R(c,96,CH-20,5,6,"K"); R(c,97,CH-19,3,4,"W"); for(let i=0;i<2;i++) R(c,97+i*2,CH-23-((t/300|0)+i)%3,1,2,"A");
+    pessoa(c,av,34,CH,"neutro","cel"); balao(c,12,14 + ((t/600|0)%2),20,8,false); texto(c,15,16 + ((t/600|0)%2),"10H","K"); };
+  S.basico = (c,t,av) => { sala(c); pessoa(c,av,40,CH,"feliz","cel"); balao(c,58,16,26,8,false); texto(c,61,18,"MAE","R"); put(c,HEART,78,18);
+    const y = 40 - sobe(t,1600,16); put(c,COIN,80,y); texto(c,88,y,"PIX","T"); };
+  /* registro */
+  S.pessoas = (c,t,av) => { R(c,0,0,W,H,"#f0b4c8"); chao(c,"#c88aa0","#b47a90"); pessoa(c,"boy",30,CH,"feliz","cel");
+    pessoa(c,av,52,CH,"feliz","selfie"); pessoa(c,"girl",74,CH,"pisca","cel"); if((t/150|0)%14===0){ c.globalAlpha=.3; R(c,0,10,W,H,"W"); c.globalAlpha=1; } };
+  S.viagem = (c,t,av) => { montanha(c,t); pessoa(c,av,30,CH,"feliz","selfie"); R(c,24,CH-24,6,10,"K"); R(c,25,CH-23,4,8,"#c86a3a"); };
+  S.noite = (c,t,av) => { palco(c,t); pessoa(c,av,55,CH,"feliz","selfie"); if((t/150|0)%14===0){ c.globalAlpha=.3; R(c,0,10,W,H,"W"); c.globalAlpha=1; } };
+  S.postar = (c,t,av) => { estudio(c); ringlight(c,86,30,t/150|0); pessoa(c,av,40,CH,"feliz","cel"); if((t/400|0)%2) { R(c,14,14,4,4,"R"); texto(c,20,14,"REC","R"); } };
+  /* bateria */
+  S.sobra = (c,t,av) => { quarto(c,true); cama(c,10); if(av==="bug") pessoa(c,av,14,CH-4,"dorme","cel"); else { put(c,TOP[av==="boy"?"boy":"girl"].concat(FACE.dorme.slice(0,4)),12,CH-22); R(c,21,CH-8,28,8,"C"); R(c,21,CH-8,28,2,"c"); }
+    criado(c,64); R(c,67,CH-14,7,4,"K"); R(c,68,CH-13,5,2,"O"); R(c,73,CH-12,6,1,"K"); R(c,78,CH-12,1,12,"K");
+    const z = sobe(t,1800,14); texto(c,36,30-z,"Z","W"); texto(c,44,24-sobe(t,1800,14,.5),"Z","A"); };
+  S.raspando = (c,t,av) => { sala(c); sofa(c,40,56); pessoa(c,av,62,CH-6,"neutro","cel"); bateria(c,20,22,.45,(t/400|0)%2?"Y":"#8a6420"); texto(c,18,32,"ALIVIO","Y"); };
+  S.meio = (c,t,av) => { R(c,0,0,W,H,"#5a3e2c"); chao(c,"#7a5a40","#6a4e36"); R(c,82,22,30,20,"K"); R(c,83,23,28,18,"#e8c898"); texto(c,87,28,"CAFE","K");
+    const x = 30 + Math.round(Math.sin(t/500)*10); pessoa(c,av,x,CH,"susto","cel"); R(c,8,40,6,8,"K"); R(c,9,41,4,6,"W"); R(c,10,43,1,2,"K"); R(c,12,43,1,2,"K"); bateria(c,x+2,12,.15,(t/300|0)%2?"R":"#5a1e1e"); };
+  S.rua = (c,t,av) => { rua(c,t); pessoa(c,av,52,CH-4,"triste","baixo"); R(c,72,22+((t/250|0)%3),2,3,"C"); R(c,71,25+((t/250|0)%3),4,2,"C"); if((t/500|0)%2) textoC(c,64,14,"FIQUEI NA MAO","R"); };
+  /* o que incomoda */
+  S.lento = (c,t,av) => { quarto(c,false); pessoa(c,av,30,CH,"neutro","cel"); const f = t/120|0;
+    for(let i=0;i<8;i++){ const an = i/8*Math.PI*2; R(c,80+Math.round(Math.cos(an)*7),32+Math.round(Math.sin(an)*7),2,2,i===f%8?"W":"#6a6488"); }
+    R(c,24+(f%2),CH-2,6,2,"K"); };
+  S.memoria = (c,t,av) => { quarto(c,false); pessoa(c,av,24,CH,"susto","cel"); R(c,56,16,50,18,"K"); R(c,57,17,48,16,"W"); R(c,57,17,48,5,"R"); texto(c,60,24,"MEMORIA","K"); texto(c,60,29,"CHEIA!","R");
+    for(let i=0;i<4;i++){ const y = 36 + sobe(t,1200,20,i/4); R(c,62+i*10,y,7,6,"K"); R(c,63+i*10,y+1,5,4,["C","O","Y","P"][i]); } };
+  S.fotoruim = (c,t,av) => { quarto(c,false); pessoa(c,av,26,CH,"triste","cel"); R(c,60,14,40,30,"K"); R(c,61,15,38,28,"#c8b8a8");
+    const o = (t/200|0)%2; c.globalAlpha=.5; R(c,72+o,22,14,18,"#8a7a9a"); R(c,70-o,24,14,18,"#8a7a9a"); c.globalAlpha=1; texto(c,64,46,"BORRADA","R"); };
+  S.quebra = (c,t,av) => { R(c,0,0,W,H,"#4c4058"); chao(c,"#6e645a","#605850"); pessoa(c,av,26,CH,"susto","cima"); const cai = Math.min(1,(t%2200)/700);
+    const y = 16 + cai*28; R(c,74,y,10,16,"K"); R(c,75,y+1,8,14,"#1e283c");
+    if(cai>=1){ [[76,3],[77,5],[79,6],[80,9],[78,10],[81,12],[76,9]].forEach(([x,dy])=>R(c,x,y+dy,1,1,"W")); textoC(c,80,16,"CRAC!","Y"); R(c,68,CH-2,3,1,"W"); R(c,88,CH-3,3,1,"W"); } };
+  S.nada = (c,t,av) => { sala(c); pessoa(c,av,52,CH-bob(t),"feliz","cima"); textoC(c,64,18,"TUDO CERTO","T"); };
+  /* sistema */
+  const celIOS = (c,x,y) => { R(c,x,y,12,20,"K"); R(c,x+1,y+1,10,18,"#d8d2e8"); R(c,x+2,y+2,5,5,"K"); R(c,x+3,y+3,1,1,"A"); R(c,x+5,y+3,1,1,"A"); R(c,x+3,y+5,1,1,"A"); };
+  const celAND = (c,x,y) => { R(c,x,y,12,20,"K"); R(c,x+1,y+1,10,18,"#2e6a5a"); R(c,x+2,y+2,3,9,"K"); for(let i=0;i<3;i++) R(c,x+3,y+3+i*3,1,1,"A"); };
+  S.ios = (c,t,av) => { loja(c); pessoa(c,av,30,CH,"feliz","cel"); celIOS(c,74,22-bob(t)); for(let i=0;i<3;i++) brilho(c,70+i*10,18+(i%2)*28,"W",(t/200|0)+i); };
+  S.android = (c,t,av) => { loja(c); pessoa(c,av,30,CH,"feliz","cel"); celAND(c,74,22-bob(t)); for(let i=0;i<3;i++) brilho(c,70+i*10,18+(i%2)*28,"T",(t/200|0)+i); };
+  S.tanto = (c,t,av) => { loja(c); pessoa(c,av,52,CH,"feliz","cima"); const a = t/500; celIOS(c,58+Math.round(Math.cos(a)*18),18+Math.round(Math.sin(a)*6)); celAND(c,58-Math.round(Math.cos(a)*18),18-Math.round(Math.sin(a)*6)); };
+  /* orçamento */
+  const NIVEL = {1000:1,2000:2,3500:3,5500:4,99999:5};
+  S.orcamento = (c,t,av,st) => { R(c,0,0,W,H,"#2c241e"); chao(c,"#5a4632","#4c3a2a"); put(c,PIG,72,CH-10); R(c,78,CH-11,6,1,"K"); pessoa(c,av,30,CH,"feliz","cel");
+    const n = st.moedas||0; for(let i=0;i<n;i++){ const y = 14 + sobe(t,900,CH-26,i/Math.max(n,1)); put(c,COIN,78,y); }
+    if(st.faixa) textoC(c,64,13,st.faixa,"G"); else textoC(c,64,13,"?","G"); };
+  /* atitude */
+  S.barato = (c,t,av) => { R(c,0,0,W,H,"#2c241e"); chao(c,"#5a4632","#4c3a2a"); put(c,PIG,72,CH-10); pessoa(c,av,30,CH,(t/500|0)%3?"feliz":"pisca","cel"); textoC(c,64,14,"ECONOMIA","T");
+    put(c,COIN,78,14+sobe(t,800,CH-26)); };
+  S.dura = (c,t,av) => { quarto(c,false); pessoa(c,av,26,CH,"feliz","cel"); const f = t/160|0; R(c,62,14,22,24,"K"); R(c,63,15,20,22,"W"); R(c,63,15,20,5,"R");
+    textoC(c,73,24,String(2026+(f%5)),"K"); R(c,92,18,16,20,"K"); R(c,93,19,14,18,"C"); R(c,99,21,2,12,"W"); R(c,95,25,10,2,"W"); };
+  S.bonito = (c,t,av) => { R(c,0,0,W,H,"#3e2a4e"); chao(c,"#4e3a60","#463456"); R(c,70,12,30,44,"K"); R(c,71,13,28,42,"#a8c8e8"); pessoa(c,av,40,CH,"feliz","selfie");
+    for(let i=0;i<5;i++) brilho(c,74+(i*7)%24,18+(i*11)%30,"W",(t/180|0)+i); };
+  S.melhor = (c,t,av) => { R(c,0,0,W,H,"#2a1a40"); chao(c,"#3a2a56","#33244c"); R(c,40,CH-10,40,10,"K"); R(c,41,CH-9,38,9,"G"); textoC(c,60,CH-7,"1","K");
+    pessoa(c,av,51,CH-10,"feliz","cima"); put(c,CROWN,av==="bug"?56:56,CH-10-(av==="bug"?24:31)-bob(t)); };
+  /* telas sem resposta ainda (base de cada pergunta) */
+  S.base_bateria = (c,t,av) => { sala(c); pessoa(c,av,30,CH,"neutro","cel"); const n = .5+Math.sin(t/700)*.45; bateria(c,70,24,n,n>.6?"O":n>.25?"Y":"R"); textoC(c,77,36,"?","W"); };
+  S.base_incomoda = (c,t,av) => { quarto(c,false); pessoa(c,av,30,CH,"neutro","cel"); balao(c,50,18,18,8,true); };
+  S.base_sistema = (c,t,av) => { loja(c); pessoa(c,av,30,CH,"neutro","cel"); ((t/700|0)%2 ? celIOS : celAND)(c,74,22); textoC(c,80,46,"?","W"); };
+  S.base_atitude = (c,t,av) => { loja(c); celIOS(c,46,24); celAND(c,70,24); textoC(c,64,16,"= ?","W"); pessoa(c,av,10,CH,"neutro","cel"); };
+  /* o match: a foto real do celular reduzida vira pixel art */
+  S.match = (c,t,av,st) => { R(c,0,0,W,H,"#24183e"); chao(c,"#3c2c5e","#44326a");
+    for(let i=0;i<50;i++){ const x = (i*29)%W, y = 10 + ((i*13 + t/30) % 46); R(c,x,y,2,1,["G","P","R","O","Y","W"][i%6]); }
+    R(c,90,CH-12,22,12,"K"); R(c,91,CH-11,20,11,"g"); R(c,91,CH-11,20,3,"G"); R(c,100,CH-11,2,11,"R");
+    const sobeCel = Math.min(1,(t%100000)/900), base = CH-12 - sobeCel*6;
+    for(let i=0;i<4;i++) if(sobeCel>=1) brilho(c,[90,112,92,110][i],[16,18,38,40][i],"Y",(t/160|0)+i);
+    if(st.img && st.img.complete && st.img.naturalWidth){ const h = 30, w = Math.round(st.img.naturalWidth/st.img.naturalHeight*h); c.imageSmoothingEnabled = false; c.drawImage(st.img, 101-w/2, base-h, w, h); }
+    else { R(c,96,base-20,10,20,"K"); R(c,97,base-19,8,18,"L"); }
+    pessoa(c,av,22,CH,"feliz","cima"); put(c,CROWN,27,CH-(av==="bug"?24:31)-bob(t));
+    textoC(c,52,14,(st.pct||92)+"% MATCH!","G"); };
+  /* desenha uma cena no canvas */
+  function desenha(cv, cena, t, st){
+    const c = cv.getContext("2d"); c.imageSmoothingEnabled = false; c.clearRect(0,0,W,H);
+    (S[cena] || S.abertura)(c, t, st.av || "girl", st); hud(c, Object.assign({t}, st));
+  }
+  /* avatar parado (para a escolha do personagem) */
+  function avatar(cv, av, t){ const c = cv.getContext("2d"); c.clearRect(0,0,24,32); pessoa(c, av, 3, 30 - ((t/420|0)%2), (t/1400|0)%4===3 ? "pisca" : "feliz", "cel"); }
+  return { W, H, desenha, avatar, NIVEL };
+})();
+
 /* ---------- game "Celular ideal": perguntas rápidas → celular que combina com a pessoa ---------- */
 const GSV = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
 const GIC = {
@@ -1462,6 +1649,9 @@ const GAME_MOT = {redes:"você passa bastante tempo nas redes", videos:"você v�
   raspando:"você chega no fim do dia raspando", meio:"você precisa carregar no meio do dia", rua:"você passa o dia na rua",
   lento:"o seu atual trava", memoria:"você vive com a memória cheia", fotoruim:"as fotos do seu atual não ficam boas", quebra:"o seu atual cai e quebra fácil", dura:"você quer ficar anos com ele"};
 const G_LS = "bs-perfil";
+const G_BASE = {uso:"abertura", registro:"fotos", bateria:"base_bateria", incomoda:"base_incomoda", sistema:"base_sistema", orcamento:"orcamento", atitude:"base_atitude"};
+const G_BAT = {sobra:1, raspando:.45, meio:.15, rua:.04};
+const G_FAIXA = {1000:"ATE R$ 1.000", 2000:"ATE R$ 2.000", 3500:"ATE R$ 3.500", 5500:"ATE R$ 5.500", 99999:"SEM LIMITE"};
 const gLer = () => { try{ return JSON.parse(localStorage.getItem(G_LS)); }catch(e){ return null; } };
 const gSalva = v => { try{ v ? localStorage.setItem(G_LS, JSON.stringify(v)) : localStorage.removeItem(G_LS); }catch(e){} };
 
@@ -1560,7 +1750,15 @@ function gameAbre(forcar){
   f.innerHTML = `<div class="gm" role="dialog" aria-modal="true" aria-labelledby="gmT"></div>`;
   document.body.appendChild(f); document.documentElement.classList.add("gm-on");
   const box = f.firstChild, volta = document.activeElement;
-  const fecha = () => { f.remove(); document.documentElement.classList.remove("gm-on"); document.removeEventListener("keydown", tecla); try{ if(!gLer()) localStorage.setItem("bs-game","visto"); }catch(e){} if(volta && volta.focus) volta.focus(); };
+  /* animação das cenas: um laço só, que desenha no canvas da tela atual */
+  const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const anim = {cv:null, cena:"abertura", t0:0, raf:0, st:{}};
+  const passoAnim = now => { if(anim.cv && anim.cv.isConnected) PIX.desenha(anim.cv, anim.cena, reduz ? 2500 : now - anim.t0, anim.st); if(!reduz) anim.raf = requestAnimationFrame(passoAnim); };
+  const cena = (nome, st) => { anim.cv = box.querySelector(".gm-cena canvas"); if(nome !== anim.cena) anim.t0 = performance.now(); anim.cena = nome; anim.st = st;
+    if(reduz){ passoAnim(performance.now()); } else if(!anim.raf) anim.raf = requestAnimationFrame(passoAnim); };
+  const estado = extra => { const qs = visiveis(), feitas = qs.filter(q=>r[q.id]!==undefined && [].concat(r[q.id]).length).length;
+    return Object.assign({av:r.av||"girl", bat: G_BAT[r.bateria] ?? 1, moedas: PIX.NIVEL[r.orcamento]||0, faixa: G_FAIXA[r.orcamento], match: Math.min(.9, feitas/(qs.length||6)*.9)}, extra||{}); };
+  const fecha = () => { cancelAnimationFrame(anim.raf); anim.raf = 0; f.remove(); document.documentElement.classList.remove("gm-on"); document.removeEventListener("keydown", tecla); try{ if(!gLer()) localStorage.setItem("bs-game","visto"); }catch(e){} if(volta && volta.focus) volta.focus(); };
   const tecla = e => { if(e.key==="Escape") fecha(); };
   document.addEventListener("keydown", tecla);
   f.addEventListener("click", e=>{ if(e.target===f) fecha(); });
@@ -1569,13 +1767,27 @@ function gameAbre(forcar){
   const liga = () => { box.querySelector(".gm-x").onclick = fecha; box.scrollTop = 0; const p = box.querySelector("h2"); if(p){ p.setAttribute("tabindex","-1"); p.focus({preventScroll:true}); } };
   const intro = () => {
     box.innerHTML = `${X}<div class="gm-intro">
-      <div class="gm-ilu" aria-hidden="true"><img src="${R}img/cat/samsung-galaxy-a56-5g.webp" alt=""><img src="${R}img/cat/apple-iphone-17.webp" alt=""><img src="${R}img/cat/motorola-edge-70-pro.webp" alt=""><span class="q">?</span></div>
+      <div class="gm-cena gm-cena-intro"><canvas width="${PIX.W}" height="${PIX.H}" aria-hidden="true"></canvas></div>
       <div><span class="gm-k">Game · 1 minuto</span><h2 id="gmT">Qual celular combina com você?</h2>
       <p class="gm-sub">Responda umas perguntas rápidas sobre o seu dia a dia. Assim a gente entende do que você precisa e passa a te mostrar os modelos e as ofertas que fazem sentido para você, sempre que voltar.</p>
-      <ul class="gm-lista"><li><span class="d">6</span><span><b>6 perguntas rápidas</b>, uma por tela</span></li><li><span class="d">✓</span><span>Toque nos cards, sem digitar nada</span></li><li><span class="d">★</span><span>No fim: o seu match e mais duas opções</span></li></ul>
+      <ul class="gm-lista"><li><span class="d">7</span><span><b>Até 7 perguntas rápidas</b>, uma por tela</span></li><li><span class="d">✓</span><span>Toque nos cards, sem digitar nada</span></li><li><span class="d">★</span><span>No fim: o seu match e mais duas opções</span></li></ul>
       <div class="gm-acoes"><button type="button" class="gm-b ouro" data-a="ir">Bora jogar →</button><button type="button" class="gm-b txt" data-a="nao">Agora não</button></div>
       <p class="gm-priv">🔒 Suas respostas ficam salvas só neste aparelho. Dá para refazer quando quiser pelo menu.</p></div></div>`;
-    liga(); box.querySelector('[data-a="ir"]').onclick = ()=>{ passo = 0; pergunta(); }; box.querySelector('[data-a="nao"]').onclick = fecha;
+    liga(); cena("abertura", estado()); box.querySelector('[data-a="ir"]').onclick = escolhe; box.querySelector('[data-a="nao"]').onclick = fecha;
+  };
+  const escolhe = () => {
+    const AV = [["girl","Menina"],["boy","Menino"],["bug","Besouro Bugsale"]];
+    if(!r.av) r.av = "girl";
+    box.innerHTML = `${X}<span class="gm-k">Antes de começar</span><h2 id="gmT">Quem vai jogar?</h2><p class="gm-sub">Escolha o personagem que vai viver o seu dia com o celular.</p>
+      <div class="gm-avs" role="radiogroup" aria-label="Personagem">${AV.map(([k,l])=>`<button type="button" class="gm-av${r.av===k?" on":""}" role="radio" aria-checked="${r.av===k}" data-av="${k}"><canvas width="24" height="32" aria-hidden="true"></canvas><b>${l}</b></button>`).join("")}</div>
+      <div class="gm-pe"><button type="button" class="gm-b lin" data-a="volta">← Voltar</button><span class="gm-hint"></span><button type="button" class="gm-b ouro" data-a="seg">Começar →</button></div>`;
+    liga();
+    const cvs = [...box.querySelectorAll(".gm-av canvas")];
+    const gira = now => { if(!box.querySelector(".gm-avs")) return; cvs.forEach((cv,i)=>PIX.avatar(cv, AV[i][0], reduz ? 0 : now)); if(!reduz) requestAnimationFrame(gira); };
+    requestAnimationFrame(gira);
+    box.querySelectorAll(".gm-av").forEach(b=>b.onclick = ()=>{ r.av = b.dataset.av; box.querySelectorAll(".gm-av").forEach(x=>{ const on = x===b; x.classList.toggle("on",on); x.setAttribute("aria-checked",on); }); });
+    box.querySelector('[data-a="volta"]').onclick = intro;
+    box.querySelector('[data-a="seg"]').onclick = ()=>{ passo = 0; pergunta(); };
   };
   const pergunta = () => {
     const qs = visiveis(), q = qs[passo], tot = Math.max(qs.length, 6);
@@ -1585,20 +1797,23 @@ function gameAbre(forcar){
       return `<button type="button" class="gm-card${on?" on":""}" aria-pressed="${on}" data-v="${o.v}">${vis}<span>${esc(o.l)}${o.sub?`<small>${esc(o.sub)}</small>`:""}</span></button>`; };
     const ult = q.ops.find(o=>o.v===sel[sel.length-1]);
     box.innerHTML = `${X}<div class="gm-top"><div class="gm-prog" style="--n:${tot}">${Array.from({length:tot},(_,i)=>`<i class="${i<passo?"ok":i===passo?"at":""}"></i>`).join("")}</div><span class="gm-n">${passo+1} de ${tot}</span></div>
+      <div class="gm-cena"><canvas width="${PIX.W}" height="${PIX.H}" role="img" aria-label="Cena ilustrada da sua resposta"></canvas></div>
       <span class="gm-k">${esc(q.tag)}</span><h2 id="gmT">${esc(q.t)}</h2><p class="gm-sub">${esc(q.sub)}</p>
       <div class="${q.lista?"gm-col":"gm-grid"}${q.ops.length===3?" gm-g3":""}" style="--c:${q.ops.length>=6?3:q.ops.length===3?3:q.ops.length===4?4:3}" role="group" aria-label="${esc(q.t)}">${q.ops.map(opHTML).join("")}</div>
       <div class="gm-dica" aria-live="polite"${ult&&ult.dica?"":" hidden"}><span class="bug" aria-hidden="true">${LOGO}</span><span>${ult&&ult.dica?esc(ult.dica):""}</span></div>
       <div class="gm-pe"><button type="button" class="gm-b lin" data-a="volta">← Voltar</button><span class="gm-hint">${q.max>1?`${sel.length} de ${q.max} escolhidas`:""}</span><button type="button" class="gm-b ouro" data-a="seg"${sel.length?"":" disabled"}>${passo===qs.length-1?"Ver meu resultado →":"Continuar →"}</button></div>`;
     liga();
+    const ultV = sel[sel.length-1];
+    cena(ultV === undefined ? G_BASE[q.id] : q.id==="orcamento" ? "orcamento" : String(ultV), estado());
     box.querySelectorAll(".gm-card").forEach(b=>b.onclick = ()=>{
       const o = q.ops.find(x=>String(x.v)===b.dataset.v), v = o.v;
       if(q.max===1) r[q.id] = v;
       else { let a = [].concat(r[q.id]||[]); a = a.includes(v) ? a.filter(x=>x!==v) : a.concat(v); if(a.length > q.max) a.shift(); r[q.id] = a; }
       if(q.id==="uso" && !(r.uso||[]).includes("fotos")) delete r.registro;
-      const top = box.scrollTop; pergunta(); box.scrollTop = top;
+      const top = box.scrollTop; pergunta(); box.scrollTop = top; anim.t0 = performance.now();
       const d = box.querySelector(".gm-dica"); if(d && o.dica && [].concat(r[q.id]).includes(v)){ d.hidden = false; d.lastChild.textContent = o.dica; }
     });
-    box.querySelector('[data-a="volta"]').onclick = ()=>{ if(passo===0) intro(); else { passo--; pergunta(); } };
+    box.querySelector('[data-a="volta"]').onclick = ()=>{ if(passo===0) escolhe(); else { passo--; pergunta(); } };
     box.querySelector('[data-a="seg"]').onclick = ()=>{ if(passo < visiveis().length-1){ passo++; pergunta(); } else { const res = gameCalcula(r); gSalva({r, data:new Date().toISOString()}); resultado(res); } };
   };
   const resumo = () => {
@@ -1617,7 +1832,7 @@ function gameAbre(forcar){
     const cta = lista.length ? `<a class="gm-b ouro" href="${esc(lista[0].url)}" target="_blank" rel="sponsored nofollow noopener">Ver ofertas ↗</a>`
       : art ? `<a class="gm-b ouro" href="${artURL(art)}">Ler a análise →</a>` : `<button type="button" class="gm-b ouro" data-gm-ver="${c.id}">Ver no comparador →</button>`;
     const topoAviso = res.basta ? `<p class="gm-obs">Se mudar de ideia: pelo que você contou, o <b>${esc(res.basta.c.nome)}</b> já dá conta do seu uso por ${brl(m.preco - res.basta.preco)} a menos.</p>` : "";
-    box.innerHTML = `${X}<span class="gm-k">Resultado</span><h2 id="gmT">Seu celular ideal é…</h2><p class="gm-sub">${esc(resumo())}</p>
+    box.innerHTML = `${X}<div class="gm-cena"><canvas width="${PIX.W}" height="${PIX.H}" role="img" aria-label="Seu celular ideal chegando"></canvas></div><span class="gm-k">Resultado</span><h2 id="gmT">Seu celular ideal é…</h2><p class="gm-sub">${esc(resumo())}</p>
       ${res.fora ? `<p class="gm-obs">${r.sistema==="ios" ? `O iPhone mais em conta hoje custa ≈ ${brl(m.preco)}, acima do seu orçamento. Se topar Android, tem opção boa dentro dele.` : "Nenhum modelo do catálogo cabe nesse orçamento com o que você escolheu. Estes são os mais em conta."}</p>` : ""}
       <div class="gm-res"><div class="gm-match"><span class="tag">Seu match</span><div class="ft">${catImg(c)}</div><div>
         <h3>${esc(c.nome)}</h3><div class="gm-af"><span class="bar"><i style="width:${pct}%"></i></span><b>${pct}%</b> a ver com você</div>
@@ -1627,10 +1842,12 @@ function gameAbre(forcar){
         <div class="gm-alts">${gameAlt(res.eco, m, res.ecoTipo, res.w)}${gameAlt(res.mais, m, res.maisTipo, res.w)}</div>
         <div class="gm-res-pe"><span>🔒 Salvo só neste aparelho.</span><button type="button" class="gm-b txt" data-a="refaz">↻ Refazer o game</button></div></div>`;
     liga();
+    const im = new Image(); im.src = R + "img/cat/" + c.id + ".webp";
+    cena("match", estado({match:1, pct, img:im}));
     const vaiCmp = ids => { try{ localStorage.setItem("cmp-sel2", JSON.stringify(ids)); }catch(e){} location.href = comTema(R+"comparador.html") || R+"comparador.html"; };
     box.querySelector('[data-a="cmp"]').onclick = ()=> vaiCmp([c.id, res.eco && res.eco.c.id, res.mais && res.mais.c.id]);
     box.querySelectorAll("[data-gm-ver]").forEach(b=>b.addEventListener("click", e=>{ e.stopPropagation(); vaiCmp([b.dataset.gmVer, b.dataset.gmVer===c.id ? null : c.id]); }));
-    box.querySelector('[data-a="refaz"]').onclick = ()=>{ r = {}; passo = 0; pergunta(); };
+    box.querySelector('[data-a="refaz"]').onclick = ()=>{ const av = r.av; r = {av}; passo = 0; escolhe(); };
   };
   if(salvo && salvo.r && !forcar){ r = salvo.r; resultado(gameCalcula(r)); } else intro();
 }
