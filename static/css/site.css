@@ -2383,3 +2383,23 @@ html.js main > .ssr{visibility:hidden}
   html .gm-card{min-height:88px;gap:8px;padding:16px}
   .gm-ic{width:40px;height:40px;border-radius:8px}
 }
+
+/* game: cards de opção mais discretos e com o mesmo formato (título + linha de apoio) */
+html .gm-grid{gap:8px}
+html .gm-card{gap:8px;padding:16px;min-height:0;border-radius:16px;font-size:14px;line-height:1.3;justify-content:flex-start}
+html .gm-card:hover{transform:none}
+html .gm-card small{margin-top:4px;font-size:12px;line-height:1.35}
+html .gm-ic{width:32px;height:32px;border-radius:8px;background:color-mix(in srgb,var(--v-ink) 6%,transparent);color:var(--v-soft)}
+html .gm-ic svg{width:16px;height:16px}
+html .gm-col .gm-ic{width:32px;height:32px;border-radius:8px}
+html .gm-col .gm-card{min-height:56px;gap:16px;padding:8px 48px 8px 16px}
+html .gm-card.on{box-shadow:none;background:color-mix(in srgb,var(--v-gold) 6%,var(--v-bg))}
+html .gm-card.on .gm-ic{background:color-mix(in srgb,var(--v-gold) 20%,transparent);color:var(--v-gold)}
+html .gm-card.on::after{width:16px;height:16px;font-size:10px;top:16px;right:16px}
+html .gm-col .gm-card.on::after{top:50%}
+html .gm-bat{width:32px;height:16px;border-width:2px;border-radius:4px}
+html .gm-bat::after{right:-5px;top:4px;width:3px;height:4px}
+html .gm-bat i{border-radius:2px}
+html .gm-nivel{width:32px;height:16px;gap:2px}
+html .gm-nivel i:nth-child(1){height:4px}html .gm-nivel i:nth-child(2){height:7px}html .gm-nivel i:nth-child(3){height:10px}html .gm-nivel i:nth-child(4){height:13px}html .gm-nivel i:nth-child(5){height:16px}
+@media (max-width:760px){ html .gm-card{min-height:0;padding:16px 12px} html .gm-g3 .gm-card{padding:16px 8px} html .gm-col .gm-card{min-height:56px;padding:8px 40px 8px 16px} html .gm-card.on::after{top:12px;right:12px} }

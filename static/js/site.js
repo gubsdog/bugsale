@@ -1394,7 +1394,7 @@ function renderComparador(){
 
 /* ---------- game: cenas em pixel art 16 bits (canvas 128x72, ampliado sem suavizar) ---------- */
 const PIX = (() => {
-  const W = 128, H = 72, CH = 56;   /* CH = linha do chão */
+  const W = 128, H = 68, CH = 56;   /* CH = linha do chão */
   const PAL = {K:"#1b1420",H:"#3a2318",h:"#603c28",S:"#c98a5e",s:"#a86c45",W:"#f2f0ea",P:"#7c5cff",p:"#5b3fd6",D:"#2b2b3a",d:"#1e1e2a",
     G:"#d4af5a",g:"#a8862f",F:"#26262e",L:"#8fe3c8",R:"#d9534f",O:"#4caf50",Y:"#e0a030",B:"#e88a8a",k:"#342446",C:"#468cdc",c:"#2864b4",N:"#f0c896",T:"#5ac878",A:"#9aa0b8",a:"#6a7088"};
   const col = v => PAL[v] || v;
@@ -1564,9 +1564,9 @@ const PIX = (() => {
     for(let i=0;i<50;i++){ const x = (i*29)%W, y = 10 + ((i*13 + t/30) % 46); R(c,x,y,2,1,["G","P","R","O","Y","W"][i%6]); }
     R(c,90,CH-12,22,12,"K"); R(c,91,CH-11,20,11,"g"); R(c,91,CH-11,20,3,"G"); R(c,100,CH-11,2,11,"R");
     const sobeCel = Math.min(1,(t%100000)/900), base = CH-12 - sobeCel*6;
-    for(let i=0;i<4;i++) if(sobeCel>=1) brilho(c,[90,112,92,110][i],[16,18,38,40][i],"Y",(t/160|0)+i);
-    if(st.img && st.img.complete && st.img.naturalWidth){ const h = 30, w = Math.round(st.img.naturalWidth/st.img.naturalHeight*h); c.imageSmoothingEnabled = false; c.drawImage(st.img, 101-w/2, base-h, w, h); }
-    else { R(c,96,base-20,10,20,"K"); R(c,97,base-19,8,18,"L"); }
+    for(let i=0;i<4;i++) if(sobeCel>=1) brilho(c,[90,112,92,110][i],[22,24,40,42][i],"Y",(t/160|0)+i);
+    if(st.img && st.img.complete && st.img.naturalWidth){ const h = 22, w = Math.round(st.img.naturalWidth/st.img.naturalHeight*h); c.imageSmoothingEnabled = false; c.drawImage(st.img, 101-w/2, base-h, w, h); }
+    else { R(c,97,base-16,8,16,"K"); R(c,98,base-15,6,14,"L"); }
     pessoa(c,av,22,CH,"feliz","cima"); put(c,CROWN,27,CH-(av==="bug"?24:31)-bob(t));
     textoC(c,52,14,(st.pct||92)+"% MATCH!","G"); };
   /* desenha uma cena no canvas */
@@ -1609,39 +1609,39 @@ const nivel = n => `<span class="gm-nivel" aria-hidden="true">${[1,2,3,4,5].map(
 const bateriaIco = (cor, pct) => `<span class="gm-bat" aria-hidden="true"><i style="width:${pct}%;background:${cor}"></i></span>`;
 const GAME_Q = [
   {id:"uso", tag:"Seu dia a dia", t:"Para que você mais usa o celular?", sub:"Escolha até 2. Pense no que você faz de verdade, não no que gostaria de fazer.", max:2, ops:[
-    {v:"redes", l:"Redes sociais e WhatsApp", ic:"chat", dica:"Para isso quase todo celular de hoje dá conta. O que vai pesar é bateria e tela."},
-    {v:"videos", l:"Ver vídeos e séries", ic:"play", dica:"Anotado: tela boa e bateria que aguenta maratona sobem na sua lista."},
-    {v:"fotos", l:"Tirar fotos e gravar vídeos", ic:"cam", dica:"Câmera vai pesar bastante. Na próxima, conta para a gente o que você mais registra."},
-    {v:"jogos", l:"Jogar", ic:"jogo", dica:"Processador forte e tela rápida vão pesar mais na escolha."},
-    {v:"trabalho", l:"Trabalhar ou estudar", ic:"trab", sub:"E-mail, reuniões, documentos", dica:"Desempenho e anos de atualização contam mais para quem depende do celular."},
+    {v:"redes", l:"Redes sociais", ic:"chat", sub:"Instagram, TikTok, WhatsApp", dica:"Para isso quase todo celular de hoje dá conta. O que vai pesar é bateria e tela."},
+    {v:"videos", l:"Vídeos e séries", ic:"play", sub:"YouTube, Netflix, streaming", dica:"Anotado: tela boa e bateria que aguenta maratona sobem na sua lista."},
+    {v:"fotos", l:"Fotos e vídeos", ic:"cam", sub:"Registrar o dia a dia", dica:"Câmera vai pesar bastante. Na próxima, conta para a gente o que você mais registra."},
+    {v:"jogos", l:"Jogos", ic:"jogo", sub:"Free Fire, COD, Roblox", dica:"Processador forte e tela rápida vão pesar mais na escolha."},
+    {v:"trabalho", l:"Trabalho ou estudo", ic:"trab", sub:"E-mail, reuniões, documentos", dica:"Desempenho e anos de atualização contam mais para quem depende do celular."},
     {v:"basico", l:"Só o básico", ic:"basico", sub:"Ligação, mensagem e banco", dica:"Boa notícia: você não precisa gastar muito. Bateria e durabilidade resolvem."}]},
   {id:"registro", se:r=>(r.uso||[]).includes("fotos"), tag:"Fotos e vídeos", t:"O que você mais registra?", sub:"Escolha até 2.", max:2, ops:[
-    {v:"pessoas", l:"Pessoas e selfies", ic:"pessoa", dica:"Câmera frontal e retrato vão contar pontos."},
-    {v:"viagem", l:"Lugares e viagens", ic:"viagem", dica:"Lente grande-angular e zoom ajudam a caber tudo na foto."},
-    {v:"noite", l:"À noite, em festas e shows", ic:"noite", dica:"É no escuro que a diferença entre câmeras mais aparece."},
+    {v:"pessoas", l:"Pessoas e selfies", ic:"pessoa", sub:"Amigos, família, você", dica:"Câmera frontal e retrato vão contar pontos."},
+    {v:"viagem", l:"Lugares e viagens", ic:"viagem", sub:"Paisagens e passeios", dica:"Lente grande-angular e zoom ajudam a caber tudo na foto."},
+    {v:"noite", l:"À noite", ic:"noite", sub:"Festas, shows, rolês", dica:"É no escuro que a diferença entre câmeras mais aparece."},
     {v:"postar", l:"Vídeos para postar", ic:"postar", sub:"Reels, TikTok, YouTube", dica:"Vídeo estável e em boa resolução viram prioridade."}]},
   {id:"bateria", tag:"Bateria", t:"Quanto tempo o celular passa longe da tomada?", sub:"Escolha uma.", max:1, lista:true, ops:[
-    {v:"sobra", l:"Carrego à noite e sempre sobra bateria", bat:["#4CAF50",88], dica:"Então bateria não precisa ser prioridade, e dá para olhar outras coisas."},
-    {v:"raspando", l:"Chego no fim do dia raspando", bat:["#E0A030",40], dica:"Anotado: bateria grande e carga rápida sobem na sua lista."},
-    {v:"meio", l:"Preciso carregar no meio do dia", bat:["#D9534F",16], dica:"Bateria vira uma das prioridades da sua escolha."},
-    {v:"rua", l:"Passo o dia na rua, sem tomada por perto", sub:"Entrega, motorista, vendas", bat:["#D9534F",4], dica:"Bateria e resistência a queda e água passam a pesar muito."}]},
+    {v:"sobra", l:"Sempre sobra bateria", sub:"Carrego só à noite", bat:["#4CAF50",88], dica:"Então bateria não precisa ser prioridade, e dá para olhar outras coisas."},
+    {v:"raspando", l:"Chego no fim do dia raspando", sub:"Mas ainda dá conta", bat:["#E0A030",40], dica:"Anotado: bateria grande e carga rápida sobem na sua lista."},
+    {v:"meio", l:"Carrego no meio do dia", sub:"Vivo atrás de tomada", bat:["#D9534F",16], dica:"Bateria vira uma das prioridades da sua escolha."},
+    {v:"rua", l:"Passo o dia na rua", sub:"Entrega, motorista, vendas", bat:["#D9534F",4], dica:"Bateria e resistência a queda e água passam a pesar muito."}]},
   {id:"incomoda", tag:"Seu celular hoje", t:"O que mais te incomoda no seu celular atual?", sub:"Escolha uma.", max:1, ops:[
-    {v:"lento", l:"Fica lento ou trava", ic:"lento", dica:"Processador mais forte vai fazer diferença no seu dia."},
-    {v:"memoria", l:"Vive com a memória cheia", ic:"memoria", dica:"Vamos priorizar modelos com 256 GB ou mais."},
-    {v:"fotoruim", l:"As fotos não ficam boas", ic:"fotoruim", dica:"Câmera ganha peso extra na sua lista."},
-    {v:"quebra", l:"Cai e quebra fácil", ic:"quebra", dica:"Resistência a água e poeira vai contar pontos."},
-    {v:"nada", l:"Nada, só quero trocar", ic:"ok", sub:"Ou vai ser o meu primeiro", dica:"Tudo certo. A gente olha o conjunto."}]},
+    {v:"lento", l:"Fica lento", ic:"lento", sub:"Trava e demora para abrir", dica:"Processador mais forte vai fazer diferença no seu dia."},
+    {v:"memoria", l:"Memória cheia", ic:"memoria", sub:"Sempre apagando coisa", dica:"Vamos priorizar modelos com 256 GB ou mais."},
+    {v:"fotoruim", l:"Fotos ruins", ic:"fotoruim", sub:"Escuras ou sem nitidez", dica:"Câmera ganha peso extra na sua lista."},
+    {v:"quebra", l:"Quebra fácil", ic:"quebra", sub:"Tela trincada é rotina", dica:"Resistência a água e poeira vai contar pontos."},
+    {v:"nada", l:"Nada, só quero trocar", ic:"ok", sub:"Ou vai ser o primeiro", dica:"Tudo certo. A gente olha o conjunto."}]},
   {id:"sistema", tag:"Sistema", t:"iPhone ou Android?", sub:"Escolha uma.", max:1, ops:[
-    {v:"ios", l:"iPhone", ic:"ios", dica:"Vamos te mostrar só iPhones."},
-    {v:"android", l:"Android", ic:"andr", sub:"Samsung, Motorola, Xiaomi…", dica:"Vamos olhar todas as marcas Android do catálogo."},
-    {v:"tanto", l:"Tanto faz", ic:"tanto", dica:"Ótimo: com mais opções, sobra mais chance de achar um bom preço."}]},
+    {v:"ios", l:"iPhone", ic:"ios", sub:"Só Apple", dica:"Vamos te mostrar só iPhones."},
+    {v:"android", l:"Android", ic:"andr", sub:"Samsung, Motorola, Xiaomi", dica:"Vamos olhar todas as marcas Android do catálogo."},
+    {v:"tanto", l:"Tanto faz", ic:"tanto", sub:"O que valer mais a pena", dica:"Ótimo: com mais opções, sobra mais chance de achar um bom preço."}]},
   {id:"orcamento", tag:"Orçamento", t:"Quanto dá para investir?", sub:"Escolha uma faixa.", max:1, lista:true, ops:[
-    {v:1000, l:"Até R$ 1.000", niv:1}, {v:2000, l:"R$ 1.000 a R$ 2.000", niv:2}, {v:3500, l:"R$ 2.000 a R$ 3.500", niv:3},
-    {v:5500, l:"R$ 3.500 a R$ 5.500", niv:4}, {v:99999, l:"Mais de R$ 5.500", niv:5}]},
+    {v:1000, l:"Até R$ 1.000", sub:"Básicos que resolvem", niv:1}, {v:2000, l:"R$ 1.000 a R$ 2.000", sub:"Onde mora o custo-benefício", niv:2}, {v:3500, l:"R$ 2.000 a R$ 3.500", sub:"Intermediários caprichados", niv:3},
+    {v:5500, l:"R$ 3.500 a R$ 5.500", sub:"Quase topo de linha", niv:4}, {v:99999, l:"Mais de R$ 5.500", sub:"Topo de linha", niv:5}]},
   {id:"atitude", tag:"Última pergunta", t:"Se dois celulares fizessem tudo o que você precisa, qual você levaria?", sub:"Escolha uma.", max:1, lista:true, ops:[
-    {v:"barato", l:"O mais barato, e guardo a diferença", ic:"barato", dica:"Vamos caçar o que resolve gastando menos."},
-    {v:"dura", l:"O que dura mais anos", ic:"dura", dica:"Anos de atualização e resistência vão pesar mais."},
-    {v:"bonito", l:"O mais bonito, que chama atenção", ic:"bonito", dica:"Design e acabamento entram na conta."},
+    {v:"barato", l:"O mais barato", ic:"barato", sub:"E guardo a diferença", dica:"Vamos caçar o que resolve gastando menos."},
+    {v:"dura", l:"O que dura mais", ic:"dura", sub:"Para ficar anos com ele", dica:"Anos de atualização e resistência vão pesar mais."},
+    {v:"bonito", l:"O mais bonito", ic:"bonito", sub:"Que chama atenção", dica:"Design e acabamento entram na conta."},
     {v:"melhor", l:"O melhor que existe", ic:"topo", sub:"Quero o topo mesmo", dica:"Sem problema. E se tiver algo que faz o mesmo por menos, a gente também mostra."}]}
 ];
 const GAME_MOT = {redes:"você passa bastante tempo nas redes", videos:"você vê muitos vídeos", fotos:"você tira muitas fotos e vídeos", jogos:"você joga", trabalho:"você trabalha ou estuda nele", basico:"você quer o básico bem feito",
