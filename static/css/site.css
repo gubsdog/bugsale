@@ -2342,3 +2342,24 @@ html.v2 .rk-marca select{height:40px;padding:0 32px 0 16px;border-radius:999px;b
 .rk-mais{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;margin:16px 0 0;border-radius:999px;border:1px solid var(--v-line);background:transparent;color:var(--v-ink);font:600 14px var(--body);cursor:pointer;transition:border-color .15s,background .15s}
 .rk-mais:hover{border-color:var(--v-gold);background:color-mix(in srgb,var(--v-gold) 8%,transparent)}
 .rk-mais[hidden]{display:none}
+
+/* texto estático para buscadores: fica escondido enquanto o JavaScript monta a página completa (some sozinho em 4 s se o JS falhar) */
+html.js main > .ssr{visibility:hidden}
+.ssr{max-width:720px;margin:48px auto;font-size:16px;line-height:1.6;color:var(--v-ink,#111)}
+.ssr h1{font:800 32px/1.2 var(--body);margin:8px 0 16px}
+.ssr h2{font:700 22px/1.3 var(--body);margin:32px 0 8px}
+.ssr-k,.ssr-by{font-size:13px;color:var(--v-soft,#666);margin:0}
+.ssr-dek{font-size:18px;color:var(--v-soft,#555)}
+.ssr table{width:100%;border-collapse:collapse;font-size:14px}.ssr th,.ssr td{text-align:left;padding:8px;border-bottom:1px solid var(--v-line,#ddd)}
+.ssr ul{padding-left:24px}.ssr li{margin:8px 0}.ssr li span{display:block;font-size:14px;color:var(--v-soft,#666)}
+
+/* celular: "ordenar" mostra só a ordem escolhida e abre um menu suspenso logo abaixo do botão */
+@media (max-width:760px){
+  html.v2 .rk-ordm{position:relative}
+  html.v2 .rk-ordm-p{display:none}
+  html.v2 .rk-ordm-b b{font-weight:600}
+  html.v2 .rk-ordm-l{position:absolute;left:0;right:auto;bottom:auto;top:calc(100% + 8px);width:min(288px,calc(100vw - 32px));border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.25) !important}
+}
+.ssr,.ssr h1,.ssr h2{position:relative;z-index:1;color:#161618}
+.ssr-k,.ssr-by,.ssr-dek,.ssr li span{color:#55555C}
+.ssr a{color:#5B3FD6}
