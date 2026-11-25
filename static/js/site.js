@@ -1608,7 +1608,7 @@ const GIC = {
 const nivel = n => `<span class="gm-nivel" aria-hidden="true">${[1,2,3,4,5].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`;
 const bateriaIco = (cor, pct) => `<span class="gm-bat" aria-hidden="true"><i style="width:${pct}%;background:${cor}"></i></span>`;
 const GAME_Q = [
-  {id:"uso", tag:"Seu dia a dia", t:"Para que você mais usa o celular?", sub:"Escolha até 2. Pense no que você faz de verdade, não no que gostaria de fazer.", max:2, ops:[
+  {id:"uso", tag:"Seu dia a dia", t:"Para que você mais usa o celular?", sub:"Escolha até 2. Pense no que você faz de verdade.", max:2, ops:[
     {v:"redes", l:"Redes sociais", ic:"chat", sub:"Instagram, TikTok, WhatsApp", dica:"Para isso quase todo celular de hoje dá conta. O que vai pesar é bateria e tela."},
     {v:"videos", l:"Vídeos e séries", ic:"play", sub:"YouTube, Netflix, streaming", dica:"Anotado: tela boa e bateria que aguenta maratona sobem na sua lista."},
     {v:"fotos", l:"Fotos e vídeos", ic:"cam", sub:"Registrar o dia a dia", dica:"Câmera vai pesar bastante. Na próxima, conta para a gente o que você mais registra."},
@@ -1797,9 +1797,9 @@ function gameAbre(forcar){
       return `<button type="button" class="gm-card${on?" on":""}" aria-pressed="${on}" data-v="${o.v}">${vis}<span>${esc(o.l)}${o.sub?`<small>${esc(o.sub)}</small>`:""}</span></button>`; };
     const ult = q.ops.find(o=>o.v===sel[sel.length-1]);
     box.innerHTML = `${X}<div class="gm-top"><div class="gm-prog" style="--n:${tot}">${Array.from({length:tot},(_,i)=>`<i class="${i<passo?"ok":i===passo?"at":""}"></i>`).join("")}</div><span class="gm-n">${passo+1} de ${tot}</span></div>
-      <div class="gm-cena"><canvas width="${PIX.W}" height="${PIX.H}" role="img" aria-label="Cena ilustrada da sua resposta"></canvas></div>
-      <span class="gm-k">${esc(q.tag)}</span><h2 id="gmT">${esc(q.t)}</h2><p class="gm-sub">${esc(q.sub)}</p>
-      <div class="${q.lista?"gm-col":"gm-grid"}${q.ops.length===3?" gm-g3":""}" style="--c:${q.ops.length>=6?3:q.ops.length===3?3:q.ops.length===4?4:3}" role="group" aria-label="${esc(q.t)}">${q.ops.map(opHTML).join("")}</div>
+      <div class="gm-cab"><div class="gm-cena"><canvas width="${PIX.W}" height="${PIX.H}" role="img" aria-label="Cena ilustrada da sua resposta"></canvas></div>
+      <div class="gm-tit"><span class="gm-k">${esc(q.tag)}</span><h2 id="gmT">${esc(q.t)}</h2><p class="gm-sub">${esc(q.sub)}</p></div></div>
+      <div class="gm-ops${q.ops.length===3?" gm-o3":""}" role="group" aria-label="${esc(q.t)}">${q.ops.map(opHTML).join("")}</div>
       <div class="gm-dica" aria-live="polite"${ult&&ult.dica?"":" hidden"}><span class="bug" aria-hidden="true">${LOGO}</span><span>${ult&&ult.dica?esc(ult.dica):""}</span></div>
       <div class="gm-pe"><button type="button" class="gm-b lin" data-a="volta">← Voltar</button><span class="gm-hint">${q.max>1?`${sel.length} de ${q.max} escolhidas`:""}</span><button type="button" class="gm-b ouro" data-a="seg"${sel.length?"":" disabled"}>${passo===qs.length-1?"Ver meu resultado →":"Continuar →"}</button></div>`;
     liga();
