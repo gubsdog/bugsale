@@ -1136,7 +1136,7 @@ function renderRanking2(){
     jogos:{l:"Jogos", k:"desempenho", t:"desempenho", ico:"M7 9h10a4 4 0 0 1 3.9 4.9l-.6 2.6a2 2 0 0 1-3.4.9L15 15H9l-1.9 2.4a2 2 0 0 1-3.4-.9l-.6-2.6A4 4 0 0 1 7 9zM8 11.5v3M6.5 13h3M15.5 12h.01M17.5 14h.01"},
     bateria:{l:"Bateria", k:"bateria", t:"bateria", ico:"M3 8h15a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zM22 11v2M5 11v2M8 11v2"}};
   const MARCAS = [...new Set(L.map(x=>x.c.marca))].sort();
-  let ordem = "cb", seg = "", tema = "geral", marca = "";
+  let ordem = "cb", seg = "", tema = "geral", marca = "", qtd = 10;
   main.classList.add("h2");
   main.innerHTML = `<header class="pg-head"><h1>Ranking</h1><p>Metade da nota vem da crítica especializada, a média das avaliações publicadas por sites de tecnologia do mundo todo. A outra metade vem de testes de laboratório e da ficha técnica. Depois comparamos com o preço médio de hoje.</p></header>
     <div class="rk-temas" role="tablist" aria-label="Tipo de ranking">${Object.entries(TEMAS).map(([k,t])=>`<button type="button" role="tab" class="rk-tema" data-tema="${k}" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${t.ico}"/></svg>${k==="geral"?"Geral":"Melhor "+(k==="jogos"?"para jogos":t.l.toLowerCase())}</button>`).join("")}<label class="rk-marca"><span class="sr">Marca</span><select id="rkMarca"><option value="">Todas as marcas</option>${MARCAS.map(m=>`<option>${esc(m)}</option>`).join("")}</select></label></div>
@@ -1150,6 +1150,7 @@ function renderRanking2(){
       ${[["topo","Topo de linha"],["intermediario","Intermediário"],["entrada","Entrada"]].map(([k,l])=>`<button type="button" class="rk-f" data-seg="${k}">${l}</button>`).join("")}
     </div>
     <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span id="rkCab1">Crítica</span><span>Custo-benefício</span><span>Nota final</span><span>Preço aprox. hoje</span><span></span></div><p class="rk-dica">Clique em um celular para ver a análise completa.</p><ol class="rk-lista" id="rkLista"></ol>
+      <button type="button" class="rk-mais" id="rkMais" hidden></button>
       <p class="rk-nota" id="rkNota"></p>
       <p class="rk-legenda">${ICO_NBR} Venda no Brasil não confirmada: a ficha é da versão global e ainda não há versão oficial confirmada aqui.</p></section>
     <details class="rk-calc"><summary>Como calculamos</summary><div class="rk-calc-in">
@@ -1175,7 +1176,12 @@ function renderRanking2(){
     let arr = L.filter(x=>(!seg || x.c.seg===seg) && (!marca || x.c.marca===marca));
     if(ordem==="cb") arr = arr.filter(x=>cbDe(x)!=null).sort((a,b)=>cbDe(b)-cbDe(a));
     else arr = arr.filter(x=>nTema(x)!=null).sort((a,b)=>nTema(b)-nTema(a) || (b.n.final-a.n.final));
-    const top = arr.slice(0,10);
+    /* ranking geral por custo-benefício, sem filtros: abre com 10 e mostra mais de 10 em 10; nos outros recortes, só o top 10 */
+    const completo = tema==="geral" && ordem==="cb" && !seg && !marca;
+    if(!completo) qtd = 10;
+    const top = arr.slice(0, qtd), mais = document.getElementById("rkMais"), resto = arr.length - top.length;
+    mais.hidden = !completo || resto <= 0;
+    mais.textContent = resto > 0 ? `Ver mais ${Math.min(10, resto)} do ranking (${top.length} de ${arr.length})` : "";
     document.getElementById("rkLista").innerHTML = top.map((x,i)=>{ const c=x.c;
       return `<li class="rk-item${i<3?" top top"+(i+1):""}" data-id="${c.id}" data-pos="${i+1}" tabindex="0" role="button" aria-expanded="false">
         <span class="rk-pos">${i+1}</span>
@@ -1224,6 +1230,8 @@ function renderRanking2(){
   document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !ordL.hidden){ abreOrd(false); ordB.focus(); } });
   main.querySelectorAll("[data-ord]").forEach(b=>b.addEventListener("click", ()=>{ ordem=b.dataset.ord; abreOrd(false); draw(); }));
   main.querySelectorAll("[data-seg]").forEach(b=>b.addEventListener("click", ()=>{ seg = seg===b.dataset.seg ? "" : b.dataset.seg; draw(); }));
+  document.getElementById("rkMais").addEventListener("click", ()=>{ const antes = qtd; qtd += 10; draw();
+    const novo = document.querySelector(`#rkLista .rk-item[data-pos="${antes+1}"]`); if(novo) novo.focus({preventScroll:true}); });
   /* geral abre em custo-benefício; as categorias abrem pela melhor nota da categoria */
   main.querySelectorAll("[data-tema]").forEach(b=>b.addEventListener("click", ()=>{ tema = b.dataset.tema; ordem = tema==="geral" ? "cb" : "nota"; draw(); }));
   document.getElementById("rkMarca").addEventListener("change", e=>{ marca = e.target.value; draw(); });

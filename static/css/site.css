@@ -2207,3 +2207,19 @@ html.v2 .rk-marca select{height:40px;padding:0 32px 0 16px;border-radius:999px;b
   .rk-filt-n{min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:var(--v-purple);color:#fff;font:700 10px/16px var(--body);text-align:center}
   .rk-filt-n[hidden]{display:none}
 }
+/* banner do comparador na home: mais baixo e discreto no computador */
+@media (min-width:761px){
+  html.v2 .h-cmp{min-height:120px;grid-template-columns:minmax(0,1fr) 256px;padding-left:32px}
+  html.v2 .h-cmp-txt{padding:16px 0;gap:4px;flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:16px}
+  html.v2 .h-cmp-txt .h-cmp-k{flex-basis:100%}
+  html.v2 .h-cmp-txt b{font-size:22px}
+  html.v2 .h-cmp-txt > span:not(.h-cmp-k):not(.h-cmp-btn){flex-basis:100%;order:3}
+  html.v2 .h-cmp-btn{margin-top:0;order:2}
+  html.v2 .h-cmp-art{height:120px}
+  html.v2 .h-cmp-art img{height:128px;bottom:-24px}
+  html.v2 .h-cmp-art .c1{left:32px}html.v2 .h-cmp-art .c2{right:32px}
+  html.v2 .h-cmp-art .vs{width:40px;height:40px;font-size:12px}
+}
+.rk-mais{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;margin:16px 0 0;border-radius:999px;border:1px solid var(--v-line);background:transparent;color:var(--v-ink);font:600 14px var(--body);cursor:pointer;transition:border-color .15s,background .15s}
+.rk-mais:hover{border-color:var(--v-gold);background:color-mix(in srgb,var(--v-gold) 8%,transparent)}
+.rk-mais[hidden]{display:none}
