@@ -2123,3 +2123,32 @@ html.v2 .persona .pe-nao span{color:#D9534F !important;font-weight:700}
   .preco-chart.ano .hj{display:none}
   .preco-chart.ano .ln{stroke-width:4}
 }
+
+/* matérias livres: guias com vários celulares e notícias */
+.mt-cover img{display:block;width:100%;height:auto;border-radius:16px;background:#0B0B0D}
+.mt-item{display:grid;grid-template-columns:160px 1fr;gap:24px;margin:24px 0;padding:24px;border:1px solid var(--v-line);border-radius:16px;background:var(--v-surface)}
+.mt-item-img{display:flex;align-items:flex-start;justify-content:center;padding-top:8px}
+.mt-item-img img{width:100%;max-width:160px;height:auto;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.18))}
+.mt-faixa{display:inline-block;font:400 13px/1 "Silkscreen",var(--body),monospace;text-transform:lowercase;background:var(--v-gold);color:#0B0B0D;padding:8px 8px;border-radius:2px}
+.mt-alerta .mt-faixa{background:#E5383B;color:#F4F4F1}
+html.v2 .post-body .mt-item h3{margin:16px 0 8px;font:700 24px/1.2 var(--display);letter-spacing:-.02em;color:var(--v-ink)}
+html.v2 .post-body .mt-item p{font-size:15px;line-height:1.6;margin:0 0 8px}
+html.v2 .post-body .mt-alt{font-size:14px;color:var(--v-soft) !important}
+.mt-preco{display:flex;flex-wrap:wrap;gap:8px 24px;margin:16px 0;padding:16px 0 0;border-top:1px solid var(--v-line)}
+.mt-preco span{display:flex;flex-direction:column;gap:4px}
+.mt-preco small{font-size:12px;color:var(--v-soft)}
+.mt-preco b{font:700 22px/1 var(--display);color:var(--v-ink)}
+.mt-preco b.mt-ok{color:#2E9E5B}
+.mt-preco s{font:500 16px/1.4 var(--body);color:var(--v-soft)}
+.mt-acoes{display:flex;flex-wrap:wrap;gap:8px}
+.mt-dest{margin:24px 0;padding:16px 24px;border-radius:16px;border:1px solid color-mix(in srgb,var(--v-purple) 40%,transparent);background:color-mix(in srgb,var(--v-purple) 8%,transparent)}
+.mt-dest .kicker{font:400 13px "Silkscreen",var(--body),monospace;text-transform:lowercase;color:var(--v-purple)}
+html.v2 .post-body .mt-dest p{margin:8px 0 0}
+.mt-tab table{width:100%}
+.post-body ul{margin:0 0 16px;padding-left:24px;line-height:1.7}
+@media (max-width:760px){
+  .mt-item{grid-template-columns:1fr;gap:8px;padding:16px}
+  .mt-item-img img{max-width:120px}
+  .mt-acoes .btn{flex:1;justify-content:center}
+}
+.mt-tab thead th{color:#F4F4F1 !important}

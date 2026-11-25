@@ -736,7 +736,7 @@ function renderArticle(){
   const a = MQ_DATA.articles.find(x=>x.id===id) || publicados().find(x=>x.phone===id) || publicados().sort(porData)[0];
   const p = P(a.phone), pc = PA(a, true), s = p.specs, B = MQ_DATA.bodies[a.id] || {}, S = B.secoes || {};
   const b = [S.abertura || B.abertura, S.para_quem || B.para_quem, S.veredito || B.veredito];
-  const TIPO = {review:"Review", comparativo:"Comparativo", vale:"Vale a pena?", ocasiao:a.cat, novidade:"Novidade"};
+  const TIPO = {review:"Review", comparativo:"Comparativo", vale:"Vale a pena?", ocasiao:a.cat, novidade:"Novidade", lista:a.cat, noticia:"Notícia"};
   document.title = `${a.titulo} · Bugsale`;
   const pct = p.precoN ? Math.round((1 - p.atualN/p.precoN)*100) : null;
   const brandPage0 = ({Samsung:"samsung.html",Apple:"iphone.html",Motorola:"motorola.html"}[p.marca]);
@@ -757,6 +757,54 @@ function renderArticle(){
   const ondeComprar = cmp ? `${ofertaMiniHTML(ind, `Onde comprar o ${esc(ind.nome)}, nossa indicação`)}${outro.ofertas && outro.ofertas.lista && outro.ofertas.lista.length ? `<details class="om-outro"><summary>Ver as ofertas do ${esc(outro.nome)}</summary>${ofertaMiniHTML(outro)}</details>` : ""}` : ofertaMiniHTML(p);
   const related = publicados().filter(x=>x.id!==a.id).sort((x,y)=>(P(y.phone).marca===p.marca)-(P(x.phone).marca===p.marca) || porData(x,y)).slice(0,4);
   const shareText = encodeURIComponent(`${a.titulo} · Bugsale`);
+  if(a.tipo==="lista" || a.tipo==="noticia"){
+    /* matéria livre: guia com vários celulares (lista) ou notícia da semana; texto em S.blocos */
+    const inl = t => esc(t).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
+    const pars = x => (Array.isArray(x)?x:[x]).filter(Boolean).map(t=>`<p>${inl(t)}</p>`).join("");
+    const itemHTML = (it, i) => {
+      const q = P(it.id); if(!q) return "";
+      const ofs = (q.ofertas && q.ofertas.lista || []).filter(o=>o.preco).sort((x,y)=>x.preco-y.preco), o = ofs[0];
+      const hoje = o ? o.preco : q.atualN, art = publicados().find(x=>x.phone===q.id && x.id!==a.id);
+      return `<section class="mt-item${it.alerta?" mt-alerta":""}">
+        <div class="mt-item-img">${q.catImg ? `<img src="${R}${q.catImg}" alt="${esc(q.full)}" loading="lazy">` : img2(q)}</div>
+        <div class="mt-item-txt">
+          <span class="mt-faixa">${it.faixa ? esc(it.faixa) : String(i+1).padStart(2,"0")}</span>
+          <h3>${esc(it.titulo || q.full)}</h3>
+          ${pars(it.texto)}
+          ${it.alt ? `<p class="mt-alt"><b>${it.altRot ? esc(it.altRot) : "Alternativa"}:</b> ${inl(it.alt)}</p>` : ""}
+          <div class="mt-preco"><span><small>${o ? `menor preço hoje · ${esc(o.loja)}` : "preço médio hoje"}</small><b>${brl(hoje)}</b></span>${it.alvo ? `<span><small>bom preço</small><b class="mt-ok">até ${brl(it.alvo)}</b></span>` : ""}${q.precoN ? `<span><small>lançamento</small><s>${brl(q.precoN)}</s></span>` : ""}</div>
+          <div class="mt-acoes">${o ? `<a class="btn primary" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta ${o.loja==="Mercado Livre"?"no":"na"} ${esc(o.loja)} →</a>` : ""}${art ? `<a class="btn" href="${artURL(art)}">Ler a análise</a>` : `<button class="btn" type="button" data-compare="${q.id}">Abrir no comparador</button>`}</div>
+        </div></section>`;
+    };
+    const blocoHTML = (k, i) => k.h ? `<h2>${esc(k.h)}</h2>` : k.p ? pars(k.p) : k.item ? itemHTML(k.item, i) : k.lista ? `<ul>${k.lista.map(t=>`<li>${inl(t)}</li>`).join("")}</ul>`
+      : k.destaque ? `<aside class="mt-dest"><span class="kicker">${esc(k.destaque[0])}</span><p>${inl(k.destaque[1])}</p></aside>`
+      : k.tabela ? `<div class="ficha mt-tab"><h3>${esc(k.tabela.titulo||"")}</h3><div class="fc-wrap"><table><thead><tr>${k.tabela.cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${k.tabela.linhas.map(r=>`<tr>${r.map((x,j)=>j?`<td>${inl(x)}</td>`:`<th>${inl(x)}</th>`).join("")}</tr>`).join("")}</tbody></table></div></div>` : "";
+    let n = 0; const corpo = (S.blocos||[]).map(k=>blocoHTML(k, k.item ? n++ : 0)).join("");
+    const kick = a.tipo==="noticia" ? "Notícia" : (a.cat || "Guia");
+    main.innerHTML = `
+  <article class="post post-mt post-${a.tipo}">
+    <nav class="crumb" aria-label="Você está em"><a href="${R}index.html">Início</a> / ${esc(kick)}</nav>
+    <div class="post-head">
+      <span class="kicker">${esc(kick)}</span>
+      <h1>${esc(a.titulo)}</h1>
+      <p class="dek">${esc(a.dek)}</p>
+      <div class="author">
+        <div class="meta"><span class="avatar">${LOGO_SQ}</span><span class="who"><b>Equipe Bugsale</b><span class="sep" aria-hidden="true">·</span><time datetime="${a.data}">${dataBR(a.data)}</time></span></div>
+        <div class="share"><a class="ico-btn wa" href="https://wa.me/?text=${shareText}%20${encodeURIComponent(location.href)}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">${ICO_WA}</a><button type="button" class="ico-btn" id="copyLink" aria-label="Copiar link" title="Copiar link">${ICO_LINK}</button></div>
+      </div>
+    </div>
+    ${a.capa ? `<figure class="cover mt-cover"><img src="${R}${a.capa.src}" alt="" width="1600" height="1200"><figcaption>${esc(a.capa.credito)}.</figcaption></figure>` : ""}
+    <div class="post-body">
+      ${b[0] ? `<p class="lede">${inl(b[0])}</p>` : ""}
+      ${corpo}
+      ${b[2] ? `<blockquote class="verdict"><span class="kicker">${a.tipo==="noticia" ? "O que muda para você" : "Resumo Bugsale"}</span><p>${inl(b[2])}</p></blockquote>` : ""}
+      <div class="cta-compare"><div><b>Ainda em dúvida?</b><span>Coloque dois ou três modelos lado a lado no comparador.</span></div><a class="btn primary" href="${R}comparador.html">Abrir o comparador →</a></div>
+      <p class="note">${S.fontes ? "Fontes: " + S.fontes.map(f=>`<a href="${f[1]}" target="_blank" rel="noopener">${esc(f[0])}</a>`).join(", ") + ". " : ""}${a.tipo==="noticia" ? `Informações reunidas em ${dataBR(a.data)}.` : `Preços conferidos em ${dataBR(a.data)}; mudam ao longo do dia, então confira na loja antes de fechar a compra.`}</p>
+    </div>
+  </article>
+  <div class="section-title"><h2>Leia também</h2><a href="${R}index.html">Ver todos →</a></div>
+  <div class="h-grid">${related.slice(0,4).map(recenteHTML2).join("")}</div>`;
+  } else
   if(a.tipo==="novidade"){
     const T = S.tabela || {cols:[], linhas:[]};
     const tab = `<div class="ficha ficha-cmp ficha-nov"><h3>${esc(T.titulo || "Ficha técnica")}</h3><div class="fc-wrap"><table style="--n:${T.cols.length}"><colgroup><col class="fc-c0">${T.cols.map(()=>"<col>").join("")}</colgroup><thead><tr><th></th>${T.cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${T.linhas.map(l=>`<tr><th><span>${esc(l[0])}</span></th>${l.slice(1).map(v=>`<td>${esc(v||"—")}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${T.nota?`<small class="fc-nota">${esc(T.nota)}</small>`:""}</div>`;

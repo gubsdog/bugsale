@@ -634,5 +634,225 @@
    ]
   },
   "categoria": "Novidade"
+ },
+ {
+  "slug": "qual-celular-comprar-black-friday-2026",
+  "celular": "galaxy-a57",
+  "tipo": "lista",
+  "categoria": "Black Friday",
+  "titulo": "Qual celular comprar na Black Friday 2026: o melhor em cada faixa de preço",
+  "resumo": "Um celular indicado para cada bolso, do básico até R$ 1.000 ao topo de linha, com o preço de hoje e até quanto vale pagar.",
+  "data": "2026-11-25",
+  "publicar": "2026-11-25T19:00",
+  "teaser": true,
+  "pronto": true,
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagens dos aparelhos: divulgação"
+  },
+  "chamada": "Na semana da Black Friday, a pergunta que mais chega para a gente é sempre a mesma: com o dinheiro que eu tenho, qual celular eu compro? Então fizemos o trabalho de separar um modelo por faixa de preço. Para cada um, você vê o menor preço que achamos hoje, até quanto ainda é um bom negócio e uma alternativa caso o seu uso seja diferente.",
+  "para_quem": "",
+  "veredito": "Se é para resumir em uma frase: até R$ 1.000, vá de Galaxy A17 5G; até R$ 2.000, Galaxy A57; até R$ 3.500, POCO X8 Pro; até R$ 5.500, Galaxy S26 (ou iPhone 17, se você é do iOS); e, sem teto, Galaxy S26 Ultra. Antes de pagar, compare com o bom preço que deixamos em cada um. Se a loja estiver cobrando mais, não é promoção, é só o preço de sempre com etiqueta nova.",
+  "secoes": {
+   "blocos": [
+    {
+     "h": "Como escolhemos"
+    },
+    {
+     "p": [
+      "Olhamos três coisas em cada faixa: o que o aparelho entrega de verdade no dia a dia (tela, bateria, câmera e desempenho), por quanto tempo ele vai receber atualizações e quanto o preço já caiu desde o lançamento. Os preços abaixo são atualizados pelo site e mostram a loja mais barata no momento.",
+      "O valor de **bom preço** é o nosso teto: até ele, a compra vale a pena. Acima disso, vale esperar ou olhar a alternativa."
+     ]
+    },
+    {
+     "item": {
+      "id": "galaxy-a17-5g",
+      "faixa": "até R$ 1.000",
+      "titulo": "Galaxy A17 5G",
+      "texto": [
+       "É o celular barato que não parece barato. A tela é AMOLED e Full HD, coisa rara nessa faixa, a câmera principal tem estabilização e ele tem 5G. O detalhe que mais pesa: a Samsung promete 6 atualizações do Android e 6 anos de segurança, então ele não fica velho tão cedo.",
+       "O ponto fraco é o processador, que dá conta de WhatsApp, redes e banco, mas não é para jogos pesados."
+      ],
+      "alvo": 899,
+      "alt": "se o dinheiro é bem curto, o **Galaxy A07 4G** custa menos e tem as mesmas 6 atualizações, mas a tela é LCD de baixa resolução e não tem 5G."
+     }
+    },
+    {
+     "item": {
+      "id": "galaxy-a57",
+      "faixa": "até R$ 2.000",
+      "titulo": "Galaxy A57",
+      "texto": [
+       "Lançado a R$ 3.599, ele está perto da metade do preço e é o intermediário mais equilibrado da Samsung: tela de 120 Hz, resistência à água IP68, carga de 45 W e 6 atualizações do Android. É o tipo de celular que você compra e esquece que existe outro."
+      ],
+      "alvo": 1650,
+      "alt": "o **Moto G Max** aparece por menos de R$ 1.600 com tela maior, câmera de 200 MP e resistência a queda, mas só 3 anos de segurança. O **Moto G86**, de tela muito brilhante, vale até R$ 1.500."
+     }
+    },
+    {
+     "item": {
+      "id": "poco-x8-pro",
+      "faixa": "até R$ 3.500",
+      "titulo": "POCO X8 Pro",
+      "texto": [
+       "Aqui o POCO X8 Pro não tem concorrente à altura no desempenho. O processador é de outra categoria para o preço, a bateria tem 6.500 mAh e a recarga é de 100 W. Ainda aguenta mergulho (IP68 e IP69K).",
+       "O cuidado: ele não tem venda oficial da Xiaomi no Brasil. Compre de vendedor com boa reputação e confira se a nota fiscal é emitida no país."
+      ],
+      "alvo": 2500,
+      "alt": "o **Edge 70**, da Motorola, é fino, leve, tem resistência militar e 5 anos de segurança. Vale mais para quem prefere um celular elegante a um celular gamer."
+     }
+    },
+    {
+     "item": {
+      "id": "galaxy-s26",
+      "faixa": "até R$ 5.500",
+      "titulo": "Galaxy S26",
+      "texto": [
+       "O topo de linha compacto da Samsung chegou a R$ 7.499 e hoje aparece perto de R$ 4.000. Por esse valor, você leva tela de 6,3 polegadas com 120 Hz, câmera com zoom óptico de 3 vezes e 7 atualizações do Android. É o celular premium mais barato do momento.",
+       "Ele perde em bateria para os intermediários grandes: são 4.300 mAh, o suficiente para um dia de uso normal."
+      ],
+      "alvo": 4000,
+      "altRot": "Se você é do iPhone",
+      "alt": "o **iPhone 17** é a escolha. Ele grava vídeo melhor e tem tela de 120 Hz, coisa que o iPhone 16 não tem. Até R$ 5.300 é bom preço."
+     }
+    },
+    {
+     "item": {
+      "id": "galaxy-s26-ultra",
+      "faixa": "sem teto",
+      "titulo": "Galaxy S26 Ultra",
+      "texto": [
+       "Se dinheiro não é o problema, o S26 Ultra é o celular mais completo do ano: câmera de 200 MP com dois zooms ópticos, a tela que protege contra olhares do lado, caneta S Pen e 7 anos de Android. Lançado a R$ 11.499, ele já aparece abaixo de R$ 7.000.",
+       "É grande e pesado. Se você usa o celular com uma mão só, pense duas vezes."
+      ],
+      "alvo": 6200,
+      "altRot": "Bug de preço do dia",
+      "alt": "o **Razr 70 Ultra**, dobrável topo de linha lançado a R$ 12.999, apareceu por cerca de R$ 4.500 na Magalu. Para quem quer um dobrável, é o melhor negócio da semana. Só lembre que a resistência é IP48: aguenta respingo, não poeira."
+     }
+    },
+    {
+     "h": "Três cuidados antes de pagar"
+    },
+    {
+     "lista": [
+      "**Compare o preço do Pix com o parcelado.** Muitas ofertas só valem à vista. Se for parcelar, faça a conta com o valor parcelado.",
+      "**Veja quem vende.** Prefira a própria loja ou vendedores oficiais. No marketplace, confira a reputação e se o produto é nacional.",
+      "**Use o bom preço como régua.** Desconto em cima de preço inflado não é desconto. Se o valor estiver acima do teto que indicamos, espere ou vá na alternativa."
+     ]
+    },
+    {
+     "destaque": [
+      "Vale esperar o Natal?",
+      "Desta vez, pouco. Os fabricantes avisam que a memória ficou mais cara e alguns reajustes estão previstos para janeiro. Se você achou o seu celular dentro do bom preço, não precisa segurar a compra."
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "celular-mais-caro-2027-memoria",
+  "celular": "galaxy-a17-5g",
+  "tipo": "noticia",
+  "categoria": "Notícia",
+  "titulo": "Celular vai ficar mais caro em 2027? O que a crise da memória muda na sua compra de Black Friday",
+  "resumo": "A Samsung estuda subir os preços da linha Galaxy A em até 19% em janeiro, e a Xiaomi diz que a memória ficou 5,5 vezes mais cara em um ano. Entenda o que isso significa para quem vai comprar agora.",
+  "data": "2026-11-25",
+  "publicar": "2026-11-25T19:00",
+  "teaser": true,
+  "pronto": true,
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagens dos aparelhos: divulgação"
+  },
+  "chamada": "Enquanto as lojas anunciam descontos de Black Friday, os fabricantes estão falando o contrário: o celular vai ficar mais caro. Na última semana, um jornal sul-coreano informou que a Samsung avalia subir os preços dos Galaxy A a partir de janeiro, e a Xiaomi já tinha avisado que algumas linhas de celular podem até sumir. O motivo é o mesmo em todos os casos: a memória.",
+  "para_quem": "",
+  "veredito": "Se você está esperando o preço cair mais depois da Black Friday, a tendência é contrária. Os descontos de agora vêm de aparelhos lançados antes da alta mais forte, e os próximos modelos devem chegar mais caros. Achou o celular que queria dentro do bom preço? Pode comprar sem medo de se arrepender em janeiro.",
+  "secoes": {
+   "blocos": [
+    {
+     "h": "O que aconteceu"
+    },
+    {
+     "p": [
+      "Segundo o jornal sul-coreano SEDaily, repercutido pelo Canaltech em 18 de novembro, a Samsung está avaliando uma nova tabela de preços para a linha Galaxy A a partir de 1º de janeiro de 2027. Os aumentos iriam de US$ 30 a US$ 60, dependendo do modelo. O Galaxy A17 5G teria o maior reajuste proporcional, de 18,6%, e o Galaxy A57, o menor, de 9,1%.",
+      "A Samsung não confirmou a mudança, e a reportagem não diz se ela vale para o Brasil. Mas o movimento não é isolado: em 16 de novembro, a marca já tinha subido os preços do Galaxy A07 5G e do A17 5G na Índia."
+     ]
+    },
+    {
+     "h": "Por que os preços estão subindo"
+    },
+    {
+     "p": [
+      "A memória dos celulares, tanto a RAM quanto o armazenamento, é feita pelas mesmas empresas que fornecem chips para servidores de inteligência artificial. Com a corrida da IA, esses clientes passaram a comprar tudo o que conseguem, e sobra menos memória (e mais cara) para os celulares.",
+      "Em outubro, o gerente de produto da Redmi, Hu Xinxin, disse que o preço da memória subiu cerca de 5,5 vezes em 12 meses. Ele contou que um módulo com 12 GB de RAM e 256 GB de armazenamento já custa perto de 2.000 yuans, cerca de R$ 1.500, só a peça.",
+      "Os aparelhos baratos são os mais afetados, porque a memória pesa mais no custo total. Por isso a Xiaomi chegou a dizer que algumas linhas podem deixar de ter modelos novos."
+     ]
+    },
+    {
+     "tabela": {
+      "titulo": "O que já subiu em 2026",
+      "cols": [
+       "Onde",
+       "O que mudou"
+      ],
+      "linhas": [
+       [
+        "Galaxy S26 (Brasil, outubro)",
+        "256 GB foi de R$ 7.499 para R$ 7.799"
+       ],
+       [
+        "Galaxy S26 Ultra (Brasil, outubro)",
+        "256 GB foi de R$ 11.499 para R$ 11.999; o de 1 TB subiu R$ 1.300"
+       ],
+       [
+        "Galaxy A07 5G e A17 5G (Índia, novembro)",
+        "alta de 2.000 rúpias, cerca de R$ 120"
+       ],
+       [
+        "Galaxy A (proposta para janeiro)",
+        "de 9,1% a 18,6%, ainda não confirmado"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "E a Black Friday, como fica?"
+    },
+    {
+     "p": [
+      "Parece contraditório, mas os dois movimentos convivem. Os celulares em promoção agora foram lançados antes ou no começo da alta, e as lojas ainda têm estoque para girar. É por isso que você ainda encontra um Galaxy S26 perto de R$ 4.000, quase metade do preço sugerido.",
+      "O que deve mudar é a próxima geração. Modelos lançados em 2027 tendem a chegar mais caros ou com menos memória pelo mesmo preço. A consultoria IDC calcula que o mercado mundial de celulares encolheu 22% no terceiro trimestre, justamente porque os aparelhos ficaram mais caros."
+     ]
+    },
+    {
+     "destaque": [
+      "Na prática",
+      "Se o seu celular atual está bem, não precisa trocar por causa da notícia. Mas, se a troca já estava nos planos, a Black Friday deste ano deve ser uma das melhores janelas até o fim de 2027."
+     ]
+    }
+   ],
+   "fontes": [
+    [
+     "Canaltech: Samsung pode aumentar preços dos Galaxy A em até 19% em 2027",
+     "https://canaltech.com.br/smartphone/samsung-pode-aumentar-precos-dos-celulares-galaxy-a-em-ate-19-em-2027/"
+    ],
+    [
+     "Canaltech: Xiaomi alerta que celulares podem encarecer",
+     "https://canaltech.com.br/smartphone/xiaomi-alerta-celulares-podem-encarecer-e-algumas-linhas-sumir-do-mercado/"
+    ],
+    [
+     "Canaltech: Galaxy S26 fica mais caro de novo",
+     "https://canaltech.com.br/smartphone/galaxy-s26-fica-mais-caro-de-novo-em-meio-a-crise-das-memorias/"
+    ],
+    [
+     "Oficina da Net: Samsung aumenta preços na Índia",
+     "https://www.oficinadanet.com.br/samsung/74185-samsung-aumenta-precos-celulares-galaxy"
+    ],
+    [
+     "IDC via I-Connect007: vendas caem 22% no 3º trimestre",
+     "https://iconnect007.com/article/152009/global-smartphone-shipments-drop-record-high-of-22-in-q3-2026-as-the-memory-crisis-hits-hard/152006/ein"
+    ]
+   ]
+  }
  }
 ]
