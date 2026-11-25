@@ -200,7 +200,7 @@ function footer(){
           <p>Reviews, comparativos e o preço justo de celulares e produtos para casa. O preço que parece bug, checado com histórico.</p></div>
         <div><h5>Seções</h5>${MENU.filter(([,,k])=>k!=="home").map(([h,l])=>`<a href="${h}">${l}</a>`).join("")}</div>
         <div><h5>Bugsale</h5><a href="${R}sobre.html">Sobre e como avaliamos</a><a href="${R}privacidade.html">Política de privacidade</a></div>
-        <div><h5>Comunidade</h5><a href="https://www.instagram.com/bugsale.br/" target="_blank" rel="noopener">Instagram</a><a href="${GRUPO}" target="_blank" rel="noopener">Grupo de ofertas</a></div>
+        <div><h5>Redes sociais</h5><a href="https://www.instagram.com/bugsale.br/" target="_blank" rel="noopener">Instagram</a></div>
       </div>
     </div>
     <div class="ftr-fine">Preços médios e fichas técnicas atualizados semanalmente a partir de Oficina da Net, Tecnoblog, Buscapé e GSMArena. Preços mudam todo dia. Fotos: divulgação das marcas.</div>`;
@@ -320,12 +320,15 @@ const publicados = () => MQ_DATA.articles.filter(a=>!a.locked);
 
 /* ================= tela inicial (visual novo, minimalista, claro e escuro) ================= */
 const PERFIL_CURTO = {
-  "razr-70-ultra":"Para quem quer um dobrável de bolso, com tela externa útil e selfies caprichadas.",
-  "galaxy-s26-ultra":"Para quem fotografa muito, quer zoom de verdade e vai ficar anos com o celular.",
-  "iphone-16":"Para quem vem de um iPhone mais antigo e quer um iPhone atual gastando menos.",
-  "moto-g86":"Para quem quer resistência à água e bateria para o dia todo, sem gastar muito.",
-  "galaxy-a57":"Para quem quer um Samsung bonito e com atualização garantida por muitos anos.",
-  "iphone-17":"Para quem quer tela de 120 Hz, mais espaço e um iPhone para muitos anos."
+  "razr-70-ultra":"Para quem quer um dobrável de bolso com tela externa útil.",
+  "galaxy-s26-ultra":"Para quem fotografa muito e quer zoom de verdade.",
+  "iphone-16":"Para quem vem de um iPhone antigo e quer gastar menos.",
+  "moto-g86":"Para quem quer resistência e bateria para o dia todo.",
+  "galaxy-a57":"Para quem quer um Samsung bonito com anos de atualização.",
+  "iphone-17":"Para quem quer tela de 120 Hz e um iPhone para muitos anos.",
+  "galaxy-s26":"Para quem quer um topo de linha compacto e duradouro.",
+  "moto-g-max":"Para quem quer câmera de 200 MP gastando pouco.",
+  "poco-x8-pro":"Para quem joga e quer bateria enorme sem pagar preço de topo."
 };
 const tag2 = a => `<span class="tg"><span>${esc(a.cat)}</span><b>${esc(P(a.phone).marcaMenu)}</b></span>`;
 function img2(p, grande){
@@ -362,6 +365,19 @@ function melhoresOfertas(n){
   return C.map(p=>{ const o = p.ofertas.lista.slice().sort((x,y)=>x.preco-y.preco)[0]; return {p, o, r:o.preco/bomDe(p)}; })
           .filter(x=>!fixas.some(f=>f.p.id===x.p.id)).sort((x,y)=>x.r-y.r).slice(0,n-fixas.length).reduce((a,x)=>a.concat(x), fixas);
 }
+/* card vertical de oferta (estilo loja): foto, loja, selo de queda desde o lançamento, preço e botão */
+function ofertaCard2({p}){
+  /* sempre a loja com o menor preço do dia */
+  const o = (p.ofertas.lista||[]).slice().sort((x,y)=>x.preco-y.preco)[0];
+  const cid = (p.catImg||"").replace(/^.*\/|\.webp$/g,""), c = CAT().find(x=>x.id===cid);
+  const lanc = (c && lancPreco(c)) || p.precoN || null, queda = lanc && lanc > o.preco ? Math.round((1 - o.preco/lanc)*100) : 0;
+  return `<a class="o3" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">
+    <span class="o3-img">${p.catImg ? `<img src="${R}${p.catImg}" alt="" loading="lazy">` : img2(p)}<span class="o3-loja">${esc(o.loja)}</span>${queda>=10 ? `<span class="o3-off" title="Em relação ao preço de lançamento">−${queda}%</span>` : ""}</span>
+    <span class="o3-txt"><b>${esc(p.full)}</b><small class="o3-pq">${esc(PERFIL_CURTO[p.id] || "")}</small>
+      <span class="o3-preco">${brl(o.preco)}</span>
+      <small class="o3-ref">${lanc ? `Lançado a ${brl(lanc)}` : "&nbsp;"}</small></span>
+    <span class="o3-btn">Ver na ${esc(o.loja)} ↗</span></a>`;
+}
 function ofertaLinha2({p,o}){
   return `<div class="o2"><span class="o2-img">${img2(p)}</span>
     <div class="o2-txt"><b>${esc(p.full)}</b><span>${esc(PERFIL_CURTO[p.id] || "")}</span><small>${brl(o.preco)} na ${esc(o.loja)}</small></div>
@@ -374,7 +390,7 @@ function renderHome(){
   const [first, ...rest] = arts;
   const fila = rest.concat(teasers);              /* publicados mais novos primeiro, depois os que serão lançados */
   const lado = fila.slice(0,3), recentes = fila.slice(3,7);
-  const ofs = melhoresOfertas(3);
+  const ofs = melhoresOfertas(6);
   main.classList.add("h2");
   main.innerHTML = `
     <a class="h-cmp" href="${R}comparador.html" aria-label="Abrir o comparador de celulares">
@@ -383,9 +399,7 @@ function renderHome(){
     <section class="h-top" aria-label="Destaques">${first ? heroHTML2(first) : ""}<div class="h-lados">${lado.map(ladoHTML2).join("")}</div></section>
     ${recentes.length ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${recentes.map(recenteHTML2).join("")}</div>` : ""}
     <h2 class="h-sec">Melhores ofertas</h2>
-    <section class="h-ofertas"><div class="o2-lista">${ofs.map(ofertaLinha2).join("")}</div>
-      <a class="grupo2" href="${GRUPO}" target="_blank" rel="noopener"><span class="grupo2-img"><img src="${R}img/grupo-ofertas.webp" alt="Celulares de várias marcas lado a lado" loading="lazy"></span>
-        <span class="grupo2-txt"><span class="grupo2-logo">${LOCKUP}</span><b>Entre no nosso grupo de ofertas de celulares</b><span>Ofertas diárias, conferidas com o histórico de preço. Só promoção que vale o seu Pix.</span><span class="grupo2-btn">Entrar no grupo</span></span></a>
+    <section class="h-ofertas o3-grade"><div class="o3-lista">${ofs.map(ofertaCard2).join("")}</div>
       ${(()=>{ const d = ofs.map(x=>x.p.ofertas.pesquisa).filter(Boolean).sort().pop(); return `<small class="o2-nota">Preços pesquisados${d ? ` em ${dataHora(d)}` : ""}.</small>`; })()}
     </section>`;
   main.querySelectorAll(".locked").forEach(c=>{
@@ -420,7 +434,7 @@ function renderBrand2(brand){
       ${rest.length > 3 ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${rest.slice(3,7).map(recenteHTML2).join("")}</div>` : ""}`;
   }
   main.classList.add("h2");
-  main.innerHTML = `<h1 class="b-tit">${esc(label)}${modelo ? ` <a class="b-limpa" href="${R}${pg}${keep?"?v2":""}">ver todos</a>` : ""}</h1>${modelos}${corpo}<div class="b-grupo">${grupoHTML2(true)}</div>`;
+  main.innerHTML = `<h1 class="b-tit">${esc(label)}${modelo ? ` <a class="b-limpa" href="${R}${pg}${keep?"?v2":""}">ver todos</a>` : ""}</h1>${modelos}${corpo}`;
 }
 
 function renderArticles(brand){
@@ -1091,7 +1105,7 @@ function painelRk(x, pos, ordem){
       ${tel}${etq}</div>
     <button type="button" class="xp-btn xp-cmp" data-compare="${c.id}">Comparar com outro</button>
     <div class="xp-dir">
-      <div class="xp-tit"><span class="xp-selo">${pos}º em ${ORD_NOME[ordem]}</span><h3>${esc(c.nome)}</h3><p>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · ${ICO_NBR}`}${resumoCat(c)?" · "+esc(resumoCat(c)):""}</p></div>
+      <div class="xp-tit"><span class="xp-selo">${pos}º em ${ORD_NOME[ordem]||ordem}</span><h3>${esc(c.nome)}</h3><p>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · ${ICO_NBR}`}${resumoCat(c)?" · "+esc(resumoCat(c)):""}</p></div>
       <div class="xp-aneis">
         <div class="xp-nota">${anel(n.critica,"var(--v-purple)")}<div><small>Crítica</small><span${c.critica && c.critica.fontes.length ? ` title="${esc(c.critica.fontes.map(f=>f.v+": "+String(f.n).replace(".",",")).join(" · "))}"` : ""}>${n.critica!=null?`Média de ${n.reviews} ${n.reviews>1?"análises":"análise"}`:"Sem análises publicadas"}</span></div></div>
         <div class="xp-nota">${anel(x.cb,"#2FA86B")}<div><small>Custo-benefício</small><span>${sobreCb}</span></div></div>
@@ -1117,18 +1131,27 @@ function renderRanking2(){
   const comPreco = L.filter(x=>x.n.preco);
   const maxRaw = Math.max(...comPreco.map(x=>x.n.final/Math.sqrt(x.n.preco)));
   L.forEach(x=>{ x.cb = x.n.preco ? (x.n.final/Math.sqrt(x.n.preco))/maxRaw*10 : null; });
-  let ordem = "cb", seg = "";
+  /* temas: geral (custo-benefício ou crítica) e rankings por categoria (câmera, tela, jogos, bateria) */
+  const TEMAS = {geral:{l:"Geral", k:null, ico:"M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z"},
+    camera:{l:"Câmera", k:"camera", t:"câmera", ico:"M4 8h3l2-3h6l2 3h3v11H4zM12 16.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"},
+    tela:{l:"Tela", k:"tela", t:"tela", ico:"M5 3h14a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM10 18h4"},
+    jogos:{l:"Jogos", k:"desempenho", t:"desempenho", ico:"M7 9h10a4 4 0 0 1 3.9 4.9l-.6 2.6a2 2 0 0 1-3.4.9L15 15H9l-1.9 2.4a2 2 0 0 1-3.4-.9l-.6-2.6A4 4 0 0 1 7 9zM8 11.5v3M6.5 13h3M15.5 12h.01M17.5 14h.01"},
+    bateria:{l:"Bateria", k:"bateria", t:"bateria", ico:"M3 8h15a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zM22 11v2M5 11v2M8 11v2"}};
+  const MARCAS = [...new Set(L.map(x=>x.c.marca))].sort();
+  let ordem = "cb", seg = "", tema = "geral", marca = "";
   main.classList.add("h2");
   main.innerHTML = `<header class="pg-head"><h1>Ranking</h1><p>Metade da nota vem da crítica especializada, a média das avaliações publicadas por sites de tecnologia do mundo todo. A outra metade vem de testes de laboratório e da ficha técnica. Depois comparamos com o preço médio de hoje.</p></header>
+    <div class="rk-temas" role="tablist" aria-label="Tipo de ranking">${Object.entries(TEMAS).map(([k,t])=>`<button type="button" role="tab" class="rk-tema" data-tema="${k}" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${t.ico}"/></svg>${k==="geral"?"Geral":"Melhor "+(k==="jogos"?"para jogos":t.l.toLowerCase())}</button>`).join("")}<label class="rk-marca"><span class="sr">Marca</span><select id="rkMarca"><option value="">Todas as marcas</option>${MARCAS.map(m=>`<option>${esc(m)}</option>`).join("")}</select></label></div>
     <div class="rk-filtros" role="toolbar" aria-label="Ordenar e filtrar">
       <b>Ordenar por:</b>
-      ${[["cb","Custo-benefício"],["nota","Nota final"],["critica","Nota crítica"]].map(([k,l])=>`<button type="button" class="rk-f" data-ord="${k}">${l}</button>`).join("")}
+      <button type="button" class="rk-f" data-ord="cb">Custo-benefício</button><button type="button" class="rk-f" data-ord="nota" id="rkOrdNota">Nota da crítica</button>
       <div class="rk-ordm"><button type="button" class="rk-ordm-b" aria-haspopup="true" aria-expanded="false">Ordenar por: <b id="rkOrdNome">Custo-benefício</b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="rk-ordm-l" role="menu" hidden>${[["cb","Custo-benefício","Nota final em relação ao preço de hoje"],["nota","Nota final","Crítica + laboratório e ficha"],["critica","Nota da crítica","Média das análises publicadas"]].map(([k,l,d])=>`<button type="button" role="menuitemradio" data-ord="${k}"><b>${l}</b><small>${d}</small></button>`).join("")}</div></div>
+        <div class="rk-ordm-l" role="menu" hidden><button type="button" role="menuitemradio" data-ord="cb"><b>Custo-benefício</b><small>Nota em relação ao preço de hoje</small></button><button type="button" role="menuitemradio" data-ord="nota"><b id="rkOrdNotaM">Nota da crítica</b><small id="rkOrdNotaD">Média das análises publicadas</small></button></div></div>
+      <button type="button" class="rk-filt-b" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>Filtros<span class="rk-filt-n" hidden></span></button>
       <span class="rk-sep" aria-hidden="true"></span>
       ${[["topo","Topo de linha"],["intermediario","Intermediário"],["entrada","Entrada"]].map(([k,l])=>`<button type="button" class="rk-f" data-seg="${k}">${l}</button>`).join("")}
     </div>
-    <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span>Crítica</span><span>Custo-benefício</span><span>Nota final</span><span>Preço aprox. hoje</span><span></span></div><p class="rk-dica">Clique em um celular para ver a análise completa.</p><ol class="rk-lista" id="rkLista"></ol>
+    <section class="rk-box"><div class="rk-cab"><span>#</span><span>Celular</span><span id="rkCab1">Crítica</span><span>Custo-benefício</span><span>Nota final</span><span>Preço aprox. hoje</span><span></span></div><p class="rk-dica">Clique em um celular para ver a análise completa.</p><ol class="rk-lista" id="rkLista"></ol>
       <p class="rk-nota" id="rkNota"></p>
       <p class="rk-legenda">${ICO_NBR} Venda no Brasil não confirmada: a ficha é da versão global e ainda não há versão oficial confirmada aqui.</p></section>
     <details class="rk-calc"><summary>Como calculamos</summary><div class="rk-calc-in">
@@ -1145,28 +1168,40 @@ function renderRanking2(){
       <p><b>Custo-benefício</b>: a nota final dividida pela raiz quadrada do preço médio de hoje, convertida para uma escala de 0 a 10, em que 10 é o melhor resultado da lista. Só entram aparelhos com preço pesquisado.</p>
       <p><b>Preço aproximado hoje</b>: média das menores ofertas de aparelhos novos encontradas em cada loja, na versão de armazenamento com mais lojas vendendo. Não inclui frete nem cupons. Pesquisa de ${PESQ_DATA()}, atualizada toda segunda-feira.</p>
     </div></details>`;
+  const nTema = x => { const T = TEMAS[tema]; return T.k ? x.n[T.k] : x.n.critica; };
+  const cbTema = (() => { const memo = {}; return k => { if(memo[k]) return memo[k];
+    const m = Math.max(...L.filter(x=>x.n.preco && x.n[k]!=null).map(x=>x.n[k]/Math.sqrt(x.n.preco)));
+    return memo[k] = x => x.n.preco && x.n[k]!=null ? (x.n[k]/Math.sqrt(x.n.preco))/m*10 : null; }; })();
+  const cbDe = x => TEMAS[tema].k ? cbTema(TEMAS[tema].k)(x) : x.cb;
   const draw = () => {
-    let arr = L.filter(x=>!seg || x.c.seg===seg);
-    if(ordem==="cb") arr = arr.filter(x=>x.cb!=null).sort((a,b)=>b.cb-a.cb);
-    else if(ordem==="critica") arr = arr.filter(x=>x.n.critica!=null).sort((a,b)=>b.n.critica-a.n.critica);
-    else arr = arr.sort((a,b)=>b.n.final-a.n.final);
+    let arr = L.filter(x=>(!seg || x.c.seg===seg) && (!marca || x.c.marca===marca));
+    if(ordem==="cb") arr = arr.filter(x=>cbDe(x)!=null).sort((a,b)=>cbDe(b)-cbDe(a));
+    else arr = arr.filter(x=>nTema(x)!=null).sort((a,b)=>nTema(b)-nTema(a) || (b.n.final-a.n.final));
     const top = arr.slice(0,10);
     document.getElementById("rkLista").innerHTML = top.map((x,i)=>{ const c=x.c;
       return `<li class="rk-item${i<3?" top top"+(i+1):""}" data-id="${c.id}" data-pos="${i+1}" tabindex="0" role="button" aria-expanded="false">
         <span class="rk-pos">${i+1}</span>
         <span class="rk-cel"><span class="rk-img">${catImg(c)}</span><span class="rk-nome"><b>${esc(c.nome)}</b><small>${esc(c.marca)} · ${SEG_NOME[c.seg]}${c.br?"":` · ${ICO_NBR}`}</small></span></span>
-        <span class="rk-v" data-l="Crítica">${x.n.critica!=null ? nota1(x.n.critica) : `<em class="rk-sem">sem nota</em>`}</span>
-        <span class="rk-v" data-l="Custo-benefício">${x.cb!=null ? nota1(x.cb) : `<em class="rk-sem">sem preço</em>`}</span>
+        <span class="rk-v rk-n1" data-l="${TEMAS[tema].k ? TEMAS[tema].l : "Crítica"}">${nTema(x)!=null ? nota1(nTema(x)) : `<em class="rk-sem">sem nota</em>`}</span>
+        <span class="rk-v" data-l="Custo-benefício">${cbDe(x)!=null ? nota1(cbDe(x)) : `<em class="rk-sem">sem preço</em>`}</span>
         <span class="rk-v rk-final" data-l="Nota final">${nota1(x.n.final)}</span>
         <span class="rk-v rk-preco" data-l="Preço aproximado hoje">${x.n.preco ? "≈ "+brl(x.n.preco) : `<em class="rk-sem">em pesquisa</em>`}</span>
         <span class="rk-seta" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </li>`; }).join("") || `<li class="rk-vazio">Ainda não temos aparelhos suficientes com esses dados nesta categoria.</li>`;
-    const total = L.filter(x=>!seg || x.c.seg===seg).length;
-    document.getElementById("rkNota").textContent = ordem==="cb" ? `Custo-benefício considera só os aparelhos que já têm preço pesquisado (${arr.length} de ${total}). Os demais entram conforme a pesquisa semanal avança.` :
-      ordem==="critica" ? `Mostrando só aparelhos com análises publicadas (${arr.length} de ${total}).` : `Top 10 entre ${total} aparelhos${seg?" da categoria "+SEG_NOME[seg]:""}.`;
+    const total = L.filter(x=>(!seg || x.c.seg===seg) && (!marca || x.c.marca===marca)).length, T = TEMAS[tema];
+    const onde = `${seg?" da categoria "+SEG_NOME[seg]:""}${marca?" da "+marca:""}`;
+    document.getElementById("rkNota").textContent = ordem==="cb" ? `Custo-benefício considera só os aparelhos que já têm preço pesquisado (${arr.length} de ${total}${onde}).`
+      : T.k ? `Top 10 em ${T.t} entre ${total} aparelhos${onde}. A nota de ${T.t} vem da ficha técnica e de testes de laboratório (veja "Como calculamos").`
+      : `Mostrando só aparelhos com análises publicadas (${arr.length} de ${total}${onde}).`;
     main.querySelectorAll("[data-ord]").forEach(b=>{ b.classList.toggle("on", b.dataset.ord===ordem); if(b.getAttribute("role")==="menuitemradio") b.setAttribute("aria-checked", b.dataset.ord===ordem); });
-    document.getElementById("rkLista").dataset.ord = ordem;
-    document.getElementById("rkOrdNome").textContent = {cb:"Custo-benefício", nota:"Nota final", critica:"Nota da crítica"}[ordem];
+    main.querySelectorAll("[data-tema]").forEach(b=>{ const on = b.dataset.tema===tema; b.classList.toggle("on", on); b.setAttribute("aria-selected", on); });
+    const nomeNota = T.k ? `Nota de ${T.t}` : "Nota da crítica";
+    document.getElementById("rkOrdNota").textContent = nomeNota; document.getElementById("rkOrdNotaM").textContent = nomeNota;
+    document.getElementById("rkOrdNotaD").textContent = T.k ? "Pontuação da ficha e de testes nesta categoria" : "Média das análises publicadas";
+    document.getElementById("rkCab1").textContent = T.k ? T.l : "Crítica";
+    document.getElementById("rkLista").dataset.ord = ordem==="cb" ? "cb" : "critica";
+    document.getElementById("rkOrdNome").textContent = ordem==="cb" ? "Custo-benefício" : nomeNota;
+    const nf = (tema!=="geral") + !!seg + !!marca, nb = main.querySelector(".rk-filt-n"); nb.hidden = !nf; nb.textContent = nf;
     const p1 = document.querySelector("#rkLista .rk-item"); if(p1 && !draw.dica){ p1.classList.add("dica"); draw.dica = 1; }
     main.querySelectorAll("[data-seg]").forEach(b=>b.classList.toggle("on", b.dataset.seg===seg));
   };
@@ -1180,7 +1215,7 @@ function renderRanking2(){
     if(aberto) return;
     const x = L.find(y=>y.c.id===li.dataset.id); if(!x) return;
     li.classList.add("aberto"); li.setAttribute("aria-expanded","true");
-    li.insertAdjacentHTML("afterend", painelRk(x, +li.dataset.pos, ordem));
+    li.insertAdjacentHTML("afterend", painelRk(x, +li.dataset.pos, !TEMAS[tema].k ? (ordem==="cb" ? "cb" : "critica") : ordem==="cb" ? "custo-benefício em "+TEMAS[tema].t : TEMAS[tema].t));
     inclinaRk(li.nextElementSibling);
   });
   lista.addEventListener("keydown", e=>{ if((e.key==="Enter"||e.key===" ") && e.target.classList.contains("rk-item")){ e.preventDefault(); e.target.click(); } });
@@ -1191,6 +1226,30 @@ function renderRanking2(){
   document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !ordL.hidden){ abreOrd(false); ordB.focus(); } });
   main.querySelectorAll("[data-ord]").forEach(b=>b.addEventListener("click", ()=>{ ordem=b.dataset.ord; abreOrd(false); draw(); }));
   main.querySelectorAll("[data-seg]").forEach(b=>b.addEventListener("click", ()=>{ seg = seg===b.dataset.seg ? "" : b.dataset.seg; draw(); }));
+  /* geral abre em custo-benefício; as categorias abrem pela melhor nota da categoria */
+  main.querySelectorAll("[data-tema]").forEach(b=>b.addEventListener("click", ()=>{ tema = b.dataset.tema; ordem = tema==="geral" ? "cb" : "nota"; draw(); }));
+  document.getElementById("rkMarca").addEventListener("change", e=>{ marca = e.target.value; draw(); });
+  /* celular: botão Filtros abre uma gaveta com tipo de ranking, categoria e marca; vale ao tocar em "Ver ranking" */
+  const fb = main.querySelector(".rk-filt-b");
+  const fsheet = document.createElement("div"); fsheet.className = "rk-fs-fundo"; fsheet.hidden = true;
+  const grupo = (tit, nome, ops) => `<fieldset class="rk-fs-g"><legend>${tit}</legend><div>${ops.map(([v,l])=>`<button type="button" class="rk-fs-op" data-g="${nome}" data-v="${v}">${l}</button>`).join("")}</div></fieldset>`;
+  fsheet.innerHTML = `<div class="rk-fs" role="dialog" aria-modal="true" aria-labelledby="rkFsT"><div class="rk-fs-top"><b id="rkFsT">Filtros</b><button type="button" class="rk-fs-x" aria-label="Fechar">×</button></div>
+    ${grupo("Ranking de", "tema", Object.entries(TEMAS).map(([k,t])=>[k, k==="geral" ? "Geral" : k==="jogos" ? "Jogos" : t.l]))}
+    ${grupo("Categoria", "seg", [["","Todas"],["topo","Topo de linha"],["intermediario","Intermediário"],["entrada","Entrada"]])}
+    ${grupo("Marca", "marca", [["","Todas"]].concat(MARCAS.map(m=>[m,m])))}
+    <div class="rk-fs-pe"><button type="button" class="rk-fs-limpa">Limpar</button><button type="button" class="rk-fs-ok">Ver ranking</button></div></div>`;
+  document.body.appendChild(fsheet);
+  let rasc = {};
+  const pinta = () => fsheet.querySelectorAll(".rk-fs-op").forEach(b=>{ const on = String(rasc[b.dataset.g]) === b.dataset.v; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+  const fecha = () => { fsheet.hidden = true; document.documentElement.classList.remove("gm-on"); fb.focus(); };
+  fb.addEventListener("click", ()=>{ rasc = {tema, seg, marca}; pinta(); fsheet.hidden = false; document.documentElement.classList.add("gm-on"); fsheet.querySelector(".rk-fs-x").focus(); });
+  fsheet.addEventListener("click", e=>{ if(e.target===fsheet) fecha(); });
+  fsheet.querySelector(".rk-fs-x").onclick = fecha;
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !fsheet.hidden) fecha(); });
+  fsheet.querySelectorAll(".rk-fs-op").forEach(b=>b.addEventListener("click", ()=>{ rasc[b.dataset.g] = b.dataset.v; pinta(); }));
+  fsheet.querySelector(".rk-fs-limpa").onclick = ()=>{ rasc = {tema:"geral", seg:"", marca:""}; pinta(); };
+  fsheet.querySelector(".rk-fs-ok").onclick = ()=>{ if(rasc.tema !== tema) ordem = rasc.tema==="geral" ? "cb" : "nota";
+    tema = rasc.tema; seg = rasc.seg; marca = rasc.marca; document.getElementById("rkMarca").value = marca; fecha(); draw(); };
   draw();
 }
 
