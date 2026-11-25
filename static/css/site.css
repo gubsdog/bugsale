@@ -1937,7 +1937,7 @@ html.v2 .cp-tab thead th{background:transparent !important;color:var(--v-ink) !i
   html.v2 .rk-item .rk-nome b{font-size:15px}
   html.v2 .rk-item .rk-nome small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   html.v2 .rk-item .rk-v{display:none !important}
-  html.v2 [data-ord="cb"] .rk-v[data-l="Custo-benefício"],html.v2 [data-ord="nota"] .rk-v[data-l="Nota final"],html.v2 [data-ord="critica"] .rk-v[data-l="Crítica"]{display:block !important;grid-column:4;grid-row:1;align-self:end;text-align:right;font:800 20px var(--body)}
+  html.v2 [data-ord="cb"] .rk-v[data-l="Custo-benefício"],html.v2 [data-ord="nota"] .rk-v[data-l="Nota final"],html.v2 [data-ord="critica"] .rk-v[data-l="Crítica"],html.v2 [data-ord="critica"] .rk-v.rk-n1{display:block !important;grid-column:4;grid-row:1;align-self:end;text-align:right;font:800 20px var(--body)}
   html.v2 .rk-item .rk-preco{display:block !important;grid-column:4;grid-row:2;align-self:start;text-align:right;font:500 11px var(--body) !important;color:var(--v-soft)}
   html.v2 .rk-item .rk-seta{grid-column:5;grid-row:1/3;width:16px}
   /* ranking: painel aberto no celular */
@@ -2122,4 +2122,88 @@ html.v2 .persona .pe-nao span{color:#D9534F !important;font-weight:700}
   .preco-chart.ano .pv{font-size:22px}.preco-chart.ano .pv.at{font-size:24px}
   .preco-chart.ano .hj{display:none}
   .preco-chart.ano .ln{stroke-width:4}
+}
+/* home: melhores ofertas em cards verticais (estilo loja), 3 por linha no computador e 2 no celular */
+html.v2 .h-ofertas.o3-grade{display:block}
+.o3-lista{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.o3{display:flex;flex-direction:column;border:1px solid var(--v-line);border-radius:16px;background:var(--v-surface);color:var(--v-ink);text-decoration:none;overflow:hidden;transition:transform .15s,border-color .15s,box-shadow .15s}
+.o3:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--v-gold) 60%,var(--v-line));box-shadow:0 16px 32px rgba(0,0,0,.12)}
+.o3-img{position:relative;display:grid;place-items:center;height:208px;background:radial-gradient(circle at 50% 60%,color-mix(in srgb,var(--v-gold) 18%,transparent),transparent 70%),color-mix(in srgb,var(--v-ink) 3%,transparent)}
+.o3-img img{height:168px;width:auto;max-width:80%;object-fit:contain;filter:drop-shadow(0 12px 16px rgba(0,0,0,.25));transition:transform .2s}
+.o3:hover .o3-img img{transform:scale(1.05)}
+.o3-loja{position:absolute;top:16px;left:16px;height:24px;display:inline-flex;align-items:center;padding:0 8px;border-radius:8px;background:var(--v-surface);border:1px solid var(--v-line);font:700 12px var(--body);color:var(--v-ink)}
+.o3-off{position:absolute;top:16px;right:16px;height:24px;display:inline-flex;align-items:center;padding:0 8px;border-radius:8px;background:#2E9E5B;color:#fff;font:800 12px var(--body)}
+.o3-txt{display:flex;flex-direction:column;gap:4px;padding:16px 16px 8px;flex:1}
+.o3-txt b{font:700 16px/1.3 var(--body)}
+.o3-txt small{font-size:13px;color:var(--v-soft);line-height:1.4}
+.o3-preco{margin-top:8px;font:800 24px/1.1 var(--body);letter-spacing:-.01em}
+.o3-ref{font-size:12px !important}
+.o3-btn{margin:8px 16px 16px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:999px;background:var(--v-gold);color:#1A1A1A;font:700 14px var(--body)}
+@media (max-width:760px){
+  .o3-lista{grid-template-columns:1fr 1fr;gap:8px}
+  .o3-img{height:144px}.o3-img img{height:112px}
+  .o3-loja{top:8px;left:8px;font-size:11px}.o3-off{top:8px;right:8px;font-size:11px}
+  .o3-txt{padding:8px 8px 0}.o3-txt b{font-size:14px}.o3-txt > small:first-of-type{display:none}
+  .o3-preco{font-size:20px;margin-top:4px}
+  .o3-btn{margin:8px;height:40px;font-size:13px}
+}
+/* ranking: abas de tipo de ranking e filtro de marca */
+.rk-temas{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.rk-tema{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--v-line);background:var(--v-surface);color:var(--v-ink);font:600 14px var(--body);cursor:pointer;transition:border-color .15s,background .15s}
+.rk-tema svg{width:18px;height:18px;color:var(--v-gold)}
+.rk-tema:hover{border-color:color-mix(in srgb,var(--v-gold) 60%,var(--v-line))}
+.rk-tema.on{background:var(--v-ink);color:var(--v-bg);border-color:var(--v-ink)}
+.rk-tema.on svg{color:var(--v-gold)}
+html.v2 .rk-marca{margin-left:auto}
+html.v2 .rk-marca select{height:40px;padding:0 32px 0 16px;border-radius:999px;border:1px solid var(--v-line);background:var(--v-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%238E8E99' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 8px center/16px;color:var(--v-ink);font:600 13px var(--body);appearance:none;-webkit-appearance:none;cursor:pointer}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:760px){
+  .rk-temas{flex-wrap:nowrap;overflow-x:auto;margin:0 0 16px;padding:0 0 4px;scrollbar-width:none}
+  .rk-temas::-webkit-scrollbar{display:none}
+  .rk-tema{flex:none}
+  html.v2 .rk-marca{margin-left:0;flex:none}
+}
+.o3-m{display:none}
+
+
+/* cards de oferta: frase de no máximo 2 linhas (sempre ocupando 2, para alinhar preços e botões) */
+.o3-txt .o3-pq{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(2 * 1.4em)}
+/* celular: carrossel com as 4 primeiras ofertas */
+@media (max-width:760px){
+  .o3-lista{display:flex !important;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 8px;scrollbar-width:none}
+  .o3-lista::-webkit-scrollbar{display:none}
+  .o3{flex:0 0 72%;scroll-snap-align:start}
+  .o3:nth-child(n+5){display:none}
+  .o3-img{height:176px}.o3-img img{height:144px}
+  .o3-txt{padding:16px 16px 0}.o3-txt b{font-size:16px}
+  .o3-txt > small.o3-pq{display:-webkit-box !important;font-size:13px}
+  .o3-preco{font-size:24px;margin-top:8px}
+  .o3-btn{margin:16px}
+  .o3-loja{top:16px;left:16px}.o3-off{top:16px;right:16px}
+}
+
+/* ranking no celular: botão Filtros + gaveta */
+.rk-filt-b{display:none}
+.rk-fs-fundo{position:fixed;inset:0;z-index:200;display:grid;place-items:end stretch;background:color-mix(in srgb,var(--v-bg) 55%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.rk-fs-fundo[hidden]{display:none}
+.rk-fs{max-height:calc(100dvh - 48px);overflow:auto;background:var(--v-surface);color:var(--v-ink);border:1px solid var(--v-line);border-bottom:0;border-radius:24px 24px 0 0;padding:16px 16px 0;box-shadow:0 -16px 48px rgba(0,0,0,.25);font-family:var(--body)}
+.rk-fs-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.rk-fs-top b{font:800 20px var(--body)}
+.rk-fs-x{width:40px;height:40px;border-radius:999px;border:0;background:color-mix(in srgb,var(--v-ink) 6%,transparent);color:var(--v-soft);font-size:24px;line-height:1;cursor:pointer}
+.rk-fs-g{border:0;margin:0;padding:16px 0 8px;border-top:1px solid var(--v-line)}
+.rk-fs-g legend{float:left;width:100%;margin-bottom:8px;font:700 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--v-soft)}
+.rk-fs-g div{clear:both;display:flex;flex-wrap:wrap;gap:8px}
+.rk-fs-op{height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--v-line);background:transparent;color:var(--v-ink);font:500 14px var(--body);cursor:pointer}
+.rk-fs-op.on{background:var(--v-ink);color:var(--v-bg);border-color:var(--v-ink)}
+.rk-fs-pe{position:sticky;bottom:0;display:flex;gap:8px;margin:8px -16px 0;padding:16px;background:var(--v-surface);border-top:1px solid var(--v-line)}
+.rk-fs-pe button{flex:1;height:48px;border-radius:999px;font:700 15px var(--body);cursor:pointer}
+.rk-fs-limpa{background:none;border:1px solid var(--v-line);color:var(--v-ink)}
+.rk-fs-ok{background:var(--v-gold);border:0;color:#1A1A1A}
+@media (max-width:760px){
+  html.v2 .rk-temas,html.v2 .rk-filtros > .rk-f[data-seg]{display:none !important}
+  html.v2 .rk-filtros{justify-content:center;overflow:visible;margin:0 0 24px;padding:0}
+  html.v2 .rk-filt-b{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;border-radius:999px;border:1px solid var(--v-line);background:var(--v-surface);color:var(--v-ink);font:500 13px var(--body);cursor:pointer}
+  html.v2 .rk-filt-b svg{width:16px;height:16px}
+  .rk-filt-n{min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:var(--v-purple);color:#fff;font:700 10px/16px var(--body);text-align:center}
+  .rk-filt-n[hidden]{display:none}
 }
