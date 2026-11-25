@@ -132,6 +132,44 @@ w('js/data.js', 'window.MQ_DATA = ' + json.dumps(dict(phones=phones, articles=ar
 # ---------- páginas ----------
 TPL = open(os.path.join(ROOT, 'src/page.tpl.html'), encoding='utf-8').read()
 TAGLINE = 'Reviews, ranking de custo-benefício e o preço justo de celulares no Brasil, checado com histórico de preço.'
+
+# ---------- texto no HTML (para o Google): versão simples do artigo que o JavaScript troca pela página completa ----------
+E = lambda t: escape(str(t), quote=True)
+def _paras(v):
+    if isinstance(v, str): return f'<p>{E(v)}</p>' if v.strip() else ''
+    if isinstance(v, list): return ''.join(_paras(x) if not isinstance(x, list) else '' for x in v)
+    return ''
+def ssr_artigo(a):
+    S = a.get('secoes') or {}
+    cmp_ = a.get('tipo') == 'comparativo'
+    H = dict(oferece='O que cada um oferece' if cmp_ else 'O que ele oferece', preco='Quanto custa hoje', atualizacoes='Atualizações',
+             para_quem='Para quem vale' if cmp_ else 'Para quem ele faz sentido', veredito='Qual comprar' if cmp_ else 'Vale a pena?',
+             status='O que já se sabe', concorrentes='Contra quem ele briga')
+    h = [f'<article class="ssr"><p class="ssr-k">{E(a.get("categoria",""))}</p><h1>{E(a["titulo"])}</h1><p class="ssr-dek">{E(a["resumo"])}</p>',
+         f'<p class="ssr-by">Por Equipe Bugsale · {E(a["publicar"][8:10])}/{E(a["publicar"][5:7])}/{E(a["publicar"][:4])}</p>']
+    if S.get('abertura'): h.append(_paras(S['abertura']))
+    elif S.get('status'): h.append(f'<h2>{H["status"]}</h2>' + _paras(S['status']))
+    if S.get('resumoTopo'): h.append('<dl>' + ''.join(f'<dt>{E(k)}</dt><dd>{E(v)}</dd>' for k, v in S['resumoTopo']) + '</dl>')
+    for k in ['oferece', 'preco', 'concorrentes', 'atualizacoes', 'para_quem', 'veredito']:
+        if S.get(k): h.append(f'<h2>{H[k]}</h2>' + _paras(S[k]))
+        if k == 'oferece' and isinstance(S.get('tabela'), dict):
+            T = S['tabela']
+            h.append(f'<h2>{E(T.get("titulo","Ficha"))}</h2><table><thead><tr><th></th>' + ''.join(f'<th>{E(c)}</th>' for c in T.get('cols', [])) + '</tr></thead><tbody>'
+                     + ''.join('<tr>' + ''.join(f'<{"th" if i == 0 else "td"}>{E(x)}</{"th" if i == 0 else "td"}>' for i, x in enumerate(r)) + '</tr>' for r in T.get('linhas', [])) + '</tbody></table>')
+    for k, tit in [('para_quem', H['para_quem']), ('veredito', H['veredito'])]:
+        if not S.get(k) and a.get(k): h.append(f'<h2>{tit}</h2>' + _paras(a[k]))
+    ids = [a['celular']] + ([a['vs']] if a.get('vs') else [])
+    ofs = [(phones[i], o) for i in ids if i in phones for o in sorted((phones[i].get('ofertas') or {}).get('lista', []), key=lambda o: o['preco'])]
+    if ofs:
+        h.append('<h2>Onde comprar</h2><ul>' + ''.join(f'<li><a href="{E(o["url"])}" rel="sponsored nofollow noopener">{E(p["full"])} {"no" if o["loja"] == "Mercado Livre" else "na"} {E(o["loja"])}: R$ {o["preco"]:,.0f}</a></li>'.replace(',', '.') for p, o in ofs) + '</ul>')
+    if S.get('fontes'): h.append('<h2>Fontes</h2><ul>' + ''.join(f'<li><a href="{E(u)}" rel="noopener">{E(n)}</a></li>' for n, u in S['fontes']) + '</ul>')
+    h.append('</article>')
+    return ''.join(h)
+def ssr_lista(titulo, intro, arts, root):
+    li = ''.join(f'<li><a href="{root}artigos/{E(a["slug"])}/">{E(a["titulo"])}</a> <span>{E(a["resumo"])}</span></li>' for a in arts)
+    return f'<section class="ssr"><h1>{E(titulo)}</h1><p class="ssr-dek">{E(intro)}</p>{"<h2>Artigos</h2><ul>" + li + "</ul>" if li else ""}</section>'
+_vistos = sorted([a for a in publicados if not a.get('teaser') or pronto(a)], key=lambda a: a['publicar'], reverse=True)
+
 OG_DEFAULT = SITE + 'img/foto/razr-70-ultra.webp'
 sitemap = []
 
@@ -146,13 +184,16 @@ def page(path, title, desc, key, render='', content='', root='', article='null',
     w(path, html)
     if index: sitemap.append(url)
 
-page('index.html', 'Bugsale · Reviews, ranking e preço justo de celulares', TAGLINE, 'home', 'MQ.renderArticles(null);')
+page('index.html', 'Bugsale · Reviews, ranking e preço justo de celulares', TAGLINE, 'home', 'MQ.renderArticles(null);',
+     content=ssr_lista('Bugsale: reviews, comparativos e o preço justo de celulares', TAGLINE, _vistos, ''))
 page('ranking.html', 'Ranking de custo-benefício de celulares · Bugsale',
      'Os 10 celulares com melhor custo-benefício: nota da crítica especializada, testes de laboratório e preço médio de hoje.',
-     'ranking', 'MQ.renderRanking();')
+     'ranking', 'MQ.renderRanking();',
+     content=ssr_lista('Ranking de celulares', 'Os celulares com melhor custo-benefício, melhor câmera, melhor tela, melhores para jogos e com mais bateria, com nota da crítica especializada, testes de laboratório e preço médio de hoje.', [], ''))
 for f, nome, marca in [('samsung.html', 'Samsung', 'Samsung'), ('iphone.html', 'iPhone', 'Apple'), ('motorola.html', 'Motorola', 'Motorola')]:
     page(f, f'Celulares {nome}: reviews e preços · Bugsale', f'Reviews, preço médio atual e quanto caiu desde o lançamento de cada celular {nome}.',
-         marca, f'MQ.renderArticles("{marca}");')
+         marca, f'MQ.renderArticles("{marca}");',
+         content=ssr_lista(f'Celulares {nome}: reviews e preços', f'Reviews, comparativos e preço médio atual dos celulares {nome}.', [a for a in _vistos if any(c['id'] == a['celular'] and c.get('marca') == marca for c in celulares) or (marca == 'Apple' and a['celular'].startswith('iphone'))], ''))
 
 hoje = datetime.date.today()
 MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
@@ -178,11 +219,13 @@ for a in paginas:
           "mainEntityOfPage": SITE + f"artigos/{a['slug']}/"}
     page(path, f"{a['titulo']} · Bugsale", a['resumo'], 'artigo', 'MQ.renderArticle();', root='../../',
          article=json.dumps(a['slug']), ogimg=img, ogtype='article', pagetype='article',
+         content=ssr_artigo(a) if a in publicados else '',
          jsonld='<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>',
          index=(a in publicados))
 
 # ---------- comparador (visual novo, até 3 aparelhos do catálogo) ----------
-page('comparador.html', 'Comparador de celulares · Bugsale', 'Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço de hoje e promessa de atualizações.', 'comparador', 'MQ.renderComparador();')
+page('comparador.html', 'Comparador de celulares · Bugsale', 'Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço de hoje e promessa de atualizações.', 'comparador', 'MQ.renderComparador();',
+     content=ssr_lista('Comparador de celulares', 'Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço de hoje e promessa de atualizações. São ' + str(len(cat)) + ' modelos de Samsung, Apple, Motorola, Xiaomi e Huawei.', [], ''))
 
 # ---------- sitemap e robots ----------
 w('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

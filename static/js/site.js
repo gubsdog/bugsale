@@ -1143,7 +1143,7 @@ function renderRanking2(){
     <div class="rk-filtros" role="toolbar" aria-label="Ordenar e filtrar">
       <b>Ordenar por:</b>
       <button type="button" class="rk-f" data-ord="cb">Custo-benefício</button><button type="button" class="rk-f" data-ord="nota" id="rkOrdNota">Nota da crítica</button>
-      <div class="rk-ordm"><button type="button" class="rk-ordm-b" aria-haspopup="true" aria-expanded="false">Ordenar por: <b id="rkOrdNome">Custo-benefício</b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="rk-ordm"><button type="button" class="rk-ordm-b" aria-haspopup="true" aria-expanded="false" aria-label="Ordenar por"><span class="rk-ordm-p">Ordenar por: </span><b id="rkOrdNome">Custo-benefício</b><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="rk-ordm-l" role="menu" hidden><button type="button" role="menuitemradio" data-ord="cb"><b>Custo-benefício</b><small>Nota em relação ao preço de hoje</small></button><button type="button" role="menuitemradio" data-ord="nota"><b id="rkOrdNotaM">Nota da crítica</b><small id="rkOrdNotaD">Média das análises publicadas</small></button></div></div>
       <button type="button" class="rk-filt-b" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>Filtros<span class="rk-filt-n" hidden></span></button>
       <span class="rk-sep" aria-hidden="true"></span>
