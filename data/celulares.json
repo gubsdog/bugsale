@@ -8,7 +8,7 @@
   "specs": {
    "lancamento": "Set/2025",
    "precoN": 899,
-   "atualN": 718,
+   "atualN": 714,
    "minimoN": 533,
    "tela": "6,7\" PLS LCD · 720×1600",
    "taxaN": 90,
@@ -34,7 +34,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": "R$ 899",
-   "atual": "R$ 718",
+   "atual": "R$ 714",
    "minimo": "R$ 533",
    "taxa": "90 Hz",
    "bateria": "5.000 mAh",
@@ -45,6 +45,11 @@
   "ofertas": {
    "pesquisa": "2026-11-26T15:55",
    "lista": [
+    {
+     "loja": "Mercado Livre",
+     "preco": 714.35,
+     "url": "https://meli.la/1MAARSA"
+    },
     {
      "loja": "Magalu",
      "preco": 718.0,
@@ -64,7 +69,7 @@
    },
    {
     "data": "2026-11-26",
-    "preco": 718
+    "preco": 714
    }
   ]
  },
