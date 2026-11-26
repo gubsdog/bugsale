@@ -337,7 +337,7 @@ const PERFIL_CURTO = {
 };
 const tag2 = a => `<span class="tg"><span>${esc(a.cat)}</span><b>${esc(P(a.phone).marcaMenu)}</b></span>`;
 function img2(p, grande){
-  if(p.foto && grande && p.foto.card) return `<picture><source media="(max-width:760px)" srcset="${R}${p.foto.cardSm||p.foto.card}"><img src="${R}${p.foto.src}" alt="${esc(p.capa ? "Montagem de comparativo com o " + p.full : p.full + " em uso")}" style="object-position:${p.foto.pos}" loading="lazy"></picture>`;
+  if(p.foto && grande && p.foto.card) return `<picture><source media="(max-width:760px)" srcset="${R}${p.foto.card}"><img src="${R}${p.foto.src}" alt="${esc(p.capa ? "Montagem de comparativo com o " + p.full : p.full + " em uso")}" style="object-position:${p.foto.pos}" loading="lazy"></picture>`;
   if(p.foto) return `<img src="${R}${grande ? p.foto.src : p.foto.sm}" alt="${esc(p.capa ? "Montagem de comparativo com o " + p.full : p.full + " em uso")}" style="object-position:${p.foto.pos}" loading="lazy">`;
   return `<span class="studio"><img src="${R}${p.cut}" alt="${esc(p.full)}" loading="lazy"></span>`;
 }
