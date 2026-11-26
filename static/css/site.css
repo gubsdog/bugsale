@@ -1390,7 +1390,8 @@ main.h2{max-width:980px;padding:0 16px;margin:0 auto}
 .h-cmp:hover .h-cmp-btn{transform:translateX(4px)}
 .h-top{display:grid;grid-template-columns:minmax(0,490fr) minmax(0,482fr);gap:8px;margin-top:24px}
 .h-img{display:block;position:relative;overflow:hidden;background:color-mix(in srgb,var(--v-ink) 6%,var(--v-surface))}
-.h-img > img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.h-img > img,.h-img > picture img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.h-img > picture{display:block;width:100%;height:100%}
 .studio{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(120% 90% at 50% 30%,#3A3A3A,#1E1E1E)}
 html.v2[data-theme="light"] .studio{background:radial-gradient(120% 90% at 50% 30%,#FFFFFF,#E6E6E6)}
 .studio img{height:82%;width:auto;object-fit:contain}

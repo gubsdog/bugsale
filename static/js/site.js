@@ -337,6 +337,7 @@ const PERFIL_CURTO = {
 };
 const tag2 = a => `<span class="tg"><span>${esc(a.cat)}</span><b>${esc(P(a.phone).marcaMenu)}</b></span>`;
 function img2(p, grande){
+  if(p.foto && grande && p.foto.card) return `<picture><source media="(max-width:760px)" srcset="${R}${p.foto.cardSm||p.foto.card}"><img src="${R}${p.foto.src}" alt="${esc(p.capa ? "Montagem de comparativo com o " + p.full : p.full + " em uso")}" style="object-position:${p.foto.pos}" loading="lazy"></picture>`;
   if(p.foto) return `<img src="${R}${grande ? p.foto.src : p.foto.sm}" alt="${esc(p.capa ? "Montagem de comparativo com o " + p.full : p.full + " em uso")}" style="object-position:${p.foto.pos}" loading="lazy">`;
   return `<span class="studio"><img src="${R}${p.cut}" alt="${esc(p.full)}" loading="lazy"></span>`;
 }
@@ -344,7 +345,7 @@ const prevOK = a => !!(MQ_DATA.preview && a.locked && !a.chamada);
 function bloqueado2(a){ if(prevOK(a)) return " prevok"; return a.locked ? ` locked" role="group" tabindex="0" aria-label="${esc(a.titulo)}: será lançado ${quandoLanca(a.pub)}` : ""; }
 function chip2(a){ if(prevOK(a)) return `<span class="chip2 chip-prev">Prévia · sai ${quandoLanca(a.pub)}</span>`; return a.locked ? `<span class="chip2">Será lançado ${quandoLanca(a.pub)}</span>` : ""; }
 function heroHTML2(a){
-  const p = PA(a);
+  const p = PA(a, true);
   return `<a class="h-hero" href="${artURL(a)}"><span class="h-img">${img2(p, true)}</span>
     <span class="h-txt">${tag2(a)}<span class="h-tit">${esc(a.titulo)}</span><span class="h-dek">${esc(a.dek)}</span></span></a>`;
 }
