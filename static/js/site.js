@@ -398,9 +398,10 @@ function renderHome(){
   const ofs = melhoresOfertas(6);
   main.classList.add("h2");
   main.innerHTML = `
-    <a class="h-cmp" href="${R}comparador.html" aria-label="Abrir o comparador de celulares">
-      <span class="h-cmp-txt"><span class="h-cmp-k">Comparador Bugsale</span><b>Em dúvida entre dois celulares?</b><span class="h-cmp-d">Coloque lado a lado ficha, preço de hoje e quanto tempo cada um recebe atualização.</span><span class="h-cmp-m">Compare lado a lado os modelos que você está de olho.</span><span class="h-cmp-btn">Comparar agora →</span></span><span class="h-cmp-seta" aria-hidden="true">→</span>
-      <span class="h-cmp-art" aria-hidden="true">${(()=>{ const a=P("galaxy-s26-ultra"), b=P("iphone-17"); return `<img class="c1" src="${R}img/s26u-t.webp" alt=""><span class="vs">VS</span><img class="c2" src="${R}img/ip17-t.webp" alt="">`; })()}</span></a>
+    <a class="cmp3" href="${R}comparador.html" aria-label="Abrir o comparador de celulares">
+      <span class="cmp3-txt"><b class="cmp3-t">Em dúvida entre dois celulares?</b><span class="cmp3-d">Coloque lado a lado ficha, preço de hoje e quanto tempo cada um recebe atualização.</span><span class="cmp3-btn">Comparar agora <i aria-hidden="true">→</i></span></span>
+      <span class="cmp3-art" aria-hidden="true"><img class="f1" src="${R}img/cat/samsung-galaxy-s26-ultra.webp" alt=""><img class="f2" src="${R}img/cat/apple-iphone-17.webp" alt=""><span class="cmp3-vs">VS</span></span>
+    </a>
     <section class="h-top" aria-label="Destaques">${first ? heroHTML2(first) : ""}<div class="h-lados">${lado.map(ladoHTML2).join("")}</div></section>
     ${recentes.length ? `<h2 class="h-sec">Mais recentes</h2><div class="h-grid">${recentes.map(recenteHTML2).join("")}</div>` : ""}
     <h2 class="h-sec">Melhores ofertas</h2>

@@ -210,7 +210,11 @@
   "publicar": "2026-11-26T12:00",
   "tipo": "vale",
   "teaser": true,
-  "pronto": true
+  "pronto": true,
+  "capa": {
+   "posicao": "50% 50%",
+   "credito": "Arte Bugsale. Imagem do aparelho: divulgação"
+  }
  },
  {
   "slug": "galaxy-a57-black-friday",
