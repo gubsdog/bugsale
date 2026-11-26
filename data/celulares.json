@@ -8,7 +8,7 @@
   "specs": {
    "lancamento": "Set/2025",
    "precoN": 899,
-   "atualN": 767,
+   "atualN": 718,
    "minimoN": 533,
    "tela": "6,7\" PLS LCD · 720×1600",
    "taxaN": 90,
@@ -34,7 +34,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": "R$ 899",
-   "atual": "R$ 767",
+   "atual": "R$ 718",
    "minimo": "R$ 533",
    "taxa": "90 Hz",
    "bateria": "5.000 mAh",
@@ -43,22 +43,17 @@
    "updResumo": "6 atualizações do sistema · 6 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "",
+   "pesquisa": "2026-11-26T15:55",
    "lista": [
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Magalu",
+     "preco": 718.0,
+     "url": "https://www.magazineluiza.com.br/celular-samsung-galaxy-a07-128gb-verde-4gb-ram-tela-67-cam-dupla-selfie-8mp/p/240466200/te/ga07/"
     },
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Amazon",
+     "preco": 719.1,
+     "url": "https://www.amazon.com.br/dp/B0FPJ52LSR"
     }
    ]
   },
@@ -66,6 +61,10 @@
    {
     "data": "2026-11-23",
     "preco": 767
+   },
+   {
+    "data": "2026-11-26",
+    "preco": 718
    }
   ]
  },
