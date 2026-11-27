@@ -8,7 +8,7 @@
   "specs": {
    "lancamento": "Set/2025",
    "precoN": 899,
-   "atualN": 714,
+   "atualN": 718,
    "minimoN": 533,
    "tela": "6,7\" PLS LCD · 720×1600",
    "taxaN": 90,
@@ -34,7 +34,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": "R$ 899",
-   "atual": "R$ 714",
+   "atual": "R$ 718",
    "minimo": "R$ 533",
    "taxa": "90 Hz",
    "bateria": "5.000 mAh",
@@ -43,22 +43,23 @@
    "updResumo": "6 atualizações do sistema · 6 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "2026-11-26T15:55",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Mercado Livre",
-     "preco": 714.35,
+     "preco": 717.99,
      "url": "https://meli.la/1MAARSA"
     },
     {
      "loja": "Magalu",
      "preco": 718.0,
-     "url": "https://www.magazineluiza.com.br/celular-samsung-galaxy-a07-128gb-verde-4gb-ram-tela-67-cam-dupla-selfie-8mp/p/240466200/te/ga07/"
+     "url": "https://www.magazineluiza.com.br/celular-samsung-galaxy-a07-128gb-verde-4gb-ram-tela-67-cam-dupla-selfie-8mp/p/240466200/te/ga07/",
+     "em": "2026-11-26"
     },
     {
      "loja": "Amazon",
-     "preco": 719.1,
-     "url": "https://www.amazon.com.br/dp/B0FPJ52LSR"
+     "preco": 718.0,
+     "url": "https://www.amazon.com.br/dp/B0FPJ5GYPG"
     }
    ]
   },
@@ -70,6 +71,10 @@
    {
     "data": "2026-11-26",
     "preco": 714
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 718
    }
   ]
  },
@@ -82,7 +87,7 @@
   "specs": {
    "lancamento": "Ago/2025",
    "precoN": 1699,
-   "atualN": 911,
+   "atualN": 945,
    "minimoN": 764,
    "tela": "6,7\" Super AMOLED · 1080×2340",
    "taxaN": 90,
@@ -108,7 +113,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": "R$ 1.699",
-   "atual": "R$ 911",
+   "atual": "R$ 945",
    "minimo": "R$ 764",
    "taxa": "90 Hz",
    "bateria": "5.000 mAh",
@@ -121,12 +126,12 @@
    "posicao": "62% 45%"
   },
   "ofertas": {
-   "pesquisa": "2026-11-25T18:05",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Amazon",
-     "preco": 911.05,
-     "url": "https://www.amazon.com.br/dp/B0FPPQ5T37"
+     "preco": 944.99,
+     "url": "https://www.amazon.com.br/dp/B0FPPCBRML"
     }
    ]
   },
@@ -134,6 +139,10 @@
    {
     "data": "2026-11-25",
     "preco": 911
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 945
    }
   ]
  },
@@ -146,7 +155,7 @@
   "specs": {
    "lancamento": "Mar/2026",
    "precoN": 3599,
-   "atualN": 1896,
+   "atualN": 1799,
    "minimoN": 1457,
    "tela": "6,7\" Super AMOLED Plus · 1080×2340",
    "taxaN": 120,
@@ -172,7 +181,7 @@
    "updSeg": null,
    "updSegN": null,
    "preco": "R$ 3.599",
-   "atual": "R$ 1.896",
+   "atual": "R$ 1.799",
    "minimo": "R$ 1.457",
    "taxa": "120 Hz",
    "bateria": "5.000 mAh",
@@ -185,22 +194,23 @@
    "posicao": "55% 50%"
   },
   "ofertas": {
-   "pesquisa": "2026-11-17T21:19",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Mercado Livre",
-     "preco": 1812,
+     "preco": 1799,
      "url": "https://meli.la/1msuZgL"
-    },
-    {
-     "loja": "Amazon",
-     "preco": 1899,
-     "url": "https://link.amazon/B006lqJ1X"
     },
     {
      "loja": "Magalu",
      "preco": 1962,
-     "url": "https://magazineluiza.onelink.me/589508454/0n9pppjw"
+     "url": "https://magazineluiza.onelink.me/589508454/0n9pppjw",
+     "em": "2026-11-26"
+    },
+    {
+     "loja": "Amazon",
+     "preco": 2198.66,
+     "url": "https://www.amazon.com.br/dp/B0GVTMNF8P"
     }
    ]
   },
@@ -227,6 +237,10 @@
    {
     "data": "2026-11-23",
     "preco": 1896
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 1799
    }
   ],
   "historicoFonte": "Zoom"
@@ -279,28 +293,33 @@
    "posicao": "50% 55%"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T12:30",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Mercado Livre",
-     "preco": 3998.0,
+     "preco": 3998,
      "url": "https://meli.la/2BuyKrD"
     },
     {
      "loja": "Amazon",
-     "preco": 3998.7,
-     "url": "https://link.amazon/B07Cbfg5L"
+     "preco": 3998.65,
+     "url": "https://www.amazon.com.br/dp/B0GKQTJD9P"
     },
     {
      "loja": "Magalu",
      "preco": 3998.7,
-     "url": "https://magazineluiza.onelink.me/589508454/7gtd6uvq"
+     "url": "https://magazineluiza.onelink.me/589508454/7gtd6uvq",
+     "em": "2026-11-26"
     }
    ]
   },
   "historico": [
    {
     "data": "2026-11-23",
+    "preco": 3998
+   },
+   {
+    "data": "2026-11-27",
     "preco": 3998
    }
   ]
@@ -314,7 +333,7 @@
   "specs": {
    "lancamento": "Fev/2026",
    "precoN": 11499,
-   "atualN": 7332,
+   "atualN": 6298,
    "minimoN": 5999,
    "tela": "6,9\" Dynamic LTPO AMOLED 2X · 1440×3120",
    "taxaN": 120,
@@ -340,7 +359,7 @@
    "updSeg": null,
    "updSegN": null,
    "preco": "R$ 11.499",
-   "atual": "R$ 7.332",
+   "atual": "R$ 6.298",
    "minimo": "R$ 5.999",
    "taxa": "120 Hz",
    "bateria": "5.000 mAh",
@@ -353,22 +372,23 @@
    "posicao": "62% 30%"
   },
   "ofertas": {
-   "pesquisa": "2026-11-17T21:19",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Amazon",
-     "preco": 6878,
-     "url": "https://link.amazon/B0cjKUf7f"
+     "preco": 6298.2,
+     "url": "https://www.amazon.com.br/dp/B0GKQK9ZVT"
     },
     {
      "loja": "Mercado Livre",
-     "preco": 7199,
+     "preco": 6613,
      "url": "https://meli.la/2hkpoJA"
     },
     {
      "loja": "Magalu",
      "preco": 7919,
-     "url": "https://magazineluiza.onelink.me/589508454/8fxtrgnv"
+     "url": "https://magazineluiza.onelink.me/589508454/8fxtrgnv",
+     "em": "2026-11-26"
     }
    ]
   },
@@ -396,6 +416,10 @@
    {
     "data": "2026-11-17",
     "preco": 7332
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 6298
    }
   ],
   "historicoFonte": "Zoom"
@@ -409,8 +433,8 @@
   "specs": {
    "lancamento": "Set/2023",
    "precoN": 7299,
-   "atualN": 3844,
-   "minimoN": 3479,
+   "atualN": 3419,
+   "minimoN": 3419,
    "tela": "6,1\" Super Retina XDR OLED · 1179×2556",
    "taxaN": 60,
    "telaExt": null,
@@ -435,8 +459,8 @@
    "updSeg": "Sem número oficial",
    "updSegN": null,
    "preco": "R$ 7.299",
-   "atual": "R$ 3.844",
-   "minimo": "R$ 3.479",
+   "atual": "R$ 3.419",
+   "minimo": "R$ 3.419",
    "taxa": "60 Hz",
    "bateria": "3.349 mAh",
    "peso": "171 g",
@@ -444,25 +468,21 @@
    "updResumo": "Atualizações sem número oficial"
   },
   "ofertas": {
-   "pesquisa": "",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Amazon",
+     "preco": 3419.1,
+     "url": "https://www.amazon.com.br/dp/B0CP6CVJSG"
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-27",
+    "preco": 3419
+   }
+  ]
  },
  {
   "id": "iphone-16",
@@ -473,7 +493,7 @@
   "specs": {
    "lancamento": "Set/2024",
    "precoN": 7799,
-   "atualN": 4763,
+   "atualN": 4538,
    "minimoN": 3597,
    "tela": "6,1\" Super Retina XDR OLED · 1179×2556",
    "taxaN": 60,
@@ -499,7 +519,7 @@
    "updSeg": "Sem número oficial",
    "updSegN": null,
    "preco": "R$ 7.799",
-   "atual": "R$ 4.763",
+   "atual": "R$ 4.538",
    "minimo": "R$ 3.597",
    "taxa": "60 Hz",
    "bateria": "3.561 mAh",
@@ -508,22 +528,23 @@
    "updResumo": "Atualizações sem número oficial"
   },
   "ofertas": {
-   "pesquisa": "2026-11-17T21:19",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Amazon",
-     "preco": 4654,
-     "url": "https://link.amazon/B06v8AA72"
-    },
-    {
-     "loja": "Mercado Livre",
-     "preco": 4790,
-     "url": "https://meli.la/19mrBLD"
+     "preco": 4537.84,
+     "url": "https://www.amazon.com.br/dp/B0DJFTJ6LX"
     },
     {
      "loja": "Magalu",
      "preco": 4844,
-     "url": "https://magazineluiza.onelink.me/589508454/4uss9avf"
+     "url": "https://magazineluiza.onelink.me/589508454/4uss9avf",
+     "em": "2026-11-26"
+    },
+    {
+     "loja": "Mercado Livre",
+     "preco": 4999,
+     "url": "https://meli.la/19mrBLD"
     }
    ]
   },
@@ -546,6 +567,10 @@
    {
     "data": "2026-11-17",
     "preco": 4763
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 4538
    }
   ],
   "historicoFonte": "Zoom"
@@ -559,7 +584,7 @@
   "specs": {
    "lancamento": "Set/2025",
    "precoN": 7999,
-   "atualN": 5542,
+   "atualN": 5390,
    "minimoN": 4669,
    "tela": "6,3\" LTPO Super Retina XDR OLED · 1206×2622",
    "taxaN": 120,
@@ -585,7 +610,7 @@
    "updSeg": "Sem número oficial",
    "updSegN": null,
    "preco": "R$ 7.999",
-   "atual": "R$ 5.542",
+   "atual": "R$ 5.390",
    "minimo": "R$ 4.669",
    "taxa": "120 Hz",
    "bateria": "3.692 mAh",
@@ -594,22 +619,23 @@
    "updResumo": "Atualizações sem número oficial"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T12:30",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Amazon",
-     "preco": 5273.1,
-     "url": "https://link.amazon/B00AnT80O"
+     "preco": 5390.28,
+     "url": "https://www.amazon.com.br/dp/B0GQWP9K1G"
     },
     {
      "loja": "Mercado Livre",
-     "preco": 5566.0,
+     "preco": 5566,
      "url": "https://meli.la/1Q361Fc"
     },
     {
      "loja": "Magalu",
      "preco": 5888.96,
-     "url": "https://magazineluiza.onelink.me/589508454/ica3i5qd"
+     "url": "https://magazineluiza.onelink.me/589508454/ica3i5qd",
+     "em": "2026-11-26"
     }
    ]
   },
@@ -637,6 +663,10 @@
    {
     "data": "2026-11-23",
     "preco": 5542
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 5390
    }
   ],
   "historicoFonte": "Zoom"
@@ -650,7 +680,7 @@
   "specs": {
    "lancamento": "Mai/2025",
    "precoN": 2499,
-   "atualN": 1959,
+   "atualN": 1799,
    "minimoN": 1334,
    "tela": "6,67\" pOLED · 1220×2712",
    "taxaN": 120,
@@ -676,7 +706,7 @@
    "updSeg": "4 anos",
    "updSegN": 4,
    "preco": "R$ 2.499",
-   "atual": "R$ 1.959",
+   "atual": "R$ 1.799",
    "minimo": "R$ 1.334",
    "taxa": "120 Hz",
    "bateria": "5.200 mAh",
@@ -685,22 +715,23 @@
    "updResumo": "2 atualizações do sistema · 4 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "2026-11-24T12:30",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
-     "loja": "Amazon",
-     "preco": 1889.1,
-     "url": "https://link.amazon/B0aZ6NVG5"
+     "loja": "Mercado Livre",
+     "preco": 1799,
+     "url": "https://meli.la/1gpT7Kd"
     },
     {
-     "loja": "Mercado Livre",
-     "preco": 1919.0,
-     "url": "https://meli.la/1gpT7Kd"
+     "loja": "Amazon",
+     "preco": 1799.11,
+     "url": "https://www.amazon.com.br/dp/B0FCYP5FB2"
     },
     {
      "loja": "Magalu",
      "preco": 1999.0,
-     "url": "https://magazineluiza.onelink.me/589508454/fmpzasls"
+     "url": "https://magazineluiza.onelink.me/589508454/fmpzasls",
+     "em": "2026-11-26"
     }
    ]
   },
@@ -772,6 +803,10 @@
    {
     "data": "2026-11-23",
     "preco": 1959
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 1799
    }
   ],
   "historicoFonte": "Zoom"
@@ -785,7 +820,7 @@
   "specs": {
    "lancamento": "Mai/2026",
    "precoN": 2799,
-   "atualN": 1874,
+   "atualN": 1574,
    "minimoN": 1439,
    "tela": "6,8\" pOLED · 1272×2772",
    "taxaN": 120,
@@ -811,7 +846,7 @@
    "updSeg": "3 anos",
    "updSegN": 3,
    "preco": "R$ 2.799",
-   "atual": "R$ 1.874",
+   "atual": "R$ 1.574",
    "minimo": "R$ 1.439",
    "taxa": "120 Hz",
    "bateria": "5.200 mAh",
@@ -824,22 +859,23 @@
    "posicao": "45% 40%"
   },
   "ofertas": {
-   "pesquisa": "2026-11-23T12:30",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
-     "loja": "Amazon",
-     "preco": 1599.0,
-     "url": "https://link.amazon/B01thzwAW"
+     "loja": "Mercado Livre",
+     "preco": 1574,
+     "url": "https://meli.la/1wGfUkt"
     },
     {
-     "loja": "Mercado Livre",
-     "preco": 1685.0,
-     "url": "https://meli.la/1wGfUkt"
+     "loja": "Amazon",
+     "preco": 1574.1,
+     "url": "https://www.amazon.com.br/dp/B0GZPXYC9G"
     },
     {
      "loja": "Magalu",
      "preco": 2339.1,
-     "url": "https://magazineluiza.onelink.me/589508454/p5lpzwq9"
+     "url": "https://magazineluiza.onelink.me/589508454/p5lpzwq9",
+     "em": "2026-11-26"
     }
    ]
   },
@@ -847,6 +883,10 @@
    {
     "data": "2026-11-23",
     "preco": 1874
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 1574
    }
   ]
  },
@@ -859,7 +899,7 @@
   "specs": {
    "lancamento": "Mar/2026 (Brasil)",
    "precoN": 4499,
-   "atualN": 2845,
+   "atualN": 3999,
    "minimoN": 1703,
    "tela": "6,7\" pOLED · 1220×2712",
    "taxaN": 120,
@@ -885,7 +925,7 @@
    "updSeg": "5 anos",
    "updSegN": 5,
    "preco": "R$ 4.499",
-   "atual": "R$ 2.845",
+   "atual": "R$ 3.999",
    "minimo": "R$ 1.703",
    "taxa": "120 Hz",
    "bateria": "4.800 mAh",
@@ -894,25 +934,21 @@
    "updResumo": "4 atualizações do sistema · 5 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
+     "loja": "Amazon",
+     "preco": 3999.0,
+     "url": "https://www.amazon.com.br/dp/B0GM1JJD66"
     }
    ]
-  }
+  },
+  "historico": [
+   {
+    "data": "2026-11-27",
+    "preco": 3999
+   }
+  ]
  },
  {
   "id": "edge-70-pro",
@@ -963,23 +999,7 @@
   },
   "ofertas": {
    "pesquisa": "",
-   "lista": [
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    }
-   ]
+   "lista": []
   }
  },
  {
@@ -991,7 +1011,7 @@
   "specs": {
    "lancamento": "Abr/2026",
    "precoN": 12999,
-   "atualN": 5829,
+   "atualN": 4499,
    "minimoN": 4499,
    "tela": "7,0\" LTPO AMOLED dobrável · 1224×2992",
    "taxaN": 165,
@@ -1018,7 +1038,7 @@
    "updSegN": 5,
    "cores": "Orient Blue, Cocoa",
    "preco": "R$ 12.999",
-   "atual": "R$ 5.829",
+   "atual": "R$ 4.499",
    "minimo": "R$ 4.499",
    "taxa": "165 Hz",
    "bateria": "5.000 mAh",
@@ -1030,12 +1050,13 @@
    "posicao": "50% 72%"
   },
   "ofertas": {
-   "pesquisa": "2026-11-18T12:40",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Magalu",
      "preco": 4499.1,
-     "url": "https://magazineluiza.onelink.me/589508454/70g5ozr2"
+     "url": "https://magazineluiza.onelink.me/589508454/70g5ozr2",
+     "em": "2026-11-26"
     },
     {
      "loja": "Amazon",
@@ -1044,7 +1065,7 @@
     },
     {
      "loja": "Mercado Livre",
-     "preco": 7099,
+     "preco": 7199,
      "url": "https://meli.la/2vLAWbq"
     }
    ]
@@ -1068,6 +1089,10 @@
    {
     "data": "2026-11-18",
     "preco": 5829
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 4499
    }
   ],
   "historicoFonte": "Zoom"
@@ -1081,7 +1106,7 @@
   "specs": {
    "lancamento": "Mar/2026",
    "precoN": null,
-   "atualN": 2860,
+   "atualN": 2945,
    "minimoN": 1989,
    "tela": "6,59\" AMOLED · 1268×2756",
    "taxaN": 120,
@@ -1108,7 +1133,7 @@
    "updSeg": "6 anos",
    "updSegN": 6,
    "preco": null,
-   "atual": "R$ 2.860",
+   "atual": "R$ 2.945",
    "minimo": "R$ 1.989",
    "taxa": "120 Hz",
    "bateria": "6.500 mAh",
@@ -1116,22 +1141,23 @@
    "updResumo": "4 atualizações do sistema · 6 anos de segurança"
   },
   "ofertas": {
-   "pesquisa": "2026-11-24T12:30",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Amazon",
-     "preco": 2744.55,
-     "url": "https://link.amazon/B008Ts5O6"
-    },
-    {
-     "loja": "Mercado Livre",
-     "preco": 2757.0,
-     "url": "https://meli.la/2VF51MV"
+     "preco": 2945.0,
+     "url": "https://www.amazon.com.br/dp/B0GR9HXPCF"
     },
     {
      "loja": "Magalu",
      "preco": 2974.15,
-     "url": "https://magazineluiza.onelink.me/589508454/z6ytykhk"
+     "url": "https://magazineluiza.onelink.me/589508454/z6ytykhk",
+     "em": "2026-11-26"
+    },
+    {
+     "loja": "Mercado Livre",
+     "preco": 3099,
+     "url": "https://meli.la/2VF51MV"
     }
    ]
   },
@@ -1179,6 +1205,10 @@
    {
     "data": "2026-11-23",
     "preco": 2860
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 2945
    }
   ],
   "historicoFonte": "Zoom"
@@ -1228,23 +1258,7 @@
   },
   "ofertas": {
    "pesquisa": "",
-   "lista": [
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    },
-    {
-     "loja": "",
-     "preco": null,
-     "url": ""
-    }
-   ]
+   "lista": []
   }
  },
  {
@@ -1294,6 +1308,9 @@
    "atual": "—",
    "minimo": "—",
    "updResumo": "A Motorola ainda não divulgou a política de atualizações."
+  },
+  "ofertas": {
+   "lista": []
   }
  },
  {
@@ -1305,7 +1322,7 @@
   "specs": {
    "lancamento": "Ago/2026",
    "precoN": null,
-   "atualN": 2483,
+   "atualN": 2780,
    "minimoN": 2239,
    "tela": "6,83\" AMOLED · 1280×2772",
    "taxaN": 120,
@@ -1332,7 +1349,7 @@
    "updSeg": null,
    "updSegN": null,
    "preco": null,
-   "atual": "R$ 2.483",
+   "atual": "R$ 2.780",
    "minimo": "R$ 2.239",
    "taxa": "120 Hz",
    "bateria": "8.340 mAh",
@@ -1340,12 +1357,18 @@
    "updResumo": "4 anos de atualizações do sistema"
   },
   "ofertas": {
-   "pesquisa": "2026-11-21",
+   "pesquisa": "2026-11-27T11:30",
    "lista": [
     {
      "loja": "Magalu",
      "preco": 2780.1,
-     "url": "https://www.magazineluiza.com.br/xiaomi-redmi-note-17-pro-5g-256gb-roxo/p/jc42bgd62a/te/rn17/"
+     "url": "https://www.magazineluiza.com.br/xiaomi-redmi-note-17-pro-5g-256gb-roxo/p/jc42bgd62a/te/rn17/",
+     "em": "2026-11-26"
+    },
+    {
+     "loja": "Amazon",
+     "preco": 2963.33,
+     "url": "https://www.amazon.com.br/dp/B0HR3S5DDT"
     }
    ]
   },
@@ -1353,6 +1376,10 @@
    {
     "data": "2026-11-21",
     "preco": 2483
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 2780
    }
   ]
  }

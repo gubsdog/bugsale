@@ -82,6 +82,8 @@ def afiliado(url):
         q['tag'] = AMAZON_TAG
     elif host.endswith('magazineluiza.com.br'):
         for k, v in MAGALU.items(): q.setdefault(k, v)
+    elif host.endswith('mercadolivre.com.br'):   # links do Mercado Livre com o código de afiliado do Gubbio
+        q.setdefault('matt_word', 'bugsale'); q.setdefault('matt_tool', '51363516')
     else:
         return url
     return urlunsplit((u.scheme or 'https', u.netloc, u.path, urlencode(q), ''))
@@ -221,7 +223,7 @@ page('ranking.html', 'Ranking de custo-benefício de celulares · Bugsale',
      'Os 10 celulares com melhor custo-benefício: nota da crítica especializada, testes de laboratório e preço médio de hoje.',
      'ranking', 'MQ.renderRanking();',
      content=ssr_lista('Ranking de celulares', 'Os celulares com melhor custo-benefício, melhor câmera, melhor tela, melhores para jogos e com mais bateria, com nota da crítica especializada, testes de laboratório e preço médio de hoje.', [], ''))
-for f, nome, marca in [('samsung.html', 'Samsung', 'Samsung'), ('iphone.html', 'iPhone', 'Apple'), ('motorola.html', 'Motorola', 'Motorola')]:
+for f, nome, marca in [('samsung.html', 'Samsung', 'Samsung'), ('iphone.html', 'iPhone', 'Apple'), ('motorola.html', 'Motorola', 'Motorola'), ('xiaomi.html', 'Xiaomi', 'Xiaomi')]:
     page(f, f'Celulares {nome}: reviews e preços · Bugsale', f'Reviews, preço médio atual e quanto caiu desde o lançamento de cada celular {nome}.',
          marca, f'MQ.renderArticles("{marca}");',
          content=ssr_lista(f'Celulares {nome}: reviews e preços', f'Reviews, comparativos e preço médio atual dos celulares {nome}.', [a for a in _vistos if any(c['id'] == a['celular'] and c.get('marca') == marca for c in celulares) or (marca == 'Apple' and a['celular'].startswith('iphone'))], ''))
@@ -253,6 +255,10 @@ for a in paginas:
          content=ssr_artigo(a) if a in publicados else '',
          jsonld='<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>',
          index=(a in publicados))
+
+# ---------- ofertas (loja de ofertas com filtros e ranking por uso) ----------
+page('ofertas.html', 'Ofertas de celulares hoje · Bugsale', 'As melhores ofertas de celulares do dia na Amazon, no Mercado Livre e no Magalu, com filtros por categoria, marca, uso e faixa de preço.', 'ofertas', 'MQ.renderOfertas();',
+     content=ssr_lista('Ofertas de celulares', 'Encontre as melhores ofertas de celulares do dia. Use os filtros para achar o celular mais adequado para você.', [], ''))
 
 # ---------- comparador (visual novo, até 3 aparelhos do catálogo) ----------
 page('comparador.html', 'Comparador de celulares · Bugsale', 'Compare até 3 celulares lado a lado: ficha técnica, preço de lançamento, preço de hoje e promessa de atualizações.', 'comparador', 'MQ.renderComparador();',
