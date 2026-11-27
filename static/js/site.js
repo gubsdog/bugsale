@@ -2104,6 +2104,8 @@ const OF_USOS = [
 ];
 const OF_ORD = [["desconto","Maior desconto"],["menor","Menor preço"],["maior","Maior preço"]];
 const ICO_FILTRO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>';
+/* armazenamento da oferta (não o máximo do modelo): o preço só vale para essa versão */
+const gbTxt = g => g ? (g>=1000 ? g/1000 + " TB" : g + " GB") : null;
 const lojaPrep = l => /amazon/i.test(l) ? "na" : "no";
 function ofertasLista(){
   return Object.values(MQ_DATA.phones).map(p=>{
@@ -2114,7 +2116,7 @@ function ofertasLista(){
     const usos = Object.fromEntries(OF_USOS.map(([k,,,,f])=>[k, f(n,p)]));
     const s = p.specs || {};
     const tela = (s.tela||"").split(" ")[0];
-    const chips = [tela, s.bateria, s.armazN ? (s.armazN>=1000 ? s.armazN/1000 + " TB" : s.armazN + " GB") : null].filter(Boolean);
+    const chips = [tela, s.bateria, gbTxt(melhor.gb)].filter(Boolean);
     const minimo = p.specs && p.specs.minimoN && melhor.preco <= p.specs.minimoN + 1;
     return {p, id:p.id, lista, melhor, pct, usos, chips, minimo, seg:OF_SEG[p.id] || "int", marca:/^poco/.test(p.id) ? "POCO" : p.marca};
   }).filter(Boolean);
@@ -2229,7 +2231,7 @@ function renderOfertas(){
   const card = (x, i) => {
     const u = st.uso ? usoDe(st.uso) : null, v = u ? x.usos[st.uso] : 0;
     const selo = u ? `<span class="of-rk">#${i+1} em ${esc(u[1].toLowerCase())}</span>` : x.minimo ? `<span class="of-selo">⚡ Menor preço já visto</span>` : "";
-    const lojas = x.lista.map(o=>`<a href="${esc(o.url)}" target="_blank" rel="sponsored noopener"><span>${esc(o.loja)}</span><b>${brl(o.preco)}</b></a>`).join("");
+    const lojas = x.lista.map(o=>`<a href="${esc(o.url)}" target="_blank" rel="sponsored noopener"><span>${esc(o.loja)}${o.gb ? ` · ${gbTxt(o.gb)}` : ""}</span><b>${brl(o.preco)}</b></a>`).join("");
     return `<article class="of-card" id="of-${x.id}">
       <div class="of-img"><img src="${R}${x.p.catImg||x.p.cut}" alt="${esc(x.p.full)}" loading="lazy">${x.pct>0?`<span class="of-off">-${x.pct}%</span>`:""}${selo}</div>
       <div class="of-info">
