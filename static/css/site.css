@@ -2706,3 +2706,53 @@ html[data-theme="dark"] .of-tag{color:#CFC3FF}
 .of-lojas[hidden],.of-pop[hidden],.marcas-p[hidden]{display:none}
 .of .of-btn,.of .of-btn:hover{color:var(--v-bg)}
 .of .of-lojas a{color:var(--v-ink)}
+/* banner do game com resultado: mais baixo, chão inteiro e o nome do match sob os personagens */
+.of-game.of-g-match{min-height:200px;padding:24px 40px 64px;align-items:flex-start}
+.of-game.of-g-match::after{display:none}
+.of-g-match h2{font-size:26px;margin:8px 0 0}
+.of-g-match .of-g-acts{margin-top:16px}
+.of-g-match .of-cena{position:absolute;right:40px;bottom:40px;z-index:2}
+.of-g-match .of-chars{position:static;gap:12px}
+.of-g-match .of-chars img{height:96px}
+.of-g-match .of-chars img:last-child{height:68px}
+.of-g-match .of-chars .of-cel{height:84px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25))}
+.of-chao{position:absolute;left:0;right:0;bottom:0;height:40px;z-index:3;background:rgba(0,0,0,.2);border-top:4px solid rgba(0,0,0,.12);display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:0 40px;font-size:13px;color:rgba(255,255,255,.9)}
+.of-chao b{font:800 15px var(--body);color:#fff}
+.of-chao span::before{content:"·";margin-right:8px;opacity:.7}
+@media (max-width:760px){
+  .of-game.of-g-match{padding:20px 20px 140px}
+  .of-g-match h2{font-size:20px;max-width:none}
+  .of-g-match .of-cena{right:auto;left:50%;transform:translateX(-50%);bottom:40px}
+  .of-g-match .of-chars{position:static}
+  .of-g-match .of-chars img{height:72px} .of-g-match .of-chars img:last-child{height:52px} .of-g-match .of-chars .of-cel{height:64px}
+  .of-g-match .of-chars img:nth-child(3){display:inline}
+  .of-chao{justify-content:center;padding:0 16px}
+}
+.of-g-match .of-cena{bottom:0;display:flex;flex-direction:column;align-items:center}
+.of-g-match .of-chars{margin-bottom:0}
+.of-placa{height:40px;display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.9);white-space:nowrap}
+.of-placa b{font:800 15px var(--body);color:#fff}
+.of-placa span::before{content:"·";margin-right:8px;opacity:.7}
+.of-chao{z-index:1;padding:0}
+@media (max-width:760px){
+  .of-game.of-g-match{padding-bottom:160px}
+  .of-g-match .of-cena{left:0;right:0;transform:none}
+  .of-g-match .of-chars img:nth-child(2){display:inline}
+  .of-placa{height:48px;flex-direction:column;gap:0;justify-content:center;line-height:1.25}
+  .of-placa span::before{display:none}
+  .of-chao{height:48px}
+}
+/* banner do game (quem ainda não jogou): mesma altura e o mesmo chão inteiro do banner com resultado */
+.of-game:not(.of-g-match){min-height:208px;padding:24px 40px 64px;align-items:flex-start}
+.of-game:not(.of-g-match)::after{width:auto;left:0;height:40px;background:rgba(0,0,0,.2);border-top:4px solid rgba(0,0,0,.12)}
+.of-game:not(.of-g-match) h2{font-size:26px;margin:8px 0 4px}
+.of-game:not(.of-g-match) .of-chars{bottom:40px}
+.of-game:not(.of-g-match) .of-chars img{height:96px}
+.of-game:not(.of-g-match) .of-chars img:last-child{height:68px}
+.of-game:not(.of-g-match) .of-balao{top:24px;right:288px}
+@media (max-width:760px){
+  .of-game:not(.of-g-match){padding:20px 20px 24px}
+  .of-game:not(.of-g-match)::after{display:none}
+  .of-game:not(.of-g-match) .of-chars{bottom:auto;top:16px}
+  .of-game:not(.of-g-match) .of-chars img{height:56px} .of-game:not(.of-g-match) .of-chars img:last-child{height:40px}
+}

@@ -2038,9 +2038,12 @@ function renderOfertas(){
       const segCat = {entrada:["entrada","int-entrada"], intermediario:["int-entrada","int","int-pro"], topo:["topo","int-pro"]}[c.seg] || [];
       const pareci = x ? [] : todos.filter(t=>segCat.includes(t.seg) && t.melhor.preco >= c.preco*.65 && t.melhor.preco <= c.preco*1.35)
         .sort((a,b)=>Math.abs(a.melhor.preco-c.preco)-Math.abs(b.melhor.preco-c.preco)).slice(0,4);
+      el.classList.add("of-g-match");
       el.innerHTML = `<div class="of-g-txt"><span class="of-k">Seu match</span><h2>O celular que combina com você</h2>
-        <div class="of-match">${img?`<img src="${img}" alt="">`:""}<div><b>${esc(c.nome)}</b><span>${x ? `a partir de ${brl(x.melhor.preco)} hoje` : pareci.length ? `sem oferta hoje · ${pareci.length} parecidos com oferta` : "sem oferta acompanhada hoje"}</span></div></div>
-        <div class="of-g-acts">${x ? `<button type="button" class="of-g-btn" data-g="ver">Ver ofertas dele →</button>` : pareci.length ? `<button type="button" class="of-g-btn" data-g="parecidos">Ver os parecidos →</button>` : `<button type="button" class="of-g-btn" data-g="res">Ver o resultado →</button>`}<button type="button" class="of-g-link" data-g="nova">Jogar de novo</button></div></div>${chars}`;
+        <div class="of-g-acts">${x ? `<button type="button" class="of-g-btn" data-g="ver">Ver ofertas dele →</button>` : pareci.length ? `<button type="button" class="of-g-btn" data-g="parecidos">Ver os parecidos →</button>` : `<button type="button" class="of-g-btn" data-g="res">Ver o resultado →</button>`}<button type="button" class="of-g-link" data-g="nova">Jogar de novo</button></div></div>
+        <div class="of-cena" aria-hidden="true"><span class="of-chars"><img src="${R}img/game/menina.webp" alt=""><img class="of-cel" src="${img}" alt=""><img src="${R}img/game/menino.webp" alt=""><img src="${R}img/game/besouro.webp" alt=""></span>
+        <span class="of-placa"><b>${esc(c.nome)}</b><span>${x ? `a partir de ${brl(x.melhor.preco)} hoje` : pareci.length ? `sem oferta hoje · ${pareci.length} parecidos` : "sem oferta hoje"}</span></span></div>
+        <div class="of-chao"></div>`;
       const pb = el.querySelector('[data-g="parecidos"]');
       if(pb) pb.onclick = ()=>{ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:pareci.map(t=>t.id), idsNome:c.nome}); desenha(); $(".of-bar").scrollIntoView({behavior:"smooth", block:"start"}); };
       const v = el.querySelector('[data-g="ver"]');
@@ -2048,6 +2051,7 @@ function renderOfertas(){
       const rb = el.querySelector('[data-g="res"]'); if(rb) rb.onclick = ()=>gameAbre();
       el.querySelector('[data-g="nova"]').onclick = ()=>gameAbre(true);
     } else {
+      el.classList.remove("of-g-match");
       el.innerHTML = `<div class="of-g-txt"><span class="of-k">Game · 1 minuto</span><h2>Qual celular combina com você?</h2>
         <p>Responda 7 perguntas rápidas sobre o seu dia a dia e veja as ofertas do seu match.</p>
         <div class="of-g-acts"><button type="button" class="of-g-btn" data-g="jogar">Descobrir meu celular →</button></div></div><span class="of-balao" aria-hidden="true">MATCH?</span>${chars}`;
