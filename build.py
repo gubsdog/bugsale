@@ -13,6 +13,11 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # --preview: gera dist-preview/ para a pré-visualização no Claude (links de pasta apontam para index.html)
 PREVIEW = '--preview' in sys.argv
 DIST = os.path.join(ROOT, 'dist-preview' if PREVIEW else 'dist')
+# contador de visitas (Umami Cloud, sem cookies). Coloque aqui o "Website ID" do painel do Umami para ligar.
+# Só entra no site publicado, nunca na prévia do Claude.
+UMAMI_ID = ''
+ANALYTICS = '' if PREVIEW or not UMAMI_ID else f'<script defer src="https://cloud.umami.is/script.js" data-website-id="{UMAMI_ID}" data-domains="bugsale.com.br"></script>'
+
 cfg = json.load(open(os.path.join(ROOT, 'config.json'), encoding='utf-8'))
 SITE = cfg['site_url'].rstrip('/') + '/'
 BASE = cfg.get('base_path', '/')
@@ -210,7 +215,7 @@ sitemap = []
 def page(path, title, desc, key, render='', content='', root='', article='null', ogimg=OG_DEFAULT, ogtype='website', jsonld='', pagetype='list', index=True):
     url = SITE + path.replace('index.html', '')
     html = (TPL.replace('__TITLE__', escape(title)).replace('__DESC__', escape(desc))
-               .replace('__CANON__', url).replace('__OGIMG__', ogimg).replace('__OGTYPE__', ogtype)
+               .replace('__ANALYTICS__', ANALYTICS).replace('__CANON__', url).replace('__OGIMG__', ogimg).replace('__OGTYPE__', ogtype)
                .replace('__JSONLD__', jsonld).replace('__PAGE__', pagetype).replace('__KEY__', key)
                .replace('__RENDER__', render).replace('__ARTICLE__', article)
                .replace('__CONTENT__', content).replace('__ROOT__', root))

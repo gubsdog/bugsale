@@ -390,6 +390,9 @@ function melhoresOfertas(n){
   return C.map(p=>{ const o = p.ofertas.lista.slice().sort((x,y)=>x.preco-y.preco)[0]; return {p, o, r:o.preco/bomDe(p)}; })
           .filter(x=>!fixas.some(f=>f.p.id===x.p.id)).sort((x,y)=>x.r-y.r).slice(0,n-fixas.length).reduce((a,x)=>a.concat(x), fixas);
 }
+/* contador de visitas: marca cliques em ofertas (loja e modelo) para o relatório semanal */
+const trk = (o, p, onde) => o ? ` data-umami-event="clique-oferta" data-umami-event-loja="${esc(o.loja)}" data-umami-event-modelo="${esc(p.nome||p.full||p.id)}" data-umami-event-onde="${onde}"` : "";
+const trkGame = (r, res) => { try{ if(window.umami) umami.track("game-resultado", {match:res.match.c.nome, orcamento:+r.orcamento>=99999 ? "sem limite" : String(r.orcamento)}); }catch(e){} };
 /* versão exata de uma oferta: "8 GB RAM · 128 GB" */
 const versaoTxt = o => [o && o.ram ? o.ram + " GB RAM" : null, o && o.gb ? (o.gb>=1000 ? o.gb/1000 + " TB" : o.gb + " GB") : null].filter(Boolean).join(" · ");
 /* card vertical de oferta (estilo loja): foto, loja, selo de queda desde o lançamento, preço e botão */
@@ -398,7 +401,7 @@ function ofertaCard2({p}){
   const o = (p.ofertas.lista||[]).slice().sort((x,y)=>x.preco-y.preco)[0];
   const cid = (p.catImg||"").replace(/^.*\/|\.webp$/g,""), c = CAT().find(x=>x.id===cid);
   const lanc = (c && lancPreco(c)) || p.precoN || null, queda = lanc && lanc > o.preco ? Math.round((1 - o.preco/lanc)*100) : 0;
-  return `<a class="o3" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">
+  return `<a class="o3"${trk(o,p,"home")} href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">
     <span class="o3-img">${p.catImg ? `<img src="${R}${p.catImg}" alt="" loading="lazy">` : img2(p)}<span class="o3-loja">${esc(o.loja)}</span>${queda>=10 ? `<span class="o3-off" title="Em relação ao preço de lançamento">−${queda}%</span>` : ""}</span>
     <span class="o3-txt"><b>${esc(p.full)}</b>${versaoTxt(o) ? `<small class="o3-v">${esc(versaoTxt(o))}</small>` : ""}<small class="o3-pq">${esc(PERFIL_CURTO[p.id] || "")}</small>
       <span class="o3-preco">${brl(o.preco)}</span>
@@ -408,7 +411,7 @@ function ofertaCard2({p}){
 function ofertaLinha2({p,o}){
   return `<div class="o2"><span class="o2-img">${img2(p)}</span>
     <div class="o2-txt"><b>${esc(p.full)}</b><span>${esc(PERFIL_CURTO[p.id] || "")}</span><small>${brl(o.preco)} ${lojaPrep(o.loja)} ${esc(o.loja)}${versaoTxt(o) ? ` · ${esc(versaoTxt(o))}` : ""}</small></div>
-    <a class="o2-btn" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta</a></div>`;
+    <a class="o2-btn"${trk(o,p,"lista")} href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta</a></div>`;
 }
 function renderHome(){
   const main = document.getElementById("content");
@@ -529,7 +532,7 @@ function ofertaMiniHTML(p, titulo, cls){
   const btns = [0,1,2].map(i=>{
     const x = lista[i];
     const comPreco = cls==="om-topo";   /* no topo: loja | preço + seta. No fim do artigo: só a loja | seta */
-    return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(x.loja)}${comPreco && versaoTxt(x) ? `<small class="om-v">${esc(versaoTxt(x))}</small>` : ""}</span><span class="om-dir">${comPreco?`<b>${brl(x.preco)}</b>`:""}<i aria-hidden="true">↗</i></span></a>`
+    return x ? `<a class="om-btn${i===0?" melhor":""}"${trk(x,p,"artigo")} href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(x.loja)}${comPreco && versaoTxt(x) ? `<small class="om-v">${esc(versaoTxt(x))}</small>` : ""}</span><span class="om-dir">${comPreco?`<b>${brl(x.preco)}</b>`:""}<i aria-hidden="true">↗</i></span></a>`
              : `<span class="om-btn vazio" aria-disabled="true"><span class="om-loja">Oferta ${i+1}</span><span class="om-dir"><b>em breve</b></span></span>`;
   }).join("");
   return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
@@ -825,7 +828,7 @@ function renderArticle(){
           ${pars(it.texto)}
           ${it.alt ? `<p class="mt-alt"><b>${it.altRot ? esc(it.altRot) : "Alternativa"}:</b> ${inl(it.alt)}</p>` : ""}
           <div class="mt-preco"><span><small>${o ? `menor preço hoje · ${esc(o.loja)}${versaoTxt(o) ? ` · ${esc(versaoTxt(o))}` : ""}` : q.soCat ? "preço médio nas lojas" : "preço médio hoje"}</small><b>${brl(hoje)}</b></span>${it.alvo ? `<span><small>bom preço</small><b class="mt-ok">até ${brl(it.alvo)}</b></span>` : ""}${q.precoN ? `<span><small>lançamento</small><s>${brl(q.precoN)}</s></span>` : ""}</div>
-          <div class="mt-acoes">${o ? `<a class="btn primary" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta ${o.loja==="Mercado Livre"?"no":"na"} ${esc(o.loja)} →</a>` : ""}${art ? `<a class="btn" href="${artURL(art)}">Ler a análise</a>` : q.soCat ? `<a class="btn" href="${R}comparador.html">Ver no comparador</a>` : `<button class="btn" type="button" data-compare="${q.id}">Abrir no comparador</button>`}</div>
+          <div class="mt-acoes">${o ? `<a class="btn primary"${trk(o,q,"artigo")} href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta ${o.loja==="Mercado Livre"?"no":"na"} ${esc(o.loja)} →</a>` : ""}${art ? `<a class="btn" href="${artURL(art)}">Ler a análise</a>` : q.soCat ? `<a class="btn" href="${R}comparador.html">Ver no comparador</a>` : `<button class="btn" type="button" data-compare="${q.id}">Abrir no comparador</button>`}</div>
         </div></section>`;
     };
     const blocoHTML = (k, i) => k.h ? `<h2>${esc(k.h)}</h2>` : k.p ? pars(k.p) : k.item ? itemHTML(k.item, i) : k.lista ? `<ul>${k.lista.map(t=>`<li>${inl(t)}</li>`).join("")}</ul>`
@@ -2031,7 +2034,7 @@ function gameAbre(forcar){
       const d = box.querySelector(".gm-dica"); if(d && o.dica && [].concat(r[q.id]).includes(v)){ d.hidden = false; d.lastChild.textContent = o.dica; }
     });
     box.querySelector('[data-a="volta"]').onclick = ()=>{ if(passo===0) escolhe(); else { passo--; pergunta(); } };
-    box.querySelector('[data-a="seg"]').onclick = ()=>{ if(passo < visiveis().length-1){ passo++; pergunta(); } else { const res = gameCalcula(r); gSalva({r, data:new Date().toISOString()}); resultado(res); } };
+    box.querySelector('[data-a="seg"]').onclick = ()=>{ if(passo < visiveis().length-1){ passo++; pergunta(); } else { const res = gameCalcula(r); gSalva({r, data:new Date().toISOString()}); trkGame(r, res); resultado(res); } };
   };
   /* pergunta do orçamento: régua com o valor exato */
   const regua = (q, qs, tot) => {
@@ -2060,7 +2063,7 @@ function gameAbre(forcar){
     box.querySelectorAll(".gm-rat").forEach(b=>b.onclick = ()=>{ inp.value = b.dataset.x; mostra(); });
     mostra();
     box.querySelector('[data-a="volta"]').onclick = ()=>{ passo--; pergunta(); };
-    box.querySelector('[data-a="seg"]').onclick = ()=>{ if(passo < visiveis().length-1){ passo++; pergunta(); } else { const res = gameCalcula(r); gSalva({r, data:new Date().toISOString()}); resultado(res); } };
+    box.querySelector('[data-a="seg"]').onclick = ()=>{ if(passo < visiveis().length-1){ passo++; pergunta(); } else { const res = gameCalcula(r); gSalva({r, data:new Date().toISOString()}); trkGame(r, res); resultado(res); } };
   };
   const resumo = () => {
     const nomes = {redes:"redes sociais", videos:"ver vídeos", fotos:"fotos e vídeos", jogos:"jogar", trabalho:"trabalhar ou estudar", basico:"o básico"};
@@ -2341,7 +2344,7 @@ function renderOfertas(){
   const card = (x, i) => {
     const u = st.uso ? usoDe(st.uso) : null, v = u ? x.usos[st.uso] : 0;
     const selo = u ? `<span class="of-rk">#${i+1} em ${esc(u[1].toLowerCase())}</span>` : x.minimo ? `<span class="of-selo">⚡ Menor preço já visto</span>` : "";
-    const lojas = x.lista.map(o=>`<a href="${esc(o.url)}" target="_blank" rel="sponsored noopener"><span>${esc(o.loja)}${o.gb ? ` · ${[o.ram ? o.ram + " GB RAM" : null, gbTxt(o.gb)].filter(Boolean).join(" / ")}` : ""}</span><b>${brl(o.preco)}</b></a>`).join("");
+    const lojas = x.lista.map(o=>`<a${trk(o,x.p,"ofertas")} href="${esc(o.url)}" target="_blank" rel="sponsored noopener"><span>${esc(o.loja)}${o.gb ? ` · ${[o.ram ? o.ram + " GB RAM" : null, gbTxt(o.gb)].filter(Boolean).join(" / ")}` : ""}</span><b>${brl(o.preco)}</b></a>`).join("");
     return `<article class="of-card" id="of-${x.id}">
       <div class="of-img"><img src="${R}${x.p.catImg||x.p.cut}" alt="${esc(x.p.full)}" loading="lazy">${x.pct>0?`<span class="of-off">-${x.pct}%</span>`:""}${selo}</div>
       <div class="of-info">
@@ -2353,7 +2356,7 @@ function renderOfertas(){
         <div class="of-pr"><b>${brl(x.melhor.preco)}</b>${x.p.precoN?`<s>${brl(x.p.precoN)}</s>`:""}</div>
         <span class="of-loja">Menor preço ${lojaPrep(x.melhor.loja)} <strong>${esc(x.melhor.loja)}</strong>${x.lista.length>1?` · <button type="button" class="of-ver" aria-expanded="false">ver ${x.lista.length} lojas</button>`:""}</span>
         <div class="of-lojas" hidden>${lojas}</div>
-        <div class="of-acts"><a class="of-btn" href="${esc(x.melhor.url)}" target="_blank" rel="sponsored noopener">Ver oferta <i aria-hidden="true">↗</i></a><button type="button" class="of-btn2" data-compare="${x.id}">Comparar</button>${PA_ON ? `<button type="button" class="of-sino${paTem(x.id) ? " on" : ""}" data-alerta="${x.id}" aria-label="${paTem(x.id) ? "Alerta de preço ativo" : "Criar alerta de preço"}" title="Me avise quando baixar">${ICO_SINO}</button>` : ""}</div>
+        <div class="of-acts"><a class="of-btn"${trk(x.melhor,x.p,"ofertas")} href="${esc(x.melhor.url)}" target="_blank" rel="sponsored noopener">Ver oferta <i aria-hidden="true">↗</i></a><button type="button" class="of-btn2" data-compare="${x.id}">Comparar</button>${PA_ON ? `<button type="button" class="of-sino${paTem(x.id) ? " on" : ""}" data-alerta="${x.id}" aria-label="${paTem(x.id) ? "Alerta de preço ativo" : "Criar alerta de preço"}" title="Me avise quando baixar">${ICO_SINO}</button>` : ""}</div>
       </div></article>`;
   };
   const tags = () => {
