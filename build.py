@@ -204,7 +204,7 @@ def ssr_lista(titulo, intro, arts, root):
     return f'<section class="ssr"><h1>{E(titulo)}</h1><p class="ssr-dek">{E(intro)}</p>{"<h2>Artigos</h2><ul>" + li + "</ul>" if li else ""}</section>'
 _vistos = sorted([a for a in publicados if not a.get('teaser') or pronto(a)], key=lambda a: a['publicar'], reverse=True)
 
-OG_DEFAULT = SITE + 'img/foto/razr-70-ultra.webp'
+OG_DEFAULT = SITE + 'img/og-bugsale-v1.jpg'   # card do WhatsApp/redes: fundo preto só com o besouro
 sitemap = []
 
 def page(path, title, desc, key, render='', content='', root='', article='null', ogimg=OG_DEFAULT, ogtype='website', jsonld='', pagetype='list', index=True):
@@ -218,7 +218,7 @@ def page(path, title, desc, key, render='', content='', root='', article='null',
     w(path, html)
     if index: sitemap.append(url)
 
-page('index.html', 'Bugsale · Reviews, ranking e preço justo de celulares', TAGLINE, 'home', 'MQ.renderArticles(null);',
+page('index.html', 'Bugsale · O preço de celular que parece bug', 'Ofertas de celular checadas com histórico de preço, ranking por uso e um game que descobre o celular ideal pra você.', 'home', 'MQ.renderArticles(null);',
      content=ssr_lista('Bugsale: reviews, comparativos e o preço justo de celulares', TAGLINE, _vistos, ''))
 page('ranking.html', 'Ranking de custo-benefício de celulares · Bugsale',
      'Os 10 celulares com melhor custo-benefício: nota da crítica especializada, testes de laboratório e preço médio de hoje.',
