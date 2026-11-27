@@ -2156,6 +2156,8 @@ const lojaPrep = l => /amazon/i.test(l) ? "na" : "no";
    Guardado neste aparelho. O envio (notificação do navegador ou e-mail) é feito pelo serviço de notificações. */
 const ICO_SINO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.94 1.94 0 0 0 3.4 0"/></svg>';
 const PA_LS = "bs-alertas";
+/* o sininho só aparece na prévia até o serviço de notificações (OneSignal) estar configurado */
+const PA_ON = !!(window.MQ_DATA && MQ_DATA.preview);
 const paLer = () => { try{ return JSON.parse(localStorage.getItem(PA_LS)) || {}; }catch(e){ return {}; } };
 const paGrava = v => { try{ localStorage.setItem(PA_LS, JSON.stringify(v)); }catch(e){} };
 const paTem = id => !!paLer()[id];
@@ -2351,7 +2353,7 @@ function renderOfertas(){
         <div class="of-pr"><b>${brl(x.melhor.preco)}</b>${x.p.precoN?`<s>${brl(x.p.precoN)}</s>`:""}</div>
         <span class="of-loja">Menor preço ${lojaPrep(x.melhor.loja)} <strong>${esc(x.melhor.loja)}</strong>${x.lista.length>1?` · <button type="button" class="of-ver" aria-expanded="false">ver ${x.lista.length} lojas</button>`:""}</span>
         <div class="of-lojas" hidden>${lojas}</div>
-        <div class="of-acts"><a class="of-btn" href="${esc(x.melhor.url)}" target="_blank" rel="sponsored noopener">Ver oferta <i aria-hidden="true">↗</i></a><button type="button" class="of-btn2" data-compare="${x.id}">Comparar</button><button type="button" class="of-sino${paTem(x.id) ? " on" : ""}" data-alerta="${x.id}" aria-label="${paTem(x.id) ? "Alerta de preço ativo" : "Criar alerta de preço"}" title="Me avise quando baixar">${ICO_SINO}</button></div>
+        <div class="of-acts"><a class="of-btn" href="${esc(x.melhor.url)}" target="_blank" rel="sponsored noopener">Ver oferta <i aria-hidden="true">↗</i></a><button type="button" class="of-btn2" data-compare="${x.id}">Comparar</button>${PA_ON ? `<button type="button" class="of-sino${paTem(x.id) ? " on" : ""}" data-alerta="${x.id}" aria-label="${paTem(x.id) ? "Alerta de preço ativo" : "Criar alerta de preço"}" title="Me avise quando baixar">${ICO_SINO}</button>` : ""}</div>
       </div></article>`;
   };
   const tags = () => {
