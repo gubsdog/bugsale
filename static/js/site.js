@@ -1683,7 +1683,22 @@ const GIC = {
   barato:GSV('<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.5 0-2.5.8-2.5 1.9 0 2.6 5 1.4 5 4.1 0 1.1-1 2-2.5 2-1.2 0-2.2-.5-2.7-1.3M12 6.5v1.5M12 16v1.5"/>'),
   dura:GSV('<path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>'),
   bonito:GSV('<path d="M12 3l2.6 5.5 6 .8-4.4 4.2 1.1 6L12 16.6 6.7 19.5l1.1-6L3.4 9.3l6-.8z"/>'),
-  topo:GSV('<path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/>')
+  topo:GSV('<path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/>'),
+  zoom:GSV('<circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L21 21M10 7v6M7 10h6"/>'),
+  leve:GSV('<path d="M7 9h10a4 4 0 0 1 3.9 4.9l-.6 2.6a2 2 0 0 1-3.4.9L15 15H9l-1.9 2.4a2 2 0 0 1-3.4-.9l-.6-2.6A4 4 0 0 1 7 9z"/>'),
+  pesado:GSV('<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'),
+  compacto:GSV('<rect x="8" y="5" width="8" height="14" rx="2"/>'),
+  padrao:GSV('<rect x="7" y="3.5" width="10" height="17" rx="2.2"/>'),
+  grande:GSV('<rect x="5.5" y="2" width="13" height="20" rx="2.5"/><path d="M10.5 18.5h3"/>'),
+  ano1:GSV('<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M11 14h2v4"/>'),
+  ano3:GSV('<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M10 14h4l-2 2a1.5 1.5 0 1 1-2 1.5"/>'),
+  ano5:GSV('<path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M12 8v4l2.5 1.5"/>'),
+  eu:GSV('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'),
+  pais:GSV('<circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20a6 6 0 0 1 12 0M10 20a6 6 0 0 1 12 0"/>'),
+  filho:GSV('<circle cx="12" cy="9" r="3"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0"/><path d="M9 3.5l3 2 3-2"/>'),
+  google:GSV('<path d="M20.5 12.2c0-.6-.1-1.2-.2-1.7H12v3.3h4.8a4.1 4.1 0 0 1-1.8 2.7v2.2h2.9c1.7-1.6 2.6-3.9 2.6-6.5z"/><path d="M12 21c2.4 0 4.5-.8 5.9-2.2L15 16.5c-.8.5-1.8.9-3 .9a5.3 5.3 0 0 1-5-3.6H4v2.3A9 9 0 0 0 12 21z"/><path d="M7 13.8a5.3 5.3 0 0 1 0-3.6V7.9H4a9 9 0 0 0 0 8.2z"/><path d="M12 6.6c1.3 0 2.5.5 3.4 1.3l2.6-2.6A9 9 0 0 0 4 7.9l3 2.3a5.3 5.3 0 0 1 5-3.6z"/>'),
+  nfc:GSV('<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/><path d="M17 2.5a5 5 0 0 1 0 5"/>'),
+  marca:GSV('<path d="M3 12l9-9 9 9-9 9z"/><circle cx="12" cy="12" r="2.5"/>')
 };
 const nivel = n => `<span class="gm-nivel" aria-hidden="true">${[1,2,3,4,5].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`;
 const bateriaIco = (cor, pct) => `<span class="gm-bat" aria-hidden="true"><i style="width:${pct}%;background:${cor}"></i></span>`;
@@ -1699,25 +1714,50 @@ const GAME_Q = [
     {v:"pessoas", l:"Pessoas e selfies", ic:"pessoa", sub:"Amigos, família, você", dica:"Câmera frontal e retrato vão contar pontos."},
     {v:"viagem", l:"Lugares e viagens", ic:"viagem", sub:"Paisagens e passeios", dica:"Lente grande-angular e zoom ajudam a caber tudo na foto."},
     {v:"noite", l:"À noite", ic:"noite", sub:"Festas, shows, rolês", dica:"É no escuro que a diferença entre câmeras mais aparece."},
-    {v:"postar", l:"Vídeos para postar", ic:"postar", sub:"Reels, TikTok, YouTube", dica:"Vídeo estável e em boa resolução viram prioridade."}]},
+    {v:"postar", l:"Vídeos para postar", ic:"postar", sub:"Reels, TikTok, YouTube", dica:"Vídeo estável e em boa resolução viram prioridade."},
+    {v:"zoom", l:"Coisas de longe", ic:"zoom", sub:"Shows, jogos, bichos", dica:"Lente de zoom (teleobjetiva) passa a contar muito."}]},
+  {id:"tipojogo", se:r=>(r.uso||[]).includes("jogos"), tag:"Jogos", t:"Que tipo de jogo você joga?", sub:"Escolha uma.", max:1, ops:[
+    {v:"leve", l:"Leves", ic:"leve", sub:"Roblox, Free Fire, Candy Crush", dica:"Quase todo intermediário roda bem. Não precisa pagar por um processador de ponta."},
+    {v:"pesado", l:"Pesados, no gráfico alto", ic:"pesado", sub:"COD, Genshin, PUBG", dica:"Processador forte e boa refrigeração viram prioridade."}]},
   {id:"bateria", tag:"Bateria", t:"Quanto tempo o celular passa longe da tomada?", sub:"Escolha uma.", max:1, lista:true, ops:[
     {v:"sobra", l:"Sempre sobra bateria", sub:"Carrego só à noite", bat:["#4CAF50",88], dica:"Então bateria não precisa ser prioridade, e dá para olhar outras coisas."},
     {v:"raspando", l:"Chego no fim do dia raspando", sub:"Mas ainda dá conta", bat:["#E0A030",40], dica:"Anotado: bateria grande e carga rápida sobem na sua lista."},
     {v:"meio", l:"Carrego no meio do dia", sub:"Vivo atrás de tomada", bat:["#D9534F",16], dica:"Bateria vira uma das prioridades da sua escolha."},
     {v:"rua", l:"Passo o dia na rua", sub:"Entrega, motorista, vendas", bat:["#D9534F",4], dica:"Bateria e resistência a queda e água passam a pesar muito."}]},
+  {id:"tamanho", tag:"Tamanho", t:"Qual tamanho de celular você prefere?", sub:"Escolha uma.", max:1, ops:[
+    {v:"compacto", l:"Compacto e leve", ic:"compacto", sub:"Cabe no bolso, dá para usar com uma mão", dica:"Vamos dar preferência para telas até 6,3 polegadas."},
+    {v:"padrao", l:"Tamanho normal", ic:"padrao", sub:"Nem grande nem pequeno", dica:"Anotado: o tamanho não vai pesar muito."},
+    {v:"grande", l:"Tela grande", ic:"grande", sub:"Para ver vídeo e ler melhor", dica:"Telas de 6,7 polegadas ou mais sobem na lista."},
+    {v:"tanto", l:"Tanto faz", ic:"tanto", sub:"O que vier", dica:"Tamanho fora da conta."}]},
   {id:"incomoda", tag:"Seu celular hoje", t:"O que mais te incomoda no seu celular atual?", sub:"Escolha uma.", max:1, ops:[
     {v:"lento", l:"Fica lento", ic:"lento", sub:"Trava e demora para abrir", dica:"Processador mais forte vai fazer diferença no seu dia."},
     {v:"memoria", l:"Memória cheia", ic:"memoria", sub:"Sempre apagando coisa", dica:"Vamos priorizar modelos com 256 GB ou mais."},
     {v:"fotoruim", l:"Fotos ruins", ic:"fotoruim", sub:"Escuras ou sem nitidez", dica:"Câmera ganha peso extra na sua lista."},
     {v:"quebra", l:"Quebra fácil", ic:"quebra", sub:"Tela trincada é rotina", dica:"Resistência a água e poeira vai contar pontos."},
     {v:"nada", l:"Nada, só quero trocar", ic:"ok", sub:"Ou vai ser o primeiro", dica:"Tudo certo. A gente olha o conjunto."}]},
+  {id:"troca", tag:"Tempo de uso", t:"De quanto em quanto tempo você troca de celular?", sub:"Escolha uma.", max:1, lista:true, ops:[
+    {v:"curto", l:"A cada 1 ou 2 anos", ic:"ano1", sub:"Gosto de trocar logo", dica:"Anos de atualização pesam menos para você."},
+    {v:"medio", l:"A cada 3 ou 4 anos", ic:"ano3", sub:"Uso até começar a dar problema", dica:"Atualizações e bateria que envelhece bem passam a contar."},
+    {v:"longo", l:"Só quando quebra", ic:"ano5", sub:"5 anos ou mais", dica:"Vamos priorizar quem recebe atualização por mais tempo e resiste mais."}]},
+  {id:"quem", tag:"Para quem é", t:"Para quem é o celular?", sub:"Escolha uma.", max:1, ops:[
+    {v:"eu", l:"Para mim", ic:"eu", sub:"Uso próprio", dica:"Perfeito, a conta é toda sua."},
+    {v:"pais", l:"Para pai, mãe ou avós", ic:"pais", sub:"Quer simples e que dure", dica:"Tela grande, bateria e resistência ganham peso. Recursos de ponta, menos."},
+    {v:"filho", l:"Para filho ou filha", ic:"filho", sub:"Criança ou adolescente", dica:"Resistência a queda e água e bateria vão pesar mais."},
+    {v:"trabalho", l:"Para o trabalho", ic:"trab", sub:"Celular da firma ou do negócio", dica:"Desempenho e anos de atualização contam mais."}]},
   {id:"sistema", tag:"Sistema", t:"iPhone ou Android?", sub:"Escolha uma.", max:1, ops:[
     {v:"ios", l:"iPhone", ic:"ios", sub:"Só Apple", dica:"Vamos te mostrar só iPhones."},
     {v:"android", l:"Android", ic:"andr", sub:"Samsung, Motorola, Xiaomi", dica:"Vamos olhar todas as marcas Android do catálogo."},
     {v:"tanto", l:"Tanto faz", ic:"tanto", sub:"O que valer mais a pena", dica:"Ótimo: com mais opções, sobra mais chance de achar um bom preço."}]},
-  {id:"orcamento", tag:"Orçamento", t:"Quanto dá para investir?", sub:"Escolha uma faixa.", max:1, lista:true, ops:[
-    {v:1000, l:"Até R$ 1.000", sub:"Básicos que resolvem", niv:1}, {v:2000, l:"R$ 1.000 a R$ 2.000", sub:"Onde mora o custo-benefício", niv:2}, {v:3500, l:"R$ 2.000 a R$ 3.500", sub:"Intermediários caprichados", niv:3},
-    {v:5500, l:"R$ 3.500 a R$ 5.500", sub:"Quase topo de linha", niv:4}, {v:99999, l:"Mais de R$ 5.500", sub:"Topo de linha", niv:5}]},
+  {id:"recursos", se:r=>r.sistema && r.sistema!=="ios", tag:"Não pode faltar", t:"O que não pode faltar no celular?", sub:"Escolha quantos quiser.", max:3, ops:[
+    {v:"google", l:"Apps do Google", ic:"google", sub:"Play Store, backup do WhatsApp, Gmail", dica:"Vamos tirar da lista os celulares que vêm sem os serviços do Google, como os Huawei."},
+    {v:"nfc", l:"Pagar por aproximação", ic:"nfc", sub:"Pix e cartão no celular (NFC)", dica:"Só entram celulares com NFC."},
+    {v:"nada", l:"Nada disso", ic:"ok", sub:"Não faço questão", dica:"Sem filtro extra."}]},
+  {id:"marca", se:r=>r.sistema && r.sistema!=="ios", tag:"Marca", t:"Tem alguma marca preferida?", sub:"Escolha uma.", max:1, ops:[
+    {v:"Samsung", l:"Samsung", ic:"marca", sub:"Galaxy", dica:"Os Samsung ganham uma vantagem no desempate."},
+    {v:"Motorola", l:"Motorola", ic:"marca", sub:"Moto G, Edge e razr", dica:"Os Motorola ganham uma vantagem no desempate."},
+    {v:"Xiaomi", l:"Xiaomi", ic:"marca", sub:"Xiaomi, Redmi e POCO", dica:"Os Xiaomi, Redmi e POCO ganham uma vantagem no desempate."},
+    {v:"nenhuma", l:"Sem preferência", ic:"tanto", sub:"Quero o que for melhor", dica:"Todas as marcas concorrem igual."}]},
+  {id:"orcamento", tag:"Orçamento", t:"Até quanto você pode gastar?", sub:"Arraste até o valor que cabe no seu bolso.", regua:true, max:1, ops:[]},
   {id:"atitude", tag:"Última pergunta", t:"Se dois celulares fizessem tudo o que você precisa, qual você levaria?", sub:"Escolha uma.", max:1, lista:true, ops:[
     {v:"barato", l:"O mais barato", ic:"barato", sub:"E guardo a diferença", dica:"Vamos caçar o que resolve gastando menos."},
     {v:"dura", l:"O que dura mais", ic:"dura", sub:"Para ficar anos com ele", dica:"Anos de atualização e resistência vão pesar mais."},
@@ -1726,71 +1766,125 @@ const GAME_Q = [
 ];
 const GAME_MOT = {redes:"você passa bastante tempo nas redes", videos:"você vê muitos vídeos", fotos:"você tira muitas fotos e vídeos", jogos:"você joga", trabalho:"você trabalha ou estuda nele", basico:"você quer o básico bem feito",
   pessoas:"você tira muitas fotos de pessoas", viagem:"você fotografa lugares e viagens", noite:"você fotografa à noite", postar:"você quer postar vídeos",
-  raspando:"você chega no fim do dia raspando", meio:"você precisa carregar no meio do dia", rua:"você passa o dia na rua",
+  zoom:"você fotografa coisas de longe", pesado:"você joga jogos pesados", medio:"você fica 3 ou 4 anos com o celular", longo:"você só troca quando quebra", pais:"é para pai, mãe ou avós", filho:"é para filho ou filha", raspando:"você chega no fim do dia raspando", meio:"você precisa carregar no meio do dia", rua:"você passa o dia na rua",
   lento:"o seu atual trava", memoria:"você vive com a memória cheia", fotoruim:"as fotos do seu atual não ficam boas", quebra:"o seu atual cai e quebra fácil", dura:"você quer ficar anos com ele"};
 const G_LS = "bs-perfil";
-const G_BASE = {uso:"abertura", registro:"fotos", bateria:"base_bateria", incomoda:"base_incomoda", sistema:"base_sistema", orcamento:"orcamento", atitude:"base_atitude"};
+const G_BASE = {uso:"abertura", registro:"fotos", tipojogo:"jogos", bateria:"base_bateria", tamanho:"base_incomoda", incomoda:"base_incomoda", troca:"base_atitude", quem:"abertura", sistema:"base_sistema", recursos:"base_sistema", marca:"base_sistema", orcamento:"orcamento", atitude:"base_atitude"};
+/* régua de orçamento: de R$ 500 a R$ 10.000; o fim da régua é "sem limite" */
+const G_REG = {min:500, max:10000, passo:100};
+const gNivel = v => v>=99999 ? 5 : v>5000 ? 5 : v>3000 ? 4 : v>2000 ? 3 : v>1000 ? 2 : 1;
+const gFaixa = v => v>=99999 ? "SEM LIMITE" : "ATE " + brl(v).toUpperCase();
 const G_BAT = {sobra:1, raspando:.45, meio:.15, rua:.04};
 const G_FAIXA = {1000:"ATE R$ 1.000", 2000:"ATE R$ 2.000", 3500:"ATE R$ 3.500", 5500:"ATE R$ 5.500", 99999:"SEM LIMITE"};
 const gLer = () => { try{ return JSON.parse(localStorage.getItem(G_LS)); }catch(e){ return null; } };
 const gSalva = v => { try{ v ? localStorage.setItem(G_LS, JSON.stringify(v)) : localStorage.removeItem(G_LS); }catch(e){} };
 
 function gameCalcula(r){
-  const w = {camera:1, bateria:1, desempenho:1, tela:1, atualizacoes:1, durab:.5, mem:.5}, mot = {};
-  const add = (k, n, m) => { w[k] += n; if(m && !mot[k]) mot[k] = m; };
-  const usos = r.uso || [];
+  /* pesos: cada resposta mexe no que importa para a pessoa */
+  const w = {camera:1, bateria:1, desempenho:1, tela:1, atualizacoes:.6, durab:.5, mem:.5, zoom:0, frontal:0}, mot = {};
+  const add = (k, n, m) => { w[k] = Math.max(.2, w[k] + n); if(m && !mot[k] && n > 0) mot[k] = m; };
+  const usos = r.uso || [], reg = r.registro || [];
   for(const u of usos){ const m = GAME_MOT[u];
-    if(u==="redes"){ add("bateria",1,m); add("tela",.5); }
-    if(u==="videos"){ add("tela",2,m); add("bateria",1,m); }
-    if(u==="fotos") add("camera",2.5,m);
-    if(u==="jogos"){ add("desempenho",2.5,m); add("tela",1,m); add("bateria",.5); }
-    if(u==="trabalho"){ add("desempenho",1.5,m); add("atualizacoes",1,m); add("bateria",.5); }
-    if(u==="basico"){ add("bateria",1,m); add("durab",.5,m); } }
-  for(const g of (r.registro||[])){ const m = GAME_MOT[g]; add("camera", g==="noite"?1.5:1, m); if(g==="postar") add("desempenho",.5); }
-  const b = r.bateria; if(b==="raspando") add("bateria",1.5,GAME_MOT[b]); if(b==="meio") add("bateria",3,GAME_MOT[b]); if(b==="rua"){ add("bateria",3.5,GAME_MOT[b]); add("durab",1.5,GAME_MOT[b]); }
+    if(u==="redes"){ add("bateria",1,m); add("tela",.5); add("frontal",.5); }
+    if(u==="videos"){ add("tela",2.5,m); add("bateria",1.5,m); }
+    if(u==="fotos") add("camera",3,m);
+    if(u==="jogos"){ add("desempenho",2,m); add("tela",1,m); add("bateria",.5); }
+    if(u==="trabalho"){ add("desempenho",1.5,m); add("atualizacoes",1.5,m); add("bateria",.5); }
+    if(u==="basico"){ add("bateria",1.5,m); add("durab",1,m); add("desempenho",-.5); add("camera",-.5); } }
+  for(const g of reg){ const m = GAME_MOT[g];
+    if(g==="pessoas"){ add("frontal",2.5,m); add("camera",.5); }
+    if(g==="viagem") add("camera",1.5,m);
+    if(g==="noite") add("camera",2,m);
+    if(g==="postar"){ add("camera",1,m); add("desempenho",.5); }
+    if(g==="zoom") add("zoom",3.5,m); }
+  if(r.tipojogo==="pesado") add("desempenho",3,GAME_MOT.pesado); else if(r.tipojogo==="leve") add("desempenho",-.5);
+  const b = r.bateria; if(b==="sobra") add("bateria",-.5); if(b==="raspando") add("bateria",1.5,GAME_MOT[b]); if(b==="meio") add("bateria",3,GAME_MOT[b]); if(b==="rua"){ add("bateria",3.5,GAME_MOT[b]); add("durab",1.5,GAME_MOT[b]); }
   const i = r.incomoda; if(i==="lento") add("desempenho",2,GAME_MOT[i]); if(i==="memoria") add("mem",2.5,GAME_MOT[i]); if(i==="fotoruim") add("camera",1.5,GAME_MOT[i]); if(i==="quebra") add("durab",2.5,GAME_MOT[i]);
-  const at = r.atitude; if(at==="dura"){ add("atualizacoes",2,GAME_MOT.dura); add("durab",1); } if(at==="bonito") add("tela",1);
-  const alfa = {barato:.55, dura:.25, bonito:.25, melhor:.05}[at] ?? .3;
-  const teto = +r.orcamento || 99999;
-  const nota = c => {
+  const tr = r.troca; if(tr==="curto") add("atualizacoes",-.6); if(tr==="medio") add("atualizacoes",1.5,GAME_MOT.medio); if(tr==="longo"){ add("atualizacoes",3,GAME_MOT.longo); add("durab",1); }
+  const qm = r.quem; if(qm==="pais"){ add("bateria",1,GAME_MOT.pais); add("durab",1); add("tela",.5); add("desempenho",-.5); add("camera",-.3); }
+  if(qm==="filho"){ add("durab",2,GAME_MOT.filho); add("bateria",.5); } if(qm==="trabalho"){ add("atualizacoes",1,GAME_MOT.trabalho); add("desempenho",1); }
+  const at = r.atitude; if(at==="dura"){ add("atualizacoes",3,GAME_MOT.dura); add("durab",1.5); } if(at==="bonito") add("tela",1);
+  const teto = +r.orcamento || 99999, semTeto = teto >= 99999;
+
+  /* catálogo que cabe nas regras duras (sistema, Google, NFC, dobrável) */
+  const rec = r.recursos || [];
+  const okBase = c => {
+    if(!c.preco || c.br === false) return false;
+    if(r.sistema==="ios" && c.marca!=="Apple") return false;
+    if(r.sistema==="android" && c.marca==="Apple") return false;
+    if(rec.includes("google") && c.marca==="Huawei") return false;
+    if(rec.includes("nfc") && !/^Sim/.test(c.nfc||"")) return false;
+    if(c.formato==="dobravel" && (!["bonito","melhor"].includes(at) || qm==="pais" || qm==="filho")) return false;
+    return true;
+  };
+  const brutas = c => {
     const n = notasCat(c), pr = c.prot||"";
     const durab = (/IP69/.test(pr)?10:/IP68/.test(pr)?9:/IP67/.test(pr)?7.5:/IP6|IP5/.test(pr)?5:3);
     const mx = Math.max(...(c.armaz||[128])), mem = mx>=512?10:mx>=256?8.5:mx>=128?6:3;
-    const s = {camera:n.camera, bateria:n.bateria, desempenho:n.desempenho, tela:n.tela, atualizacoes:n.atualizacoes, durab, mem};
-    let soma = 0, pw = 0; for(const k in w){ soma += w[k]*s[k]; pw += w[k]; }
-    let fit = soma/pw;
-    if(at==="bonito" || at==="melhor") fit += c.seg==="topo" ? .5 : 0;
-    if(at==="bonito" && c.formato==="dobravel") fit += .4;
-    if(usos.includes("postar") || (r.registro||[]).includes("postar")) fit += /60\s*fps|8K/i.test(c.video||"") ? .3 : 0;
-    const q = .7*fit + .3*(n.critica != null ? n.critica : fit);
-    return {c, s, q, preco:c.preco, u: q / Math.pow(c.preco/1000, alfa)};
+    const tel = (c.cams||[]).filter(x=>/tele|periscope/i.test(x)), peri = tel.some(x=>/periscope/i.test(x));
+    const zoom = tel.length ? Math.min(10, 5 + tel.length*1.5 + (peri?2:0) + (/OIS/i.test(tel.join(" "))?.5:0)) : 1;
+    const fmp = +(String(c.frontal||"").match(/(\d+)\s*MP/i)||[0,0])[1], frontal = Math.min(10, 2 + fmp/6 + (/4K/i.test(String(c.frontal||""))?1:0));
+    /* sem dado de atualização no catálogo: usa a política conhecida da marca, para não punir quem só não informou */
+    const updEst = {Motorola:[2,3], Redmi:[3,4], POCO:[3,4], Xiaomi:[4,5], Huawei:[2,3]}[c.marca];
+    const atualizacoes = !c.upd && updEst ? clamp(updEst[0]*.9 + updEst[1]*.6) : n.atualizacoes;
+    return {n, raw:{camera:n.camera, bateria:n.bateria, desempenho:n.desempenho, tela:n.tela, atualizacoes, durab, mem, zoom, frontal}};
   };
-  let base = CAT().filter(c=>c.preco && c.br !== false);
-  if(r.sistema==="ios") base = base.filter(c=>c.marca==="Apple"); else if(r.sistema==="android") base = base.filter(c=>c.marca!=="Apple");
-  if(!["bonito","melhor"].includes(at)) base = base.filter(c=>c.formato!=="dobravel");
-  const todos = base.map(nota);
+  const cat = CAT().filter(okBase).map(c=>Object.assign({c}, brutas(c)));
+  /* notas relativas: posição de cada aparelho no catálogo (0 a 10), misturada com a nota absoluta.
+     Assim uma diferença pequena de ficha vira diferença real na escolha. */
+  const ks = Object.keys(w), ord = {};
+  for(const k of ks){ const v = cat.map(x=>x.raw[k]).sort((a,b)=>a-b); ord[k] = v; }
+  const pct = (k, v) => { const a = ord[k]; if(a.length < 2) return 5; let lo = 0; while(lo < a.length && a[lo] < v) lo++; let hi = lo; while(hi < a.length && a[hi] === v) hi++; return 10 * ((lo + hi - 1)/2) / (a.length - 1); };
+  const prefMarca = r.marca && r.marca!=="nenhuma" ? (r.marca==="Xiaomi" ? ["Xiaomi","Redmi","POCO"] : [r.marca]) : null;
+  const nota = x => {
+    const c = x.c, s = {};
+    for(const k of ks) s[k] = .5*x.raw[k] + .5*pct(k, x.raw[k]);
+    /* peso ao quadrado: o que a pessoa disse que importa domina a conta */
+    let soma = 0, pw = 0; for(const k of ks){ const wk = w[k]*w[k]; soma += wk*s[k]; pw += wk; }
+    let fit = soma/pw;
+    const pol = (c.tela||{}).pol || 6.5;
+    if(r.tamanho==="compacto") fit += pol <= 6.3 ? .8 : pol >= 6.7 ? -.8 : 0;
+    if(r.tamanho==="grande") fit += pol >= 6.7 ? .6 : pol <= 6.3 ? -.6 : 0;
+    if(qm==="pais" && pol >= 6.6) fit += .3;
+    if(at==="bonito" || at==="melhor") fit += c.seg==="topo" ? .4 : 0;
+    if(at==="bonito" && c.formato==="dobravel") fit += .4;
+    if(prefMarca && prefMarca.includes(c.marca)) fit += .5;
+    const q = .85*fit + .15*(x.n.critica != null ? x.n.critica : fit);
+    return {c, s, q, preco:c.preco};
+  };
+  const todos = cat.map(nota);
+
+  /* orçamento: o match sai de perto do valor da régua, não do mais barato que existe.
+     O preço só pesa de verdade para quem escolheu "o mais barato". */
   let dentro = todos.filter(x=>x.preco <= teto*1.05), fora = false;
   if(!dentro.length){ fora = true; dentro = todos.slice().sort((a,b)=>a.preco-b.preco).slice(0,3); }
-  /* o match é o mais barato que chega perto do melhor do orçamento; quanto mais "quero o topo", menor a folga */
-  const qTop = Math.max(...dentro.map(x=>x.q)), qMin = Math.min(...dentro.map(x=>x.q));
-  const folga = {barato:.9, melhor:.05}[at] ?? .4;
-  const match = dentro.filter(x=>x.q >= qTop - folga).sort((a,b)=> at==="melhor" ? b.q-a.q : a.preco-b.preco)[0];
-  match.pct = Math.round(qTop > qMin ? 72 + 26*(match.q-qMin)/(qTop-qMin) : 92);
-  const outraMarca = x => r.sistema==="tanto" && x.c.marca!==match.c.marca ? .15 : 0;
+  let match;
+  if(at==="barato"){
+    const ref = semTeto ? 6000 : teto;
+    match = dentro.map(x=>Object.assign(x,{u: x.q - 2.6*x.preco/ref})).sort((a,b)=>b.u-a.u)[0];
+  } else {
+    const piso = semTeto ? (at==="melhor" ? 0 : 4500) : teto * (at==="melhor" ? .7 : .55);
+    let faixa = dentro.filter(x=>x.preco >= piso);
+    if(faixa.length < 3) faixa = dentro.slice().sort((a,b)=>b.preco-a.preco).slice(0, Math.max(3, faixa.length));
+    const qTop = Math.max(...faixa.map(x=>x.q));
+    match = faixa.filter(x=>x.q >= qTop - .03).sort((a,b)=>a.preco-b.preco)[0];   /* empate técnico: fica com o mais barato */
+  }
+  const qMax = Math.max(...dentro.map(x=>x.q)), qMin = Math.min(...dentro.map(x=>x.q));
+  match.pct = Math.round(qMax > qMin ? 72 + 26*(match.q-qMin)/(qMax-qMin) : 92);
+  const outraMarca = x => r.sistema!=="ios" && x.c.marca!==match.c.marca ? .15 : 0;
   const usados = new Set([match.c.id]);
   const pega = (lista, chave) => { const x = lista.filter(y=>!usados.has(y.c.id)).sort((a,b)=>chave(b)-chave(a))[0]; if(x) usados.add(x.c.id); return x; };
   let ecoTipo = "eco", maisTipo = "mais", eco, mais;
-  if(fora && r.sistema==="ios"){ eco = pega(CAT().filter(c=>c.preco && c.br!==false && c.marca!=="Apple" && c.formato!=="dobravel").map(nota).filter(x=>x.preco<=teto), x=>x.q); ecoTipo = "android"; }
+  if(fora && r.sistema==="ios"){ eco = pega(CAT().filter(c=>c.preco && c.br!==false && c.marca!=="Apple" && c.formato!=="dobravel").map(c=>nota(Object.assign({c}, brutas(c)))).filter(x=>x.preco<=teto), x=>x.q); ecoTipo = "android"; }
   else eco = pega(todos.filter(x=>x.preco <= match.preco*.85 && x.q >= match.q - 1.2), x=>x.q + outraMarca(x));
-  const tetoMais = teto < 99999 ? Math.max(teto*1.35, match.preco*1.15) : match.preco*1.6;
+  const tetoMais = semTeto ? match.preco*1.6 : Math.max(teto*1.3, match.preco*1.15);
   mais = pega(todos.filter(x=>x.preco > match.preco && x.preco <= tetoMais && x.q > match.q + .15), x=>x.q - .3*x.preco/match.preco + outraMarca(x));
   if(!eco){ eco = pega(dentro.filter(x=>x.c.marca!==match.c.marca || r.sistema==="ios"), x=>x.q + outraMarca(x)); ecoTipo = "outra"; }
   if(!mais){ mais = pega(dentro, x=>x.q + outraMarca(x)); maisTipo = "outra"; }
-  /* para quem quer o topo: o mais barato que já dá conta do uso descrito */
   const basta = at==="melhor" ? todos.filter(x=>x.preco < match.preco*.8 && x.q >= match.q - .9).sort((a,b)=>a.preco-b.preco)[0] : null;
   return {match, eco, mais, ecoTipo, maisTipo, w, mot, fora, teto, basta};
 }
-const G_ROT = {camera:"câmera", bateria:"bateria", desempenho:"desempenho", tela:"tela", atualizacoes:"anos de atualização", durab:"resistência", mem:"armazenamento"};
+const G_ROT = {camera:"câmera", bateria:"bateria", desempenho:"desempenho", tela:"tela", atualizacoes:"anos de atualização", durab:"resistência", mem:"armazenamento", zoom:"zoom", frontal:"câmera de selfie"};
 function gameMotivos(x, w, mot){
   const c = x.c, s = x.s, mil = n => Number(n).toLocaleString("pt-BR");
   const txt = {
@@ -1800,8 +1894,10 @@ function gameMotivos(x, w, mot){
     tela:()=>`Tela de ${String(c.tela.pol).replace(".",",")}" a ${c.tela.hz||60} Hz`,
     atualizacoes:()=>`Atualizações: ${esc(c.upd)}`,
     durab:()=>`Resistente a água e poeira (${esc(c.prot)})`,
-    mem:()=>`Versões de até ${Math.max(...(c.armaz||[128]))} GB`};
-  const fortes = Object.keys(txt).filter(k=>(k!=="durab" || c.prot) && (k!=="atualizacoes" || c.upd));
+    mem:()=>`Versões de até ${Math.max(...(c.armaz||[128]))} GB`,
+    zoom:()=>`Câmera com zoom óptico (${(c.cams||[]).filter(x=>/tele|periscope/i.test(x)).length} teleobjetiva${(c.cams||[]).filter(x=>/tele|periscope/i.test(x)).length>1?"s":""})`,
+    frontal:()=>`Câmera de selfie de ${esc(String(c.frontal||"").split("·")[0].trim())}`};
+  const fortes = Object.keys(txt).filter(k=>(k!=="durab" || c.prot) && (k!=="atualizacoes" || c.upd) && (k!=="zoom" || s.zoom >= 5) && (k!=="frontal" || c.frontal) && w[k] > 0);
   const boas = fortes.filter(k=>s[k] >= 6.5 || (w[k] >= 2.5 && s[k] >= 4.5));
   const prio = fortes.slice().sort((a,b)=>w[b]-w[a])[0];   /* o que mais pesa nas respostas sempre aparece */
   const resto = (boas.length >= 2 ? boas : fortes).filter(k=>k!==prio).sort((a,b)=> ((w[b]-1)*s[b] + s[b]*.3) - ((w[a]-1)*s[a] + s[a]*.3));
@@ -1837,7 +1933,7 @@ function gameAbre(forcar){
   const cena = (nome, st) => { anim.cv = box.querySelector(".gm-cena canvas"); if(nome !== anim.cena) anim.t0 = performance.now(); anim.cena = nome; anim.st = st;
     if(reduz){ passoAnim(performance.now()); } else if(!anim.raf) anim.raf = requestAnimationFrame(passoAnim); };
   const estado = extra => { const qs = visiveis(), feitas = qs.filter(q=>r[q.id]!==undefined && [].concat(r[q.id]).length).length;
-    return Object.assign({av:r.av||"girl", bat: G_BAT[r.bateria] ?? 1, moedas: PIX.NIVEL[r.orcamento]||0, faixa: G_FAIXA[r.orcamento], match: Math.min(.9, feitas/(qs.length||6)*.9)}, extra||{}); };
+    return Object.assign({av:r.av||"girl", bat: G_BAT[r.bateria] ?? 1, moedas: r.orcamento ? gNivel(+r.orcamento) : 0, faixa: r.orcamento ? gFaixa(+r.orcamento) : "", match: Math.min(.9, feitas/(qs.length||6)*.9)}, extra||{}); };
   const fecha = () => { cancelAnimationFrame(anim.raf); anim.raf = 0; f.remove(); document.documentElement.classList.remove("gm-on"); document.removeEventListener("keydown", tecla); try{ if(!gLer()) localStorage.setItem("bs-game","visto"); }catch(e){} document.dispatchEvent(new Event("bs-game-fim")); if(volta && volta.focus) volta.focus(); };
   const tecla = e => { if(e.key==="Escape") fecha(); };
   document.addEventListener("keydown", tecla);
@@ -1848,9 +1944,9 @@ function gameAbre(forcar){
   const intro = () => {
     box.innerHTML = `${X}<div class="gm-intro">
       <div class="gm-cena gm-cena-intro"><canvas width="${PIX.W}" height="${PIX.H}" aria-hidden="true"></canvas></div>
-      <div><span class="gm-k">Game · 1 minuto</span><h2 id="gmT">Qual celular combina com você?</h2>
+      <div><span class="gm-k">Game · 2 minutos</span><h2 id="gmT">Qual celular combina com você?</h2>
       <p class="gm-sub">Responda umas perguntas rápidas sobre o seu dia a dia. Assim a gente entende do que você precisa e passa a te mostrar os modelos e as ofertas que fazem sentido para você, sempre que voltar.</p>
-      <ul class="gm-lista"><li><span class="d">7</span><span><b>Até 7 perguntas rápidas</b>, uma por tela</span></li><li><span class="d">✓</span><span>Toque nos cards, sem digitar nada</span></li><li><span class="d">★</span><span>No fim: o seu match e mais duas opções</span></li></ul>
+      <ul class="gm-lista"><li><span class="d">10</span><span><b>Umas 10 perguntas rápidas</b>, uma por tela</span></li><li><span class="d">✓</span><span>Toque nos cards, sem digitar nada</span></li><li><span class="d">★</span><span>No fim: o seu match e mais duas opções</span></li></ul>
       <div class="gm-acoes"><button type="button" class="gm-b ouro" data-a="ir">Bora jogar →</button><button type="button" class="gm-b txt" data-a="nao">Agora não</button></div>
       <p class="gm-priv">🔒 Suas respostas ficam salvas só neste aparelho. Dá para refazer quando quiser pelo menu.</p></div></div>`;
     liga(); cena("abertura", estado()); box.querySelector('[data-a="ir"]').onclick = escolhe; box.querySelector('[data-a="nao"]').onclick = fecha;
@@ -1875,6 +1971,7 @@ function gameAbre(forcar){
     const opHTML = o => { const on = sel.includes(o.v);
       const vis = o.bat ? bateriaIco(o.bat[0], o.bat[1]) : o.niv ? nivel(o.niv) : `<span class="gm-ic">${GIC[o.ic]}</span>`;
       return `<button type="button" class="gm-card${on?" on":""}" aria-pressed="${on}" data-v="${o.v}">${vis}<span>${esc(o.l)}${o.sub?`<small>${esc(o.sub)}</small>`:""}</span></button>`; };
+    if(q.regua) return regua(q, qs, tot);
     const ult = q.ops.find(o=>o.v===sel[sel.length-1]);
     box.innerHTML = `${X}<div class="gm-top"><div class="gm-prog" style="--n:${tot}">${Array.from({length:tot},(_,i)=>`<i class="${i<passo?"ok":i===passo?"at":""}"></i>`).join("")}</div><span class="gm-n">${passo+1} de ${tot}</span></div>
       <div class="gm-cab"><div class="gm-cena"><canvas width="${PIX.W}" height="${PIX.H}" role="img" aria-label="Cena ilustrada da sua resposta"></canvas></div>
@@ -1890,10 +1987,41 @@ function gameAbre(forcar){
       if(q.max===1) r[q.id] = v;
       else { let a = [].concat(r[q.id]||[]); a = a.includes(v) ? a.filter(x=>x!==v) : a.concat(v); if(a.length > q.max) a.shift(); r[q.id] = a; }
       if(q.id==="uso" && !(r.uso||[]).includes("fotos")) delete r.registro;
+      if(q.id==="uso" && !(r.uso||[]).includes("jogos")) delete r.tipojogo;
+      if(q.id==="recursos") r.recursos = v==="nada" ? (sel.includes("nada") ? [] : ["nada"]) : [].concat(r.recursos||[]).filter(x=>x!=="nada");
       const top = box.scrollTop; pergunta(); box.scrollTop = top; anim.t0 = performance.now();
       const d = box.querySelector(".gm-dica"); if(d && o.dica && [].concat(r[q.id]).includes(v)){ d.hidden = false; d.lastChild.textContent = o.dica; }
     });
     box.querySelector('[data-a="volta"]').onclick = ()=>{ if(passo===0) escolhe(); else { passo--; pergunta(); } };
+    box.querySelector('[data-a="seg"]').onclick = ()=>{ if(passo < visiveis().length-1){ passo++; pergunta(); } else { const res = gameCalcula(r); gSalva({r, data:new Date().toISOString()}); resultado(res); } };
+  };
+  /* pergunta do orçamento: régua com o valor exato */
+  const regua = (q, qs, tot) => {
+    const sem = +r.orcamento >= 99999;
+    let v = sem ? G_REG.max : Math.min(G_REG.max, Math.max(G_REG.min, +r.orcamento || 2000));
+    const txt = x => x >= G_REG.max ? "Sem limite" : "Até " + brl(x);
+    const sub = x => x >= G_REG.max ? "Topo de linha e dobráveis entram na conta" : x <= 1000 ? "Básicos que resolvem" : x <= 2000 ? "Onde mora o custo-benefício" : x <= 3000 ? "Intermediários caprichados" : x <= 5000 ? "Quase topo de linha" : "Topo de linha";
+    const nCab = x => CAT().filter(c=>c.preco && c.br!==false && (x >= G_REG.max || c.preco <= x*1.05) && (r.sistema!=="ios" || c.marca==="Apple") && (r.sistema!=="android" || c.marca!=="Apple")).length;
+    box.innerHTML = `${X}<div class="gm-top"><div class="gm-prog" style="--n:${tot}">${Array.from({length:tot},(_,i)=>`<i class="${i<passo?"ok":i===passo?"at":""}"></i>`).join("")}</div><span class="gm-n">${passo+1} de ${tot}</span></div>
+      <div class="gm-cab"><div class="gm-cena"><canvas width="${PIX.W}" height="${PIX.H}" role="img" aria-label="Cena ilustrada do seu orçamento"></canvas></div>
+      <div class="gm-tit"><span class="gm-k">${esc(q.tag)}</span><h2 id="gmT">${esc(q.t)}</h2><p class="gm-sub">${esc(q.sub)}</p></div></div>
+      <div class="gm-regua"><output class="gm-rv" for="gmR"></output><span class="gm-rs"></span>
+        <input id="gmR" type="range" min="${G_REG.min}" max="${G_REG.max}" step="${G_REG.passo}" value="${v}" aria-label="Até quanto você pode gastar">
+        <div class="gm-rl"><span>${brl(G_REG.min)}</span><span>${brl(5000)}</span><span>Sem limite</span></div>
+        <div class="gm-ratalhos">${[1000,1500,2000,3000,5000].map(x=>`<button type="button" class="gm-rat" data-x="${x}">${brl(x)}</button>`).join("")}</div>
+        <p class="gm-rc"></p></div>
+      <div class="gm-pe"><button type="button" class="gm-b lin" data-a="volta">← Voltar</button><span class="gm-hint"></span><button type="button" class="gm-b ouro" data-a="seg">${passo < visiveis().length-1 ? "Continuar →" : "Ver meu resultado →"}</button></div>`;
+    liga();
+    const inp = box.querySelector("#gmR");
+    const mostra = () => { const x = +inp.value; r.orcamento = x >= G_REG.max ? 99999 : x;
+      box.querySelector(".gm-rv").textContent = txt(x); box.querySelector(".gm-rs").textContent = sub(x);
+      const n = nCab(x); box.querySelector(".gm-rc").textContent = `${n} ${n===1?"celular cabe":"celulares cabem"} nesse valor`;
+      inp.style.setProperty("--p", ((x-G_REG.min)/(G_REG.max-G_REG.min)*100)+"%");
+      cena("orcamento", estado()); };
+    inp.addEventListener("input", mostra);
+    box.querySelectorAll(".gm-rat").forEach(b=>b.onclick = ()=>{ inp.value = b.dataset.x; mostra(); });
+    mostra();
+    box.querySelector('[data-a="volta"]').onclick = ()=>{ passo--; pergunta(); };
     box.querySelector('[data-a="seg"]').onclick = ()=>{ if(passo < visiveis().length-1){ passo++; pergunta(); } else { const res = gameCalcula(r); gSalva({r, data:new Date().toISOString()}); resultado(res); } };
   };
   const resumo = () => {
