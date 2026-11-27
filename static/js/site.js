@@ -1698,6 +1698,9 @@ const GIC = {
   filho:GSV('<circle cx="12" cy="9" r="3"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0"/><path d="M9 3.5l3 2 3-2"/>'),
   google:GSV('<path d="M20.5 12.2c0-.6-.1-1.2-.2-1.7H12v3.3h4.8a4.1 4.1 0 0 1-1.8 2.7v2.2h2.9c1.7-1.6 2.6-3.9 2.6-6.5z"/><path d="M12 21c2.4 0 4.5-.8 5.9-2.2L15 16.5c-.8.5-1.8.9-3 .9a5.3 5.3 0 0 1-5-3.6H4v2.3A9 9 0 0 0 12 21z"/><path d="M7 13.8a5.3 5.3 0 0 1 0-3.6V7.9H4a9 9 0 0 0 0 8.2z"/><path d="M12 6.6c1.3 0 2.5.5 3.4 1.3l2.6-2.6A9 9 0 0 0 4 7.9l3 2.3a5.3 5.3 0 0 1 5-3.6z"/>'),
   nfc:GSV('<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/><path d="M17 2.5a5 5 0 0 1 0 5"/>'),
+  raio:GSV('<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'),
+  peso:GSV('<path d="M6 8h12l2 12H4z"/><circle cx="12" cy="5" r="2"/>'),
+  pena:GSV('<path d="M20 4c-8 0-14 5-14 13v3"/><path d="M20 4c0 7-4 12-11 12M10 12h5"/>'),
   marca:GSV('<path d="M3 12l9-9 9 9-9 9z"/><circle cx="12" cy="12" r="2.5"/>')
 };
 const nivel = n => `<span class="gm-nivel" aria-hidden="true">${[1,2,3,4,5].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`;
@@ -1719,11 +1722,15 @@ const GAME_Q = [
   {id:"tipojogo", se:r=>(r.uso||[]).includes("jogos"), tag:"Jogos", t:"Que tipo de jogo você joga?", sub:"Escolha uma.", max:1, ops:[
     {v:"leve", l:"Leves", ic:"leve", sub:"Roblox, Free Fire, Candy Crush", dica:"Quase todo intermediário roda bem. Não precisa pagar por um processador de ponta."},
     {v:"pesado", l:"Pesados, no gráfico alto", ic:"pesado", sub:"COD, Genshin, PUBG", dica:"Processador forte e boa refrigeração viram prioridade."}]},
-  {id:"bateria", tag:"Bateria", t:"Quanto tempo o celular passa longe da tomada?", sub:"Escolha uma.", max:1, lista:true, ops:[
-    {v:"sobra", l:"Sempre sobra bateria", sub:"Carrego só à noite", bat:["#4CAF50",88], dica:"Então bateria não precisa ser prioridade, e dá para olhar outras coisas."},
-    {v:"raspando", l:"Chego no fim do dia raspando", sub:"Mas ainda dá conta", bat:["#E0A030",40], dica:"Anotado: bateria grande e carga rápida sobem na sua lista."},
-    {v:"meio", l:"Carrego no meio do dia", sub:"Vivo atrás de tomada", bat:["#D9534F",16], dica:"Bateria vira uma das prioridades da sua escolha."},
-    {v:"rua", l:"Passo o dia na rua", sub:"Entrega, motorista, vendas", bat:["#D9534F",4], dica:"Bateria e resistência a queda e água passam a pesar muito."}]},
+  {id:"bateria", tag:"Bateria", t:"Quanto a bateria precisa aguentar?", sub:"Pense no seu dia mais corrido. Escolha uma.", max:1, lista:true, ops:[
+    {v:"dia", l:"Um dia normal", sub:"Carrego à noite e tudo bem", bat:["#E0A030",45], dica:"Boa notícia: quase todo celular de hoje faz isso. Bateria não vai decidir a sua escolha."},
+    {v:"folga", l:"O dia inteiro com folga", sub:"Sem ficar de olho na porcentagem", bat:["#4CAF50",72], dica:"Anotado: só entram com força os que chegam à noite com sobra no seu uso."},
+    {v:"dois", l:"Dois dias sem carregar", sub:"Ou um dia muito puxado, na rua", bat:["#4CAF50",100], dica:"Aí precisa de bateria grande de verdade. Vamos ver se cabe no seu bolso."},
+    {v:"tanto", l:"Tanto faz", sub:"Se carregar rápido, resolve", ic:"raio", dica:"Então carga rápida conta mais do que o tamanho da bateria."}]},
+  {id:"batroca", se:r=>["folga","dois"].includes(r.bateria), tag:"Bateria", t:"Bateria grande pesa. O que você prefere?", sub:"Celular com bateria gigante costuma passar de 200 g. Escolha uma.", max:1, lista:true, ops:[
+    {v:"pesado", l:"Topo um celular mais pesado", ic:"peso", sub:"Bateria em primeiro lugar", dica:"Fechado: peso não vai contar contra."},
+    {v:"leve", l:"Prefiro um celular leve", ic:"pena", sub:"Até uns 190 g", dica:"Vamos equilibrar: bateria que dá conta, sem tijolo no bolso."},
+    {v:"rapida", l:"Prefiro carga rápida", ic:"raio", sub:"Meia hora na tomada e pronto", dica:"Carga rápida passa a contar tanto quanto o tamanho da bateria."}]},
   {id:"tamanho", tag:"Tamanho", t:"Qual tamanho de celular você prefere?", sub:"Escolha uma.", max:1, ops:[
     {v:"compacto", l:"Compacto e leve", ic:"compacto", sub:"Cabe no bolso, dá para usar com uma mão", dica:"Vamos dar preferência para telas até 6,3 polegadas."},
     {v:"padrao", l:"Tamanho normal", ic:"padrao", sub:"Nem grande nem pequeno", dica:"Anotado: o tamanho não vai pesar muito."},
@@ -1766,15 +1773,28 @@ const GAME_Q = [
 ];
 const GAME_MOT = {redes:"você passa bastante tempo nas redes", videos:"você vê muitos vídeos", fotos:"você tira muitas fotos e vídeos", jogos:"você joga", trabalho:"você trabalha ou estuda nele", basico:"você quer o básico bem feito",
   pessoas:"você tira muitas fotos de pessoas", viagem:"você fotografa lugares e viagens", noite:"você fotografa à noite", postar:"você quer postar vídeos",
-  zoom:"você fotografa coisas de longe", pesado:"você joga jogos pesados", medio:"você fica 3 ou 4 anos com o celular", longo:"você só troca quando quebra", pais:"é para pai, mãe ou avós", filho:"é para filho ou filha", raspando:"você chega no fim do dia raspando", meio:"você precisa carregar no meio do dia", rua:"você passa o dia na rua",
+  zoom:"você fotografa coisas de longe", pesado:"você joga jogos pesados", medio:"você fica 3 ou 4 anos com o celular", longo:"você só troca quando quebra", pais:"é para pai, mãe ou avós", filho:"é para filho ou filha", folga:"você quer chegar à noite com folga", dois:"você quer dois dias longe da tomada", tanto:"para você, carregar rápido resolve", rapida:"você prefere carga rápida",
   lento:"o seu atual trava", memoria:"você vive com a memória cheia", fotoruim:"as fotos do seu atual não ficam boas", quebra:"o seu atual cai e quebra fácil", dura:"você quer ficar anos com ele"};
 const G_LS = "bs-perfil";
-const G_BASE = {uso:"abertura", registro:"fotos", tipojogo:"jogos", bateria:"base_bateria", tamanho:"base_incomoda", incomoda:"base_incomoda", troca:"base_atitude", quem:"abertura", sistema:"base_sistema", recursos:"base_sistema", marca:"base_sistema", orcamento:"orcamento", atitude:"base_atitude"};
+const G_BASE = {uso:"abertura", registro:"fotos", tipojogo:"jogos", bateria:"base_bateria", batroca:"base_bateria", tamanho:"base_incomoda", incomoda:"base_incomoda", troca:"base_atitude", quem:"abertura", sistema:"base_sistema", recursos:"base_sistema", marca:"base_sistema", orcamento:"orcamento", atitude:"base_atitude"};
 /* régua de orçamento: de R$ 500 a R$ 10.000; o fim da régua é "sem limite" */
 const G_REG = {min:500, max:10000, passo:100};
 const gNivel = v => v>=99999 ? 5 : v>5000 ? 5 : v>3000 ? 4 : v>2000 ? 3 : v>1000 ? 2 : 1;
 const gFaixa = v => v>=99999 ? "SEM LIMITE" : "ATE " + brl(v).toUpperCase();
-const G_BAT = {sobra:1, raspando:.45, meio:.15, rua:.04};
+const G_BAT = {dia:.6, folga:.3, dois:.1, tanto:.5, sobra:1, raspando:.45, meio:.15, rua:.04};
+/* respostas salvas na versão anterior da pergunta de bateria */
+const G_BAT_ANT = {sobra:"dia", raspando:"folga", meio:"folga", rua:"dois"};
+/* autonomia estimada em dias de uso: mAh ajustado pela eficiência do processador, pelo sistema e pelo tamanho da tela.
+   Um Android intermediário de 5.000 mAh dá ≈ 1,3 dia. É estimativa, não teste de laboratório. */
+const gEfic = c => { const ch = String(c.chip||"");
+  if(c.marca==="Apple") return /A1[6]/.test(ch) ? 1.25 : /A17/.test(ch) ? 1.3 : /A18/.test(ch) ? 1.35 : 1.45;
+  if(/8 Elite|8 Gen 5|Exynos 2[56]00|Dimensity 9[3-9]|Kirin 9/i.test(ch)) return 1.12;
+  if(/Dimensity [78]\d{3}|Snapdragon 7|7s Gen|6s? Gen [345]|Exynos 1[4-6]80|Exynos 2400/i.test(ch)) return 1.05;
+  return .95; };
+const gDias = c => { const pol = (c.tela||{}).pol || 6.5, dobra = c.formato==="dobravel" || pol >= 7.5;
+  return (c.bat||4000) * gEfic(c) * Math.sqrt(6.5/Math.min(7, Math.max(6, pol))) * (dobra ? .85 : 1) / 3900; };
+const gDiasTxt = d => d < 1.15 ? "1 dia" : `${String(Math.round(d*10)/10).replace(".",",")} ${d >= 1.95 ? "dias" : "dia"}`;
+const G_META = {dia:1, folga:1.25, dois:1.75, tanto:.95};
 const G_FAIXA = {1000:"ATE R$ 1.000", 2000:"ATE R$ 2.000", 3500:"ATE R$ 3.500", 5500:"ATE R$ 5.500", 99999:"SEM LIMITE"};
 const gLer = () => { try{ return JSON.parse(localStorage.getItem(G_LS)); }catch(e){ return null; } };
 const gSalva = v => { try{ v ? localStorage.setItem(G_LS, JSON.stringify(v)) : localStorage.removeItem(G_LS); }catch(e){} };
@@ -1798,7 +1818,11 @@ function gameCalcula(r){
     if(g==="postar"){ add("camera",1,m); add("desempenho",.5); }
     if(g==="zoom") add("zoom",3.5,m); }
   if(r.tipojogo==="pesado") add("desempenho",3,GAME_MOT.pesado); else if(r.tipojogo==="leve") add("desempenho",-.5);
-  const b = r.bateria; if(b==="sobra") add("bateria",-.5); if(b==="raspando") add("bateria",1.5,GAME_MOT[b]); if(b==="meio") add("bateria",3,GAME_MOT[b]); if(b==="rua"){ add("bateria",3.5,GAME_MOT[b]); add("durab",1.5,GAME_MOT[b]); }
+  /* bateria é meta a cumprir: o peso diz o quanto importa bater a meta, não "quanto maior, melhor" */
+  const b = G_BAT_ANT[r.bateria] || r.bateria, bt = r.batroca;
+  if(b==="dia") add("bateria",-.3); if(b==="folga") add("bateria",1.5,GAME_MOT.folga); if(b==="dois") add("bateria",2.5,GAME_MOT.dois); if(b==="tanto") add("bateria",.5,GAME_MOT.tanto);
+  if(bt==="pesado") add("bateria",.5); if(bt==="leve") add("bateria",-1); if(bt==="rapida") mot.bateria = mot.bateria || GAME_MOT.rapida;
+  const meta = bt==="leve" ? Math.min(G_META[b] || 1, 1.25) : (G_META[b] || 1), pesoCarga = (b==="tanto" || bt==="rapida") ? .45 : .15;
   const i = r.incomoda; if(i==="lento") add("desempenho",2,GAME_MOT[i]); if(i==="memoria") add("mem",2.5,GAME_MOT[i]); if(i==="fotoruim") add("camera",1.5,GAME_MOT[i]); if(i==="quebra") add("durab",2.5,GAME_MOT[i]);
   const tr = r.troca; if(tr==="curto") add("atualizacoes",-.6); if(tr==="medio") add("atualizacoes",1.5,GAME_MOT.medio); if(tr==="longo"){ add("atualizacoes",3,GAME_MOT.longo); add("durab",1); }
   const qm = r.quem; if(qm==="pais"){ add("bateria",1,GAME_MOT.pais); add("durab",1); add("tela",.5); add("desempenho",-.5); add("camera",-.3); }
@@ -1827,7 +1851,10 @@ function gameCalcula(r){
     /* sem dado de atualização no catálogo: usa a política conhecida da marca, para não punir quem só não informou */
     const updEst = {Motorola:[2,3], Redmi:[3,4], POCO:[3,4], Xiaomi:[4,5], Huawei:[2,3]}[c.marca];
     const atualizacoes = !c.upd && updEst ? clamp(updEst[0]*.9 + updEst[1]*.6) : n.atualizacoes;
-    return {n, raw:{camera:n.camera, bateria:n.bateria, desempenho:n.desempenho, tela:n.tela, atualizacoes, durab, mem, zoom, frontal}};
+    const dias = gDias(c), carga = c.carga || (c.marca==="Apple" ? 25 : 18);
+    const aut = dias >= meta ? 8 + 2*(1 - Math.exp(-(dias-meta)/.35)) : 8*Math.pow(dias/meta, 3);
+    const bateria = (1-pesoCarga)*aut + pesoCarga*clamp(10*Math.log10(carga/10), 0, 10);
+    return {n, dias, raw:{camera:n.camera, bateria, desempenho:n.desempenho, tela:n.tela, atualizacoes, durab, mem, zoom, frontal}};
   };
   const cat = CAT().filter(okBase).map(c=>Object.assign({c}, brutas(c)));
   /* notas relativas: posição de cada aparelho no catálogo (0 a 10), misturada com a nota absoluta.
@@ -1838,7 +1865,7 @@ function gameCalcula(r){
   const prefMarca = r.marca && r.marca!=="nenhuma" ? (r.marca==="Xiaomi" ? ["Xiaomi","Redmi","POCO"] : [r.marca]) : null;
   const nota = x => {
     const c = x.c, s = {};
-    for(const k of ks) s[k] = .5*x.raw[k] + .5*pct(k, x.raw[k]);
+    for(const k of ks) s[k] = k==="bateria" ? x.raw[k] : .5*x.raw[k] + .5*pct(k, x.raw[k]);   /* bateria: só a meta, sem ranking */
     /* peso ao quadrado: o que a pessoa disse que importa domina a conta */
     let soma = 0, pw = 0; for(const k of ks){ const wk = w[k]*w[k]; soma += wk*s[k]; pw += wk; }
     let fit = soma/pw;
@@ -1849,8 +1876,9 @@ function gameCalcula(r){
     if(at==="bonito" || at==="melhor") fit += c.seg==="topo" ? .4 : 0;
     if(at==="bonito" && c.formato==="dobravel") fit += .4;
     if(prefMarca && prefMarca.includes(c.marca)) fit += .5;
+    if(bt==="leve" && c.peso) fit += c.peso > 195 ? -.6*Math.min(2, (c.peso-195)/25) : c.peso <= 180 ? .2 : 0;
     const q = .85*fit + .15*(x.n.critica != null ? x.n.critica : fit);
-    return {c, s, q, preco:c.preco};
+    return {c, s, q, preco:c.preco, dias:x.dias};
   };
   const todos = cat.map(nota);
 
@@ -1882,14 +1910,20 @@ function gameCalcula(r){
   if(!eco){ eco = pega(dentro.filter(x=>x.c.marca!==match.c.marca || r.sistema==="ios"), x=>x.q + outraMarca(x)); ecoTipo = "outra"; }
   if(!mais){ mais = pega(dentro, x=>x.q + outraMarca(x)); maisTipo = "outra"; }
   const basta = at==="melhor" ? todos.filter(x=>x.preco < match.preco*.8 && x.q >= match.q - .9).sort((a,b)=>a.preco-b.preco)[0] : null;
-  return {match, eco, mais, ecoTipo, maisTipo, w, mot, fora, teto, basta};
+  /* retorno sobre a bateria: o match cumpre a meta? existe bateria bem maior na faixa que não precisava? */
+  let bat = null;
+  if(["folga","dois"].includes(b)){
+    const maior = dentro.slice().sort((a,b2)=>(b2.c.bat||0)-(a.c.bat||0))[0];
+    bat = {dias:match.dias, meta, leve: bt==="leve" && match.dias < (G_META[b]||1) - .02, ok: match.dias >= meta - .02, maior: maior && (maior.c.bat||0) >= (match.c.bat||0) + 1000 ? maior.c : null};
+  }
+  return {match, eco, mais, ecoTipo, maisTipo, w, mot, fora, teto, basta, bat};
 }
 const G_ROT = {camera:"câmera", bateria:"bateria", desempenho:"desempenho", tela:"tela", atualizacoes:"anos de atualização", durab:"resistência", mem:"armazenamento", zoom:"zoom", frontal:"câmera de selfie"};
 function gameMotivos(x, w, mot){
   const c = x.c, s = x.s, mil = n => Number(n).toLocaleString("pt-BR");
   const txt = {
     camera:()=>`Câmera principal de ${esc(String((c.cams||[""])[0]).split("·")[0].trim())}${/OIS/i.test((c.cams||[]).join(" "))?" com estabilização óptica":""}`,
-    bateria:()=>`Bateria de ${mil(c.bat)} mAh${c.carga?` e carga de ${c.carga} W`:""}`,
+    bateria:()=>`Bateria de ${mil(c.bat)} mAh, ≈ ${gDiasTxt(gDias(c))} de uso${c.carga?`, e carga de ${c.carga} W`:""}`,
     desempenho:()=>`Processador ${esc(c.chip)}`,
     tela:()=>`Tela de ${String(c.tela.pol).replace(".",",")}" a ${c.tela.hz||60} Hz`,
     atualizacoes:()=>`Atualizações: ${esc(c.upd)}`,
@@ -2027,10 +2061,11 @@ function gameAbre(forcar){
   const resumo = () => {
     const nomes = {redes:"redes sociais", videos:"ver vídeos", fotos:"fotos e vídeos", jogos:"jogar", trabalho:"trabalhar ou estudar", basico:"o básico"};
     const u = (r.uso||[]).map(x=>nomes[x]); const uso = u.length ? `Para ${u.join(" e ")}` : "Para o seu dia a dia";
-    const bat = {sobra:"", raspando:", com bateria para o dia todo", meio:", com bateria que aguente mais", rua:", com bateria e resistência para a rua"}[r.bateria]||"";
+    const bat = {folga:", com bateria para o dia inteiro com folga", dois:", com bateria para dois dias", tanto:", com carga rápida", raspando:", com bateria para o dia inteiro com folga", meio:", com bateria para o dia inteiro com folga", rua:", com bateria para dois dias"}[r.bateria]||"";
+    const batL = r.batroca==="leve" && ["folga","dois"].includes(r.bateria) ? ", leve e com boa bateria" : bat;
     const orc = +r.orcamento >= 99999 ? ", sem teto de preço" : `, até ${brl(+r.orcamento)}`;
     const sis = {ios:", no iPhone", android:", no Android", tanto:", tanto faz a marca"}[r.sistema]||"";
-    return `${uso}${bat}${orc}${sis}.`;
+    return `${uso}${batL}${orc}${sis}.`;
   };
   const resultado = res => {
     const m = res.match, c = m.c, p = catP(c);
@@ -2039,6 +2074,11 @@ function gameAbre(forcar){
     const pct = Math.max(60, Math.min(98, m.pct || 80));
     /* sempre leva para as ofertas: do próprio match ou, se ele não tiver oferta, dos parecidos */
     const cta = `<a class="gm-b ouro" href="${R}ofertas.html?match">Ver ofertas →</a>`;
+    const bi = res.bat, batAviso = !bi ? "" : bi.leve
+      ? `<p class="gm-obs">Bateria: ${r.bateria==="dois" ? "dois dias longe da tomada" : "essa folga toda"} só com celular de mais de 200 g. Como você prefere leve, ficamos com o ${esc(c.nome)}${c.peso ? ` (${c.peso} g)` : ""}, que aguenta ≈ ${gDiasTxt(bi.dias)} no seu uso.</p>`
+      : bi.ok
+      ? `<p class="gm-obs">Bateria: no seu uso, o ${esc(c.nome)} aguenta ≈ ${gDiasTxt(bi.dias)}, o que você pediu.${bi.maior ? ` Não precisa de uma bateria de ${Number(bi.maior.bat).toLocaleString("pt-BR")} mAh como a do ${esc(bi.maior.nome)}: ela deixa o celular mais pesado sem mudar o seu dia.` : ""}</p>`
+      : `<p class="gm-obs">Bateria: nenhum celular que combina com você nessa faixa garante ${bi.meta >= 1.7 ? "dois dias" : "o dia com folga"}. O ${esc(c.nome)} chega a ≈ ${gDiasTxt(bi.dias)}; um carregador rápido ou uma bateria externa cobrem o resto.</p>`;
     const topoAviso = res.basta ? `<p class="gm-obs">Se mudar de ideia: pelo que você contou, o <b>${esc(res.basta.c.nome)}</b> já dá conta do seu uso por ${brl(m.preco - res.basta.preco)} a menos.</p>` : "";
     box.innerHTML = `${X}<div class="gm-cena"><canvas width="${PIX.W}" height="${PIX.H}" role="img" aria-label="Seu celular ideal chegando"></canvas></div><span class="gm-k">Resultado</span><h2 id="gmT">Seu celular ideal é…</h2><p class="gm-sub">${esc(resumo())}</p>
       ${res.fora ? `<p class="gm-obs">${r.sistema==="ios" ? `O iPhone mais em conta hoje custa ≈ ${brl(m.preco)}, acima do seu orçamento. Se topar Android, tem opção boa dentro dele.` : "Nenhum modelo do catálogo cabe nesse orçamento com o que você escolheu. Estes são os mais em conta."}</p>` : ""}
@@ -2046,7 +2086,7 @@ function gameAbre(forcar){
         <h3>${esc(c.nome)}</h3><div class="gm-af"><span class="bar"><i style="width:${pct}%"></i></span><b>${pct}%</b> a ver com você</div>
         <ul class="gm-por">${gameMotivos(m, res.w, res.mot)}</ul>
         <div class="gm-preco"><span class="p">≈ ${brl(m.preco)}<small>preço médio hoje</small></span><span class="gm-acoes"><button type="button" class="gm-b lin" data-a="cmp">Comparar os 3</button>${cta}</span></div></div></div>
-        ${topoAviso}
+        ${topoAviso}${batAviso}
         <div class="gm-alts">${gameAlt(res.eco, m, res.ecoTipo, res.w)}${gameAlt(res.mais, m, res.maisTipo, res.w)}</div>
         <div class="gm-res-pe"><span>🔒 Salvo só neste aparelho.</span><button type="button" class="gm-b txt" data-a="refaz">↻ Refazer o game</button></div></div>`;
     liga();
