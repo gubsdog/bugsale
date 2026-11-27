@@ -390,6 +390,8 @@ function melhoresOfertas(n){
   return C.map(p=>{ const o = p.ofertas.lista.slice().sort((x,y)=>x.preco-y.preco)[0]; return {p, o, r:o.preco/bomDe(p)}; })
           .filter(x=>!fixas.some(f=>f.p.id===x.p.id)).sort((x,y)=>x.r-y.r).slice(0,n-fixas.length).reduce((a,x)=>a.concat(x), fixas);
 }
+/* versão exata de uma oferta: "8 GB RAM · 128 GB" */
+const versaoTxt = o => [o && o.ram ? o.ram + " GB RAM" : null, o && o.gb ? (o.gb>=1000 ? o.gb/1000 + " TB" : o.gb + " GB") : null].filter(Boolean).join(" · ");
 /* card vertical de oferta (estilo loja): foto, loja, selo de queda desde o lançamento, preço e botão */
 function ofertaCard2({p}){
   /* sempre a loja com o menor preço do dia */
@@ -398,14 +400,14 @@ function ofertaCard2({p}){
   const lanc = (c && lancPreco(c)) || p.precoN || null, queda = lanc && lanc > o.preco ? Math.round((1 - o.preco/lanc)*100) : 0;
   return `<a class="o3" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">
     <span class="o3-img">${p.catImg ? `<img src="${R}${p.catImg}" alt="" loading="lazy">` : img2(p)}<span class="o3-loja">${esc(o.loja)}</span>${queda>=10 ? `<span class="o3-off" title="Em relação ao preço de lançamento">−${queda}%</span>` : ""}</span>
-    <span class="o3-txt"><b>${esc(p.full)}</b><small class="o3-pq">${esc(PERFIL_CURTO[p.id] || "")}</small>
+    <span class="o3-txt"><b>${esc(p.full)}</b>${versaoTxt(o) ? `<small class="o3-v">${esc(versaoTxt(o))}</small>` : ""}<small class="o3-pq">${esc(PERFIL_CURTO[p.id] || "")}</small>
       <span class="o3-preco">${brl(o.preco)}</span>
       <small class="o3-ref">${lanc ? `Lançado a ${brl(lanc)}` : "&nbsp;"}</small></span>
-    <span class="o3-btn">Ver na ${esc(o.loja)} ↗</span></a>`;
+    <span class="o3-btn">Ver ${lojaPrep(o.loja)} ${esc(o.loja)} ↗</span></a>`;
 }
 function ofertaLinha2({p,o}){
   return `<div class="o2"><span class="o2-img">${img2(p)}</span>
-    <div class="o2-txt"><b>${esc(p.full)}</b><span>${esc(PERFIL_CURTO[p.id] || "")}</span><small>${brl(o.preco)} na ${esc(o.loja)}</small></div>
+    <div class="o2-txt"><b>${esc(p.full)}</b><span>${esc(PERFIL_CURTO[p.id] || "")}</span><small>${brl(o.preco)} ${lojaPrep(o.loja)} ${esc(o.loja)}${versaoTxt(o) ? ` · ${esc(versaoTxt(o))}` : ""}</small></div>
     <a class="o2-btn" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta</a></div>`;
 }
 function renderHome(){
@@ -527,7 +529,7 @@ function ofertaMiniHTML(p, titulo, cls){
   const btns = [0,1,2].map(i=>{
     const x = lista[i];
     const comPreco = cls==="om-topo";   /* no topo: loja | preço + seta. No fim do artigo: só a loja | seta */
-    return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(x.loja)}</span><span class="om-dir">${comPreco?`<b>${brl(x.preco)}</b>`:""}<i aria-hidden="true">↗</i></span></a>`
+    return x ? `<a class="om-btn${i===0?" melhor":""}" href="${esc(x.url)}" target="_blank" rel="sponsored nofollow noopener"><span class="om-loja">${esc(x.loja)}${comPreco && versaoTxt(x) ? `<small class="om-v">${esc(versaoTxt(x))}</small>` : ""}</span><span class="om-dir">${comPreco?`<b>${brl(x.preco)}</b>`:""}<i aria-hidden="true">↗</i></span></a>`
              : `<span class="om-btn vazio" aria-disabled="true"><span class="om-loja">Oferta ${i+1}</span><span class="om-dir"><b>em breve</b></span></span>`;
   }).join("");
   return `<section class="ofertas-mini${cls?" "+cls:""}" aria-label="Onde comprar"><div class="om-head"><b>${titulo||`Onde comprar o ${esc(p.nome)}`}</b><span>${lista.length?`Pesquisa em ${p.ofertas.pesquisa?dataHora(p.ofertas.pesquisa):"—"}`:"Links das lojas em breve"}</span></div><div class="om-row">${btns}</div></section>`;
@@ -588,7 +590,9 @@ function alvoAuto(p){
 const FIM_BF = new Date("2026-11-28T00:00:00-03:00");
 function alvoHTML(a, p){
   const t = a.alvo || alvoAuto(p);
-  const menor = p.ofertas && p.ofertas.lista && p.ofertas.lista.slice().sort((x,y)=>x.preco-y.preco)[0];
+  /* só compara com a régua ofertas da mesma versão de armazenamento da régua */
+  const vGB = Math.max(0, ...[...String(t.versao||"").matchAll(/(\d+)\s*(GB|TB)/gi)].map(m=>+m[1]*(/TB/i.test(m[2])?1000:1)));
+  const menor = p.ofertas && p.ofertas.lista && p.ofertas.lista.filter(x=>!vGB || !x.gb || x.gb===vGB).sort((x,y)=>x.preco-y.preco)[0];
   const hoje = menor ? menor.preco : p.atualN;
   const faixa = hoje <= t.otimo ? "otimo" : hoje <= t.bom ? "bom" : hoje >= t.caro ? "caro" : "ok";
   const nomeFaixa = {otimo:"oferta de verdade", bom:"bom preço", ok:"preço normal", caro:"caro"}[faixa];
@@ -811,7 +815,7 @@ function renderArticle(){
         const c = CAT().find(x=>x.id===it.id); if(!c) return "";
         q = {id:c.id, full:`${c.marca==="Apple"?"":c.marca+" "}${c.nome}`, catImg:c.img, atualN:c.preco, precoN:null, ofertas:null, soCat:true};
       }
-      const ofs = (q.ofertas && q.ofertas.lista || []).filter(o=>o.preco).sort((x,y)=>x.preco-y.preco), o = ofs[0];
+      const ofs = (q.ofertas && q.ofertas.lista || []).filter(o=>o.preco).slice().sort((x,y)=>x.preco-y.preco), o = ofs[0];
       const hoje = o ? o.preco : q.atualN, art = publicados().find(x=>x.phone===q.id && x.id!==a.id);
       return `<section class="mt-item${it.alerta?" mt-alerta":""}">
         <div class="mt-item-img">${q.catImg ? `<img src="${R}${q.catImg}" alt="${esc(q.full)}" loading="lazy">` : img2(q)}</div>
@@ -820,7 +824,7 @@ function renderArticle(){
           <h3>${esc(it.titulo || q.full)}</h3>
           ${pars(it.texto)}
           ${it.alt ? `<p class="mt-alt"><b>${it.altRot ? esc(it.altRot) : "Alternativa"}:</b> ${inl(it.alt)}</p>` : ""}
-          <div class="mt-preco"><span><small>${o ? `menor preço hoje · ${esc(o.loja)}` : q.soCat ? "preço médio nas lojas" : "preço médio hoje"}</small><b>${brl(hoje)}</b></span>${it.alvo ? `<span><small>bom preço</small><b class="mt-ok">até ${brl(it.alvo)}</b></span>` : ""}${q.precoN ? `<span><small>lançamento</small><s>${brl(q.precoN)}</s></span>` : ""}</div>
+          <div class="mt-preco"><span><small>${o ? `menor preço hoje · ${esc(o.loja)}${versaoTxt(o) ? ` · ${esc(versaoTxt(o))}` : ""}` : q.soCat ? "preço médio nas lojas" : "preço médio hoje"}</small><b>${brl(hoje)}</b></span>${it.alvo ? `<span><small>bom preço</small><b class="mt-ok">até ${brl(it.alvo)}</b></span>` : ""}${q.precoN ? `<span><small>lançamento</small><s>${brl(q.precoN)}</s></span>` : ""}</div>
           <div class="mt-acoes">${o ? `<a class="btn primary" href="${esc(o.url)}" target="_blank" rel="sponsored nofollow noopener">Ver oferta ${o.loja==="Mercado Livre"?"no":"na"} ${esc(o.loja)} →</a>` : ""}${art ? `<a class="btn" href="${artURL(art)}">Ler a análise</a>` : q.soCat ? `<a class="btn" href="${R}comparador.html">Ver no comparador</a>` : `<button class="btn" type="button" data-compare="${q.id}">Abrir no comparador</button>`}</div>
         </div></section>`;
     };
@@ -2147,6 +2151,68 @@ const ICO_FILTRO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 /* armazenamento da oferta (não o máximo do modelo): o preço só vale para essa versão */
 const gbTxt = g => g ? (g>=1000 ? g/1000 + " TB" : g + " GB") : null;
 const lojaPrep = l => /amazon/i.test(l) ? "na" : "no";
+/* ---------- Alerta de preço ----------
+   A pessoa escolhe o valor; o alerta vale só para a versão exata da oferta (modelo, RAM e armazenamento).
+   Guardado neste aparelho. O envio (notificação do navegador ou e-mail) é feito pelo serviço de notificações. */
+const ICO_SINO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.94 1.94 0 0 0 3.4 0"/></svg>';
+const PA_LS = "bs-alertas";
+const paLer = () => { try{ return JSON.parse(localStorage.getItem(PA_LS)) || {}; }catch(e){ return {}; } };
+const paGrava = v => { try{ localStorage.setItem(PA_LS, JSON.stringify(v)); }catch(e){} };
+const paTem = id => !!paLer()[id];
+const paSugere = v => { const s = v*.93; return v >= 1000 ? Math.floor(s/100)*100 : Math.floor(s/10)*10; };
+const paIOSsemApp = () => /iP(hone|ad|od)/.test(navigator.userAgent) && !(navigator.standalone || matchMedia("(display-mode: standalone)").matches);
+function paAbre(x, aoMudar){
+  const o = x.melhor, ativo = paLer()[x.id];
+  /* menor preço já visto só aparece quando o histórico é da mesma versão de armazenamento da oferta */
+  const base = +((String(x.p.specs.armaz||"").match(/\d+/)||[0])[0]), baseGB = base && base < 10 ? base*1000 : base;
+  const minimo = x.p.specs.minimoN && o.gb && o.gb === baseGB && x.p.specs.minimoN < o.preco ? x.p.specs.minimoN : null;
+  const f = document.createElement("div"); f.className = "pa-fundo";
+  f.innerHTML = `<div class="pa" role="dialog" aria-modal="true" aria-labelledby="paT"><button type="button" class="pa-x" aria-label="Fechar">×</button><div class="pa-c"></div></div>`;
+  document.body.appendChild(f);
+  const c = f.querySelector(".pa-c"), volta = document.activeElement;
+  const fecha = () => { f.remove(); document.removeEventListener("keydown", esc_); if(volta) volta.focus(); };
+  const esc_ = e => { if(e.key==="Escape") fecha(); };
+  document.addEventListener("keydown", esc_);
+  f.addEventListener("click", e=>{ if(e.target===f || e.target.closest(".pa-x")) fecha(); });
+  const topo = `<div class="pa-top"><img src="${R}${x.p.catImg||x.p.cut}" alt=""><div><b id="paT">${esc(x.p.nome)}</b><span>${esc(x.versao)}</span><small>Hoje ${brl(o.preco)} ${lojaPrep(o.loja)} ${esc(o.loja)}</small></div></div>`;
+  const salva = (valor, canal, email) => { const a = paLer(); a[x.id] = {valor, gb:o.gb, ram:o.ram||null, canal, email:email||null, criado:new Date().toISOString()}; paGrava(a); aoMudar(); };
+  const pronto = (valor, canal) => { c.innerHTML = `${topo}<div class="pa-ok"><span class="pa-ok-i">${ICO_SINO}</span><b>Alerta criado</b><p>${canal==="email" ? "Você recebe um e-mail" : "Você recebe uma notificação"} quando o ${esc(x.p.nome)} de ${esc(x.versao)} chegar a <strong>${brl(valor)}</strong> ou menos.</p></div><button type="button" class="pa-b" data-a="ok">Fechar</button>`; c.querySelector('[data-a="ok"]').onclick = fecha; };
+  const email = valor => {
+    c.innerHTML = `${topo}<p class="pa-l">Prefere receber por e-mail?</p><p class="pa-sub">${paIOSsemApp() ? "No iPhone, o aviso do navegador só funciona com a Bugsale na tela de início. Por e-mail chega em qualquer aparelho." : "Sem notificação do navegador, a gente avisa por e-mail quando chegar a " + brl(valor) + "."}</p>
+      <label class="pa-campo pa-mail"><input type="email" inputmode="email" autocomplete="email" placeholder="seu@email.com" aria-label="Seu e-mail"></label><p class="pa-err" role="alert"></p>
+      <button type="button" class="pa-b" data-a="mail">Receber por e-mail</button><button type="button" class="pa-txt" data-a="nao">Agora não</button>`;
+    const inp = c.querySelector("input"), err = c.querySelector(".pa-err"); inp.focus();
+    inp.oninput = () => { err.textContent = ""; };
+    c.querySelector('[data-a="mail"]').onclick = () => { const v = inp.value.trim(); if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){ err.textContent = "Digite um e-mail válido."; inp.focus(); return; } salva(valor, "email", v); pronto(valor, "email"); };
+    c.querySelector('[data-a="nao"]').onclick = fecha;
+  };
+  const form = () => {
+    const ini = ativo ? ativo.valor : paSugere(o.preco);
+    c.innerHTML = `${topo}<label class="pa-l" for="paV">Me avise quando cair para</label>
+      <div class="pa-campo"><span>R$</span><input id="paV" inputmode="numeric" autocomplete="off" value="${Number(ini).toLocaleString("pt-BR")}"></div>
+      ${minimo ? `<p class="pa-min">Menor preço já visto: <b>${brl(minimo)}</b></p>` : ""}<p class="pa-err" role="alert"></p>
+      <button type="button" class="pa-b" data-a="ativa">${ativo ? "Salvar novo valor" : "Ativar alerta"}</button>${ativo ? `<button type="button" class="pa-txt" data-a="tira">Remover alerta</button>` : ""}`;
+    const inp = c.querySelector("input"), err = c.querySelector(".pa-err");
+    const ler = () => +inp.value.replace(/\D/g, "");
+    inp.oninput = () => { const n = ler(); inp.value = n ? n.toLocaleString("pt-BR") : ""; err.textContent = ""; };
+    inp.focus(); inp.select();
+    const tira = c.querySelector('[data-a="tira"]');
+    if(tira) tira.onclick = () => { const a = paLer(); delete a[x.id]; paGrava(a); aoMudar(); fecha(); };
+    c.querySelector('[data-a="ativa"]').onclick = async () => {
+      const v = ler();
+      if(!v){ err.textContent = "Digite o valor que você quer pagar."; inp.focus(); return; }
+      if(v >= o.preco){ err.textContent = `Escolha um valor abaixo de hoje (${brl(o.preco)}).`; inp.focus(); return; }
+      if(v < o.preco*.3){ err.textContent = "Esse valor está baixo demais para este celular."; inp.focus(); return; }
+      if(ativo){ salva(v, ativo.canal, ativo.email); pronto(v, ativo.canal); return; }
+      if(!("Notification" in window) || paIOSsemApp()) return email(v);
+      let perm = Notification.permission;
+      if(perm === "default"){ try{ perm = await Notification.requestPermission(); }catch(e){ perm = "denied"; } }
+      if(perm === "granted"){ salva(v, "push"); pronto(v, "push"); } else email(v);
+    };
+    inp.addEventListener("keydown", e=>{ if(e.key==="Enter") c.querySelector('[data-a="ativa"]').click(); });
+  };
+  form();
+}
 function ofertasLista(){
   return Object.values(MQ_DATA.phones).map(p=>{
     const lista = ((p.ofertas||{}).lista||[]).filter(o=>o.loja && o.preco && o.url).slice().sort((a,b)=>a.preco-b.preco);
@@ -2156,9 +2222,11 @@ function ofertasLista(){
     const usos = Object.fromEntries(OF_USOS.map(([k,,,,f])=>[k, f(n,p)]));
     const s = p.specs || {};
     const tela = (s.tela||"").split(" ")[0];
-    const chips = [tela, s.bateria, gbTxt(melhor.gb)].filter(Boolean);
+    const chips = [tela, s.bateria].filter(Boolean);
+    /* versão exata da oferta: o preço só vale para esta combinação de RAM e armazenamento */
+    const versao = [melhor.ram ? melhor.ram + " GB RAM" : null, gbTxt(melhor.gb)].filter(Boolean).join(" · ");
     const minimo = p.specs && p.specs.minimoN && melhor.preco <= p.specs.minimoN + 1;
-    return {p, id:p.id, lista, melhor, pct, usos, chips, minimo, seg:OF_SEG[p.id] || "int", marca:/^poco/.test(p.id) ? "POCO" : p.marca};
+    return {p, id:p.id, lista, melhor, pct, usos, chips, versao, minimo, seg:OF_SEG[p.id] || "int", marca:/^poco/.test(p.id) ? "POCO" : p.marca};
   }).filter(Boolean);
 }
 
@@ -2271,18 +2339,19 @@ function renderOfertas(){
   const card = (x, i) => {
     const u = st.uso ? usoDe(st.uso) : null, v = u ? x.usos[st.uso] : 0;
     const selo = u ? `<span class="of-rk">#${i+1} em ${esc(u[1].toLowerCase())}</span>` : x.minimo ? `<span class="of-selo">⚡ Menor preço já visto</span>` : "";
-    const lojas = x.lista.map(o=>`<a href="${esc(o.url)}" target="_blank" rel="sponsored noopener"><span>${esc(o.loja)}${o.gb ? ` · ${gbTxt(o.gb)}` : ""}</span><b>${brl(o.preco)}</b></a>`).join("");
+    const lojas = x.lista.map(o=>`<a href="${esc(o.url)}" target="_blank" rel="sponsored noopener"><span>${esc(o.loja)}${o.gb ? ` · ${[o.ram ? o.ram + " GB RAM" : null, gbTxt(o.gb)].filter(Boolean).join(" / ")}` : ""}</span><b>${brl(o.preco)}</b></a>`).join("");
     return `<article class="of-card" id="of-${x.id}">
       <div class="of-img"><img src="${R}${x.p.catImg||x.p.cut}" alt="${esc(x.p.full)}" loading="lazy">${x.pct>0?`<span class="of-off">-${x.pct}%</span>`:""}${selo}</div>
       <div class="of-info">
         <span class="of-seg">${esc(segN(x.seg))}</span>
         <h3><a href="${modeloURL(x.p)}">${esc(x.p.nome)}</a></h3>
+        ${x.versao ? `<span class="of-versao">${esc(x.versao)}</span>` : ""}
         <div class="of-chips">${x.chips.map(c=>`<span>${esc(c)}</span>`).join("")}</div>
         ${u ? `<div class="of-nota-b"><span>${u[3]}</span><i><b style="width:${Math.round(v*10)}%"></b></i><strong>${v.toFixed(1).replace(".",",")}</strong></div>` : ""}
         <div class="of-pr"><b>${brl(x.melhor.preco)}</b>${x.p.precoN?`<s>${brl(x.p.precoN)}</s>`:""}</div>
         <span class="of-loja">Menor preço ${lojaPrep(x.melhor.loja)} <strong>${esc(x.melhor.loja)}</strong>${x.lista.length>1?` · <button type="button" class="of-ver" aria-expanded="false">ver ${x.lista.length} lojas</button>`:""}</span>
         <div class="of-lojas" hidden>${lojas}</div>
-        <div class="of-acts"><a class="of-btn" href="${esc(x.melhor.url)}" target="_blank" rel="sponsored noopener">Ver oferta <i aria-hidden="true">↗</i></a><button type="button" class="of-btn2" data-compare="${x.id}">Comparar</button></div>
+        <div class="of-acts"><a class="of-btn" href="${esc(x.melhor.url)}" target="_blank" rel="sponsored noopener">Ver oferta <i aria-hidden="true">↗</i></a><button type="button" class="of-btn2" data-compare="${x.id}">Comparar</button><button type="button" class="of-sino${paTem(x.id) ? " on" : ""}" data-alerta="${x.id}" aria-label="${paTem(x.id) ? "Alerta de preço ativo" : "Criar alerta de preço"}" title="Me avise quando baixar">${ICO_SINO}</button></div>
       </div></article>`;
   };
   const tags = () => {
@@ -2384,6 +2453,8 @@ function renderOfertas(){
     const t = e.target.closest(".of-tag");
     if(t){ const f = t.dataset.f, k = t.dataset.k; if(f==="seg"||f==="marca") st[f] = st[f].filter(x=>x!==k); else if(f==="uso") st.uso = null; else if(f==="ids"){ st.ids = null; st.idsMatch = null; } else { st.min = 0; st.max = maxP; } desenha(); return; }
     if(e.target.closest(".of-limpa")){ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:null, idsMatch:null}); desenha(); return; }
+    const sino = e.target.closest(".of-sino");
+    if(sino){ const x = todos.find(t=>t.id===sino.dataset.alerta); if(x) paAbre(x, ()=>{ const on = paTem(x.id); sino.classList.toggle("on", on); sino.setAttribute("aria-label", on ? "Alerta de preço ativo" : "Criar alerta de preço"); }); return; }
     const v = e.target.closest(".of-ver");
     if(v){ const box = v.closest(".of-info").querySelector(".of-lojas"); box.hidden = !box.hidden; v.setAttribute("aria-expanded", !box.hidden); v.textContent = box.hidden ? v.textContent.replace("esconder","ver") : "esconder lojas"; if(box.hidden) v.textContent = `ver ${box.children.length} lojas`; }
   });
