@@ -1382,5 +1382,275 @@
     "preco": 2780
    }
   ]
+ },
+ {
+  "id": "nova-15-max",
+  "marca": "Huawei",
+  "nome": "nova 15 Max",
+  "tipo": "Tradicional (barra)",
+  "img": "cat/huawei-nova-15-max",
+  "specs": {
+   "lancamento": "Jul/2026",
+   "precoN": 2999,
+   "atualN": 2299,
+   "minimoN": 1279,
+   "tela": "6,84\" OLED · 2756×1272",
+   "taxaN": 120,
+   "telaExt": null,
+   "chip": "Kirin 8000A",
+   "ram": "8 GB",
+   "ramN": 8,
+   "armaz": "256 GB",
+   "armazN": 256,
+   "camTras": "50 MP principal + 2 MP auxiliar",
+   "zoom": null,
+   "camFrontal": "8 MP",
+   "video": "Full HD a 30 fps",
+   "bateriaN": 8500,
+   "carga": "40 W",
+   "cargaN": 40,
+   "resist": "IP65",
+   "pesoN": 232,
+   "espessura": "8 mm",
+   "sistema": "EMUI 14.2 (HarmonyOS)",
+   "updOS": null,
+   "updOSN": null,
+   "updSeg": null,
+   "updSegN": null,
+   "preco": "R$ 2.999",
+   "atual": "R$ 2.299",
+   "minimo": "R$ 1.279",
+   "taxa": "120 Hz",
+   "bateria": "8.500 mAh",
+   "peso": "232 g",
+   "cores": null,
+   "updResumo": "Huawei não informa por quanto tempo atualiza (sem serviços do Google)"
+  },
+  "ofertas": {
+   "pesquisa": "2026-11-27T12:00",
+   "lista": [
+    {
+     "loja": "Mercado Livre",
+     "preco": 2299,
+     "url": "https://www.mercadolivre.com.br/smartphone-huawei-nova-15-max-8gb256gb-camera-ryyb-ultra-nitida-de-50-mp-corpo-extra-duravel-super-bateria-de-8500-mah-tela-oled-vivida-de-684-botao-x-preto/p/MLB69338823"
+    }
+   ]
+  },
+  "historico": [
+   {
+    "data": "2026-07-07",
+    "preco": 1999
+   },
+   {
+    "data": "2026-10-11",
+    "preco": 1598
+   },
+   {
+    "data": "2026-11-12",
+    "preco": 1279
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 2299
+   }
+  ]
+ },
+ {
+  "id": "pura-80-pro",
+  "marca": "Huawei",
+  "nome": "Pura 80 Pro",
+  "tipo": "Tradicional (barra)",
+  "img": "cat/huawei-pura-80-pro",
+  "specs": {
+   "lancamento": "Out/2025",
+   "precoN": 7999,
+   "atualN": 3685,
+   "minimoN": 3599,
+   "tela": "6,8\" LTPO OLED · 2848×1276",
+   "taxaN": 120,
+   "telaExt": null,
+   "chip": "Kirin 9020",
+   "ram": "12 GB",
+   "ramN": 12,
+   "armaz": "512 GB",
+   "armazN": 512,
+   "camTras": "50 MP principal (OIS) + 40 MP ultrawide + 48 MP tele macro (OIS)",
+   "zoom": "3,5x óptico",
+   "camFrontal": "13 MP",
+   "video": "Até 4K a 60 fps",
+   "bateriaN": 5170,
+   "carga": "100 W",
+   "cargaN": 100,
+   "resist": "IP68/IP69",
+   "pesoN": 219,
+   "espessura": "8,3 mm",
+   "sistema": "EMUI 15",
+   "updOS": null,
+   "updOSN": null,
+   "updSeg": null,
+   "updSegN": null,
+   "preco": "R$ 7.999",
+   "atual": "R$ 3.685",
+   "minimo": "R$ 3.599",
+   "taxa": "120 Hz",
+   "bateria": "5.170 mAh",
+   "peso": "219 g",
+   "cores": null,
+   "updResumo": "Huawei não informa por quanto tempo atualiza (sem serviços do Google)"
+  },
+  "ofertas": {
+   "pesquisa": "2026-11-27T12:00",
+   "lista": [
+    {
+     "loja": "Amazon",
+     "preco": 3685.05,
+     "url": "https://www.amazon.com.br/dp/B0FDKNBCQ8"
+    },
+    {
+     "loja": "Mercado Livre",
+     "preco": 4799,
+     "url": "https://www.mercadolivre.com.br/smartphone-huawei-pura-80-pro-12gb512gb-camera-ultra-iluminacao-de-1-polegada-camera-teleobjetiva-macro-ultra-iluminacao-cancelamento-de-ruido-por-ia-5170-mah-dual-supercharge-celular-branco/p/MLB58089727"
+    }
+   ]
+  },
+  "historico": [
+   {
+    "data": "2026-10-02",
+    "preco": 3677
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 3685
+   }
+  ]
+ },
+ {
+  "id": "mate-80-pro",
+  "marca": "Huawei",
+  "nome": "Mate 80 Pro",
+  "tipo": "Tradicional (barra)",
+  "img": "cat/huawei-mate-80-pro",
+  "specs": {
+   "lancamento": "Mai/2026",
+   "precoN": 9199,
+   "atualN": 5519,
+   "minimoN": 5519,
+   "tela": "6,75\" LTPO OLED · 2832×1280",
+   "taxaN": 120,
+   "telaExt": null,
+   "chip": "Kirin 9030",
+   "ram": "16 GB",
+   "ramN": 16,
+   "armaz": "512 GB",
+   "armazN": 512,
+   "camTras": "50 MP principal (OIS) + 40 MP ultrawide + 48 MP tele macro (OIS)",
+   "zoom": "4x óptico",
+   "camFrontal": "13 MP",
+   "video": "Até 4K a 60 fps",
+   "bateriaN": 5750,
+   "carga": "100 W",
+   "cargaN": 100,
+   "resist": "IP68/IP69",
+   "pesoN": 219,
+   "espessura": "7,95 mm",
+   "sistema": "EMUI 15",
+   "updOS": null,
+   "updOSN": null,
+   "updSeg": null,
+   "updSegN": null,
+   "preco": "R$ 9.199",
+   "atual": "R$ 5.519",
+   "minimo": "R$ 5.519",
+   "taxa": "120 Hz",
+   "bateria": "5.750 mAh",
+   "peso": "219 g",
+   "cores": null,
+   "updResumo": "Huawei não informa por quanto tempo atualiza (sem serviços do Google)"
+  },
+  "ofertas": {
+   "pesquisa": "2026-11-27T12:00",
+   "lista": [
+    {
+     "loja": "Amazon",
+     "preco": 5518.81,
+     "url": "https://www.amazon.com.br/dp/B0GVRS6RB2"
+    },
+    {
+     "loja": "Mercado Livre",
+     "preco": 6699,
+     "url": "https://www.mercadolivre.com.br/smartphone-huawei-mate-80-pro-celular-16gb512gb-tela-oled-de-675-polegadas-com-bordas-planas-sistema-de-camera-com-cores-reais-bateria-de-5750-mah-vidro-kunlun-de-2-geracao-preto/p/MLB67843683"
+    }
+   ]
+  },
+  "historico": [
+   {
+    "data": "2026-05-05",
+    "preco": 6999
+   },
+   {
+    "data": "2026-11-27",
+    "preco": 5519
+   }
+  ]
+ },
+ {
+  "id": "mate-xt",
+  "marca": "Huawei",
+  "nome": "Mate XT Ultimate Design",
+  "tipo": "Dobrável (tripla)",
+  "img": "cat/huawei-mate-xt-ultimate-design",
+  "specs": {
+   "lancamento": "Jun/2025",
+   "precoN": 32999,
+   "atualN": 19997,
+   "minimoN": 19997,
+   "tela": "10,2\" OLED dobrável (6,4\" fechado)",
+   "taxaN": 90,
+   "telaExt": null,
+   "chip": "Kirin 9010",
+   "ram": "16 GB",
+   "ramN": 16,
+   "armaz": "1 TB",
+   "armazN": 1000,
+   "camTras": "50 MP principal (OIS) + 12 MP ultrawide + 12 MP periscópio (OIS)",
+   "zoom": "5,5x óptico",
+   "camFrontal": "8 MP",
+   "video": "Até 4K a 60 fps",
+   "bateriaN": 5600,
+   "carga": "66 W",
+   "cargaN": 66,
+   "resist": null,
+   "pesoN": 298,
+   "espessura": "3,6 mm aberto",
+   "sistema": "EMUI 14.2",
+   "updOS": null,
+   "updOSN": null,
+   "updSeg": null,
+   "updSegN": null,
+   "preco": "R$ 32.999",
+   "atual": "R$ 19.997",
+   "minimo": "R$ 19.997",
+   "taxa": "90 Hz",
+   "bateria": "5.600 mAh",
+   "peso": "298 g",
+   "cores": null,
+   "updResumo": "Huawei não informa por quanto tempo atualiza (sem serviços do Google)"
+  },
+  "ofertas": {
+   "pesquisa": "2026-11-27T12:00",
+   "lista": [
+    {
+     "loja": "Amazon",
+     "preco": 19996.6,
+     "url": "https://www.amazon.com.br/dp/B0DXKVSX1H"
+    }
+   ]
+  },
+  "historico": [
+   {
+    "data": "2026-11-27",
+    "preco": 19997
+   }
+  ]
  }
 ]

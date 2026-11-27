@@ -34,7 +34,7 @@ const MENU = [
   [R+"index.html#celular-ideal","Celular ideal","game"]
 ];
 /* marcas: ficam juntas no botão "Marcas" do menu (POCO é da Xiaomi e abre a página da Xiaomi) */
-const BRANDS = [[R+"samsung.html","Samsung","Samsung"],[R+"iphone.html","iPhone","Apple"],[R+"motorola.html","Motorola","Motorola"],[R+"xiaomi.html","Xiaomi","Xiaomi"]];
+const BRANDS = [[R+"samsung.html","Samsung","Samsung"],[R+"iphone.html","iPhone","Apple"],[R+"motorola.html","Motorola","Motorola"],[R+"xiaomi.html","Xiaomi","Xiaomi"],[R+"huawei.html","Huawei","Huawei"]];
 const MENU_NOVO = ["ofertas","game"];
 /* só na prévia do Claude (artifact): página com os artigos agendados. Nunca vai para o GitHub. */
 if(window.MQ_DATA && MQ_DATA.preview) MENU.push([R+"agendados.html","Agendados","agendados"]);
@@ -121,7 +121,7 @@ function header(current){
   el.className = "hdr";
   const home = current === "home";
   document.documentElement.classList.toggle("home", home);
-  const v2 = ["home","artigo","Samsung","Apple","Motorola","Xiaomi","ofertas","ranking","comparador"].includes(current) || /[?&]v2\b/.test(location.search);   /* visual novo: início, artigos e marcas; ranking e comparador ainda no visual antigo */
+  const v2 = ["home","artigo","Samsung","Apple","Motorola","Xiaomi","Huawei","ofertas","ranking","comparador"].includes(current) || /[?&]v2\b/.test(location.search);   /* visual novo: início, artigos e marcas; ranking e comparador ainda no visual antigo */
   document.documentElement.classList.toggle("v2", v2);
   const links = MENU.filter(([,,k])=>k!=="home");
   el.innerHTML = `<div class="hdr-bar">
@@ -316,12 +316,12 @@ function rowHTML(a){
   </a>`;
 }
 
-const BRAND_PAGE = {Samsung:"samsung.html", Apple:"iphone.html", Motorola:"motorola.html", Xiaomi:"xiaomi.html"};
+const BRAND_PAGE = {Samsung:"samsung.html", Apple:"iphone.html", Motorola:"motorola.html", Xiaomi:"xiaomi.html", Huawei:"huawei.html"};
 /* cards do painel "Marcas" */
 function marcasCards(){
   const ph = Object.values((window.MQ_DATA||{}).phones||{});
   const grupos = [["Samsung","Samsung","samsung.html",p=>p.marca==="Samsung"],["iPhone","Apple","iphone.html",p=>p.marca==="Apple"],["Motorola","Motorola","motorola.html",p=>p.marca==="Motorola"],
-    ["Xiaomi","Xiaomi","xiaomi.html",p=>p.marca==="Xiaomi" && !/^poco/.test(p.id)],["POCO","Xiaomi","xiaomi.html",p=>/^poco/.test(p.id)]];
+    ["Xiaomi","Xiaomi","xiaomi.html",p=>p.marca==="Xiaomi" && !/^poco/.test(p.id)],["POCO","Xiaomi","xiaomi.html",p=>/^poco/.test(p.id)],["Huawei","Huawei","huawei.html",p=>p.marca==="Huawei"]];
   return grupos.map(([nome,,pg,f])=>{ const l = ph.filter(f).sort((a,b)=>(b.precoN||b.atualN||0)-(a.precoN||a.atualN||0)); if(!l.length) return "";
     return `<div class="mk-card"><a class="mk-nome" href="${R}${pg}">${nome}</a><small>${l.length} ${l.length===1?"modelo":"modelos"}</small>${l.slice(0,3).map(p=>`<a href="${R}${pg}?modelo=${p.id}"><span aria-hidden="true">→</span>${esc(p.nome)}</a>`).join("")}<a class="mk-todos" href="${R}${pg}">Ver todos</a></div>`; }).join("");
 }
@@ -453,7 +453,9 @@ function renderBrand2(brand){
   const modelos = `<div class="b-modelos">${ids.map(id=>{ const p=P(id); return `<a class="b-mod${id===modelo?" on":""}" href="${R}${pg}?modelo=${id}${keep}"><span class="b-mod-img"><img src="${R}${p.catImg||p.cut}" alt="" loading="lazy"></span><span>${esc(p.nome)}</span></a>`; }).join("")}</div>`;
   const [first, ...rest] = arts;
   let corpo = "";
-  if(!arts.length){
+  if(!arts.length && !modelo){
+    corpo = `<div class="b-vazio"><span>Ainda não temos reviews de ${esc(label)}. Veja as ofertas e compare os modelos.</span><a class="o2-btn" href="${R}ofertas.html">Ver ofertas</a></div>`;
+  } else if(!arts.length){
     corpo = `<div class="b-vazio"><span>Ainda não temos conteúdo sobre o ${esc(P(modelo).nome)}. Veja a ficha e o preço no comparador.</span><button class="o2-btn" type="button" data-compare="${modelo}">Comparar o ${esc(P(modelo).nome)}</button></div>`;
   } else {
     corpo = `<section class="h-top" aria-label="Destaques">${heroHTML2(first)}<div class="h-lados">${rest.slice(0,3).map(ladoHTML2).join("")}</div></section>
@@ -1959,9 +1961,9 @@ function renderAgendados(){
 const OF_SEG = {
   "galaxy-a07":"entrada",
   "galaxy-a17-5g":"int-entrada", "moto-g86":"int-entrada", "moto-g-max":"int-entrada",
-  "galaxy-a57":"int", "redmi-note-17-pro":"int", "poco-x8-pro":"int",
+  "galaxy-a57":"int", "redmi-note-17-pro":"int", "poco-x8-pro":"int", "nova-15-max":"int",
   "edge-70":"int-pro", "edge-70-pro":"int-pro", "poco-x8-pro-max":"int-pro",
-  "galaxy-s26":"topo", "galaxy-s26-ultra":"topo", "iphone-15":"topo", "iphone-16":"topo", "iphone-17":"topo", "razr-70-ultra":"topo", "razr-flex":"topo"
+  "galaxy-s26":"topo", "galaxy-s26-ultra":"topo", "iphone-15":"topo", "iphone-16":"topo", "iphone-17":"topo", "razr-70-ultra":"topo", "razr-flex":"topo", "pura-80-pro":"topo", "mate-80-pro":"topo", "mate-xt":"topo"
 };
 const OF_SEGS = [["entrada","Entrada"],["int-entrada","Intermediário de entrada"],["int","Intermediário"],["int-pro","Intermediário Pro"],["topo","Topo de linha"]];
 const OF_USOS = [
@@ -1984,7 +1986,7 @@ function ofertasLista(){
     const usos = Object.fromEntries(OF_USOS.map(([k,,,,f])=>[k, f(n,p)]));
     const s = p.specs || {};
     const tela = (s.tela||"").split(" ")[0];
-    const chips = [tela, s.bateria, s.armazN ? s.armazN + " GB" : null].filter(Boolean);
+    const chips = [tela, s.bateria, s.armazN ? (s.armazN>=1000 ? s.armazN/1000 + " TB" : s.armazN + " GB") : null].filter(Boolean);
     const minimo = p.specs && p.specs.minimoN && melhor.preco <= p.specs.minimoN + 1;
     return {p, id:p.id, lista, melhor, pct, usos, chips, minimo, seg:OF_SEG[p.id] || "int", marca:/^poco/.test(p.id) ? "POCO" : p.marca};
   }).filter(Boolean);
@@ -1996,7 +1998,7 @@ function renderOfertas(){
   const todos = ofertasLista();
   const marcas = [...new Set(todos.map(x=>x.marca))];
   const maxP = Math.ceil(Math.max(...todos.map(x=>x.melhor.preco))/500)*500;
-  const st = {seg:[], marca:[], uso:null, min:0, max:maxP, ord:"desconto"};
+  const st = {seg:[], marca:[], uso:null, min:0, max:maxP, ord:"desconto", ids:null, idsNome:""};
   const pesquisa = todos.map(x=>(x.p.ofertas||{}).pesquisa).filter(Boolean).sort().pop();
   const segN = k => (OF_SEGS.find(s=>s[0]===k)||[,""])[1];
 
@@ -2032,11 +2034,17 @@ function renderOfertas(){
     if(match){
       const c = match.c, x = todos.find(t=>t.id===c.antigo);
       const img = R + "img/cat/" + c.id + ".webp";
+      /* match sem oferta acompanhada: mostra os parecidos (mesma categoria e preço perto do dele) */
+      const segCat = {entrada:["entrada","int-entrada"], intermediario:["int-entrada","int","int-pro"], topo:["topo","int-pro"]}[c.seg] || [];
+      const pareci = x ? [] : todos.filter(t=>segCat.includes(t.seg) && t.melhor.preco >= c.preco*.65 && t.melhor.preco <= c.preco*1.35)
+        .sort((a,b)=>Math.abs(a.melhor.preco-c.preco)-Math.abs(b.melhor.preco-c.preco)).slice(0,4);
       el.innerHTML = `<div class="of-g-txt"><span class="of-k">Seu match</span><h2>O celular que combina com você</h2>
-        <div class="of-match">${img?`<img src="${img}" alt="">`:""}<div><b>${esc(c.nome)}</b><span>${x ? `a partir de ${brl(x.melhor.preco)} hoje` : "ainda sem oferta acompanhada por aqui"}</span></div></div>
-        <div class="of-g-acts">${x ? `<button type="button" class="of-g-btn" data-g="ver">Ver ofertas dele →</button>` : `<button type="button" class="of-g-btn" data-g="res">Ver o resultado →</button>`}<button type="button" class="of-g-link" data-g="nova">Jogar de novo</button></div></div>${chars}`;
+        <div class="of-match">${img?`<img src="${img}" alt="">`:""}<div><b>${esc(c.nome)}</b><span>${x ? `a partir de ${brl(x.melhor.preco)} hoje` : pareci.length ? `sem oferta hoje · ${pareci.length} parecidos com oferta` : "sem oferta acompanhada hoje"}</span></div></div>
+        <div class="of-g-acts">${x ? `<button type="button" class="of-g-btn" data-g="ver">Ver ofertas dele →</button>` : pareci.length ? `<button type="button" class="of-g-btn" data-g="parecidos">Ver os parecidos →</button>` : `<button type="button" class="of-g-btn" data-g="res">Ver o resultado →</button>`}<button type="button" class="of-g-link" data-g="nova">Jogar de novo</button></div></div>${chars}`;
+      const pb = el.querySelector('[data-g="parecidos"]');
+      if(pb) pb.onclick = ()=>{ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:pareci.map(t=>t.id), idsNome:c.nome}); desenha(); $(".of-bar").scrollIntoView({behavior:"smooth", block:"start"}); };
       const v = el.querySelector('[data-g="ver"]');
-      if(v) v.onclick = ()=>{ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP}); desenha(); const card = document.getElementById("of-"+x.id); if(card){ card.scrollIntoView({behavior:"smooth", block:"center"}); card.classList.remove("of-pisca"); void card.offsetWidth; card.classList.add("of-pisca"); } };
+      if(v) v.onclick = ()=>{ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:null}); desenha(); const card = document.getElementById("of-"+x.id); if(card){ card.scrollIntoView({behavior:"smooth", block:"center"}); card.classList.remove("of-pisca"); void card.offsetWidth; card.classList.add("of-pisca"); } };
       const rb = el.querySelector('[data-g="res"]'); if(rb) rb.onclick = ()=>gameAbre();
       el.querySelector('[data-g="nova"]').onclick = ()=>gameAbre(true);
     } else {
@@ -2051,7 +2059,7 @@ function renderOfertas(){
 
   /* ---- lista ---- */
   const filtra = () => {
-    let l = todos.filter(x=>(!st.seg.length || st.seg.includes(x.seg)) && (!st.marca.length || st.marca.includes(x.marca)) && x.melhor.preco >= st.min && x.melhor.preco <= st.max);
+    let l = todos.filter(x=>(!st.ids || st.ids.includes(x.id)) && (!st.seg.length || st.seg.includes(x.seg)) && (!st.marca.length || st.marca.includes(x.marca)) && x.melhor.preco >= st.min && x.melhor.preco <= st.max);
     if(st.uso) l.sort((a,b)=>b.usos[st.uso]-a.usos[st.uso]);
     else if(st.ord==="menor") l.sort((a,b)=>a.melhor.preco-b.melhor.preco);
     else if(st.ord==="maior") l.sort((a,b)=>b.melhor.preco-a.melhor.preco);
@@ -2080,6 +2088,7 @@ function renderOfertas(){
     const t = [...st.seg.map(k=>["seg",k,segN(k)]), ...st.marca.map(k=>["marca",k,k])];
     if(st.uso) t.push(["uso",st.uso,usoDe(st.uso)[1]]);
     if(st.min>0 || st.max<maxP) t.push(["preco","",`${brl(st.min)} a ${brl(st.max)}`]);
+    if(st.ids) t.unshift(["ids","",`Parecidos com o ${st.idsNome}`]);
     $(".of-tags").innerHTML = t.length ? t.map(([f,k,l])=>`<button type="button" class="of-tag" data-f="${f}" data-k="${esc(k)}">${esc(l)} <span aria-hidden="true">×</span><span class="sr">remover filtro</span></button>`).join("") + `<button type="button" class="of-limpa">Limpar filtros</button>` : "";
     const cnt = $(".of-cnt"); cnt.hidden = !t.length; cnt.textContent = t.length;
     main.querySelectorAll(".of-fs .of-fb").forEach(b=>{
@@ -2170,8 +2179,8 @@ function renderOfertas(){
   document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !pop.hidden) fechaPop(); });
   main.addEventListener("click", e=>{
     const t = e.target.closest(".of-tag");
-    if(t){ const f = t.dataset.f, k = t.dataset.k; if(f==="seg"||f==="marca") st[f] = st[f].filter(x=>x!==k); else if(f==="uso") st.uso = null; else { st.min = 0; st.max = maxP; } desenha(); return; }
-    if(e.target.closest(".of-limpa")){ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP}); desenha(); return; }
+    if(t){ const f = t.dataset.f, k = t.dataset.k; if(f==="seg"||f==="marca") st[f] = st[f].filter(x=>x!==k); else if(f==="uso") st.uso = null; else if(f==="ids") st.ids = null; else { st.min = 0; st.max = maxP; } desenha(); return; }
+    if(e.target.closest(".of-limpa")){ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:null}); desenha(); return; }
     const v = e.target.closest(".of-ver");
     if(v){ const box = v.closest(".of-info").querySelector(".of-lojas"); box.hidden = !box.hidden; v.setAttribute("aria-expanded", !box.hidden); v.textContent = box.hidden ? v.textContent.replace("esconder","ver") : "esconder lojas"; if(box.hidden) v.textContent = `ver ${box.children.length} lojas`; }
   });

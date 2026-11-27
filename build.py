@@ -42,7 +42,8 @@ CAT = json.load(open(os.path.join(ROOT, 'data/catalogo.json'), encoding='utf-8')
 ANTIGO = {"samsung-galaxy-a07-4g":"galaxy-a07","samsung-galaxy-a17-5g":"galaxy-a17-5g","samsung-galaxy-a57-5g":"galaxy-a57",
   "samsung-galaxy-s26":"galaxy-s26","samsung-galaxy-s26-ultra":"galaxy-s26-ultra","apple-iphone-15":"iphone-15","apple-iphone-16":"iphone-16",
   "apple-iphone-17":"iphone-17","motorola-moto-g86":"moto-g86","motorola-edge-70":"edge-70","motorola-edge-70-pro":"edge-70-pro",
-  "motorola-razr-70-ultra":"razr-70-ultra","xiaomi-poco-x8-pro":"poco-x8-pro","xiaomi-poco-x8-pro-max":"poco-x8-pro-max","xiaomi-redmi-note-17-pro-5g":"redmi-note-17-pro"}
+  "motorola-razr-70-ultra":"razr-70-ultra","xiaomi-poco-x8-pro":"poco-x8-pro","xiaomi-poco-x8-pro-max":"poco-x8-pro-max","xiaomi-redmi-note-17-pro-5g":"redmi-note-17-pro",
+  "huawei-nova-15-max":"nova-15-max","huawei-pura-80-pro":"pura-80-pro","huawei-mate-80-pro":"mate-80-pro","huawei-mate-xt-ultimate-design":"mate-xt"}
 SEG = {"entrada":"entrada","intermediario_entrada":"intermediario","intermediario":"intermediario","intermediario_premium":"intermediario","topo_de_linha":"topo"}
 cat = []
 for m in CAT['modelos']:
@@ -223,7 +224,7 @@ page('ranking.html', 'Ranking de custo-benefício de celulares · Bugsale',
      'Os 10 celulares com melhor custo-benefício: nota da crítica especializada, testes de laboratório e preço médio de hoje.',
      'ranking', 'MQ.renderRanking();',
      content=ssr_lista('Ranking de celulares', 'Os celulares com melhor custo-benefício, melhor câmera, melhor tela, melhores para jogos e com mais bateria, com nota da crítica especializada, testes de laboratório e preço médio de hoje.', [], ''))
-for f, nome, marca in [('samsung.html', 'Samsung', 'Samsung'), ('iphone.html', 'iPhone', 'Apple'), ('motorola.html', 'Motorola', 'Motorola'), ('xiaomi.html', 'Xiaomi', 'Xiaomi')]:
+for f, nome, marca in [('samsung.html', 'Samsung', 'Samsung'), ('iphone.html', 'iPhone', 'Apple'), ('motorola.html', 'Motorola', 'Motorola'), ('xiaomi.html', 'Xiaomi', 'Xiaomi'), ('huawei.html', 'Huawei', 'Huawei')]:
     page(f, f'Celulares {nome}: reviews e preços · Bugsale', f'Reviews, preço médio atual e quanto caiu desde o lançamento de cada celular {nome}.',
          marca, f'MQ.renderArticles("{marca}");',
          content=ssr_lista(f'Celulares {nome}: reviews e preços', f'Reviews, comparativos e preço médio atual dos celulares {nome}.', [a for a in _vistos if any(c['id'] == a['celular'] and c.get('marca') == marca for c in celulares) or (marca == 'Apple' and a['celular'].startswith('iphone'))], ''))
