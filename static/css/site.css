@@ -2756,3 +2756,7 @@ html[data-theme="dark"] .of-tag{color:#CFC3FF}
   .of-game:not(.of-g-match) .of-chars{bottom:auto;top:16px}
   .of-game:not(.of-g-match) .of-chars img{height:56px} .of-game:not(.of-g-match) .of-chars img:last-child{height:40px}
 }
+.of-aviso{margin:16px 0 0;padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.45;color:var(--v-ink);background:color-mix(in srgb,var(--v-gold) 22%,var(--v-surface));border:1px solid color-mix(in srgb,var(--v-gold) 55%,var(--v-surface))}
+.of-aviso[hidden]{display:none}
+.of-card.of-seu{box-shadow:0 0 0 2px var(--v-purple)}
+.of-card.of-seu .of-img::after{content:"Seu match";position:absolute;left:8px;bottom:8px;background:var(--v-purple);color:#fff;font:800 11px var(--body);padding:4px 8px;border-radius:8px}

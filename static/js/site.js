@@ -1909,8 +1909,8 @@ function gameAbre(forcar){
     const lista = p && p.ofertas && p.ofertas.lista ? p.ofertas.lista.slice().sort((a,b)=>a.preco-b.preco) : [];
     const art = p ? publicados().find(a=>a.phone===p.id) : null;
     const pct = Math.max(60, Math.min(98, m.pct || 80));
-    const cta = lista.length ? `<a class="gm-b ouro" href="${esc(lista[0].url)}" target="_blank" rel="sponsored nofollow noopener">Ver ofertas ↗</a>`
-      : art ? `<a class="gm-b ouro" href="${artURL(art)}">Ler a análise →</a>` : `<button type="button" class="gm-b ouro" data-gm-ver="${c.id}">Ver no comparador →</button>`;
+    /* sempre leva para as ofertas: do próprio match ou, se ele não tiver oferta, dos parecidos */
+    const cta = `<a class="gm-b ouro" href="${R}ofertas.html?match">Ver ofertas →</a>`;
     const topoAviso = res.basta ? `<p class="gm-obs">Se mudar de ideia: pelo que você contou, o <b>${esc(res.basta.c.nome)}</b> já dá conta do seu uso por ${brl(m.preco - res.basta.preco)} a menos.</p>` : "";
     box.innerHTML = `${X}<div class="gm-cena"><canvas width="${PIX.W}" height="${PIX.H}" role="img" aria-label="Seu celular ideal chegando"></canvas></div><span class="gm-k">Resultado</span><h2 id="gmT">Seu celular ideal é…</h2><p class="gm-sub">${esc(resumo())}</p>
       ${res.fora ? `<p class="gm-obs">${r.sistema==="ios" ? `O iPhone mais em conta hoje custa ≈ ${brl(m.preco)}, acima do seu orçamento. Se topar Android, tem opção boa dentro dele.` : "Nenhum modelo do catálogo cabe nesse orçamento com o que você escolheu. Estes são os mais em conta."}</p>` : ""}
@@ -2017,12 +2017,37 @@ function renderOfertas(){
       <div class="of-pop" hidden></div>
     </div>
     <div class="of-tags"></div>
+    <p class="of-aviso" hidden></p>
     <p class="of-res"></p>
     <div class="of-grid"></div>
     <p class="of-nota">Desconto calculado sobre o preço de lançamento. Preços pesquisados ${pesquisa ? "em " + dataHora(pesquisa) : "hoje"} na Amazon, no Mercado Livre e no Magalu, e mudam ao longo do dia. Os links levam à loja; a Bugsale pode receber comissão, sem custo extra para você.</p>`;
 
   const $ = s => main.querySelector(s);
   const grid = $(".of-grid"), pop = $(".of-pop"), bar = $(".of-bar");
+
+  /* ---- match do game: o próprio aparelho (se tiver oferta) e os parecidos ---- */
+  const matchInfo = () => {
+    const salvo = typeof gLer === "function" ? gLer() : null;
+    let m = null;
+    if(salvo && salvo.r){ try{ m = gameCalcula(salvo.r).match; }catch(e){} }
+    if(!m) return null;
+    const c = m.c, x = todos.find(t=>t.id===c.antigo);
+    const segCat = {entrada:["entrada","int-entrada"], intermediario:["int-entrada","int","int-pro"], topo:["topo","int-pro"]}[c.seg] || [];
+    const so = salvo.r.sistema, okSO = t => so==="ios" ? t.p.marca==="Apple" : so==="android" ? t.p.marca!=="Apple" : true;
+    const pareci = todos.filter(t=>t!==x && okSO(t) && (so==="ios" || segCat.includes(t.seg)) && t.melhor.preco >= c.preco*.65 && t.melhor.preco <= c.preco*1.35)
+      .sort((a,b)=>Math.abs(a.melhor.preco-c.preco)-Math.abs(b.melhor.preco-c.preco)).slice(0,4);
+    return {c, x, pareci};
+  };
+  const mostraMatch = () => {
+    const mi = matchInfo(); if(!mi) return false;
+    const {c, x, pareci} = mi;
+    const ids = (x ? [x.id] : []).concat(pareci.map(t=>t.id));
+    if(!ids.length) return false;
+    Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids, idsNome:c.nome, idsMatch:x ? x.id : null,
+      aviso: x ? `Estas são as ofertas do <b>${esc(c.nome)}</b>, o celular que deu match com você, e de aparelhos parecidos.`
+               : `Não encontramos oferta hoje do <b>${esc(c.nome)}</b>, o celular que deu match com você. Veja abaixo ofertas de aparelhos parecidos, da mesma linha e faixa de preço.`});
+    return true;
+  };
 
   /* ---- banner do game ---- */
   const banner = () => {
@@ -2045,9 +2070,9 @@ function renderOfertas(){
         <span class="of-placa"><b>${esc(c.nome)}</b><span>${x ? `a partir de ${brl(x.melhor.preco)} hoje` : pareci.length ? `sem oferta hoje · ${pareci.length} parecidos` : "sem oferta hoje"}</span></span></div>
         <div class="of-chao"></div>`;
       const pb = el.querySelector('[data-g="parecidos"]');
-      if(pb) pb.onclick = ()=>{ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:pareci.map(t=>t.id), idsNome:c.nome}); desenha(); $(".of-bar").scrollIntoView({behavior:"smooth", block:"start"}); };
+      if(pb) pb.onclick = ()=>{ mostraMatch(); desenha(); $(".of-bar").scrollIntoView({behavior:"smooth", block:"start"}); };
       const v = el.querySelector('[data-g="ver"]');
-      if(v) v.onclick = ()=>{ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:null}); desenha(); const card = document.getElementById("of-"+x.id); if(card){ card.scrollIntoView({behavior:"smooth", block:"center"}); card.classList.remove("of-pisca"); void card.offsetWidth; card.classList.add("of-pisca"); } };
+      if(v) v.onclick = ()=>{ mostraMatch(); desenha(); $(".of-bar").scrollIntoView({behavior:"smooth", block:"start"}); };
       const rb = el.querySelector('[data-g="res"]'); if(rb) rb.onclick = ()=>gameAbre();
       el.querySelector('[data-g="nova"]').onclick = ()=>gameAbre(true);
     } else {
@@ -2060,11 +2085,13 @@ function renderOfertas(){
   };
   banner();
   document.addEventListener("bs-game-fim", banner);
+  const veioDoGame = /[?&]match\b/.test(location.search) && mostraMatch();
 
   /* ---- lista ---- */
   const filtra = () => {
     let l = todos.filter(x=>(!st.ids || st.ids.includes(x.id)) && (!st.seg.length || st.seg.includes(x.seg)) && (!st.marca.length || st.marca.includes(x.marca)) && x.melhor.preco >= st.min && x.melhor.preco <= st.max);
-    if(st.uso) l.sort((a,b)=>b.usos[st.uso]-a.usos[st.uso]);
+    if(st.ids) l.sort((a,b)=>st.ids.indexOf(a.id)-st.ids.indexOf(b.id));
+    else if(st.uso) l.sort((a,b)=>b.usos[st.uso]-a.usos[st.uso]);
     else if(st.ord==="menor") l.sort((a,b)=>a.melhor.preco-b.melhor.preco);
     else if(st.ord==="maior") l.sort((a,b)=>b.melhor.preco-a.melhor.preco);
     else l.sort((a,b)=>b.pct-a.pct || a.melhor.preco-b.melhor.preco);
@@ -2092,7 +2119,7 @@ function renderOfertas(){
     const t = [...st.seg.map(k=>["seg",k,segN(k)]), ...st.marca.map(k=>["marca",k,k])];
     if(st.uso) t.push(["uso",st.uso,usoDe(st.uso)[1]]);
     if(st.min>0 || st.max<maxP) t.push(["preco","",`${brl(st.min)} a ${brl(st.max)}`]);
-    if(st.ids) t.unshift(["ids","",`Parecidos com o ${st.idsNome}`]);
+    if(st.ids) t.unshift(["ids","",st.idsMatch ? `Seu match: ${st.idsNome} e parecidos` : `Parecidos com o ${st.idsNome}`]);
     $(".of-tags").innerHTML = t.length ? t.map(([f,k,l])=>`<button type="button" class="of-tag" data-f="${f}" data-k="${esc(k)}">${esc(l)} <span aria-hidden="true">×</span><span class="sr">remover filtro</span></button>`).join("") + `<button type="button" class="of-limpa">Limpar filtros</button>` : "";
     const cnt = $(".of-cnt"); cnt.hidden = !t.length; cnt.textContent = t.length;
     main.querySelectorAll(".of-fs .of-fb").forEach(b=>{
@@ -2107,6 +2134,8 @@ function renderOfertas(){
     grid.innerHTML = l.length ? l.map(card).join("") : `<div class="b-vazio"><span>Nenhum celular com esses filtros. Tente tirar algum.</span></div>`;
     $(".of-res").innerHTML = `<b>${l.length} ${l.length===1?"celular":"celulares"}</b> · preços pesquisados ${pesquisa ? "em " + dataHora(pesquisa) : "hoje"} na Amazon, no Mercado Livre e no Magalu`;
     tags();
+    const av = $(".of-aviso"); av.hidden = !(st.ids && st.aviso); if(!av.hidden) av.innerHTML = st.aviso;
+    if(st.idsMatch){ const mc = document.getElementById("of-"+st.idsMatch); if(mc){ mc.classList.add("of-seu"); const lj = mc.querySelector(".of-lojas"), vb = mc.querySelector(".of-ver"); if(lj && vb){ lj.hidden = false; vb.textContent = "esconder lojas"; vb.setAttribute("aria-expanded","true"); } } }
   };
 
   /* ---- pop-ups dos filtros ---- */
@@ -2183,12 +2212,13 @@ function renderOfertas(){
   document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !pop.hidden) fechaPop(); });
   main.addEventListener("click", e=>{
     const t = e.target.closest(".of-tag");
-    if(t){ const f = t.dataset.f, k = t.dataset.k; if(f==="seg"||f==="marca") st[f] = st[f].filter(x=>x!==k); else if(f==="uso") st.uso = null; else if(f==="ids") st.ids = null; else { st.min = 0; st.max = maxP; } desenha(); return; }
-    if(e.target.closest(".of-limpa")){ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:null}); desenha(); return; }
+    if(t){ const f = t.dataset.f, k = t.dataset.k; if(f==="seg"||f==="marca") st[f] = st[f].filter(x=>x!==k); else if(f==="uso") st.uso = null; else if(f==="ids"){ st.ids = null; st.idsMatch = null; } else { st.min = 0; st.max = maxP; } desenha(); return; }
+    if(e.target.closest(".of-limpa")){ Object.assign(st, {seg:[], marca:[], uso:null, min:0, max:maxP, ids:null, idsMatch:null}); desenha(); return; }
     const v = e.target.closest(".of-ver");
     if(v){ const box = v.closest(".of-info").querySelector(".of-lojas"); box.hidden = !box.hidden; v.setAttribute("aria-expanded", !box.hidden); v.textContent = box.hidden ? v.textContent.replace("esconder","ver") : "esconder lojas"; if(box.hidden) v.textContent = `ver ${box.children.length} lojas`; }
   });
   desenha();
+  if(veioDoGame) setTimeout(()=>$(".of-bar").scrollIntoView({behavior:"smooth", block:"start"}), 300);
 }
 
 window.MQ = { header, footer, renderArticles, renderArticle, renderRanking: ()=>renderRanking2(), renderComparador, renderAgendados, renderOfertas };
